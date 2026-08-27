@@ -1,7 +1,12 @@
+import { HeroSection } from '@/src/components/home/hero-section';
+import { ProductShowcase } from '@/src/components/home/product-showcase';
+
 export default function HomePage() {
   return (
     <main>
-      <h1>بوکان پایپ — زیرساختی برای جریان فردا</h1>
+      <HeroSection />
+      <ProductShowcase />
+      <section id="quote" aria-label="دریافت استعلام" />
     </main>
   );
 }
