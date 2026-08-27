@@ -1,0 +1,89 @@
+.footer {
+  position: relative;
+  background: #050d17;
+  border-top: 1px solid var(--bp-border-dark);
+  color: var(--bp-offwhite-100);
+}
+
+.topline {
+  padding-block: clamp(54px, 7vw, 92px);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+  border-bottom: 1px solid var(--bp-border-dark);
+}
+
+.eyebrow {
+  display: inline-block;
+  direction: ltr;
+  color: var(--bp-blue-300);
+  font: 800 11px/1 'Segoe UI', sans-serif;
+  letter-spacing: .22em;
+  margin-bottom: 16px;
+}
+
+.topline h2 {
+  margin: 0;
+  font-size: clamp(30px, 4.3vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -.04em;
+}
+
+.topline p {
+  margin: 18px 0 0;
+  color: var(--bp-muted-300);
+  max-width: 600px;
+  line-height: 1.9;
+}
+
+.cta {
+  flex: 0 0 auto;
+  min-height: 52px;
+  padding-inline: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bp-blue-500);
+  border-radius: 13px;
+  font-weight: 800;
+  transition: transform var(--bp-transition), background var(--bp-transition);
+}
+
+.cta:hover { transform: translateY(-2px); background: var(--bp-blue-400); }
+
+.grid {
+  padding-block: 44px;
+  display: grid;
+  grid-template-columns: 1.7fr repeat(3, 1fr);
+  gap: 36px;
+}
+
+.brand :global(.brand-lockup) { display: inline-flex; align-items: center; gap: 11px; }
+.brand :global(.brand-lockup > span) { display: grid; gap: 5px; }
+.brand :global(.brand-lockup strong) { font-size: 17px; }
+.brand :global(.brand-lockup small) { color: var(--bp-muted-300); font-size: 8px; letter-spacing: .18em; direction: ltr; }
+
+.grid > div { display: grid; align-content: start; gap: 11px; }
+.grid strong { margin-bottom: 4px; font-size: 13px; color: var(--bp-white); }
+.grid a:not(.brand) { color: var(--bp-muted-300); font-size: 13px; transition: color var(--bp-transition); }
+.grid a:not(.brand):hover { color: var(--bp-white); }
+
+.bottom {
+  min-height: 64px;
+  border-top: 1px solid var(--bp-border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--bp-muted-500);
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  .topline { align-items: stretch; flex-direction: column; }
+  .cta { align-self: start; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .brand { grid-column: 1 / -1; margin-bottom: 12px; }
+  .bottom { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 18px; }
+}

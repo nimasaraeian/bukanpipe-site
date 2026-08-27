@@ -1,0 +1,24 @@
+:root {
+  --bp-midnight-950: #06101d;
+  --bp-midnight-900: #091522;
+  --bp-graphite-850: #0d1b2b;
+  --bp-graphite-800: #122235;
+  --bp-slate-700: #1b3048;
+  --bp-offwhite-100: #f3f6f9;
+  --bp-offwhite-50: #fafbfd;
+  --bp-white: #ffffff;
+  --bp-muted-300: #a8b6c8;
+  --bp-muted-500: #728198;
+  --bp-blue-500: #1677ff;
+  --bp-blue-400: #3d8cff;
+  --bp-blue-300: #78adff;
+  --bp-border-dark: rgba(255, 255, 255, 0.1);
+  --bp-border-light: rgba(9, 21, 34, 0.1);
+  --bp-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
+  --bp-radius-md: 18px;
+  --bp-radius-lg: 22px;
+  --bp-container: 1440px;
+  --bp-gutter: clamp(20px, 4vw, 56px);
+  --bp-section: clamp(72px, 9vw, 132px);
+  --bp-transition: 360ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}

@@ -1,3 +1,5 @@
+@import '../src/styles/tokens.css';
+
 *,
 *::before,
 *::after {
@@ -5,16 +7,17 @@
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
+  background: var(--bp-midnight-950);
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: #08111f;
-  color: #f7f9fc;
-  font-family: Vazirmatn, IRANSansX, Tahoma, Arial, sans-serif;
+  overflow-x: hidden;
+  background: var(--bp-midnight-950);
+  color: var(--bp-offwhite-100);
+  font-family: Vazirmatn, IRANSansX, 'Segoe UI', Tahoma, Arial, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -35,6 +38,16 @@ img,
 svg {
   display: block;
   max-width: 100%;
+}
+
+::selection {
+  background: rgba(22, 119, 255, 0.35);
+  color: var(--bp-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--bp-blue-400);
+  outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {

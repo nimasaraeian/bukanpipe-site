@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import './globals.css';
 import { StructuredData } from '@/src/components/seo/structured-data';
+import { SiteHeader } from '@/src/components/layout/site-header';
+import { SiteFooter } from '@/src/components/layout/site-footer';
 import { buildMetadata } from '@/src/lib/seo';
 
 export const metadata = buildMetadata({
@@ -14,7 +16,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="fa" dir="rtl">
       <body>
         <StructuredData />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
