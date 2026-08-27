@@ -1,16 +1,21 @@
-import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
+import { StructuredData } from '@/src/components/seo/structured-data';
+import { buildMetadata } from '@/src/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'بوکان پایپ',
-  description: 'وب‌سایت رسمی بوکان پایپ',
-};
+export const metadata = buildMetadata({
+  title: 'لوله پلی اتیلن بوکان پایپ | Bukan Pipe',
+  description:
+    'وب‌سایت رسمی بوکان پایپ؛ معرفی محصولات و راهکارهای لوله پلی اتیلن برای آبرسانی، گازرسانی، کشاورزی و زیرساخت.',
+});
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body>{children}</body>
+      <body>
+        <StructuredData />
+        {children}
+      </body>
     </html>
   );
 }
