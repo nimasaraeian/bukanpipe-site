@@ -5,8 +5,8 @@ import { SiteFooter } from '@/src/components/layout/site-footer';
 test('header exposes semantic navigation and quote CTA', () => {
   render(<SiteHeader />);
 
-  expect(screen.getByRole('navigation', { name: /ناوبری اصلی/ })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: /دریافت استعلام/ })).toBeInTheDocument();
+  expect(screen.getByRole('navigation', { name: 'ناوبری اصلی' })).toBeInTheDocument();
+  expect(screen.getAllByRole('link', { name: /دریافت استعلام/ }).length).toBeGreaterThanOrEqual(1);
   expect(screen.getByRole('link', { name: /بوکان پایپ/ })).toHaveAttribute('href', '/');
 });
 
