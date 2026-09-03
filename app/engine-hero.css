@@ -47,147 +47,96 @@
 .engine-header-logo-wrap {
   position: relative;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 2.125rem;
   height: 2.125rem;
   flex-shrink: 0;
 }
 
-@property --engine-logo-light-angle {
+@property --engine-logo-orbit-angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
 
-.engine-header-logo-halo {
+/* Orbital ring — light travels around the logo, never on top of it */
+.engine-header-logo-orbit {
   position: absolute;
-  inset: -45%;
+  inset: -3px;
+  border-radius: 11px;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--engine-logo-orbit-angle),
+    transparent 0deg,
+    transparent 300deg,
+    rgba(51, 170, 255, 0.2) 312deg,
+    rgba(220, 240, 255, 0.85) 328deg,
+    rgba(51, 170, 255, 0.25) 344deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+  animation: engine-logo-orbit-spin 5.5s linear infinite;
+}
+
+.engine-header-logo-orbit-glow {
+  position: absolute;
+  inset: -10px;
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    rgba(51, 170, 255, 0.42) 0%,
-    rgba(0, 102, 255, 0.16) 42%,
-    transparent 72%
+    rgba(51, 170, 255, 0.22) 0%,
+    rgba(0, 102, 255, 0.08) 45%,
+    transparent 70%
   );
-  filter: blur(6px);
-  opacity: 0.55;
   pointer-events: none;
   z-index: 0;
-  animation: engine-logo-halo-breathe 5.5s ease-in-out infinite;
-}
-
-.engine-header-logo-luminous {
-  position: absolute;
-  inset: -8%;
-  background: conic-gradient(
-    from var(--engine-logo-light-angle),
-    rgba(0, 102, 255, 0.05) 0deg,
-    rgba(0, 102, 255, 0.05) 220deg,
-    rgba(51, 170, 255, 0.55) 268deg,
-    rgba(230, 245, 255, 0.92) 286deg,
-    rgba(51, 170, 255, 0.45) 304deg,
-    rgba(0, 102, 255, 0.05) 360deg
-  );
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0.7;
-  mix-blend-mode: screen;
-  animation: engine-logo-luminous-spin 6.5s linear infinite;
+  opacity: 0.65;
+  animation: engine-logo-orbit-glow 5.5s ease-in-out infinite;
 }
 
 .engine-header-logo {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 2.125rem;
   height: 2.125rem;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(51, 170, 255, 0.28));
-  animation: engine-logo-glow-pulse 5.5s ease-in-out infinite;
+  /* Keep logo pixels sharp — no filter, blend, or overlay on the asset */
 }
 
-.engine-header-logo-sheen {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    118deg,
-    transparent 0%,
-    transparent 38%,
-    rgba(255, 255, 255, 0.08) 46%,
-    rgba(240, 250, 255, 0.72) 50%,
-    rgba(255, 255, 255, 0.08) 54%,
-    transparent 62%,
-    transparent 100%
-  );
-  background-size: 220% 220%;
-  background-position: 120% 40%;
-  pointer-events: none;
-  z-index: 4;
-  mix-blend-mode: soft-light;
-  animation: engine-logo-sheen-glide 4.8s cubic-bezier(0.45, 0.05, 0.2, 1) infinite;
-}
-
-@keyframes engine-logo-halo-breathe {
-  0%,
-  100% {
-    opacity: 0.38;
-    transform: scale(0.92);
-  }
-  50% {
-    opacity: 0.72;
-    transform: scale(1.06);
-  }
-}
-
-@keyframes engine-logo-luminous-spin {
+@keyframes engine-logo-orbit-spin {
   to {
-    --engine-logo-light-angle: 360deg;
+    --engine-logo-orbit-angle: 360deg;
   }
 }
 
-@keyframes engine-logo-glow-pulse {
+@keyframes engine-logo-orbit-glow {
   0%,
   100% {
-    filter: drop-shadow(0 0 4px rgba(51, 170, 255, 0.22));
+    opacity: 0.45;
   }
   50% {
-    filter: drop-shadow(0 0 10px rgba(51, 170, 255, 0.55))
-      drop-shadow(0 0 18px rgba(0, 102, 255, 0.22));
-  }
-}
-
-@keyframes engine-logo-sheen-glide {
-  0%,
-  28%,
-  100% {
-    background-position: 130% 35%;
-    opacity: 0;
-  }
-  42% {
-    opacity: 1;
-  }
-  58% {
-    background-position: -30% 65%;
-    opacity: 0.85;
-  }
-  72% {
-    opacity: 0;
+    opacity: 0.75;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .engine-header-logo-halo,
-  .engine-header-logo-luminous,
-  .engine-header-logo,
-  .engine-header-logo-sheen {
+  .engine-header-logo-orbit,
+  .engine-header-logo-orbit-glow {
     animation: none;
   }
 
-  .engine-header-logo-halo {
-    opacity: 0.45;
-    transform: none;
-  }
-
-  .engine-header-logo {
-    filter: drop-shadow(0 0 6px rgba(51, 170, 255, 0.35));
+  .engine-header-logo-orbit-glow {
+    opacity: 0.5;
   }
 }
 
