@@ -53,7 +53,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe engineered HDPE solutions for water, agriculture and industrial pipeline networks.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "REQUEST_QUOTE",
   },
   industries: {
@@ -64,18 +64,18 @@ export const routes = {
     seoDescription:
       "HDPE pipe applications by industry sector. Content publishes after product and market verification.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "VIEW_PRODUCT",
   },
   applications: {
     path: "/applications",
     title: "Applications",
     purpose:
-      "Legacy applications hub — redirects to industry sectors. Subsections publish only for verified use cases.",
+      "Application-specific pipeline use cases — water, gas, agriculture, sewage and industrial networks.",
     seoDescription:
-      "Bukan Pipe polyethylene pipe applications. See Industries for sector-specific content.",
+      "Bukan Pipe polyethylene pipe applications by project type.",
     lifecycle: "implemented",
-    includeInSitemap: false,
+    includeInSitemap: true,
     primaryCta: "VIEW_PRODUCT",
   },
   laboratory: {
@@ -97,7 +97,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe projects development route. Case studies are added only after evidence and publication approval.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "REQUEST_QUOTE",
   },
   engineering: {
@@ -108,7 +108,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe engineering reference development route. Technical guides publish after source verification.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "VIEW_PRODUCT",
   },
   standards: {
@@ -119,7 +119,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe standards development route. No unverified standards or certificates are listed in this phase.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "VIEW_STANDARD",
   },
   knowledge: {
@@ -130,7 +130,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe knowledge center development route. Articles are added after classification and source approval.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "VIEW_PRODUCT",
   },
   pricing: {
@@ -141,7 +141,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe pricing information development route. No price figures are published in this phase.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "REQUEST_QUOTE",
   },
   tools: {
@@ -152,7 +152,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe engineering tools development route. Calculators are not implemented yet.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "USE_TOOL",
   },
   requestQuote: {
@@ -174,7 +174,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe dealers development route. Official dealer list has not been received from the factory yet.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "VERIFY_DEALER",
   },
   verify: {
@@ -185,7 +185,7 @@ export const routes = {
     seoDescription:
       "Bukan Pipe dealer verification development route. The verification system is not active yet.",
     lifecycle: "implemented",
-    includeInSitemap: true,
+    includeInSitemap: false,
     primaryCta: "VERIFY_DEALER",
   },
   about: {

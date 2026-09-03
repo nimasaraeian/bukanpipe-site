@@ -1,4 +1,5 @@
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n/config";
+import { isPathAvailableInLocale } from "@/lib/i18n/locale-availability";
 
 export function stripLocale(pathname: string): { locale: Locale; pathname: string } {
   const segments = pathname.split("/").filter(Boolean);
@@ -23,4 +24,13 @@ export function withLocale(path: string, locale: Locale): string {
 export function switchLocalePath(currentPath: string, targetLocale: Locale): string {
   const { pathname: barePath } = stripLocale(currentPath);
   return withLocale(barePath, targetLocale);
+}
+
+/** Falls back to locale home when the current path has no page in the target locale. */
+export function switchLocalePathSafe(currentPath: string, targetLocale: Locale): string {
+  const { pathname: barePath } = stripLocale(currentPath);
+  if (isPathAvailableInLocale(barePath, targetLocale)) {
+    return withLocale(barePath, targetLocale);
+  }
+  return withLocale("/", targetLocale);
 }

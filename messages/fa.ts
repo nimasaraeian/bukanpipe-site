@@ -21,9 +21,16 @@ export const dictionaryFa: Dictionary = {
     solutions: "راهکارها",
     products: "محصولات",
     industries: "صنایع",
+    applications: "کاربردها",
+    laboratory: "آزمایشگاه",
+    technicalCenter: "مرکز فنی",
+    downloads: "دانلود",
+    calculator: "ماشین‌حساب",
+    about: "درباره ما",
+    contact: "تماس",
     quality: "کیفیت",
     company: "شرکت",
-    requestQuote: "درخواست قیمت",
+    requestQuote: "استعلام قیمت",
   },
   cta: {
     requestQuote: "درخواست قیمت ←",
@@ -44,7 +51,7 @@ export const dictionaryFa: Dictionary = {
       purpose:
         "ورودی پلتفرم. فازهای بعدی: موقعیت‌یابی، اثبات فنی، مسیر محصول و مهندسی، و تبدیل درخواست قیمت.",
       seoDescription:
-        "بستر دیجیتال بوکان پایپ. این نسخه توسعه است، نه سایت نهایی کارخانه.",
+        "بوکان پایپ — تولیدکننده لوله پلی‌اتیلن برای آبرسانی، گازرسانی و کشاورزی.",
     },
     products: {
       title: "محصولات",
@@ -155,7 +162,7 @@ export const dictionaryFa: Dictionary = {
   footer: {
     tagline: "اعتماد مهندسی برای زیرساخت",
     description:
-      "سیستم‌های پریمیوم لوله HDPE برای شبکه‌های آب، کشاورزی و صنعتی.",
+      "تولید لوله پلی‌اتیلن تک‌جداره برای شبکه‌های آب، گاز و کشاورزی.",
     columns: {
       solutions: {
         title: "راهکارها",
@@ -171,6 +178,20 @@ export const dictionaryFa: Dictionary = {
           hdpeSystems: "سیستم‌های لوله HDPE",
           fittingsCoils: "اتصالات و کلاف",
           engineeringHub: "مرکز مهندسی",
+          allProducts: "همه محصولات",
+          waterPipe: "لوله آبرسانی",
+          gasPipe: "لوله گاز",
+          pe100: "لوله PE100",
+          peGuide: "راهنمای لوله پلی‌اتیلن",
+        },
+      },
+      resources: {
+        title: "منابع",
+        links: {
+          technicalCenter: "مرکز فنی",
+          calculator: "ماشین‌حساب مهندسی",
+          downloads: "دانلود",
+          applications: "کاربردها",
         },
       },
       company: {
@@ -178,6 +199,7 @@ export const dictionaryFa: Dictionary = {
         links: {
           about: "درباره ما",
           quality: "کیفیت",
+          laboratory: "آزمایشگاه",
           contact: "تماس",
         },
       },
@@ -185,26 +207,28 @@ export const dictionaryFa: Dictionary = {
   },
   home: {
     hero: {
-      kicker: "سیستم‌های لوله HDPE",
-      titleLine1: "سیستم‌های جریان",
-      titleLine2: "مهندسی‌شده برای",
-      titleLine3: "زیرساخت مدرن",
+      kicker: "تولیدکننده لوله پلی‌اتیلن",
+      titleLine1: "آبرسانی، گازرسانی",
+      titleLine2: "و کشاورزی",
+      titleLine3: "",
       subtitle:
-        "راهکارهای پرفورمنس لوله HDPE برای شبکه‌های آب، کشاورزی و صنعتی.",
-      ctaSolutions: "کاوش راهکارها",
+        "بوکان پایپ — تولید لوله پلی‌اتیلن برای شبکه‌های آب، گاز و کشاورزی.",
+      ctaPrimary: "استعلام قیمت",
       ctaProducts: "مشاهده محصولات",
+      ctaTechnical: "مرکز فنی",
+      ctaSolutions: "کاربردها",
       highlightsLabel: "نکات برجسته",
       trustLabel: "شاخص‌های اعتماد",
     },
     floatCards: [
-      { title: "+۵۰ سال", subtitle: "تعالی مهندسی" },
-      { title: "+۱۰۰ پروژه", subtitle: "در اروپا و فراتر از آن" },
+      { title: "۶۳۰ mm", subtitle: "حداکثر قطر خارجی منتشرشده" },
+      { title: "از سال ۱۳۷۶", subtitle: "تولید لوله PE در بوکان" },
     ],
     trustItems: [
-      { title: "ISO 9001", subtitle: "چارچوب مدیریت کیفیت" },
-      { title: "+۵۰ سال", subtitle: "تعالی مهندسی" },
-      { title: "تولید پیشرفته", subtitle: "دقت. یکنواختی. عملکرد." },
-      { title: "تأمین جهانی", subtitle: "قابل اتکا. مقیاس‌پذیر. به‌موقع." },
+      { title: "INSO / EN", subtitle: "تولید مطابق استاندارد پروژه" },
+      { title: "QC", subtitle: "کنترل کیفیت و آزمایشگاه" },
+      { title: "جوش", subtitle: "بات فیوژن و الکتروفیوژن" },
+      { title: "بوکان", subtitle: "کارخانه — آذربایجان غربی" },
     ],
     industries: {
       kicker: "صنایع",

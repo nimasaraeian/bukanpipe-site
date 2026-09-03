@@ -4,6 +4,7 @@ import { openGraphLocale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/path";
 import { siteConfig } from "@/lib/config/site";
 import { canonicalUrl } from "@/lib/seo/canonical";
+import { buildLanguageAlternates } from "@/lib/i18n/locale-availability";
 
 export type PageMetadataInput = {
   title: string;
@@ -59,6 +60,7 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
   const title = input.title;
   const description = input.description;
   const ogLocale = input.locale ? openGraphLocale[input.locale] : siteConfig.openGraphLocale;
+  const languageAlternates = buildLanguageAlternates(input.path);
 
   return {
     title,
@@ -66,6 +68,7 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
     keywords: input.keywords ? [...input.keywords] : undefined,
     alternates: {
       canonical: url,
+      ...(languageAlternates ? { languages: languageAlternates } : {}),
     },
     robots: indexable
       ? { index: true, follow: true }

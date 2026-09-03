@@ -69,8 +69,8 @@ describe("legacy URL inventory", () => {
 
     expect(home?.action).toBe("KEEP");
     expect(home?.proposedNewPath).toBe("/");
-    expect(standards?.action).toBe("KEEP");
-    expect(standards?.proposedNewPath).toBe("/standards");
+    expect(standards?.action).toBe("REDIRECT_301");
+    expect(standards?.proposedNewPath).toBe("/downloads");
   });
 
   it("maps confirmed high-value product and lab URLs one hop", () => {

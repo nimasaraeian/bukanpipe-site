@@ -8,9 +8,10 @@ import { HeaderLogoMark } from "@/components/layout/HeaderLogoMark";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { localeLabel, locales, type Locale } from "@/lib/i18n/config";
 import { setLocaleCookie } from "@/lib/i18n/locale-cookie";
+import { getPrimaryNavItems } from "@/lib/i18n/nav-items";
 import { cn } from "@/lib/cn";
 import { routes } from "@/lib/config/routes";
-import { switchLocalePath } from "@/lib/i18n/path";
+import { switchLocalePathSafe } from "@/lib/i18n/path";
 
 export function PremiumHeroHeader() {
   const pathname = usePathname();
@@ -20,14 +21,8 @@ export function PremiumHeroHeader() {
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
 
-  const navItems = [
-    { label: t.nav.home, href: path(routes.home.path) },
-    { label: t.nav.solutions, href: path(routes.solutions.path) },
-    { label: t.nav.products, href: path(routes.products.path) },
-    { label: t.nav.industries, href: path(routes.industries.path) },
-    { label: t.nav.quality, href: path(routes.laboratory.path) },
-    { label: t.nav.company, href: path(routes.about.path) },
-  ] as const;
+  const navItems = getPrimaryNavItems(locale, t, path);
+  const homeHref = path(routes.home.path);
 
   useLayoutEffect(() => {
     setScrolled(window.scrollY > 48);
@@ -66,10 +61,13 @@ export function PremiumHeroHeader() {
     setLangOpen(false);
     setOpen(false);
     setLocaleCookie(targetLocale);
-    router.replace(switchLocalePath(pathname, targetLocale), { scroll: false });
+    router.replace(switchLocalePathSafe(pathname, targetLocale), { scroll: false });
   };
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => {
+    if (href === homeHref) return pathname === href;
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header
@@ -79,14 +77,14 @@ export function PremiumHeroHeader() {
       )}
     >
       <div className="engine-header-inner">
-        <Link href={path(routes.home.path)} className="engine-header-brand" aria-label={t.common.brandHome}>
+        <Link href={homeHref} className="engine-header-brand" aria-label={t.common.brandHome}>
           <HeaderLogoMark />
           <span className="engine-header-wordmark" dir="ltr">
             BUKAN PIPE
           </span>
         </Link>
 
-        <nav className="engine-header-nav hidden lg:block" aria-label={t.common.primaryNav}>
+        <nav className="engine-header-nav hidden xl:block" aria-label={t.common.primaryNav}>
           <ul className="engine-header-nav-list">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -143,7 +141,7 @@ export function PremiumHeroHeader() {
           </Link>
           <button
             type="button"
-            className={cn("engine-header-menu lg:hidden", open && "engine-header-menu-open")}
+            className={cn("engine-header-menu xl:hidden", open && "engine-header-menu-open")}
             aria-expanded={open}
             aria-label={open ? t.common.closeMenu : t.common.openMenu}
             onClick={() => {
@@ -158,13 +156,13 @@ export function PremiumHeroHeader() {
       </div>
 
       <div
-        className={cn("engine-header-drawer-backdrop lg:hidden", open && "engine-header-drawer-backdrop-open")}
+        className={cn("engine-header-drawer-backdrop xl:hidden", open && "engine-header-drawer-backdrop-open")}
         aria-hidden="true"
         onClick={() => setOpen(false)}
       />
 
       <nav
-        className={cn("engine-header-drawer lg:hidden", open && "engine-header-drawer-open")}
+        className={cn("engine-header-drawer xl:hidden", open && "engine-header-drawer-open")}
         aria-label={t.common.mobileNav}
         aria-hidden={!open}
         inert={!open ? true : undefined}

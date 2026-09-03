@@ -1,20 +1,26 @@
 import type { MetadataRoute } from "next";
-import { locales } from "@/lib/i18n/config";
+import { locales, type Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/path";
-import { sitemapRoutes } from "@/lib/config/routes";
+import { getSitemapPathsForLocale } from "@/lib/sitemap/paths";
 import { canonicalUrl } from "@/lib/seo/canonical";
 import { imageSitemapAttachments } from "@/lib/seo/image-sitemap";
 
 /**
- * Sitemap enumerates implemented routes intended for indexing at launch.
- * Image attachments stay empty until public pages publish stable photographs.
- * Robots still noindex the whole site until NEXT_PUBLIC_ALLOW_INDEXING=true.
+ * Sitemap enumerates canonical public URLs per locale.
+ * FA: published content + request-quote. EN: home, products hub, and EN catalog only.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return locales.flatMap((locale) =>
-    sitemapRoutes.map((route) => ({
-      url: canonicalUrl(withLocale(route.path, locale)),
+  const entries = locales.flatMap((locale) =>
+    getSitemapPathsForLocale(locale as Locale).map((path) => ({
+      url: canonicalUrl(withLocale(path, locale)),
       ...imageSitemapAttachments(),
     })),
   );
+
+  const seen = new Set<string>();
+  return entries.filter((entry) => {
+    if (seen.has(entry.url)) return false;
+    seen.add(entry.url);
+    return true;
+  });
 }

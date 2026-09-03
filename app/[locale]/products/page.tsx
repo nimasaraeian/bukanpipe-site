@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { DevelopmentRoutePage } from "@/components/ui/DevelopmentRoutePage";
+import type { Metadata } from "next";
+import { ContentHubPage } from "@/components/content/ContentHubPage";
 import { isLocale } from "@/lib/i18n/config";
-import { createRouteMetadata } from "@/lib/i18n/route-metadata";
-import { routes } from "@/lib/config/routes";
-
-const route = routes.products;
+import { createContentMetadata } from "@/lib/content/metadata";
+import { getContentByPath } from "@/lib/content/registry";
+import { getHubChildren } from "@/lib/content/resolve-related";
+import { faProductsHub } from "@/data/content/fa/catalog";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -13,16 +13,15 @@ type PageProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: localeParam } = await params;
-  if (!isLocale(localeParam)) {
-    return {};
-  }
-  return createRouteMetadata(localeParam, "products");
+  if (!isLocale(localeParam)) return {};
+  const doc = getContentByPath(localeParam, "/products") ?? faProductsHub;
+  return createContentMetadata(doc, localeParam);
 }
 
 export default async function ProductsPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
-  if (!isLocale(localeParam)) {
-    notFound();
-  }
-  return <DevelopmentRoutePage route={route} />;
+  if (!isLocale(localeParam)) notFound();
+  const hub = getContentByPath(localeParam, "/products") ?? faProductsHub;
+  const children = getHubChildren(localeParam, "/products");
+  return <ContentHubPage doc={hub} children={children} />;
 }

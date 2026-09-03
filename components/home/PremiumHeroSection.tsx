@@ -65,7 +65,7 @@ const trustIcons = [
 ] as const;
 
 export function PremiumHeroSection() {
-  const { t, path } = useLocale();
+  const { t, path, locale } = useLocale();
   const hero = t.home.hero;
 
   return (
@@ -98,16 +98,20 @@ export function PremiumHeroSection() {
               {hero.titleLine1}
               <br />
               {hero.titleLine2}
-              <br />
-              {hero.titleLine3}
+              {hero.titleLine3 ? (
+                <>
+                  <br />
+                  {hero.titleLine3}
+                </>
+              ) : null}
               <span className="engine-hero-period">.</span>
             </h1>
 
             <p className="engine-hero-subtitle">{hero.subtitle}</p>
 
             <div className="engine-hero-actions">
-              <Link href={path(routes.solutions.path)} className="engine-hero-btn engine-hero-btn-primary">
-                {hero.ctaSolutions}
+              <Link href={path(routes.requestQuote.path)} className="engine-hero-btn engine-hero-btn-primary">
+                {hero.ctaPrimary}
                 <span aria-hidden="true">{t.common.arrow}</span>
               </Link>
               <Link href={path(routes.products.path)} className="engine-hero-btn engine-hero-btn-secondary">
@@ -115,6 +119,17 @@ export function PremiumHeroSection() {
                 <span aria-hidden="true">{t.common.arrow}</span>
               </Link>
             </div>
+            {locale === "fa" ? (
+              <p className="engine-hero-subtitle mt-4 text-sm opacity-90">
+                <Link href={path("/technical-center")} className="underline-offset-4 hover:underline">
+                  {hero.ctaTechnical}
+                </Link>
+                {" · "}
+                <Link href={path("/calculator")} className="underline-offset-4 hover:underline">
+                  محاسبات مهندسی
+                </Link>
+              </p>
+            ) : null}
           </div>
 
           <div className="engine-hero-floats" aria-label={hero.highlightsLabel}>

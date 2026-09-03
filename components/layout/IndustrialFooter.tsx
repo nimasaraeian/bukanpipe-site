@@ -3,38 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getFooterColumns } from "@/lib/i18n/nav-items";
 import { siteConfig } from "@/lib/config/site";
-import { routes } from "@/lib/config/routes";
 
 export function IndustrialFooter() {
-  const { t, path } = useLocale();
-
-  const columns = [
-    {
-      title: t.footer.columns.solutions.title,
-      links: [
-        { label: t.footer.columns.solutions.links.systemSolutions, href: path(routes.solutions.path) },
-        { label: t.footer.columns.solutions.links.waterInfrastructure, href: path(routes.industries.path) },
-        { label: t.footer.columns.solutions.links.industrialSystems, href: path(routes.industries.path) },
-      ],
-    },
-    {
-      title: t.footer.columns.products.title,
-      links: [
-        { label: t.footer.columns.products.links.hdpeSystems, href: path(routes.products.path) },
-        { label: t.footer.columns.products.links.fittingsCoils, href: path(routes.products.path) },
-        { label: t.footer.columns.products.links.engineeringHub, href: path(routes.engineering.path) },
-      ],
-    },
-    {
-      title: t.footer.columns.company.title,
-      links: [
-        { label: t.footer.columns.company.links.about, href: path(routes.about.path) },
-        { label: t.footer.columns.company.links.quality, href: path(routes.laboratory.path) },
-        { label: t.footer.columns.company.links.contact, href: path(routes.contact.path) },
-      ],
-    },
-  ] as const;
+  const { t, path, locale } = useLocale();
+  const columns = getFooterColumns(locale, t, path);
 
   return (
     <footer className="ind-footer industrial-font">
@@ -65,7 +39,7 @@ export function IndustrialFooter() {
                 <p className="ind-footer-col-title">{col.title}</p>
                 <ul className="mt-5 space-y-3">
                   {col.links.map((link) => (
-                    <li key={link.label}>
+                    <li key={`${col.title}-${link.href}`}>
                       <Link href={link.href} className="ind-footer-link">
                         {link.label}
                       </Link>
