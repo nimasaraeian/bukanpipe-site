@@ -99,7 +99,7 @@ export function SolutionsPageContent() {
           </div>
           <div className="ind-glass ind-glass-strong p-8">
             <p className="ind-kicker">{t.solutionsPage.industryBox.kicker}</p>
-            <h3 className="mt-3 text-xl font-semibold text-white">{t.solutionsPage.industryBox.title}</h3>
+            <h3 className="mt-3 text-xl font-semibold text-[color:var(--ind-text)]">{t.solutionsPage.industryBox.title}</h3>
             <p className="ind-lead mt-4 text-sm">{t.solutionsPage.industryBox.description}</p>
             <IndustrialTextLink href={path(routes.industries.path)} className="mt-8">
               {t.solutionsPage.industryBox.action}

@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { HeaderLogoMark } from "@/components/layout/HeaderLogoMark";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { localeLabel, locales, type Locale } from "@/lib/i18n/config";
 import { setLocaleCookie } from "@/lib/i18n/locale-cookie";
 import { cn } from "@/lib/cn";
@@ -104,6 +105,7 @@ export function PremiumHeroHeader() {
         </nav>
 
         <div className="engine-header-actions">
+          <ThemeToggle className="hidden sm:inline-flex" />
           <div className="relative hidden sm:block">
             <button
               type="button"
@@ -184,6 +186,7 @@ export function PremiumHeroHeader() {
             className="flex gap-2 pt-2"
             style={{ "--drawer-item-index": navItems.length } as CSSProperties}
           >
+            <ThemeToggle variant="drawer" />
             {locales.map((item) => (
               <button
                 key={item}

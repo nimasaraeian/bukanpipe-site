@@ -27,7 +27,7 @@ export function IndustrialGlassCard({
         </div>
       ) : null}
       {meta ? <p className="ind-kicker">{meta}</p> : null}
-      <h3 className="mt-2 text-lg font-semibold tracking-tight text-white">{title}</h3>
+      <h3 className="mt-2 text-lg font-semibold tracking-tight text-[color:var(--ind-text)]">{title}</h3>
       {description ? <p className="ind-lead mt-3 text-sm">{description}</p> : null}
     </>
   );

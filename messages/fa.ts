@@ -13,6 +13,8 @@ export const dictionaryFa: Dictionary = {
     brandHome: "صفحه اصلی بوکان پایپ",
     primaryNav: "ناوبری اصلی",
     mobileNav: "ناوبری موبایل",
+    themeLight: "حالت روشن",
+    themeDark: "حالت تیره",
   },
   nav: {
     home: "خانه",

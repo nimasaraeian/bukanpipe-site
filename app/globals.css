@@ -47,16 +47,21 @@ html.industrial-root {
 
 body.industrial-body {
   min-height: 100svh;
-  background: var(--ind-bg-deep, #05070a) !important;
-  background-image: none !important;
-  background-attachment: scroll !important;
-  color: #fff;
+  background: var(--ind-bg-deep);
+  background-image: none;
+  background-attachment: scroll;
+  color: var(--ind-text);
   overflow-x: clip;
   font-family: var(--font-sans);
   font-feature-settings: "kern" 1, "tnum" 0;
   letter-spacing: 0;
   line-height: 1.85;
   text-rendering: optimizeLegibility;
+}
+
+[data-theme="light"] body.industrial-body {
+  background-color: var(--ind-bg-deep);
+  background-image: none;
 }
 
 body {

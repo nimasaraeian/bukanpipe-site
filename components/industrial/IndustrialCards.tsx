@@ -12,7 +12,14 @@ export function IndustrialPanelCard({ href, kicker, title, image }: IndustrialPa
   return (
     <Link href={href} className="ind-panel-card group">
       <div className="ind-panel-card-media">
-        <Image src={image} alt="" fill className="ind-panel-card-img" sizes="(min-width: 1024px) 33vw, 100vw" />
+        <Image
+          src={image}
+          alt=""
+          fill
+          quality={92}
+          className="ind-panel-card-img"
+          sizes="(min-width: 1024px) 33vw, 100vw"
+        />
         <div className="ind-panel-card-shade" aria-hidden="true" />
       </div>
       <div className="ind-panel-card-copy">

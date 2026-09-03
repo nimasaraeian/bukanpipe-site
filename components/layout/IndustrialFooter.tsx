@@ -50,7 +50,7 @@ export function IndustrialFooter() {
                 className="h-8 w-8 object-contain"
                 aria-hidden
               />
-              <p className="text-sm font-bold tracking-[0.16em] text-white" dir="ltr">
+              <p className="ind-footer-brand" dir="ltr">
                 BUKAN PIPE
               </p>
             </div>
@@ -77,7 +77,7 @@ export function IndustrialFooter() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-8 text-xs text-[#8a929e]">
+        <div className="ind-footer-meta mt-14 flex flex-wrap items-center justify-between gap-4 pt-8 text-xs">
           <p dir="ltr">
             © {new Date().getFullYear()} {siteConfig.brandName}
           </p>

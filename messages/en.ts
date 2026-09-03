@@ -11,6 +11,8 @@ export const dictionaryEn = {
     brandHome: "Bukan Pipe home",
     primaryNav: "Primary navigation",
     mobileNav: "Mobile navigation",
+    themeLight: "Switch to light mode",
+    themeDark: "Switch to dark mode",
   },
   nav: {
     home: "Home",

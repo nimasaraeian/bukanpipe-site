@@ -131,7 +131,7 @@ export function DevelopmentRoutePage({ route, extra }: DevelopmentRoutePageProps
           <p className="ind-lead mt-4 max-w-2xl">{t.development.sectionDescription}</p>
 
           <div className="ind-glass ind-glass-strong mt-8 p-5">
-            <p className="text-sm font-semibold text-white">{t.development.inDevelopment}</p>
+            <p className="text-sm font-semibold text-[color:var(--ind-text)]">{t.development.inDevelopment}</p>
             <p className="ind-lead mt-2 text-sm">{t.development.inDevelopmentDescription}</p>
           </div>
 
