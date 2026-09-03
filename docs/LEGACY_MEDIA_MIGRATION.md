@@ -61,6 +61,25 @@ WordPress images, welding/butt-fusion/electrofusion media, certificates, and vid
 - Displayed stills currently load remotely via `next/image` (`unoptimized`) until selected B/C files are copied to `public/media/` with descriptive names.
 - No A-grade hero still: do not migrate a low-resolution JPEG as a giant homepage photograph.
 
+### Display stills (four files)
+
+Run when `bukanpipe.com` or `bukanpipe.ir` is reachable from your network:
+
+```bash
+npm run media:fetch
+```
+
+Target paths (stable public URLs after copy):
+
+| Local file | Legacy source |
+|---|---|
+| `/media/bukan-pipe-loading-straight-pipe.jpg` | `lifting-pipe.jpg` |
+| `/media/bukan-pipe-production-hall.jpg` | `f5.jpg` (سالن تولید) |
+| `/media/bukan-pipe-laboratory.jpg` | `QC-01.jpg` |
+| `/media/bukan-pipe-gas-pipe.jpg` | `gas5.jpg` |
+
+`lib/media/resolve.ts` prefers `/media/…` when the file exists; otherwise the UI falls back to the WordPress URL.
+
 ---
 
 ## Related

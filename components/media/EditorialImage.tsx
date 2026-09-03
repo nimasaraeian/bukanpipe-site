@@ -1,11 +1,8 @@
 import Image from "next/image";
 import { descriptiveAlt, displayableStill } from "@/data/media/legacy-media";
 import { cn } from "@/lib/cn";
-import {
-  isRemoteLegacyUrl,
-  objectPositionFor,
-  sizesForRole,
-} from "@/lib/media/sizes";
+import { resolveMediaSrc } from "@/lib/media/resolve";
+import { objectPositionFor, sizesForRole } from "@/lib/media/sizes";
 
 type EditorialImageProps = {
   id: string;
@@ -35,6 +32,7 @@ export function EditorialImage({
 
   const alt = decorative ? "" : descriptiveAlt(record);
   const imageSizes = sizes ?? sizesForRole(record);
+  const { src, unoptimized } = resolveMediaSrc(record);
 
   return (
     <figure className={cn("min-w-0", className)}>
@@ -48,13 +46,13 @@ export function EditorialImage({
         )}
       >
         <Image
-          src={record.sourceUrl}
+          src={src}
           alt={alt}
           width={record.width}
           height={record.height}
           sizes={imageSizes}
           priority={priority}
-          unoptimized={isRemoteLegacyUrl(record.sourceUrl)}
+          unoptimized={unoptimized}
           className={cn(
             "h-full w-full",
             objectFit === "cover" ? "object-cover" : "object-contain",
@@ -91,14 +89,16 @@ export function FillEditorialImage({
     return null;
   }
 
+  const { src, unoptimized } = resolveMediaSrc(record);
+
   return (
     <Image
-      src={record.sourceUrl}
+      src={src}
       alt={decorative ? "" : descriptiveAlt(record)}
       fill
       sizes={sizes ?? sizesForRole(record)}
       priority={priority}
-      unoptimized={isRemoteLegacyUrl(record.sourceUrl)}
+      unoptimized={unoptimized}
       className={cn("object-cover", className)}
       style={{ objectPosition: objectPositionFor(record) }}
     />

@@ -55,7 +55,7 @@ Legacy WordPress media audited. No A-grade hero photograph. Homepage/design-syst
 
 - `data/media/legacy-media.ts`
 - `docs/IMAGE_ART_DIRECTION.md`
-- `docs/PHOTOGRAPHY_GAP_REPORT.md`
+- Remote hosting bridge documented in `docs/LEGACY_MEDIA_MIGRATION.md` (`npm run media:fetch`, `lib/media/resolve.ts`).
 
 ## Open dependencies
 
@@ -69,7 +69,7 @@ Legacy WordPress media audited. No A-grade hero photograph. Homepage/design-syst
 - Confirm current sales/lab contact channels (do not copy legacy numbers yet).
 - Licensed brand fonts (replace Vazirmatn when files exist).
 - Professional factory photography (no A-grade hero still exists; see `docs/PHOTOGRAPHY_GAP_REPORT.md`).
-- Local migration of selected B/C stills into `public/media/` with descriptive filenames.
+- Run `npm run media:fetch` on a network that can reach bukanpipe.com/.ir to populate `public/media/` (script ready; automated fetch timed out from this dev environment).
 - GitHub remote if the repository should leave local-only status.
 
 ## Hard stop

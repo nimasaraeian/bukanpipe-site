@@ -97,4 +97,4 @@ Composition: authentic still (if grade allows) + Bukan Pipe identity + short pag
 
 ## Remote hosting (temporary)
 
-`next.config.ts` allows `bukanpipe.com/wp-content/uploads/**`. Displayed stills are `unoptimized` remote URLs until a local `public/media/` copy with a descriptive name is approved. This is a bridge, not the long-term media architecture.
+`next.config.ts` allows `bukanpipe.com/wp-content/uploads/**`. Until files exist under `public/media/`, displayed stills load remotely (`unoptimized`). After `npm run media:fetch`, `lib/media/resolve.ts` serves stable `/media/bukan-pipe-….jpg` URLs with Next.js optimization.

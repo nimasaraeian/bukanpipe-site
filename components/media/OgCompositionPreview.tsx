@@ -1,6 +1,7 @@
 import { ogCompositions } from "@/lib/seo/og";
 import { displayableStill } from "@/data/media/legacy-media";
 import { IndustrialSignature } from "@/components/media/IndustrialSignature";
+import { resolveMediaSrc } from "@/lib/media/resolve";
 
 const kindLabel: Record<(typeof ogCompositions)[number]["kind"], string> = {
   homepage: "خانه",
@@ -18,6 +19,7 @@ export function OgCompositionPreview() {
         const photo = spec.authenticImageId
           ? displayableStill(spec.authenticImageId)
           : undefined;
+        const photoSrc = photo ? resolveMediaSrc(photo).src : null;
         return (
           <li
             key={spec.kind}
@@ -25,14 +27,14 @@ export function OgCompositionPreview() {
           >
             <div className="relative aspect-[1.91/1] bg-cinematic">
               <IndustrialSignature className="absolute inset-0 h-full w-full opacity-70" />
-              {photo ? (
+              {photoSrc ? (
                 <div className="absolute inset-y-6 start-6 w-[38%] overflow-hidden rounded-xl ring-1 ring-white/20">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={photo.sourceUrl}
+                    src={photoSrc}
                     alt=""
-                    width={photo.width ?? 400}
-                    height={photo.height ?? 210}
+                    width={photo?.width ?? 400}
+                    height={photo?.height ?? 210}
                     className="h-full w-full object-cover"
                   />
                 </div>

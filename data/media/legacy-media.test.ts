@@ -38,6 +38,7 @@ describe("legacy media inventory", () => {
     for (const id of Object.values(displayMediaIds)) {
       const record = displayableStill(id);
       expect(record).toBeDefined();
+      expect(record?.proposedFilename).toMatch(/^bukan-pipe-.*\.jpg$/);
       expect(record?.width).toBeGreaterThan(0);
       expect(record?.height).toBeGreaterThan(0);
       expect(record?.visualQuality).not.toBe("REJECT");
