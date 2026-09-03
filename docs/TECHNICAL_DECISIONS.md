@@ -195,3 +195,10 @@ A tool URL owns calculator/action intent. An engineering URL owns educational/ex
 **Status:** Accepted
 
 Vitest is a devDependency only. It exists to lock canonical URL behavior, prevent structured-data helpers from emitting invented fields, and validate the legacy migration inventory (duplicate paths, chains, loops, invalid destinations). It is not a full testing platform.
+
+## ADR-028 — Authentic media; signature hero until A-grade photography exists
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+The visual system is image-led only with authentic Bukan Pipe media. Legacy WordPress stills were inventoried in `data/media/legacy-media.ts`. No sampled still is A-grade for a homepage hero. The LCP/hero treatment is the industrial SVG signature; B/C stills are supporting only. No stock photography. Meaningful photos use `next/image`, not CSS backgrounds. See `docs/IMAGE_ART_DIRECTION.md`.

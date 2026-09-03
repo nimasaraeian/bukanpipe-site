@@ -22,6 +22,7 @@ import type { CtaType } from "@/lib/config/cta";
 import type { RouteDefinition } from "@/lib/config/routes";
 import { routes } from "@/lib/config/routes";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
+import { displayMediaIds } from "@/data/media/legacy-media";
 
 const ctaHref: Record<CtaType, string> = {
   REQUEST_QUOTE: routes.requestQuote.path,
@@ -51,7 +52,12 @@ function DemoCards({ path }: { path: string }) {
   if (path === routes.products.path) {
     return (
       <div className="grid gap-5 md:grid-cols-3">
-        <ProductCard eyebrow="خانواده" title="لوله گازرسانی" meta={demoCopy.pattern}>
+        <ProductCard
+          eyebrow="خانواده"
+          title="لوله گازرسانی"
+          meta={demoCopy.pattern}
+          mediaId={displayMediaIds.gasPipe}
+        >
           الگوی کارت محصول. تولید جاری هنوز راستی‌آزمایی نشده است.
         </ProductCard>
         <ProductCard eyebrow="خانواده" title="لوله آبرسانی" meta={demoCopy.pattern}>
@@ -83,7 +89,7 @@ function DemoCards({ path }: { path: string }) {
   if (path === routes.laboratory.path) {
     return (
       <div className="grid gap-5 md:grid-cols-3">
-        <LabCard title="خدمات آزمون" meta={demoCopy.pattern}>
+        <LabCard title="خدمات آزمون" meta={demoCopy.pattern} mediaId={displayMediaIds.laboratory}>
           دامنه آزمون فقط پس از گواهی جاری منتشر می‌شود. قیمت‌ها کپی نمی‌شوند.
         </LabCard>
         <LabCard title="اعتباربخشی" meta={demoCopy.pattern}>
@@ -99,7 +105,11 @@ function DemoCards({ path }: { path: string }) {
   if (path === routes.projects.path) {
     return (
       <div className="grid gap-5 md:grid-cols-2">
-        <ProjectCard title="مطالعه موردی نمایشی" meta={demoCopy.pattern}>
+        <ProjectCard
+          title="مطالعه موردی نمایشی"
+          meta={demoCopy.pattern}
+          mediaId={displayMediaIds.loadingStraightPipe}
+        >
           هیچ پروژه یا نام مشتری در این فاز ساخته نمی‌شود.
         </ProjectCard>
         <ProjectCard title="الگوی شواهد" meta={demoCopy.pattern}>

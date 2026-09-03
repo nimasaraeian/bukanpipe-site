@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "bukanpipe.com",
+        pathname: "/wp-content/uploads/**",
+      },
+    ],
+  },
   turbopack: {
     root: path.resolve(__dirname),
   },

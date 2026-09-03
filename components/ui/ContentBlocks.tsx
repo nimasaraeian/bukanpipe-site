@@ -1,5 +1,6 @@
 import { cn } from "@/lib/cn";
 import { demoCopy } from "@/lib/design/copy";
+import { FillEditorialImage } from "@/components/media/EditorialImage";
 
 export function StatBlock({
   label,
@@ -77,18 +78,27 @@ export function Callout({
 export function MediaFrame({
   caption,
   children,
+  mediaId,
 }: {
   caption?: string;
   children?: React.ReactNode;
+  mediaId?: string;
 }) {
   return (
     <figure>
       <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-accent/25 via-canvas-elevated to-bronze/20 ring-1 ring-line">
         <div
-          className="aspect-[16/10] min-h-40"
-          aria-hidden={children ? undefined : true}
+          className="relative aspect-[16/10] min-h-40"
+          aria-hidden={children || mediaId ? undefined : true}
         >
-          {children}
+          {mediaId ? (
+            <FillEditorialImage
+              id={mediaId}
+              sizes="(min-width: 768px) 520px, 100vw"
+            />
+          ) : (
+            children
+          )}
         </div>
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.45),transparent_40%)]"

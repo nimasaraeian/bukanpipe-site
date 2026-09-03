@@ -1,0 +1,84 @@
+import { describe, expect, it } from "vitest";
+import {
+  HERO_IMAGE_POLICY,
+  descriptiveAlt,
+  displayMediaIds,
+  displayableStill,
+  getLegacyMedia,
+  legacyMedia,
+  mediaByGrade,
+} from "@/data/media/legacy-media";
+import { mediaCategories, mediaGrades } from "@/data/media/types";
+import { imageSitemapAttachments } from "@/lib/seo/image-sitemap";
+import { ogCompositions } from "@/lib/seo/og";
+import { createPageMetadata } from "@/lib/seo/metadata";
+
+describe("legacy media inventory", () => {
+  it("records WordPress library items with unique ids", () => {
+    const ids = legacyMedia.map((item) => item.id);
+    expect(ids.length).toBeGreaterThan(100);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("has no A-grade hero stills", () => {
+    expect(mediaByGrade("A")).toEqual([]);
+    expect(HERO_IMAGE_POLICY.homepageTreatment).toBe("INDUSTRIAL_SIGNATURE");
+    expect(HERO_IMAGE_POLICY.professionalPhotographyRequired).toBe(true);
+    expect(HERO_IMAGE_POLICY.authenticHeroGrade).toBeNull();
+  });
+
+  it("keeps grades and categories inside the approved enums", () => {
+    for (const item of legacyMedia) {
+      expect(mediaGrades).toContain(item.visualQuality);
+      expect(mediaCategories).toContain(item.category);
+    }
+  });
+
+  it("only displays sampled stills that are not rejected", () => {
+    for (const id of Object.values(displayMediaIds)) {
+      const record = displayableStill(id);
+      expect(record).toBeDefined();
+      expect(record?.width).toBeGreaterThan(0);
+      expect(record?.height).toBeGreaterThan(0);
+      expect(record?.visualQuality).not.toBe("REJECT");
+      expect(record?.visualQuality).not.toBe("A");
+      expect(descriptiveAlt(record!)).not.toMatch(/قیمت/);
+      expect(descriptiveAlt(record!).length).toBeGreaterThan(8);
+    }
+  });
+
+  it("does not invent a public filename for the unconfirmed klaf still", () => {
+    expect(getLegacyMedia("wp-800")?.proposedFilename).toBeNull();
+    expect(getLegacyMedia("wp-800")?.authenticity).toBe("SUBJECT_UNCONFIRMED");
+  });
+
+  it("rejects specification tables as photography", () => {
+    const gasTable = getLegacyMedia("wp-1059");
+    expect(gasTable?.visualQuality).toBe("REJECT");
+    expect(gasTable?.websiteRole).toBe("SPEC_TABLE");
+  });
+});
+
+describe("image SEO helpers", () => {
+  it("does not attach images to the sitemap until public photos exist", () => {
+    expect(imageSitemapAttachments()).toBeUndefined();
+  });
+
+  it("keeps default Open Graph cards free of invented photographs", () => {
+    const metadata = createPageMetadata({
+      title: "آزمایشگاه",
+      description: "مسیر توسعه آزمایشگاه.",
+      path: "/laboratory",
+    });
+    expect(metadata.openGraph?.images).toBeUndefined();
+    expect(metadata.twitter).toBeDefined();
+  });
+
+  it("specifies OG compositions without rendering files", () => {
+    expect(ogCompositions).toHaveLength(6);
+    expect(ogCompositions.every((item) => item.status === "specified-not-rendered")).toBe(
+      true,
+    );
+    expect(ogCompositions.every((item) => item.clutter === "none")).toBe(true);
+  });
+});

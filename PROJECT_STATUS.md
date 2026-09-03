@@ -2,7 +2,7 @@
 
 **Project:** Bukan Pipe Digital Transformation  
 **Start:** 2026-09-01  
-**Current phase:** UI/UX Design Direction + Design System (Phase 004) — implementation complete, awaiting Project Lead review  
+**Current phase:** Authentic premium image system (post–Phase 004) — inventory, art direction, visual signature, design-system integration complete; awaiting Project Lead review  
 **Production migration:** Not started — **NOT READY** until Search Console review, backlink review, and domain/hosting control  
 **Legacy site:** Remains live until launch. This repository does not modify it.  
 **Production target domain:** `https://bukanpipe.com`  
@@ -49,6 +49,14 @@ Design direction selected and implemented on existing shells. Internal showcase 
 - `docs/DESIGN_DIRECTION_EXPLORATION.md`
 - `docs/DESIGN_SYSTEM.md`
 
+## Authentic image system (post–004)
+
+Legacy WordPress media audited. No A-grade hero photograph. Homepage/design-system use the pipe visual signature plus small authentic B/C stills. Stock photography was not used.
+
+- `data/media/legacy-media.ts`
+- `docs/IMAGE_ART_DIRECTION.md`
+- `docs/PHOTOGRAPHY_GAP_REPORT.md`
+
 ## Open dependencies
 
 - Search Console / analytics access — **required before final migration**.
@@ -60,7 +68,8 @@ Design direction selected and implemented on existing shells. Internal showcase 
 - Official dealer list and verification keys.
 - Confirm current sales/lab contact channels (do not copy legacy numbers yet).
 - Licensed brand fonts (replace Vazirmatn when files exist).
-- Verified photography for media frames.
+- Professional factory photography (no A-grade hero still exists; see `docs/PHOTOGRAPHY_GAP_REPORT.md`).
+- Local migration of selected B/C stills into `public/media/` with descriptive filenames.
 - GitHub remote if the repository should leave local-only status.
 
 ## Hard stop

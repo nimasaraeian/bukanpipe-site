@@ -7,6 +7,12 @@ export type PageMetadataInput = {
   description: string;
   path: string;
   keywords?: readonly string[];
+  ogImage?: {
+    url: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
 };
 
 export function createRootMetadata(): Metadata {
@@ -66,11 +72,22 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
       siteName: siteConfig.brandName,
       title,
       description,
+      images: input.ogImage
+        ? [
+            {
+              url: input.ogImage.url,
+              width: input.ogImage.width,
+              height: input.ogImage.height,
+              alt: input.ogImage.alt,
+            },
+          ]
+        : undefined,
     },
     twitter: {
-      card: "summary",
+      card: input.ogImage ? "summary_large_image" : "summary",
       title,
       description,
+      images: input.ogImage ? [input.ogImage.url] : undefined,
     },
   };
 }

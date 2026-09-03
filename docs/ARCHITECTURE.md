@@ -36,15 +36,18 @@ These choices follow `docs/13-technical-architecture.md` and `docs/18-decision-l
 app/                 routes, layout, robots, sitemap
 components/layout/   shell, header, footer, section primitives
 components/ui/       buttons, cards, forms, technical blocks
+components/media/    signature, editorial image, hero compositions
 lib/design/          demo copy helpers
 lib/fonts.ts         Vazirmatn (OFL) via next/font; local brand files later
+lib/media/           image sizes and crop helpers
 components/seo/      JSON-LD rendering
 content/models/      typed content models
 data/                local collections (empty until verified)
+data/media/          legacy media inventory and grades
 data/migration/      typed legacy URL inventory (redirects disabled)
 lib/config/          site, env, routes
 lib/migration/       redirect derivation and mapping validation
-lib/seo/             metadata and canonical helpers
+lib/seo/             metadata, canonical, OG specs, image sitemap helper
 lib/schema/          structured-data builders
 lib/validation/      future form result types
 docs/                strategy, IA, host policy, migration checklists

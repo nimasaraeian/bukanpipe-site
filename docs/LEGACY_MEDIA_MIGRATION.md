@@ -49,7 +49,7 @@ Video (RSS enclosure, `.ir` host):
 
 - `https://bukanpipe.ir/wp-content/uploads/2023/08/air_valve.mp4`
 
-WordPress also stores images and welding/butt-fusion/electrofusion media under `https://bukanpipe.com/wp-content/uploads/…`. Those objects were not fully enumerated (REST media default page is image-heavy). A complete library export is a later ops task, not this phase.
+WordPress images, welding/butt-fusion/electrofusion media, certificates, and videos are now enumerated in `data/media/legacy-media.ts` (REST pages 1–2, 124 library items plus classification). A bulk binary export is still a later ops task. Do not treat WordPress upload URLs as the long-term public media architecture.
 
 ---
 
@@ -58,12 +58,16 @@ WordPress also stores images and welding/butt-fusion/electrofusion media under `
 - Prefer the canonical host `https://bukanpipe.com` (or a dedicated asset CDN on that brand).
 - Do not leave public HTML pointing at `bukanpipe.ir` after host consolidation.
 - Certificates and catalogs: **REQUIRES VALIDITY VERIFICATION** before offering as current downloads.
-- Next.js `next/image` can consume re-hosted files in a later phase. No media pipeline is implemented now.
+- Displayed stills currently load remotely via `next/image` (`unoptimized`) until selected B/C files are copied to `public/media/` with descriptive names.
+- No A-grade hero still: do not migrate a low-resolution JPEG as a giant homepage photograph.
 
 ---
 
 ## Related
 
+- `docs/IMAGE_ART_DIRECTION.md`
+- `docs/PHOTOGRAPHY_GAP_REPORT.md`
 - `docs/HOST_CANONICAL_POLICY.md`
 - `docs/LEGACY_CONTENT_INVENTORY.md`
 - `data/migration/legacy-urls.ts` (PDF and attachment records)
+- `data/media/legacy-media.ts`

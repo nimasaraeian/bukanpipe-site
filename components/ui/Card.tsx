@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { Badge } from "@/components/ui/Badge";
+import { FillEditorialImage } from "@/components/media/EditorialImage";
 import { demoCopy } from "@/lib/design/copy";
 
 type CardKind =
@@ -19,6 +20,7 @@ type CardProps = {
   children: React.ReactNode;
   meta?: string;
   className?: string;
+  mediaId?: string;
 };
 
 const kindAccent: Record<CardKind, string> = {
@@ -36,16 +38,36 @@ function CardBody({
   title,
   children,
   meta,
+  mediaId,
 }: Omit<CardProps, "href" | "className">) {
   return (
     <>
-      <div
-        className={cn(
-          "mb-5 h-24 rounded-xl bg-linear-to-br to-canvas-elevated",
-          kindAccent[kind],
-        )}
-        aria-hidden="true"
-      />
+      {mediaId ? (
+        <div
+          className={cn(
+            "relative mb-5 overflow-hidden bg-canvas-elevated",
+            kind === "product" && "aspect-[5/3] rounded-[2rem_0.7rem_2rem_0.7rem]",
+            kind === "lab" && "aspect-square rounded-full",
+            kind === "application" && "aspect-[4/3] rounded-2xl",
+            kind === "project" && "aspect-[16/9] rounded-xl",
+            kind === "article" && "aspect-[16/10] rounded-2xl",
+            kind === "feature" && "aspect-[16/10] rounded-2xl",
+          )}
+        >
+          <FillEditorialImage
+            id={mediaId}
+            sizes="(min-width: 1024px) 320px, 90vw"
+          />
+        </div>
+      ) : (
+        <div
+          className={cn(
+            "mb-5 h-24 rounded-xl bg-linear-to-br to-canvas-elevated",
+            kindAccent[kind],
+          )}
+          aria-hidden="true"
+        />
+      )}
       <div className="flex flex-wrap items-center gap-2">
         {eyebrow ? <Badge tone="accent">{eyebrow}</Badge> : null}
         <Badge tone="demo">{demoCopy.demo}</Badge>

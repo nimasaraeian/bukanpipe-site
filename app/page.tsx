@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ButtonLink } from "@/components/ui/Button";
 import {
   ApplicationCard,
   FeatureCard,
@@ -8,11 +7,13 @@ import {
   ProductCard,
 } from "@/components/ui/Card";
 import { Callout, StatBlock } from "@/components/ui/ContentBlocks";
+import {
+  AuthenticFilmstrip,
+  HeroComposition,
+} from "@/components/media/HeroComposition";
 import { Container } from "@/components/layout/Container";
 import {
   Divider,
-  Eyebrow,
-  RichHeading,
   Section,
   SectionHeader,
 } from "@/components/layout/Section";
@@ -20,6 +21,7 @@ import { demoCopy } from "@/lib/design/copy";
 import { publicRoutes, routes } from "@/lib/config/routes";
 import { siteConfig } from "@/lib/config/site";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { displayMediaIds } from "@/data/media/legacy-media";
 
 export const metadata: Metadata = {
   ...createPageMetadata({
@@ -35,16 +37,8 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <Section lumen className="pt-16 sm:pt-24">
-        <Container>
-          <Eyebrow>سکوی دیجیتال صنعتی</Eyebrow>
-          <RichHeading className="mt-5 max-w-4xl">
-            <span dir="ltr">{siteConfig.brandName}</span>
-            <span className="mx-3 text-bronze" aria-hidden="true">
-              /
-            </span>
-            {siteConfig.brandNameFa}
-          </RichHeading>
+      <Section lumen className="pt-4 sm:pt-8">
+        <HeroComposition>
           <p className="mt-5 max-w-2xl text-lg text-muted sm:text-xl">
             {siteConfig.taglineFa}
           </p>
@@ -52,17 +46,13 @@ export default function HomePage() {
             {siteConfig.taglineEn}
           </p>
           <p className="mt-8 max-w-2xl text-base leading-8 text-ink-soft">
-            این نسخه، طراحی نهایی صفحهٔ خانه نیست. هدف این شِل، اثبات زبان بصری
-            صنعتی، راست‌به‌چپ، و معماری مسیرها بدون ادعای تأییدنشده است.
+            این نسخه، طراحی نهایی صفحهٔ خانه نیست. هیرو عکس میراثی ندارد؛ کیفیت
+            نمونه‌های موجود به سطح A نمی‌رسد. امضای هندسی لوله جایگزین هیرو
+            عکاسی شده و عکس‌های اصیل فقط در نوار کوچک‌تر می‌آیند.
           </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <ButtonLink href={routes.products.path} size="lg">
-              کشف محصولات
-            </ButtonLink>
-            <ButtonLink href={routes.requestQuote.path} variant="secondary" size="lg">
-              درخواست پیش‌فاکتور
-            </ButtonLink>
-          </div>
+        </HeroComposition>
+        <Container className="pb-10">
+          <AuthenticFilmstrip />
         </Container>
       </Section>
 
@@ -74,7 +64,12 @@ export default function HomePage() {
             description="کارت‌ها برای نمایش سیستم طراحی‌اند. هیچ خانوادهٔ محصولی در این فاز تأیید نشده است."
           />
           <div className="mt-10 grid gap-5 lg:grid-cols-4">
-            <ProductCard title="محصولات" href={routes.products.path} meta="هاب کاتالوگ">
+            <ProductCard
+              title="محصولات"
+              href={routes.products.path}
+              meta="هاب کاتالوگ"
+              mediaId={displayMediaIds.gasPipe}
+            >
               {demoCopy.specs}
             </ProductCard>
             <ApplicationCard
@@ -84,7 +79,12 @@ export default function HomePage() {
             >
               کشاورزی و آبیاری جدا می‌مانند.
             </ApplicationCard>
-            <LabCard title="آزمایشگاه" href={routes.laboratory.path} meta="اعتماد و خدمت">
+            <LabCard
+              title="آزمایشگاه"
+              href={routes.laboratory.path}
+              meta="اعتماد و خدمت"
+              mediaId={displayMediaIds.laboratory}
+            >
               ادعاهای اعتبار هنوز راستی‌آزمایی نشده است.
             </LabCard>
             <FeatureCard title="مهندسی" href={routes.engineering.path} meta="مرجع تصمیم">

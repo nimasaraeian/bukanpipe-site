@@ -35,3 +35,6 @@ Calculators and educational guides must not duplicate primary content.
 
 ## 2026-09-03 — Luminous Precision
 Light industrial editorial UI. Vazirmatn (OFL) via next/font until licensed files exist. `/design-system` is internal.
+
+## 2026-09-03 — Authentic image system
+No A-grade legacy hero. Pipe visual signature + supporting B/C stills. Inventory in `data/media/legacy-media.ts`.

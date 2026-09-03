@@ -40,6 +40,16 @@ import {
 } from "@/components/layout/Section";
 import { demoCopy } from "@/lib/design/copy";
 import { routes } from "@/lib/config/routes";
+import { displayMediaIds, HERO_IMAGE_POLICY } from "@/data/media/legacy-media";
+import {
+  ArtDirectedPortrait,
+  AsymmetricMediaSplit,
+  AuthenticFilmstrip,
+  OverlayEditorial,
+} from "@/components/media/HeroComposition";
+import { EditorialImage } from "@/components/media/EditorialImage";
+import { IndustrialSignature } from "@/components/media/IndustrialSignature";
+import { OgCompositionPreview } from "@/components/media/OgCompositionPreview";
 
 export const metadata: Metadata = {
   title: "سیستم طراحی",
@@ -73,7 +83,99 @@ export default function DesignSystemPage() {
           <RichHeading className="mt-4">Luminous Precision</RichHeading>
           <p className="mt-4 max-w-2xl text-lg text-muted">
             نمایش داخلی زبان بصری. این مسیر در sitemap نیست و باید noindex بماند.
+            عکس هیرو درجه A در کتابخانه میراثی نیست؛ امضای هندسی لوله جای آن را
+            می‌گیرد.
           </p>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container width="wide">
+          <SectionHeader
+            title="سیاست هیرو"
+            description={HERO_IMAGE_POLICY.reason}
+          />
+          <div className="relative mt-8 overflow-hidden rounded-[2rem] bg-paper ring-1 ring-line">
+            <IndustrialSignature className="max-h-[28rem] w-full" />
+          </div>
+          <p className="mt-4 text-sm text-muted">
+            درمان فعلی: {HERO_IMAGE_POLICY.homepageTreatment}. عکاسی حرفه‌ای
+            کارخانه لازم است.
+          </p>
+        </Container>
+      </Section>
+
+      <Section tone="paper">
+        <Container width="wide">
+          <SectionHeader
+            title="رسانه اصیل — نه کارت مستطیلی خالی"
+            description="فقط تصاویر B/C با alt توصیفی و ابعاد ذاتی. هیچ‌کدام هیرو نیستند."
+          />
+          <div className="mt-10">
+            <AuthenticFilmstrip />
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container width="wide">
+          <SectionHeader title="ترکیب نامتقارن و آرت دایرکشن" />
+          <div className="mt-8 space-y-8">
+            <AsymmetricMediaSplit
+              imageId={displayMediaIds.loadingStraightPipe}
+              eyebrow="بارگیری"
+              title="عکس اصیل در قاب تحریری"
+              >
+              تصویر میراثی بارکردن شاخه لوله در ۱۲۰۰×۵۴۰. این یک هیرو تمام‌صفحه
+              نیست؛ نوار عریض پشتیبان است و موضوع نباید با برش مرکزی کور حذف شود.
+            </AsymmetricMediaSplit>
+            <OverlayEditorial
+              imageId={displayMediaIds.productionHall}
+              title="سالن تولید"
+            >
+              پرتره ۵۵۳×۸۰۰. متن فقط روی گرادیان تیره خوانا است. این عکس را به
+              هیرو عریض تبدیل نکنید.
+            </OverlayEditorial>
+            <ArtDirectedPortrait
+              id={displayMediaIds.productionHall}
+              caption="آرت دایرکشن دسکتاپ/موبایل: ستون پرتره موضوع را نگه می‌دارد؛ برش عریض از بالای سالن است نه مرکز کور."
+            />
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="muted">
+        <Container>
+          <SectionHeader
+            title="تصویر معنایی"
+            description="next/image با alt توصیفی، نه background-image. نام فایل عمومی پیشنهادی فقط وقتی موضوع تأیید شده باشد."
+          />
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <EditorialImage
+              id={displayMediaIds.laboratory}
+              mask="ring"
+              caption="آزمایشگاه — تصویر میراثی کوچک. alt موضوع را توصیف می‌کند، نه فهرست کلیدواژه."
+              sizes="(min-width: 768px) 280px, 60vw"
+            />
+            <EditorialImage
+              id={displayMediaIds.gasPipe}
+              mask="diagonal"
+              caption="لوله گازرسانی — نمایش کوچک محصول در ماسک صنعتی، نه کارت گرادیان."
+            />
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="cinematic">
+        <Container>
+          <SectionHeader
+            onDark
+            title="پیش‌نمایش ترکیب OG"
+            description="معماری مشخص است؛ فایل اجتماعی هنوز ساخته نمی‌شود تا عکاسی درجه A موجود شود."
+          />
+          <div className="mt-8">
+            <OgCompositionPreview />
+          </div>
         </Container>
       </Section>
 
@@ -146,14 +248,25 @@ export default function DesignSystemPage() {
         <Container>
           <SectionHeader title="کارت‌ها" />
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            <ProductCard title="کارت محصول" eyebrow="Family">
+            <ProductCard
+              title="کارت محصول"
+              eyebrow="Family"
+              mediaId={displayMediaIds.gasPipe}
+            >
               {demoCopy.pattern}
             </ProductCard>
             <ApplicationCard title="کارت کاربرد">
               {demoCopy.pattern}
             </ApplicationCard>
-            <LabCard title="کارت آزمایشگاه">{demoCopy.pattern}</LabCard>
-            <ProjectCard title="کارت پروژه">{demoCopy.pattern}</ProjectCard>
+            <LabCard title="کارت آزمایشگاه" mediaId={displayMediaIds.laboratory}>
+              {demoCopy.pattern}
+            </LabCard>
+            <ProjectCard
+              title="کارت پروژه"
+              mediaId={displayMediaIds.loadingStraightPipe}
+            >
+              {demoCopy.pattern}
+            </ProjectCard>
             <ArticleCard title="کارت مقاله">{demoCopy.pattern}</ArticleCard>
             <FeatureCard title="کارت ویژگی">{demoCopy.pattern}</FeatureCard>
           </div>
@@ -242,7 +355,10 @@ export default function DesignSystemPage() {
               title="کاتالوگ نمایشی"
               meta="REQUIRES VALIDITY VERIFICATION"
             />
-            <MediaFrame caption="قاب رسانه — تصویر کارخانه هنوز انتخاب نشده است." />
+            <MediaFrame
+              mediaId={displayMediaIds.loadingStraightPipe}
+              caption="قاب رسانه با عکس اصیل بارگیری — نه گرادیان خالی."
+            />
           </div>
         </Container>
       </Section>
