@@ -146,9 +146,37 @@ Lowercase Latin hyphenated slugs, no file extensions, no dates, no indexable que
 
 `next.config.ts` also sets `turbopack.root` to this directory so Next.js does not treat the home-directory Git/lockfile boundary as the workspace root.
 
+## ADR-022 — Canonical host policy is documented, not activated
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+The intended primary host is `https://bukanpipe.com`. Alternate hosts (`www`, HTTP, `bukanpipe.ir`) should eventually 301 to that origin. Implementation waits for DNS/hosting/legal control. HTTPS `.ir` currently still serves duplicate HTML. See `docs/HOST_CANONICAL_POLICY.md`.
+
+## ADR-023 — Data-driven legacy redirects stay disabled
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+Legacy path mappings live in `data/migration/legacy-urls.ts`. Next.js `redirects()` consumes `getNextLegacyRedirects()`, which returns an empty list unless `ENABLE_LEGACY_REDIRECTS=true`. Do not enable until destination pages exist and launch checklists pass. Do not 301 leftovers to the homepage.
+
+## ADR-024 — Tool pages vs engineering pages
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+A tool URL owns calculator/action intent. An engineering URL owns educational/explanatory intent. The pair may interlink but must not duplicate primary content. Applies to pipe sizing, pressure loss, flow, weight, SDR/PN helpers, and future calculators. Planned slugs remain `/tools/pipe-sizing` and `/tools/pressure-loss`.
+
+## ADR-025 — PE100 is not a committed commercial URL
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+`/products/pe100` stays PLANNED / REQUIRES RESEARCH. Phase 003 found no legacy PE100 permalink. Do not build or receive redirects onto that path until the factory confirms relevant PE100 products and a standalone URL will not cannibalize family pages.
+
 ## ADR-016 — Lightweight Vitest for SEO/schema helpers
 
 **Date:** 2026-09-03  
 **Status:** Accepted
 
-Vitest is a devDependency only. It exists to lock canonical URL behavior and to prevent structured-data helpers from emitting invented fields. It is not a full testing platform.
+Vitest is a devDependency only. It exists to lock canonical URL behavior, prevent structured-data helpers from emitting invented fields, and validate the legacy migration inventory (duplicate paths, chains, loops, invalid destinations). It is not a full testing platform.

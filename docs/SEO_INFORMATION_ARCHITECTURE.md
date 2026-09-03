@@ -236,6 +236,8 @@ P2 calculators, after core commercial pages.
 
 Optional later: SDR/PN helper, weight. Each tool page needs explanatory HTML so it is not a JS-only toy.
 
+**Permanent SEO rule:** a tool page owns calculator/action intent; an engineering page owns educational/explanatory intent. The two may link to each other but must not contain substantially duplicated primary content. The same split applies to pipe sizing, flow, weight, SDR/PN selection, and future calculators. Planned slugs remain `/tools/pipe-sizing` and `/tools/pressure-loss` (not `*-calculator`).
+
 ---
 
 ## 13. Dealers / verification

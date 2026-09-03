@@ -33,11 +33,11 @@ Persian working line: **زیرساختی برای جریان فردا**
 
 ## Current codebase
 
-Phase 002 (SEO + Information Architecture) is specified. Route foundations remain development shells. This is not the commercial website.
+Phase 003 (legacy URL migration) is documented. Path redirects are prepared and **disabled**. Route foundations remain development shells. This is not the commercial website.
 
-Production target: `https://bukanpipe.com`. Local/preview origin is `NEXT_PUBLIC_SITE_URL`. Indexing stays off until launch approval.
+Production target: `https://bukanpipe.com`. Local/preview origin is `NEXT_PUBLIC_SITE_URL`. Indexing stays off until launch approval. `ENABLE_LEGACY_REDIRECTS` stays false.
 
-See `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/ARCHITECTURE.md` and `docs/TECHNICAL_DECISIONS.md`.
+See `docs/HOST_CANONICAL_POLICY.md`, `docs/LEGACY_REDIRECT_MAP.md`, `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/ARCHITECTURE.md` and `docs/TECHNICAL_DECISIONS.md`.
 
 ```bash
 npm install

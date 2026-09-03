@@ -18,7 +18,7 @@ Legacy website copy is a **claim source**, not verification.
 | Founding year / “three decades” | About timeline | Legacy about/home | UNVERIFIED |
 | Timeline events 1376, 1386, 1389, 1390, 1393, line expansions | About | Legacy homepage | UNVERIFIED |
 | Current production line count | About, trust | Legacy timeline mentions 7 historically | UNVERIFIED — need **current** |
-| Current annual capacity | About | Legacy mentions 10000 t historically | UNVERIFIED — need **current** |
+| Current annual capacity | About | Legacy mentions 10000 t historically; timeline fragment claims 14000 t / 7 lines | UNVERIFIED — conflicting LEGACY CLAIMS; need **current** |
 | Equipment brands (Cincinnati, Inoex) | About | Legacy homepage | UNVERIFIED |
 | Official factory address | Contact, schema | Legacy: West Azerbaijan, Bukan, km 10 Miandoab road | UNVERIFIED |
 | Postal code 5955164341 | Contact | Legacy about | UNVERIFIED |
@@ -103,14 +103,37 @@ Do **not** copy legacy phone numbers into the new application until the factory 
 
 ---
 
+## Laboratory tests listed on legacy `/lab-scope/` (LEGACY CLAIM FOUND)
+
+The following were published as offered tests with **Rial prices**. None are approved to republish as current scope, capability, or price.
+
+Do **not** copy prices onto the new site.
+
+| Claim | Why needed | Source of claim | Status |
+|---|---|---|---|
+| Hydrostatic, burst, tensile, OIT, carbon black / dispersion, ESCR, Izod/Charpy, MFR, Vicat, DCM, density, volatiles, ash, opacity, thermal reversion, impact, ring stiffness | `/laboratory/tests` | Legacy `/lab-scope/` | LEGACY CLAIM FOUND — verify each test |
+| PVC/PP thermal-effect and dimensional tests | Whether PVC/PP testing is offered | Legacy `/lab-scope/` | LEGACY CLAIM FOUND |
+| Assembled PE system tests (hydrostatic 80°C/165h, decohesion, weld tensile) | System/fusion testing pages | Legacy `/lab-scope/` | LEGACY CLAIM FOUND |
+| Electrofusion crushing/decohesion for gas fittings | Gas fittings testing | Legacy `/lab-scope/` | LEGACY CLAIM FOUND |
+| Implied PVC/PP/telecom and gas valve/coupler testing | Extra families vs PE pipe | Legacy `/lab-scope/` | LEGACY CLAIM FOUND |
+| Any listed fee (e.g. hydrostatic, burst, ring stiffness, decohesion) | Must not become public price list | Legacy `/lab-scope/` | LEGACY CLAIM FOUND — **do not publish** |
+| Training of other companies’ QC staff (`/training/`) | `/laboratory/services` | Legacy training page | LEGACY CLAIM FOUND |
+| Quality-policy legal-style company name on `/policy/` | About / legal | Legacy policy page | LEGACY CLAIM FOUND |
+
+---
+
 ## SEO / domain
 
 | Fact | Why needed | Status |
 |---|---|---|
 | Production target `https://bukanpipe.com` | Canonicals at launch | APPROVED AS TARGET (Phase 002) |
-| DNS / Search Console / analytics access | Launch | OPEN |
-| Role of `bukanpipe.ir` | Duplicate-host risk | UNVERIFIED |
-| Full indexed URL inventory and backlinks | Redirect completeness | NEEDS CRAWL |
+| DNS / hosting control for `.com` and `.ir` | Host 301s | OPEN — do not implement yet |
+| Search Console / analytics access | Launch | OPEN — final migration NOT READY |
+| HTTPS `bukanpipe.ir` still serves duplicate HTML | Duplicate-host risk | CONFIRMED DUPLICATE (2026-09-03); consolidation not activated |
+| `https://www.bukanpipe.com/` | www policy | UNKNOWN (probe timeout) |
+| Legacy `/sitemap.xml` | Crawl completeness | HTTP 500 (2026-09-03) |
+| Full indexed URL inventory vs Search Console | Redirect completeness | REST inventory done; GSC export pending |
+| Backlinks | Redirect priority | UNKNOWN — do not invent |
 | Keyword volume / difficulty / rank | Content priority | REQUIRES EXTERNAL KEYWORD DATA |
 
 ---

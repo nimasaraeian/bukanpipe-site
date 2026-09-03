@@ -2,6 +2,7 @@
 
 **Status:** Phase 002  
 **Canonical host (approved production target):** `https://bukanpipe.com`  
+Host/www/HTTP consolidations are documented in `docs/HOST_CANONICAL_POLICY.md` and are **not** activated.  
 **Trailing slash:** none except origin `/` (ADR-012)  
 **Indexing now:** blocked (`NEXT_PUBLIC_ALLOW_INDEXING=false`). Preview/staging must stay noindex.
 

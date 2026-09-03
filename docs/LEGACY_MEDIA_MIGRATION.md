@@ -1,0 +1,69 @@
+# Legacy Media Migration
+
+**Status:** Identify dependencies — **do not bulk-download** the WordPress media library  
+**Date:** 2026-09-03
+
+The new site will not keep WordPress upload paths as the long-term public media architecture. Useful files should be selected, licensed/permission-checked, and re-hosted later.
+
+---
+
+## Cross-host dependency (launch risk)
+
+`https://bukanpipe.com` HTML/REST permalinks use `.com`.
+
+RSS `/feed/` still enclosed at least:
+
+`https://bukanpipe.ir/wp-content/uploads/2023/08/air_valve.mp4`
+
+If HTTPS `.ir` is turned off before this object (and any other `.ir` upload) is copied or rewritten, **pages and feeds that still point at `.ir` will break**.
+
+Assumption to verify at cutover: the same `wp-content/uploads` tree is reachable on `.com`. Do not assume every `.ir` URL has a `.com` twin without checking.
+
+---
+
+## Useful media classes (select later)
+
+| Class | Why keep | Do not |
+|---|---|---|
+| Logo | Brand identity | Use unverified lockups as final brand files |
+| Factory / production line | Trust visuals | Publish equipment brand claims from EXIF/captions without verification |
+| Laboratory | Lab authority | Imply accreditation from a photo |
+| Product | Catalog | Invent SKUs from a filename |
+| Project | Case studies | Publish client sites without permission |
+| Certificate scans | Trust | Show expired/unverified certificates |
+| Catalog / datasheet photography | Downloads | Treat 2022 brochure images as current range |
+| Welding / fusion stills or video | Engineering articles | Host from `.ir` after consolidation |
+
+---
+
+## Discovered file URLs (not a full library dump)
+
+PDF binaries (WordPress media `mime_type=application/pdf`):
+
+- `https://bukanpipe.com/wp-content/uploads/lana-downloads/2022/10/14427-2-1400.pdf`
+- `https://bukanpipe.com/wp-content/uploads/lana-downloads/2022/10/article_286.pdf`
+- `https://bukanpipe.com/wp-content/uploads/2022/10/article_204.pdf`
+- `https://bukanpipe.com/wp-content/uploads/2022/10/Bukan-Pipe-Company.pdf`
+
+Video (RSS enclosure, `.ir` host):
+
+- `https://bukanpipe.ir/wp-content/uploads/2023/08/air_valve.mp4`
+
+WordPress also stores images and welding/butt-fusion/electrofusion media under `https://bukanpipe.com/wp-content/uploads/…`. Those objects were not fully enumerated (REST media default page is image-heavy). A complete library export is a later ops task, not this phase.
+
+---
+
+## Future hosting
+
+- Prefer the canonical host `https://bukanpipe.com` (or a dedicated asset CDN on that brand).
+- Do not leave public HTML pointing at `bukanpipe.ir` after host consolidation.
+- Certificates and catalogs: **REQUIRES VALIDITY VERIFICATION** before offering as current downloads.
+- Next.js `next/image` can consume re-hosted files in a later phase. No media pipeline is implemented now.
+
+---
+
+## Related
+
+- `docs/HOST_CANONICAL_POLICY.md`
+- `docs/LEGACY_CONTENT_INVENTORY.md`
+- `data/migration/legacy-urls.ts` (PDF and attachment records)

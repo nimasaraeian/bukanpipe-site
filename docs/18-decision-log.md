@@ -23,3 +23,15 @@ Persian first; English/export later; Iraq/Arabic after validation.
 
 ## 2026-09-01 — Cursor workflow
 Small gated prompts; no “build everything.”
+
+## 2026-09-03 — Canonical host documented only
+Primary `https://bukanpipe.com`. Do not activate `.ir`/www/HTTP host redirects until control is confirmed.
+
+## 2026-09-03 — Legacy path redirects data-driven and disabled
+Inventory in `data/migration/legacy-urls.ts`. `ENABLE_LEGACY_REDIRECTS` stays false.
+
+## 2026-09-03 — Tool vs engineering content ownership
+Calculators and educational guides must not duplicate primary content.
+
+## 2026-09-03 — PE100 not committed
+No legacy PE100 URL; commercial page remains research-gated.

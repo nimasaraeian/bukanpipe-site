@@ -39,11 +39,13 @@ components/ui/       shared presentational pieces
 components/seo/      JSON-LD rendering
 content/models/      typed content models
 data/                local collections (empty until verified)
+data/migration/      typed legacy URL inventory (redirects disabled)
 lib/config/          site, env, routes
+lib/migration/       redirect derivation and mapping validation
 lib/seo/             metadata and canonical helpers
 lib/schema/          structured-data builders
 lib/validation/      future form result types
-docs/                strategy and architecture source of truth
+docs/                strategy, IA, host policy, migration checklists
 research/            findings and verification register
 cursor/              gated implementation prompts
 backlog/             prioritized work
@@ -76,8 +78,8 @@ SEO is implemented as application architecture, not a plugin.
 - Indexing is off until `NEXT_PUBLIC_ALLOW_INDEXING=true`. Thin foundation pages must not be crawled if a preview is deployed accidentally.
 - Internal links use `next/link` and implemented `publicRoutes`.
 - Sitemap emits `sitemapRoutes` only (implemented, launch-indexable). Planned and deferred URLs stay out.
-- Indexing is off until `NEXT_PUBLIC_ALLOW_INDEXING=true`.
-- IA, keyword owners, URL map and redirect skeleton: `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/SEO_KEYWORD_PAGE_MAP.md`, `docs/URL_MASTER_MAP.md`, `docs/LEGACY_REDIRECT_MAP.md`.
+- IA, keyword owners, URL map and redirect inventory: `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/SEO_KEYWORD_PAGE_MAP.md`, `docs/URL_MASTER_MAP.md`, `docs/LEGACY_REDIRECT_MAP.md`, `docs/HOST_CANONICAL_POLICY.md`.
+- Path redirects are data-driven and **disabled** (`ENABLE_LEGACY_REDIRECTS`).
 
 ## Content architecture
 

@@ -1,60 +1,162 @@
-# Legacy Redirect Map (skeleton)
+# Legacy Redirect Map
 
-**Status:** Phase 002 skeleton — **redirects are not activated**  
-**New URL policy:** no trailing slash (ADR-012)  
-**Source of URLs:** project research register (`research/SOURCES.md`) plus read-only confirmation of those same URLs on 2026-09-03
+**Status:** Phase 003 inventory — **path redirects are not activated**  
+**New URL policy:** no trailing slash except origin `/` (ADR-012)  
+**Canonical host (target):** `https://bukanpipe.com` — see `docs/HOST_CANONICAL_POLICY.md`  
+**Machine-readable source:** `data/migration/legacy-urls.ts`
 
-This is not a crawl of the full legacy site. Additional URLs require a dedicated inventory (Phase 003 in the execution plan: URL Migration & Redirect Architecture).
+Host/www/HTTP consolidations are **not** Next.js path rules. `ENABLE_LEGACY_REDIRECTS` must stay false until destination pages exist, Search Console is reviewed, and domain control is confirmed.
 
-Do not guess sitemaps, pagination, or WordPress leftovers.
-
----
-
-## Confirmed legacy URLs
-
-| Old URL | Content type | Proposed new URL | Action | Confidence | Notes |
-|---|---|---|---|---|---|
-| `https://bukanpipe.com/` | Homepage | `/` | UPDATE | CONFIRMED | Same path. Replace brochure homepage; do not copy invented stats or testimonials. |
-| `https://bukanpipe.com/gas-pipe/` | Product article | `/products/gas-pipe` | UPDATE then 301 | CONFIRMED | Live on inspection. New page only after production/standards/approvals are verified. Trailing slash drops. |
-| `https://bukanpipe.com/qc-and-laboratory/` | Laboratory / QC | `/laboratory` | UPDATE then 301 | CONFIRMED | Live on inspection. Accreditation claims must be re-verified before reuse. |
-| `https://bukanpipe.com/about_us/` | About | `/about` | UPDATE then 301 | CONFIRMED | Underscore slug → `/about`. History, capacity and awards on this page are unverified for republication. |
+Do not blanket-redirect leftover URLs to the homepage. Theme demos, WooCommerce leftovers, and surveys are `IGNORE_NONINDEXABLE` (prefer **410** at launch, not `/`).
 
 ---
 
-## Observed but not mapped as separate URLs
+## Evidence basis
 
-Read-only inspection of the four URLs above also showed contact blocks, a laboratory email, and homepage timeline/testimonial modules. Those are **content objects**, not confirmed extra routes.
+Preferred sources used, in order:
 
-A full crawl may later find WordPress category, attachment, or query URLs. Those should be added here with `NEEDS CRAWL` until listed.
+1. Legacy sitemap — **failed** (`/sitemap.xml` HTTP 500; `wp-sitemap.xml` 404)
+2. WordPress REST published pages (43), posts (12), categories (5), PDF media (4)
+3. Navigation/theme leftovers visible as published pages
+4. Project research (`research/SOURCES.md`)
+5. Read-only host probes
 
----
+HTTP status **200** on HTML records means the resource is a published WordPress object with a public `link`. Live HEAD from some networks timed out; do not treat that as a 404.
 
-## Known unknown hosts
-
-| Host | Action | Confidence | Notes |
-|---|---|---|---|
-| `bukanpipe.ir` | REVIEW | NEEDS CRAWL | Role vs `.com` is unverified. Do not create duplicate indexable sites. |
+Backlinks: **UNKNOWN** on every record. External link analysis is mandatory before production cutover.
 
 ---
 
 ## Action definitions
 
-| Action | Meaning |
-|---|---|
-| KEEP | Path stays; content may still be rewritten |
-| UPDATE | Content must be rebuilt against verified facts |
-| MERGE | Multiple old URLs collapse onto one new URL |
-| 301 | Redirect old → new at launch |
-| REVIEW | Decision blocked on data |
+| Action | Meaning | Next.js redirect? |
+|---|---|---|
+| KEEP | Preserve the old path on the new site | No |
+| REBUILD | Same intent rebuilt; 301 only if the path changes | Yes, if path changes |
+| REDIRECT_301 | One-to-one move to a new IA path | Yes (disabled) |
+| MERGE | Many-to-one onto an existing owner URL | Yes (disabled) |
+| REVIEW | Decision blocked (assets, hosts, broken sitemap) | No |
+| IGNORE_NONINDEXABLE | Not a public content destination | No — do not 301 to `/` |
+
+Never use DELETE without saying why. IGNORE is the closest instruction: drop indexability, return 410, do not send equity to the homepage.
 
 ---
 
-## Redirect implementation
+## Classification summary
 
-Not in Phase 002. When implemented, preserve:
+Counts are unique inventory records in `legacy-urls.ts` (including four PDF files, five archives, feed, sitemap, and the `.ir` host row).
 
-- HTTPS
-- Strip trailing slashes to match new canonicals
-- Map `about_us` → `about`
-- Map `gas-pipe` → `products/gas-pipe` only if that family is approved to exist; otherwise REVIEW a safer hub (`/products` or `/applications/gas-distribution`)
-- Do not 301 unverified product claims onto a page that states them as fact
+| Action | Count (approx.) | Typical examples |
+|---|---|---|
+| KEEP | 2 | `/`, `/standards` |
+| REBUILD | 1 | `/articles/` → `/knowledge` |
+| REDIRECT_301 | 12 | `/gas-pipe/` → `/products/gas-pipe` |
+| MERGE | 35 | Timeline/team/certs/categories → owner hubs |
+| REVIEW | 6 | PDFs, broken sitemap, `https://bukanpipe.ir/` |
+| IGNORE_NONINDEXABLE | 15 | Shop, theme demos, polls, RSS |
+
+---
+
+## Same-URL vs 301 (high-value)
+
+Do not move a URL only because the new tree is tidier.
+
+| Legacy | Decision | Why |
+|---|---|---|
+| `/` | **KEEP** | Brand/home equity. Rebuild content; same path. |
+| `/standards/` | **KEEP** | Already matches the new hub slug. Moving would discard a clean URL for no IA gain. |
+| `/gas-pipe/` | **301** `/products/gas-pipe` | Product family belongs in the catalog. Legacy slug is valuable but inconsistent with `/products/{family}`. One hop, only after that page exists and gas production is verified. |
+| `/qc-and-laboratory/` | **301** `/laboratory` | Awkward slug; `/laboratory` is the approved owner. |
+| `/about_us/` | **301** `/about` | Underscore slug is poor; `/about` is the IA owner. |
+| `/contact-us/` | **301** `/contact` | Hyphenated contact slug → shorter IA path. |
+| `/welding/` | **301** `/engineering/welding` | Engineering owns educational welding intent. |
+| `/temp-cooficient/` | **301** `/engineering/pn` | Misspelled slug; educational PN/temperature, **not** a tool. |
+| `/pipeline_design/` | **301** `/tools` | Calculator intent. Hub until specific tools ship. |
+| `/lab-scope/` | **301** `/laboratory/tests` | Test catalog. Do not copy Rial prices. |
+| `/iso-iec17025/` | **MERGE** `/laboratory/accreditation` | Explainer + implied cert; not proof of current 17025. |
+| `/air-vent-valve/` | **301** `/knowledge/air-vent-valve` | Supporting article; Knowledge leftover intent. |
+| Water/sewer/drainage post | **301** `/products/water-pipe` | Primary recoverable intent is water. Sewer remains unverified — do not treat this as sewer-product confirmation. |
+| Drip irrigation post | **301** `/products/irrigation-pipe` | Product family candidate. |
+| Subsurface irrigation post | **301** `/applications/irrigation` | Application intent. **Not** `/applications/agriculture`. |
+
+`/products/pe100` has **no discovered legacy URL**. It stays PLANNED / REQUIRES RESEARCH. Do not invent a redirect onto it.
+
+---
+
+## Proposed path redirects (disabled)
+
+Derived at runtime by `lib/migration/redirects.ts` from REDIRECT_301, MERGE, and path-changing REBUILD. Both `/slug` and `/slug/` sources map to the **same** final destination (no slash chain).
+
+### Products / applications
+
+| Old path | New path |
+|---|---|
+| `/gas-pipe/` | `/products/gas-pipe` |
+| `/لوله-های-پلی-اتیلن-آبرسانی/` | `/products/water-pipe` |
+| `/آبیاری-قطرهای-روشهای-آبیاری-موضعی-localized/` | `/products/irrigation-pipe` |
+| `/آبیاری-زیرسطحی/` | `/applications/irrigation` |
+| `/category/محصولات/` | `/products` |
+
+### Laboratory / standards / tools / knowledge
+
+| Old path | New path |
+|---|---|
+| `/qc-and-laboratory/` | `/laboratory` |
+| `/lab-scope/` | `/laboratory/tests` |
+| `/iso-iec17025/` | `/laboratory/accreditation` |
+| `/training/` | `/laboratory` |
+| `/خط-مشی-کیفیت-آزمایشگاه/` | `/laboratory` |
+| `/pipeline_design/` | `/tools` |
+| `/articles/` | `/knowledge` |
+| `/welding/` | `/engineering/welding` |
+| `/temp-cooficient/` | `/engineering/pn` |
+| `/air-vent-valve/` | `/knowledge/air-vent-valve` |
+| `/category/blog/` | `/knowledge` |
+| `/category/مقالات/` | `/knowledge` |
+
+### Identity
+
+| Old path | New path |
+|---|---|
+| `/about_us/` | `/about` |
+| `/contact-us/` | `/contact` |
+| `/policy/` | `/about` |
+| `/certs/` | `/about` |
+| Timeline, team, slogan, testimonial pages | `/about` |
+| Project teasers | `/projects` |
+
+Exact Persian paths live in `data/migration/legacy-urls.ts`. Do not retype them by memory in implementation.
+
+---
+
+## Trailing slash, query, chains
+
+- Legacy WordPress: trailing slash. New app: none.
+- Each mapping emits both source variants → one destination (one hop).
+- Query parameters are **not** preserved by default. Future `?p={wordpressId}` maps can use the `wordpressId` field; not activated.
+- Validator rejects redirect-to-self, duplicate sources, conflicting destinations, chains among known mappings, loops, invalid destinations, and homepage dumps.
+
+---
+
+## Activation prerequisites
+
+1. Destination URLs exist as real pages (not only planned strings). Planned children such as `/products/gas-pipe` are **not** App Router routes yet — enabling redirects now would 404.
+2. `ENABLE_LEGACY_REDIRECTS=true` only on the production cutover plan, never on preview while indexing is off and destinations are shells.
+3. Host policy implemented at DNS/CDN, not by pointing this app at two public hosts.
+4. Search Console + crawl of leftovers complete (`docs/SEO_MIGRATION_LAUNCH_CHECKLIST.md`).
+
+---
+
+## Tool vs engineering (permanent)
+
+A **tool page** owns calculator/action intent (example: `/tools/pressure-loss`).  
+An **engineering page** owns educational intent (example: `/engineering/pressure-loss`).  
+They may link to each other. They must not duplicate primary content. Same split for pipe sizing, flow, weight, SDR/PN helpers, and future calculators.
+
+Current planned tool slugs remain `/tools/pipe-sizing` and `/tools/pressure-loss` (not `*-calculator`).
+
+---
+
+## PE100
+
+No legacy permalink for PE100 was discovered. `/products/pe100` stays **PLANNED / REQUIRES RESEARCH**. Do not 301 anything there until the factory confirms relevant PE100 products and a standalone URL will not cannibalize family pages.

@@ -6,7 +6,9 @@
 - https://bukanpipe.com/qc-and-laboratory/
 - https://bukanpipe.com/about_us/
 
-These four URLs were reconfirmed by read-only inspection on 2026-09-03. Claims on them are not approved for republication. Redirect skeleton: `docs/LEGACY_REDIRECT_MAP.md`.
+These four URLs were reconfirmed by read-only inspection on 2026-09-03. Phase 003 added a REST-based inventory of published WordPress pages, posts, categories, and PDF media; see `data/migration/legacy-urls.ts`. Claims are not approved for republication. Redirect map: `docs/LEGACY_REDIRECT_MAP.md`. Host policy: `docs/HOST_CANONICAL_POLICY.md`.
+
+Additional evidence endpoints (read-only): `https://bukanpipe.com/wp-json/wp/v2/pages`, `/posts`, `/categories`, `/media`, `/robots.txt`, `/feed/`. `https://bukanpipe.com/sitemap.xml` returned HTTP 500 on 2026-09-03.
 
 ## Competitors / benchmarks
 - https://parsianpipe.com/
