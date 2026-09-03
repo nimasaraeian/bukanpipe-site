@@ -22,7 +22,8 @@ export default function HomePage() {
       <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl" dir="ltr">
         {siteConfig.brandName}
       </h1>
-      <p className="mt-3 text-lg">{siteConfig.taglineFa}</p>
+      <p className="mt-2 text-xl">{siteConfig.brandNameFa}</p>
+      <p className="mt-3 text-lg text-muted">{siteConfig.taglineFa}</p>
       <p className="mt-1 text-base text-muted" dir="ltr">
         {siteConfig.taglineEn}
       </p>
@@ -45,7 +46,7 @@ export default function HomePage() {
       </section>
       <section className="mt-10" aria-labelledby="route-map">
         <h2 id="route-map" className="text-xl font-semibold">
-          نقشه مسیرهای فاز ۰۰۱
+          نقشه مسیرهای پیاده‌سازی‌شده
         </h2>
         <ul className="mt-4 space-y-2">
           {publicRoutes.map((route) => (

@@ -10,6 +10,7 @@ export function organizationSchema(): Record<string, unknown> {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.brandName,
+    alternateName: siteConfig.brandNameFa,
     url: siteConfig.siteUrl,
     sameAs: socialUrls(),
   });

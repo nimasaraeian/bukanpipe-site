@@ -3,14 +3,18 @@ import { env } from "@/lib/config/env";
 /**
  * Central site configuration.
  *
- * Business facts that still require factory verification must stay out of this
- * file. Legal name, address, certificates, social profiles, and production
- * domain ownership are not assumed here.
+ * Legal name, address, certificates, social profiles, and current factory
+ * facts stay out of this file until verified. The production target domain is
+ * recorded here; runtime canonicals still come from NEXT_PUBLIC_SITE_URL.
+ *
+ * Brand lines are provisional strategic messaging, not immutable copy.
  */
 export const siteConfig = {
   brandName: "Bukan Pipe",
+  brandNameFa: "بوکان پایپ",
   taglineEn: "Engineering Trust for Infrastructure",
   taglineFa: "زیرساختی برای جریان فردا",
+  productionTargetUrl: "https://bukanpipe.com",
   siteUrl: env.siteUrl,
   defaultLocale: "fa",
   defaultDirection: "rtl",
@@ -18,11 +22,7 @@ export const siteConfig = {
   allowIndexing: env.allowIndexing,
   defaultTitle: "Bukan Pipe",
   defaultDescription:
-    "سکوی دیجیتال صنعتی Bukan Pipe. این نسخه، بنیاد توسعه است و هنوز محتوای تجاری تأییدشده منتشر نمی‌کند.",
-  /**
-   * Current public locale only. Future locales are recorded so routing can be
-   * added later without restructuring the application.
-   */
+    "سکوی دیجیتال صنعتی بوکان پایپ. این نسخه، بنیاد توسعه است و هنوز محتوای تجاری تأییدشده منتشر نمی‌کند.",
   activeLocales: ["fa"] as const,
   plannedLocales: ["en", "ar", "ckb"] as const,
   social: {

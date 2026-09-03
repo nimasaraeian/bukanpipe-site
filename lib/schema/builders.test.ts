@@ -16,8 +16,9 @@ describe("structured data builders", () => {
     expect(schema.logo).toBeUndefined();
     expect(schema.sameAs).toBeUndefined();
     expect(schema.foundingDate).toBeUndefined();
+    expect(schema.alternateName).toBe("بوکان پایپ");
     expect(Object.keys(schema).sort()).toEqual(
-      ["@context", "@type", "name", "url"].sort(),
+      ["@context", "@type", "alternateName", "name", "url"].sort(),
     );
   });
 

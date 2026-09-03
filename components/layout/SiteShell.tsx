@@ -18,11 +18,15 @@ export function SiteShell({ children }: SiteShellProps) {
         <Container className="flex flex-col gap-4 py-5">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
             <p className="text-lg font-semibold">
-              <Link dir="ltr" href="/">
-                {siteConfig.brandName}
+              <Link href="/">
+                <span dir="ltr">{siteConfig.brandName}</span>
+                <span className="mx-2 text-muted" aria-hidden="true">
+                  /
+                </span>
+                <span>{siteConfig.brandNameFa}</span>
               </Link>
             </p>
-            <p className="text-sm text-muted">بنیاد توسعه — فاز ۰۰۱</p>
+            <p className="text-sm text-muted">بنیاد توسعه</p>
           </div>
           <DevNav />
         </Container>

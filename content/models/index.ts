@@ -7,6 +7,7 @@ export type {
   ContentBase,
   ContentStatus,
   ContentType,
+  EvidenceStatus,
   RelatedItem,
 } from "@/content/models/shared";
 export type { Standard } from "@/content/models/standard";

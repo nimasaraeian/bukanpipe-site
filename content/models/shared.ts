@@ -1,4 +1,11 @@
+import type { LinkRelation } from "@/lib/config/linking";
+
 export type ContentStatus = "draft" | "review" | "published" | "archived";
+
+export type EvidenceStatus =
+  | "verified"
+  | "candidate"
+  | "requires-verification";
 
 export type ContentType =
   | "product"
@@ -11,6 +18,7 @@ export type ContentType =
 export type RelatedItem = {
   type: ContentType;
   id: string;
+  relation?: LinkRelation;
 };
 
 export type ContentBase = {
@@ -23,6 +31,7 @@ export type ContentBase = {
   seoDescription?: string;
   keywords?: readonly string[];
   status: ContentStatus;
+  evidenceStatus?: EvidenceStatus;
   relatedItems?: readonly RelatedItem[];
   updatedAt: string;
 };
