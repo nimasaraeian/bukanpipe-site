@@ -31,4 +31,13 @@ describe("route registry", () => {
       true,
     );
   });
+
+  it("keeps the internal design-system route out of the public sitemap", () => {
+    expect(sitemapRoutes.some((route) => route.path === "/design-system")).toBe(
+      false,
+    );
+    expect(publicRoutes.some((route) => route.path === "/design-system")).toBe(
+      false,
+    );
+  });
 });

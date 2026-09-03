@@ -1,0 +1,291 @@
+import type { Metadata } from "next";
+import { Badge } from "@/components/ui/Badge";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { Button, ButtonLink } from "@/components/ui/Button";
+import {
+  ApplicationCard,
+  ArticleCard,
+  FeatureCard,
+  LabCard,
+  ProductCard,
+  ProjectCard,
+} from "@/components/ui/Card";
+import {
+  Callout,
+  DownloadCard,
+  MediaFrame,
+  StatBlock,
+} from "@/components/ui/ContentBlocks";
+import {
+  Field,
+  FormCard,
+  Input,
+  Select,
+  Textarea,
+} from "@/components/ui/Form";
+import {
+  FaqList,
+  KeyValueGrid,
+  SpecTable,
+  StandardsRow,
+} from "@/components/ui/Technical";
+import { Container } from "@/components/layout/Container";
+import {
+  Divider,
+  Eyebrow,
+  RichHeading,
+  Section,
+  SectionHeader,
+  Surface,
+} from "@/components/layout/Section";
+import { demoCopy } from "@/lib/design/copy";
+import { routes } from "@/lib/config/routes";
+
+export const metadata: Metadata = {
+  title: "سیستم طراحی",
+  description:
+    "صفحهٔ داخلی نمایش توکن‌ها و اجزای سیستم طراحی Bukan Pipe. برای ایندکس نیست.",
+  robots: { index: false, follow: false },
+};
+
+const swatches = [
+  { name: "Canvas", className: "bg-canvas ring-line", hex: "#F3F1EB" },
+  { name: "Paper", className: "bg-paper ring-line", hex: "#FFFCF7" },
+  { name: "Ink", className: "bg-ink", hex: "#161D22" },
+  { name: "Accent", className: "bg-accent", hex: "#0C5C66" },
+  { name: "Glow", className: "bg-glow", hex: "#3CB8C4" },
+  { name: "Bronze", className: "bg-bronze", hex: "#A07A45" },
+  { name: "Cinematic", className: "bg-cinematic", hex: "#12181C" },
+] as const;
+
+export default function DesignSystemPage() {
+  return (
+    <>
+      <Section lumen>
+        <Container>
+          <Breadcrumb
+            items={[
+              { label: "خانه", href: "/" },
+              { label: "سیستم طراحی" },
+            ]}
+          />
+          <Eyebrow>Internal / Design system</Eyebrow>
+          <RichHeading className="mt-4">Luminous Precision</RichHeading>
+          <p className="mt-4 max-w-2xl text-lg text-muted">
+            نمایش داخلی زبان بصری. این مسیر در sitemap نیست و باید noindex بماند.
+          </p>
+        </Container>
+      </Section>
+
+      <Section tone="paper">
+        <Container>
+          <SectionHeader title="رنگ" description="پس‌زمینه روشن؛ تاکید گرافیت و یک اکسنت تیل." />
+          <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+            {swatches.map((swatch) => (
+              <li key={swatch.name} className="text-sm">
+                <div
+                  className={`h-20 rounded-2xl ring-1 ${swatch.className}`}
+                />
+                <p className="mt-2 font-semibold">{swatch.name}</p>
+                <p className="tabular-nums text-xs text-muted" dir="ltr">
+                  {swatch.hex}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionHeader title="تایپوگرافی" />
+          <div className="mt-8 grid gap-8 lg:grid-cols-2">
+            <div>
+              <p className="eyebrow-rule">Display / فارسی</p>
+              <p className="display-title mt-3 text-4xl sm:text-5xl">
+                زیرساختی برای جریان فردا
+              </p>
+              <p className="mt-4 text-base leading-8 text-ink-soft">
+                بدنه با ارتفاع خط باز برای خواندن طولانی راست‌به‌چپ. فاصلهٔ حروف
+                در فارسی اعمال نمی‌شود.
+              </p>
+            </div>
+            <div>
+              <p className="eyebrow-rule">Latin / mixed</p>
+              <p className="display-title mt-3 text-4xl" dir="ltr">
+                Bukan Pipe
+              </p>
+              <p className="mt-4 text-base leading-8 text-ink-soft" dir="ltr">
+                Engineering Trust for Infrastructure. Mixed SDR 17 / PN16
+                samples use tabular figures:{" "}
+                <span className="tabular-nums font-semibold">630 mm</span>.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="muted">
+        <Container>
+          <SectionHeader title="دکمه‌ها و برچسب" />
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Button>اقدام اصلی</Button>
+            <Button variant="secondary">ثانویه</Button>
+            <Button variant="ghost">آرام</Button>
+            <ButtonLink href={routes.requestQuote.path} size="lg">
+              لینک تبدیل
+            </ButtonLink>
+            <Badge tone="accent">Accent</Badge>
+            <Badge tone="bronze">Bronze</Badge>
+            <Badge tone="demo">{demoCopy.demo}</Badge>
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionHeader title="کارت‌ها" />
+          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <ProductCard title="کارت محصول" eyebrow="Family">
+              {demoCopy.pattern}
+            </ProductCard>
+            <ApplicationCard title="کارت کاربرد">
+              {demoCopy.pattern}
+            </ApplicationCard>
+            <LabCard title="کارت آزمایشگاه">{demoCopy.pattern}</LabCard>
+            <ProjectCard title="کارت پروژه">{demoCopy.pattern}</ProjectCard>
+            <ArticleCard title="کارت مقاله">{demoCopy.pattern}</ArticleCard>
+            <FeatureCard title="کارت ویژگی">{demoCopy.pattern}</FeatureCard>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="paper">
+        <Container className="grid gap-8 lg:grid-cols-2">
+          <div>
+            <SectionHeader title="جدول مشخصات" />
+            <div className="mt-6">
+              <SpecTable
+                caption="نمونه جدول نمایشی"
+                rows={[
+                  { property: "قطر", value: "Pending" },
+                  { property: "PN / SDR", value: "Pending" },
+                  { property: "ماده", value: "Pending" },
+                ]}
+              />
+            </div>
+          </div>
+          <div>
+            <SectionHeader title="شبکه فنی" />
+            <div className="mt-6">
+              <KeyValueGrid
+                items={[
+                  { term: "استاندارد", description: demoCopy.pending },
+                  { term: "آزمون", description: demoCopy.pending },
+                ]}
+              />
+              <div className="mt-4">
+                <StandardsRow codes={["INSO —", "ISO —", "IGS —"]} />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container className="grid gap-8 lg:grid-cols-2">
+          <FormCard
+            title="فرم نمایشی"
+            actions={
+              <>
+                <Button type="submit">ارسال نمایشی</Button>
+                <Button type="reset" variant="ghost">
+                  بازنشانی
+                </Button>
+              </>
+            }
+          >
+            <Field label="نام" htmlFor="ds-name" hint="منطق کسب‌وکار هنوز وصل نیست.">
+              <Input id="ds-name" name="name" autoComplete="name" />
+            </Field>
+            <Field label="موضوع" htmlFor="ds-topic">
+              <Select id="ds-topic" name="topic" defaultValue="">
+                <option value="" disabled>
+                  انتخاب کنید
+                </option>
+                <option value="quote">استعلام</option>
+                <option value="lab">آزمایشگاه</option>
+              </Select>
+            </Field>
+            <Field
+              label="پیام"
+              htmlFor="ds-message"
+              error="نمونه متن خطا — خطای واقعی نیست."
+            >
+              <Textarea id="ds-message" name="message" />
+            </Field>
+          </FormCard>
+          <div className="flex flex-col gap-5">
+            <FaqList
+              items={[
+                {
+                  question: "آیا این قیمت واقعی است؟",
+                  answer: "خیر. هیچ رقمی در این فاز منتشر نشده است.",
+                },
+                {
+                  question: "آیا گواهی نمایش داده می‌شود؟",
+                  answer: "فقط پس از راستی‌آزمایی اعتبار.",
+                },
+              ]}
+            />
+            <DownloadCard
+              title="کاتالوگ نمایشی"
+              meta="REQUIRES VALIDITY VERIFICATION"
+            />
+            <MediaFrame caption="قاب رسانه — تصویر کارخانه هنوز انتخاب نشده است." />
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="cinematic">
+        <Container>
+          <SectionHeader
+            onDark
+            eyebrow="Cinematic band"
+            title="لحظهٔ تاریک انتخابی"
+            description="برای کل سایت استفاده نمی‌شود. متن باید روی گرافیت خوانا بماند."
+          />
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <StatBlock onDark label="Demo A" value="00" />
+            <StatBlock onDark label="Demo B" value="00" />
+            <StatBlock onDark label="Demo C" value="00" />
+          </div>
+          <div className="mt-8">
+            <ButtonLink href={routes.contact.path} variant="onDark">
+              اقدام روی زمینه تیره
+            </ButtonLink>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="paper">
+        <Container>
+          <SectionHeader
+            title="بخش تحریریه روشن"
+            description="ریتم صفحه برای مقالات مهندسی و دانش."
+          />
+          <Surface className="mt-8">
+            <Callout title="یادداشت">
+              {demoCopy.pending}
+            </Callout>
+            <Divider className="my-6" />
+            <p className="text-base leading-8">
+              ترکیب فارسی و English در یک بند: لوله پلی‌اتیلن (PE) برای شبکه
+              گاز و آب. Glow و حلقهٔ سه‌بعدی‌نما باید آرام بماند.
+            </p>
+          </Surface>
+        </Container>
+      </Section>
+    </>
+  );
+}
