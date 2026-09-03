@@ -1,0 +1,128 @@
+# Architecture — Bukan Pipe Digital Industrial Platform
+
+## Project purpose
+
+This repository is the greenfield web application for the Bukan Pipe digital platform. The long-term product is an industrial growth system that must work as:
+
+1. a search engine surface for qualified demand
+2. an engineering resource
+3. a trust platform (factory, quality, laboratory, projects)
+4. a sales engine that converts into structured RFQs
+
+The north-star metric is **qualified RFQs from organic search**. Traffic alone is not the objective.
+
+The legacy website at bukanpipe.com is not the codebase being continued. It remains a later source for URL equity, content, documents and redirect mapping.
+
+## Technology choices
+
+| Choice | Decision |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| UI | React 19 |
+| Language | TypeScript, strict |
+| Styling | Tailwind CSS 4 |
+| Hosting target | Vercel |
+| Rendering | Server Components by default; static/server HTML for SEO content |
+| State library | None |
+| CMS | Not in this phase |
+| Database | Not in this phase |
+| Auth | Not in this phase |
+
+These choices follow `docs/13-technical-architecture.md` and `docs/18-decision-log.md`.
+
+## Directory structure
+
+```text
+app/                 routes, layout, robots, sitemap
+components/layout/   document shell, landmarks, development navigation
+components/ui/       shared presentational pieces
+components/seo/      JSON-LD rendering
+content/models/      typed content models
+data/                local collections (empty until verified)
+lib/config/          site, env, routes
+lib/seo/             metadata and canonical helpers
+lib/schema/          structured-data builders
+lib/validation/      future form result types
+docs/                strategy and architecture source of truth
+research/            findings and verification register
+cursor/              gated implementation prompts
+backlog/             prioritized work
+```
+
+Folders are created only when they have a current purpose. Product, laboratory, project and form component areas will be added when those phases start.
+
+## Rendering philosophy
+
+- Server Components are the default.
+- Client Components are allowed only when interaction requires the browser.
+- Public marketing and technical pages must remain crawlable HTML.
+- A React SPA is rejected because the SEO surface (products, applications, engineering, laboratory, projects, knowledge, tools) is a core architecture requirement.
+
+## RTL strategy
+
+- Current public language is Persian (`fa`).
+- Document direction is `rtl` on `<html>`.
+- Layout uses logical CSS where custom styles are required.
+- Routing is not localized yet. `siteConfig.plannedLocales` records English, Arabic and Kurdish Sorani as future work so later i18n does not require a rewrite.
+- Do not add fake translated pages.
+
+## SEO architecture
+
+SEO is implemented as application architecture, not a plugin.
+
+- `lib/seo/metadata.ts` builds titles, descriptions, canonicals, robots, Open Graph and Twitter fields.
+- `lib/seo/canonical.ts` builds absolute canonical URLs from `NEXT_PUBLIC_SITE_URL`.
+- `app/robots.ts` and `app/sitemap.ts` are generated routes.
+- Indexing is off until `NEXT_PUBLIC_ALLOW_INDEXING=true`. Thin foundation pages must not be crawled if a preview is deployed accidentally.
+- Internal links use `next/link` and the shared `publicRoutes` list.
+- Image SEO, HTML spec tables and cluster landing pages belong to later phases.
+
+## Content architecture
+
+Until a CMS is approved, content is typed TypeScript in `content/models/` with collections in `data/`.
+
+Models: `Product`, `Application`, `Project`, `LaboratoryTest`, `Standard`, `Article`.
+
+Collections are empty. Empty is valid. Invented products, diameters, PN/SDR values, projects, certificates or testimonials are forbidden.
+
+## Structured data approach
+
+Helpers exist for `Organization`, `WebSite`, `Product`, `Article`, `BreadcrumbList` and project/case-study `CreativeWork`.
+
+Rules:
+
+- Emit only fields that are known.
+- Do not invent address, logo, social profiles, offers, ratings, accreditation or client names.
+- JSON-LD is serialized with `<` escaped before injection.
+
+## Performance principles
+
+- Minimal client JavaScript in this phase (no `"use client"` in the foundation shell).
+- System font stack until licensed files are approved; no remote font downloads.
+- No animation libraries, UI kits, Redux, or CMS clients.
+- `next/image` is available for later verified imagery.
+- Tailwind is the only styling dependency.
+
+## Accessibility principles
+
+- Semantic landmarks: skip link, header, main, footer, named development navigation.
+- Visible `:focus-visible` styles.
+- Language and direction set on the document.
+- One `h1` per route shell.
+- `prefers-reduced-motion` disables non-essential motion globally.
+- Future forms should use `lib/validation/types.ts` and accessible label/error wiring; no RFQ form is implemented here.
+
+## Future CMS readiness
+
+Field names on content models are the contract. A later CMS should map to these types rather than inventing a parallel schema. No CMS client, webhook or preview system is included yet.
+
+## Future localization readiness
+
+- Locale and direction live in one config module.
+- Copy is not hardcoded across dozens of files for brand/SEO defaults.
+- No `/en` or `/ar` route tree yet.
+- URL policy (no trailing slash, English slugs for IA stability) is documented so translated paths can be added later without breaking Persian canonicals.
+
+## Deferred routes
+
+Information architecture also names `/verify/` and `/export/`. Phase 001 does not create those pages. See `docs/TECHNICAL_DECISIONS.md`.
