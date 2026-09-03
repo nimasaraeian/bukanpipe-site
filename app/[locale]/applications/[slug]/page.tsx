@@ -11,7 +11,7 @@ type PageProps = {
 };
 
 export async function generateStaticParams() {
-  return ["fa"].flatMap((locale) =>
+  return ["fa", "en"].flatMap((locale) =>
     contentSlugsForKind(locale as Locale, "application").map((slug) => ({ locale, slug })),
   );
 }

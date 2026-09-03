@@ -119,14 +119,14 @@ export function PremiumHeroSection() {
                 <span aria-hidden="true">{t.common.arrow}</span>
               </Link>
             </div>
-            {locale === "fa" ? (
+            {locale === "fa" || locale === "en" ? (
               <p className="engine-hero-subtitle mt-4 text-sm opacity-90">
                 <Link href={path("/technical-center")} className="underline-offset-4 hover:underline">
                   {hero.ctaTechnical}
                 </Link>
                 {" · "}
                 <Link href={path("/calculator")} className="underline-offset-4 hover:underline">
-                  محاسبات مهندسی
+                  {locale === "fa" ? "محاسبات مهندسی" : "Engineering calculator"}
                 </Link>
               </p>
             ) : null}

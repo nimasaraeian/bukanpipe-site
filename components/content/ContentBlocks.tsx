@@ -119,6 +119,10 @@ export type ContentBlockOptions = {
 };
 
 export function ArticleTableOfContents({ sections }: { sections: readonly ContentBlock[] }) {
+  const { locale } = useLocale();
+  const isFa = locale === "fa";
+  const tocLabel = isFa ? "فهرست مطالب" : "On this page";
+
   const headings = sections.filter(
     (block): block is Extract<ContentBlock, { type: "heading" }> =>
       block.type === "heading" && block.level === 2,
@@ -127,8 +131,8 @@ export function ArticleTableOfContents({ sections }: { sections: readonly Conten
   if (headings.length < 3) return null;
 
   return (
-    <nav aria-label="فهرست مطالب" className="ind-glass mb-10 p-5">
-      <p className="text-sm font-semibold text-[color:var(--ind-text)]">فهرست مطالب</p>
+    <nav aria-label={tocLabel} className="ind-glass mb-10 p-5">
+      <p className="text-sm font-semibold text-[color:var(--ind-text)]">{tocLabel}</p>
       <ol className="mt-3 list-decimal space-y-2 ps-5 text-sm text-[color:var(--ind-text-muted)]">
         {headings.map((heading) => (
           <li key={heading.text}>

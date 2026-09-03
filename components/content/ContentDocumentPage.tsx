@@ -161,13 +161,6 @@ export function ContentDocumentPage({ doc }: ContentDocumentPageProps) {
               </ul>
             </div>
           ) : null}
-
-          {doc.references && doc.references.length > 0 ? (
-            <p className="mt-12 text-xs text-[color:var(--ind-text-muted)]">
-              {locale === "fa" ? "منبع: " : "Source: "}
-              {doc.references.join(" · ")}
-            </p>
-          ) : null}
         </div>
       </section>
     </>

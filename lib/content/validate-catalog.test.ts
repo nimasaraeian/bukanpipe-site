@@ -1,22 +1,23 @@
 import { describe, expect, it } from "vitest";
 import { contentCatalogFa } from "@/data/content/fa/catalog";
+import { contentCatalogEn } from "@/data/content/en/catalog";
 import { getAllPublishedPaths } from "@/lib/content/registry";
 
-describe("content catalog validation", () => {
-  it("has unique seo titles per published FA document", () => {
-    const titles = contentCatalogFa.map((d) => d.seoTitle);
+function validateCatalog(docs: readonly { seoTitle: string; seoDescription: string; title: string; path: string; kind: string; primaryKeyword: string; sections: readonly { type: string; text?: string; message?: string; title?: string; showPublic?: boolean }[] }[], locale: string) {
+  it(`[${locale}] has unique seo titles per published document`, () => {
+    const titles = docs.map((d) => d.seoTitle);
     const unique = new Set(titles);
     expect(unique.size).toBe(titles.length);
   });
 
-  it("has unique seo descriptions per published FA document", () => {
-    const descriptions = contentCatalogFa.map((d) => d.seoDescription);
+  it(`[${locale}] has unique seo descriptions per published document`, () => {
+    const descriptions = docs.map((d) => d.seoDescription);
     const unique = new Set(descriptions);
     expect(unique.size).toBe(descriptions.length);
   });
 
-  it("every document has a non-empty title and path", () => {
-    for (const doc of contentCatalogFa) {
+  it(`[${locale}] every document has a non-empty title and path`, () => {
+    for (const doc of docs) {
       expect(doc.title.trim().length).toBeGreaterThan(0);
       expect(doc.path.startsWith("/")).toBe(true);
       expect(doc.seoTitle.trim().length).toBeGreaterThan(0);
@@ -24,23 +25,15 @@ describe("content catalog validation", () => {
     }
   });
 
-  it("product slugs are distinct primary keywords owners", () => {
-    const products = contentCatalogFa.filter((d) => d.kind === "product");
+  it(`[${locale}] product slugs are distinct primary keyword owners`, () => {
+    const products = docs.filter((d) => d.kind === "product");
     const keywords = products.map((d) => d.primaryKeyword);
     expect(new Set(keywords).size).toBe(keywords.length);
   });
 
-  it("published paths are valid", () => {
-    const paths = getAllPublishedPaths("fa");
-    expect(paths.length).toBeGreaterThan(20);
-    for (const p of paths) {
-      expect(p).toMatch(/^\/[a-z0-9-/]+$/);
-    }
-  });
-
-  it("public sections do not expose internal verification labels", () => {
+  it(`[${locale}] public sections do not expose internal verification labels`, () => {
     const forbidden = /VERIFY_BEFORE_PRODUCTION|DATA_REQUIRED|legacy claim|placeholder|TODO/i;
-    for (const doc of contentCatalogFa) {
+    for (const doc of docs) {
       for (const section of doc.sections) {
         if (section.type === "paragraph") {
           expect(section.text).not.toMatch(forbidden);
@@ -52,4 +45,26 @@ describe("content catalog validation", () => {
       }
     }
   });
+}
+
+describe("content catalog validation", () => {
+  validateCatalog(contentCatalogFa, "fa");
+  validateCatalog(contentCatalogEn, "en");
+
+  it("published FA paths are valid", () => {
+    const paths = getAllPublishedPaths("fa");
+    expect(paths.length).toBeGreaterThan(20);
+    for (const p of paths) {
+      expect(p).toMatch(/^\/[a-z0-9-/]+$/);
+    }
+  });
+
+  it("published EN paths match FA IA breadth", () => {
+    const enPaths = getAllPublishedPaths("en");
+    expect(enPaths.length).toBeGreaterThan(30);
+    for (const p of enPaths) {
+      expect(p).toMatch(/^\/[a-z0-9-/]+$/);
+    }
+  });
 });
+

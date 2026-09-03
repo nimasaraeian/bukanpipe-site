@@ -11,13 +11,15 @@ type PageProps = {
 };
 
 export async function generateStaticParams() {
-  const articles = getPublishedContent("fa", "article").filter(
-    (doc) => doc.path.startsWith("/technical-center/") && doc.slug !== "technical-center",
-  );
-  return [
-    { locale: "fa", slug: [] as string[] },
-    ...articles.map((doc) => ({ locale: "fa", slug: [doc.slug] })),
-  ];
+  return (["fa", "en"] as const).flatMap((locale) => {
+    const articles = getPublishedContent(locale, "article").filter(
+      (doc) => doc.path.startsWith("/technical-center/") && doc.slug !== "technical-center",
+    );
+    return [
+      { locale, slug: [] as string[] },
+      ...articles.map((doc) => ({ locale, slug: [doc.slug] })),
+    ];
+  });
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

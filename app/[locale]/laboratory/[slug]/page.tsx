@@ -4,15 +4,17 @@ import { ContentDocumentPage } from "@/components/content/ContentDocumentPage";
 import { isLocale } from "@/lib/i18n/config";
 import { createContentMetadata } from "@/lib/content/metadata";
 import { getContentBySlug } from "@/lib/content/registry";
+import { contentSlugsForKind } from "@/lib/content/static-params";
+import type { Locale } from "@/lib/i18n/config";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-const labSlugs = ["services", "iso-17025", "test-scope", "standards", "training"] as const;
-
 export async function generateStaticParams() {
-  return ["fa"].flatMap((locale) => labSlugs.map((slug) => ({ locale, slug })));
+  return ["fa", "en"].flatMap((locale) =>
+    contentSlugsForKind(locale as Locale, "laboratory").map((slug) => ({ locale, slug })),
+  );
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

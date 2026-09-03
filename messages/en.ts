@@ -47,16 +47,15 @@ export const dictionaryEn = {
     home: {
       title: "Home",
       purpose:
-        "Platform entry point. Future phases: positioning, proof, product and engineering paths, and quote conversion.",
+        "HDPE / PE100 pipe manufacturer positioning for international buyers, engineers and procurement teams.",
       seoDescription:
-        "Bukan Pipe digital platform foundation. This is a development build, not the final factory site.",
+        "Bukan Pipe — HDPE and PE100 pipe manufacturer for water supply, gas distribution and irrigation. Factory in Bukan, Iran since 1997.",
     },
     products: {
       title: "Products",
-      purpose:
-        "Product discovery hub and technical specifications. Product records are added only after factory data is verified.",
+      purpose: "Commercial HDPE pipe product catalog.",
       seoDescription:
-        "Bukan Pipe products development route. Verified catalog and specifications are not published yet.",
+        "HDPE pipe products for water, gas, sewerage, drainage, irrigation and PE100 — Bukan Pipe catalog.",
     },
     solutions: {
       title: "Solutions",
@@ -158,9 +157,9 @@ export const dictionaryEn = {
     },
   },
   footer: {
-    tagline: "Engineering Trust for Infrastructure",
+    tagline: "Bukan Pipe",
     description:
-      "Premium HDPE pipe systems for water, agriculture and industrial networks.",
+      "Polyethylene pipe manufacturing for water, gas, irrigation and infrastructure applications.",
     columns: {
       solutions: {
         title: "Solutions",
@@ -205,28 +204,28 @@ export const dictionaryEn = {
   },
   home: {
     hero: {
-      kicker: "HDPE PIPE SYSTEMS",
-      titleLine1: "Engineered flow",
-      titleLine2: "systems for modern",
-      titleLine3: "infrastructure",
+      kicker: "HDPE PIPE MANUFACTURER",
+      titleLine1: "PE100 pipe for",
+      titleLine2: "water, gas and irrigation systems",
+      titleLine3: "",
       subtitle:
-        "High-performance HDPE pipe solutions for water, agriculture and industrial networks.",
-      ctaPrimary: "Request quote",
+        "Single-wall HDPE pipe up to 630 mm OD — manufacturing, QC and laboratory testing at our Bukan factory since 1997.",
+      ctaPrimary: "Request a Quote",
       ctaProducts: "View Products",
-      ctaTechnical: "Technical center",
-      ctaSolutions: "Explore Solutions",
+      ctaTechnical: "Technical Center",
+      ctaSolutions: "Explore Applications",
       highlightsLabel: "Highlights",
-      trustLabel: "Trust indicators",
+      trustLabel: "Manufacturing",
     },
     floatCards: [
-      { title: "50+ YEARS", subtitle: "Engineering Excellence" },
-      { title: "100+ PROJECTS", subtitle: "Across Europe and Beyond" },
+      { title: "SINCE 1997", subtitle: "Polyethylene pipe production" },
+      { title: "630 mm OD", subtitle: "Single-wall extrusion capacity" },
     ],
     trustItems: [
-      { title: "ISO 9001", subtitle: "Certified Quality Management" },
-      { title: "50+ YEARS", subtitle: "Engineering Excellence" },
-      { title: "ADVANCED MANUFACTURING", subtitle: "Precision. Consistency. Performance." },
-      { title: "GLOBAL SUPPLY", subtitle: "Reliable. Scalable. On Time." },
+      { title: "INSO 14427-2", subtitle: "Water supply production standard" },
+      { title: "QC LAB", subtitle: "In-line and laboratory testing" },
+      { title: "PE100", subtitle: "Higher MRS pressure design" },
+      { title: "BUKAN, IRAN", subtitle: "West Azerbaijan factory" },
     ],
     industries: {
       kicker: "Industries",

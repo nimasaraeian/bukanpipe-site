@@ -12,6 +12,11 @@ import {
 } from "@/components/industrial/IndustrialPrimitives";
 import { IndustrialPanelCard, IndustrialProductCard } from "@/components/industrial/IndustrialCards";
 import {
+  enHomeApplications,
+  enHomeArticles,
+  enHomeProducts,
+} from "@/data/content/en/home";
+import {
   faHomeApplications,
   faHomeArticles,
   faHomeProducts,
@@ -35,13 +40,11 @@ export function IndustrialHomePage() {
   const { t, path, locale } = useLocale();
   const isFa = locale === "fa";
 
-  const productItems = isFa
-    ? faHomeProducts
-    : t.home.products.items.map((item) => ({ ...item, href: routes.products.path }));
+  const productItems = isFa ? faHomeProducts : enHomeProducts;
 
-  const applicationItems = isFa
-    ? faHomeApplications
-    : t.home.industries.items.map((item) => ({ ...item, href: routes.industries.path }));
+  const applicationItems = isFa ? faHomeApplications : enHomeApplications;
+
+  const articleItems = isFa ? faHomeArticles : enHomeArticles;
 
   return (
     <div className="industrial-font">
@@ -50,16 +53,16 @@ export function IndustrialHomePage() {
       <section className="ind-section ind-section-muted" aria-labelledby="products-heading">
         <div className="ind-container">
           <IndustrialSectionHeader
-            kicker={isFa ? "محصولات" : t.home.products.kicker}
-            title={isFa ? "خانواده محصولات لوله PE" : t.home.products.title}
+            kicker={isFa ? "محصولات" : "Products"}
+            title={isFa ? "خانواده محصولات لوله PE" : "HDPE & PE100 pipe families"}
             description={
               isFa
                 ? "لوله پلی‌اتیلن تک‌جداره برای آبرسانی، گاز، کشاورزی، فاضلاب و PE100 — تا قطر ۶۳۰ میلی‌متر."
-                : t.home.products.description
+                : "Single-wall HDPE pipe for water supply, gas, irrigation, sewerage and PE100 — up to 630 mm OD."
             }
             action={
               <IndustrialTextLink href={path("/polyethylene-pipe")}>
-                {isFa ? "راهنمای لوله پلی‌اتیلن" : t.home.products.action}
+                {isFa ? "راهنمای لوله پلی‌اتیلن" : "HDPE pipe guide"}
                 <span aria-hidden="true">{t.common.arrow}</span>
               </IndustrialTextLink>
             }
@@ -81,16 +84,16 @@ export function IndustrialHomePage() {
       <section className="ind-section" aria-labelledby="applications-heading">
         <div className="ind-container">
           <IndustrialSectionHeader
-            kicker={isFa ? "کاربردها" : t.home.industries.kicker}
-            title={isFa ? "کاربرد در پروژه" : t.home.industries.title}
+            kicker={isFa ? "کاربردها" : "Applications"}
+            title={isFa ? "کاربرد در پروژه" : "Project applications"}
             description={
               isFa
                 ? "انتخاب لوله بر اساس کاربرد پروژه — آب، گاز، کشاورزی و صنعت."
-                : t.home.industries.description
+                : "Select pipe by project use case — water, gas, agriculture and industry."
             }
             action={
               <IndustrialTextLink href={path("/applications")}>
-                {isFa ? "همه کاربردها" : t.home.industries.action}
+                {isFa ? "همه کاربردها" : "Explore applications"}
                 <span aria-hidden="true">{t.common.arrow}</span>
               </IndustrialTextLink>
             }
@@ -122,21 +125,21 @@ export function IndustrialHomePage() {
           </div>
           <div>
             <div className="ind-kicker-row">
-              <span className="ind-kicker">{isFa ? "تولید" : t.home.manufacturing.kicker}</span>
+              <span className="ind-kicker">{isFa ? "تولید" : "Manufacturing"}</span>
               <span className="ind-kicker-line" aria-hidden="true" />
             </div>
             <h2 className="ind-display mt-5 max-w-[18ch]">
-              {isFa ? "تولید لوله تک‌جداره تا قطر ۶۳۰ میلی‌متر" : t.home.manufacturing.title}
+              {isFa ? "تولید لوله تک‌جداره تا قطر ۶۳۰ میلی‌متر" : "Single-wall extrusion up to 630 mm OD"}
             </h2>
             <p className="ind-lead mt-6 max-w-md">
               {isFa
                 ? "بوکان پایپ از سال ۱۳۷۶ در تولید لوله پلی‌اتیلن فعالیت دارد. کنترل کیفیت در خط تولید و آزمایشگاه انجام می‌شود."
-                : t.home.manufacturing.description}
+                : "Bukan Pipe has manufactured polyethylene pipe since 1997. Quality control runs in-line and in the laboratory."}
             </p>
             <ul className="ind-feature-list mt-10">
               {(isFa
                 ? ["اکستروژن تک‌جداره", "کنترل کیفیت در خط", "آزمایشگاه QC"]
-                : t.home.manufacturing.features
+                : ["Single-wall extrusion", "In-line QC", "Polymer laboratory"]
               ).map((item) => (
                 <li key={item} className="ind-feature-item">
                   {item}
@@ -144,7 +147,7 @@ export function IndustrialHomePage() {
               ))}
             </ul>
             <IndustrialTextLink href={path("/about")} className="mt-10">
-              {isFa ? "درباره کارخانه" : t.home.manufacturing.action}
+              {isFa ? "درباره کارخانه" : "About the factory"}
               <span aria-hidden="true">{t.common.arrow}</span>
             </IndustrialTextLink>
           </div>
@@ -154,12 +157,12 @@ export function IndustrialHomePage() {
       <section className="ind-section ind-section-muted">
         <div className="ind-container">
           <IndustrialSectionHeader
-            kicker={isFa ? "کیفیت" : t.home.quality.kicker}
-            title={isFa ? "کنترل کیفیت و آزمایشگاه" : t.home.quality.title}
+            kicker={isFa ? "کیفیت" : "Quality"}
+            title={isFa ? "کنترل کیفیت و آزمایشگاه" : "Quality control & laboratory"}
             description={
               isFa
                 ? "QC تولید، آزمون batch و خدمات آزمایشگاه برای مشتری."
-                : t.home.quality.description
+                : "Production QC, batch testing and customer laboratory services."
             }
           />
           <div className="mt-10 flex flex-wrap gap-4">
@@ -176,38 +179,40 @@ export function IndustrialHomePage() {
         </div>
       </section>
 
-      {isFa ? (
-        <section className="ind-section">
-          <div className="ind-container">
-            <IndustrialSectionHeader
-              kicker="منابع فنی"
-              title="مرکز فنی و ابزار مهندسی"
-              description="مقالات جوش، فشار و دما، شیر هوا — و ماشین‌حساب پیش‌طراحی خط لوله."
-            />
-            <div className="mt-10 flex flex-wrap gap-3">
-              {faHomeArticles.map((article) => (
-                <Link
-                  key={article.href}
-                  href={path(article.href)}
-                  className="ind-glass px-4 py-3 text-sm font-medium transition hover:border-[color:var(--ind-accent)]"
-                >
-                  {article.title}
-                </Link>
-              ))}
+      <section className="ind-section">
+        <div className="ind-container">
+          <IndustrialSectionHeader
+            kicker={isFa ? "منابع فنی" : "Engineering resources"}
+            title={isFa ? "مرکز فنی و ابزار مهندسی" : "Technical Center & calculators"}
+            description={
+              isFa
+                ? "مقالات جوش، فشار و دما، شیر هوا — و ماشین‌حساب پیش‌طراحی خط لوله."
+                : "Welding, pressure and temperature guides, air valves — plus pipeline pre-design tools."
+            }
+          />
+          <div className="mt-10 flex flex-wrap gap-3">
+            {articleItems.map((article) => (
               <Link
-                href={path("/calculator/pipeline-design")}
+                key={article.href}
+                href={path(article.href)}
                 className="ind-glass px-4 py-3 text-sm font-medium transition hover:border-[color:var(--ind-accent)]"
               >
-                ماشین‌حساب خط لوله
+                {article.title}
               </Link>
-            </div>
+            ))}
+            <Link
+              href={path("/calculator/pipeline-design")}
+              className="ind-glass px-4 py-3 text-sm font-medium transition hover:border-[color:var(--ind-accent)]"
+            >
+              {isFa ? "ماشین‌حساب خط لوله" : "Pipeline design calculator"}
+            </Link>
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
 
       <IndustrialCtaBand
-        title={isFa ? "برای پروژه خود استعلام بگیرید." : t.home.cta.title}
-        buttonLabel={isFa ? "درخواست پیش‌فاکتور" : t.home.cta.button}
+        title={isFa ? "برای پروژه خود استعلام بگیرید." : "Request a quote for your project."}
+        buttonLabel={isFa ? "درخواست پیش‌فاکتور" : "Request a Quote"}
         buttonHref={path(routes.requestQuote.path)}
       />
     </div>

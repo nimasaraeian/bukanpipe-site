@@ -7,12 +7,13 @@ import { IndustrialPageHero } from "@/components/industrial/IndustrialPageHero";
 import { IndustrialButton } from "@/components/industrial/IndustrialPrimitives";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { faDownloadsPublic, faDownloadsHub } from "@/data/content/fa/downloads";
+import { enDownloadsPublic, enDownloadsHub } from "@/data/content/en/downloads";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
 import { getPageHeroImage } from "@/data/media/page-hero-images";
 import { getDirection } from "@/lib/i18n/config";
 import { routes } from "@/lib/config/routes";
 
-const categoryLabels: Record<string, string> = {
+const categoryLabelsFa: Record<string, string> = {
   "company-catalogue": "کاتالوگ شرکت",
   "water-standards": "استانداردهای آب",
   "gas-standards": "استانداردهای گاز",
@@ -21,20 +22,29 @@ const categoryLabels: Record<string, string> = {
   "laboratory-resources": "منابع آزمایشگاه",
 };
 
+const categoryLabelsEn: Record<string, string> = {
+  "company-catalogue": "Company catalogue",
+  "water-standards": "Water standards",
+  "gas-standards": "Gas standards",
+  "irrigation-standards": "Irrigation standards",
+  "technical-publications": "Technical publications",
+  "laboratory-resources": "Laboratory resources",
+};
+
 export function DownloadsPageContent() {
   const { locale, path: localePath } = useLocale();
-  const doc = faDownloadsHub;
+  const isFa = locale === "fa";
+  const doc = isFa ? faDownloadsHub : enDownloadsHub;
+  const publicItems = isFa ? faDownloadsPublic : enDownloadsPublic;
+  const categoryLabels = isFa ? categoryLabelsFa : categoryLabelsEn;
   const hero = getPageHeroImage(doc.path, getDirection(locale));
-  const hasFiles = faDownloadsPublic.length > 0;
+  const hasFiles = publicItems.length > 0;
 
-  const grouped = faDownloadsPublic.reduce<Record<string, typeof faDownloadsPublic>>(
-    (acc, item) => {
-      const list = [...(acc[item.category] ?? []), item];
-      acc[item.category] = list;
-      return acc;
-    },
-    {},
-  );
+  const grouped = publicItems.reduce<Record<string, typeof publicItems>>((acc, item) => {
+    const list = [...(acc[item.category] ?? []), item];
+    acc[item.category] = list;
+    return acc;
+  }, {});
 
   return (
     <>
@@ -57,7 +67,9 @@ export function DownloadsPageContent() {
           href: index < arr.length - 1 ? localePath(item.path) : undefined,
         }))}
       >
-        <IndustrialButton href={localePath(routes.contact.path)}>تماس برای دریافت کاتالوگ</IndustrialButton>
+        <IndustrialButton href={localePath(routes.contact.path)}>
+          {isFa ? "تماس برای دریافت کاتالوگ" : "Contact for catalogue"}
+        </IndustrialButton>
       </IndustrialPageHero>
 
       <section className="ind-section ind-section-muted">
@@ -85,7 +97,7 @@ export function DownloadsPageContent() {
                           className="mt-3 inline-block text-sm text-[color:var(--ind-accent)]"
                           download
                         >
-                          دانلود {item.fileType ?? "فایل"}
+                          {isFa ? `دانلود ${item.fileType ?? "فایل"}` : `Download ${item.fileType ?? "file"}`}
                         </Link>
                       ) : null}
                     </li>

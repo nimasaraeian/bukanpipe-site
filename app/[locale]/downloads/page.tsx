@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function DownloadsPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   if (!isLocale(localeParam)) notFound();
-  if (localeParam !== "fa") notFound();
+  const doc = getContentByPath(localeParam, "/downloads");
+  if (!doc) notFound();
   return <DownloadsPageContent />;
 }
