@@ -33,7 +33,11 @@ Persian working line: **زیرساختی برای جریان فردا**
 
 ## Current codebase
 
-Phase 001 (Greenfield Foundation) is implemented in this repository root as a Next.js application. It is a development shell, not the commercial website.
+Phase 002 (SEO + Information Architecture) is specified. Route foundations remain development shells. This is not the commercial website.
+
+Production target: `https://bukanpipe.com`. Local/preview origin is `NEXT_PUBLIC_SITE_URL`. Indexing stays off until launch approval.
+
+See `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/ARCHITECTURE.md` and `docs/TECHNICAL_DECISIONS.md`.
 
 ```bash
 npm install
@@ -47,8 +51,8 @@ npm run dev
 
 Useful commands: `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`.
 
-Site origin is `NEXT_PUBLIC_SITE_URL`. Do not treat a local or preview URL as confirmation of `bukanpipe.com` ownership.
+Site origin for local canonicals is `NEXT_PUBLIC_SITE_URL` (default localhost). Approved production target is `https://bukanpipe.com`.
 
 Indexing stays off until `NEXT_PUBLIC_ALLOW_INDEXING=true` is explicitly approved.
 
-See `docs/ARCHITECTURE.md` and `docs/TECHNICAL_DECISIONS.md`.
+See `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/ARCHITECTURE.md` and `docs/TECHNICAL_DECISIONS.md`.

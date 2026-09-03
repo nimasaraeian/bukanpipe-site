@@ -6,6 +6,8 @@
 - https://bukanpipe.com/qc-and-laboratory/
 - https://bukanpipe.com/about_us/
 
+These four URLs were reconfirmed by read-only inspection on 2026-09-03. Claims on them are not approved for republication. Redirect skeleton: `docs/LEGACY_REDIRECT_MAP.md`.
+
 ## Competitors / benchmarks
 - https://parsianpipe.com/
 - https://yazdpolymer.com/

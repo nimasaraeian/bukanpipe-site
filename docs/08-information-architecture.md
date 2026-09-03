@@ -1,4 +1,6 @@
-# Information Architecture
+# Information Architecture (strategic draft)
+
+Superseded for page ownership, URL rules and launch priority by `docs/SEO_INFORMATION_ARCHITECTURE.md` and `docs/URL_MASTER_MAP.md`. Kept as the original discussion tree.
 
 ```text
 /

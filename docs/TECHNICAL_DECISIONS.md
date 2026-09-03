@@ -96,11 +96,46 @@ Do not download random Persian fonts or commit commercial font binaries. `lib/fo
 ## ADR-014 — `/verify` and `/export` are not Phase 001 routes
 
 **Date:** 2026-09-03  
+**Status:** Superseded by ADR-019
+
+Phase 001 did not implement `/verify` or `/export`. Export remains unimplemented. `/verify` is now an approved foundation route.
+
+## ADR-017 — Production target domain
+
+**Date:** 2026-09-03  
 **Status:** Accepted
 
-**Conflict:** `docs/08-information-architecture.md` and `docs/19-brand-defense.md` include `/verify/` and `/export/`. The Phase 001 execution prompt lists a smaller set of route foundations and forbids export localization.
+The approved production target is `https://bukanpipe.com`. Runtime canonicals still use `NEXT_PUBLIC_SITE_URL` (localhost in development). Preview and staging must keep `NEXT_PUBLIC_ALLOW_INDEXING=false` until explicit launch approval.
 
-**Resolution:** Follow the more recent Phase 001 scope. Record the deferred paths in `lib/config/routes.ts` (`deferredRoutes`) without creating pages.
+## ADR-018 — Display brand
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+Display brand is **Bukan Pipe** / **بوکان پایپ**. Legal Persian company name remains unverified and must not be invented. Working lines are provisional strategic messaging and must be read from `siteConfig`, not copied through the app.
+
+## ADR-019 — `/verify` foundation; `/export` still deferred
+
+**Date:** 2026-09-03  
+**Status:** Accepted  
+**Supersedes:** ADR-014 for `/verify`
+
+Project Lead approved `/verify` in the long-term architecture. Phase 002 adds a route foundation only (no database, no verification logic). `/export` and `/export/iraq` remain deferred and stay out of the sitemap.
+
+## ADR-020 — Sitemap enumerates launch-indexable implemented routes only
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+`app/sitemap.ts` uses `sitemapRoutes`: implemented pages with `includeInSitemap`. Planned children and deferred export URLs are specified in docs and `plannedRoutes` / `deferredRoutes` but are not emitted. Robots still noindex the site until launch.
+
+## ADR-021 — URL slug conventions
+
+**Date:** 2026-09-03  
+**Status:** Accepted
+
+Lowercase Latin hyphenated slugs, no file extensions, no dates, no indexable query strings, no trailing slash except origin `/`. One object lives in one taxonomy. Diameter landing URLs are not committed.
+
 
 ## ADR-015 — Independent Git repository at the project root
 

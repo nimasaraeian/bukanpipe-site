@@ -74,8 +74,10 @@ SEO is implemented as application architecture, not a plugin.
 - `lib/seo/canonical.ts` builds absolute canonical URLs from `NEXT_PUBLIC_SITE_URL`.
 - `app/robots.ts` and `app/sitemap.ts` are generated routes.
 - Indexing is off until `NEXT_PUBLIC_ALLOW_INDEXING=true`. Thin foundation pages must not be crawled if a preview is deployed accidentally.
-- Internal links use `next/link` and the shared `publicRoutes` list.
-- Image SEO, HTML spec tables and cluster landing pages belong to later phases.
+- Internal links use `next/link` and implemented `publicRoutes`.
+- Sitemap emits `sitemapRoutes` only (implemented, launch-indexable). Planned and deferred URLs stay out.
+- Indexing is off until `NEXT_PUBLIC_ALLOW_INDEXING=true`.
+- IA, keyword owners, URL map and redirect skeleton: `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/SEO_KEYWORD_PAGE_MAP.md`, `docs/URL_MASTER_MAP.md`, `docs/LEGACY_REDIRECT_MAP.md`.
 
 ## Content architecture
 
@@ -125,4 +127,7 @@ Field names on content models are the contract. A later CMS should map to these 
 
 ## Deferred routes
 
-Information architecture also names `/verify/` and `/export/`. Phase 001 does not create those pages. See `docs/TECHNICAL_DECISIONS.md`.
+`/verify` is an implemented foundation route (Phase 002). `/export` remains deferred. Planned children are listed in `lib/config/routes.ts` (`plannedRoutes`) and `docs/URL_MASTER_MAP.md`; they are not App Router pages and are not in the sitemap.
+
+Definitive IA: `docs/SEO_INFORMATION_ARCHITECTURE.md`.
+

@@ -2,10 +2,11 @@
 
 **Project:** Bukan Pipe Digital Transformation  
 **Start:** 2026-09-01  
-**Current phase:** Greenfield Foundation (Phase 001) — implementation complete, awaiting Project Lead review  
+**Current phase:** SEO + Information Architecture (Phase 002) — implementation complete, awaiting Project Lead review  
 **Production migration:** Not started  
 **Legacy site:** Remains live until launch  
-**Primary proposed domain:** `bukanpipe.com` subject to confirmed ownership/control
+**Production target domain:** `https://bukanpipe.com`  
+**Indexing:** `NEXT_PUBLIC_ALLOW_INDEXING` remains false until explicit launch approval
 
 ## Decisions already made
 
@@ -15,31 +16,42 @@
 - Website designed as engineering authority + lead-generation platform.
 - Cursor works in gated phases; no “build the whole site” prompt.
 - No industrial claim without evidence.
+- Production target domain is `https://bukanpipe.com`.
+- Display brand is Bukan Pipe / بوکان پایپ. Legal Persian name is not verified.
+- Working line «زیرساختی برای جریان فردا» is provisional.
+- `/verify` is in the long-term IA and has a Phase 002 route foundation.
+- `/export` is planned in docs only; not implemented.
+- System fonts remain until Phase 003.
 
-## Phase 001 outcome
+## Phase 001 — APPROVED
 
-A Next.js 16 application now lives in this repository root:
+Greenfield Next.js foundation, RTL, SEO helpers, empty content models, development route shells. Reviewed and approved by the Project Lead.
 
-- Persian `lang="fa"` and `dir="rtl"`
-- App Router route foundations for the approved Phase 001 set
-- SEO helpers, robots, sitemap, canonical URLs, Open Graph and JSON-LD builders
-- Typed content models with empty local collections
-- Indexing disabled until launch approval
-- Independent local Git repository; no production deploy; no GitHub remote yet
+## Phase 002 outcome
 
-Phase 001 is a development foundation. It is not the commercial website.
+Definitive SEO/IA specification:
+
+- `docs/SEO_INFORMATION_ARCHITECTURE.md`
+- `docs/SEO_KEYWORD_PAGE_MAP.md`
+- `docs/URL_MASTER_MAP.md`
+- `docs/LEGACY_REDIRECT_MAP.md`
+
+Route registry distinguishes implemented / planned / deferred. Sitemap excludes planned children and export. `/verify` foundation added. Keyword metrics remain unknown pending external data. No commercial page design.
 
 ## Open dependencies
 
-- Confirm `.com` credentials and final canonical-domain control.
-- Obtain Search Console / analytics access.
-- Obtain verified product master data.
-- Obtain current certificates / accreditation scope.
-- Obtain project / customer evidence.
-- Approve licensed brand fonts before replacing the system stack.
-- Approve a GitHub remote if this repository should leave local-only status.
-- Decide when `/verify` and `/export` receive route foundations (deferred from Phase 001; present in IA).
+- Search Console / analytics access.
+- Verified product master data (no family is VERIFIED).
+- Current certificates / laboratory scope.
+- Project / customer evidence and publication permission.
+- Official dealer list and verification keys.
+- Confirm current sales/lab contact channels (do not copy legacy numbers yet).
+- Role of `bukanpipe.ir`.
+- Full legacy URL crawl (only four URLs confirmed).
+- External keyword volume/difficulty/rank dataset.
+- Licensed brand fonts (Phase 003).
+- GitHub remote if the repository should leave local-only status.
 
 ## Hard stop
 
-Do not start Design System, homepage production design, product system, laboratory pages, RFQ, SEO content production or legacy migration until Phase 001 is explicitly approved.
+Do not start Design System, homepage production design, commercial product pages, laboratory detail content, RFQ backend, or migration until Phase 002 is explicitly approved.

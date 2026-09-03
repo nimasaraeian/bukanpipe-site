@@ -1,7 +1,9 @@
 # Backlog
 
 ## P0
-Canonical domain, Search Console/analytics, product truth, legacy URL inventory, greenfield foundation, IA, product system, RFQ, redirect strategy.
+Search Console/analytics, product truth, remaining legacy URL crawl, product system, RFQ, redirect strategy.
+
+Canonical domain target and greenfield foundation + IA specification are done (Phases 001–002, pending Phase 002 review).
 
 ## P1
 Laboratory hub, projects, pricing hub, content refresh, product finder, dealer verification, attribution.
