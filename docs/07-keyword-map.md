@@ -1,6 +1,6 @@
 # Keyword Map — Strategic Draft
 
-> This is the strategic keyword architecture from the project discussion. Search volume, difficulty, CPC and current rankings still need dedicated measurement.
+> Destinations in this draft are superseded by `docs/SEO_KEYWORD_PAGE_MAP.md`. Search volume, difficulty, CPC and current rankings still need dedicated measurement.
 
 | Keyword | Intent | Proposed destination |
 |---|---|---|
