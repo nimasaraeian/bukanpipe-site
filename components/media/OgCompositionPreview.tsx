@@ -1,7 +1,7 @@
 import { ogCompositions } from "@/lib/seo/og";
-import { displayableStill } from "@/data/media/legacy-media";
+import { getTemporaryVisual } from "@/data/media/temporary-assets";
 import { IndustrialSignature } from "@/components/media/IndustrialSignature";
-import { resolveMediaSrc } from "@/lib/media/resolve";
+import { DemoVisualNotice } from "@/components/media/DemoVisualNotice";
 
 const kindLabel: Record<(typeof ogCompositions)[number]["kind"], string> = {
   homepage: "خانه",
@@ -16,10 +16,9 @@ export function OgCompositionPreview() {
   return (
     <ul className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
       {ogCompositions.map((spec) => {
-        const photo = spec.authenticImageId
-          ? displayableStill(spec.authenticImageId)
+        const demo = spec.temporaryVisualId
+          ? getTemporaryVisual(spec.temporaryVisualId)
           : undefined;
-        const photoSrc = photo ? resolveMediaSrc(photo).src : null;
         return (
           <li
             key={spec.kind}
@@ -27,14 +26,15 @@ export function OgCompositionPreview() {
           >
             <div className="relative aspect-[1.91/1] bg-cinematic">
               <IndustrialSignature className="absolute inset-0 h-full w-full opacity-70" />
-              {photoSrc ? (
+              {demo ? (
                 <div className="absolute inset-y-6 start-6 w-[38%] overflow-hidden rounded-xl ring-1 ring-white/20">
+                  <DemoVisualNotice compact />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={photoSrc}
-                    alt=""
-                    width={photo?.width ?? 400}
-                    height={photo?.height ?? 210}
+                    src={demo.src}
+                    alt={demo.seo.alt}
+                    width={demo.width}
+                    height={demo.height}
                     className="h-full w-full object-cover"
                   />
                 </div>
@@ -49,7 +49,8 @@ export function OgCompositionPreview() {
               </div>
             </div>
             <p className="bg-paper px-4 py-3 text-xs leading-6 text-muted">
-              ترکیب مشخص‌شده است؛ فایل OG هنوز رندر نمی‌شود. شلوغی ندارد.
+              ترکیب مشخص‌شده است؛ فایل OG هنوز رندر نمی‌شود. پیش‌نمایش از visual
+              موقت DEMO است.
             </p>
           </li>
         );

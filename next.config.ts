@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: "bukanpipe.com",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "bukanpipe.ir",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
   turbopack: {

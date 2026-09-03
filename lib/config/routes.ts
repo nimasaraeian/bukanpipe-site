@@ -5,7 +5,7 @@ export type RouteLifecycle = "implemented" | "planned" | "deferred";
 
 export type RouteDefinition = {
   path: string;
-  titleFa: string;
+  title: string;
   purpose: string;
   seoDescription: string;
   lifecycle: RouteLifecycle;
@@ -15,7 +15,7 @@ export type RouteDefinition = {
 
 export type PlannedRoute = {
   path: string;
-  titleFa: string;
+  title: string;
   parentPath: string;
   evidenceStatus: EvidenceStatus;
   primaryCta: CtaType;
@@ -25,165 +25,187 @@ export type PlannedRoute = {
 export const routes = {
   home: {
     path: "/",
-    titleFa: "خانه",
+    title: "Home",
     purpose:
-      "ورودی سکو. در فازهای بعد: جایگاه، اثبات، مسیرهای محصول/مهندسی، و تبدیل به استعلام.",
+      "Platform entry point. Future phases: positioning, proof, product and engineering paths, and quote conversion.",
     seoDescription:
-      "صفحه بنیاد توسعه سکوی دیجیتال Bukan Pipe. صفحه نهایی کارخانه نیست.",
+      "Bukan Pipe digital platform foundation. This is a development build, not the final factory site.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "REQUEST_QUOTE",
   },
   products: {
     path: "/products",
-    titleFa: "محصولات",
+    title: "Products",
     purpose:
-      "هاب کشف محصول و مشخصات فنی. رکورد محصول فقط پس از تأیید دادهٔ کارخانه اضافه می‌شود.",
+      "Product discovery hub and technical specifications. Product records are added only after factory data is verified.",
     seoDescription:
-      "مسیر توسعه محصولات Bukan Pipe. فهرست و مشخصات تأییدشده هنوز منتشر نشده است.",
+      "Bukan Pipe products development route. Verified catalog and specifications are not published yet.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "REQUEST_QUOTE",
   },
-  applications: {
-    path: "/applications",
-    titleFa: "کاربردها",
+  solutions: {
+    path: "/solutions",
+    title: "Solutions",
     purpose:
-      "خوشه‌های کاربرد مستقل از کاتالوگ محصول. زیربخش‌ها فقط برای کاربردهای تأییدشده منتشر می‌شوند.",
+      "Integrated HDPE system packages — pipe supply, fusion readiness, engineering support and project-scale delivery.",
     seoDescription:
-      "مسیر توسعه کاربردهای لوله پلی‌اتیلن. محتوای نهایی پس از تأیید محصول و بازار منتشر می‌شود.",
+      "Bukan Pipe engineered HDPE solutions for water, agriculture and industrial pipeline networks.",
+    lifecycle: "implemented",
+    includeInSitemap: true,
+    primaryCta: "REQUEST_QUOTE",
+  },
+  industries: {
+    path: "/industries",
+    title: "Industries",
+    purpose:
+      "Industry-specific pipeline applications — water infrastructure, agriculture, industrial process and distribution networks.",
+    seoDescription:
+      "HDPE pipe applications by industry sector. Content publishes after product and market verification.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "VIEW_PRODUCT",
   },
+  applications: {
+    path: "/applications",
+    title: "Applications",
+    purpose:
+      "Legacy applications hub — redirects to industry sectors. Subsections publish only for verified use cases.",
+    seoDescription:
+      "Bukan Pipe polyethylene pipe applications. See Industries for sector-specific content.",
+    lifecycle: "implemented",
+    includeInSitemap: false,
+    primaryCta: "VIEW_PRODUCT",
+  },
   laboratory: {
     path: "/laboratory",
-    titleFa: "آزمایشگاه",
+    title: "Quality",
     purpose:
-      "آزمایشگاه به‌عنوان دارایی اعتماد و کانال ورودی. ادعاهای اعتبار فقط پس از راستی‌آزمایی گواهی منتشر می‌شود.",
+      "Laboratory as a trust asset and intake channel. Accreditation claims publish only after certificate verification.",
     seoDescription:
-      "مسیر توسعه آزمایشگاه Bukan Pipe. وضعیت اعتبار و دامنه آزمون هنوز به‌عنوان واقعیت منتشر نشده است.",
+      "Bukan Pipe laboratory development route. Accreditation status and test scope are not published as fact yet.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "REQUEST_LAB_TEST",
   },
   projects: {
     path: "/projects",
-    titleFa: "پروژه‌ها",
+    title: "Projects",
     purpose:
-      "مطالعات موردی با مجوز انتشار. هیچ پروژه یا نام مشتری بدون مدرک ساخته نمی‌شود.",
+      "Case studies with publication permission. No project or client name is created without evidence.",
     seoDescription:
-      "مسیر توسعه پروژه‌ها. مطالعات موردی فقط پس از تأیید مدرک و مجوز انتشار اضافه می‌شوند.",
+      "Bukan Pipe projects development route. Case studies are added only after evidence and publication approval.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "REQUEST_QUOTE",
   },
   engineering: {
     path: "/engineering",
-    titleFa: "مهندسی",
+    title: "Engineering",
     purpose:
-      "مرجع تصمیم فنی همیشگی: SDR، PN، PE80/PE100، جوش و نصب. از صفحات محصول و مرکز دانش جدا است.",
+      "Evergreen technical decision reference: SDR, PN, PE80/PE100, welding and installation. Separate from product and knowledge pages.",
     seoDescription:
-      "مسیر توسعه مرجع مهندسی. راهنماهای فنی پس از تأیید منابع منتشر می‌شوند.",
+      "Bukan Pipe engineering reference development route. Technical guides publish after source verification.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "VIEW_PRODUCT",
   },
   standards: {
     path: "/standards",
-    titleFa: "استانداردها",
+    title: "Standards",
     purpose:
-      "استانداردها و مدارک انطباق مرتبط با محصول. فهرست فقط از منابع تأییدشده پر می‌شود.",
+      "Standards and product compliance documents. Lists are populated only from verified sources.",
     seoDescription:
-      "مسیر توسعه استانداردها. هیچ استاندارد یا گواهی تأییدنشده‌ای در این فاز فهرست نشده است.",
+      "Bukan Pipe standards development route. No unverified standards or certificates are listed in this phase.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "VIEW_STANDARD",
   },
   knowledge: {
     path: "/knowledge",
-    titleFa: "مرکز دانش",
+    title: "Knowledge Center",
     purpose:
-      "مقالات پشتیبان که مالک قصد جست‌وجوی صفحات مهندسی یا محصول نیستند. تولید محتوای نازک مجاز نیست.",
+      "Supporting articles that do not own product or engineering search intent. Thin content is not permitted.",
     seoDescription:
-      "مسیر توسعه مرکز دانش. مقالات پس از طبقه‌بندی و تأیید منبع اضافه می‌شوند.",
+      "Bukan Pipe knowledge center development route. Articles are added after classification and source approval.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "VIEW_PRODUCT",
   },
   pricing: {
     path: "/pricing",
-    titleFa: "قیمت",
+    title: "Pricing",
     purpose:
-      "هاب شفافیت قیمت (عوامل مؤثر بر قیمت)، نه جدول قیمت کهنه. تبدیل اصلی به استعلام است.",
+      "Pricing transparency hub (factors affecting price), not a stale price table. Primary conversion is quote request.",
     seoDescription:
-      "مسیر توسعه اطلاعات قیمت. هیچ رقم قیمتی در این فاز منتشر نشده است.",
+      "Bukan Pipe pricing information development route. No price figures are published in this phase.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "REQUEST_QUOTE",
   },
   tools: {
     path: "/tools",
-    titleFa: "ابزارهای مهندسی",
+    title: "Engineering Tools",
     purpose:
-      "هاب ماشین‌حساب و انتخاب. ابزارها در فازهای بعد ساخته می‌شوند و با راهنماهای مهندسی پیوند می‌خورند.",
+      "Calculator and selection hub. Tools are built in later phases and link to engineering guides.",
     seoDescription:
-      "مسیر توسعه ابزارهای مهندسی. ماشین‌حساب‌ها هنوز پیاده‌سازی نشده‌اند.",
+      "Bukan Pipe engineering tools development route. Calculators are not implemented yet.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "USE_TOOL",
   },
   requestQuote: {
     path: "/request-quote",
-    titleFa: "درخواست پیش‌فاکتور",
+    title: "Request a Quote",
     purpose:
-      "موتور فروش: استعلام ساختاریافته. بک‌اند و فرم نهایی در فاز RFQ ساخته می‌شود.",
+      "Sales engine: structured inquiry. Backend and final form are built in the RFQ phase.",
     seoDescription:
-      "مسیر توسعه درخواست پیش‌فاکتور. فرم تجاری هنوز فعال نیست.",
+      "Bukan Pipe request quote development route. The commercial form is not active yet.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "REQUEST_QUOTE",
   },
   dealers: {
     path: "/dealers",
-    titleFa: "نمایندگان",
+    title: "Dealers",
     purpose:
-      "منبع رسمی کانال‌های فروش. فهرست فقط پس از تأیید کارخانه. راستی‌آزمایی در /verify است.",
+      "Official sales channel directory. Listing publishes only after factory approval. Verification at /verify.",
     seoDescription:
-      "مسیر توسعه نمایندگان. فهرست نمایندگان رسمی هنوز از کارخانه دریافت نشده است.",
+      "Bukan Pipe dealers development route. Official dealer list has not been received from the factory yet.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "VERIFY_DEALER",
   },
   verify: {
     path: "/verify",
-    titleFa: "راستی‌آزمایی نماینده",
+    title: "Verify Dealer",
     purpose:
-      "تجربهٔ آیندهٔ تأیید هویت یا مجوز نماینده. منطق راستی‌آزمایی و پایگاه داده در این فاز پیاده نمی‌شود.",
+      "Future dealer identity or authorization verification experience. Verification logic and database are not implemented in this phase.",
     seoDescription:
-      "مسیر توسعه راستی‌آزمایی نماینده Bukan Pipe. سامانه تأیید هنوز فعال نیست.",
+      "Bukan Pipe dealer verification development route. The verification system is not active yet.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "VERIFY_DEALER",
   },
   about: {
     path: "/about",
-    titleFa: "درباره",
+    title: "Company",
     purpose:
-      "هویت کارخانه پس از تأیید نام حقوقی، تاریخچه و مدارک. از آمار ساختگی استفاده نمی‌شود.",
+      "Factory identity after legal name, history and documents are verified. Fabricated statistics are not used.",
     seoDescription:
-      "مسیر توسعه درباره Bukan Pipe. جزئیات حقوقی و تاریخی هنوز راستی‌آزمایی نشده است.",
+      "About Bukan Pipe development route. Legal and historical details are not verified yet.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "CONTACT_SALES",
   },
   contact: {
     path: "/contact",
-    titleFa: "تماس",
+    title: "Contact",
     purpose:
-      "راه‌های تماس تأییدشده. شماره، نشانی و فرم فقط پس از تأیید کارخانه اضافه می‌شود.",
+      "Verified contact channels. Phone, address and form are added only after factory approval.",
     seoDescription:
-      "مسیر توسعه تماس. اطلاعات تماس عملیاتی هنوز در این فاز ثبت نشده است.",
+      "Bukan Pipe contact development route. Operational contact details are not registered in this phase.",
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "CONTACT_SALES",
@@ -193,6 +215,8 @@ export const routes = {
 export const publicRoutes: readonly RouteDefinition[] = [
   routes.home,
   routes.products,
+  routes.solutions,
+  routes.industries,
   routes.applications,
   routes.laboratory,
   routes.projects,
@@ -215,195 +239,195 @@ export const sitemapRoutes: readonly RouteDefinition[] = publicRoutes.filter(
 export const plannedRoutes: readonly PlannedRoute[] = [
   {
     path: "/products/gas-pipe",
-    titleFa: "لوله گازرسانی",
+    title: "Gas distribution pipe",
     parentPath: "/products",
     evidenceStatus: "candidate",
     primaryCta: "REQUEST_QUOTE",
-    notes: "URL میراثی /gas-pipe/ تأیید شد. تولید جاری، استاندارد و مجوز گاز هنوز راستی‌آزمایی نشده است.",
+    notes: "Legacy /gas-pipe/ URL confirmed. Current production, standard and gas license not verified yet.",
   },
   {
     path: "/products/water-pipe",
-    titleFa: "لوله آبرسانی",
+    title: "Water supply pipe",
     parentPath: "/products",
     evidenceStatus: "candidate",
     primaryCta: "REQUEST_QUOTE",
-    notes: "در راهبرد و صفحهٔ دربارهٔ میراثی به‌عنوان کاربرد آمده است. کاتالوگ جاری تأیید نشده است.",
+    notes: "Referenced in strategy and legacy about page. Current catalog not verified.",
   },
   {
     path: "/products/irrigation-pipe",
-    titleFa: "لوله آبیاری",
+    title: "Irrigation pipe",
     parentPath: "/products",
     evidenceStatus: "candidate",
     primaryCta: "REQUEST_QUOTE",
-    notes: "خوشهٔ کشاورزی راهبردی است. ساخت صفحه فقط پس از تأیید محصول.",
+    notes: "Strategic agriculture cluster. Page builds only after product verification.",
   },
   {
     path: "/products/pe100",
-    titleFa: "لوله PE100",
+    title: "PE100 pipe",
     parentPath: "/products",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_QUOTE",
-    notes: "مقصد کلیدواژهٔ راهبردی. تولید PE100 باید از کارخانه تأیید شود.",
+    notes: "Strategic keyword destination. PE100 production must be confirmed by factory.",
   },
   {
     path: "/products/sewer-pipe",
-    titleFa: "لوله فاضلاب",
+    title: "Sewer pipe",
     parentPath: "/products",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_QUOTE",
-    notes: "فقط در صورت تأیید محصول واقعی ساخته می‌شود.",
+    notes: "Build only if real product is verified.",
   },
   {
     path: "/applications/water-supply",
-    titleFa: "آبرسانی",
+    title: "Water supply",
     parentPath: "/applications",
     evidenceStatus: "candidate",
     primaryCta: "VIEW_PRODUCT",
-    notes: "قصد کاربرد، نه کاتالوگ. محصول مرتبط باید جداگانه تأیید شود.",
+    notes: "Application intent, not catalog. Related product must be verified separately.",
   },
   {
     path: "/applications/agriculture",
-    titleFa: "کشاورزی",
+    title: "Agriculture",
     parentPath: "/applications",
     evidenceStatus: "candidate",
     primaryCta: "VIEW_PRODUCT",
-    notes: "هاب عمودی منطقه‌ای در راهبرد. قابلیت محصول جاری تأیید نشده است.",
+    notes: "Regional vertical hub in strategy. Current product capability not verified.",
   },
   {
     path: "/applications/irrigation",
-    titleFa: "آبیاری تحت فشار",
+    title: "Pressurized irrigation",
     parentPath: "/applications",
     evidenceStatus: "candidate",
     primaryCta: "VIEW_PRODUCT",
-    notes: "اگر محتوای متمایز از کشاورزی نداشته باشد، ادغام شود.",
+    notes: "Merge with agriculture if no distinct content.",
   },
   {
     path: "/applications/gas-distribution",
-    titleFa: "گازرسانی",
+    title: "Gas distribution",
     parentPath: "/applications",
     evidenceStatus: "candidate",
     primaryCta: "VIEW_PRODUCT",
-    notes: "قصد کاربرد شبکه گاز. مالک تجاری کلیدواژهٔ محصول با /products/gas-pipe است.",
+    notes: "Gas network application intent. Commercial product keyword owner is /products/gas-pipe.",
   },
   {
     path: "/applications/industrial",
-    titleFa: "صنعتی",
+    title: "Industrial",
     parentPath: "/applications",
     evidenceStatus: "requires-verification",
     primaryCta: "VIEW_PRODUCT",
-    notes: "ساخت صفحه منوط به تأیید کاربرد و محصول صنعتی.",
+    notes: "Page depends on verified industrial application and product.",
   },
   {
     path: "/applications/sewage",
-    titleFa: "فاضلاب و زهکشی",
+    title: "Sewage and drainage",
     parentPath: "/applications",
     evidenceStatus: "requires-verification",
     primaryCta: "VIEW_PRODUCT",
-    notes: "فقط پس از تأیید محصول مرتبط.",
+    notes: "Only after related product is verified.",
   },
   {
     path: "/engineering/sdr",
-    titleFa: "SDR چیست",
+    title: "What is SDR",
     parentPath: "/engineering",
     evidenceStatus: "requires-verification",
     primaryCta: "VIEW_PRODUCT",
-    notes: "راهنمای همیشگی. منبع فنی باید مشخص شود؛ ادعای محصول لازم نیست.",
+    notes: "Evergreen guide. Technical source must be specified; product claim not required.",
   },
   {
     path: "/engineering/pn",
-    titleFa: "PN چیست",
+    title: "What is PN",
     parentPath: "/engineering",
     evidenceStatus: "requires-verification",
     primaryCta: "VIEW_PRODUCT",
-    notes: "فشار کاری روی همین صفحه پوشش داده می‌شود. مسیر جدا برای فشار ساخته نمی‌شود.",
+    notes: "Working pressure covered on this page. No separate pressure route.",
   },
   {
     path: "/engineering/pe80-vs-pe100",
-    titleFa: "PE80 یا PE100",
+    title: "PE80 vs PE100",
     parentPath: "/engineering",
     evidenceStatus: "requires-verification",
     primaryCta: "VIEW_PRODUCT",
-    notes: "مالک قصد مقایسه‌ای. مالک تجاری PE100 صفحهٔ محصول است.",
+    notes: "Comparison intent owner. Commercial PE100 owner is product page.",
   },
   {
     path: "/engineering/pipe-sizing",
-    titleFa: "انتخاب قطر لوله",
+    title: "Pipe diameter selection",
     parentPath: "/engineering",
     evidenceStatus: "requires-verification",
     primaryCta: "USE_TOOL",
-    notes: "قصد اطلاعاتی. قصد محاسبه‌ای به /tools/pipe-sizing می‌رود.",
+    notes: "Informational intent. Calculation intent goes to /tools/pipe-sizing.",
   },
   {
     path: "/engineering/pressure-loss",
-    titleFa: "افت فشار",
+    title: "Pressure loss",
     parentPath: "/engineering",
     evidenceStatus: "requires-verification",
     primaryCta: "USE_TOOL",
-    notes: "راهنما. ماشین‌حساب جدا در /tools/pressure-loss.",
+    notes: "Guide. Separate calculator at /tools/pressure-loss.",
   },
   {
     path: "/engineering/welding",
-    titleFa: "جوش پلی‌اتیلن",
+    title: "Polyethylene welding",
     parentPath: "/engineering",
     evidenceStatus: "requires-verification",
     primaryCta: "VIEW_PRODUCT",
-    notes: "هاب جوش شامل butt fusion و electrofusion به‌صورت بخش، نه URL رقیب.",
+    notes: "Welding hub includes butt fusion and electrofusion as sections.",
   },
   {
     path: "/engineering/installation",
-    titleFa: "نصب",
+    title: "Installation",
     parentPath: "/engineering",
     evidenceStatus: "requires-verification",
     primaryCta: "VIEW_PRODUCT",
-    notes: "نصب و انبارداری می‌تواند در همین خوشه بماند.",
+    notes: "Installation and storage can remain in this cluster.",
   },
   {
     path: "/laboratory/services",
-    titleFa: "خدمات آزمایشگاه",
+    title: "Laboratory services",
     parentPath: "/laboratory",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_LAB_TEST",
-    notes: "خدمات برون‌سازمانی فقط پس از تأیید دامنه و دسترسی مشتری.",
+    notes: "External services only after scope and customer access are verified.",
   },
   {
     path: "/laboratory/tests",
-    titleFa: "آزمون‌ها",
+    title: "Tests",
     parentPath: "/laboratory",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_LAB_TEST",
-    notes: "فهرست آزمون. صفحات تکی فقط برای آزمون تأییدشده.",
+    notes: "Test list. Individual pages only for verified tests.",
   },
   {
     path: "/laboratory/accreditation",
-    titleFa: "اعتباربخشی",
+    title: "Accreditation",
     parentPath: "/laboratory",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_LAB_TEST",
-    notes: "گواهی، شماره، مرجع، اعتبار و دامنه باید جاری باشد.",
+    notes: "Certificate, number, reference, validity and scope must be current.",
   },
   {
     path: "/laboratory/request-test",
-    titleFa: "درخواست آزمون",
+    title: "Request a test",
     parentPath: "/laboratory",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_LAB_TEST",
-    notes: "تبدیل خدمات آزمایشگاه. فرم در فاز بعدی.",
+    notes: "Laboratory service conversion. Form in next phase.",
   },
   {
     path: "/tools/pipe-sizing",
-    titleFa: "محاسبه قطر",
+    title: "Diameter calculator",
     parentPath: "/tools",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_QUOTE",
-    notes: "مالک قصد ابزاری برای محاسبه قطر.",
+    notes: "Tool intent owner for diameter calculation.",
   },
   {
     path: "/tools/pressure-loss",
-    titleFa: "محاسبه افت فشار",
+    title: "Pressure loss calculator",
     parentPath: "/tools",
     evidenceStatus: "requires-verification",
     primaryCta: "REQUEST_QUOTE",
-    notes: "مالک قصد ابزاری برای افت فشار.",
+    notes: "Tool intent owner for pressure loss calculation.",
   },
 ];
 
@@ -411,10 +435,10 @@ export const deferredRoutes = {
   export: {
     path: "/export",
     reason:
-      "صادرات پس از تأیید قابلیت تجاری و پس از لایهٔ فارسی است. صفحه عمومی ساخته نمی‌شود.",
+      "Export after commercial capability is verified and after the English layer is complete. No public page is built.",
   },
   exportIraq: {
     path: "/export/iraq",
-    reason: "فرود عراق فقط پس از validation تجاری و اسناد صادرات.",
+    reason: "Iraq landing only after commercial validation and export documentation.",
   },
 } as const;

@@ -26,5 +26,8 @@ export function objectPositionFor(record: LegacyMediaRecord): string {
 }
 
 export function isRemoteLegacyUrl(src: string): boolean {
-  return src.startsWith("https://bukanpipe.com/wp-content/uploads/");
+  return (
+    src.startsWith("https://bukanpipe.com/wp-content/uploads/") ||
+    src.startsWith("https://bukanpipe.ir/wp-content/uploads/")
+  );
 }

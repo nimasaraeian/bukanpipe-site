@@ -1,5 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
+import { brandAssets } from "@/lib/media/brand-assets";
 import { routes } from "@/lib/config/routes";
 import { siteConfig } from "@/lib/config/site";
 
@@ -20,34 +23,49 @@ const footerGroups = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-line bg-canvas-elevated/50">
-      <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <p className="text-base font-semibold">
-            <span dir="ltr">{siteConfig.brandName}</span>
-            <span className="mx-2 text-bronze" aria-hidden="true">
-              /
+    <footer className="site-footer mt-auto border-t border-white/8 bg-[#080c0f] text-cinematic-ink">
+      <Container width="wide" className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
+        <div className="lg:col-span-1">
+          <Link href="/" className="inline-flex items-center gap-3">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+              <Image
+                src={brandAssets.logo}
+                alt=""
+                width={40}
+                height={40}
+                className="h-9 w-9 object-contain"
+                aria-hidden
+              />
             </span>
-            {siteConfig.brandNameFa}
+            <span>
+              <span className="block text-base font-bold" dir="ltr">
+                {siteConfig.brandName}
+              </span>
+              <span className="block text-xs text-cinematic-muted">{siteConfig.brandNameFa}</span>
+            </span>
+          </Link>
+          <p className="mt-5 max-w-xs text-sm leading-8 text-cinematic-muted">
+            {siteConfig.taglineFa}. سکوی دیجیتال صنعتی با تمرکز بر اعتماد مهندسی.
           </p>
-          <p className="mt-3 max-w-xs text-sm leading-7 text-muted">
-            سکوی دیجیتال صنعتی. محتوای تجاری، ظرفیت، گواهی و پروژه فقط پس از
-            تأیید کارخانه منتشر می‌شود.
-          </p>
+          <div className="mt-6">
+            <ButtonLink href={routes.requestQuote.path} className="industrial-btn-primary">
+              درخواست پیش‌فاکتور
+            </ButtonLink>
+          </div>
         </div>
         {footerGroups.map((group) => (
           <div key={group.title}>
-            <p className="text-xs font-semibold tracking-wide text-accent">
+            <p className="text-xs font-bold tracking-[0.12em] text-glow uppercase">
               {group.title}
             </p>
-            <ul className="mt-3 space-y-2 text-sm">
+            <ul className="mt-5 space-y-2.5 text-sm">
               {group.links.map((link) => (
                 <li key={link.path}>
                   <Link
                     href={link.path}
-                    className="text-ink-soft hover:text-accent"
+                    className="text-cinematic-muted transition hover:text-cinematic-ink"
                   >
-                    {link.titleFa}
+                    {link.title}
                   </Link>
                 </li>
               ))}
@@ -55,12 +73,14 @@ export function SiteFooter() {
           </div>
         ))}
       </Container>
-      <Container className="flex flex-wrap items-center justify-between gap-3 border-t border-line py-5 text-xs text-muted">
+      <Container
+        width="wide"
+        className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 py-5 text-xs text-cinematic-muted"
+      >
         <p>
-          نمایش برند: <bdi>{siteConfig.brandName}</bdi> / {siteConfig.brandNameFa}.
-          نام حقوقی هنوز راستی‌آزمایی نشده است.
+          © {new Date().getFullYear()} <bdi>{siteConfig.brandName}</bdi> / {siteConfig.brandNameFa}
         </p>
-        <Link href="/design-system" className="hover:text-accent">
+        <Link href="/design-system" className="transition hover:text-glow">
           سیستم طراحی (داخلی)
         </Link>
       </Container>

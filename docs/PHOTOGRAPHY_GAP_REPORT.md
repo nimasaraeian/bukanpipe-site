@@ -3,7 +3,7 @@
 **Date:** 2026-09-03  
 **Purpose:** Exact shots that are missing or not good enough for the new site. This is a future photography brief, not a claim that the factory lacks these things in real life.
 
-Do not invent availability. Legacy WordPress stills were audited; none are A-grade hero photographs.
+Do not invent availability. Legacy WordPress stills were audited from **public** `bukanpipe.com` REST and page assets only; none are A-grade hero photographs.
 
 ---
 
@@ -11,13 +11,13 @@ Do not invent availability. Legacy WordPress stills were audited; none are A-gra
 
 Do **not** stretch `f5.jpg` (553×800), `QC-01.jpg` (500×305), `lab.jpg` (638×294, ~25KB), or similar files into a homepage hero.
 
-Until new photography exists, the site uses the industrial visual signature plus small authentic supporting stills.
+Until new photography exists, the site uses the industrial visual signature plus small authentic supporting stills served from public legacy URLs.
 
 ---
 
 ## Missing A-grade photographs
 
-These are required for a photography-led commercial site. None were found at premium quality in the legacy library.
+These are required for a photography-led commercial site. None were found at premium quality in the public legacy library.
 
 | Shot | Why it is missing | Intended role |
 |---|---|---|
@@ -46,6 +46,12 @@ These are required for a photography-led commercial site. None were found at pre
 - Customer logos: do not republish without permission
 - Team portraits: publication permission not verified
 - Videos (`birds.mp4`, air-valve, electrofusion): do not freeze-frame a fake hero
+
+---
+
+## Public fetch limitations (audit environment)
+
+Four display stills were targeted for public download via `npm run media:crawl`. From the audit environment, all four timed out against both `bukanpipe.com` and `bukanpipe.ir`. Failures are recorded on each row in `data/media/legacy-media.ts` (`publicAccess`) and in `data/media/public-crawl-log.json`. The UI continues with public WordPress URLs; no factory network was attempted.
 
 ---
 

@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import type { Locale } from "@/lib/i18n/config";
+import { openGraphLocale } from "@/lib/i18n/config";
+import { withLocale } from "@/lib/i18n/path";
 import { siteConfig } from "@/lib/config/site";
 import { canonicalUrl } from "@/lib/seo/canonical";
 
@@ -6,6 +9,7 @@ export type PageMetadataInput = {
   title: string;
   description: string;
   path: string;
+  locale?: Locale;
   keywords?: readonly string[];
   ogImage?: {
     url: string;
@@ -51,9 +55,10 @@ export function createRootMetadata(): Metadata {
 
 export function createPageMetadata(input: PageMetadataInput): Metadata {
   const indexable = siteConfig.allowIndexing;
-  const url = canonicalUrl(input.path);
+  const url = canonicalUrl(input.locale ? withLocale(input.path, input.locale) : input.path);
   const title = input.title;
   const description = input.description;
+  const ogLocale = input.locale ? openGraphLocale[input.locale] : siteConfig.openGraphLocale;
 
   return {
     title,
@@ -67,7 +72,7 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
       : { index: false, follow: false },
     openGraph: {
       type: "website",
-      locale: siteConfig.openGraphLocale,
+      locale: ogLocale,
       url,
       siteName: siteConfig.brandName,
       title,

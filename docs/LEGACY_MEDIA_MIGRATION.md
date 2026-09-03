@@ -58,27 +58,34 @@ WordPress images, welding/butt-fusion/electrofusion media, certificates, and vid
 - Prefer the canonical host `https://bukanpipe.com` (or a dedicated asset CDN on that brand).
 - Do not leave public HTML pointing at `bukanpipe.ir` after host consolidation.
 - Certificates and catalogs: **REQUIRES VALIDITY VERIFICATION** before offering as current downloads.
-- Displayed stills currently load remotely via `next/image` (`unoptimized`) until selected B/C files are copied to `public/media/` with descriptive names.
+- Displayed stills load from **public WordPress URLs** on `bukanpipe.com` via `next/image` (`unoptimized`). No factory-network resolver.
 - No A-grade hero still: do not migrate a low-resolution JPEG as a giant homepage photograph.
 
-### Display stills (four files)
+### Public media crawl
 
-Run when `bukanpipe.com` or `bukanpipe.ir` is reachable from your network:
+Run when `bukanpipe.com` (or `.ir` REST fallback) is reachable from your network:
 
 ```bash
-npm run media:fetch
+npm run media:crawl
 ```
 
-Target paths (stable public URLs after copy):
+The script:
 
-| Local file | Legacy source |
+1. Crawls public WordPress REST `/wp-json/wp/v2/media` (primary: `.com`, secondary: `.ir`)
+2. Records image URLs, filenames, dimensions, alt, source pages
+3. Attempts to download the four display stills into `public/media/` when publicly accessible
+4. Writes `data/media/public-crawl-log.json` with successes and failure reasons
+
+If a download fails, the URL and reason are logged; the UI continues with the typed `sourceUrl` from `legacy-media.ts`.
+
+| Proposed launch filename | Public WordPress source |
 |---|---|
-| `/media/bukan-pipe-loading-straight-pipe.jpg` | `lifting-pipe.jpg` |
-| `/media/bukan-pipe-production-hall.jpg` | `f5.jpg` (سالن تولید) |
-| `/media/bukan-pipe-laboratory.jpg` | `QC-01.jpg` |
-| `/media/bukan-pipe-gas-pipe.jpg` | `gas5.jpg` |
+| `bukan-pipe-loading-straight-pipe.jpg` | `lifting-pipe.jpg` |
+| `bukan-pipe-production-hall.jpg` | `f5.jpg` (سالن تولید) |
+| `bukan-pipe-laboratory.jpg` | `QC-01.jpg` |
+| `bukan-pipe-gas-pipe.jpg` | `gas5.jpg` |
 
-`lib/media/resolve.ts` prefers `/media/…` when the file exists; otherwise the UI falls back to the WordPress URL.
+Launch re-hosting to `/media/…` on the canonical domain is a separate cutover task — not a runtime fallback.
 
 ---
 

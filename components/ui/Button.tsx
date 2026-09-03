@@ -6,12 +6,12 @@ export type ButtonSize = "sm" | "md" | "lg";
 
 const variantClass: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent text-paper shadow-[0_12px_30px_-16px_rgba(12,92,102,0.85)] hover:bg-accent-hover",
+    "bg-accent text-paper shadow-[0_14px_36px_-14px_rgba(12,92,102,0.9)] hover:bg-accent-hover hover:shadow-[0_18px_40px_-12px_rgba(12,92,102,0.95)]",
   secondary:
-    "bg-paper text-ink ring-1 ring-line hover:ring-accent/40 hover:text-accent",
+    "bg-paper text-ink ring-1 ring-line hover:ring-accent/35 hover:text-accent hover:shadow-[var(--shadow-card)]",
   ghost: "bg-transparent text-ink hover:bg-accent-soft hover:text-accent",
   onDark:
-    "bg-paper text-ink hover:bg-accent-soft shadow-[0_12px_30px_-18px_rgba(60,184,196,0.6)]",
+    "bg-paper text-ink hover:bg-accent-soft shadow-[0_14px_36px_-16px_rgba(60,184,196,0.55)]",
 };
 
 const sizeClass: Record<ButtonSize, string> = {
@@ -26,7 +26,7 @@ export function buttonClassName(
   className?: string,
 ) {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition duration-200",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition duration-300",
     "focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus",
     "disabled:pointer-events-none disabled:opacity-50",
     variantClass[variant],

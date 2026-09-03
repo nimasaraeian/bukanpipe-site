@@ -1,8 +1,7 @@
 export const demoCopy = {
-  demo: "محتوای نمایشی",
-  pending:
-    "اطلاعات این بخش پس از تأیید نهایی کارخانه تکمیل می‌شود",
-  pattern: "این کارت صرفاً برای نمایش الگوی طراحی است",
-  specs: "مشخصات فنی پس از دریافت داده‌های تأییدشده درج می‌شود",
-  unverified: "این مقدار تأیید نشده است و نباید به‌عنوان واقعیت خوانده شود",
+  demo: "Demo content",
+  pending: "This section will be completed after final factory approval.",
+  pattern: "This card demonstrates the design pattern only.",
+  specs: "Technical specifications will be added after verified data is received.",
+  unverified: "This value is not verified and must not be read as fact.",
 } as const;

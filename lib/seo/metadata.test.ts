@@ -4,8 +4,8 @@ import { createPageMetadata } from "@/lib/seo/metadata";
 describe("createPageMetadata", () => {
   it("sets canonical URLs and keeps pages noindex until launch is approved", () => {
     const metadata = createPageMetadata({
-      title: "محصولات",
-      description: "مسیر توسعه محصولات.",
+      title: "Products",
+      description: "Products development route.",
       path: "/products",
     });
 

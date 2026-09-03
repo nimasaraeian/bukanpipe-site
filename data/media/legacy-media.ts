@@ -5,11 +5,20 @@ import type {
   MediaCategory,
   MediaFormat,
   MediaGrade,
+  PublicMediaAccess,
   WebsiteRole,
   AuthenticityStatus,
 } from "@/data/media/types";
 
 const WP = "https://bukanpipe.com/wp-content/uploads";
+const WP_IR = "https://bukanpipe.ir/wp-content/uploads";
+
+export const PUBLIC_MEDIA_SOURCES = {
+  primary: "https://bukanpipe.com",
+  secondary: "https://bukanpipe.ir",
+  restEndpoint: "https://bukanpipe.com/wp-json/wp/v2/media",
+  factoryNetworkUsed: false,
+} as const;
 
 function gcd(a: number, b: number): number {
   return b === 0 ? a : gcd(b, a % b);
@@ -41,6 +50,7 @@ type Draft = {
   alt?: string;
   proposed?: string | null;
   notes: string;
+  publicAccess?: PublicMediaAccess;
 };
 
 function entry(draft: Draft): LegacyMediaRecord {
@@ -66,11 +76,25 @@ function entry(draft: Draft): LegacyMediaRecord {
     legacyAlt: draft.alt ?? "",
     proposedFilename: draft.proposed ?? null,
     notes: draft.notes,
+    publicAccess: draft.publicAccess,
+  };
+}
+
+const PUBLIC_FETCH_TIMEOUT =
+  "Public origin fetch timed out from audit environment. UI uses the primary bukanpipe.com WordPress URL via next/image (unoptimized).";
+
+function publicUploadAccess(path: string): PublicMediaAccess {
+  return {
+    primaryUrl: `${WP}/${path}`,
+    secondaryUrl: `${WP_IR}/${path}`,
+    fetchStatus: "timeout",
+    failureReason: PUBLIC_FETCH_TIMEOUT,
+    lastChecked: "2026-09-03",
   };
 }
 
 const sampled =
-  "Dimensions from WordPress REST media_details on 2026-09-03. Origin binary download timed out from this environment; sharpness judged only from resolution metadata, not a local pixel inspection.";
+  "Dimensions from public WordPress REST media_details on bukanpipe.com (2026-09-03). Public /wp-content/uploads binary fetch timed out from audit environment; sharpness graded from resolution metadata + alt/page evidence only. No factory network access assumed.";
 const unsampled =
   "List endpoint omitted nested media_details. Later individual REST fetches timed out. Width/height unknown until a stable library export.";
 const noHero =
@@ -113,6 +137,7 @@ const factoryAndProduct: LegacyMediaRecord[] = [
     crop: "WIDE_EDITORIAL",
     alt: "بارکردن شاخه لوله",
     proposed: "bukan-pipe-loading-straight-pipe.jpg",
+    publicAccess: publicUploadAccess("2023/06/lifting-pipe.jpg"),
     notes: `${sampled} 1200×540 / ~213KB. Strongest logistics candidate. Supporting editorial only. ${noHero}`,
   }),
   entry({
@@ -130,6 +155,7 @@ const factoryAndProduct: LegacyMediaRecord[] = [
     crop: "PORTRAIT_COLUMN",
     alt: "سالن تولید",
     proposed: "bukan-pipe-production-hall.jpg",
+    publicAccess: publicUploadAccess("2022/10/f5.jpg"),
     notes: `${sampled} Portrait 553×800. Small or column display only. Center-cropping the short axis would lose hall context. ${noHero}`,
   }),
   entry({
@@ -211,6 +237,7 @@ const factoryAndProduct: LegacyMediaRecord[] = [
     crop: "SMALL_DISPLAY_ONLY",
     alt: "لوله گازرسانی",
     proposed: "bukan-pipe-gas-pipe.jpg",
+    publicAccess: publicUploadAccess("2022/10/gas5.jpg"),
     notes: `${sampled} 789×327. Usable as a small product still. ${noHero}`,
   }),
   entry({
@@ -318,6 +345,7 @@ const laboratory: LegacyMediaRecord[] = [
     crop: "SMALL_DISPLAY_ONLY",
     alt: "آزمایشگاه",
     proposed: "bukan-pipe-laboratory.jpg",
+    publicAccess: publicUploadAccess("2022/10/QC-01.jpg"),
     notes: `${sampled} Full size 500×305. Archive / small display. ${noHero}`,
   }),
   entry({

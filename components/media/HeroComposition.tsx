@@ -1,10 +1,10 @@
 import { displayMediaIds } from "@/data/media/legacy-media";
+import { visualBindings } from "@/data/media/visual-bindings";
 import { cn } from "@/lib/cn";
+import { FillVisualAsset } from "@/components/media/VisualAsset";
 import { FillEditorialImage } from "@/components/media/EditorialImage";
-import { IndustrialSignature } from "@/components/media/IndustrialSignature";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
-import { Eyebrow, RichHeading } from "@/components/layout/Section";
 import { routes } from "@/lib/config/routes";
 import { siteConfig } from "@/lib/config/site";
 
@@ -20,63 +20,141 @@ export function HeroComposition({
   actions?: boolean;
 }) {
   return (
-    <div className="relative isolate overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-        <IndustrialSignature className="h-full w-full opacity-90" />
+    <section className="hero-premium">
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <FillVisualAsset
+          id={visualBindings.homepage.hero}
+          showNotice={false}
+          className="scale-105 object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-l from-cinematic/92 via-cinematic/72 to-cinematic/35" />
+        <div className="hero-premium-glow" />
       </div>
-      <Container className="relative pt-16 pb-8 sm:pt-24 sm:pb-12">
-        <Eyebrow>{kicker ?? "سکوی دیجیتال صنعتی"}</Eyebrow>
-        <RichHeading className="mt-5 max-w-4xl">
+
+      <Container className="relative flex min-h-[inherit] flex-col justify-center py-20 sm:py-28 lg:py-32">
+        <p className="eyebrow-light">{kicker ?? "Premium Industrial Platform"}</p>
+        <h1 className="display-hero mt-6 max-w-4xl text-4xl text-cinematic-ink sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
           {title ?? (
             <>
-              <span dir="ltr">{siteConfig.brandName}</span>
-              <span className="mx-3 text-bronze" aria-hidden="true">
-                /
+              <span className="block">{siteConfig.brandNameFa}</span>
+              <span
+                className="mt-2 block text-2xl font-semibold text-gradient-brand sm:text-3xl lg:text-4xl"
+                dir="ltr"
+              >
+                {siteConfig.brandName}
               </span>
-              {siteConfig.brandNameFa}
             </>
           )}
-        </RichHeading>
+        </h1>
         {children}
         {actions ? (
-          <div className="mt-10 flex flex-wrap gap-3">
-            <ButtonLink href={routes.products.path} size="lg">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <ButtonLink href={routes.products.path} size="lg" variant="onDark">
               کشف محصولات
             </ButtonLink>
             <ButtonLink
               href={routes.requestQuote.path}
               variant="secondary"
               size="lg"
+              className="border-white/15 bg-white/10 text-cinematic-ink ring-white/20 hover:bg-white/15"
             >
               درخواست پیش‌فاکتور
             </ButtonLink>
           </div>
         ) : null}
       </Container>
+    </section>
+  );
+}
+
+const galleryTiles = [
+  {
+    id: visualBindings.homepage.filmstrip[0],
+    label: "هندسهٔ لوله",
+    span: "md:col-span-7 md:row-span-2",
+    aspect: "aspect-[16/10] md:aspect-auto md:min-h-[22rem]",
+  },
+  {
+    id: visualBindings.homepage.filmstrip[1],
+    label: "فرآیند صنعتی",
+    span: "md:col-span-5",
+    aspect: "aspect-[4/5] md:aspect-[3/4]",
+  },
+  {
+    id: visualBindings.homepage.filmstrip[2],
+    label: "کنترل کیفیت",
+    span: "md:col-span-5",
+    aspect: "aspect-square md:aspect-[5/4]",
+  },
+  {
+    id: visualBindings.homepage.filmstrip[3],
+    label: "زیرساخت",
+    span: "md:col-span-12 lg:col-span-12",
+    aspect: "aspect-[21/9]",
+  },
+] as const;
+
+export function PremiumMediaGallery({ className }: { className?: string }) {
+  return (
+    <div className={cn("grid gap-4 md:grid-cols-12", className)}>
+      {galleryTiles.map((tile, index) => (
+        <figure
+          key={tile.id}
+          className={cn("bento-tile group light-edge", tile.span)}
+        >
+          <div className={cn("relative overflow-hidden", tile.aspect)}>
+            <FillVisualAsset
+              id={tile.id}
+              showNotice={false}
+              noticeSubtle
+              sizes={
+                index === 0
+                  ? "(min-width: 1024px) 720px, 100vw"
+                  : "(min-width: 768px) 42vw, 90vw"
+              }
+              className="transition duration-700 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-cinematic/75 via-cinematic/10 to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+              <span className="text-sm font-semibold text-cinematic-ink sm:text-base">
+                {tile.label}
+              </span>
+            </figcaption>
+          </div>
+        </figure>
+      ))}
     </div>
   );
 }
 
+/** @deprecated Use PremiumMediaGallery on public pages. */
+export function DemoVisualFilmstrip({ className }: { className?: string }) {
+  return <PremiumMediaGallery className={className} />;
+}
+
+/** Legacy WordPress stills — reference only. */
 export function AuthenticFilmstrip({ className }: { className?: string }) {
   const frames = [
     {
       id: displayMediaIds.loadingStraightPipe,
-      caption: "بارکردن شاخه لوله — تصویر میراثی، نمایش کوچک/متوسط",
+      caption: "بارکردن شاخه لوله — archive",
       frame: "aspect-[12/5]",
     },
     {
       id: displayMediaIds.productionHall,
-      caption: "سالن تولید — پرتره میراثی، نه هیرو",
+      caption: "سالن تولید — archive",
       frame: "aspect-[2/3]",
     },
     {
       id: displayMediaIds.laboratory,
-      caption: "آزمایشگاه — ۵۰۰×۳۰۵، فقط نمایش کوچک",
+      caption: "آزمایشگاه — archive",
       frame: "aspect-[500/305]",
     },
     {
       id: displayMediaIds.gasPipe,
-      caption: "لوله گازرسانی — نمایش کوچک محصول",
+      caption: "لوله گازرسانی — archive",
       frame: "aspect-[789/327]",
     },
   ] as const;
@@ -114,12 +192,14 @@ export function AuthenticFilmstrip({ className }: { className?: string }) {
 }
 
 export function AsymmetricMediaSplit({
+  visualAssetId,
   imageId,
   eyebrow,
   title,
   children,
 }: {
-  imageId: string;
+  visualAssetId?: string;
+  imageId?: string;
   eyebrow: string;
   title: string;
   children: React.ReactNode;
@@ -127,10 +207,17 @@ export function AsymmetricMediaSplit({
   return (
     <div className="grid items-stretch gap-0 overflow-hidden rounded-[1.75rem] ring-1 ring-line lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
       <div className="relative min-h-64 bg-cinematic lg:min-h-[28rem]">
-        <FillEditorialImage
-          id={imageId}
-          sizes="(min-width: 1024px) 42vw, 100vw"
-        />
+        {visualAssetId ? (
+          <FillVisualAsset
+            id={visualAssetId}
+            sizes="(min-width: 1024px) 42vw, 100vw"
+          />
+        ) : imageId ? (
+          <FillEditorialImage
+            id={imageId}
+            sizes="(min-width: 1024px) 42vw, 100vw"
+          />
+        ) : null}
         <div
           className="pointer-events-none absolute inset-0 bg-linear-to-l from-cinematic/10 to-cinematic/40"
           aria-hidden="true"
@@ -148,21 +235,30 @@ export function AsymmetricMediaSplit({
 }
 
 export function OverlayEditorial({
+  visualAssetId,
   imageId,
   title,
   children,
 }: {
-  imageId: string;
+  visualAssetId?: string;
+  imageId?: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
     <figure className="relative overflow-hidden rounded-[1.75rem] ring-1 ring-line">
       <div className="relative aspect-[5/4] sm:aspect-[16/9]">
-        <FillEditorialImage
-          id={imageId}
-          sizes="(min-width: 1024px) 72vw, 100vw"
-        />
+        {visualAssetId ? (
+          <FillVisualAsset
+            id={visualAssetId}
+            sizes="(min-width: 1024px) 72vw, 100vw"
+          />
+        ) : imageId ? (
+          <FillEditorialImage
+            id={imageId}
+            sizes="(min-width: 1024px) 72vw, 100vw"
+          />
+        ) : null}
         <div
           className="absolute inset-0 bg-linear-to-t from-cinematic/85 via-cinematic/25 to-transparent"
           aria-hidden="true"
@@ -181,27 +277,37 @@ export function OverlayEditorial({
 }
 
 export function ArtDirectedPortrait({
+  visualAssetId,
   id,
   caption,
 }: {
-  id: string;
+  visualAssetId?: string;
+  id?: string;
   caption: string;
 }) {
+  const Fill = visualAssetId
+    ? (props: { sizes: string; className?: string }) => (
+        <FillVisualAsset id={visualAssetId} {...props} />
+      )
+    : id
+      ? (props: { sizes: string; className?: string }) => (
+          <FillEditorialImage id={id} {...props} />
+        )
+      : null;
+
   return (
     <figure>
       <div className="grid gap-3 md:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
         <div className="relative aspect-[2/3] overflow-hidden rounded-2xl ring-1 ring-line md:block">
-          <FillEditorialImage
-            id={id}
-            sizes="(min-width: 768px) 28vw, 70vw"
-          />
+          {Fill ? <Fill sizes="(min-width: 768px) 28vw, 70vw" /> : null}
         </div>
         <div className="relative hidden aspect-[16/9] overflow-hidden rounded-2xl ring-1 ring-line md:block">
-          <FillEditorialImage
-            id={id}
-            className="object-[center_28%]"
-            sizes="(min-width: 768px) 55vw, 100vw"
-          />
+          {Fill ? (
+            <Fill
+              className="object-[center_28%]"
+              sizes="(min-width: 768px) 55vw, 100vw"
+            />
+          ) : null}
         </div>
       </div>
       <figcaption className="mt-3 text-sm leading-7 text-muted">

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   HERO_IMAGE_POLICY,
+  PUBLIC_MEDIA_SOURCES,
   descriptiveAlt,
   displayMediaIds,
   displayableStill,
@@ -43,9 +44,17 @@ describe("legacy media inventory", () => {
       expect(record?.height).toBeGreaterThan(0);
       expect(record?.visualQuality).not.toBe("REJECT");
       expect(record?.visualQuality).not.toBe("A");
+      expect(record?.sourceUrl).toMatch(/^https:\/\/bukanpipe\.com\/wp-content\/uploads\//);
+      expect(record?.publicAccess?.primaryUrl).toBe(record?.sourceUrl);
+      expect(record?.publicAccess?.fetchStatus).toBeDefined();
       expect(descriptiveAlt(record!)).not.toMatch(/قیمت/);
       expect(descriptiveAlt(record!).length).toBeGreaterThan(8);
     }
+  });
+
+  it("documents public-only sources with no factory network", () => {
+    expect(PUBLIC_MEDIA_SOURCES.factoryNetworkUsed).toBe(false);
+    expect(PUBLIC_MEDIA_SOURCES.primary).toBe("https://bukanpipe.com");
   });
 
   it("does not invent a public filename for the unconfirmed klaf still", () => {

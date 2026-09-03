@@ -16,7 +16,7 @@ describe("structured data builders", () => {
     expect(schema.logo).toBeUndefined();
     expect(schema.sameAs).toBeUndefined();
     expect(schema.foundingDate).toBeUndefined();
-    expect(schema.alternateName).toBe("بوکان پایپ");
+    expect(schema.alternateName).toBe("Bukan Pipe");
     expect(Object.keys(schema).sort()).toEqual(
       ["@context", "@type", "alternateName", "name", "url"].sort(),
     );
@@ -26,7 +26,7 @@ describe("structured data builders", () => {
     const schema = webSiteSchema();
 
     expect(schema["@type"]).toBe("WebSite");
-    expect(schema.inLanguage).toBe("fa");
+    expect(schema.inLanguage).toBe("en");
     expect(schema.potentialAction).toBeUndefined();
   });
 

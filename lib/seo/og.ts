@@ -1,13 +1,15 @@
 import type { OgCompositionSpec } from "@/data/media/types";
 import { displayMediaIds } from "@/data/media/legacy-media";
+import { visualBindings } from "@/data/media/visual-bindings";
 
 /**
  * Social image compositions are specified, not rendered as PNG/JPEG yet.
- * Do not emit a fake photograph as an Open Graph image.
+ * Design-development previews use temporary visuals (Phase 004C).
  */
 export const ogCompositions: readonly OgCompositionSpec[] = [
   {
     kind: "homepage",
+    temporaryVisualId: visualBindings.homepage.hero,
     authenticImageId: null,
     identity: "Bukan Pipe / بوکان پایپ",
     titleSource: "page-title",
@@ -16,6 +18,7 @@ export const ogCompositions: readonly OgCompositionSpec[] = [
   },
   {
     kind: "product-family",
+    temporaryVisualId: visualBindings.ogPreview.productFamily,
     authenticImageId: displayMediaIds.gasPipe,
     identity: "Bukan Pipe / بوکان پایپ",
     titleSource: "page-title",
@@ -24,6 +27,7 @@ export const ogCompositions: readonly OgCompositionSpec[] = [
   },
   {
     kind: "application",
+    temporaryVisualId: null,
     authenticImageId: null,
     identity: "Bukan Pipe / بوکان پایپ",
     titleSource: "page-title",
@@ -32,6 +36,7 @@ export const ogCompositions: readonly OgCompositionSpec[] = [
   },
   {
     kind: "laboratory",
+    temporaryVisualId: visualBindings.ogPreview.laboratory,
     authenticImageId: displayMediaIds.laboratory,
     identity: "Bukan Pipe / بوکان پایپ",
     titleSource: "page-title",
@@ -40,6 +45,7 @@ export const ogCompositions: readonly OgCompositionSpec[] = [
   },
   {
     kind: "engineering-article",
+    temporaryVisualId: null,
     authenticImageId: null,
     identity: "Bukan Pipe / بوکان پایپ",
     titleSource: "page-title",
@@ -48,6 +54,7 @@ export const ogCompositions: readonly OgCompositionSpec[] = [
   },
   {
     kind: "project-case-study",
+    temporaryVisualId: visualBindings.ogPreview.projectCaseStudy,
     authenticImageId: displayMediaIds.loadingStraightPipe,
     identity: "Bukan Pipe / بوکان پایپ",
     titleSource: "page-title",

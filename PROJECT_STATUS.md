@@ -2,7 +2,7 @@
 
 **Project:** Bukan Pipe Digital Transformation  
 **Start:** 2026-09-01  
-**Current phase:** Authentic premium image system (post–Phase 004) — inventory, art direction, visual signature, design-system integration complete; awaiting Project Lead review  
+**Current phase:** Phase 004C temporary visual asset system — premium demo visuals for design approval; legacy inventory retained for migration  
 **Production migration:** Not started — **NOT READY** until Search Console review, backlink review, and domain/hosting control  
 **Legacy site:** Remains live until launch. This repository does not modify it.  
 **Production target domain:** `https://bukanpipe.com`  
@@ -51,11 +51,13 @@ Design direction selected and implemented on existing shells. Internal showcase 
 
 ## Authentic image system (post–004)
 
-Legacy WordPress media audited. No A-grade hero photograph. Homepage/design-system use the pipe visual signature plus small authentic B/C stills. Stock photography was not used.
+Legacy WordPress media audited. No A-grade hero photograph. Design-development UI uses Phase 004C temporary visuals; homepage hero remains the pipe visual signature.
 
 - `data/media/legacy-media.ts`
+- `data/media/temporary-assets.ts`
 - `docs/IMAGE_ART_DIRECTION.md`
-- Remote hosting bridge documented in `docs/LEGACY_MEDIA_MIGRATION.md` (`npm run media:fetch`, `lib/media/resolve.ts`).
+- `docs/TEMPORARY_ASSET_POLICY.md`
+- Public-only crawl documented in `docs/LEGACY_MEDIA_MIGRATION.md` (`npm run media:crawl`).
 
 ## Open dependencies
 
@@ -69,9 +71,9 @@ Legacy WordPress media audited. No A-grade hero photograph. Homepage/design-syst
 - Confirm current sales/lab contact channels (do not copy legacy numbers yet).
 - Licensed brand fonts (replace Vazirmatn when files exist).
 - Professional factory photography (no A-grade hero still exists; see `docs/PHOTOGRAPHY_GAP_REPORT.md`).
-- Run `npm run media:fetch` on a network that can reach bukanpipe.com/.ir to populate `public/media/` (script ready; automated fetch timed out from this dev environment).
+- Re-run `npm run media:crawl` when public `bukanpipe.com` / `.ir` endpoints are reachable to refresh `public-crawl-log.json` and optional `public/media/` copies.
 - GitHub remote if the repository should leave local-only status.
 
 ## Hard stop
 
-Do not start final Homepage production, Product pages, or Laboratory pages until Phase 004 is explicitly approved.
+Do not start final Homepage production, Product pages, or Laboratory pages until the authentic image system and Phase 004 design direction are explicitly approved by Project Lead.

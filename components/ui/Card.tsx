@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { Badge } from "@/components/ui/Badge";
+import { FillVisualAsset } from "@/components/media/VisualAsset";
 import { FillEditorialImage } from "@/components/media/EditorialImage";
 import { demoCopy } from "@/lib/design/copy";
 
@@ -20,7 +21,10 @@ type CardProps = {
   children: React.ReactNode;
   meta?: string;
   className?: string;
+  visualAssetId?: string;
   mediaId?: string;
+  premium?: boolean;
+  showDemoBadge?: boolean;
 };
 
 const kindAccent: Record<CardKind, string> = {
@@ -38,45 +42,79 @@ function CardBody({
   title,
   children,
   meta,
+  visualAssetId,
   mediaId,
+  premium = false,
+  showDemoBadge = false,
 }: Omit<CardProps, "href" | "className">) {
+  const hasMedia = Boolean(visualAssetId || mediaId);
+
   return (
     <>
-      {mediaId ? (
+      {hasMedia ? (
         <div
           className={cn(
-            "relative mb-5 overflow-hidden bg-canvas-elevated",
-            kind === "product" && "aspect-[5/3] rounded-[2rem_0.7rem_2rem_0.7rem]",
-            kind === "lab" && "aspect-square rounded-full",
-            kind === "application" && "aspect-[4/3] rounded-2xl",
-            kind === "project" && "aspect-[16/9] rounded-xl",
-            kind === "article" && "aspect-[16/10] rounded-2xl",
-            kind === "feature" && "aspect-[16/10] rounded-2xl",
+            "relative overflow-hidden bg-cinematic",
+            premium ? "aspect-[16/11]" : "mb-5",
+            !premium && kind === "product" && "aspect-[5/3] rounded-[2rem_0.7rem_2rem_0.7rem]",
+            !premium && kind === "lab" && "aspect-square rounded-full",
+            !premium && kind === "application" && "aspect-[4/3] rounded-2xl",
+            !premium && kind === "project" && "aspect-[16/9] rounded-xl",
+            !premium && kind === "article" && "aspect-[16/10] rounded-2xl",
+            !premium && kind === "feature" && "aspect-[16/10] rounded-2xl",
           )}
         >
-          <FillEditorialImage
-            id={mediaId}
-            sizes="(min-width: 1024px) 320px, 90vw"
-          />
+          {visualAssetId ? (
+            <FillVisualAsset
+              id={visualAssetId}
+              sizes="(min-width: 1024px) 320px, 90vw"
+              showNotice={showDemoBadge}
+              noticeSubtle={!showDemoBadge}
+            />
+          ) : (
+            <FillEditorialImage
+              id={mediaId!}
+              sizes="(min-width: 1024px) 320px, 90vw"
+            />
+          )}
+          {premium ? (
+            <div className="absolute inset-0 bg-linear-to-t from-cinematic/90 via-cinematic/15 to-transparent" />
+          ) : null}
         </div>
       ) : (
         <div
           className={cn(
-            "mb-5 h-24 rounded-xl bg-linear-to-br to-canvas-elevated",
+            "rounded-xl bg-linear-to-br to-canvas-elevated",
             kindAccent[kind],
+            premium ? "mx-5 mt-5 mb-0 h-20" : "mb-5 h-24",
           )}
           aria-hidden="true"
         />
       )}
-      <div className="flex flex-wrap items-center gap-2">
-        {eyebrow ? <Badge tone="accent">{eyebrow}</Badge> : null}
-        <Badge tone="demo">{demoCopy.demo}</Badge>
+      <div className={cn(premium && "pro-card-inner flex flex-1 flex-col p-5 sm:p-6")}>
+        <div className="flex flex-wrap items-center gap-2">
+          {eyebrow ? <Badge tone="accent">{eyebrow}</Badge> : null}
+          {showDemoBadge ? <Badge tone="demo">{demoCopy.demo}</Badge> : null}
+        </div>
+        <h3
+          className={cn(
+            "display-title mt-2 text-xl text-ink sm:text-2xl",
+            !premium && "mt-3 text-xl font-semibold tracking-tight",
+          )}
+        >
+          {title}
+        </h3>
+        <p className="mt-2 text-sm leading-7 text-muted">{children}</p>
+        <div className="mt-4 flex items-center justify-between gap-3">
+          {meta ? <p className="text-xs font-semibold text-accent">{meta}</p> : <span />}
+          {premium ? (
+            <span className="card-arrow">
+              View
+              <span aria-hidden="true">←</span>
+            </span>
+          ) : null}
+        </div>
       </div>
-      <h3 className="mt-3 text-xl font-semibold tracking-tight">{title}</h3>
-      <p className="mt-2 text-sm leading-7 text-muted">{children}</p>
-      {meta ? (
-        <p className="mt-4 text-xs font-semibold text-accent">{meta}</p>
-      ) : null}
     </>
   );
 }
@@ -85,25 +123,27 @@ export function Card({
   kind = "feature",
   href,
   className,
+  premium = false,
   ...content
 }: CardProps) {
   const classes = cn(
-    "surface-paper light-edge group flex h-full flex-col rounded-2xl p-5 transition duration-200",
-    "hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]",
+    premium
+      ? "pro-card group flex h-full flex-col overflow-hidden"
+      : "surface-paper light-edge group flex h-full flex-col rounded-2xl p-5 transition duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]",
     className,
   );
 
   if (href) {
     return (
       <Link href={href} className={classes}>
-        <CardBody kind={kind} {...content} />
+        <CardBody kind={kind} premium={premium} {...content} />
       </Link>
     );
   }
 
   return (
     <article className={classes}>
-      <CardBody kind={kind} {...content} />
+      <CardBody kind={kind} premium={premium} {...content} />
     </article>
   );
 }

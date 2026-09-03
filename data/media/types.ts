@@ -65,6 +65,24 @@ export const mediaFormats = [
 ] as const;
 export type MediaFormat = (typeof mediaFormats)[number];
 
+export const publicFetchStatuses = [
+  "not_attempted",
+  "accessible",
+  "timeout",
+  "http_error",
+  "blocked",
+] as const;
+export type PublicFetchStatus = (typeof publicFetchStatuses)[number];
+
+/** Public website access audit — no factory or private network assumptions. */
+export type PublicMediaAccess = {
+  primaryUrl: string;
+  secondaryUrl: string;
+  fetchStatus: PublicFetchStatus;
+  failureReason: string | null;
+  lastChecked: string;
+};
+
 export type LegacyMediaRecord = {
   id: string;
   wpId: number;
@@ -85,6 +103,7 @@ export type LegacyMediaRecord = {
   legacyAlt: string;
   proposedFilename: string | null;
   notes: string;
+  publicAccess?: PublicMediaAccess;
 };
 
 export type OgCompositionKind =
@@ -97,6 +116,9 @@ export type OgCompositionKind =
 
 export type OgCompositionSpec = {
   kind: OgCompositionKind;
+  /** Temporary demo visual for design approval (Phase 004C). */
+  temporaryVisualId: string | null;
+  /** Legacy or future official authentic still target at launch. */
   authenticImageId: string | null;
   identity: "Bukan Pipe / بوکان پایپ";
   titleSource: "page-title";

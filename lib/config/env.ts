@@ -1,7 +1,9 @@
 function readSiteUrl(): string {
-  const fallback = "http://localhost:3000";
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || fallback;
-  const normalized = raw.replace(/\/$/, "");
+  const fromPublic = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  const fromVercel = process.env.VERCEL_URL?.trim();
+  const fallback =
+    fromPublic || (fromVercel ? `https://${fromVercel}` : "http://localhost:3000");
+  const normalized = fallback.replace(/\/$/, "");
 
   try {
     const parsed = new URL(normalized);

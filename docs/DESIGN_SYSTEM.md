@@ -115,7 +115,7 @@ One family, several intents (product, application, lab, project, article, featur
 
 **Media:** IndustrialSignature, EditorialImage, HeroComposition, AuthenticFilmstrip, AsymmetricMediaSplit, OverlayEditorial, ArtDirectedPortrait, OgCompositionPreview  
 
-**Deferred:** licensed typefaces, A-grade factory photography, local `/media` migration, real product/lab data, mobile mega-menu, icon set, dark full theme (not planned).
+**Deferred:** licensed typefaces, A-grade factory photography, launch `/media` re-hosting (after public crawl), real product/lab data, mobile mega-menu, icon set, dark full theme (not planned).
 
 ---
 

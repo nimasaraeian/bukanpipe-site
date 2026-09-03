@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { descriptiveAlt, displayableStill } from "@/data/media/legacy-media";
 import { cn } from "@/lib/cn";
-import { resolveMediaSrc } from "@/lib/media/resolve";
-import { objectPositionFor, sizesForRole } from "@/lib/media/sizes";
+import { isRemoteLegacyUrl, objectPositionFor, sizesForRole } from "@/lib/media/sizes";
 
 type EditorialImageProps = {
   id: string;
@@ -32,7 +31,7 @@ export function EditorialImage({
 
   const alt = decorative ? "" : descriptiveAlt(record);
   const imageSizes = sizes ?? sizesForRole(record);
-  const { src, unoptimized } = resolveMediaSrc(record);
+  const unoptimized = isRemoteLegacyUrl(record.sourceUrl);
 
   return (
     <figure className={cn("min-w-0", className)}>
@@ -46,7 +45,7 @@ export function EditorialImage({
         )}
       >
         <Image
-          src={src}
+          src={record.sourceUrl}
           alt={alt}
           width={record.width}
           height={record.height}
@@ -89,11 +88,11 @@ export function FillEditorialImage({
     return null;
   }
 
-  const { src, unoptimized } = resolveMediaSrc(record);
+  const unoptimized = isRemoteLegacyUrl(record.sourceUrl);
 
   return (
     <Image
-      src={src}
+      src={record.sourceUrl}
       alt={decorative ? "" : descriptiveAlt(record)}
       fill
       sizes={sizes ?? sizesForRole(record)}

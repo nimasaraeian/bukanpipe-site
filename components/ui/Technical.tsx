@@ -11,8 +11,8 @@ export function SpecTable({
         <caption className="sr-only">{caption}</caption>
         <thead className="bg-canvas-elevated text-start">
           <tr>
-            <th className="px-4 py-3 font-semibold">ویژگی</th>
-            <th className="px-4 py-3 font-semibold">مقدار نمایشی</th>
+            <th className="px-4 py-3 font-semibold">Property</th>
+            <th className="px-4 py-3 font-semibold">Demo value</th>
           </tr>
         </thead>
         <tbody>

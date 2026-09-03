@@ -1,0 +1,98 @@
+{
+  "auditedAt": "2026-09-03T00:00:00.000Z",
+  "policy": "public-websites-only",
+  "factoryNetworkUsed": false,
+  "primaryHost": "https://bukanpipe.com",
+  "secondaryHost": "https://bukanpipe.ir",
+  "restCrawl": {
+    "host": null,
+    "status": "failed",
+    "note": "Initial audit used manual REST pagination (124 items in legacy-media.ts). Automated REST crawl timed out from audit environment on 2026-09-03.",
+    "primaryFailure": "The operation was aborted due to timeout",
+    "secondaryFailure": "The operation was aborted due to timeout"
+  },
+  "libraryItems": [],
+  "displayDownloads": [
+    {
+      "wpId": 1579,
+      "proposed": "bukan-pipe-loading-straight-pipe.jpg",
+      "uploadPath": "2023/06/lifting-pipe.jpg",
+      "status": "failed",
+      "attempts": [
+        {
+          "url": "https://bukanpipe.com/wp-content/uploads/2023/06/lifting-pipe.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        },
+        {
+          "url": "https://bukanpipe.ir/wp-content/uploads/2023/06/lifting-pipe.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "localPath": null,
+      "failureReason": "https://bukanpipe.com/wp-content/uploads/2023/06/lifting-pipe.jpg: The operation was aborted due to timeout; https://bukanpipe.ir/wp-content/uploads/2023/06/lifting-pipe.jpg: The operation was aborted due to timeout"
+    },
+    {
+      "wpId": 748,
+      "proposed": "bukan-pipe-production-hall.jpg",
+      "uploadPath": "2022/10/f5.jpg",
+      "status": "failed",
+      "attempts": [
+        {
+          "url": "https://bukanpipe.com/wp-content/uploads/2022/10/f5.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        },
+        {
+          "url": "https://bukanpipe.ir/wp-content/uploads/2022/10/f5.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "localPath": null,
+      "failureReason": "https://bukanpipe.com/wp-content/uploads/2022/10/f5.jpg: The operation was aborted due to timeout; https://bukanpipe.ir/wp-content/uploads/2022/10/f5.jpg: The operation was aborted due to timeout"
+    },
+    {
+      "wpId": 902,
+      "proposed": "bukan-pipe-laboratory.jpg",
+      "uploadPath": "2022/10/QC-01.jpg",
+      "status": "failed",
+      "attempts": [
+        {
+          "url": "https://bukanpipe.com/wp-content/uploads/2022/10/QC-01.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        },
+        {
+          "url": "https://bukanpipe.ir/wp-content/uploads/2022/10/QC-01.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "localPath": null,
+      "failureReason": "https://bukanpipe.com/wp-content/uploads/2022/10/QC-01.jpg: The operation was aborted due to timeout; https://bukanpipe.ir/wp-content/uploads/2022/10/QC-01.jpg: The operation was aborted due to timeout"
+    },
+    {
+      "wpId": 858,
+      "proposed": "bukan-pipe-gas-pipe.jpg",
+      "uploadPath": "2022/10/gas5.jpg",
+      "status": "failed",
+      "attempts": [
+        {
+          "url": "https://bukanpipe.com/wp-content/uploads/2022/10/gas5.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        },
+        {
+          "url": "https://bukanpipe.ir/wp-content/uploads/2022/10/gas5.jpg",
+          "status": "failed",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "localPath": null,
+      "failureReason": "https://bukanpipe.com/wp-content/uploads/2022/10/gas5.jpg: The operation was aborted due to timeout; https://bukanpipe.ir/wp-content/uploads/2022/10/gas5.jpg: The operation was aborted due to timeout"
+    }
+  ],
+  "errors": []
+}

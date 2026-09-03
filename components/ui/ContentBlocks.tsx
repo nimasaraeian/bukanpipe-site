@@ -1,5 +1,6 @@
 import { cn } from "@/lib/cn";
 import { demoCopy } from "@/lib/design/copy";
+import { FillVisualAsset } from "@/components/media/VisualAsset";
 import { FillEditorialImage } from "@/components/media/EditorialImage";
 
 export function StatBlock({
@@ -78,10 +79,12 @@ export function Callout({
 export function MediaFrame({
   caption,
   children,
+  visualAssetId,
   mediaId,
 }: {
   caption?: string;
   children?: React.ReactNode;
+  visualAssetId?: string;
   mediaId?: string;
 }) {
   return (
@@ -89,9 +92,14 @@ export function MediaFrame({
       <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-accent/25 via-canvas-elevated to-bronze/20 ring-1 ring-line">
         <div
           className="relative aspect-[16/10] min-h-40"
-          aria-hidden={children || mediaId ? undefined : true}
+          aria-hidden={children || visualAssetId || mediaId ? undefined : true}
         >
-          {mediaId ? (
+          {visualAssetId ? (
+            <FillVisualAsset
+              id={visualAssetId}
+              sizes="(min-width: 768px) 520px, 100vw"
+            />
+          ) : mediaId ? (
             <FillEditorialImage
               id={mediaId}
               sizes="(min-width: 768px) 520px, 100vw"
