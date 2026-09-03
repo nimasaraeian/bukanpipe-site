@@ -33,5 +33,5 @@ Inventory in `data/migration/legacy-urls.ts`. `ENABLE_LEGACY_REDIRECTS` stays fa
 ## 2026-09-03 — Tool vs engineering content ownership
 Calculators and educational guides must not duplicate primary content.
 
-## 2026-09-03 — PE100 not committed
-No legacy PE100 URL; commercial page remains research-gated.
+## 2026-09-03 — Luminous Precision
+Light industrial editorial UI. Vazirmatn (OFL) via next/font until licensed files exist. `/design-system` is internal.

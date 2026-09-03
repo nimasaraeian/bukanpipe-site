@@ -34,8 +34,10 @@ These choices follow `docs/13-technical-architecture.md` and `docs/18-decision-l
 
 ```text
 app/                 routes, layout, robots, sitemap
-components/layout/   document shell, landmarks, development navigation
-components/ui/       shared presentational pieces
+components/layout/   shell, header, footer, section primitives
+components/ui/       buttons, cards, forms, technical blocks
+lib/design/          demo copy helpers
+lib/fonts.ts         Vazirmatn (OFL) via next/font; local brand files later
 components/seo/      JSON-LD rendering
 content/models/      typed content models
 data/                local collections (empty until verified)

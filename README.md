@@ -33,9 +33,9 @@ Persian working line: **زیرساختی برای جریان فردا**
 
 ## Current codebase
 
-Phase 003 (legacy URL migration) is documented. Path redirects are prepared and **disabled**. Route foundations remain development shells. This is not the commercial website.
+Phase 004 implements the **Luminous Precision** design system on development shells. `/design-system` is an internal showcase (noindex). This is not the commercial website.
 
-Production target: `https://bukanpipe.com`. Local/preview origin is `NEXT_PUBLIC_SITE_URL`. Indexing stays off until launch approval. `ENABLE_LEGACY_REDIRECTS` stays false.
+Production target: `https://bukanpipe.com`. Indexing stays off. `ENABLE_LEGACY_REDIRECTS` stays false.
 
 See `docs/HOST_CANONICAL_POLICY.md`, `docs/LEGACY_REDIRECT_MAP.md`, `docs/SEO_INFORMATION_ARCHITECTURE.md`, `docs/ARCHITECTURE.md` and `docs/TECHNICAL_DECISIONS.md`.
 

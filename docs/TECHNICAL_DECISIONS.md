@@ -89,9 +89,24 @@ Canonical URLs omit trailing slashes except for the origin root. `trailingSlash:
 ## ADR-013 — System font stack until licensed files are approved
 
 **Date:** 2026-09-03  
+**Status:** Superseded in part by ADR-026
+
+Do not download random Persian fonts or commit commercial font binaries. `lib/fonts.ts` remains the install point for `next/font/local` after licensing approval.
+
+## ADR-026 — Vazirmatn via next/font until brand files exist
+
+**Date:** 2026-09-03  
+**Status:** Accepted  
+**Related:** ADR-013
+
+Phase 004 loads **Vazirmatn** (SIL OFL) with `next/font/google`. Next.js self-hosts the files at build; nothing is committed to git. This is a typography quality decision for Persian/Latin UI, not a substitute for licensed brand type. When licensed files arrive, swap in `next/font/local` in `lib/fonts.ts`.
+
+## ADR-027 — Luminous Precision design language
+
+**Date:** 2026-09-03  
 **Status:** Accepted
 
-Do not download random Persian fonts or commit commercial font binaries. `lib/fonts.ts` is the install point for `next/font/local` after licensing approval.
+The UI is a light industrial editorial system: warm canvas, graphite ink, one Caspian teal accent, bronze as a drafting mark, selective lumen and one cinematic band. No animation libraries. `/design-system` is internal (noindex, not in sitemap). See `docs/DESIGN_DIRECTION_EXPLORATION.md` and `docs/DESIGN_SYSTEM.md`.
 
 ## ADR-014 — `/verify` and `/export` are not Phase 001 routes
 
