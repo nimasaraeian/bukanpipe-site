@@ -80,8 +80,14 @@ describe("image SEO helpers", () => {
       description: "Quality testing laboratory.",
       path: "/laboratory",
     });
-    expect(metadata.openGraph?.images?.[0]?.url).toContain("laboratory-hero");
-    expect(metadata.twitter?.card).toBe("summary_large_image");
+    const images = metadata.openGraph?.images;
+    const first = Array.isArray(images) ? images[0] : images;
+    expect(first && typeof first === "object" && "url" in first ? first.url : "").toContain(
+      "laboratory-hero",
+    );
+    expect((metadata.twitter as { card?: string } | undefined)?.card).toBe(
+      "summary_large_image",
+    );
   });
 
   it("specifies OG compositions without rendering files", () => {

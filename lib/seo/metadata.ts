@@ -9,6 +9,7 @@ import {
   DEFAULT_OG_IMAGE,
   getOgImageForPath,
   isNoindexPath,
+  type OgImage,
   type PageSeoConfig,
 } from "@/lib/seo/page-config";
 
@@ -18,12 +19,7 @@ export type PageMetadataInput = {
   path: string;
   locale?: Locale;
   keywords?: readonly string[];
-  ogImage?: {
-    url: string;
-    width: number;
-    height: number;
-    alt: string;
-  };
+  ogImage?: OgImage;
   /** Override global allowIndexing for this page (e.g. stub routes). */
   index?: boolean;
   /** When true, title is not passed through the root template suffix. */
@@ -33,7 +29,7 @@ export type PageMetadataInput = {
 function resolveOgImage(
   path: string,
   explicit?: PageMetadataInput["ogImage"],
-): PageMetadataInput["ogImage"] {
+): OgImage {
   if (explicit) return explicit;
   return getOgImageForPath(path) ?? DEFAULT_OG_IMAGE;
 }

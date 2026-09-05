@@ -3,13 +3,20 @@ import type { Locale } from "@/lib/i18n/config";
 import { brandAssets } from "@/lib/media/brand-assets";
 import { siteConfig } from "@/lib/config/site";
 
+export type OgImage = {
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
 /** Default Open Graph image — factory product hero (1200×630 safe crop). */
-export const DEFAULT_OG_IMAGE = {
+export const DEFAULT_OG_IMAGE: OgImage = {
   url: "/media/demo/bukan-slide-03-product.png",
   width: 1200,
   height: 630,
   alt: "BUKAN PIPE — HDPE and PE100 polyethylene pipe manufacturing",
-} as const;
+};
 
 export const OG_IMAGES = {
   home: {
@@ -62,7 +69,7 @@ export type PageSeoConfig = {
   keywords?: readonly string[];
   canonical?: string;
   hreflang?: Record<string, string>;
-  ogImage?: (typeof DEFAULT_OG_IMAGE);
+  ogImage?: OgImage;
   index?: boolean;
   schema?: readonly string[];
 };
@@ -72,7 +79,7 @@ export function isNoindexPath(path: string): boolean {
   return NOINDEX_PATHS.has(normalized);
 }
 
-export function getOgImageForPath(path: string): typeof DEFAULT_OG_IMAGE | undefined {
+export function getOgImageForPath(path: string): OgImage {
   if (path === "/") return OG_IMAGES.home;
   if (path === "/products" || path.startsWith("/products/")) return OG_IMAGES.products;
   if (path === "/applications" || path.startsWith("/applications/")) return OG_IMAGES.applications;
@@ -83,7 +90,7 @@ export function getOgImageForPath(path: string): typeof DEFAULT_OG_IMAGE | undef
   return DEFAULT_OG_IMAGE;
 }
 
-export function getOgImageForContent(doc: ContentDocument): typeof DEFAULT_OG_IMAGE {
+export function getOgImageForContent(doc: ContentDocument): OgImage {
   if (doc.heroImage) {
     return {
       url: doc.heroImage.src,
@@ -93,12 +100,7 @@ export function getOgImageForContent(doc: ContentDocument): typeof DEFAULT_OG_IM
     };
   }
   const byPath = getOgImageForPath(doc.path);
-  if (byPath) {
-    return doc.imageAlt ? { ...byPath, alt: doc.imageAlt } : byPath;
-  }
-  return doc.imageAlt
-    ? { ...DEFAULT_OG_IMAGE, alt: doc.imageAlt }
-    : DEFAULT_OG_IMAGE;
+  return doc.imageAlt ? { ...byPath, alt: doc.imageAlt } : byPath;
 }
 
 export function organizationLogoUrl(): string {

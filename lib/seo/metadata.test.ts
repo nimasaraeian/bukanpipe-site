@@ -13,7 +13,9 @@ describe("createPageMetadata", () => {
     expect(metadata.robots).toEqual({ index: false, follow: false });
     expect(metadata.openGraph?.url).toBe("http://localhost:3000/products");
     expect(metadata.openGraph?.images).toHaveLength(1);
-    expect(metadata.twitter?.card).toBe("summary_large_image");
+    expect((metadata.twitter as { card?: string } | undefined)?.card).toBe(
+      "summary_large_image",
+    );
   });
 
   it("marks stub routes as noindex", () => {
