@@ -1,5 +1,4 @@
 import localFont from "next/font/local";
-import { Vazirmatn } from "next/font/google";
 
 /**
  * Estedad (SIL OFL) — self-hosted variable font for Persian (fa).
@@ -12,12 +11,15 @@ export const estedad = localFont({
   weight: "100 900",
 });
 
-/** English UI face until licensed brand files arrive. */
-export const vazirmatn = Vazirmatn({
-  subsets: ["arabic", "latin"],
+/**
+ * Vazirmatn (SIL OFL) — self-hosted variable font for English UI until brand files arrive.
+ * Source: https://github.com/google/fonts/tree/main/ofl/vazirmatn
+ */
+export const vazirmatn = localFont({
+  src: "../app/fonts/Vazirmatn-Variable.ttf",
   display: "swap",
-  adjustFontFallback: true,
   variable: "--font-ui",
+  weight: "100 900",
 });
 
 export const uiFontByLocale = {

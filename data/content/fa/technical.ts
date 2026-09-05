@@ -1,5 +1,8 @@
 import type { ContentDocument } from "@/content/models/content-document";
 import { buildSeoArticleDocument } from "@/lib/content/seo-content-model";
+import { faHdpePillarArticle } from "@/data/content/fa/pillar-hdpe-article";
+import { faWaterPillarArticle } from "@/data/content/fa/pillar-water-article";
+import { faGasPillarArticle } from "@/data/content/fa/pillar-gas-article";
 import {
   faHdpeInstallationGuideSeed,
   faHdpePipeWhatIsSeed,
@@ -85,6 +88,9 @@ export const faTechnicalHub: ContentDocument = {
       type: "internal-links",
       title: "راهنماهای پرتقاضا",
       links: [
+        { label: "راهنمای جامع انتخاب لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
+        { label: "راهنمای فنی لوله آبرسانی", path: "/technical-center/water-supply-polyethylene-pipe-guide" },
+        { label: "استاندارد و تولید لوله گازرسانی", path: "/technical-center/gas-polyethylene-pipe-guide" },
         { label: "لوله HDPE چیست؟", path: "/technical-center/hdpe-pipe-what-is" },
         { label: "تفاوت PE80 و PE100", path: "/technical-center/pe80-vs-pe100" },
         { label: "مشخصات فنی لوله", path: "/technical-center/polyethylene-pipe-specifications" },
@@ -245,6 +251,9 @@ export const faPillarPolyethylene: ContentDocument = {
 };
 
 export const faTechnicalArticles: readonly ContentDocument[] = [
+  buildSeoArticleDocument("fa", faHdpePillarArticle),
+  buildSeoArticleDocument("fa", faWaterPillarArticle),
+  buildSeoArticleDocument("fa", faGasPillarArticle),
   faTechnicalHub,
   faPillarPolyethylene,
   article(
