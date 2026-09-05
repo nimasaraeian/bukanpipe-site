@@ -1,5 +1,8 @@
 import type { ContentDocument } from "@/content/models/content-document";
 import { buildSeoArticleDocument } from "@/lib/content/seo-content-model";
+import { enGasPillarArticle } from "@/data/content/en/pillar-gas-article";
+import { enHdpePillarArticle } from "@/data/content/en/pillar-hdpe-article";
+import { enWaterPillarArticle } from "@/data/content/en/pillar-water-article";
 import {
   enHdpeInstallationGuideSeed,
   enPe100TechnicalGuideSeed,
@@ -72,9 +75,39 @@ export const enTechnicalHub: ContentDocument = {
       type: "paragraph",
       text: "Articles in this section support engineering, installation and maintenance decisions for PE pipe networks. For product selection and quotes, see the Products section.",
     },
+    {
+      type: "internal-links",
+      title: "High-demand guides",
+      links: [
+        {
+          label: "Complete polyethylene pipe selection guide",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+        },
+        {
+          label: "Water supply polyethylene pipe guide",
+          path: "/technical-center/water-supply-polyethylene-pipe-guide",
+        },
+        {
+          label: "Gas polyethylene pipe standards and production",
+          path: "/technical-center/gas-polyethylene-pipe-guide",
+        },
+        { label: "PE100 technical guide", path: "/technical-center/pe100-technical-guide" },
+        { label: "HDPE installation guide", path: "/technical-center/hdpe-installation-guide" },
+        { label: "HDPE pipe welding", path: "/technical-center/polyethylene-pipe-welding" },
+        {
+          label: "Temperature and pressure derating",
+          path: "/technical-center/polyethylene-pipe-temperature-pressure",
+        },
+        { label: "HDPE pipe overview (pillar)", path: "/polyethylene-pipe" },
+        { label: "Request a quote", path: "/request-quote" },
+      ],
+    },
   ],
   related: {
     articles: [
+      "polyethylene-pipe-complete-guide",
+      "water-supply-polyethylene-pipe-guide",
+      "gas-polyethylene-pipe-guide",
       "pe100-technical-guide",
       "hdpe-installation-guide",
       "polyethylene-pipe-welding",
@@ -201,6 +234,9 @@ export const enPillarPolyethylene: ContentDocument = {
 };
 
 export const enTechnicalArticles: readonly ContentDocument[] = [
+  buildSeoArticleDocument("en", enHdpePillarArticle),
+  buildSeoArticleDocument("en", enWaterPillarArticle),
+  buildSeoArticleDocument("en", enGasPillarArticle),
   enTechnicalHub,
   enPillarPolyethylene,
   article(
