@@ -1,8 +1,11 @@
 import type { ContentDocument } from "@/content/models/content-document";
 import { canonicalUrl } from "@/lib/seo/canonical";
+import { getOgImageForContent } from "@/lib/seo/page-config";
+import { siteConfig } from "@/lib/config/site";
 import { omitUndefined } from "@/lib/schema/serialize";
 import {
   breadcrumbListSchema,
+  contentProductSchema,
   organizationSchema,
 } from "@/lib/schema/builders";
 
@@ -21,13 +24,15 @@ export function contentDocumentSchemas(
   ];
 
   if (doc.kind === "product") {
+    const og = getOgImageForContent(doc);
+    const imageUrl = `${siteConfig.siteUrl}${og.url}`;
     schemas.push(
-      omitUndefined({
-        "@context": "https://schema.org",
-        "@type": "Product",
+      contentProductSchema({
         name: doc.title,
         description: doc.description,
         url: canonicalUrl(localePath(doc.path)),
+        image: imageUrl,
+        imageAlt: doc.heroImage?.alt ?? doc.imageAlt,
       }),
     );
   }
@@ -41,6 +46,15 @@ export function contentDocumentSchemas(
         description: doc.description,
         url: canonicalUrl(localePath(doc.path)),
         dateModified: doc.lastReviewed,
+        inLanguage: doc.locale,
+        author: {
+          "@type": "Organization",
+          name: siteConfig.brandName,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: siteConfig.brandName,
+        },
       }),
     );
   }

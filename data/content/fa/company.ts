@@ -6,17 +6,22 @@ export const faAbout: ContentDocument = {
   path: "/about",
   locale: "fa",
   kind: "company",
-  title: "درباره بوکان پایپ",
-  seoTitle: "درباره شرکت لوله پلی اتیلن بوکان | بوکان پایپ",
+  title: "کارخانه تولید لوله پلی اتیلن بوکان پایپ",
+  seoTitle: "تولید کننده لوله پلی اتیلن | کارخانه HDPE و PE100 | بوکان پایپ",
   seoDescription:
-    "بوکان پایپ — تولیدکننده لوله پلی‌اتیلن تک‌جداره تا قطر ۶۳۰ میلی‌متر برای آبرسانی، گاز، کشاورزی و صنعت.",
-  description: "تاریخچه و توان تولید کارخانه لوله پلی‌اتیلن بوکان.",
-  primaryKeyword: "شرکت لوله پلی اتیلن بوکان",
-  secondaryKeywords: ["بوکان پایپ", "تولید کننده لوله پلی اتیلن", "کارخانه لوله پلی اتیلن"],
+    "بوکان پایپ — تولیدکننده و تأمین‌کننده لوله پلی اتیلن تک‌جداره HDPE و PE100 تا قطر ۶۳۰ میلی‌متر. خرید مستقیم از کارخانه در بوکان، آذربایجان غربی.",
+  description: "کارخانه تولید لوله پلی اتیلن با سابقه از ۱۳۷۶ — آبرسانی، گاز، کشاورزی و صنعت.",
+  primaryKeyword: "تولید کننده لوله پلی اتیلن",
+  secondaryKeywords: [
+    "کارخانه تولید لوله پلی اتیلن",
+    "تولید کننده لوله HDPE",
+    "تامین کننده لوله پلی اتیلن",
+    "خرید لوله پلی اتیلن از کارخانه",
+  ],
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-05",
   references: ["https://bukanpipe.com/about_us/"],
   breadcrumbs: [
     { label: "خانه", path: "/" },
@@ -24,31 +29,53 @@ export const faAbout: ContentDocument = {
   ],
   sections: [
     {
+      type: "definition",
+      term: "بوکان پایپ چه تولید می‌کند؟",
+      text: "بوکان پایپ تولیدکننده لوله پلی اتیلن (HDPE) تک‌جداره است — از گرید PE80 و PE100 — برای شبکه‌های آبرسانی، گازرسانی، آبیاری کشاورزی، فاضلاب، زهکشی و خطوط صنعتی.",
+    },
+    {
       type: "paragraph",
-      text: "بوکان پایپ از سال ۱۳۷۶ در تولید لوله‌های پلی‌اتیلن تک‌جداره فعالیت دارد و در صنعت لوله PE کشور شناخته شده است. کارخانه انواع این لوله‌ها را تا قطر ۶۳۰ میلی‌متر (۲۵ اینچ) در ضخامت و فشارهای کاری متنوع تولید می‌کند.",
+      text: "از سال ۱۳۷۶ در بوکان، آذربایجان غربی، لوله‌های پلی اتیلن را تا قطر خارجی ۶۳۰ میلی‌متر (۲۵ اینچ) در ضخامت و کلاس‌های فشار متنوع تولید می‌کنیم. به‌عنوان تأمین‌کننده لوله پلی اتیلن، مستقیم از کارخانه به پیمانکاران، مهندسان مشاور و کارفرمایان پروژه‌های زیرساختی عرضه می‌شود.",
     },
     {
       type: "heading",
       level: 2,
-      text: "کاربردهای اصلی",
+      text: "ظرفیت و دامنه تولید",
     },
     {
       type: "list",
       items: [
-        "آبرسانی شهری و روستایی، آبیاری فشار قوی و انتقال آب صنعتی",
-        "شبکه گازرسانی (انشعاب و توزیع)",
-        "فاضلاب، زهکشی و پوشش کابل",
-        "انتقال سیالات در فرآیندهای صنعتی",
+        "اکستروژن تک‌جداره HDPE — حداکثر قطر خارجی ۶۳۰ میلی‌متر",
+        "آبرسانی (INSO 14427-2 برای پروژه‌های واجد شرایط)",
+        "گازرسانی (INSO 11233، EN 1555)",
+        "آبیاری فشار قوی و خطوط کشاورزی",
+        "فاضلاب، زهکشی و انتقال سیالات صنعتی",
       ],
     },
     {
       type: "heading",
       level: 2,
-      text: "چرا پلی‌اتیلن",
+      text: "چرا خرید از کارخانه؟",
     },
     {
-      type: "paragraph",
-      text: "لوله پلی‌اتیلن به‌دلیل استحکام، سبکی، انعطاف و عمر طولانی، در بسیاری از پروژه‌ها جایگزین مناسبی برای لوله فلزی، GRP، PVC و چدن است.",
+      type: "list",
+      items: [
+        "ردیابی batch و QC در خط تولید و آزمایشگاه",
+        "مشخصات فنی شفاف — قطر، SDR، PN مطابق پروژه",
+        "پشتیبانی فنی از مرکز فنی و واحد فروش",
+        "تحویل پروژه‌ای در سراسر کشور",
+      ],
+    },
+    {
+      type: "internal-links",
+      title: "مسیر خرید و محصولات",
+      links: [
+        { label: "محصولات لوله پلی اتیلن", path: "/products", hint: "آبرسانی، گاز، آبیاری، صنعت" },
+        { label: "استعلام قیمت لوله", path: "/request-quote", hint: "پیش‌فاکتور پروژه" },
+        { label: "لوله پلی اتیلن PE100", path: "/products/pe100-pipe" },
+        { label: "مرکز فنی", path: "/technical-center", hint: "SDR، PN، جوش" },
+        { label: "راهکارهای پروژه", path: "/solutions" },
+      ],
     },
     {
       type: "heading",
@@ -60,8 +87,26 @@ export const faAbout: ContentDocument = {
       text: "آذربایجان غربی — بوکان، کیلومتر ۱۰ جاده میاندواب. کدپستی: ۵۹۵۵۱۶۴۳۴۱.",
     },
   ],
+  faqs: [
+    {
+      question: "آیا امکان خرید لوله پلی اتیلن مستقیم از کارخانه وجود دارد؟",
+      answer:
+        "بله. سفارش‌ها از طریق واحد فروش و فرم استعلام قیمت پذیرفته می‌شود. مشخصات پروژه (قطر، SDR، PN، متراژ) را اعلام کنید.",
+    },
+    {
+      question: "بوکان پایپ چه نوع لوله HDPE تولید می‌کند؟",
+      answer:
+        "لوله پلی اتیلن تک‌جداره برای آبرسانی، گاز، آبیاری، فاضلاب، زهکشی و صنعت — تا قطر ۶۳۰ میلی‌متر.",
+    },
+    {
+      question: "قیمت لوله پلی اتیلن چگونه محاسبه می‌شود؟",
+      answer:
+        "قیمت به قطر، SDR، PN، گرید ماده (PE80/PE100)، متراژ و شرایط تحویل بستگی دارد. برای قیمت روز، استعلام بگیرید.",
+    },
+  ],
   related: {
-    products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe"],
+    products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe", "pe100-pipe"],
+    articles: ["polyethylene-pipe-specifications", "pe100-technical-guide"],
     laboratory: ["services"],
   },
 };
@@ -72,16 +117,16 @@ export const faQuality: ContentDocument = {
   path: "/quality",
   locale: "fa",
   kind: "company",
-  title: "سیاست کیفیت",
-  seoTitle: "کنترل کیفیت تولید لوله پلی اتیلن | بوکان پایپ",
-  seoDescription: "فرآیند کنترل کیفیت تولید، بازرسی و آزمون در خط تولید و آزمایشگاه.",
-  description: "سیاست و فرآیند کنترل کیفیت.",
+  title: "کنترل کیفیت تولید لوله پلی اتیلن",
+  seoTitle: "کنترل کیفیت لوله پلی اتیلن | QC کارخانه | بوکان پایپ",
+  seoDescription: "فرآیند کنترل کیفیت تولید لوله HDPE در خط اکستروژن و آزمایشگاه بوکان پایپ.",
+  description: "سیاست و فرآیند QC تولیدکننده لوله پلی اتیلن.",
   primaryKeyword: "کنترل کیفیت لوله پلی اتیلن",
-  secondaryKeywords: ["QC", "بازرسی لوله PE"],
+  secondaryKeywords: ["QC لوله PE", "آزمون لوله HDPE", "تولید کننده لوله پلی اتیلن"],
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-05",
   references: ["https://bukanpipe.com/quality-policy/"],
   breadcrumbs: [
     { label: "خانه", path: "/" },
@@ -90,13 +135,9 @@ export const faQuality: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "کیفیت محصول در بوکان پایپ بر پایه کنترل مواد اولیه، پایش فرآیند اکستروژن، بازرسی ابعادی و آزمون‌های نهایی در واحد QC و آزمایشگاه استوار است.",
+      text: "کیفیت محصول در بوکان پایپ بر پایه کنترل مواد اولیه، پایش فرآیند اکستروژن، بازرسی ابعادی و آزمون‌های نهایی در واحد QC و آزمایشگاه استوار است — به‌عنوان تولیدکننده لوله پلی اتیلن، ردیابی batch برای پروژه‌های حساس امکان‌پذیر است.",
     },
-    {
-      type: "heading",
-      level: 2,
-      text: "مراحل کنترل",
-    },
+    { type: "heading", level: 2, text: "مراحل کنترل" },
     {
       type: "list",
       items: [
@@ -107,11 +148,16 @@ export const faQuality: ContentDocument = {
       ],
     },
     {
-      type: "paragraph",
-      text: "برای پروژه‌های حساس، هماهنگی با دامنه آزمون آزمایشگاه و مدارک QC از طریق واحد فروش امکان‌پذیر است.",
+      type: "internal-links",
+      title: "منابع مرتبط",
+      links: [
+        { label: "آزمایشگاه", path: "/laboratory" },
+        { label: "مشخصات فنی لوله", path: "/technical-center/polyethylene-pipe-specifications" },
+        { label: "کارخانه تولید", path: "/about" },
+      ],
     },
   ],
-  related: { laboratory: ["services", "test-scope", "iso-17025"] },
+  related: { laboratory: ["services", "test-scope", "iso-17025"], products: ["pe100-pipe"] },
 };
 
 export const faCertifications: ContentDocument = {
@@ -121,15 +167,15 @@ export const faCertifications: ContentDocument = {
   locale: "fa",
   kind: "company",
   title: "گواهی‌ها و افتخارات",
-  seoTitle: "گواهی‌ها و افتخارات | بوکان پایپ",
-  seoDescription: "افتخارات و گواهی‌های منتشرشده شرکت — جزئیات با مدارک به‌روز تکمیل می‌شود.",
+  seoTitle: "گواهی‌ها و استاندارد لوله پلی اتیلن | بوکان پایپ",
+  seoDescription: "گواهی‌ها و افتخارات کارخانه تولید لوله پلی اتیلن بوکان پایپ.",
   description: "گواهی‌ها و افتخارات.",
   primaryKeyword: "گواهی لوله پلی اتیلن",
-  secondaryKeywords: ["واحد نمونه", "استاندارد INSO"],
+  secondaryKeywords: ["استاندارد لوله پلی اتیلن", "واحد نمونه"],
   status: "published",
   evidenceStatus: "requires-verification",
   verificationStatus: "verify-before-production",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-05",
   references: ["https://bukanpipe.com/about_us/", "https://bukanpipe.com/certificates/"],
   breadcrumbs: [
     { label: "خانه", path: "/" },
@@ -138,14 +184,18 @@ export const faCertifications: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "در معرفی شرکت، بوکان پایپ به دریافت عنوان واحد نمونه از سازمان صنعت، معدن و تجارت در سال‌های فعالیت و رتبه A در میان تولیدکنندگان لوله پلی‌اتیلن از سازمان جهاد کشاورزی اشاره کرده است. نسخه PDF و تاریخ اعتبار هر گواهی پس از تأیید واحد کیفیت در این صفحه قرار می‌گیرد.",
+      text: "در معرفی شرکت، بوکان پایپ به دریافت عنوان واحد نمونه از سازمان صنعت، معدن و تجارت و رتبه A در میان تولیدکنندگان لوله پلی‌اتیلن از سازمان جهاد کشاورزی اشاره کرده است. نسخه PDF هر گواهی پس از تأیید QC در این صفحه قرار می‌گیرد.",
     },
     {
-      type: "paragraph",
-      text: "برای دریافت کپی گواهی‌های مرتبط با پروژه خود، با واحد فروش یا QC تماس بگیرید.",
+      type: "internal-links",
+      title: "استاندارد و انطباق",
+      links: [
+        { label: "استاندارد لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-standards" },
+        { label: "ISO 17025", path: "/laboratory/iso-17025" },
+      ],
     },
   ],
-  related: { laboratory: ["iso-17025"] },
+  related: { laboratory: ["iso-17025"], articles: ["polyethylene-pipe-standards"] },
 };
 
 export const faContact: ContentDocument = {
@@ -154,67 +204,39 @@ export const faContact: ContentDocument = {
   path: "/contact",
   locale: "fa",
   kind: "company",
-  title: "تماس با ما",
-  seoTitle: "تماس با بوکان پایپ | فروش و پشتیبانی",
+  title: "تماس با کارخانه",
+  seoTitle: "تماس با تولید کننده لوله پلی اتیلن | بوکان پایپ",
   seoDescription:
-    "آدرس کارخانه، تلفن فروش و ایمیل بوکان پایپ — آذربایجان غربی، بوکان.",
+    "تماس با کارخانه تولید لوله پلی اتیلن بوکان پایپ — فروش، QC و آدرس بوکان.",
   description: "راه‌های تماس با کارخانه و واحد فروش.",
   primaryKeyword: "تماس بوکان پایپ",
-  secondaryKeywords: ["آدرس کارخانه بوکان پایپ", "تلفن بوکان پایپ"],
+  secondaryKeywords: ["آدرس کارخانه لوله پلی اتیلن", "خرید لوله پلی اتیلن"],
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-05",
   references: ["https://bukanpipe.com/about_us/"],
   breadcrumbs: [
     { label: "خانه", path: "/" },
     { label: "تماس", path: "/contact" },
   ],
   sections: [
+    { type: "heading", level: 2, text: "تلفن" },
+    { type: "list", items: ["۰۴۴-۴۶۴۳۳۴۴۴ تا ۵", "۰۴۴-۴۱۵۰"] },
+    { type: "heading", level: 2, text: "فروش — سفارش لوله پلی اتیلن" },
+    { type: "list", items: ["۰۹۱۴۴۸۲۲۵۱۱", "۰۹۱۴۳۸۲۰۵۵۶", "info@bukanpipe.com"] },
+    { type: "heading", level: 2, text: "کنترل کیفیت و آزمایشگاه" },
+    { type: "list", items: ["۰۹۰۱۳۴۱۴۹۷۹", "lab@bukanpipe.com"] },
     {
-      type: "heading",
-      level: 2,
-      text: "کارخانه",
-    },
-    {
-      type: "paragraph",
-      text: "آذربایجان غربی — بوکان، کیلومتر ۱۰ جاده میاندواب. کدپستی: ۵۹۵۵۱۶۴۳۴۱.",
-    },
-    {
-      type: "heading",
-      level: 2,
-      text: "تلفن",
-    },
-    {
-      type: "list",
-      items: [
-        "۰۴۴-۴۶۴۳۳۴۴۴ تا ۵",
-        "۰۴۴-۴۱۵۰",
+      type: "internal-links",
+      title: "استعلام قیمت",
+      links: [
+        { label: "فرم استعلام قیمت", path: "/request-quote" },
+        { label: "محصولات", path: "/products" },
       ],
     },
-    {
-      type: "heading",
-      level: 2,
-      text: "فروش",
-    },
-    {
-      type: "list",
-      items: ["۰۹۱۴۴۸۲۲۵۱۱", "۰۹۱۴۳۸۲۰۵۵۶", "info@bukanpipe.com"],
-    },
-    {
-      type: "heading",
-      level: 2,
-      text: "کنترل کیفیت و آزمایشگاه",
-    },
-    {
-      type: "list",
-      items: ["۰۹۰۱۳۴۱۴۹۷۹ (ایتا / تلگرام)", "lab@bukanpipe.com"],
-    },
-    {
-      type: "paragraph",
-      text: "ساعات پاسخگویی: شنبه تا پنج‌شنبه، ۸:۳۰ تا ۱۶:۰۰.",
-    },
   ],
+  related: { products: ["water-supply-pipe", "gas-pipe"], articles: ["polyethylene-pipe-specifications"] },
 };
 
 export const faCompanyPages: readonly ContentDocument[] = [

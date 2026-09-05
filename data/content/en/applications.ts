@@ -146,8 +146,8 @@ export const enApplications: readonly ContentDocument[] = [
       "Pressure class and SDR per process design",
       "Project standards and inspection requirements",
     ],
-    ["pe100-pipe", "water-supply-pipe"],
-    ["polyethylene-pipe-temperature-pressure"],
+    ["industrial-pipe", "pe100-pipe", "water-supply-pipe"],
+    ["pe100-technical-guide", "hdpe-installation-guide", "polyethylene-pipe-temperature-pressure"],
   ),
   app(
     "cable-protection",

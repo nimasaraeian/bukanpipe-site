@@ -7,8 +7,11 @@ import { ThemeScript } from "@/components/theme/ThemeScript";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getDirection, isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionary";
-import { organizationSchema, webSiteSchema } from "@/lib/schema/builders";
+import { organizationSchema, manufacturingBusinessSchema, webSiteSchema } from "@/lib/schema/builders";
+import { createRootMetadata } from "@/lib/seo/metadata";
 import "../globals.css";
+
+export const metadata = createRootMetadata();
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -43,7 +46,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <ThemeScript />
       </head>
       <body className={`${uiFont.className} industrial-font industrial-body antialiased`}>
-        <JsonLd data={[organizationSchema(), webSiteSchema()]} />
+        <JsonLd data={[organizationSchema(), manufacturingBusinessSchema(), webSiteSchema(locale)]} />
         <LocaleProvider locale={locale} dictionary={dictionary}>
           <ThemeProvider>
             <SiteShell>{children}</SiteShell>

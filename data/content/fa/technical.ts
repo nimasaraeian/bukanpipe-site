@@ -1,4 +1,13 @@
 import type { ContentDocument } from "@/content/models/content-document";
+import { buildSeoArticleDocument } from "@/lib/content/seo-content-model";
+import {
+  faHdpeInstallationGuideSeed,
+  faHdpePipeWhatIsSeed,
+  faPe100TechnicalGuideSeed,
+  faPe80VsPe100Seed,
+  faPolyethylenePipeSpecificationsSeed,
+  faPolyethylenePipeStandardsSeed,
+} from "@/data/content/fa/seo-article-seeds";
 
 function article(
   slug: string,
@@ -47,12 +56,18 @@ export const faTechnicalHub: ContentDocument = {
   path: "/technical-center",
   locale: "fa",
   kind: "hub",
-  title: "مرکز فنی",
-  seoTitle: "مرکز فنی لوله پلی اتیلن | بوکان پایپ",
-  seoDescription: "راهنمای جوش، فشار و دما، شیر هوا و آبیاری برای مهندسان و پیمانکاران.",
-  description: "منابع فنی برای طراحی، نصب و بهره‌برداری از لوله PE.",
+  title: "مرکز فنی لوله پلی اتیلن",
+  seoTitle: "مرکز فنی لوله پلی اتیلن | SDR، PN، جوش و استاندارد | بوکان پایپ",
+  seoDescription:
+    "راهنمای فنی لوله پلی اتیلن: HDPE، PE100، SDR، PN، استاندارد، جوش و نصب — منابع مهندسی بوکان پایپ.",
+  description: "منابع فنی برای طراحی، انتخاب و نصب لوله PE.",
   primaryKeyword: "راهنمای لوله پلی اتیلن",
-  secondaryKeywords: ["جوش لوله پلی اتیلن", "فشار کاری لوله پلی اتیلن"],
+  secondaryKeywords: [
+    "مشخصات فنی لوله پلی اتیلن",
+    "SDR لوله پلی اتیلن",
+    "PN لوله پلی اتیلن",
+    "استاندارد لوله پلی اتیلن",
+  ],
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
@@ -64,12 +79,33 @@ export const faTechnicalHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "مقالات این بخش برای تصمیم‌های مهندسی، نصب و نگهداری شبکه لوله PE تهیه شده‌اند. برای انتخاب محصول و استعلام قیمت، به صفحات محصول مراجعه کنید.",
+      text: "مقالات این بخش برای تصمیم‌های مهندسی، انتخاب گرید ماده، استاندارد و نصب شبکه لوله PE تهیه شده‌اند. برای خرید و استعلام قیمت به محصولات و فرم پیش‌فاکتور مراجعه کنید.",
+    },
+    {
+      type: "internal-links",
+      title: "راهنماهای پرتقاضا",
+      links: [
+        { label: "لوله HDPE چیست؟", path: "/technical-center/hdpe-pipe-what-is" },
+        { label: "تفاوت PE80 و PE100", path: "/technical-center/pe80-vs-pe100" },
+        { label: "مشخصات فنی لوله", path: "/technical-center/polyethylene-pipe-specifications" },
+        { label: "استاندارد لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-standards" },
+        { label: "راهنمای جامع (pillar)", path: "/polyethylene-pipe" },
+        { label: "استعلام قیمت", path: "/request-quote" },
+      ],
     },
   ],
   related: {
-    articles: ["polyethylene-pipe-welding", "polyethylene-pipe-temperature-pressure"],
-    products: ["water-supply-pipe", "gas-pipe"],
+    articles: [
+      "hdpe-pipe-what-is",
+      "pe80-vs-pe100",
+      "polyethylene-pipe-specifications",
+      "polyethylene-pipe-standards",
+      "pe100-technical-guide",
+      "hdpe-installation-guide",
+      "polyethylene-pipe-welding",
+      "polyethylene-pipe-temperature-pressure",
+    ],
+    products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe", "pe100-pipe"],
   },
 };
 
@@ -80,17 +116,18 @@ export const faPillarPolyethylene: ContentDocument = {
   locale: "fa",
   kind: "pillar",
   title: "لوله پلی‌اتیلن چیست؟",
-  seoTitle: "لوله پلی اتیلن چیست؟ انواع، کاربرد، استاندارد، SDR، PN و راهنمای خرید",
+  seoTitle: "لوله پلی اتیلن چیست؟ | HDPE، PE100، SDR، PN و راهنمای خرید",
   seoDescription:
-    "راهنمای انتخاب لوله PE: انواع، PE100، SDR، PN، کاربرد آب و گاز، جوش و استاندارد.",
+    "لوله پلی اتیلن چیست؟ راهنمای HDPE و PE100، SDR، PN، استاندارد، کاربرد آب و گاز — از تولیدکننده بوکان پایپ.",
   description: "راهنمای جامع برای خریداران صنعتی، پیمانکاران و مهندسان.",
   primaryKeyword: "لوله پلی اتیلن",
   secondaryKeywords: [
-    "قیمت لوله پلی اتیلن",
-    "خرید لوله پلی اتیلن",
-    "تولید کننده لوله پلی اتیلن",
+    "لوله HDPE چیست",
     "SDR لوله پلی اتیلن",
     "PN لوله پلی اتیلن",
+    "تفاوت PE80 و PE100",
+    "خرید لوله پلی اتیلن",
+    "تولید کننده لوله پلی اتیلن",
   ],
   status: "published",
   evidenceStatus: "candidate",
@@ -144,7 +181,19 @@ export const faPillarPolyethylene: ContentDocument = {
     },
     {
       type: "spec-cta",
-      text: "برای جدول قطر، SDR، PN و پیش‌فاکتور پروژه، با واحد فروش تماس بگیرید یا درخواست پیش‌فاکتور ثبت کنید.",
+      text: "برای جدول قطر، SDR، PN و پیش‌فاکتور پروژه، فرم استعلام قیمت را تکمیل کنید یا با واحد فروش تماس بگیرید.",
+    },
+    {
+      type: "internal-links",
+      title: "ادامه مطالعه",
+      links: [
+        { label: "لوله HDPE چیست؟", path: "/technical-center/hdpe-pipe-what-is" },
+        { label: "تفاوت PE80 و PE100", path: "/technical-center/pe80-vs-pe100" },
+        { label: "مشخصات فنی", path: "/technical-center/polyethylene-pipe-specifications" },
+        { label: "استاندارد لوله", path: "/technical-center/polyethylene-pipe-standards" },
+        { label: "خرید از کارخانه", path: "/products" },
+        { label: "استعلام قیمت", path: "/request-quote" },
+      ],
     },
   ],
   related: {
@@ -152,6 +201,7 @@ export const faPillarPolyethylene: ContentDocument = {
       "water-supply-pipe",
       "gas-pipe",
       "irrigation-pipe",
+      "industrial-pipe",
       "sewage-pipe",
       "drainage-pipe",
       "pe100-pipe",
@@ -160,10 +210,16 @@ export const faPillarPolyethylene: ContentDocument = {
       "water-transfer",
       "gas-distribution",
       "agriculture-irrigation",
+      "industrial",
       "sewage",
       "drainage",
     ],
     articles: [
+      "hdpe-pipe-what-is",
+      "pe80-vs-pe100",
+      "polyethylene-pipe-specifications",
+      "polyethylene-pipe-standards",
+      "pe100-technical-guide",
       "polyethylene-pipe-welding",
       "polyethylene-pipe-temperature-pressure",
       "air-vent-valve",
@@ -171,14 +227,19 @@ export const faPillarPolyethylene: ContentDocument = {
   },
   faqs: [
     {
-      question: "قیمت لوله پلی‌اتیلن چگونه محاسبه می‌شود؟",
+      question: "قیمت لوله پلی اتیلن چطور محاسبه می‌شود؟",
       answer:
-        "قیمت به قطر، SDR، PN، متراژ و شرایط تحویل بستگی دارد. برای استعلام به‌روز با واحد فروش تماس بگیرید.",
+        "قیمت به قطر، SDR، PN، گرید PE80/PE100، متراژ و محل تحویل بستگی دارد. برای قیمت روز از کارخانه، استعلام بگیرید.",
     },
     {
       question: "تفاوت لوله آبرسانی و گاز چیست؟",
       answer:
-        "هر کاربرد استاندارد، کلاس فشار و روش اتصال مخصوص خود را دارد. صفحات محصول جداگانه هر intent را پوشش می‌دهند.",
+        "استاندارد تولید، کلاس فشار و روش اتصال متفاوت است. صفحات محصول آبرسانی و گاز هر کدام intent جدا دارند.",
+    },
+    {
+      question: "چگونه از تولیدکننده لوله پلی اتیلن خرید کنیم؟",
+      answer:
+        "مشخصات پروژه را به واحد فروش بوکان پایپ اعلام کنید یا فرم استعلام قیمت را پر کنید.",
     },
   ],
 };
@@ -327,4 +388,10 @@ export const faTechnicalArticles: readonly ContentDocument[] = [
     { applications: ["agriculture-irrigation"], products: ["irrigation-pipe"] },
     ["https://bukanpipe.com/"],
   ),
+  buildSeoArticleDocument("fa", faPe100TechnicalGuideSeed),
+  buildSeoArticleDocument("fa", faHdpeInstallationGuideSeed),
+  buildSeoArticleDocument("fa", faHdpePipeWhatIsSeed),
+  buildSeoArticleDocument("fa", faPe80VsPe100Seed),
+  buildSeoArticleDocument("fa", faPolyethylenePipeSpecificationsSeed),
+  buildSeoArticleDocument("fa", faPolyethylenePipeStandardsSeed),
 ];

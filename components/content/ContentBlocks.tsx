@@ -7,6 +7,75 @@ import { routes } from "@/lib/config/routes";
 
 const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
 
+export function InternalLinksBlock({
+  title,
+  links,
+}: {
+  title: string;
+  links: readonly { label: string; path: string; hint?: string }[];
+}) {
+  const { path: localePath } = useLocale();
+
+  return (
+    <nav aria-label={title} className="ind-glass mt-10 p-6">
+      <h3 className="text-base font-semibold text-[color:var(--ind-text)]">{title}</h3>
+      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+        {links.map((link) => (
+          <li key={link.path}>
+            <Link
+              href={localePath(link.path)}
+              className="block rounded border border-[color:var(--ind-border)] px-4 py-3 text-sm transition hover:border-[color:var(--ind-accent)]"
+            >
+              <span className="font-medium text-[color:var(--ind-text)]">{link.label}</span>
+              {link.hint ? (
+                <span className="mt-1 block text-xs text-[color:var(--ind-text-muted)]">{link.hint}</span>
+              ) : null}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+export function DefinitionBlock({ term, text }: { term: string; text: string }) {
+  return (
+    <div className="ind-glass mt-6 border-s-4 border-[color:var(--ind-accent)] p-5">
+      <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--ind-accent)]">{term}</p>
+      <p className="ind-lead mt-2 text-[color:var(--ind-text)]">{text}</p>
+    </div>
+  );
+}
+
+export function SpecTableBlock({
+  title,
+  rows,
+  note,
+}: {
+  title: string;
+  rows: readonly { label: string; value: string }[];
+  note?: string;
+}) {
+  return (
+    <div className="ind-glass mt-8 overflow-x-auto p-6">
+      <h3 className="text-base font-semibold text-[color:var(--ind-text)]">{title}</h3>
+      <table className="mt-4 w-full min-w-[280px] text-sm">
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.label} className="border-b border-[color:var(--ind-border)] last:border-0">
+              <th scope="row" className="py-3 pe-4 text-start font-medium text-[color:var(--ind-text-muted)]">
+                {row.label}
+              </th>
+              <td className="py-3 text-[color:var(--ind-text)]">{row.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {note ? <p className="ind-lead mt-4 text-xs text-[color:var(--ind-text-muted)]">{note}</p> : null}
+    </div>
+  );
+}
+
 function toWesternDigits(value: string): string {
   return value.replace(/[۰-۹]/g, (d) => String(persianDigits.indexOf(d)));
 }
@@ -198,6 +267,18 @@ export function ContentBlockRenderer({
 
   if (block.type === "spec-cta") {
     return <SpecCatalogCta text={block.text} />;
+  }
+
+  if (block.type === "definition") {
+    return <DefinitionBlock term={block.term} text={block.text} />;
+  }
+
+  if (block.type === "spec-table") {
+    return <SpecTableBlock title={block.title} rows={block.rows} note={block.note} />;
+  }
+
+  if (block.type === "internal-links") {
+    return <InternalLinksBlock title={block.title} links={block.links} />;
   }
 
   if (block.type === "data-required" && block.showPublic === false) {

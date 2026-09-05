@@ -1,18 +1,24 @@
 import type { MetadataRoute } from "next";
 import { locales, type Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/path";
-import { getSitemapPathsForLocale } from "@/lib/sitemap/paths";
+import {
+  getSitemapPathsForLocale,
+  sitemapChangeFrequencyForPath,
+  sitemapPriorityForPath,
+} from "@/lib/sitemap/paths";
 import { canonicalUrl } from "@/lib/seo/canonical";
 import { imageSitemapAttachments } from "@/lib/seo/image-sitemap";
 
 /**
- * Sitemap enumerates canonical public URLs per locale.
- * FA: published content + request-quote. EN: home, products hub, and EN catalog only.
+ * Sitemap enumerates canonical public URLs per locale (EN + FA).
+ * Homepage, catalog content, solutions, industries, and request-quote included.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries = locales.flatMap((locale) =>
     getSitemapPathsForLocale(locale as Locale).map((path) => ({
       url: canonicalUrl(withLocale(path, locale)),
+      changeFrequency: sitemapChangeFrequencyForPath(path),
+      priority: sitemapPriorityForPath(path),
       ...imageSitemapAttachments(),
     })),
   );

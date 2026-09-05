@@ -8,7 +8,7 @@ import { IndustrialGlassCard } from "@/components/industrial/IndustrialGlassCard
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import type { ContentDocument } from "@/content/models/content-document";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
-import { getPageHeroImage } from "@/data/media/page-hero-images";
+import { getIndustrialPageHeroImageProps, getPageHeroImage } from "@/data/media/page-hero-images";
 import { getDirection } from "@/lib/i18n/config";
 
 type ContentHubPageProps = {
@@ -35,8 +35,7 @@ export function ContentHubPage({ doc, children }: ContentHubPageProps) {
       <IndustrialPageHero
         title={doc.title}
         description={doc.description}
-        imageSrc={hero.src}
-        imagePosition={hero.position}
+        {...getIndustrialPageHeroImageProps(hero)}
         breadcrumb={doc.breadcrumbs.map((item, index, arr) => ({
           label: item.label,
           href: index < arr.length - 1 ? localePath(item.path) : undefined,

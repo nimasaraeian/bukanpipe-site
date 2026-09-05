@@ -60,5 +60,36 @@ describe("pipeline-design calculator", () => {
     const options = calculatePipelineOptions({ ...baseInputs, flowM3h: 0 });
     expect(options[0]!.velocityMs).toBe(0);
     expect(options[0]!.frictionLossM).toBe(0);
+    expect(options[0]!.totalHeadM).toBe(baseInputs.verticalLiftM);
+    expect(options[0]!.motorPowerKw).toBe(0);
+  });
+
+  it("excludes well depth from total head (vertical lift + friction only)", () => {
+    const shallow = calculatePipelineOptions({ ...baseInputs, wellDepthM: 5, verticalLiftM: 150 });
+    const deep = calculatePipelineOptions({ ...baseInputs, wellDepthM: 200, verticalLiftM: 150 });
+    expect(shallow[0]!.totalHeadM).toBe(deep[0]!.totalHeadM);
+  });
+
+  it("uses Hazen-Williams C=145 and pump efficiency 0.75 by default", () => {
+    const options = calculatePipelineOptions(baseInputs);
+    const row = options.find((o) => o.externalDiameterMm === 110)!;
+    // Deterministic baseline — see docs/CALCULATOR_FINAL_VALIDATION.md
+    expect(row.internalDiameterMm).toBeCloseTo(90, 0);
+    expect(row.velocityMs).toBeCloseTo(0.4366, 3);
+    expect(row.frictionLossM).toBeCloseTo(174563.48, 0);
+    expect(row.totalHeadM).toBeCloseTo(150 + row.frictionLossM, 2);
+    expect(row.motorPowerKw).toBeCloseTo(7300.11, 0);
+  });
+
+  it("applies motor reserve percentage to hydraulic power", () => {
+    const base = calculatePipelineOptions({ ...baseInputs, motorReservePercent: 0 })[1]!;
+    const reserved = calculatePipelineOptions({ ...baseInputs, motorReservePercent: 15 })[1]!;
+    expect(reserved.motorPowerKw).toBeCloseTo(base.motorPowerKw * 1.15, 4);
+  });
+
+  it("returns low-velocity status below 0.5 m/s for baseline De=110", () => {
+    const options = calculatePipelineOptions(baseInputs);
+    const row = options.find((o) => o.externalDiameterMm === 110)!;
+    expect(row.status).toBe("low-velocity");
   });
 });

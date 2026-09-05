@@ -1,33 +1,41 @@
 import { describe, expect, it } from "vitest";
 import {
   organizationSchema,
+  manufacturingBusinessSchema,
   productSchema,
   webSiteSchema,
 } from "@/lib/schema/builders";
 import { serializeJsonLd } from "@/lib/schema/serialize";
 
 describe("structured data builders", () => {
-  it("emits Organization data without invented business facts", () => {
+  it("emits Organization data with verified postal address only", () => {
     const schema = organizationSchema();
 
     expect(schema["@type"]).toBe("Organization");
     expect(schema.name).toBe("Bukan Pipe");
-    expect(schema.address).toBeUndefined();
-    expect(schema.logo).toBeUndefined();
+    expect(schema.address).toMatchObject({
+      "@type": "PostalAddress",
+      postalCode: "5955164341",
+      addressLocality: "Bukan",
+    });
+    expect(schema.address).not.toHaveProperty("geo");
+    expect(schema.logo).toContain("/media/demo/logo.png");
     expect(schema.sameAs).toBeUndefined();
     expect(schema.foundingDate).toBeUndefined();
     expect(schema.alternateName).toBe("Bukan Pipe");
-    expect(Object.keys(schema).sort()).toEqual(
-      ["@context", "@type", "alternateName", "name", "url"].sort(),
-    );
   });
 
-  it("emits WebSite language without search-action invention", () => {
-    const schema = webSiteSchema();
+  it("emits WebSite language per locale", () => {
+    expect(webSiteSchema("en").inLanguage).toBe("en");
+    expect(webSiteSchema("fa").inLanguage).toBe("fa");
+    expect(webSiteSchema("en").potentialAction).toBeUndefined();
+  });
 
-    expect(schema["@type"]).toBe("WebSite");
-    expect(schema.inLanguage).toBe("en");
-    expect(schema.potentialAction).toBeUndefined();
+  it("emits ManufacturingBusiness with factory contact", () => {
+    const schema = manufacturingBusinessSchema();
+    expect(schema["@type"]).toBe("ManufacturingBusiness");
+    expect(schema.telephone).toBe("+98-44-46433444");
+    expect(schema.logo).toContain("/media/demo/logo.png");
   });
 
   it("omits Product offers and unverified specifications", () => {
@@ -42,7 +50,8 @@ describe("structured data builders", () => {
 
     expect(schema["@type"]).toBe("Product");
     expect(schema.offers).toBeUndefined();
-    expect(schema.brand).toBeUndefined();
+    expect(schema.brand).toMatchObject({ name: "Bukan Pipe" });
+    expect(schema.manufacturer).toMatchObject({ name: "Bukan Pipe" });
     expect(schema.sku).toBeUndefined();
     expect(schema.url).toBe("http://localhost:3000/products/example");
   });

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ContentDocumentPage } from "@/components/content/ContentDocumentPage";
+import { ContactPageContent } from "@/components/pages/ContactPageContent";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { createContentMetadata } from "@/lib/content/metadata";
 import { getContentByPath } from "@/lib/content/registry";
@@ -26,5 +26,5 @@ export default async function ContactPage({ params }: PageProps) {
   if (!isLocale(localeParam)) notFound();
   const doc = loadDoc(localeParam, "contact");
   if (!doc) notFound();
-  return <ContentDocumentPage doc={doc} />;
+  return <ContactPageContent doc={doc} />;
 }

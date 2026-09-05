@@ -1,5 +1,6 @@
 import type { Direction } from "@/lib/i18n/config";
 import { routes } from "@/lib/config/routes";
+import { productSystemAssets } from "@/lib/products/product-assets";
 
 /** Approved demo photography — same set as homepage hero concept. Home keeps slide-03. */
 export const industrialSlides = {
@@ -13,37 +14,293 @@ export type IndustrialSlideId = keyof typeof industrialSlides;
 
 export type PageHeroImage = {
   src: string;
-  /** CSS object-position for cinematic framing */
+  /** CSS object-position for cinematic framing (desktop) */
   position?: string;
+  /** Mobile overlay — keep focal point opposite the text column */
+  mobilePosition?: {
+    ltr?: string;
+    rtl?: string;
+  };
+  /** Lighter overlays — keeps logo / golden highlights visible on the right */
+  variant?: "brand" | "default" | "product";
+  /** Optional BEM modifier for page-specific crop tuning */
+  sceneModifier?: "applications" | "about" | "calculator" | "laboratory" | "downloads" | "technical";
 };
 
 /** Inner-page hero backgrounds (homepage hero is separate). */
 export const pageHeroImages: Record<string, PageHeroImage> = {
-  [routes.about.path]: { src: industrialSlides.yard, position: "58% center" },
-  [routes.products.path]: { src: industrialSlides.product, position: "65% 42%" },
-  [routes.solutions.path]: { src: industrialSlides.extrusion, position: "58% center" },
-  [routes.industries.path]: { src: industrialSlides.inventory, position: "62% center" },
-  [routes.applications.path]: { src: industrialSlides.inventory, position: "62% center" },
-  [routes.laboratory.path]: { src: industrialSlides.extrusion, position: "55% center" },
-  [routes.projects.path]: { src: industrialSlides.yard, position: "50% 40%" },
-  [routes.engineering.path]: { src: industrialSlides.extrusion, position: "60% center" },
-  [routes.standards.path]: { src: industrialSlides.extrusion, position: "52% center" },
-  [routes.knowledge.path]: { src: industrialSlides.inventory, position: "58% center" },
-  [routes.pricing.path]: { src: industrialSlides.product, position: "68% 38%" },
-  [routes.tools.path]: { src: industrialSlides.extrusion, position: "56% center" },
-  [routes.requestQuote.path]: { src: industrialSlides.product, position: "64% center" },
-  [routes.dealers.path]: { src: industrialSlides.inventory, position: "60% center" },
-  [routes.verify.path]: { src: industrialSlides.yard, position: "54% center" },
-  [routes.contact.path]: { src: industrialSlides.yard, position: "62% 45%" },
+  [routes.about.path]: {
+    src: "/media/brand/about-factory-hero.png",
+    position: "92% 26%",
+    mobilePosition: { ltr: "82% 34%", rtl: "18% 34%" },
+    variant: "brand",
+    sceneModifier: "about",
+  },
+  [routes.products.path]: {
+    src: industrialSlides.product,
+    position: "65% 42%",
+    mobilePosition: { ltr: "72% 44%", rtl: "28% 44%" },
+  },
+  [routes.solutions.path]: {
+    src: industrialSlides.extrusion,
+    position: "58% center",
+    mobilePosition: { ltr: "70% center", rtl: "30% center" },
+  },
+  [routes.industries.path]: {
+    src: industrialSlides.inventory,
+    position: "62% center",
+    mobilePosition: { ltr: "72% center", rtl: "28% center" },
+  },
+  [routes.applications.path]: {
+    src: "/media/brand/applications-hero.png",
+    position: "72% 88%",
+    mobilePosition: { ltr: "68% 72%", rtl: "28% 68%" },
+    variant: "brand",
+    sceneModifier: "applications",
+  },
+  "/calculator": {
+    src: "/media/brand/calculator-hero.png",
+    position: "84% 56%",
+    mobilePosition: { ltr: "78% 50%", rtl: "22% 50%" },
+    variant: "brand",
+    sceneModifier: "calculator",
+  },
+  [routes.laboratory.path]: {
+    src: "/media/brand/laboratory-hero.png",
+    position: "72% 54%",
+    mobilePosition: { ltr: "82% 38%", rtl: "14% 38%" },
+    variant: "brand",
+    sceneModifier: "laboratory",
+  },
+  [routes.projects.path]: {
+    src: industrialSlides.yard,
+    position: "50% 40%",
+    mobilePosition: { ltr: "68% 42%", rtl: "32% 42%" },
+  },
+  [routes.engineering.path]: {
+    src: industrialSlides.extrusion,
+    position: "60% center",
+    mobilePosition: { ltr: "70% center", rtl: "30% center" },
+  },
+  [routes.standards.path]: {
+    src: industrialSlides.extrusion,
+    position: "52% center",
+    mobilePosition: { ltr: "68% center", rtl: "32% center" },
+  },
+  [routes.knowledge.path]: {
+    src: industrialSlides.inventory,
+    position: "58% center",
+    mobilePosition: { ltr: "70% center", rtl: "30% center" },
+  },
+  "/technical-center": {
+    src: "/media/brand/technical-center-hero.jpg",
+    position: "74% center",
+    mobilePosition: { ltr: "78% center", rtl: "22% center" },
+    sceneModifier: "technical",
+  },
+  "/downloads": {
+    src: "/media/brand/downloads-hero.png",
+    position: "72% center",
+    mobilePosition: { ltr: "72% center", rtl: "72% center" },
+    variant: "brand",
+    sceneModifier: "downloads",
+  },
+  [routes.pricing.path]: {
+    src: industrialSlides.product,
+    position: "68% 38%",
+    mobilePosition: { ltr: "74% 40%", rtl: "26% 40%" },
+  },
+  [routes.tools.path]: {
+    src: industrialSlides.extrusion,
+    position: "56% center",
+    mobilePosition: { ltr: "68% center", rtl: "32% center" },
+  },
+  [routes.requestQuote.path]: {
+    src: industrialSlides.product,
+    position: "64% center",
+    mobilePosition: { ltr: "72% center", rtl: "28% center" },
+  },
+  [routes.dealers.path]: {
+    src: industrialSlides.inventory,
+    position: "60% center",
+    mobilePosition: { ltr: "70% center", rtl: "30% center" },
+  },
+  [routes.verify.path]: {
+    src: industrialSlides.yard,
+    position: "54% center",
+    mobilePosition: { ltr: "68% center", rtl: "32% center" },
+  },
+  [routes.contact.path]: {
+    src: industrialSlides.yard,
+    position: "62% 45%",
+    mobilePosition: { ltr: "70% 44%", rtl: "30% 44%" },
+  },
+};
+
+/** Per-application detail heroes — product renders with baked-in logo (never mirror) */
+export const applicationDetailHeroImages: Record<string, PageHeroImage> = {
+  "/applications/water-transfer": {
+    src: productSystemAssets.water,
+    position: "76% 54%",
+    mobilePosition: { ltr: "78% 52%", rtl: "22% 52%" },
+    variant: "product",
+  },
+  "/applications/agriculture-irrigation": {
+    src: productSystemAssets.irrigation,
+    position: "64% 56%",
+    mobilePosition: { ltr: "74% 54%", rtl: "26% 54%" },
+    variant: "product",
+  },
+  "/applications/gas-distribution": {
+    src: productSystemAssets.gas,
+    position: "70% 50%",
+    mobilePosition: { ltr: "76% 48%", rtl: "24% 48%" },
+    variant: "product",
+  },
+  "/applications/sewage": {
+    src: productSystemAssets.sewer,
+    position: "66% 48%",
+    mobilePosition: { ltr: "74% 46%", rtl: "26% 46%" },
+    variant: "product",
+  },
+  "/applications/drainage": {
+    src: productSystemAssets.drainage,
+    position: "48% 62%",
+    mobilePosition: { ltr: "72% 58%", rtl: "28% 58%" },
+    variant: "product",
+  },
+  "/applications/industrial": {
+    src: productSystemAssets.pe100,
+    position: "68% 52%",
+    mobilePosition: { ltr: "76% 50%", rtl: "24% 50%" },
+    variant: "product",
+  },
+  "/applications/cable-protection": {
+    src: industrialSlides.inventory,
+    position: "58% center",
+    mobilePosition: { ltr: "70% center", rtl: "30% center" },
+    variant: "product",
+  },
+};
+
+/** Per-product detail heroes — SEO landing pages with product renders */
+export const productDetailHeroImages: Record<string, PageHeroImage> = {
+  "/products/water-supply-pipe": {
+    src: productSystemAssets.water,
+    position: "76% 54%",
+    mobilePosition: { ltr: "78% 52%", rtl: "22% 52%" },
+    variant: "product",
+  },
+  "/products/gas-pipe": {
+    src: productSystemAssets.gas,
+    position: "70% 50%",
+    mobilePosition: { ltr: "76% 48%", rtl: "24% 48%" },
+    variant: "product",
+  },
+  "/products/irrigation-pipe": {
+    src: productSystemAssets.irrigation,
+    position: "64% 56%",
+    mobilePosition: { ltr: "74% 54%", rtl: "26% 54%" },
+    variant: "product",
+  },
+  "/products/industrial-pipe": {
+    src: productSystemAssets.pe100,
+    position: "68% 52%",
+    mobilePosition: { ltr: "76% 50%", rtl: "24% 50%" },
+    variant: "product",
+  },
+  "/products/pe100-pipe": {
+    src: productSystemAssets.pe100,
+    position: "72% 48%",
+    mobilePosition: { ltr: "78% 46%", rtl: "22% 46%" },
+    variant: "product",
+  },
+  "/products/sewage-pipe": {
+    src: productSystemAssets.sewer,
+    position: "66% 48%",
+    mobilePosition: { ltr: "74% 46%", rtl: "26% 46%" },
+    variant: "product",
+  },
+  "/products/drainage-pipe": {
+    src: productSystemAssets.drainage,
+    position: "48% 62%",
+    mobilePosition: { ltr: "72% 58%", rtl: "28% 58%" },
+    variant: "product",
+  },
+  "/technical-center/pe100-technical-guide": {
+    src: productSystemAssets.pe100,
+    position: "68% 50%",
+    mobilePosition: { ltr: "76% 48%", rtl: "24% 48%" },
+    variant: "product",
+    sceneModifier: "technical",
+  },
+  "/technical-center/hdpe-installation-guide": {
+    src: industrialSlides.yard,
+    position: "58% 44%",
+    mobilePosition: { ltr: "70% 42%", rtl: "30% 42%" },
+    sceneModifier: "technical",
+  },
+  "/technical-center/hdpe-pipe-what-is": {
+    src: productSystemAssets.pe100,
+    position: "68% 50%",
+    mobilePosition: { ltr: "76% 48%", rtl: "24% 48%" },
+    variant: "product",
+    sceneModifier: "technical",
+  },
+  "/technical-center/pe80-vs-pe100": {
+    src: productSystemAssets.pe100,
+    position: "70% 48%",
+    mobilePosition: { ltr: "78% 46%", rtl: "22% 46%" },
+    variant: "product",
+    sceneModifier: "technical",
+  },
+  "/technical-center/polyethylene-pipe-specifications": {
+    src: industrialSlides.inventory,
+    position: "62% center",
+    mobilePosition: { ltr: "72% center", rtl: "28% center" },
+    sceneModifier: "technical",
+  },
+  "/technical-center/polyethylene-pipe-standards": {
+    src: industrialSlides.extrusion,
+    position: "58% center",
+    mobilePosition: { ltr: "70% center", rtl: "30% center" },
+    sceneModifier: "technical",
+  },
+};
+
+const allPageHeroImages: Record<string, PageHeroImage> = {
+  ...pageHeroImages,
+  ...applicationDetailHeroImages,
+  ...productDetailHeroImages,
 };
 
 const defaultInnerHero: PageHeroImage = {
   src: industrialSlides.extrusion,
   position: "58% center",
+  mobilePosition: { ltr: "70% center", rtl: "30% center" },
 };
 
 export function getPageHeroImage(path: string, _direction: Direction = "ltr"): PageHeroImage {
-  return pageHeroImages[path] ?? defaultInnerHero;
+  if (allPageHeroImages[path]) return allPageHeroImages[path];
+
+  const parentPath = path.replace(/\/[^/]+$/, "");
+  if (parentPath && allPageHeroImages[parentPath]) {
+    return allPageHeroImages[parentPath];
+  }
+
+  return defaultInnerHero;
+}
+
+/** Props for IndustrialPageHero from a resolved hero config */
+export function getIndustrialPageHeroImageProps(hero: PageHeroImage) {
+  return {
+    imageSrc: hero.src,
+    imagePosition: hero.position,
+    imageMobilePositionLtr: hero.mobilePosition?.ltr,
+    imageMobilePositionRtl: hero.mobilePosition?.rtl,
+    imageVariant: hero.variant,
+    imageSceneModifier: hero.sceneModifier,
+  };
 }
 
 /** Card grids on development route pages — varied slides, same visual family. */

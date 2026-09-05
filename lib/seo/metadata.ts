@@ -5,6 +5,12 @@ import { withLocale } from "@/lib/i18n/path";
 import { siteConfig } from "@/lib/config/site";
 import { canonicalUrl } from "@/lib/seo/canonical";
 import { buildLanguageAlternates } from "@/lib/i18n/locale-availability";
+import {
+  DEFAULT_OG_IMAGE,
+  getOgImageForPath,
+  isNoindexPath,
+  type PageSeoConfig,
+} from "@/lib/seo/page-config";
 
 export type PageMetadataInput = {
   title: string;
@@ -18,7 +24,28 @@ export type PageMetadataInput = {
     height: number;
     alt: string;
   };
+  /** Override global allowIndexing for this page (e.g. stub routes). */
+  index?: boolean;
+  /** When true, title is not passed through the root template suffix. */
+  titleAbsolute?: boolean;
 };
+
+function resolveOgImage(
+  path: string,
+  explicit?: PageMetadataInput["ogImage"],
+): PageMetadataInput["ogImage"] {
+  if (explicit) return explicit;
+  return getOgImageForPath(path) ?? DEFAULT_OG_IMAGE;
+}
+
+function resolveRobots(path: string, indexOverride?: boolean): Metadata["robots"] {
+  const indexable =
+    indexOverride !== undefined
+      ? indexOverride && siteConfig.allowIndexing
+      : siteConfig.allowIndexing && !isNoindexPath(path);
+
+  return indexable ? { index: true, follow: true } : { index: false, follow: false };
+}
 
 export function createRootMetadata(): Metadata {
   const indexable = siteConfig.allowIndexing;
@@ -45,34 +72,34 @@ export function createRootMetadata(): Metadata {
       siteName: siteConfig.brandName,
       title: siteConfig.defaultTitle,
       description: siteConfig.defaultDescription,
+      images: [DEFAULT_OG_IMAGE],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: siteConfig.defaultTitle,
       description: siteConfig.defaultDescription,
+      images: [DEFAULT_OG_IMAGE.url],
     },
   };
 }
 
 export function createPageMetadata(input: PageMetadataInput): Metadata {
-  const indexable = siteConfig.allowIndexing;
   const url = canonicalUrl(input.locale ? withLocale(input.path, input.locale) : input.path);
   const title = input.title;
   const description = input.description;
   const ogLocale = input.locale ? openGraphLocale[input.locale] : siteConfig.openGraphLocale;
   const languageAlternates = buildLanguageAlternates(input.path);
+  const ogImage = resolveOgImage(input.path, input.ogImage);
 
   return {
-    title,
+    title: input.titleAbsolute ? { absolute: title } : title,
     description,
     keywords: input.keywords ? [...input.keywords] : undefined,
     alternates: {
       canonical: url,
       ...(languageAlternates ? { languages: languageAlternates } : {}),
     },
-    robots: indexable
-      ? { index: true, follow: true }
-      : { index: false, follow: false },
+    robots: resolveRobots(input.path, input.index),
     openGraph: {
       type: "website",
       locale: ogLocale,
@@ -80,22 +107,33 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
       siteName: siteConfig.brandName,
       title,
       description,
-      images: input.ogImage
-        ? [
-            {
-              url: input.ogImage.url,
-              width: input.ogImage.width,
-              height: input.ogImage.height,
-              alt: input.ogImage.alt,
-            },
-          ]
-        : undefined,
+      images: [
+        {
+          url: ogImage.url,
+          width: ogImage.width,
+          height: ogImage.height,
+          alt: ogImage.alt,
+        },
+      ],
     },
     twitter: {
-      card: input.ogImage ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title,
       description,
-      images: input.ogImage ? [input.ogImage.url] : undefined,
+      images: [ogImage.url],
     },
   };
+}
+
+/** Bridge PageSeoConfig → Next Metadata (for programmatic / SDK use). */
+export function metadataFromSeoConfig(config: PageSeoConfig): Metadata {
+  return createPageMetadata({
+    title: config.title,
+    description: config.description,
+    path: config.path,
+    locale: config.locale,
+    keywords: config.keywords,
+    ogImage: config.ogImage,
+    index: config.index,
+  });
 }

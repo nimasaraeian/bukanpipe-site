@@ -37,7 +37,10 @@ export const enProductsHub: ContentDocument = {
       text: "Each product line has its own specification page. Contact sales for diameter, SDR, PN and weight-per-metre tables.",
     },
   ],
-  related: { articles: ["polyethylene-pipe"] },
+  related: {
+    products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe", "pe100-pipe"],
+    articles: ["pe100-technical-guide", "hdpe-installation-guide", "polyethylene-pipe"],
+  },
 };
 
 export const enApplicationsHub: ContentDocument = {

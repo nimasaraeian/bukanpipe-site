@@ -7,7 +7,7 @@ import { IndustrialPageHero } from "@/components/industrial/IndustrialPageHero";
 import { IndustrialButton } from "@/components/industrial/IndustrialPrimitives";
 import type { Dictionary } from "@/messages/en";
 import { getDirection } from "@/lib/i18n/config";
-import { getPageCardImages, getPageHeroImage } from "@/data/media/page-hero-images";
+import { getIndustrialPageHeroImageProps, getPageCardImages, getPageHeroImage } from "@/data/media/page-hero-images";
 import type { CtaType } from "@/lib/config/cta";
 import type { RouteDefinition } from "@/lib/config/routes";
 import { routes } from "@/lib/config/routes";
@@ -108,8 +108,7 @@ export function DevelopmentRoutePage({ route, extra }: DevelopmentRoutePageProps
       <IndustrialPageHero
         title={routeMeta.title}
         description={routeMeta.purpose}
-        imageSrc={hero.src}
-        imagePosition={hero.position}
+        {...getIndustrialPageHeroImageProps(hero)}
         breadcrumb={[
           { label: t.common.home, href: localePath(routes.home.path) },
           { label: routeMeta.title },

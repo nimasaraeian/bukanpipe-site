@@ -13,7 +13,7 @@ import type { ContentDocument } from "@/content/models/content-document";
 import { resolveRelatedLinks } from "@/lib/content/resolve-related";
 import { contentDocumentSchemas } from "@/lib/schema/content-document";
 import { routes } from "@/lib/config/routes";
-import { getPageHeroImage } from "@/data/media/page-hero-images";
+import { getIndustrialPageHeroImageProps, getPageHeroImage } from "@/data/media/page-hero-images";
 import { getDirection } from "@/lib/i18n/config";
 
 type ContentDocumentPageProps = {
@@ -86,7 +86,7 @@ function HeroActions({ doc }: { doc: ContentDocument }) {
 export function ContentDocumentPage({ doc }: ContentDocumentPageProps) {
   const { locale, path: localePath } = useLocale();
   const direction = getDirection(locale);
-  const hero = getPageHeroImage(doc.path.split("/")[1] ? `/${doc.path.split("/")[1]}` : doc.path, direction);
+  const hero = getPageHeroImage(doc.path, direction);
   const related = resolveRelatedLinks(locale, doc);
   const isArticle =
     doc.kind === "article" ||
@@ -104,8 +104,7 @@ export function ContentDocumentPage({ doc }: ContentDocumentPageProps) {
       <IndustrialPageHero
         title={doc.title}
         description={doc.description}
-        imageSrc={hero.src}
-        imagePosition={hero.position}
+        {...getIndustrialPageHeroImageProps(hero)}
         breadcrumb={doc.breadcrumbs.map((item, index, arr) => ({
           label: item.label,
           href: index < arr.length - 1 ? localePath(item.path) : undefined,

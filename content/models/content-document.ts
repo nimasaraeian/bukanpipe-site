@@ -13,6 +13,22 @@ export type ContentBlock =
   | { type: "list"; items: readonly string[] }
   | { type: "spec-cta"; text: string }
   | {
+      type: "definition";
+      term: string;
+      text: string;
+    }
+  | {
+      type: "spec-table";
+      title: string;
+      rows: readonly { label: string; value: string }[];
+      note?: string;
+    }
+  | {
+      type: "internal-links";
+      title: string;
+      links: readonly { label: string; path: string; hint?: string }[];
+    }
+  | {
       type: "data-required";
       title: string;
       message: string;
@@ -20,6 +36,14 @@ export type ContentBlock =
       /** When false, block is omitted from public render (metadata only). */
       showPublic?: boolean;
     };
+
+export type ContentHeroImage = {
+  src: string;
+  alt: string;
+  title?: string;
+  width?: number;
+  height?: number;
+};
 
 export type ContentFaq = {
   question: string;
@@ -72,4 +96,6 @@ export type ContentDocument = {
   faqs?: readonly ContentFaq[];
   related?: ContentRelations;
   imageAlt?: string;
+  /** Structured hero / product image for SEO schema and accessibility */
+  heroImage?: ContentHeroImage;
 };

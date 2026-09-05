@@ -58,7 +58,7 @@ export function PageHero({
           <p className="eyebrow-light mb-3">{eyebrow}</p>
         ) : null}
 
-        <h1 className="page-hero-title">{title}</h1>
+        <h1 className="page-hero-title ind-title-shine">{title}</h1>
 
         {description ? (
           <p className="page-hero-desc mt-4 max-w-2xl">{description}</p>

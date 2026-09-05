@@ -49,6 +49,12 @@ function textFromBlock(block: ContentBlock): string[] {
       return [...block.items];
     case "data-required":
       return block.showPublic === false ? [] : [block.title, block.message];
+    case "definition":
+      return [block.term, block.text];
+    case "spec-table":
+      return [block.title, ...block.rows.flatMap((row) => [row.label, row.value]), ...(block.note ? [block.note] : [])];
+    case "internal-links":
+      return [block.title, ...block.links.flatMap((link) => [link.label, link.path])];
     default:
       return [];
   }

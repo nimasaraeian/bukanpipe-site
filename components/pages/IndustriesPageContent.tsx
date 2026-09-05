@@ -10,7 +10,7 @@ import {
   IndustrialTextLink,
 } from "@/components/industrial/IndustrialPrimitives";
 import { getDirection } from "@/lib/i18n/config";
-import { getPageHeroImage, industrialSlides } from "@/data/media/page-hero-images";
+import { getIndustrialPageHeroImageProps, getPageHeroImage, industrialSlides } from "@/data/media/page-hero-images";
 import { routes } from "@/lib/config/routes";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
 
@@ -39,8 +39,7 @@ export function IndustriesPageContent() {
       <IndustrialPageHero
         title={routeMeta.title}
         description={routeMeta.purpose}
-        imageSrc={hero.src}
-        imagePosition={hero.position}
+        {...getIndustrialPageHeroImageProps(hero)}
         breadcrumb={[
           { label: t.common.home, href: path(routes.home.path) },
           { label: routeMeta.title },

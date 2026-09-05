@@ -7,36 +7,67 @@ export type NavItem = {
   href: string;
 };
 
+export type PrimaryNavLink = {
+  kind: "link";
+  label: string;
+  href: string;
+};
+
+export type PrimaryNavGroup = {
+  kind: "group";
+  id: "engineering" | "company";
+  label: string;
+  items: readonly NavItem[];
+};
+
+export type PrimaryNavEntry = PrimaryNavLink | PrimaryNavGroup;
+
+export function getPrimaryNavStructure(
+  _locale: Locale,
+  t: Dictionary,
+  path: (routePath: string) => string,
+): readonly PrimaryNavEntry[] {
+  const engineeringItems: readonly NavItem[] = [
+    { label: t.nav.technicalCenter, href: path("/technical-center") },
+    { label: t.nav.calculator, href: path("/calculator") },
+    { label: t.nav.downloads, href: path("/downloads") },
+  ];
+
+  const companyItems: readonly NavItem[] = [
+    { label: t.nav.about, href: path(routes.about.path) },
+    { label: t.nav.laboratory, href: path(routes.laboratory.path) },
+    { label: t.nav.quality, href: path("/quality") },
+  ];
+
+  return [
+    { kind: "link", label: t.nav.home, href: path(routes.home.path) },
+    { kind: "link", label: t.nav.products, href: path(routes.products.path) },
+    { kind: "link", label: t.nav.applications, href: path("/applications") },
+    { kind: "group", id: "engineering", label: t.nav.engineering, items: engineeringItems },
+    { kind: "group", id: "company", label: t.nav.company, items: companyItems },
+    { kind: "link", label: t.nav.contact, href: path(routes.contact.path) },
+  ];
+}
+
+export function flattenPrimaryNavLinks(structure: readonly PrimaryNavEntry[]): NavItem[] {
+  const links: NavItem[] = [];
+  for (const entry of structure) {
+    if (entry.kind === "link") {
+      links.push({ label: entry.label, href: entry.href });
+    } else {
+      links.push(...entry.items);
+    }
+  }
+  return links;
+}
+
+/** Flat list of all header destinations — used by link crawl tests. */
 export function getPrimaryNavItems(
   locale: Locale,
   t: Dictionary,
   path: (routePath: string) => string,
 ): readonly NavItem[] {
-  if (locale === "fa") {
-    return [
-      { label: t.nav.home, href: path(routes.home.path) },
-      { label: t.nav.products, href: path(routes.products.path) },
-      { label: t.nav.applications, href: path("/applications") },
-      { label: t.nav.laboratory, href: path(routes.laboratory.path) },
-      { label: t.nav.technicalCenter, href: path("/technical-center") },
-      { label: t.nav.downloads, href: path("/downloads") },
-      { label: t.nav.calculator, href: path("/calculator") },
-      { label: t.nav.about, href: path(routes.about.path) },
-      { label: t.nav.contact, href: path(routes.contact.path) },
-    ];
-  }
-
-  return [
-    { label: t.nav.home, href: path(routes.home.path) },
-    { label: t.nav.products, href: path(routes.products.path) },
-    { label: t.nav.applications, href: path("/applications") },
-    { label: t.nav.laboratory, href: path(routes.laboratory.path) },
-    { label: t.nav.technicalCenter, href: path("/technical-center") },
-    { label: t.nav.downloads, href: path("/downloads") },
-    { label: t.nav.calculator, href: path("/calculator") },
-    { label: t.nav.about, href: path(routes.about.path) },
-    { label: t.nav.contact, href: path(routes.contact.path) },
-  ];
+  return flattenPrimaryNavLinks(getPrimaryNavStructure(locale, t, path));
 }
 
 export type FooterColumn = {

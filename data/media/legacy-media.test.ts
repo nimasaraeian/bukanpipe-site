@@ -74,14 +74,14 @@ describe("image SEO helpers", () => {
     expect(imageSitemapAttachments()).toBeUndefined();
   });
 
-  it("keeps default Open Graph cards free of invented photographs", () => {
+  it("attaches brand OG images for hub routes", () => {
     const metadata = createPageMetadata({
-      title: "آزمایشگاه",
-      description: "مسیر توسعه آزمایشگاه.",
+      title: "Laboratory",
+      description: "Quality testing laboratory.",
       path: "/laboratory",
     });
-    expect(metadata.openGraph?.images).toBeUndefined();
-    expect(metadata.twitter).toBeDefined();
+    expect(metadata.openGraph?.images?.[0]?.url).toContain("laboratory-hero");
+    expect(metadata.twitter?.card).toBe("summary_large_image");
   });
 
   it("specifies OG compositions without rendering files", () => {

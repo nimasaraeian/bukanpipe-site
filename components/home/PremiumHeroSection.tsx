@@ -94,7 +94,7 @@ export function PremiumHeroSection() {
               <span className="engine-hero-kicker-line" />
             </div>
 
-            <h1 className="engine-hero-headline">
+            <h1 className="engine-hero-headline ind-title-shine">
               {hero.titleLine1}
               <br />
               {hero.titleLine2}

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { defaultLocale, isLocale } from "@/lib/i18n/config";
+import { resolveLegacyRedirect } from "@/lib/migration/redirects";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 
@@ -20,6 +21,13 @@ export function middleware(request: NextRequest) {
   const firstSegment = pathname.split("/").filter(Boolean)[0];
   if (firstSegment && isLocale(firstSegment)) {
     return NextResponse.next();
+  }
+
+  const legacyDestination = resolveLegacyRedirect(pathname);
+  if (legacyDestination) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = legacyDestination;
+    return NextResponse.redirect(redirectUrl, 308);
   }
 
   const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;

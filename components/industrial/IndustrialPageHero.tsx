@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { industrialSlides } from "@/data/media/page-hero-images";
+import { industrialSlides, type PageHeroImage } from "@/data/media/page-hero-images";
+import { cn } from "@/lib/cn";
 
 type BreadcrumbItem = {
   label: string;
@@ -16,6 +17,11 @@ type IndustrialPageHeroProps = {
   description?: string;
   imageSrc?: string;
   imagePosition?: string;
+  imageMobilePositionLtr?: string;
+  imageMobilePositionRtl?: string;
+  imageVariant?: PageHeroImage["variant"];
+  imageSceneModifier?: PageHeroImage["sceneModifier"];
+  imageAlt?: string;
   breadcrumb?: BreadcrumbItem[];
   children?: React.ReactNode;
 };
@@ -26,23 +32,52 @@ export function IndustrialPageHero({
   description,
   imageSrc = industrialSlides.extrusion,
   imagePosition = "58% center",
+  imageMobilePositionLtr,
+  imageMobilePositionRtl,
+  imageVariant = "default",
+  imageSceneModifier,
+  imageAlt = "",
   breadcrumb,
   children,
 }: IndustrialPageHeroProps) {
   const { t } = useLocale();
   const displayKicker = kicker ?? t.common.brandKicker;
+  const isBrandPhoto = imageVariant === "brand";
+  const isProductPhoto = imageVariant === "product";
 
   return (
-    <section className="ind-page-hero industrial-font">
+    <section
+      className={cn(
+        "ind-page-hero industrial-font",
+        isBrandPhoto && "ind-page-hero--brand-photo",
+        isProductPhoto && "ind-page-hero--product-photo",
+        imageSceneModifier === "applications" && "ind-page-hero--brand-applications",
+        imageSceneModifier === "about" && "ind-page-hero--brand-about",
+        imageSceneModifier === "calculator" && "ind-page-hero--brand-calculator",
+        imageSceneModifier === "laboratory" && "ind-page-hero--brand-laboratory",
+        imageSceneModifier === "downloads" && "ind-page-hero--brand-downloads",
+        imageSceneModifier === "technical" && "ind-page-hero--brand-technical",
+      )}
+      style={
+        {
+          "--ind-hero-object-position": imagePosition,
+          ...(imageMobilePositionLtr
+            ? { "--ind-hero-object-position-mobile-ltr": imageMobilePositionLtr }
+            : {}),
+          ...(imageMobilePositionRtl
+            ? { "--ind-hero-object-position-mobile-rtl": imageMobilePositionRtl }
+            : {}),
+        } as React.CSSProperties
+      }
+    >
       <div className="ind-page-hero-scene" aria-hidden="true">
         <Image
           src={imageSrc}
-          alt=""
+          alt={imageAlt}
           fill
           priority
           className="ind-page-hero-photo"
           sizes="100vw"
-          style={{ objectPosition: imagePosition }}
         />
         <div className="ind-page-hero-shade-left" />
         <div className="ind-page-hero-shade-top" />
@@ -51,6 +86,7 @@ export function IndustrialPageHero({
       </div>
 
       <div className="ind-container ind-page-hero-content">
+        <div className={cn("ind-page-hero-copy-stack", isBrandPhoto && "ind-page-hero-copy-stack--brand")}>
         {breadcrumb && breadcrumb.length > 0 ? (
           <nav className="ind-page-hero-breadcrumb mb-6" aria-label="Breadcrumb">
             {breadcrumb.map((item, index) => (
@@ -70,9 +106,25 @@ export function IndustrialPageHero({
           <span className="ind-kicker">{displayKicker}</span>
           <span className="ind-kicker-line" aria-hidden="true" />
         </div>
-        <h1 className="ind-display ind-display-lg ind-page-hero-title mt-5 max-w-[16ch]">{title}</h1>
-        {description ? <p className="ind-lead ind-page-hero-lead mt-5 max-w-2xl">{description}</p> : null}
+        <h1
+          className={cn(
+            "ind-display ind-display-lg ind-page-hero-title ind-title-shine mt-5",
+          )}
+        >
+          {title}
+        </h1>
+        {description ? (
+          <p
+            className={cn(
+              "ind-lead ind-page-hero-lead mt-5",
+              !isBrandPhoto && "max-w-2xl",
+            )}
+          >
+            {description}
+          </p>
+        ) : null}
         {children ? <div className="ind-page-hero-actions mt-8 flex flex-wrap gap-3">{children}</div> : null}
+        </div>
       </div>
     </section>
   );

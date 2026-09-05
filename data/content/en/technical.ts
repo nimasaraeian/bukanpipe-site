@@ -1,4 +1,9 @@
 import type { ContentDocument } from "@/content/models/content-document";
+import { buildSeoArticleDocument } from "@/lib/content/seo-content-model";
+import {
+  enHdpeInstallationGuideSeed,
+  enPe100TechnicalGuideSeed,
+} from "@/data/content/en/seo-article-seeds";
 
 function article(
   slug: string,
@@ -69,8 +74,13 @@ export const enTechnicalHub: ContentDocument = {
     },
   ],
   related: {
-    articles: ["polyethylene-pipe-welding", "polyethylene-pipe-temperature-pressure"],
-    products: ["water-supply-pipe", "gas-pipe"],
+    articles: [
+      "pe100-technical-guide",
+      "hdpe-installation-guide",
+      "polyethylene-pipe-welding",
+      "polyethylene-pipe-temperature-pressure",
+    ],
+    products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe"],
   },
 };
 
@@ -334,4 +344,6 @@ export const enTechnicalArticles: readonly ContentDocument[] = [
     { applications: ["agriculture-irrigation"], products: ["irrigation-pipe"] },
     ["https://bukanpipe.com/"],
   ),
+  buildSeoArticleDocument("en", enPe100TechnicalGuideSeed),
+  buildSeoArticleDocument("en", enHdpeInstallationGuideSeed),
 ];

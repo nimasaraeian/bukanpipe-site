@@ -65,7 +65,13 @@ function collectInternalLinks(
 }
 
 describe("internal link crawl (FA)", () => {
-  const faValidPaths = new Set<string>(["/", ...getAllPublishedPaths("fa"), "/request-quote"]);
+  const faValidPaths = new Set<string>([
+    "/",
+    ...getAllPublishedPaths("fa"),
+    "/request-quote",
+    "/solutions",
+    "/industries",
+  ]);
 
   it("has zero broken internal links in nav, footer, home, and related content", () => {
     const broken = collectInternalLinks(
@@ -87,7 +93,13 @@ describe("internal link crawl (FA)", () => {
 });
 
 describe("internal link crawl (EN)", () => {
-  const enValidPaths = new Set<string>(["/", ...getAllPublishedPaths("en"), "/request-quote"]);
+  const enValidPaths = new Set<string>([
+    "/",
+    ...getAllPublishedPaths("en"),
+    "/request-quote",
+    "/solutions",
+    "/industries",
+  ]);
 
   it("has zero broken internal links in nav, footer, home, and related content", () => {
     const broken = collectInternalLinks(
@@ -109,9 +121,13 @@ describe("internal link crawl (EN)", () => {
 
   it("sitemap EN includes full content IA", () => {
     const enPaths = getSitemapPathsForLocale("en");
+    expect(enPaths).toContain("/");
     expect(enPaths).toContain("/about");
     expect(enPaths).toContain("/laboratory");
+    expect(enPaths).toContain("/solutions");
+    expect(enPaths).toContain("/industries");
     expect(enPaths.some((p) => p.startsWith("/technical-center"))).toBe(true);
     expect(enPaths).toContain("/polyethylene-pipe");
+    expect(enPaths).not.toContain("/projects");
   });
 });

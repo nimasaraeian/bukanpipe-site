@@ -13,6 +13,9 @@ export const dictionaryEn = {
     mobileNav: "Mobile navigation",
     themeLight: "Switch to light mode",
     themeDark: "Switch to dark mode",
+    switchToEnglish: "Switch language to English",
+    switchToPersian: "Switch language to Persian",
+    currentLanguage: "Current language",
   },
   nav: {
     home: "Home",
@@ -28,7 +31,9 @@ export const dictionaryEn = {
     contact: "Contact",
     quality: "Quality",
     company: "Company",
+    engineering: "Engineering",
     requestQuote: "Request Quote",
+    requestQuoteShort: "Quote",
   },
   cta: {
     requestQuote: "Request quote →",
@@ -46,6 +51,7 @@ export const dictionaryEn = {
   routes: {
     home: {
       title: "Home",
+      seoTitle: "HDPE & PE100 Pipe Manufacturer | Bukan Pipe",
       purpose:
         "HDPE / PE100 pipe manufacturer positioning for international buyers, engineers and procurement teams.",
       seoDescription:
@@ -53,72 +59,75 @@ export const dictionaryEn = {
     },
     products: {
       title: "Products",
+      seoTitle: "HDPE Pipe Products | PE100 Water, Gas & Irrigation | Bukan Pipe",
       purpose: "Commercial HDPE pipe product catalog.",
       seoDescription:
-        "HDPE pipe products for water, gas, sewerage, drainage, irrigation and PE100 — Bukan Pipe catalog.",
+        "HDPE pipe products for water supply, gas distribution, sewer, drainage, irrigation and PE100 — Bukan Pipe manufacturing catalog.",
     },
     solutions: {
       title: "Solutions",
+      seoTitle: "HDPE Pipeline Solutions | Water, Gas & Irrigation | Bukan Pipe",
       purpose:
         "Integrated HDPE system packages — pipe supply, fusion readiness, engineering support and project-scale delivery.",
       seoDescription:
-        "Bukan Pipe engineered HDPE solutions for water, agriculture and industrial pipeline networks.",
+        "Engineered HDPE pipeline solutions for water infrastructure, gas distribution and agricultural irrigation — Bukan Pipe.",
     },
     industries: {
       title: "Industries",
+      seoTitle: "HDPE Pipe by Industry | Water, Gas & Agriculture | Bukan Pipe",
       purpose:
         "Industry-specific pipeline applications — water infrastructure, agriculture, industrial process and distribution networks.",
       seoDescription:
-        "HDPE pipe applications by industry sector. Content publishes after product and market verification.",
+        "Polyethylene pipe applications by industry — municipal water, gas networks, agriculture and industrial process piping.",
     },
     laboratory: {
       title: "Quality",
       purpose:
         "Laboratory as a trust asset and intake channel. Accreditation claims publish only after certificate verification.",
       seoDescription:
-        "Bukan Pipe laboratory development route. Accreditation status and test scope are not published as fact yet.",
+        "Bukan Pipe laboratory — quality testing and ISO/IEC 17025 scope information for polyethylene pipe projects.",
     },
     projects: {
       title: "Projects",
       purpose:
         "Case studies with publication permission. No project or client name is created without evidence.",
       seoDescription:
-        "Bukan Pipe projects development route. Case studies are added only after evidence and publication approval.",
+        "Bukan Pipe project references and case studies for water, gas and irrigation pipeline networks.",
     },
     engineering: {
       title: "Engineering",
       purpose:
         "Evergreen technical decision reference: SDR, PN, PE80/PE100, welding and installation. Separate from product and knowledge pages.",
       seoDescription:
-        "Bukan Pipe engineering reference development route. Technical guides publish after source verification.",
+        "Engineering reference for HDPE pipe — SDR, PN, PE80/PE100, welding and installation guidance.",
     },
     standards: {
       title: "Standards",
       purpose:
         "Standards and product compliance documents. Lists are populated only from verified sources.",
       seoDescription:
-        "Bukan Pipe standards development route. No unverified standards or certificates are listed in this phase.",
+        "Standards, compliance documents and downloadable resources for Bukan Pipe polyethylene products.",
     },
     knowledge: {
       title: "Knowledge",
       purpose:
         "Editorial and educational content. Does not replace product specs or engineering decision guides.",
       seoDescription:
-        "Bukan Pipe knowledge center development route. Articles publish after editorial and technical review.",
+        "Technical articles on polyethylene pipe design, welding, pressure rating and irrigation systems.",
     },
     pricing: {
       title: "Pricing",
       purpose:
         "Commercial pricing is not published in this phase. This route is a placeholder for future verified price lists.",
       seoDescription:
-        "Bukan Pipe pricing development route. No prices are published without factory approval.",
+        "Pricing guidance and quotation requests for HDPE pipe supply — contact sales for project quotes.",
     },
     tools: {
       title: "Tools",
       purpose:
         "Engineering calculators and utilities. Tools are separate from educational engineering content.",
       seoDescription:
-        "Bukan Pipe engineering tools development route. Calculators publish after validation.",
+        "Engineering calculators for preliminary pipeline diameter, head loss and pump sizing estimates.",
     },
     requestQuote: {
       title: "Request a Quote",
@@ -132,7 +141,7 @@ export const dictionaryEn = {
       purpose:
         "Dealer network discovery and verification. No dealer list is published without current factory data.",
       seoDescription:
-        "Bukan Pipe dealer network development route. Dealer listings publish after verification.",
+        "Authorized dealer network for Bukan Pipe polyethylene products in Iran and export markets.",
     },
     verify: {
       title: "Verify",
@@ -153,7 +162,7 @@ export const dictionaryEn = {
       purpose:
         "Factory identity and company narrative. Timeline, capacity and certification claims require verification.",
       seoDescription:
-        "About Bukan Pipe — HDPE pipe manufacturer development route. Verified company facts publish after approval.",
+        "About Bukan Pipe — HDPE pipe manufacturer in Bukan, Iran. Company history, quality policy and certifications.",
     },
   },
   footer: {
@@ -481,10 +490,62 @@ export const dictionaryEn = {
       ],
     },
   },
+  calculator: {
+    pipelineDesign: {
+      intro:
+        "Preliminary water transfer line estimate — well depth ({wellDepth} m) is excluded from total head. Total head equals vertical lift ({verticalLift} m) plus line friction loss.",
+      fields: {
+        verticalLift: "Vertical lift to destination (m)",
+        flowRate: "Flow rate (m³/h)",
+        pipeLength: "Pipe length (m)",
+        sdr: "SDR",
+        pn: "PN",
+        powerReserve: "Motor power reserve (%)",
+        pipeGrade: "Pipe grade",
+        externalDiameters: "External diameter (mm) — comma-separated",
+      },
+      actions: {
+        reset: "Reset",
+      },
+      recommendation: {
+        label: "Preliminary recommendation",
+        summary:
+          "External diameter {de} mm — velocity {velocity} m/s — total head {head} m — power {power} kW",
+      },
+      results: "Results",
+      table: {
+        headers: {
+          de: "OD mm",
+          sdr: "SDR",
+          pn: "PN",
+          wall: "e mm",
+          di: "ID mm",
+          velocity: "v m/s",
+          headLoss: "hf m",
+          totalHead: "H m",
+          power: "kW",
+          status: "Status",
+        },
+        status: {
+          ok: "OK",
+          highVelocity: "High velocity",
+          lowVelocity: "Low velocity",
+        },
+      },
+      assumptions: {
+        title: "Engineering assumptions",
+        hazenWilliams: "Hazen-Williams C = 145 for PE pipe",
+        pumpEfficiency: "Pump efficiency = 0.75",
+        wellDepthExcluded: "Well depth excluded from total head",
+      },
+      disclaimer:
+        "Results are for preliminary design only and do not replace verified engineering calculations. Final pump and pipe selection must consider pump curves, operating pressure and the actual elevation profile.",
+    },
+  },
   notFound: {
     kicker: "404",
     title: "Page not found",
-    description: "This path does not exist on the platform or has not been built yet.",
+    description: "The address you requested does not exist or may have moved.",
     breadcrumb: "404",
   },
 } as const;

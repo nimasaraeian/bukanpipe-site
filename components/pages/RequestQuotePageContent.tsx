@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { IndustrialPageHero } from "@/components/industrial/IndustrialPageHero";
 import { getDirection } from "@/lib/i18n/config";
-import { getPageHeroImage } from "@/data/media/page-hero-images";
+import { getIndustrialPageHeroImageProps, getPageHeroImage } from "@/data/media/page-hero-images";
 import { routes } from "@/lib/config/routes";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
 
@@ -41,8 +41,7 @@ export function RequestQuotePageContent() {
             ? "نیاز پروژه، محصول یا کاربرد خود را اعلام کنید. واحد فروش در ساعات اداری پاسخگو است."
             : t.routes.requestQuote.purpose
         }
-        imageSrc={hero.src}
-        imagePosition={hero.position}
+        {...getIndustrialPageHeroImageProps(hero)}
         breadcrumb={[
           { label: t.common.home, href: localePath(routes.home.path) },
           { label: isFa ? "استعلام قیمت" : t.routes.requestQuote.title },

@@ -12,5 +12,16 @@ describe("createPageMetadata", () => {
     expect(metadata.alternates?.canonical).toBe("http://localhost:3000/products");
     expect(metadata.robots).toEqual({ index: false, follow: false });
     expect(metadata.openGraph?.url).toBe("http://localhost:3000/products");
+    expect(metadata.openGraph?.images).toHaveLength(1);
+    expect(metadata.twitter?.card).toBe("summary_large_image");
+  });
+
+  it("marks stub routes as noindex", () => {
+    const metadata = createPageMetadata({
+      title: "Projects",
+      description: "Stub.",
+      path: "/projects",
+    });
+    expect(metadata.robots).toEqual({ index: false, follow: false });
   });
 });

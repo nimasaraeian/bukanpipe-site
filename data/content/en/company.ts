@@ -157,11 +157,6 @@ export const enContact: ContentDocument = {
     { label: "Contact", path: "/contact" },
   ],
   sections: [
-    { type: "heading", level: 2, text: "Factory" },
-    {
-      type: "paragraph",
-      text: "West Azerbaijan Province — Bukan, 10 km Miandoab Road. Postal code: 5955164341, Iran.",
-    },
     { type: "heading", level: 2, text: "Phone" },
     {
       type: "list",
@@ -176,10 +171,6 @@ export const enContact: ContentDocument = {
     {
       type: "list",
       items: ["+98 901 341 4979", "lab@bukanpipe.com"],
-    },
-    {
-      type: "paragraph",
-      text: "Office hours: Saturday to Thursday, 08:30–16:00 (Iran time).",
     },
   ],
 };

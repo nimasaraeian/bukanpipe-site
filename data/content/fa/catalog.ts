@@ -16,28 +16,56 @@ export const faProductsHub: ContentDocument = {
   path: "/products",
   locale: "fa",
   kind: "hub",
-  title: "محصولات",
-  seoTitle: "محصولات لوله پلی اتیلن | بوکان پایپ",
+  title: "محصولات لوله پلی اتیلن",
+  seoTitle: "خرید لوله پلی اتیلن از کارخانه | محصولات HDPE | بوکان پایپ",
   seoDescription:
-    "لوله پلی‌اتیلن آبرسانی، گاز، فاضلاب، زهکشی، آبیاری و PE100 — کاتالوگ تجاری بوکان پایپ.",
-  description: "کاتالوگ محصولات لوله PE.",
-  primaryKeyword: "لوله پلی اتیلن",
-  secondaryKeywords: ["خرید لوله پلی اتیلن", "تولید کننده لوله پلی اتیلن"],
+    "خرید لوله پلی اتیلن مستقیم از کارخانه بوکان پایپ: آبرسانی، گاز، آبیاری کشاورزی، صنعتی و PE100 — تولید HDPE تا ۶۳۰ میلی‌متر.",
+  description: "کاتالوگ تولیدکننده لوله پلی اتیلن — خرید و تأمین از کارخانه.",
+  primaryKeyword: "خرید لوله پلی اتیلن از کارخانه",
+  secondaryKeywords: [
+    "تامین کننده لوله پلی اتیلن",
+    "تولید کننده لوله HDPE",
+    "لوله پلی اتیلن PE100",
+  ],
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-05",
   breadcrumbs: [
     { label: "خانه", path: "/" },
     { label: "محصولات", path: "/products" },
   ],
   sections: [
     {
-      type: "paragraph",
-      text: "هر محصول صفحه تجاری مستقل دارد. مشخصات فنی پس از تأیید کارخانه تکمیل می‌شود.",
+      type: "definition",
+      term: "تأمین از کارخانه",
+      text: "بوکان پایپ به‌عنوان تولیدکننده لوله پلی اتیلن، هر خانواده محصول را با مشخصات فنی، QC و پشتیبانی فروش مستقیم عرضه می‌کند.",
+    },
+    {
+      type: "internal-links",
+      title: "محصولات اصلی",
+      links: [
+        { label: "لوله پلی اتیلن آبرسانی", path: "/products/water-supply-pipe" },
+        { label: "لوله پلی اتیلن گاز", path: "/products/gas-pipe" },
+        { label: "لوله آبیاری پلی اتیلن", path: "/products/irrigation-pipe" },
+        { label: "لوله پلی اتیلن صنعتی", path: "/products/industrial-pipe" },
+        { label: "لوله پلی اتیلن PE100", path: "/products/pe100-pipe" },
+      ],
+    },
+    {
+      type: "internal-links",
+      title: "راهنما و استعلام",
+      links: [
+        { label: "استعلام قیمت", path: "/request-quote" },
+        { label: "مرکز فنی", path: "/technical-center" },
+        { label: "کارخانه تولید", path: "/about" },
+      ],
     },
   ],
-  related: { articles: ["polyethylene-pipe"] },
+  related: {
+    products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe", "pe100-pipe"],
+    articles: ["pe100-technical-guide", "hdpe-installation-guide", "polyethylene-pipe"],
+  },
 };
 
 export const faApplicationsHub: ContentDocument = {
@@ -46,16 +74,21 @@ export const faApplicationsHub: ContentDocument = {
   path: "/applications",
   locale: "fa",
   kind: "hub",
-  title: "کاربردها",
-  seoTitle: "کاربرد لوله پلی اتیلن | بوکان پایپ",
-  seoDescription: "کاربردهای صنعتی لوله PE: آب، گاز، کشاورزی، فاضلاب و صنعت.",
-  description: "کاربردهای شبکه لوله پلی‌اتیلن.",
+  title: "کاربرد لوله پلی اتیلن",
+  seoTitle: "کاربرد لوله پلی اتیلن | آب، گاز، کشاورزی و صنعت | بوکان پایپ",
+  seoDescription:
+    "کاربرد لوله پلی اتیلن در آبرسانی، گازرسانی، آبیاری کشاورزی، فاضلاب و صنعت — راهنمای انتخاب + لینک محصولات کارخانه.",
+  description: "کاربردهای شبکه لوله HDPE و PE.",
   primaryKeyword: "کاربرد لوله پلی اتیلن",
-  secondaryKeywords: [],
+  secondaryKeywords: [
+    "لوله پلی اتیلن آبرسانی",
+    "لوله پلی اتیلن کشاورزی",
+    "لوله پلی اتیلن صنعتی",
+  ],
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-05",
   breadcrumbs: [
     { label: "خانه", path: "/" },
     { label: "کاربردها", path: "/applications" },
@@ -63,9 +96,23 @@ export const faApplicationsHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "کاربردها از صفحات محصول جدا هستند تا intent جستجو حفظ شود.",
+      text: "هر کاربرد ملاحظات طراحی مخصوص دارد. صفحات کاربرد برای intent اطلاعاتی است؛ مشخصات فنی و خرید در صفحات محصول و استعلام قیمت.",
+    },
+    {
+      type: "internal-links",
+      title: "کاربردهای اصلی",
+      links: [
+        { label: "انتقال آب", path: "/applications/water-transfer" },
+        { label: "آبیاری کشاورزی", path: "/applications/agriculture-irrigation" },
+        { label: "گازرسانی", path: "/applications/gas-distribution" },
+        { label: "صنعتی", path: "/applications/industrial" },
+      ],
     },
   ],
+  related: {
+    products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe"],
+    articles: ["hdpe-pipe-what-is", "polyethylene-pipe-standards"],
+  },
 };
 
 export const contentCatalogFa: readonly ContentDocument[] = [

@@ -4,7 +4,6 @@ import { IndustrialHomePage } from "@/components/home/IndustrialHomePage";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionary";
 import { routes } from "@/lib/config/routes";
-import { siteConfig } from "@/lib/config/site";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
 type PageProps = {
@@ -20,17 +19,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const locale = localeParam as Locale;
   const t = getDictionary(locale);
 
-  return {
-    ...createPageMetadata({
-      title: siteConfig.defaultTitle,
-      description: t.routes.home.seoDescription,
-      path: routes.home.path,
-      locale,
-    }),
-    title: {
-      absolute: siteConfig.defaultTitle,
-    },
-  };
+  return createPageMetadata({
+    title: t.routes.home.seoTitle,
+    description: t.routes.home.seoDescription,
+    path: routes.home.path,
+    locale,
+    titleAbsolute: true,
+  });
 }
 
 export default async function HomePage({ params }: PageProps) {
