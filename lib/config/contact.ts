@@ -121,6 +121,21 @@ export const contactConfig = {
         en: "+98 901 341 4979",
       },
     },
+    whatsapp: {
+      labels: { fa: "واتساپ", en: "WhatsApp" },
+      openLabels: {
+        fa: "باز کردن واتساپ بوکان پایپ",
+        en: "Open Bukan Pipe on WhatsApp",
+      },
+      url: null,
+      verificationStatus: "url-pending" as const,
+      verificationNote: "Official WhatsApp business URL not verified in factory documents.",
+      fallbackPhone: "+989013414979",
+      fallbackDisplay: {
+        fa: "۰۹۰۱۳۴۱۴۹۷۹",
+        en: "+98 901 341 4979",
+      },
+    },
     eitaa: {
       labels: { fa: "ایتا", en: "Eitaa" },
       openLabels: {
@@ -136,13 +151,52 @@ export const contactConfig = {
         en: "+98 901 341 4979",
       },
     },
-  } satisfies Record<"telegram" | "eitaa", MessagingChannelConfig>,
+  } satisfies Record<"telegram" | "whatsapp" | "eitaa", MessagingChannelConfig>,
+
+  social: {
+    instagram: {
+      labels: { fa: "اینستاگرام", en: "Instagram" },
+      openLabels: {
+        fa: "صفحه اینستاگرام بوکان پایپ",
+        en: "Bukan Pipe on Instagram",
+      },
+      url: "https://www.instagram.com/bukanpipe_company/",
+    },
+  },
 
   officeHours: {
     fa: "ساعات پاسخگویی: شنبه تا پنج‌شنبه، ۸:۳۰ تا ۱۶:۰۰.",
     en: "Office hours: Saturday to Thursday, 08:30–16:00 (Iran time).",
   },
 } as const;
+
+export type MessagingChannelId = keyof typeof contactConfig.messaging;
+
+/** E.164 digits only — for wa.me / t.me deep links. */
+export function phoneToDigits(phone: string): string {
+  return phone.replace(/\D/g, "");
+}
+
+/** Open a direct chat from a verified fallback phone (used when channel URL is pending). */
+export function getMessagingChatUrl(channel: MessagingChannelId, phone: string): string {
+  const digits = phoneToDigits(phone);
+
+  switch (channel) {
+    case "telegram":
+      return `https://t.me/+${digits}`;
+    case "whatsapp":
+      return `https://wa.me/${digits}`;
+    case "eitaa":
+      return `https://eitaa.com/+${digits}`;
+  }
+}
+
+export function resolveMessagingHref(
+  channel: MessagingChannelConfig,
+  id: MessagingChannelId,
+): string {
+  return channel.url ?? getMessagingChatUrl(id, channel.fallbackPhone);
+}
 
 /** Single-line address for maps search (English — stable for Google query). */
 export function factoryAddressQuery(): string {

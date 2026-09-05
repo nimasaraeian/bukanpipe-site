@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { FooterSocialLinks } from "@/components/layout/FooterSocialLinks";
 import { getFooterColumns } from "@/lib/i18n/nav-items";
 import { siteConfig } from "@/lib/config/site";
 
@@ -31,6 +32,7 @@ export function IndustrialFooter() {
             <p className="ind-lead mt-5 max-w-sm text-sm">
               {t.footer.tagline}. {t.footer.description}
             </p>
+            <FooterSocialLinks />
           </div>
 
           <div className="grid gap-10 sm:grid-cols-3">
@@ -51,7 +53,7 @@ export function IndustrialFooter() {
           </div>
         </div>
 
-        <div className="ind-footer-meta mt-14 flex flex-wrap items-center justify-between gap-4 pt-8 text-xs">
+        <div className="ind-footer-meta mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-[color:var(--ind-border)] pt-8 text-xs">
           <p dir="ltr">
             © {new Date().getFullYear()} {siteConfig.brandName}
           </p>

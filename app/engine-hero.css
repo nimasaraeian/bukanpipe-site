@@ -1009,10 +1009,10 @@
   }
 }
 
-/* Mobile/tablet — copy in fade zone, clear product imagery opposite side */
+/* Mobile/tablet — full-bleed hero, copy over cinematic photo */
 @media (max-width: 1023px) {
   .engine-hero {
-    min-height: clamp(28rem, 72svh, 40rem);
+    min-height: 100svh;
     overflow: hidden;
   }
 
@@ -1021,40 +1021,39 @@
     inset: 0;
   }
 
-  /* LTR (EN) — fade left / text left, pipes smaller & pushed to the right */
   .engine-hero-scene-photo {
-    object-position: 52% 46%;
-    transform: scale(0.84);
+    object-fit: cover;
+    object-position: 62% center;
+    transform: none;
   }
 
   .engine-hero-scene-shade-left {
     background: linear-gradient(
       90deg,
-      rgba(5, 7, 10, 0.98) 0%,
-      rgba(5, 7, 10, 0.94) 18%,
-      rgba(5, 7, 10, 0.82) 32%,
-      rgba(5, 7, 10, 0.52) 46%,
-      rgba(5, 7, 10, 0.2) 56%,
-      transparent 68%
+      rgba(5, 7, 10, 0.97) 0%,
+      rgba(5, 7, 10, 0.9) 22%,
+      rgba(5, 7, 10, 0.62) 40%,
+      rgba(5, 7, 10, 0.22) 58%,
+      transparent 78%
     );
   }
 
   .engine-hero-scene-shade-bottom {
     background: linear-gradient(
       to top,
-      rgba(5, 7, 10, 0.72) 0%,
-      rgba(5, 7, 10, 0.32) 14%,
-      rgba(5, 7, 10, 0.08) 28%,
-      transparent 46%
+      rgba(5, 7, 10, 0.92) 0%,
+      rgba(5, 7, 10, 0.55) 18%,
+      rgba(5, 7, 10, 0.18) 34%,
+      transparent 52%
     );
   }
 
   .engine-hero-scene-shade-top {
-    background: linear-gradient(to bottom, rgba(5, 7, 10, 0.72) 0%, transparent 20%);
+    background: linear-gradient(to bottom, rgba(5, 7, 10, 0.78) 0%, transparent 24%);
   }
 
   .engine-hero-stage {
-    min-height: clamp(28rem, 72svh, 40rem);
+    min-height: 100svh;
     padding: 4.75rem 1.25rem 9.25rem;
     background: transparent;
   }
@@ -1122,10 +1121,10 @@
     display: none;
   }
 
-  /* RTL (FA) — mirror scene, pipes smaller & recessed to the left */
+  /* RTL (FA) — mirror scene, full-bleed photo */
   [dir="rtl"] .engine-hero-scene-photo {
-    transform: scaleX(-1) scale(0.84);
-    object-position: 56% 46%;
+    transform: scaleX(-1);
+    object-position: 62% center;
   }
 
   [dir="rtl"] .engine-hero-scene-shade-left {
@@ -1436,19 +1435,19 @@
 /* Mobile wins over desktop + light-mode hero shade/photo rules */
 @media (max-width: 1023px) {
   .engine-hero-scene-photo {
-    object-position: 52% 46%;
-    transform: scale(0.84);
+    object-fit: cover;
+    object-position: 62% center;
+    transform: none;
   }
 
   .engine-hero-scene-shade-left {
     background: linear-gradient(
       90deg,
-      rgba(5, 7, 10, 0.98) 0%,
-      rgba(5, 7, 10, 0.94) 18%,
-      rgba(5, 7, 10, 0.82) 32%,
-      rgba(5, 7, 10, 0.52) 46%,
-      rgba(5, 7, 10, 0.2) 56%,
-      transparent 68%
+      rgba(5, 7, 10, 0.97) 0%,
+      rgba(5, 7, 10, 0.9) 22%,
+      rgba(5, 7, 10, 0.62) 40%,
+      rgba(5, 7, 10, 0.22) 58%,
+      transparent 78%
     ) !important;
   }
 
@@ -1456,7 +1455,7 @@
     z-index: 3;
     background: linear-gradient(
       to top,
-      rgba(5, 7, 10, 0.88) 0%,
+      rgba(5, 7, 10, 0.92) 0%,
       rgba(5, 7, 10, 0.62) 38%,
       rgba(5, 7, 10, 0.28) 68%,
       transparent 100%
@@ -1473,19 +1472,18 @@
   }
 
   [dir="rtl"] .engine-hero-scene-photo {
-    transform: scaleX(-1) scale(0.84);
-    object-position: 56% 46%;
+    transform: scaleX(-1);
+    object-position: 62% center;
   }
 
   [dir="rtl"] .engine-hero-scene-shade-left {
     background: linear-gradient(
       270deg,
-      rgba(5, 7, 10, 0.98) 0%,
-      rgba(5, 7, 10, 0.94) 18%,
-      rgba(5, 7, 10, 0.82) 32%,
-      rgba(5, 7, 10, 0.52) 46%,
-      rgba(5, 7, 10, 0.2) 56%,
-      transparent 68%
+      rgba(5, 7, 10, 0.97) 0%,
+      rgba(5, 7, 10, 0.9) 22%,
+      rgba(5, 7, 10, 0.62) 40%,
+      rgba(5, 7, 10, 0.22) 58%,
+      transparent 78%
     ) !important;
   }
 
@@ -1498,11 +1496,10 @@
     background: linear-gradient(
       90deg,
       rgba(238, 242, 247, 0.98) 0%,
-      rgba(238, 242, 247, 0.92) 14%,
-      rgba(238, 242, 247, 0.74) 28%,
-      rgba(238, 242, 247, 0.42) 42%,
-      rgba(238, 242, 247, 0.12) 52%,
-      transparent 66%
+      rgba(238, 242, 247, 0.92) 18%,
+      rgba(238, 242, 247, 0.68) 36%,
+      rgba(238, 242, 247, 0.28) 52%,
+      transparent 72%
     ) !important;
   }
 
@@ -1510,16 +1507,15 @@
     background: linear-gradient(
       270deg,
       rgba(238, 242, 247, 0.99) 0%,
-      rgba(238, 242, 247, 0.94) 14%,
-      rgba(238, 242, 247, 0.76) 28%,
-      rgba(238, 242, 247, 0.42) 42%,
-      rgba(238, 242, 247, 0.12) 52%,
-      transparent 66%
+      rgba(238, 242, 247, 0.92) 18%,
+      rgba(238, 242, 247, 0.68) 36%,
+      rgba(238, 242, 247, 0.28) 52%,
+      transparent 72%
     ) !important;
   }
 
   [data-theme="light"][dir="rtl"] .engine-hero-scene-photo {
-    transform: scaleX(-1) scale(0.84);
-    object-position: 56% 46%;
+    transform: scaleX(-1);
+    object-position: 62% center;
   }
 }

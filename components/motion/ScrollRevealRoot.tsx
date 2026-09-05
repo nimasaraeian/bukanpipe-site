@@ -29,16 +29,15 @@ const REVEAL_SELECTOR = [
   "[data-scroll-reveal]",
 ].join(",");
 
-const HERO_EXCLUDE = ".engine-hero, .ind-page-hero, .en-products-hero";
+const REVEAL_EXCLUDE = ".engine-hero, .ind-page-hero, .en-products-hero, .ind-footer";
 
 const OBSERVER_OPTIONS: IntersectionObserverInit = {
-  threshold: 0.08,
-  rootMargin: "0px 0px -4% 0px",
+  threshold: [0, 0.08, 0.15],
+  rootMargin: "0px 0px -2% 0px",
 };
 
-const MAX_STAGGER_INDEX = 6;
-const STAGGER_MS = 55;
-const ABOVE_FOLD_RATIO = 0.88;
+const MAX_STAGGER_INDEX = 8;
+const STAGGER_MS = 72;
 
 type RevealVariant = "default" | "media" | "card" | "header" | "aside";
 
@@ -47,7 +46,6 @@ const VARIANT_CLASS_NAMES = [
   "ind-scroll-reveal--card",
   "ind-scroll-reveal--header",
   "ind-scroll-reveal--aside",
-  "ind-scroll-reveal--instant",
 ] as const;
 
 function getRevealVariant(element: HTMLElement): RevealVariant {
@@ -89,8 +87,7 @@ function applyVariantClass(element: HTMLElement, variant: RevealVariant) {
 }
 
 function shouldSkipTarget(element: Element) {
-  if (element.closest(HERO_EXCLUDE)) return true;
-  return false;
+  return Boolean(element.closest(REVEAL_EXCLUDE));
 }
 
 function collectRevealTargets() {
@@ -99,7 +96,6 @@ function collectRevealTargets() {
 
   document.querySelectorAll(REVEAL_SELECTOR).forEach((element) => {
     if (seen.has(element) || shouldSkipTarget(element)) return;
-    if (element.classList.contains("ind-scroll-reveal")) return;
     seen.add(element);
     targets.push(element);
   });
@@ -107,15 +103,11 @@ function collectRevealTargets() {
   return targets;
 }
 
-function isAboveFold(element: Element) {
-  const rect = element.getBoundingClientRect();
-  const fold = window.innerHeight * ABOVE_FOLD_RATIO;
-  return rect.top < fold && rect.bottom > 0;
-}
-
 function applyRevealMarkup(targets: Element[]) {
   targets.forEach((element) => {
     const html = element as HTMLElement;
+    if (html.classList.contains("ind-scroll-reveal")) return;
+
     html.classList.add("ind-scroll-reveal");
     applyVariantClass(html, getRevealVariant(html));
 
@@ -124,11 +116,26 @@ function applyRevealMarkup(targets: Element[]) {
       "--reveal-delay",
       `${Math.min(Math.max(index, 0), MAX_STAGGER_INDEX) * STAGGER_MS}ms`,
     );
-
-    if (isAboveFold(element)) {
-      html.classList.add("is-revealed", "ind-scroll-reveal--instant");
-    }
   });
+}
+
+function clearRevealMarkup() {
+  document.querySelectorAll(".ind-scroll-reveal").forEach((element) => {
+    const html = element as HTMLElement;
+    html.classList.remove("ind-scroll-reveal", "is-revealed", ...VARIANT_CLASS_NAMES);
+    html.style.removeProperty("--reveal-delay");
+  });
+}
+
+function revealIfAlreadyVisible(element: Element) {
+  const rect = element.getBoundingClientRect();
+  const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+  const ratio = visibleHeight / Math.max(rect.height, 1);
+  if (ratio >= 0.08 && rect.top < window.innerHeight * 0.92) {
+    element.classList.add("is-revealed");
+    return true;
+  }
+  return false;
 }
 
 export function ScrollRevealRoot() {
@@ -141,10 +148,10 @@ export function ScrollRevealRoot() {
     let deferredFrame = 0;
 
     const bind = () => {
-      const targets = collectRevealTargets();
-      if (targets.length === 0) return;
+      applyRevealMarkup(collectRevealTargets());
 
-      applyRevealMarkup(targets);
+      const pending = document.querySelectorAll(".ind-scroll-reveal:not(.is-revealed)");
+      if (pending.length === 0) return;
 
       observer?.disconnect();
       observer = new IntersectionObserver((entries) => {
@@ -155,19 +162,21 @@ export function ScrollRevealRoot() {
         });
       }, OBSERVER_OPTIONS);
 
-      targets.forEach((target) => {
-        if (!target.classList.contains("is-revealed")) {
+      pending.forEach((target) => {
+        if (!revealIfAlreadyVisible(target)) {
           observer?.observe(target);
         }
       });
     };
 
+    clearRevealMarkup();
     bind();
     deferredFrame = window.requestAnimationFrame(bind);
 
     return () => {
       window.cancelAnimationFrame(deferredFrame);
       observer?.disconnect();
+      clearRevealMarkup();
     };
   }, [pathname]);
 

@@ -4,7 +4,9 @@ import {
   factoryAddressQuery,
   getGoogleMapsDirectionsUrl,
   getGoogleMapsEmbedUrl,
+  getMessagingChatUrl,
   postalAddressSchema,
+  resolveMessagingHref,
 } from "@/lib/config/contact";
 
 describe("contactConfig", () => {
@@ -17,7 +19,22 @@ describe("contactConfig", () => {
 
   it("uses verified lab phone as messaging fallback", () => {
     expect(contactConfig.messaging.telegram.fallbackPhone).toBe("+989013414979");
+    expect(contactConfig.messaging.whatsapp.fallbackPhone).toBe("+989013414979");
     expect(contactConfig.messaging.eitaa.fallbackPhone).toBe("+989013414979");
+  });
+
+  it("builds standard chat deep links from verified fallback phones", () => {
+    const phone = "+989013414979";
+    expect(getMessagingChatUrl("telegram", phone)).toBe("https://t.me/+989013414979");
+    expect(getMessagingChatUrl("whatsapp", phone)).toBe("https://wa.me/989013414979");
+    expect(getMessagingChatUrl("eitaa", phone)).toBe("https://eitaa.com/+989013414979");
+    expect(resolveMessagingHref(contactConfig.messaging.telegram, "telegram")).toBe(
+      "https://t.me/+989013414979",
+    );
+  });
+
+  it("exposes verified Instagram profile URL", () => {
+    expect(contactConfig.social.instagram.url).toBe("https://www.instagram.com/bukanpipe_company/");
   });
 
   it("does not store fabricated geo coordinates", () => {

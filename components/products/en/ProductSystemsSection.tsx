@@ -125,9 +125,11 @@ export function ProductSystemsSection() {
   const [activeId, setActiveId] = useState<ProductSystemIcon>("water");
   const [detailOpen, setDetailOpen] = useState(false);
   const accordionItemRefs = useRef<Map<ProductSystemIcon, HTMLDivElement>>(new Map());
+  const shouldScrollToActive = useRef(false);
   const active = productSystems.find((item) => item.id === activeId) ?? productSystems[0]!;
 
   const onSelect = useCallback((id: ProductSystemIcon) => {
+    shouldScrollToActive.current = true;
     setActiveId(id);
     setDetailOpen(false);
   }, []);
@@ -141,6 +143,9 @@ export function ProductSystemsSection() {
   }, []);
 
   useEffect(() => {
+    if (!shouldScrollToActive.current) return;
+    shouldScrollToActive.current = false;
+
     const mq = window.matchMedia("(max-width: 1023px)");
     const scrollActive = () => {
       if (!mq.matches) return;

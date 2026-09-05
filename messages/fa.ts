@@ -170,6 +170,7 @@ export const dictionaryFa: Dictionary = {
   },
   footer: {
     tagline: "اعتماد مهندسی برای زیرساخت",
+    socialLabel: "شبکه‌های اجتماعی و پیام‌رسان‌ها",
     description:
       "تولید لوله پلی‌اتیلن تک‌جداره برای شبکه‌های آب، گاز و کشاورزی.",
     columns: {

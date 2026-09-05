@@ -167,6 +167,7 @@ export const dictionaryEn = {
   },
   footer: {
     tagline: "Bukan Pipe",
+    socialLabel: "Social and messaging",
     description:
       "Polyethylene pipe manufacturing for water, gas, irrigation and infrastructure applications.",
     columns: {
