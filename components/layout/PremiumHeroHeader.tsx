@@ -266,10 +266,8 @@ export function PremiumHeroHeader() {
 
           <HeaderLogoMark />
 
-          <span className="engine-header-wordmark" dir="ltr">
-
-            BUKAN PIPE
-
+          <span className="engine-header-wordmark" dir={locale === "fa" ? "rtl" : "ltr"}>
+            {t.common.brandWordmark}
           </span>
 
         </Link>

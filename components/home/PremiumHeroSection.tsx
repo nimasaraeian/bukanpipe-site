@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { homeHeroImage } from "@/data/media/page-hero-images";
 import { routes } from "@/lib/config/routes";
 
 const floatIcons = [
@@ -69,16 +70,32 @@ export function PremiumHeroSection() {
   const hero = t.home.hero;
 
   return (
-    <section className="engine-hero engine-hero-font" aria-label={hero.kicker}>
+    <section
+      className={`engine-hero engine-hero-font engine-hero--luminous engine-hero--luminous-${locale}`}
+      aria-label={hero.kicker}
+    >
       <div className="engine-hero-scene" aria-hidden="true">
         <Image
-          src="/media/demo/bukan-slide-03-product.png"
+          src={homeHeroImage.mobileSrc[locale]}
           alt=""
           fill
           priority
-          className="engine-hero-scene-photo"
+          unoptimized
+          className="engine-hero-scene-photo engine-hero-scene-photo--mobile"
           sizes="100vw"
+          style={{ objectPosition: homeHeroImage.mobilePosition[locale] }}
         />
+        <Image
+          src={homeHeroImage.src[locale]}
+          alt=""
+          fill
+          priority
+          unoptimized
+          className="engine-hero-scene-photo engine-hero-scene-photo--desktop"
+          sizes="100vw"
+          style={{ objectPosition: homeHeroImage.position[locale] }}
+        />
+        <div className="engine-hero-scene-vignette" />
         <div className="engine-hero-scene-shade-left" />
         <div className="engine-hero-scene-shade-top" />
         <div className="engine-hero-scene-shade-bottom" />

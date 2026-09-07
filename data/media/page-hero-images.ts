@@ -10,6 +10,22 @@ export const industrialSlides = {
   inventory: "/media/demo/bukan-slide-04-inventory.png",
 } as const;
 
+/** Homepage hero — full pyramid on desktop; cinematic crop on mobile. */
+export const homeHeroImage = {
+  src: {
+    en: "/media/brand/home-hero-pyramid-en.jpg",
+    fa: "/media/brand/home-hero-pyramid-fa.jpg",
+  },
+  mobileSrc: {
+    en: "/media/brand/home-hero-pyramid-mobile-en.jpg",
+    fa: "/media/brand/home-hero-pyramid-mobile-fa.jpg",
+  },
+  /** Desktop — full frame, golden point on the pipe side */
+  position: { en: "100% 50%", fa: "0% 50%" },
+  /** Mobile — mirror of FA framing (pipes opposite the copy column) */
+  mobilePosition: { en: "72% 46%", fa: "28% 46%" },
+} as const;
+
 export type IndustrialSlideId = keyof typeof industrialSlides;
 
 export type PageHeroImage = {

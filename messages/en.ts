@@ -1,6 +1,7 @@
 export const dictionaryEn = {
   common: {
     brandKicker: "BUKAN PIPE",
+    brandWordmark: "BUKAN PIPE",
     arrow: "→",
     skipToContent: "Skip to main content",
     home: "Home",

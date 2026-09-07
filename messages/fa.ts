@@ -3,6 +3,7 @@ import type { Dictionary } from "@/messages/en";
 export const dictionaryFa: Dictionary = {
   common: {
     brandKicker: "BUKAN PIPE",
+    brandWordmark: "بوکان پایپ",
     arrow: "←",
     skipToContent: "رفتن به محتوای اصلی",
     home: "خانه",
