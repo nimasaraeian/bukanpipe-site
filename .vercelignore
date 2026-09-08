@@ -1,0 +1,9 @@
+# Raw source photography — built assets live under public/media/gallery/
+image/
+
+# Local scratch
+.tmp-media-audit/
+
+# Dev artifacts
+.next/
+node_modules/
