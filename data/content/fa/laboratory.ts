@@ -69,6 +69,15 @@ export const faLaboratoryHub = labPage(
       type: "paragraph",
       text: "وضعیت فعلی گواهی ISO/IEC 17025 و شماره اعتبار پس از تأیید مدارک رسمی در صفحه ISO 17025 منتشر می‌شود.",
     },
+    {
+      type: "internal-links",
+      title: "کارخانه و تولید",
+      links: [
+        { label: "گالری کارخانه", path: "/gallery" },
+        { label: "درباره بوکان پایپ", path: "/about" },
+        { label: "کنترل کیفیت", path: "/quality" },
+      ],
+    },
   ],
 );
 

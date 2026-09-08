@@ -74,6 +74,15 @@ export const enLaboratoryHub = labPage(
       type: "paragraph",
       text: "Accreditation scope and certificate copies are available from the laboratory on request.",
     },
+    {
+      type: "internal-links",
+      title: "Factory & production",
+      links: [
+        { label: "Factory Gallery", path: "/gallery" },
+        { label: "About Bukan Pipe", path: "/about" },
+        { label: "Quality", path: "/quality" },
+      ],
+    },
   ],
 );
 

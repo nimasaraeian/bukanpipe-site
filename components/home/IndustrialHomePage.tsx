@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { editorialPhotos } from "@/data/media/editorial-photos";
 import { PremiumHeroSection } from "@/components/home/PremiumHeroSection";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import {
@@ -116,10 +117,11 @@ export function IndustrialHomePage() {
         <div className="ind-container ind-editorial-grid">
           <div className="ind-editorial-media relative">
             <Image
-              src="/media/demo/bukan-slide-02-extrusion.png"
+              src={editorialPhotos.homeManufacturing}
               alt=""
               fill
               className="object-cover"
+              style={{ objectPosition: "58% 48%" }}
               sizes="(min-width: 1024px) 560px, 100vw"
             />
           </div>

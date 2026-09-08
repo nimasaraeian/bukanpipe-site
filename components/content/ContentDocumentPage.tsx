@@ -6,6 +6,7 @@ import {
   ArticleTableOfContents,
   ContentBlockRenderer,
 } from "@/components/content/ContentBlocks";
+import { AboutPageHero } from "@/components/about/AboutPageHero";
 import { IndustrialPageHero } from "@/components/industrial/IndustrialPageHero";
 import { IndustrialButton } from "@/components/industrial/IndustrialPrimitives";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -97,23 +98,29 @@ export function ContentDocumentPage({ doc }: ContentDocumentPageProps) {
     articleMode: isArticle,
   };
 
+  const isAbout = doc.path === routes.about.path;
+
   return (
     <>
       <JsonLd data={contentDocumentSchemas(doc, localePath)} />
 
-      <IndustrialPageHero
-        title={doc.title}
-        description={doc.description}
-        {...getIndustrialPageHeroImageProps(hero)}
-        breadcrumb={doc.breadcrumbs.map((item, index, arr) => ({
-          label: item.label,
-          href: index < arr.length - 1 ? localePath(item.path) : undefined,
-        }))}
-      >
-        <HeroActions doc={doc} />
-      </IndustrialPageHero>
+      {isAbout ? (
+        <AboutPageHero title={doc.title} description={doc.description} />
+      ) : (
+        <IndustrialPageHero
+          title={doc.title}
+          description={doc.description}
+          {...getIndustrialPageHeroImageProps(hero)}
+          breadcrumb={doc.breadcrumbs.map((item, index, arr) => ({
+            label: item.label,
+            href: index < arr.length - 1 ? localePath(item.path) : undefined,
+          }))}
+        >
+          <HeroActions doc={doc} />
+        </IndustrialPageHero>
+      )}
 
-      <section className="ind-section">
+      <section className="ind-section" id={isAbout ? "about-story" : undefined}>
         <div className="ind-container max-w-4xl">
           {isArticle ? <ArticleTableOfContents sections={doc.sections} /> : null}
 

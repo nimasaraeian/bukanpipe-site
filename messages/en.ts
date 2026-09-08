@@ -29,6 +29,7 @@ export const dictionaryEn = {
     downloads: "Downloads",
     calculator: "Calculator",
     about: "About",
+    gallery: "Factory Gallery",
     contact: "Contact",
     quality: "Quality",
     company: "Company",
@@ -206,6 +207,7 @@ export const dictionaryEn = {
         title: "Company",
         links: {
           about: "About",
+          gallery: "Factory Gallery",
           quality: "Quality",
           laboratory: "Laboratory",
           contact: "Contact",

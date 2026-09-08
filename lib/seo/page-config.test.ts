@@ -16,7 +16,8 @@ describe("page SEO config", () => {
 
   it("maps hub paths to contextual OG images", () => {
     expect(getOgImageForPath("/")?.url).toContain("about-factory");
-    expect(getOgImageForPath("/laboratory")?.url).toContain("laboratory-hero");
+    expect(getOgImageForPath("/laboratory")?.url).toContain("01_02_13 AM (5)");
+    expect(getOgImageForPath("/quality")?.url).toContain("01_02_13 AM (4)");
     expect(getOgImageForPath("/products/gas-pipe")?.url).toContain("bukan-slide-03");
   });
 });

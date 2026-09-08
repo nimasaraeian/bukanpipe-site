@@ -58,7 +58,7 @@ export function manufacturingBusinessSchema(): Record<string, unknown> {
 
     logo: organizationLogoUrl(),
 
-    image: `${siteConfig.siteUrl}/media/brand/about-factory-hero.png`,
+    image: `${siteConfig.siteUrl}/media/demo/ChatGPT Image Sep 8, 2026, 10_35_51 AM.png`,
 
     description: siteConfig.defaultDescription,
 

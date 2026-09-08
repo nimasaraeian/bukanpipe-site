@@ -14,17 +14,20 @@ type SiteShellProps = {
 export function SiteShell({ children }: SiteShellProps) {
   const pathname = usePathname();
   const { pathname: barePath } = stripLocale(pathname);
-  const isHome = barePath === "/";
+  const isImmersiveHero = barePath === "/" || barePath === "/about";
 
   return (
-    <div className="industrial-site industrial-font flex min-h-svh flex-col">
+    <div
+      className={
+        isImmersiveHero
+          ? "industrial-site industrial-font industrial-site--immersive-hero flex min-h-svh flex-col"
+          : "industrial-site industrial-font flex min-h-svh flex-col"
+      }
+    >
       <ScrollRevealRoot />
       <SkipLink />
-      <PremiumHeroHeader />
-      <main
-        id="main-content"
-        className={isHome ? "flex-1" : "flex-1 pt-[4.5rem] lg:pt-[4.75rem]"}
-      >
+      <PremiumHeroHeader immersiveHero={isImmersiveHero} />
+      <main id="main-content" className={isImmersiveHero ? "flex-1" : "flex-1 pt-[4.5rem] lg:pt-[4.75rem]"}>
         {children}
       </main>
       <IndustrialFooter />

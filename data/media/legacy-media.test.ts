@@ -83,7 +83,7 @@ describe("image SEO helpers", () => {
     const images = metadata.openGraph?.images;
     const first = Array.isArray(images) ? images[0] : images;
     expect(first && typeof first === "object" && "url" in first ? first.url : "").toContain(
-      "laboratory-hero",
+      "01_02_13 AM (5)",
     );
     expect((metadata.twitter as { card?: string } | undefined)?.card).toBe(
       "summary_large_image",

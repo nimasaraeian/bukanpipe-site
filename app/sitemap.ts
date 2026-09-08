@@ -8,18 +8,25 @@ import {
 } from "@/lib/sitemap/paths";
 import { canonicalUrl } from "@/lib/seo/canonical";
 import { imageSitemapAttachments } from "@/lib/seo/image-sitemap";
+import { getGallerySitemapImageUrls } from "@/data/gallery";
 
 /**
  * Sitemap enumerates canonical public URLs per locale (EN + FA).
  * Homepage, catalog content, solutions, industries, and request-quote included.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
+  const galleryImages = getGallerySitemapImageUrls();
+
   const entries = locales.flatMap((locale) =>
     getSitemapPathsForLocale(locale as Locale).map((path) => ({
       url: canonicalUrl(withLocale(path, locale)),
       changeFrequency: sitemapChangeFrequencyForPath(path),
       priority: sitemapPriorityForPath(path),
-      ...imageSitemapAttachments(),
+      ...imageSitemapAttachments(
+        path === "/gallery"
+          ? galleryImages.map((src) => ({ path: "/gallery", src }))
+          : [],
+      ),
     })),
   );
 

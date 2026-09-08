@@ -1,5 +1,6 @@
 import type { Direction } from "@/lib/i18n/config";
 import { routes } from "@/lib/config/routes";
+import { editorialPhotos } from "@/data/media/editorial-photos";
 import { productSystemAssets } from "@/lib/products/product-assets";
 
 /** Approved demo photography — same set as homepage hero concept. Home keeps slide-03. */
@@ -30,8 +31,10 @@ export type IndustrialSlideId = keyof typeof industrialSlides;
 
 export type PageHeroImage = {
   src: string;
-  /** CSS object-position for cinematic framing (desktop) */
+  /** CSS object-position for cinematic framing (desktop LTR) */
   position?: string;
+  /** Desktop RTL — mirror crop when subject sits on one side */
+  positionRtl?: string;
   /** Mobile overlay — keep focal point opposite the text column */
   mobilePosition?: {
     ltr?: string;
@@ -40,15 +43,15 @@ export type PageHeroImage = {
   /** Lighter overlays — keeps logo / golden highlights visible on the right */
   variant?: "brand" | "default" | "product";
   /** Optional BEM modifier for page-specific crop tuning */
-  sceneModifier?: "applications" | "about" | "calculator" | "laboratory" | "downloads" | "technical";
+  sceneModifier?: "applications" | "about" | "calculator" | "laboratory" | "downloads" | "technical" | "quality";
 };
 
 /** Inner-page hero backgrounds (homepage hero is separate). */
 export const pageHeroImages: Record<string, PageHeroImage> = {
   [routes.about.path]: {
-    src: "/media/brand/about-factory-hero.png",
-    position: "92% 26%",
-    mobilePosition: { ltr: "82% 34%", rtl: "18% 34%" },
+    src: editorialPhotos.aboutHero,
+    position: "48% 52%",
+    mobilePosition: { ltr: "56% 48%", rtl: "56% 48%" },
     variant: "brand",
     sceneModifier: "about",
   },
@@ -82,9 +85,10 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     sceneModifier: "calculator",
   },
   [routes.laboratory.path]: {
-    src: "/media/brand/laboratory-hero.png",
-    position: "72% 54%",
-    mobilePosition: { ltr: "82% 38%", rtl: "14% 38%" },
+    src: editorialPhotos.laboratoryHero,
+    position: "78% 50%",
+    positionRtl: "22% 50%",
+    mobilePosition: { ltr: "76% 50%", rtl: "24% 50%" },
     variant: "brand",
     sceneModifier: "laboratory",
   },
@@ -150,6 +154,19 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     src: industrialSlides.yard,
     position: "62% 45%",
     mobilePosition: { ltr: "70% 44%", rtl: "30% 44%" },
+  },
+  "/quality": {
+    src: editorialPhotos.qualityHero,
+    position: "78% 50%",
+    positionRtl: "22% 50%",
+    mobilePosition: { ltr: "76% 50%", rtl: "24% 50%" },
+    variant: "brand",
+    sceneModifier: "quality",
+  },
+  "/certifications": {
+    src: industrialSlides.product,
+    position: "64% 40%",
+    mobilePosition: { ltr: "70% 42%", rtl: "30% 42%" },
   },
 };
 
@@ -312,6 +329,7 @@ export function getIndustrialPageHeroImageProps(hero: PageHeroImage) {
   return {
     imageSrc: hero.src,
     imagePosition: hero.position,
+    imagePositionRtl: hero.positionRtl,
     imageMobilePositionLtr: hero.mobilePosition?.ltr,
     imageMobilePositionRtl: hero.mobilePosition?.rtl,
     imageVariant: hero.variant,
@@ -325,7 +343,11 @@ export const pageCardImages = {
   solutions: [industrialSlides.extrusion, industrialSlides.product, industrialSlides.inventory, industrialSlides.yard] as const,
   industries: [industrialSlides.yard, industrialSlides.inventory, industrialSlides.extrusion, industrialSlides.product] as const,
   applications: [industrialSlides.yard, industrialSlides.inventory, industrialSlides.extrusion] as const,
-  laboratory: [industrialSlides.extrusion, industrialSlides.product, industrialSlides.yard] as const,
+  laboratory: [
+    editorialPhotos.laboratoryHero,
+    editorialPhotos.qualityHero,
+    editorialPhotos.homeManufacturing,
+  ] as const,
   projects: [industrialSlides.inventory, industrialSlides.yard] as const,
   engineering: [industrialSlides.extrusion, industrialSlides.product, industrialSlides.inventory] as const,
   default: [industrialSlides.extrusion, industrialSlides.inventory, industrialSlides.yard] as const,

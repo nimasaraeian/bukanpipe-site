@@ -59,6 +59,7 @@ export const faProductsHub: ContentDocument = {
         { label: "استعلام قیمت", path: "/request-quote" },
         { label: "مرکز فنی", path: "/technical-center" },
         { label: "کارخانه تولید", path: "/about" },
+        { label: "گالری کارخانه", path: "/gallery" },
       ],
     },
   ],

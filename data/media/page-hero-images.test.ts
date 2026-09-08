@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { editorialPhotos } from "@/data/media/editorial-photos";
 import { getPageCardImages, getPageHeroImage, industrialSlides } from "@/data/media/page-hero-images";
 import { routes } from "@/lib/config/routes";
 import { productSystemAssets } from "@/lib/products/product-assets";
@@ -11,6 +12,7 @@ describe("page hero images", () => {
       routes.applications.path,
       routes.laboratory.path,
       "/calculator",
+      "/quality",
     ]);
 
     for (const path of Object.values(routes).map((r) => r.path)) {
@@ -18,7 +20,11 @@ describe("page hero images", () => {
       const hero = getPageHeroImage(path);
       if (brandHeroPaths.has(path)) {
         expect(hero.variant).toBe("brand");
-        expect(hero.src.startsWith("/media/brand/")).toBe(true);
+        expect(
+          hero.src.startsWith("/media/brand/") ||
+            hero.src.startsWith("/media/editorial/") ||
+            hero.src.startsWith("/media/demo/"),
+        ).toBe(true);
         continue;
       }
       expect(slideSrcs.has(hero.src as (typeof industrialSlides)[keyof typeof industrialSlides])).toBe(
@@ -31,8 +37,15 @@ describe("page hero images", () => {
     expect(calculatorHero.sceneModifier).toBe("calculator");
 
     const laboratoryHero = getPageHeroImage(routes.laboratory.path);
-    expect(laboratoryHero.src).toBe("/media/brand/laboratory-hero.png");
+    expect(laboratoryHero.src).toBe(editorialPhotos.laboratoryHero);
     expect(laboratoryHero.sceneModifier).toBe("laboratory");
+
+    const aboutHero = getPageHeroImage(routes.about.path);
+    expect(aboutHero.src).toBe(editorialPhotos.aboutHero);
+
+    const qualityHero = getPageHeroImage("/quality");
+    expect(qualityHero.src).toBe(editorialPhotos.qualityHero);
+    expect(qualityHero.sceneModifier).toBe("quality");
   });
 
   it("uses distinct heroes for each application detail page", () => {

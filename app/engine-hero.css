@@ -2137,3 +2137,31 @@
 [data-theme="light"] .engine-hero--factory .engine-hero-scene-vignette {
   background: radial-gradient(ellipse 95% 88% at 50% 48%, transparent 48%, rgba(238, 242, 247, 0.35) 100%);
 }
+
+/* Immersive header over homepage / about hero */
+.engine-header-hero.engine-header-hero--immersive {
+  background: linear-gradient(to bottom, rgba(5, 7, 10, 0.68) 0%, rgba(5, 7, 10, 0.32) 52%, transparent 100%);
+  backdrop-filter: blur(10px) saturate(1.12);
+  -webkit-backdrop-filter: blur(10px) saturate(1.12);
+}
+
+[data-theme="light"] .engine-header-hero.engine-header-hero--immersive {
+  background: linear-gradient(
+    to bottom,
+    rgba(238, 242, 247, 0.9) 0%,
+    rgba(238, 242, 247, 0.48) 52%,
+    transparent 100%
+  );
+}
+
+.engine-header-hero.engine-header-hero--immersive .engine-header-wordmark {
+  text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .engine-header-hero.engine-header-hero--immersive .engine-header-wordmark {
+  text-shadow: none;
+}
+
+.industrial-site--immersive-hero .ind-page-hero--brand-about + .ind-section {
+  padding-block-start: clamp(3rem, 6vw, 4.5rem);
+}

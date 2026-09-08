@@ -40,7 +40,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 
 
 
-export function PremiumHeroHeader() {
+export function PremiumHeroHeader({ immersiveHero = false }: { immersiveHero?: boolean }) {
 
   const pathname = usePathname();
 
@@ -255,6 +255,7 @@ export function PremiumHeroHeader() {
         "engine-header engine-hero-font fixed inset-x-0 top-0 z-50",
 
         scrolled ? "engine-header-scrolled" : "engine-header-hero",
+        !scrolled && immersiveHero && "engine-header-hero--immersive",
 
       )}
 

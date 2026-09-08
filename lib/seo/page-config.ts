@@ -25,6 +25,12 @@ export const OG_IMAGES = {
     height: 630,
     alt: "Bukan Pipe HDPE pipe factory — Bukan, Iran",
   },
+  about: {
+    url: "/media/demo/ChatGPT Image Sep 8, 2026, 10_35_51 AM.png",
+    width: 1536,
+    height: 1024,
+    alt: "Bukan Pipe manufacturing facility aerial view — Bukan, West Azerbaijan",
+  },
   products: DEFAULT_OG_IMAGE,
   applications: {
     url: "/media/brand/applications-hero.png",
@@ -33,10 +39,16 @@ export const OG_IMAGES = {
     alt: "HDPE pipe applications — water, gas and irrigation networks",
   },
   laboratory: {
-    url: "/media/brand/laboratory-hero.png",
-    width: 1200,
-    height: 630,
-    alt: "Polyethylene pipe quality testing laboratory at Bukan Pipe",
+    url: "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    width: 1536,
+    height: 1024,
+    alt: "Polyethylene pipe laboratory testing and dimensional inspection at Bukan Pipe",
+  },
+  quality: {
+    url: "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (4).png",
+    width: 1536,
+    height: 1024,
+    alt: "HDPE pipe quality control and pressure testing at Bukan Pipe",
   },
   technical: {
     url: "/media/brand/technical-center-hero.jpg",
@@ -84,9 +96,18 @@ export function getOgImageForPath(path: string): OgImage {
   if (path === "/products" || path.startsWith("/products/")) return OG_IMAGES.products;
   if (path === "/applications" || path.startsWith("/applications/")) return OG_IMAGES.applications;
   if (path === "/laboratory" || path.startsWith("/laboratory/")) return OG_IMAGES.laboratory;
+  if (path === "/quality") return OG_IMAGES.quality;
   if (path.startsWith("/technical-center") || path === "/polyethylene-pipe") return OG_IMAGES.technical;
   if (path.startsWith("/calculator")) return OG_IMAGES.calculator;
-  if (path === "/about") return OG_IMAGES.home;
+  if (path === "/about") return OG_IMAGES.about;
+  if (path === "/gallery") {
+    return {
+      url: "/media/gallery/bukan-pipe-gallery-og.webp",
+      width: 1200,
+      height: 630,
+      alt: "Bukan Pipe Factory Gallery — HDPE pipe manufacturing facility",
+    };
+  }
   return DEFAULT_OG_IMAGE;
 }
 

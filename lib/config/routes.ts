@@ -199,6 +199,17 @@ export const routes = {
     includeInSitemap: true,
     primaryCta: "CONTACT_SALES",
   },
+  gallery: {
+    path: "/gallery",
+    title: "Factory Gallery",
+    purpose:
+      "Real factory photography — production, laboratory, warehouse, logistics and aerial views for credibility and image search.",
+    seoDescription:
+      "Bukan Pipe factory gallery — HDPE pipe manufacturing facility photographs.",
+    lifecycle: "implemented",
+    includeInSitemap: true,
+    primaryCta: "CONTACT_SALES",
+  },
   contact: {
     path: "/contact",
     title: "Contact",
@@ -229,6 +240,7 @@ export const publicRoutes: readonly RouteDefinition[] = [
   routes.dealers,
   routes.verify,
   routes.about,
+  routes.gallery,
   routes.contact,
 ];
 

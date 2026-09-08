@@ -9,7 +9,7 @@ function normalizePath(path: string): string {
   return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
 }
 
-const extraStaticPaths = new Set<string>(["/request-quote", "/solutions", "/industries"]);
+const extraStaticPaths = new Set<string>(["/request-quote", "/solutions", "/industries", "/gallery"]);
 
 /**
  * True when the locale has a real page at this path (no 404, no redirect-only stub).

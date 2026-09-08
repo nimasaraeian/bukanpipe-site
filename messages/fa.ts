@@ -31,6 +31,7 @@ export const dictionaryFa: Dictionary = {
     downloads: "دانلود",
     calculator: "ماشین‌حساب",
     about: "درباره ما",
+    gallery: "گالری کارخانه",
     contact: "تماس",
     quality: "کیفیت",
     company: "شرکت",
@@ -209,6 +210,7 @@ export const dictionaryFa: Dictionary = {
         title: "شرکت",
         links: {
           about: "درباره ما",
+          gallery: "گالری کارخانه",
           quality: "کیفیت",
           laboratory: "آزمایشگاه",
           contact: "تماس",

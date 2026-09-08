@@ -6,11 +6,12 @@ export const faAbout: ContentDocument = {
   path: "/about",
   locale: "fa",
   kind: "company",
-  title: "کارخانه تولید لوله پلی اتیلن بوکان پایپ",
-  seoTitle: "تولید کننده لوله پلی اتیلن | کارخانه HDPE و PE100 | بوکان پایپ",
+  title: "بیش از ۲۵ سال تخصص در تولید لوله پلی‌اتیلن",
+  seoTitle: "درباره بوکان پایپ | تولیدکننده لوله پلی اتیلن",
   seoDescription:
-    "بوکان پایپ — تولیدکننده و تأمین‌کننده لوله پلی اتیلن تک‌جداره HDPE و PE100 تا قطر ۶۳۰ میلی‌متر. خرید مستقیم از کارخانه در بوکان، آذربایجان غربی.",
-  description: "کارخانه تولید لوله پلی اتیلن با سابقه از ۱۳۷۶ — آبرسانی، گاز، کشاورزی و صنعت.",
+    "بوکان پایپ — تولیدکننده لوله پلی‌اتیلن تک‌جداره HDPE و PE100 تا قطر ۶۳۰ میلی‌متر. خرید مستقیم از کارخانه در بوکان، آذربایجان غربی.",
+  description:
+    "تولیدکننده لوله‌های HDPE و PE100 برای شبکه‌های آبرسانی، گازرسانی، آبیاری و کاربردهای صنعتی در بوکان، آذربایجان غربی.",
   primaryKeyword: "تولید کننده لوله پلی اتیلن",
   secondaryKeywords: [
     "کارخانه تولید لوله پلی اتیلن",
@@ -71,6 +72,7 @@ export const faAbout: ContentDocument = {
       title: "مسیر خرید و محصولات",
       links: [
         { label: "محصولات لوله پلی اتیلن", path: "/products", hint: "آبرسانی، گاز، آبیاری، صنعت" },
+        { label: "گالری کارخانه", path: "/gallery", hint: "تصاویر واقعی کارخانه" },
         { label: "استعلام قیمت لوله", path: "/request-quote", hint: "پیش‌فاکتور پروژه" },
         { label: "لوله پلی اتیلن PE100", path: "/products/pe100-pipe" },
         { label: "مرکز فنی", path: "/technical-center", hint: "SDR، PN، جوش" },
@@ -152,6 +154,7 @@ export const faQuality: ContentDocument = {
       title: "منابع مرتبط",
       links: [
         { label: "آزمایشگاه", path: "/laboratory" },
+        { label: "گالری کارخانه", path: "/gallery" },
         { label: "مشخصات فنی لوله", path: "/technical-center/polyethylene-pipe-specifications" },
         { label: "کارخانه تولید", path: "/about" },
       ],

@@ -13,7 +13,10 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "media:crawl": "node scripts/crawl-public-media.mjs"
+    "media:crawl": "node scripts/crawl-public-media.mjs",
+    "media:editorial": "node scripts/build-editorial-photos.mjs",
+    "media:gallery": "node scripts/build-gallery-assets.mjs",
+    "verify:production-dns": "node scripts/verify-production-dns.mjs"
   },
   "dependencies": {
     "next": "16.3.4",

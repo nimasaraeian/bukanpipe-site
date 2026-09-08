@@ -6,11 +6,12 @@ export const enAbout: ContentDocument = {
   path: "/about",
   locale: "en",
   kind: "company",
-  title: "About Bukan Pipe",
+  title: "Engineering Reliable Flow Systems Since 1997",
   seoTitle: "About Bukan Pipe | HDPE Pipe Manufacturer Since 1997",
   seoDescription:
-    "Bukan Pipe manufactures single-wall polyethylene pipe up to 630 mm OD for water, gas, agriculture, sewerage and industrial applications.",
-  description: "Company history and manufacturing capability.",
+    "Bukan Pipe manufactures single-wall HDPE and PE100 polyethylene pipe up to 630 mm OD for water, gas, agriculture and industrial networks since 1997.",
+  description:
+    "Single-wall HDPE and PE100 polyethylene pipe for water, gas, agriculture and industrial networks — manufactured in Bukan, West Azerbaijan.",
   primaryKeyword: "HDPE pipe manufacturer",
   secondaryKeywords: ["polyethylene pipe manufacturer", "PE pipe manufacturer", "Bukan Pipe"],
   status: "published",
@@ -46,6 +47,16 @@ export const enAbout: ContentDocument = {
     {
       type: "paragraph",
       text: "West Azerbaijan Province — Bukan, 10 km Miandoab Road. Postal code: 5955164341, Iran.",
+    },
+    {
+      type: "internal-links",
+      title: "Explore the factory",
+      links: [
+        { label: "Factory Gallery", path: "/gallery", hint: "Real manufacturing photographs" },
+        { label: "Products", path: "/products" },
+        { label: "Laboratory", path: "/laboratory" },
+        { label: "Request quote", path: "/request-quote" },
+      ],
     },
   ],
   related: {
@@ -94,6 +105,15 @@ export const enQuality: ContentDocument = {
     {
       type: "paragraph",
       text: "For sensitive projects, coordination on laboratory test scope and QC documentation is available through sales.",
+    },
+    {
+      type: "internal-links",
+      title: "Related",
+      links: [
+        { label: "Factory Gallery", path: "/gallery" },
+        { label: "Laboratory", path: "/laboratory" },
+        { label: "About Bukan Pipe", path: "/about" },
+      ],
     },
   ],
   related: { laboratory: ["services", "test-scope", "iso-17025"] },

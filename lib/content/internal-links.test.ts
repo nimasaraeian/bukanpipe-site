@@ -71,6 +71,7 @@ describe("internal link crawl (FA)", () => {
     "/request-quote",
     "/solutions",
     "/industries",
+    "/gallery",
   ]);
 
   it("has zero broken internal links in nav, footer, home, and related content", () => {
@@ -99,6 +100,7 @@ describe("internal link crawl (EN)", () => {
     "/request-quote",
     "/solutions",
     "/industries",
+    "/gallery",
   ]);
 
   it("has zero broken internal links in nav, footer, home, and related content", () => {

@@ -35,6 +35,7 @@ export function getPrimaryNavStructure(
 
   const companyItems: readonly NavItem[] = [
     { label: t.nav.about, href: path(routes.about.path) },
+    { label: t.nav.gallery, href: path(routes.gallery.path) },
     { label: t.nav.laboratory, href: path(routes.laboratory.path) },
     { label: t.nav.quality, href: path("/quality") },
   ];
@@ -105,6 +106,7 @@ export function getFooterColumns(
         title: t.footer.columns.company.title,
         links: [
           { label: t.footer.columns.company.links.about, href: path("/about") },
+          { label: t.footer.columns.company.links.gallery, href: path("/gallery") },
           { label: t.footer.columns.company.links.quality, href: path("/quality") },
           { label: t.footer.columns.company.links.laboratory, href: path("/laboratory") },
           { label: t.footer.columns.company.links.contact, href: path("/contact") },
@@ -135,12 +137,13 @@ export function getFooterColumns(
     },
     {
       title: t.footer.columns.company.title,
-      links: [
-        { label: t.footer.columns.company.links.about, href: path("/about") },
-        { label: t.footer.columns.company.links.quality, href: path("/quality") },
-        { label: t.footer.columns.company.links.laboratory, href: path("/laboratory") },
-        { label: t.footer.columns.company.links.contact, href: path("/contact") },
-      ],
+        links: [
+          { label: t.footer.columns.company.links.about, href: path("/about") },
+          { label: t.footer.columns.company.links.gallery, href: path("/gallery") },
+          { label: t.footer.columns.company.links.quality, href: path("/quality") },
+          { label: t.footer.columns.company.links.laboratory, href: path("/laboratory") },
+          { label: t.footer.columns.company.links.contact, href: path("/contact") },
+        ],
     },
   ];
 }

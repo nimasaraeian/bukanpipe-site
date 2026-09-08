@@ -17,6 +17,7 @@ type IndustrialPageHeroProps = {
   description?: string;
   imageSrc?: string;
   imagePosition?: string;
+  imagePositionRtl?: string;
   imageMobilePositionLtr?: string;
   imageMobilePositionRtl?: string;
   imageVariant?: PageHeroImage["variant"];
@@ -32,6 +33,7 @@ export function IndustrialPageHero({
   description,
   imageSrc = industrialSlides.extrusion,
   imagePosition = "58% center",
+  imagePositionRtl,
   imageMobilePositionLtr,
   imageMobilePositionRtl,
   imageVariant = "default",
@@ -40,10 +42,12 @@ export function IndustrialPageHero({
   breadcrumb,
   children,
 }: IndustrialPageHeroProps) {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const displayKicker = kicker ?? t.common.brandKicker;
   const isBrandPhoto = imageVariant === "brand";
   const isProductPhoto = imageVariant === "product";
+  const resolvedPosition =
+    locale === "fa" && imagePositionRtl ? imagePositionRtl : imagePosition;
 
   return (
     <section
@@ -54,13 +58,14 @@ export function IndustrialPageHero({
         imageSceneModifier === "applications" && "ind-page-hero--brand-applications",
         imageSceneModifier === "about" && "ind-page-hero--brand-about",
         imageSceneModifier === "calculator" && "ind-page-hero--brand-calculator",
-        imageSceneModifier === "laboratory" && "ind-page-hero--brand-laboratory",
+        (imageSceneModifier === "laboratory" || imageSceneModifier === "quality") &&
+          "ind-page-hero--brand-laboratory",
         imageSceneModifier === "downloads" && "ind-page-hero--brand-downloads",
         imageSceneModifier === "technical" && "ind-page-hero--brand-technical",
       )}
       style={
         {
-          "--ind-hero-object-position": imagePosition,
+          "--ind-hero-object-position": resolvedPosition,
           ...(imageMobilePositionLtr
             ? { "--ind-hero-object-position-mobile-ltr": imageMobilePositionLtr }
             : {}),
@@ -76,6 +81,7 @@ export function IndustrialPageHero({
           alt={imageAlt}
           fill
           priority
+          unoptimized
           className="ind-page-hero-photo"
           sizes="100vw"
         />
