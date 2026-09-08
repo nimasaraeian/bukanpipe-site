@@ -7,6 +7,9 @@ import { getContentBySlug } from "@/lib/content/registry";
 import { contentSlugsForKind } from "@/lib/content/static-params";
 import type { Locale } from "@/lib/i18n/config";
 
+/** Unknown laboratory slugs must 404 at the framework level (see lib/routing/ssg-config.ts). */
+export const dynamicParams = false;
+
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };

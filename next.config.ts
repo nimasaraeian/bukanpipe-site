@@ -1,11 +1,14 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 import { getNextLegacyRedirects } from "./lib/migration/redirects";
+import { securityHeaders } from "./lib/config/security-headers";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
+  productionBrowserSourceMaps: false,
+  headers: securityHeaders(),
   images: {
     remotePatterns: [
       {

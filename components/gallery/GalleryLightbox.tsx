@@ -39,12 +39,20 @@ export function GalleryLightbox({
       }
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        locale === "fa" ? onNext() : onPrevious();
+        if (locale === "fa") {
+          onNext();
+        } else {
+          onPrevious();
+        }
         return;
       }
       if (event.key === "ArrowRight") {
         event.preventDefault();
-        locale === "fa" ? onPrevious() : onNext();
+        if (locale === "fa") {
+          onPrevious();
+        } else {
+          onNext();
+        }
       }
     },
     [locale, onClose, onNext, onPrevious],

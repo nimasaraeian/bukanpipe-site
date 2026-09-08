@@ -115,6 +115,24 @@ async function checkLegacyRedirects() {
   return out;
 }
 
+async function checkSoft404() {
+  const paths = [
+    "/en/does-not-exist",
+    "/en/products/fake-slug",
+    "/en/technical-center/fake",
+    "/en/applications/fake",
+    "/fa/this-page-does-not-exist",
+    "/en/this-page-does-not-exist",
+  ];
+  const out = [];
+  for (const route of paths) {
+    const res = await fetch(`${BASE}${route}`, { redirect: "manual" });
+    out.push({ route, status: res.status, expect: 404 });
+  }
+  const failed = out.filter((r) => r.status !== r.expect);
+  return { results: out, failed };
+}
+
 async function main() {
   console.log("BASE", BASE);
   const routes = await checkRoutes();
@@ -131,10 +149,22 @@ async function main() {
   console.log(JSON.stringify(sm, null, 2));
 
   const legacy = await checkLegacyRedirects();
-  console.log("\n## LEGACY (should NOT redirect at runtime)");
+  console.log("\n## LEGACY REDIRECTS (production ENABLE_LEGACY_REDIRECTS=true)");
   console.log(JSON.stringify(legacy, null, 2));
 
-  process.exit(routes.failed.length > 0 || meta.some((m) => m.persianLeak) || sm.hreflang404.length > 0 ? 1 : 0);
+  const soft404 = await checkSoft404();
+  console.log("\n## SOFT 404");
+  console.log("total", soft404.results.length, "failed", soft404.failed.length);
+  if (soft404.failed.length) console.log(JSON.stringify(soft404.failed, null, 2));
+
+  process.exit(
+    routes.failed.length > 0 ||
+      soft404.failed.length > 0 ||
+      meta.some((m) => m.persianLeak) ||
+      sm.hreflang404.length > 0
+      ? 1
+      : 0,
+  );
 }
 
 main().catch((e) => {

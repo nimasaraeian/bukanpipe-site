@@ -6,6 +6,9 @@ import { isLocale } from "@/lib/i18n/config";
 import { createContentMetadata } from "@/lib/content/metadata";
 import { getContentByPath, getPublishedContent } from "@/lib/content/registry";
 
+/** Unknown technical-center paths must 404 at the framework level (see lib/routing/ssg-config.ts). */
+export const dynamicParams = false;
+
 type PageProps = {
   params: Promise<{ locale: string; slug?: string[] }>;
 };

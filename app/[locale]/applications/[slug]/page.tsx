@@ -6,6 +6,9 @@ import { createContentMetadata } from "@/lib/content/metadata";
 import { getContentBySlug } from "@/lib/content/registry";
 import { contentSlugsForKind } from "@/lib/content/static-params";
 
+/** Unknown application slugs must 404 at the framework level (see lib/routing/ssg-config.ts). */
+export const dynamicParams = false;
+
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
