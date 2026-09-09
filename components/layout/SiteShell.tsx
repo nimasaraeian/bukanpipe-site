@@ -5,6 +5,7 @@ import { ScrollRevealRoot } from "@/components/motion/ScrollRevealRoot";
 import { IndustrialFooter } from "@/components/layout/IndustrialFooter";
 import { PremiumHeroHeader } from "@/components/layout/PremiumHeroHeader";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { BukanPipeAssistantLazy } from "@/components/assistant/BukanPipeAssistantLazy";
 import { stripLocale } from "@/lib/i18n/path";
 
 type SiteShellProps = {
@@ -31,6 +32,7 @@ export function SiteShell({ children }: SiteShellProps) {
         {children}
       </main>
       <IndustrialFooter />
+      <BukanPipeAssistantLazy />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./engine-hero.css";
 @import "./industrial-system.css";
+@import "./assistant.css";
 
 @theme {
   --font-sans: var(--font-ui), Tahoma, "Segoe UI", "Noto Naskh Arabic",
