@@ -1,9 +1,8 @@
 /**
  * Verified company contact channels — single source of truth for Contact pages,
- * structured data, and factory location UI.
+ * structured data, messaging deep links, and lead-notification routing.
  *
- * Do not invent Telegram/Eitaa URLs or map coordinates. Set `url` / map fields
- * only after factory verification.
+ * Public phone numbers belong here. Bot tokens and SMS API keys do NOT.
  */
 
 export type VerificationStatus = "verified" | "url-pending" | "pin-pending";
@@ -13,16 +12,24 @@ export type LocalizedText = {
   readonly en: string;
 };
 
+export type ContactRole = {
+  readonly display: LocalizedText;
+  readonly e164: string;
+  readonly normalized: string;
+};
+
 export type MessagingChannelConfig = {
   readonly labels: LocalizedText;
   readonly openLabels: LocalizedText;
-  /** Verified deep link — null until confirmed with factory */
+  /** Verified deep link — null until confirmed (e.g. t.me/username) */
   readonly url: string | null;
   readonly verificationStatus: VerificationStatus;
   readonly verificationNote: string;
-  /** Display when url is null — lab line on legacy site */
+  /** E.164 fallback when url is null — used for t.me/+phone or wa.me links */
   readonly fallbackPhone: string;
   readonly fallbackDisplay: LocalizedText;
+  /** Optional locale-aware prefilled chat text (WhatsApp only) */
+  readonly prefilledMessage?: LocalizedText;
 };
 
 export type FactoryLocationConfig = {
@@ -34,18 +41,44 @@ export type FactoryLocationConfig = {
   readonly directionsLabels: LocalizedText;
   readonly addressHeading: LocalizedText;
   readonly googleMaps: {
-    /** Verified embed URL from Google Maps share — preferred when available */
     readonly embedUrl: string | null;
-    /** Verified directions URL — preferred when available */
     readonly directionsUrl: string | null;
-    /** Verified Place ID — optional future enhancement */
     readonly placeId: string | null;
     readonly verificationStatus: VerificationStatus;
     readonly verificationNote: string;
   };
 };
 
+/** Distinct operational roles — do not conflate SMS alerts with WhatsApp/Telegram sales chat. */
+export const contactRoles = {
+  /** Receives SMS alerts when a website lead is submitted — not the WhatsApp number. */
+  salesSmsRecipient: {
+    display: { fa: "۰۹۱۴۳۸۲۰۵۵۶", en: "+98 914 382 0556" },
+    e164: "+989143820556",
+    normalized: "989143820556",
+  },
+  /** Official WhatsApp + Telegram sales messaging contact. */
+  salesMessaging: {
+    display: { fa: "۰۹۳۵۲۱۹۷۶۷۶", en: "+98 935 219 7676" },
+    e164: "+989352197676",
+    normalized: "989352197676",
+  },
+  /** Laboratory direct line — not used for public WhatsApp/Telegram sales CTAs. */
+  laboratory: {
+    display: { fa: "۰۹۰۱۳۴۱۴۹۷۹", en: "+98 901 341 4979" },
+    e164: "+989013414979",
+    normalized: "989013414979",
+  },
+} as const satisfies Record<string, ContactRole>;
+
+const whatsappPrefill: LocalizedText = {
+  fa: "سلام، از طریق وب‌سایت بوکان پایپ پیام می‌دهم.",
+  en: "Hello, I'm contacting Bukan Pipe through the website.",
+};
+
 export const contactConfig = {
+  roles: contactRoles,
+
   factory: {
     title: {
       fa: "کارخانه بوکان پایپ",
@@ -93,11 +126,8 @@ export const contactConfig = {
       fa: ["۰۹۱۴۴۸۲۲۵۱۱", "۰۹۱۴۳۸۲۰۵۵۶"] as const,
       en: ["+98 914 482 2511", "+98 914 382 0556"] as const,
     },
-    laboratory: "+989013414979",
-    laboratoryDisplay: {
-      fa: "۰۹۰۱۳۴۱۴۹۷۹",
-      en: "+98 901 341 4979",
-    },
+    laboratory: contactRoles.laboratory.e164,
+    laboratoryDisplay: contactRoles.laboratory.display,
   },
 
   emails: {
@@ -112,14 +142,12 @@ export const contactConfig = {
         fa: "باز کردن تلگرام بوکان پایپ",
         en: "Open Bukan Pipe on Telegram",
       },
-      url: null,
-      verificationStatus: "url-pending" as const,
-      verificationNote: "Official Telegram channel/username URL not verified in factory documents.",
-      fallbackPhone: "+989013414979",
-      fallbackDisplay: {
-        fa: "۰۹۰۱۳۴۱۴۹۷۹",
-        en: "+98 901 341 4979",
-      },
+      url: readOptionalTelegramPublicUrl(),
+      verificationStatus: readOptionalTelegramPublicUrl() ? ("verified" as const) : ("url-pending" as const),
+      verificationNote:
+        "Use TELEGRAM_PUBLIC_URL / NEXT_PUBLIC_TELEGRAM_CONTACT_URL when a verified @username exists; otherwise phone deep link.",
+      fallbackPhone: contactRoles.salesMessaging.e164,
+      fallbackDisplay: contactRoles.salesMessaging.display,
     },
     whatsapp: {
       labels: { fa: "واتساپ", en: "WhatsApp" },
@@ -128,13 +156,11 @@ export const contactConfig = {
         en: "Open Bukan Pipe on WhatsApp",
       },
       url: null,
-      verificationStatus: "url-pending" as const,
-      verificationNote: "Official WhatsApp business URL not verified in factory documents.",
-      fallbackPhone: "+989013414979",
-      fallbackDisplay: {
-        fa: "۰۹۰۱۳۴۱۴۹۷۹",
-        en: "+98 901 341 4979",
-      },
+      verificationStatus: "verified" as const,
+      verificationNote: "WhatsApp sales chat uses verified sales messaging number.",
+      fallbackPhone: contactRoles.salesMessaging.e164,
+      fallbackDisplay: contactRoles.salesMessaging.display,
+      prefilledMessage: whatsappPrefill,
     },
     eitaa: {
       labels: { fa: "ایتا", en: "Eitaa" },
@@ -144,12 +170,9 @@ export const contactConfig = {
       },
       url: null,
       verificationStatus: "url-pending" as const,
-      verificationNote: "Official Eitaa channel/username URL not verified in factory documents.",
-      fallbackPhone: "+989013414979",
-      fallbackDisplay: {
-        fa: "۰۹۰۱۳۴۱۴۹۷۹",
-        en: "+98 901 341 4979",
-      },
+      verificationNote: "Official Eitaa channel/username URL not verified — laboratory line fallback.",
+      fallbackPhone: contactRoles.laboratory.e164,
+      fallbackDisplay: contactRoles.laboratory.display,
     },
   } satisfies Record<"telegram" | "whatsapp" | "eitaa", MessagingChannelConfig>,
 
@@ -172,20 +195,40 @@ export const contactConfig = {
 
 export type MessagingChannelId = keyof typeof contactConfig.messaging;
 
+function readOptionalTelegramPublicUrl(): string | null {
+  const fromEnv =
+    typeof process !== "undefined"
+      ? process.env.NEXT_PUBLIC_TELEGRAM_CONTACT_URL ?? process.env.TELEGRAM_PUBLIC_URL ?? null
+      : null;
+  if (!fromEnv || !fromEnv.startsWith("https://t.me/")) {
+    return null;
+  }
+  return fromEnv;
+}
+
 /** E.164 digits only — for wa.me / t.me deep links. */
 export function phoneToDigits(phone: string): string {
   return phone.replace(/\D/g, "");
 }
 
 /** Open a direct chat from a verified fallback phone (used when channel URL is pending). */
-export function getMessagingChatUrl(channel: MessagingChannelId, phone: string): string {
+export function getMessagingChatUrl(
+  channel: MessagingChannelId,
+  phone: string,
+  locale?: keyof LocalizedText,
+): string {
   const digits = phoneToDigits(phone);
 
   switch (channel) {
     case "telegram":
       return `https://t.me/+${digits}`;
-    case "whatsapp":
-      return `https://wa.me/${digits}`;
+    case "whatsapp": {
+      const base = `https://wa.me/${digits}`;
+      const prefill = locale
+        ? contactConfig.messaging.whatsapp.prefilledMessage?.[locale]
+        : undefined;
+      return prefill ? `${base}?text=${encodeURIComponent(prefill)}` : base;
+    }
     case "eitaa":
       return `https://eitaa.com/+${digits}`;
   }
@@ -194,8 +237,12 @@ export function getMessagingChatUrl(channel: MessagingChannelId, phone: string):
 export function resolveMessagingHref(
   channel: MessagingChannelConfig,
   id: MessagingChannelId,
+  locale?: keyof LocalizedText,
 ): string {
-  return channel.url ?? getMessagingChatUrl(id, channel.fallbackPhone);
+  if (channel.url) {
+    return channel.url;
+  }
+  return getMessagingChatUrl(id, channel.fallbackPhone, locale);
 }
 
 /** Single-line address for maps search (English — stable for Google query). */

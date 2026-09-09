@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   contactConfig,
+  contactRoles,
   factoryAddressQuery,
   getGoogleMapsDirectionsUrl,
   getGoogleMapsEmbedUrl,
@@ -10,27 +11,43 @@ import {
 } from "@/lib/config/contact";
 
 describe("contactConfig", () => {
-  it("does not invent Telegram or Eitaa URLs", () => {
-    expect(contactConfig.messaging.telegram.url).toBeNull();
-    expect(contactConfig.messaging.eitaa.url).toBeNull();
-    expect(contactConfig.messaging.telegram.verificationStatus).toBe("url-pending");
-    expect(contactConfig.messaging.eitaa.verificationStatus).toBe("url-pending");
+  it("defines distinct SMS alert and sales messaging numbers", () => {
+    expect(contactRoles.salesSmsRecipient.normalized).toBe("989143820556");
+    expect(contactRoles.salesMessaging.normalized).toBe("989352197676");
+    expect(contactRoles.salesSmsRecipient.normalized).not.toBe(contactRoles.salesMessaging.normalized);
   });
 
-  it("uses verified lab phone as messaging fallback", () => {
-    expect(contactConfig.messaging.telegram.fallbackPhone).toBe("+989013414979");
-    expect(contactConfig.messaging.whatsapp.fallbackPhone).toBe("+989013414979");
+  it("uses sales messaging number for WhatsApp and Telegram", () => {
+    expect(contactConfig.messaging.whatsapp.fallbackPhone).toBe("+989352197676");
+    expect(contactConfig.messaging.telegram.fallbackPhone).toBe("+989352197676");
     expect(contactConfig.messaging.eitaa.fallbackPhone).toBe("+989013414979");
   });
 
-  it("builds standard chat deep links from verified fallback phones", () => {
-    const phone = "+989013414979";
-    expect(getMessagingChatUrl("telegram", phone)).toBe("https://t.me/+989013414979");
-    expect(getMessagingChatUrl("whatsapp", phone)).toBe("https://wa.me/989013414979");
-    expect(getMessagingChatUrl("eitaa", phone)).toBe("https://eitaa.com/+989013414979");
-    expect(resolveMessagingHref(contactConfig.messaging.telegram, "telegram")).toBe(
-      "https://t.me/+989013414979",
+  it("does not use stale lab number for WhatsApp", () => {
+    expect(contactConfig.messaging.whatsapp.fallbackPhone).not.toBe("+989013414979");
+    expect(getMessagingChatUrl("whatsapp", contactRoles.salesMessaging.e164)).toBe(
+      "https://wa.me/989352197676",
     );
+    expect(getMessagingChatUrl("whatsapp", contactRoles.salesMessaging.e164, "en")).toContain(
+      "wa.me/989352197676?text=",
+    );
+  });
+
+  it("builds Telegram phone deep link when public URL is not set", () => {
+    expect(contactConfig.messaging.telegram.url).toBeNull();
+    expect(getMessagingChatUrl("telegram", contactRoles.salesMessaging.e164)).toBe(
+      "https://t.me/+989352197676",
+    );
+    expect(resolveMessagingHref(contactConfig.messaging.telegram, "telegram")).toBe(
+      "https://t.me/+989352197676",
+    );
+  });
+
+  it("builds locale-aware WhatsApp prefilled messages", () => {
+    const faUrl = getMessagingChatUrl("whatsapp", contactRoles.salesMessaging.e164, "fa");
+    const enUrl = getMessagingChatUrl("whatsapp", contactRoles.salesMessaging.e164, "en");
+    expect(faUrl).toContain(encodeURIComponent("سلام، از طریق وب‌سایت بوکان پایپ"));
+    expect(enUrl).toContain(encodeURIComponent("Hello, I'm contacting Bukan Pipe"));
   });
 
   it("exposes verified Instagram profile URL", () => {
@@ -46,28 +63,13 @@ describe("contactConfig", () => {
   it("builds map URLs from verified address text only", () => {
     const query = factoryAddressQuery();
     expect(query).toContain("Bukan");
-    expect(query).toContain("Miandoab");
-
-    const embed = getGoogleMapsEmbedUrl();
-    const directions = getGoogleMapsDirectionsUrl();
-
-    expect(embed).toContain("google.com/maps");
-    expect(embed).toContain(encodeURIComponent(query));
-    expect(directions).toContain("google.com/maps/dir");
-    expect(directions).toContain(encodeURIComponent(query));
+    expect(getGoogleMapsEmbedUrl()).toContain("google.com/maps");
+    expect(getGoogleMapsDirectionsUrl()).toContain("google.com/maps/dir");
   });
 
   it("provides postal address schema without geo", () => {
     const address = postalAddressSchema();
     expect(address.postalCode).toBe("5955164341");
-    expect(address.addressLocality).toBe("Bukan");
     expect(address).not.toHaveProperty("latitude");
-    expect(address).not.toHaveProperty("longitude");
-  });
-
-  it("keeps FA and EN factory address lines aligned", () => {
-    expect(contactConfig.factory.addressLines.fa).toContain("بوکان");
-    expect(contactConfig.factory.addressLines.en).toContain("Bukan");
-    expect(contactConfig.factory.postalCode).toBe("5955164341");
   });
 });

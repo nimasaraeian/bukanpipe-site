@@ -44,7 +44,7 @@ export function FooterSocialLinks() {
           return (
             <li key={id}>
               <a
-                href={resolveMessagingHref(channel, id)}
+                href={resolveMessagingHref(channel, id, locale)}
                 className={`ind-footer-social__link ${accentClass}`}
                 target="_blank"
                 rel="noopener noreferrer"

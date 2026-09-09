@@ -1,43 +1,58 @@
+import { submitLeadToApi } from "@/lib/leads/client";
+import { isLeadUiEnabled } from "@/lib/leads/public-config";
+import { isValidLeadPhone, normalizeIranianPhone } from "@/lib/leads/phone";
+import { sanitizeText } from "@/lib/leads/sanitize";
 import type { LeadPayload, LeadSubmitResult } from "./types";
 
-/** Flip to true when a server-side CRM/Telegram/SMS endpoint is wired. */
-export const LEAD_BACKEND_ENABLED = false;
-
+/** Client UI gate — callback form stays hidden until ops enable verified backend. */
 export function isLeadBackendEnabled(): boolean {
-  return LEAD_BACKEND_ENABLED;
+  return isLeadUiEnabled();
 }
 
-const PHONE_MIN_DIGITS = 8;
-const PHONE_MAX_DIGITS = 15;
+/** @deprecated Use isLeadBackendEnabled */
+export const LEAD_BACKEND_ENABLED = false;
 
-/** Strip to digits and leading + for validation — never log or analytics-track. */
 export function normalizePhoneInput(raw: string): string {
-  const trimmed = raw.trim();
-  const hasPlus = trimmed.startsWith("+");
-  const digits = trimmed.replace(/\D/g, "");
-  return hasPlus ? `+${digits}` : digits;
+  const result = normalizeIranianPhone(raw);
+  return result.ok ? result.e164 : raw.trim();
 }
 
 export function validateLeadPhone(raw: string): boolean {
-  const normalized = normalizePhoneInput(raw);
-  const digits = normalized.replace(/\D/g, "");
-  return digits.length >= PHONE_MIN_DIGITS && digits.length <= PHONE_MAX_DIGITS;
+  return isValidLeadPhone(raw);
 }
 
 export function sanitizeLeadText(raw: string, maxLength: number): string {
-  return raw.trim().slice(0, maxLength).replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+  return sanitizeText(raw, maxLength) ?? "";
 }
 
-/**
- * V1: no backend configured. Returns not_configured — UI must not fake success.
- * Future: POST to CRM / Telegram / SMS via server route with secrets server-side only.
- */
+/** Delegates to central POST /api/leads — no duplicate submission logic. */
 export async function submitLead(payload: LeadPayload): Promise<LeadSubmitResult> {
   if (!validateLeadPhone(payload.phone)) {
     return { ok: false, reason: "validation" };
   }
 
-  void payload;
+  if (!isLeadBackendEnabled()) {
+    return { ok: false, reason: "not_configured" };
+  }
 
-  return { ok: false, reason: "not_configured" };
+  const result = await submitLeadToApi({
+    name: payload.name,
+    phone: payload.phone,
+    requestType: payload.requestType,
+    locale: payload.locale,
+    pageUrl: payload.pageUrl,
+    source: "assistant",
+    assistantIntent: payload.assistantIntent,
+    message: payload.requestType === "callback" ? "Assistant callback request" : undefined,
+  });
+
+  if (result.ok) {
+    return { ok: true };
+  }
+
+  if (result.reason === "validation") {
+    return { ok: false, reason: "validation" };
+  }
+
+  return { ok: false, reason: result.reason === "unavailable" ? "not_configured" : "network" };
 }

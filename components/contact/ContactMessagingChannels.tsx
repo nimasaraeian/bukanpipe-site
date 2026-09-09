@@ -11,14 +11,24 @@ export function ContactMessagingChannels() {
   return (
     <div className="mt-6">
       <h3 className="text-base font-semibold text-[color:var(--ind-text)]">
-        {isFa ? "پیام‌رسان‌ها (آزمایشگاه)" : "Messaging (laboratory)"}
+        {isFa ? "پیام‌رسان‌های فروش" : "Sales messaging"}
       </h3>
       <ul className="contact-channel-list mt-4">
+        <MessagingChannelRow
+          channel={contactConfig.messaging.whatsapp}
+          locale={locale}
+          variant="whatsapp"
+        />
         <MessagingChannelRow
           channel={contactConfig.messaging.telegram}
           locale={locale}
           variant="telegram"
         />
+      </ul>
+      <h3 className="mt-8 text-base font-semibold text-[color:var(--ind-text)]">
+        {isFa ? "ایتا (آزمایشگاه)" : "Eitaa (laboratory)"}
+      </h3>
+      <ul className="contact-channel-list mt-4">
         <MessagingChannelRow
           channel={contactConfig.messaging.eitaa}
           locale={locale}

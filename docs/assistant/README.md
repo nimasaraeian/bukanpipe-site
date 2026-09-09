@@ -32,6 +32,11 @@ Only edit paths inside `data/assistant/intents.ts` using `nav()` — it calls `a
 
 Switching site locale resets the assistant conversation.
 
+## Lead pipeline (central `/api/leads`)
+
+Assistant `submitLead()` delegates to `lib/leads/client.ts` → `POST /api/leads`.
+Callback UI stays hidden until `NEXT_PUBLIC_LEADS_SUBMISSION_READY=true`.
+
 ## Future CRM / Telegram / SMS
 
 Implement server-side handler only (never `NEXT_PUBLIC_*` secrets):
