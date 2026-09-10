@@ -27,9 +27,9 @@ describe("assistant router locale safety", () => {
     expect(messages[0]?.text).toContain("کاربرد");
   });
 
-  it("welcome messages include greeting", () => {
+  it("welcome messages include a navigation prompt", () => {
     const messages = getWelcomeMessages("en", "/products/gas-pipe");
-    expect(messages[0]?.text).toContain("Hello");
+    expect(messages[0]?.text).toContain("section");
     expect(messages[0]?.quickReplies?.length).toBeGreaterThan(0);
   });
 

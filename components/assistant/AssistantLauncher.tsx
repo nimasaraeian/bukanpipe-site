@@ -22,23 +22,20 @@ export function AssistantLauncher({
       className="bpg-guide-launcher"
       aria-label={ariaLabel}
       aria-expanded={open}
+      aria-haspopup="dialog"
       aria-controls="bpg-guide-panel"
       onClick={onClick}
     >
       <span className="bpg-guide-launcher__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+          <circle cx="12" cy="12" r="8.25" stroke="currentColor" strokeWidth="1.5" />
           <path
-            d="M12 3a7 7 0 0 0-4 12.7V19a1 1 0 0 0 1 1h1.5v1.5a1.5 1.5 0 0 0 3 0V20H15a1 1 0 0 0 1-1v-3.3A7 7 0 0 0 12 3Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M9.5 10.5h5M9.5 13h3"
+            d="M12 5.5v2.25M12 16.25V18.5M5.5 12h2.25M16.25 12H18.5"
             stroke="currentColor"
             strokeWidth="1.5"
             strokeLinecap="round"
           />
+          <path d="M12 8.2 14.6 14.4 12 13.15 9.4 14.4 12 8.2Z" fill="currentColor" />
         </svg>
       </span>
       <span className="bpg-guide-launcher__label">{label}</span>

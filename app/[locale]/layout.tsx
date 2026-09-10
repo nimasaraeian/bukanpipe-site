@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Viewport } from "next";
 import { uiFontByLocale } from "@/lib/fonts";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
@@ -12,6 +13,12 @@ import { createRootMetadata } from "@/lib/seo/metadata";
 import "../globals.css";
 
 export const metadata = createRootMetadata();
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

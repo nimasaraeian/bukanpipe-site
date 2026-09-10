@@ -5,51 +5,79 @@ import { usePathname } from "next/navigation";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getAssistantCopy } from "@/data/assistant";
 import { trackAssistantEvent } from "@/lib/assistant/analytics";
-import { isLeadBackendEnabled } from "@/lib/assistant/lead";
-import {
-  createAssistantMessage,
-  getWelcomeMessages,
-  resolveQuery,
-  resolveQuickReply,
-} from "@/lib/assistant/router";
-import { readAssistantOpenPreference, writeAssistantOpenPreference } from "@/lib/assistant/session";
-import type { AssistantIntentId, AssistantMessage, AssistantQuickReply } from "@/lib/assistant/types";
-import { stripLocale } from "@/lib/i18n/path";
 import { AssistantLauncher } from "./AssistantLauncher";
 import { AssistantPanel } from "./AssistantPanel";
+
+function lockBodyScroll() {
+  const html = document.documentElement;
+  const body = document.body;
+  const scrollY = window.scrollY;
+  const previous = {
+    htmlOverflow: html.style.overflow,
+    htmlOverscroll: html.style.overscrollBehavior,
+    overflow: body.style.overflow,
+    position: body.style.position,
+    top: body.style.top,
+    width: body.style.width,
+    paddingInlineEnd: body.style.paddingInlineEnd,
+    overscroll: body.style.overscrollBehavior,
+  };
+  const scrollbar = Math.max(0, window.innerWidth - html.clientWidth);
+
+  html.style.overflow = "hidden";
+  html.style.overscrollBehavior = "none";
+  body.style.overflow = "hidden";
+  body.style.overscrollBehavior = "none";
+  body.style.position = "fixed";
+  body.style.top = `-${scrollY}px`;
+  body.style.width = "100%";
+  if (scrollbar > 0) {
+    body.style.paddingInlineEnd = `${scrollbar}px`;
+  }
+
+  return (restoreScroll: boolean) => {
+    html.style.overflow = previous.htmlOverflow;
+    html.style.overscrollBehavior = previous.htmlOverscroll;
+    body.style.overflow = previous.overflow;
+    body.style.overscrollBehavior = previous.overscroll;
+    body.style.position = previous.position;
+    body.style.top = previous.top;
+    body.style.width = previous.width;
+    body.style.paddingInlineEnd = previous.paddingInlineEnd;
+    if (restoreScroll) {
+      window.scrollTo(0, scrollY);
+    }
+  };
+}
 
 export function BukanPipeAssistant() {
   const { locale, path: localePath } = useLocale();
   const pathname = usePathname();
-  const { pathname: barePath } = stripLocale(pathname);
   const copy = getAssistantCopy(locale);
 
   const launcherRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  const prevLocaleRef = useRef(locale);
+  const prevPathRef = useRef(pathname);
+  const navigatingRef = useRef(false);
 
-  const [open, setOpen] = useState(() => readAssistantOpenPreference());
-  const [messages, setMessages] = useState<AssistantMessage[]>(() => getWelcomeMessages(locale, barePath));
-  const [showLeadForm, setShowLeadForm] = useState(false);
-  const [leadIntentId, setLeadIntentId] = useState<AssistantIntentId | undefined>();
+  const [open, setOpen] = useState(false);
 
-  const resetConversation = useCallback(() => {
-    setMessages(getWelcomeMessages(locale, barePath));
-    setShowLeadForm(false);
-    setLeadIntentId(undefined);
-  }, [locale, barePath]);
+  const closeAssistant = useCallback((options?: { restoreFocus?: boolean }) => {
+    const restoreFocus = options?.restoreFocus ?? true;
+    setOpen(false);
+    trackAssistantEvent("assistant_closed");
+    if (restoreFocus) {
+      launcherRef.current?.focus();
+    }
+  }, []);
 
   useEffect(() => {
-    if (prevLocaleRef.current !== locale) {
-      prevLocaleRef.current = locale;
-      resetConversation();
+    if (prevPathRef.current !== pathname) {
+      prevPathRef.current = pathname;
+      navigatingRef.current = false;
       setOpen(false);
     }
-  }, [locale, resetConversation]);
-
-  useEffect(() => {
-    writeAssistantOpenPreference(open);
-  }, [open]);
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) {
@@ -59,107 +87,39 @@ export function BukanPipeAssistant() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        setOpen(false);
-        trackAssistantEvent("assistant_closed");
-        launcherRef.current?.focus();
+        closeAssistant();
       }
     };
 
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [open, closeAssistant]);
 
   useEffect(() => {
-    if (open) {
-      panelRef.current?.focus();
-    }
-  }, [open]);
-
-  const appendMessages = (next: AssistantMessage[]) => {
-    setMessages((current) => [...current, ...next]);
-  };
-
-  const handleToggle = () => {
-    setOpen((current) => {
-      const next = !current;
-      trackAssistantEvent(next ? "assistant_opened" : "assistant_closed");
-      return next;
-    });
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    trackAssistantEvent("assistant_closed");
-    launcherRef.current?.focus();
-  };
-
-  const handleQuickAction = (reply: AssistantQuickReply) => {
-    trackAssistantEvent("assistant_quick_action", {
-      intentId: reply.intentId,
-      flowId: reply.flowId,
-    });
-
-    if (reply.intentId === "LEAD_CALLBACK" && isLeadBackendEnabled()) {
-      setShowLeadForm(true);
-      setLeadIntentId("LEAD_CALLBACK");
-      trackAssistantEvent("assistant_lead_started", { intentId: "LEAD_CALLBACK" });
+    if (!open) {
       return;
     }
 
-    const userLabel = reply.label;
-    appendMessages([createAssistantMessage("user", userLabel)]);
+    panelRef.current?.focus();
+    const unlock = lockBodyScroll();
+    return () => {
+      unlock(!navigatingRef.current);
+    };
+  }, [open]);
 
-    const { messages: assistantMessages, intentId } = resolveQuickReply(reply, locale);
-    processAssistantMessages(assistantMessages, intentId);
+  const handleToggle = () => {
+    if (open) {
+      closeAssistant();
+      return;
+    }
+    trackAssistantEvent("assistant_opened");
+    setOpen(true);
   };
 
-  const processAssistantMessages = (assistantMessages: AssistantMessage[], intentId?: AssistantIntentId) => {
-    for (const message of assistantMessages) {
-      if (message.navigate) {
-        trackAssistantEvent("assistant_navigation", { path: message.navigate.path, intentId });
-      }
-    }
-
-    if (isLeadBackendEnabled() && (intentId === "QUOTE" || intentId === "PRICE" || intentId === "BUY")) {
-      trackAssistantEvent("assistant_quote_intent", { intentId });
-      setShowLeadForm(true);
-      setLeadIntentId(intentId);
-      trackAssistantEvent("assistant_lead_started", { intentId });
-    }
-
-    appendMessages(assistantMessages);
-  };
-
-  const handleQuery = (query: string) => {
-    trackAssistantEvent("assistant_query", { queryLength: query.length });
-    appendMessages([createAssistantMessage("user", query)]);
-
-    const { match, messages: assistantMessages } = resolveQuery(query, locale);
-
-    if (match) {
-      trackAssistantEvent("assistant_intent_matched", { intentId: match.intentId });
-      if (
-        isLeadBackendEnabled() &&
-        (match.action.type === "lead_handoff" ||
-          match.intentId === "QUOTE" ||
-          match.intentId === "PRICE" ||
-          match.intentId === "BUY")
-      ) {
-        setShowLeadForm(true);
-        setLeadIntentId(match.intentId);
-        trackAssistantEvent("assistant_lead_started", { intentId: match.intentId });
-      } else if (match.action.type === "navigate") {
-        trackAssistantEvent("assistant_navigation", { path: match.action.path, intentId: match.intentId });
-      }
-    } else {
-      trackAssistantEvent("assistant_no_match");
-    }
-
-    appendMessages(assistantMessages);
-  };
-
-  const handleLeadSubmitted = () => {
-    trackAssistantEvent("assistant_lead_submitted", { intentId: leadIntentId });
+  const handleNavigate = (path: string) => {
+    navigatingRef.current = true;
+    trackAssistantEvent("assistant_navigation", { path });
+    closeAssistant({ restoreFocus: false });
   };
 
   return (
@@ -174,16 +134,9 @@ export function BukanPipeAssistant() {
       <AssistantPanel
         open={open}
         locale={locale}
-        messages={messages}
-        showLeadForm={showLeadForm}
-        leadIntentId={leadIntentId}
-        pageUrl={typeof window !== "undefined" ? window.location.href : pathname}
         localePath={localePath}
-        onClose={handleClose}
-        onReset={resetConversation}
-        onQuickAction={handleQuickAction}
-        onQuery={handleQuery}
-        onLeadSubmitted={handleLeadSubmitted}
+        onClose={() => closeAssistant()}
+        onNavigate={handleNavigate}
         panelRef={panelRef}
       />
     </div>
