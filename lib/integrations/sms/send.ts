@@ -2,12 +2,15 @@ import type { Lead } from "@/lib/leads/types";
 import type { NotificationChannelResult } from "@/lib/leads/types";
 import { getSmsConfig } from "./config";
 import { formatSalesLeadSms } from "./format";
+import { FarazSmsProvider } from "./providers/farazsms";
 import { NoopSmsProvider } from "./providers/noop";
 import type { SmsProvider } from "./providers/types";
 
-function resolveSmsProvider(providerName: string | null): SmsProvider {
-  void providerName;
-  // Future: switch on SMS_PROVIDER when API docs are available
+function resolveSmsProvider(providerName: string | null, apiKey: string): SmsProvider {
+  const name = providerName?.trim().toLowerCase();
+  if (name === "farazsms") {
+    return new FarazSmsProvider(apiKey);
+  }
   return new NoopSmsProvider();
 }
 
@@ -18,17 +21,17 @@ export async function sendSalesLeadSms(lead: Lead): Promise<NotificationChannelR
     return { attempted: false, ok: false, error: "disabled" };
   }
 
-  if (!config.configured) {
+  if (!config.configured || !config.apiKey || !config.sender) {
     return { attempted: false, ok: false, error: "not_configured" };
   }
 
-  const provider = resolveSmsProvider(config.provider);
+  const provider = resolveSmsProvider(config.provider, config.apiKey);
   const body = formatSalesLeadSms(lead);
 
   try {
     const result = await provider.send({
       to: config.salesRecipient,
-      from: config.sender!,
+      from: config.sender,
       body,
     });
 

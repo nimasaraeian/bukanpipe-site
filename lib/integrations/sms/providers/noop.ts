@@ -1,6 +1,6 @@
 import type { SmsProvider, SmsSendParams, SmsSendResult } from "./types";
 
-/** Placeholder until SMS provider API contract is confirmed. */
+/** Fallback when SMS_PROVIDER is unset or not a supported adapter. */
 export class NoopSmsProvider implements SmsProvider {
   async send(params: SmsSendParams): Promise<SmsSendResult> {
     void params;

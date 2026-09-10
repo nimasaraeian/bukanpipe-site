@@ -1,4 +1,5 @@
 import { contactRoles } from "@/lib/config/contact";
+import { toFarazSmsRecipient } from "./recipient";
 
 export type SmsConfig = {
   enabled: boolean;
@@ -14,7 +15,7 @@ export function getSmsConfig(): SmsConfig {
   const provider = process.env.SMS_PROVIDER?.trim() ?? null;
   const apiKey = process.env.SMS_API_KEY?.trim() ?? null;
   const sender = process.env.SMS_SENDER?.trim() ?? null;
-  const recipient = process.env.SMS_SALES_RECIPIENT?.trim() ?? contactRoles.salesSmsRecipient.normalized;
+  const recipientRaw = process.env.SMS_SALES_RECIPIENT?.trim() || contactRoles.salesSmsRecipient.normalized;
 
   return {
     enabled,
@@ -22,6 +23,6 @@ export function getSmsConfig(): SmsConfig {
     provider,
     apiKey,
     sender,
-    salesRecipient: recipient,
+    salesRecipient: toFarazSmsRecipient(recipientRaw),
   };
 }
