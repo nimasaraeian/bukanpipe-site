@@ -37,4 +37,17 @@ describe("sendTelegramLeadNotification", () => {
     expect(result.attempted).toBe(false);
     expect(fetchMock).not.toHaveBeenCalled();
   });
+
+  it("sends when credentials exist even if TELEGRAM_NOTIFICATIONS_ENABLED is unset", async () => {
+    vi.stubEnv("TELEGRAM_NOTIFICATIONS_ENABLED", "");
+    vi.stubEnv("TELEGRAM_BOT_TOKEN", "test-bot-token");
+    vi.stubEnv("TELEGRAM_LEADS_CHAT_ID", "-100123");
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      new Response(JSON.stringify({ ok: true }), { status: 200, headers: { "Content-Type": "application/json" } }),
+    );
+    const result = await sendTelegramLeadNotification(lead);
+    expect(result.attempted).toBe(true);
+    expect(result.ok).toBe(true);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain("https://api.telegram.org/bot");
+  });
 });

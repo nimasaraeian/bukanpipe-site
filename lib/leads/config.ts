@@ -1,4 +1,5 @@
 import { getSmsConfig } from "@/lib/integrations/sms/config";
+import { getTelegramConfig } from "@/lib/integrations/telegram/config";
 
 /** Server-side lead pipeline configuration — secrets stay in process.env only. */
 
@@ -18,17 +19,14 @@ function envFlag(name: string, defaultValue = false): boolean {
 }
 
 export function getLeadPipelineConfig(): LeadPipelineConfig {
-  const telegramToken = process.env.TELEGRAM_BOT_TOKEN?.trim();
-  const telegramChatId = process.env.TELEGRAM_LEADS_CHAT_ID?.trim();
+  const telegram = getTelegramConfig();
   const sms = getSmsConfig();
-
-  const telegramConfigured = Boolean(telegramToken && telegramChatId);
 
   return {
     apiEnabled: envFlag("LEADS_API_ENABLED", true),
     persistenceConfigured: envFlag("LEADS_PERSISTENCE_ENABLED", false),
-    telegramNotificationsEnabled: envFlag("TELEGRAM_NOTIFICATIONS_ENABLED", false),
-    telegramConfigured,
+    telegramNotificationsEnabled: telegram.enabled,
+    telegramConfigured: telegram.configured,
     smsNotificationsEnabled: sms.enabled,
     smsConfigured: sms.configured,
   };

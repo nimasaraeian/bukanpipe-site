@@ -121,4 +121,42 @@ describe("createLead", () => {
     }
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
+
+  it("dispatches both SMS and Telegram for a valid quote", async () => {
+    vi.stubEnv("LEADS_PERSISTENCE_ENABLED", "false");
+    vi.stubEnv("SMS_PROVIDER", "farazsms");
+    vi.stubEnv("SMS_API_KEY", SECRET);
+    vi.stubEnv("SMS_SENDER", "90008361");
+    vi.stubEnv("SMS_SALES_RECIPIENT", "09143820556");
+    vi.stubEnv("TELEGRAM_BOT_TOKEN", "test-bot-token");
+    vi.stubEnv("TELEGRAM_LEADS_CHAT_ID", "-100123");
+
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("api.telegram.org")) {
+        return new Response(JSON.stringify({ ok: true }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+      return new Response("{}", { status: 201, headers: { "Content-Type": "application/json" } });
+    });
+
+    const result = await createLead(quoteInput, {
+      siteOrigin: "https://bukanpipe.com",
+      clientIp: "10.0.0.9",
+      userAgent: "both-channels",
+    });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.notified.sms.ok).toBe(true);
+      expect(result.notified.telegram.ok).toBe(true);
+    }
+    const urls = fetchMock.mock.calls.map((call) => String(call[0]));
+    expect(urls.some((url) => url.includes("api.iranpayamak.com"))).toBe(true);
+    expect(urls.some((url) => url.includes("api.telegram.org"))).toBe(true);
+    expect(JSON.stringify(result)).not.toContain(SECRET);
+    expect(JSON.stringify(result)).not.toContain("test-bot-token");
+  });
 });
