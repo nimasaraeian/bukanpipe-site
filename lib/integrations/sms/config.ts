@@ -10,16 +10,25 @@ export type SmsConfig = {
   salesRecipient: string;
 };
 
+function envTriState(name: string): boolean | null {
+  const value = process.env[name]?.trim();
+  if (!value) return null;
+  if (value === "true" || value === "1") return true;
+  if (value === "false" || value === "0") return false;
+  return null;
+}
+
 export function getSmsConfig(): SmsConfig {
-  const enabled = process.env.SMS_NOTIFICATIONS_ENABLED === "true" || process.env.SMS_NOTIFICATIONS_ENABLED === "1";
   const provider = process.env.SMS_PROVIDER?.trim() ?? null;
   const apiKey = process.env.SMS_API_KEY?.trim() ?? null;
   const sender = process.env.SMS_SENDER?.trim() ?? null;
   const recipientRaw = process.env.SMS_SALES_RECIPIENT?.trim() || contactRoles.salesSmsRecipient.normalized;
+  const configured = Boolean(provider && apiKey && sender);
+  const enabledFlag = envTriState("SMS_NOTIFICATIONS_ENABLED");
 
   return {
-    enabled,
-    configured: Boolean(provider && apiKey && sender),
+    enabled: enabledFlag ?? configured,
+    configured,
     provider,
     apiKey,
     sender,

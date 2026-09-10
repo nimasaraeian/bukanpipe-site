@@ -36,8 +36,8 @@ export async function submitLeadToApi(input: SubmitLeadClientInput): Promise<Lea
       reason: "unavailable",
       message:
         input.locale === "fa"
-          ? "ثبت آنلاین در حال حاضر در دسترس نیست. لطفاً از تماس تلفنی یا واتساپ استفاده کنید."
-          : "Online submission is not available right now. Please use phone or WhatsApp.",
+          ? "ارسال درخواست انجام نشد. لطفاً دوباره تلاش کنید یا با واحد فروش تماس بگیرید."
+          : "The request could not be sent. Please try again or contact sales.",
     };
   }
 }

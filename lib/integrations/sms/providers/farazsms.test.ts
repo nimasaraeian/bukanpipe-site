@@ -46,6 +46,12 @@ describe("FarazSmsProvider", () => {
     expect(Object.prototype.hasOwnProperty.call(payload, "schedule")).toBe(true);
   });
 
+  it("treats HTTP 200 as success", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(jsonResponse(200));
+    const result = await new FarazSmsProvider(API_KEY).send(params);
+    expect(result.ok).toBe(true);
+  });
+
   it("treats HTTP 201 as success even when the body is malformed", async () => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response("<<<not-json>>>", { status: 201 }));
     const result = await new FarazSmsProvider(API_KEY).send(params);

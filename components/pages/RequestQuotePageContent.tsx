@@ -9,20 +9,31 @@ import { getDirection } from "@/lib/i18n/config";
 import { getIndustrialPageHeroImageProps, getPageHeroImage } from "@/data/media/page-hero-images";
 import { contactConfig, resolveMessagingHref } from "@/lib/config/contact";
 import { submitLeadToApi } from "@/lib/leads/client";
-import { isLeadUiEnabled } from "@/lib/leads/public-config";
 import { routes } from "@/lib/config/routes";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
+
+function localizeFieldError(isFa: boolean, field: string, fallback?: string): string {
+  if (field === "phone") {
+    return isFa ? "شماره تلفن معتبر وارد کنید." : "Please enter a valid phone number.";
+  }
+  if (field === "message") {
+    return isFa ? "توضیحات پروژه الزامی است." : "Project details are required.";
+  }
+  if (field === "email") {
+    return isFa ? "ایمیل معتبر وارد کنید." : "Please enter a valid email address.";
+  }
+  return fallback || (isFa ? "این فیلد را بررسی کنید." : "Please check this field.");
+}
 
 export function RequestQuotePageContent() {
   const { locale, t, path: localePath } = useLocale();
   const direction = getDirection(locale);
   const isFa = locale === "fa";
   const hero = getPageHeroImage(routes.requestQuote.path, direction);
-  const leadsReady = isLeadUiEnabled();
 
   const [pending, setPending] = useState(false);
   const [result, setResult] = useState<{
-    kind: "success" | "unavailable" | "validation" | "offline";
+    kind: "success" | "error" | "validation";
     message: string;
   } | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -34,16 +45,6 @@ export function RequestQuotePageContent() {
 
     const form = event.currentTarget;
     const data = new FormData(form);
-
-    if (!leadsReady) {
-      setResult({
-        kind: "unavailable",
-        message: isFa
-          ? "ثبت آنلاین هنوز فعال نیست. لطفاً با واحد فروش تماس بگیرید یا از واتساپ استفاده کنید."
-          : "Online submission is not active yet. Please contact sales directly or use WhatsApp.",
-      });
-      return;
-    }
 
     setPending(true);
     const response = await submitLeadToApi({
@@ -62,23 +63,27 @@ export function RequestQuotePageContent() {
     setPending(false);
 
     if (response.ok) {
-      setResult({ kind: "success", message: response.message });
+      setResult({
+        kind: "success",
+        message: isFa
+          ? "درخواست شما با موفقیت ارسال شد. واحد فروش با شما تماس خواهد گرفت."
+          : response.message,
+      });
       form.reset();
       return;
     }
 
     if (response.reason === "validation") {
-      setFieldErrors(response.fieldErrors ?? {});
+      const nextErrors: Record<string, string> = {};
+      for (const [field, value] of Object.entries(response.fieldErrors ?? {})) {
+        nextErrors[field] = localizeFieldError(isFa, field, value);
+      }
+      setFieldErrors(nextErrors);
       setResult({ kind: "validation", message: response.message });
       return;
     }
 
-    if (response.reason === "unavailable") {
-      setResult({ kind: "offline", message: response.message });
-      return;
-    }
-
-    setResult({ kind: "offline", message: response.message });
+    setResult({ kind: "error", message: response.message });
   };
 
   const whatsappHref = resolveMessagingHref(contactConfig.messaging.whatsapp, "whatsapp", locale);
@@ -110,13 +115,9 @@ export function RequestQuotePageContent() {
         <div className="ind-container max-w-3xl">
           <div className="ind-glass ind-glass-strong p-6 md:p-8">
             <p className="ind-lead text-sm text-[color:var(--ind-text-muted)]">
-              {leadsReady
-                ? isFa
-                  ? "فرم زیر به واحد فروش ارسال می‌شود. پاسخ در ساعات اداری داده می‌شود."
-                  : "Submit your project details below. Sales responds during office hours."
-                : isFa
-                  ? "فرم آنلاین هنوز به سامانه فروش متصل نیست. می‌توانید مستقیماً با واحد فروش تماس بگیرید."
-                  : "The online form is not connected to sales yet. You can contact sales directly."}
+              {isFa
+                ? "فرم زیر به واحد فروش ارسال می‌شود. پاسخ در ساعات اداری داده می‌شود."
+                : "Submit your project details below. Sales responds during office hours."}
             </p>
 
             <form className="mt-8 space-y-5" onSubmit={onSubmit} noValidate>
@@ -213,8 +214,8 @@ export function RequestQuotePageContent() {
               <button type="submit" className="ind-btn ind-btn-primary w-full sm:w-auto" disabled={pending}>
                 {pending
                   ? isFa
-                    ? "در حال ارسال…"
-                    : "Sending…"
+                    ? "در حال ارسال..."
+                    : "Sending..."
                   : isFa
                     ? "ارسال درخواست"
                     : "Submit request"}

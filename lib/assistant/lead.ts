@@ -4,13 +4,10 @@ import { isValidLeadPhone, normalizeIranianPhone } from "@/lib/leads/phone";
 import { sanitizeText } from "@/lib/leads/sanitize";
 import type { LeadPayload, LeadSubmitResult } from "./types";
 
-/** Client UI gate — callback form stays hidden until ops enable verified backend. */
+/** Client UI — commercial submit is on unless NEXT_PUBLIC_LEADS_SUBMISSION_READY=false. */
 export function isLeadBackendEnabled(): boolean {
   return isLeadUiEnabled();
 }
-
-/** @deprecated Use isLeadBackendEnabled */
-export const LEAD_BACKEND_ENABLED = false;
 
 export function normalizePhoneInput(raw: string): string {
   const result = normalizeIranianPhone(raw);
@@ -29,10 +26,6 @@ export function sanitizeLeadText(raw: string, maxLength: number): string {
 export async function submitLead(payload: LeadPayload): Promise<LeadSubmitResult> {
   if (!validateLeadPhone(payload.phone)) {
     return { ok: false, reason: "validation" };
-  }
-
-  if (!isLeadBackendEnabled()) {
-    return { ok: false, reason: "not_configured" };
   }
 
   const result = await submitLeadToApi({

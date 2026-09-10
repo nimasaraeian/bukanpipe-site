@@ -24,7 +24,7 @@ export const assistantCopyFa = {
   leadQuoteButton: "استعلام قیمت",
   leadCallbackButton: "درخواست تماس",
   leadNotConfigured:
-    "ثبت آنلاین هنوز فعال نیست. لطفاً از دکمه استعلام قیمت استفاده کنید یا با واحد فروش تماس بگیرید.",
+    "لطفاً از دکمه استعلام قیمت استفاده کنید یا با واحد فروش تماس بگیرید.",
   leadValidationPhone: "لطفاً یک شماره تماس معتبر وارد کنید.",
   chooseProductQuestion: "لوله را برای چه کاربردی نیاز دارید؟",
   chooseProductUnsure:

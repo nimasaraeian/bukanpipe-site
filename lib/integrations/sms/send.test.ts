@@ -79,6 +79,19 @@ describe("sendSalesLeadSms", () => {
     expect(result.ok).toBe(false);
   });
 
+  it("sends when credentials exist even if SMS_NOTIFICATIONS_ENABLED is unset", async () => {
+    vi.stubEnv("SMS_NOTIFICATIONS_ENABLED", "");
+    vi.stubEnv("SMS_PROVIDER", "farazsms");
+    vi.stubEnv("SMS_API_KEY", SECRET);
+    vi.stubEnv("SMS_SENDER", "90008361");
+    vi.stubEnv("SMS_SALES_RECIPIENT", "09143820556");
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(jsonResponse(200));
+    const result = await sendSalesLeadSms(lead);
+    expect(result.attempted).toBe(true);
+    expect(result.ok).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("sends via FarazSMS with verified sender and sales recipient", async () => {
     stubFarazEnv();
     const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(jsonResponse(201));

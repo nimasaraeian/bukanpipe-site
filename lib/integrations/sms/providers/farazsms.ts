@@ -35,11 +35,11 @@ export class FarazSmsProvider implements SmsProvider {
         signal: AbortSignal.timeout(FARAZSMS_TIMEOUT_MS),
       });
 
-      if (response.status === 201) {
+      if (response.status >= 200 && response.status < 300) {
         try {
           await response.arrayBuffer();
         } catch {
-          // Body is optional — HTTP 201 is the success contract.
+          // Body is optional — HTTP 2xx is treated as success.
         }
         return { ok: true };
       }

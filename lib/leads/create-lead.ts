@@ -55,16 +55,16 @@ export async function createLead(
   rawInput: unknown,
   options: { siteOrigin: string; clientIp: string | null; userAgent: string | null },
 ): Promise<LeadCreateResult> {
-  if (!isLeadSubmissionReady()) {
-    return { ok: false, reason: "not_configured" };
-  }
-
   const validated = validateLeadInput(rawInput, options.siteOrigin);
   if (!validated.ok) {
     if (validated.reason === "honeypot") {
       return { ok: false, reason: "validation", fieldErrors: {} };
     }
     return { ok: false, reason: "validation", fieldErrors: validated.fieldErrors };
+  }
+
+  if (!isLeadSubmissionReady()) {
+    return { ok: false, reason: "not_configured" };
   }
 
   const fingerprint = leadFingerprint(
@@ -102,6 +102,10 @@ export async function createLead(
     (!config.telegramNotificationsEnabled && !config.smsNotificationsEnabled && config.persistenceConfigured);
 
   if (!hasDelivery) {
+    console.error("[leads] delivery failed", {
+      sms: notified.sms.error ?? (notified.sms.attempted ? "failed" : "skipped"),
+      telegram: notified.telegram.error ?? (notified.telegram.attempted ? "failed" : "skipped"),
+    });
     return { ok: false, reason: "not_configured" };
   }
 

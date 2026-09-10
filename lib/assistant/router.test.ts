@@ -33,12 +33,12 @@ describe("assistant router locale safety", () => {
     expect(messages[0]?.quickReplies?.length).toBeGreaterThan(0);
   });
 
-  it("routes commercial intents to quote and contact links without callback form", () => {
+  it("routes commercial intents to quote, contact, and callback handoff", () => {
     const { messages } = resolveQuery("request quote", "en");
     expect(messages[0]?.text).toContain("quotation");
     const replies = messages[0]?.quickReplies ?? [];
-    expect(replies.some((r) => r.intentId === "LEAD_CALLBACK")).toBe(false);
     expect(replies.some((r) => r.path === "/request-quote")).toBe(true);
+    expect(replies.some((r) => r.intentId === "LEAD_CALLBACK")).toBe(true);
   });
 
   it("navigates quote quick reply to request-quote path", () => {

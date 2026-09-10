@@ -24,7 +24,7 @@ export const assistantCopyEn = {
   leadQuoteButton: "Request a Quote",
   leadCallbackButton: "Request callback",
   leadNotConfigured:
-    "Online submission is not active yet. Please use Request a Quote or contact sales directly.",
+    "Please use Request a Quote or contact sales directly.",
   leadValidationPhone: "Please enter a valid phone number.",
   chooseProductQuestion: "What application do you need the pipe for?",
   chooseProductUnsure:

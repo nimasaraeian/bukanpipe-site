@@ -40,10 +40,10 @@ describe("assistant locale-aware routes", () => {
     }
   });
 
-  it("commercial handoff omits callback quick reply when backend is disabled", () => {
+  it("commercial handoff includes callback when lead UI is enabled", () => {
     const messages = buildLeadHandoffMessages("fa");
     const replies = messages[0]?.quickReplies ?? [];
-    expect(replies.some((r) => r.intentId === "LEAD_CALLBACK")).toBe(false);
+    expect(replies.some((r) => r.intentId === "LEAD_CALLBACK")).toBe(true);
     expect(replies.some((r) => r.path === "/request-quote")).toBe(true);
     expect(replies.some((r) => r.path === "/contact")).toBe(true);
   });

@@ -8,7 +8,7 @@ import type { SmsProvider } from "./providers/types";
 
 function resolveSmsProvider(providerName: string | null, apiKey: string): SmsProvider {
   const name = providerName?.trim().toLowerCase();
-  if (name === "farazsms") {
+  if (name === "farazsms" || name === "iranpayamak") {
     return new FarazSmsProvider(apiKey);
   }
   return new NoopSmsProvider();

@@ -3,23 +3,20 @@ import type { LeadApiResponse, LeadCreateResult } from "./types";
 
 const MESSAGES = {
   fa: {
-    success: "درخواست شما ثبت شد. واحد فروش در ساعات اداری با شما تماس می‌گیرد.",
-    successEphemeral: "درخواست شما به واحد فروش ارسال شد. در ساعات اداری با شما تماس گرفته می‌شود.",
+    success: "درخواست شما با موفقیت ارسال شد. واحد فروش با شما تماس خواهد گرفت.",
+    successEphemeral: "درخواست شما با موفقیت ارسال شد. واحد فروش با شما تماس خواهد گرفت.",
     validation: "لطفاً اطلاعات فرم را بررسی کنید.",
     rateLimited: "درخواست‌های متعدد در مدت کوتاه ثبت شده است. لطفاً چند دقیقه بعد دوباره تلاش کنید.",
     duplicate: "این درخواست به تازگی ثبت شده است.",
-    unavailable:
-      "ثبت آنلاین در حال حاضر در دسترس نیست. لطفاً از تماس تلفنی، واتساپ یا فرم تماس استفاده کنید.",
+    unavailable: "ارسال درخواست انجام نشد. لطفاً دوباره تلاش کنید یا با واحد فروش تماس بگیرید.",
   },
   en: {
-    success: "Your request has been received. Our sales team will contact you during office hours.",
-    successEphemeral:
-      "Your request was forwarded to sales. We will contact you during office hours.",
+    success: "Your request was sent successfully. Sales will contact you.",
+    successEphemeral: "Your request was sent successfully. Sales will contact you.",
     validation: "Please check the form details and try again.",
     rateLimited: "Too many requests in a short time. Please try again in a few minutes.",
     duplicate: "This request was already submitted recently.",
-    unavailable:
-      "Online submission is not available right now. Please use phone, WhatsApp, or the contact page.",
+    unavailable: "The request could not be sent. Please try again or contact sales.",
   },
 } as const;
 
