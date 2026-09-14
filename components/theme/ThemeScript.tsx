@@ -1,7 +1,16 @@
-import { THEME_STORAGE_KEY } from "@/lib/theme/config";
+import Script from "next/script";
+import { THEME_INIT_SCRIPT } from "@/lib/theme/config";
 
+/** Next.js beforeInteractive copy — place in the root layout. */
 export function ThemeScript() {
-  const script = `(function(){try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var t=localStorage.getItem(k);if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.dataset.theme="light";document.documentElement.style.colorScheme="light"}else{document.documentElement.dataset.theme="dark";document.documentElement.style.colorScheme="dark"}}catch(e){document.documentElement.dataset.theme="dark";document.documentElement.style.colorScheme="dark"}})();`;
+  return (
+    <Script id="bukan-theme-init" strategy="beforeInteractive">
+      {THEME_INIT_SCRIPT}
+    </Script>
+  );
+}
 
-  return <script dangerouslySetInnerHTML={{ __html: script }} />;
+/** Parse-blocking copy for the locale document head (html lives in the nested layout). */
+export function ThemeBlockingScript() {
+  return <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />;
 }

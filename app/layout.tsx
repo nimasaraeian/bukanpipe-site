@@ -1,3 +1,10 @@
+import { ThemeScript } from "@/components/theme/ThemeScript";
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  return children;
+  return (
+    <>
+      <ThemeScript />
+      {children}
+    </>
+  );
 }

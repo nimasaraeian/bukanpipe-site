@@ -138,7 +138,7 @@ export function RequestQuotePageContent() {
                   type="text"
                   autoComplete="name"
                   disabled={pending}
-                  className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+                  className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
                 />
               </label>
 
@@ -149,7 +149,7 @@ export function RequestQuotePageContent() {
                   type="text"
                   autoComplete="organization"
                   disabled={pending}
-                  className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+                  className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
                 />
               </label>
 
@@ -162,7 +162,7 @@ export function RequestQuotePageContent() {
                   autoComplete="tel"
                   dir="ltr"
                   disabled={pending}
-                  className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+                  className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
                 />
                 {fieldErrors.phone ? (
                   <span className="mt-1 block text-xs text-red-600">{fieldErrors.phone}</span>
@@ -177,7 +177,7 @@ export function RequestQuotePageContent() {
                   autoComplete="email"
                   dir="ltr"
                   disabled={pending}
-                  className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+                  className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
                 />
                 {fieldErrors.email ? (
                   <span className="mt-1 block text-xs text-red-600">{fieldErrors.email}</span>
@@ -192,7 +192,7 @@ export function RequestQuotePageContent() {
                   name="need"
                   type="text"
                   disabled={pending}
-                  className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+                  className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
                   placeholder={isFa ? "مثلاً لوله PE100 آبرسانی، SDR11" : "e.g. PE100 water pipe, SDR11"}
                 />
               </label>
@@ -204,7 +204,7 @@ export function RequestQuotePageContent() {
                   name="message"
                   rows={5}
                   disabled={pending}
-                  className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+                  className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
                 />
                 {fieldErrors.message ? (
                   <span className="mt-1 block text-xs text-red-600">{fieldErrors.message}</span>

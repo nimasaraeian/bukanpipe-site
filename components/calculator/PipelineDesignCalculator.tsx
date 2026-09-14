@@ -124,7 +124,7 @@ export function PipelineDesignCalculator() {
           <span className="font-medium">{copy.fields.verticalLift}</span>
           <input
             type="number"
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={verticalLift}
             onChange={(e) => setVerticalLift(Number(e.target.value))}
           />
@@ -133,7 +133,7 @@ export function PipelineDesignCalculator() {
           <span className="font-medium">{copy.fields.flowRate}</span>
           <input
             type="number"
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={flow}
             onChange={(e) => setFlow(Number(e.target.value))}
           />
@@ -142,7 +142,7 @@ export function PipelineDesignCalculator() {
           <span className="font-medium">{copy.fields.pipeLength}</span>
           <input
             type="number"
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={pipeLength}
             onChange={(e) => setPipeLength(Number(e.target.value))}
           />
@@ -151,7 +151,7 @@ export function PipelineDesignCalculator() {
           <span className="font-medium">{copy.fields.sdr}</span>
           <input
             type="number"
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={sdr}
             onChange={(e) => setSdr(Number(e.target.value))}
           />
@@ -160,7 +160,7 @@ export function PipelineDesignCalculator() {
           <span className="font-medium">{copy.fields.pn}</span>
           <input
             type="number"
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={pn}
             onChange={(e) => setPn(Number(e.target.value))}
           />
@@ -169,7 +169,7 @@ export function PipelineDesignCalculator() {
           <span className="font-medium">{copy.fields.powerReserve}</span>
           <input
             type="number"
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={reserve}
             onChange={(e) => setReserve(Number(e.target.value))}
           />
@@ -177,7 +177,7 @@ export function PipelineDesignCalculator() {
         <label className="block text-sm md:col-span-2">
           <span className="font-medium">{copy.fields.pipeGrade}</span>
           <select
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={grade}
             onChange={(e) => setGrade(e.target.value as PeGrade)}
           >
@@ -189,7 +189,7 @@ export function PipelineDesignCalculator() {
           <span className="font-medium">{copy.fields.externalDiameters}</span>
           <input
             type="text"
-            className="mt-2 w-full rounded border border-[color:var(--ind-border)] bg-transparent px-3 py-2"
+            className="ind-field mt-2 w-full rounded border border-[color:var(--ind-border)] px-3 py-2"
             value={diameterInput}
             onChange={(e) => setDiameterInput(e.target.value)}
           />

@@ -4,7 +4,8 @@ import { uiFontByLocale } from "@/lib/fonts";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
-import { ThemeScript } from "@/components/theme/ThemeScript";
+import { ThemeBlockingScript } from "@/components/theme/ThemeScript";
+import { THEME_COLOR_DARK } from "@/lib/theme/config";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getDirection, isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionary";
@@ -18,6 +19,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: THEME_COLOR_DARK,
+  colorScheme: "dark",
 };
 
 export function generateStaticParams() {
@@ -50,7 +53,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       suppressHydrationWarning
     >
       <head>
-        <ThemeScript />
+        <ThemeBlockingScript />
       </head>
       <body className={`${uiFont.className} industrial-font industrial-body antialiased`}>
         <JsonLd data={[organizationSchema(), manufacturingBusinessSchema(), webSiteSchema(locale)]} />

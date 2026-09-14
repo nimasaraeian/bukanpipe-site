@@ -164,6 +164,33 @@
   font-family: var(--ind-font-display);
 }
 
+/* Native fields: opaque industrial fill so WebKit does not paint system white. */
+.ind-field {
+  background-color: var(--ind-bg-elevated);
+  color: var(--ind-text);
+  color-scheme: inherit;
+}
+
+.industrial-body input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="image"]),
+.industrial-body select,
+.industrial-body textarea {
+  background-color: var(--ind-bg-elevated);
+  color: var(--ind-text);
+  color-scheme: inherit;
+}
+
+.industrial-body input:-webkit-autofill,
+.industrial-body input:-webkit-autofill:hover,
+.industrial-body input:-webkit-autofill:focus,
+.industrial-body textarea:-webkit-autofill,
+.industrial-body select:-webkit-autofill {
+  -webkit-text-fill-color: var(--ind-text);
+  caret-color: var(--ind-text);
+  box-shadow: 0 0 0 1000px var(--ind-bg-elevated) inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--ind-bg-elevated) inset;
+  transition: background-color 99999s ease-out 0s;
+}
+
 /* Layout */
 .ind-container {
   width: 100%;

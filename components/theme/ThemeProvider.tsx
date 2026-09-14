@@ -12,7 +12,6 @@ import {
 import {
   applyTheme,
   getPreferredTheme,
-  isTheme,
   THEME_STORAGE_KEY,
   type Theme,
 } from "@/lib/theme/config";
@@ -25,21 +24,8 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-function readInitialTheme(): Theme {
-  if (typeof document === "undefined") {
-    return "dark";
-  }
-
-  const fromDom = document.documentElement.dataset.theme;
-  if (isTheme(fromDom)) {
-    return fromDom;
-  }
-
-  return getPreferredTheme();
-}
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(readInitialTheme);
+  const [theme, setThemeState] = useState<Theme>("dark");
 
   const setTheme = useCallback((next: Theme) => {
     setThemeState(next);
@@ -57,8 +43,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [setTheme, theme]);
 
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+    const preferred = getPreferredTheme();
+    setThemeState(preferred);
+    applyTheme(preferred);
+  }, []);
 
   const value = useMemo(
     () => ({
