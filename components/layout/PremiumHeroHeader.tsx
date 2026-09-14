@@ -353,6 +353,8 @@ export function PremiumHeroHeader({ immersiveHero = false }: { immersiveHero?: b
 
           <MobileLocaleSwitch locale={locale} t={t} onSwitch={switchLocale} />
 
+          <ThemeToggle />
+
           <Link href={path(routes.requestQuote.path)} className="engine-header-cta engine-header-cta--compact">
 
             <span className="engine-header-cta-short">{t.nav.requestQuoteShort}</span>
@@ -423,19 +425,7 @@ export function PremiumHeroHeader({ immersiveHero = false }: { immersiveHero?: b
 
           {navStructure.map((entry) => renderDrawerEntry(entry))}
 
-          <li
-
-            className="flex gap-2 pt-2"
-
-            style={{ "--drawer-item-index": drawerIndex } as CSSProperties}
-
-          >
-
-            <ThemeToggle variant="drawer" />
-
-          </li>
-
-          <li className="pt-4" style={{ "--drawer-item-index": drawerIndex + 1 } as CSSProperties}>
+          <li className="pt-4" style={{ "--drawer-item-index": drawerIndex } as CSSProperties}>
 
             <Link
 

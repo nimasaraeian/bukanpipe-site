@@ -436,6 +436,12 @@
   height: 1rem;
 }
 
+.engine-header-theme-icon svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
 .engine-header-theme-drawer {
   color: var(--engine-header-scrolled-fg);
 }
