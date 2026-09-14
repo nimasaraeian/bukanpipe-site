@@ -14,14 +14,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale: localeParam } = await params;
   if (!isLocale(localeParam)) return {};
   const t = getDictionary(localeParam as Locale);
+  const title = t.routes.requestQuote.seoTitle;
   return createPageMetadata({
-    title: localeParam === "fa" ? "استعلام قیمت | بوکان پایپ" : t.routes.requestQuote.title,
-    description:
-      localeParam === "fa"
-        ? "درخواست پیش‌فاکتور و استعلام لوله پلی‌اتیلن — تماس با واحد فروش بوکان پایپ."
-        : t.routes.requestQuote.seoDescription,
+    title,
+    description: t.routes.requestQuote.seoDescription,
     path: routes.requestQuote.path,
     locale: localeParam as Locale,
+    titleAbsolute: true,
   });
 }
 

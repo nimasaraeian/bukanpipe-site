@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config/site";
+import { getIndexableRobotsDisallowPaths } from "@/lib/seo/robots-disallow";
 
 export default function robots(): MetadataRoute.Robots {
   if (!siteConfig.allowIndexing) {
@@ -16,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/design-system", "/projects", "/pricing", "/dealers", "/verify"],
+      disallow: [...getIndexableRobotsDisallowPaths()],
     },
     sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
     host: siteConfig.siteUrl,

@@ -58,6 +58,8 @@ export const faProductsHub: ContentDocument = {
       links: [
         { label: "استعلام قیمت", path: "/request-quote" },
         { label: "مرکز فنی", path: "/technical-center" },
+        { label: "آزمایشگاه", path: "/laboratory" },
+        { label: "گواهی‌ها", path: "/certifications" },
         { label: "کارخانه تولید", path: "/about" },
         { label: "گالری کارخانه", path: "/gallery" },
       ],

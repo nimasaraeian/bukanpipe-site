@@ -1,7 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { createPageMetadata } from "@/lib/seo/metadata";
+import { createPageMetadata, createRootMetadata } from "@/lib/seo/metadata";
 
 describe("createPageMetadata", () => {
+  it("does not double-suffix absolute FA request-quote titles", () => {
+    const metadata = createPageMetadata({
+      title: "استعلام قیمت لوله پلی اتیلن | بوکان پایپ",
+      description: "Quote form.",
+      path: "/request-quote",
+      locale: "fa",
+      titleAbsolute: true,
+    });
+    expect(metadata.title).toEqual({ absolute: "استعلام قیمت لوله پلی اتیلن | بوکان پایپ" });
+  });
   it("sets canonical URLs and keeps pages noindex until launch is approved", () => {
     const metadata = createPageMetadata({
       title: "Products",
@@ -25,5 +35,18 @@ describe("createPageMetadata", () => {
       path: "/projects",
     });
     expect(metadata.robots).toEqual({ index: false, follow: false });
+  });
+});
+
+describe("createRootMetadata", () => {
+  it("exposes official favicon, SVG, and Apple touch icons", () => {
+    const metadata = createRootMetadata();
+    expect(metadata.icons).toMatchObject({
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    });
+    const icons = metadata.icons as { icon?: readonly { url: string }[] };
+    expect(icons.icon?.some((icon) => icon.url === "/favicon.ico")).toBe(true);
+    expect(icons.icon?.some((icon) => icon.url === "/favicon.svg")).toBe(true);
   });
 });

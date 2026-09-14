@@ -20,10 +20,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = getDictionary(locale);
 
   return createPageMetadata({
-    title: t.routes.industries.title,
+    title: t.routes.industries.seoTitle,
     description: t.routes.industries.seoDescription,
     path: routes.industries.path,
     locale,
+    titleAbsolute: t.routes.industries.seoTitle.includes("|"),
   });
 }
 

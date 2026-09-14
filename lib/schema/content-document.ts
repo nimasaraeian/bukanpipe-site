@@ -1,6 +1,6 @@
 import type { ContentDocument } from "@/content/models/content-document";
 import { canonicalUrl } from "@/lib/seo/canonical";
-import { getOgImageForContent } from "@/lib/seo/page-config";
+import { getOgImageForContent, organizationLogoObject } from "@/lib/seo/page-config";
 import { siteConfig } from "@/lib/config/site";
 import { omitUndefined } from "@/lib/schema/serialize";
 import {
@@ -33,6 +33,7 @@ export function contentDocumentSchemas(
         url: canonicalUrl(localePath(doc.path)),
         image: imageUrl,
         imageAlt: doc.heroImage?.alt ?? doc.imageAlt,
+        category: "HDPE polyethylene pipe",
       }),
     );
   }
@@ -54,6 +55,7 @@ export function contentDocumentSchemas(
         publisher: {
           "@type": "Organization",
           name: siteConfig.brandName,
+          logo: organizationLogoObject(),
         },
       }),
     );

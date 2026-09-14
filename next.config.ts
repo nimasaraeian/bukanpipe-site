@@ -1,6 +1,7 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 import { getNextLegacyRedirects } from "./lib/migration/redirects";
+import { getStubPermanentRedirects } from "./lib/seo/stub-redirects";
 import { securityHeaders } from "./lib/config/security-headers";
 
 const nextConfig: NextConfig = {
@@ -29,7 +30,7 @@ const nextConfig: NextConfig = {
   agentRules: false,
   // Legacy path redirects stay empty unless ENABLE_LEGACY_REDIRECTS=true.
   // Host/www/HTTP policy is not implemented here. Do not enable yet.
-  redirects: async () => getNextLegacyRedirects(),
+  redirects: async () => [...getStubPermanentRedirects(), ...getNextLegacyRedirects()],
 };
 
 export default nextConfig;

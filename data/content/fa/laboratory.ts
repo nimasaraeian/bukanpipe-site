@@ -76,6 +76,7 @@ export const faLaboratoryHub = labPage(
         { label: "گالری کارخانه", path: "/gallery" },
         { label: "درباره بوکان پایپ", path: "/about" },
         { label: "کنترل کیفیت", path: "/quality" },
+        { label: "گواهی‌ها", path: "/certifications" },
       ],
     },
   ],

@@ -36,6 +36,16 @@ export const enProductsHub: ContentDocument = {
       type: "paragraph",
       text: "Each product line has its own specification page. Contact sales for diameter, SDR, PN and weight-per-metre tables.",
     },
+    {
+      type: "internal-links",
+      title: "Guides and enquiry",
+      links: [
+        { label: "Request a quote", path: "/request-quote" },
+        { label: "Technical Center", path: "/technical-center" },
+        { label: "Laboratory", path: "/laboratory" },
+        { label: "Certifications", path: "/certifications" },
+      ],
+    },
   ],
   related: {
     products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe", "pe100-pipe"],

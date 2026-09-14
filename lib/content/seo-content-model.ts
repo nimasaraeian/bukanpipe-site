@@ -75,6 +75,7 @@ const labels = {
     standards: "Standards and project compliance",
     quality: "Quality control",
     explore: "Related resources",
+    qualityAndQuote: "Laboratory, certifications and quote",
     specDefault:
       "Contact sales or request a quote for diameter, SDR, PN and weight-per-metre tables matched to your project.",
   },
@@ -86,6 +87,7 @@ const labels = {
     standards: "استاندارد و انطباق پروژه",
     quality: "کنترل کیفیت",
     explore: "منابع مرتبط",
+    qualityAndQuote: "آزمایشگاه، گواهی‌ها و استعلام",
     specDefault:
       "برای دریافت جدول قطر، SDR، PN و وزن واحد طول متناسب با پروژه، با واحد فروش تماس بگیرید یا درخواست پیش‌فاکتور ثبت کنید.",
   },
@@ -131,6 +133,22 @@ export function buildSeoProductBlocks(
     { type: "paragraph", text: seed.standardsNote },
     { type: "heading", level: 2, text: L.quality },
     { type: "paragraph", text: seed.qualityNote },
+    {
+      type: "internal-links",
+      title: L.qualityAndQuote,
+      links:
+        locale === "fa"
+          ? [
+              { label: "آزمایشگاه", path: "/laboratory" },
+              { label: "گواهی‌ها", path: "/certifications" },
+              { label: "استعلام قیمت", path: "/request-quote" },
+            ]
+          : [
+              { label: "Laboratory", path: "/laboratory" },
+              { label: "Certifications", path: "/certifications" },
+              { label: "Request a quote", path: "/request-quote" },
+            ],
+    },
   ];
   return blocks;
 }

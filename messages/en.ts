@@ -32,6 +32,7 @@ export const dictionaryEn = {
     gallery: "Factory Gallery",
     contact: "Contact",
     quality: "Quality",
+    certifications: "Certifications",
     company: "Company",
     engineering: "Engineering",
     requestQuote: "Request Quote",
@@ -133,10 +134,11 @@ export const dictionaryEn = {
     },
     requestQuote: {
       title: "Request a Quote",
+      seoTitle: "Request HDPE Pipe Quote | Bukan Pipe",
       purpose:
         "Commercial intake form. Submissions are stored for future CRM integration — not a live sales pipeline yet.",
       seoDescription:
-        "Request a quote from Bukan Pipe. Form intake for HDPE system enquiries.",
+        "Request a quote from Bukan Pipe for HDPE and PE100 pipe. Send project diameter, SDR and PN requirements.",
     },
     dealers: {
       title: "Dealers",
@@ -191,6 +193,7 @@ export const dictionaryEn = {
           waterPipe: "Water pipe",
           gasPipe: "Gas pipe",
           pe100: "PE100 pipe",
+          industrialPipe: "Industrial pipe",
           peGuide: "Polyethylene guide",
         },
       },
@@ -210,6 +213,8 @@ export const dictionaryEn = {
           gallery: "Factory Gallery",
           quality: "Quality",
           laboratory: "Laboratory",
+          certifications: "Certifications",
+          requestQuote: "Request a quote",
           contact: "Contact",
         },
       },

@@ -1,9 +1,22 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, isLocale } from "@/lib/i18n/config";
+import { isLocale } from "@/lib/i18n/config";
+import { localeForUnprefixedPath } from "@/lib/i18n/apex-locale";
 import { resolveLegacyRedirect } from "@/lib/migration/redirects";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 const CANONICAL_HOST = "bukanpipe.com";
+
+const STATIC_SEO_ASSETS = new Set([
+  "/icon.svg",
+  "/favicon.ico",
+  "/favicon.svg",
+  "/apple-touch-icon.png",
+  "/apple-touch-icon-precomposed.png",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/robots.txt",
+  "/sitemap.xml",
+]);
 
 function resolveCanonicalHostRedirect(request: NextRequest): NextResponse | null {
   const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
@@ -28,9 +41,7 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
-    pathname === "/icon.svg" ||
-    pathname === "/robots.txt" ||
-    pathname === "/sitemap.xml" ||
+    STATIC_SEO_ASSETS.has(pathname) ||
     pathname.startsWith("/media/")
   ) {
     return NextResponse.next();
@@ -49,7 +60,7 @@ export function middleware(request: NextRequest) {
   }
 
   const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
-  const locale = cookieLocale && isLocale(cookieLocale) ? cookieLocale : defaultLocale;
+  const locale = localeForUnprefixedPath(pathname, cookieLocale);
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
 
@@ -57,5 +68,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|icon\\.svg|robots\\.txt|sitemap\\.xml|media).*)"],
+  matcher: [
+    "/((?!_next|api|icon\\.svg|favicon\\.ico|favicon\\.svg|apple-touch-icon\\.png|icon-192\\.png|icon-512\\.png|robots\\.txt|sitemap\\.xml|media).*)",
+  ],
 };

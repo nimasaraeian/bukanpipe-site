@@ -19,10 +19,20 @@ describe("structured data builders", () => {
       addressLocality: "Bukan",
     });
     expect(schema.address).not.toHaveProperty("geo");
-    expect(schema.logo).toContain("/media/demo/logo.png");
-    expect(schema.sameAs).toBeUndefined();
+    expect(schema.logo).toMatchObject({
+      "@type": "ImageObject",
+      url: expect.stringContaining("/media/demo/logo.png"),
+    });
+    expect(schema.sameAs).toEqual(["https://www.instagram.com/bukanpipe_company/"]);
     expect(schema.foundingDate).toBeUndefined();
-    expect(schema.alternateName).toBe("Bukan Pipe");
+    expect(schema.alternateName).toBe("بوکان پایپ");
+    expect(schema.description).toEqual(expect.any(String));
+    expect(schema.contactPoint).toMatchObject({
+      "@type": "ContactPoint",
+      telephone: "+98-44-46433444",
+      email: "info@bukanpipe.com",
+      contactType: "sales",
+    });
   });
 
   it("emits WebSite language per locale", () => {
@@ -53,6 +63,7 @@ describe("structured data builders", () => {
     expect(schema.brand).toMatchObject({ name: "Bukan Pipe" });
     expect(schema.manufacturer).toMatchObject({ name: "Bukan Pipe" });
     expect(schema.sku).toBeUndefined();
+    expect(schema.category).toBe("HDPE polyethylene pipe");
     expect(schema.url).toBe("http://localhost:3000/products/example");
   });
 });

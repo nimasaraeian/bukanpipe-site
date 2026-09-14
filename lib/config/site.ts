@@ -8,7 +8,7 @@ import { env } from "@/lib/config/env";
  */
 export const siteConfig = {
   brandName: "Bukan Pipe",
-  brandNameFa: "Bukan Pipe",
+  brandNameFa: "بوکان پایپ",
   taglineEn: "Engineering Trust for Infrastructure",
   taglineFa: "Infrastructure for tomorrow's flow",
   productionTargetUrl: "https://bukanpipe.com",
@@ -20,6 +20,8 @@ export const siteConfig = {
   defaultTitle: "Bukan Pipe",
   defaultDescription:
     "Bukan Pipe industrial digital platform. Premium HDPE pipe systems for water, agriculture and industrial networks.",
+  organizationDescription:
+    "Bukan Pipe manufactures HDPE and PE100 polyethylene pipe for water supply, gas distribution and irrigation. Factory in Bukan, Iran.",
   activeLocales: ["en", "fa"] as const,
   plannedLocales: ["ar", "ckb"] as const,
   social: {

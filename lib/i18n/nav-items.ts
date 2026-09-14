@@ -38,6 +38,7 @@ export function getPrimaryNavStructure(
     { label: t.nav.gallery, href: path(routes.gallery.path) },
     { label: t.nav.laboratory, href: path(routes.laboratory.path) },
     { label: t.nav.quality, href: path("/quality") },
+    { label: t.nav.certifications, href: path("/certifications") },
   ];
 
   return [
@@ -77,44 +78,10 @@ export type FooterColumn = {
 };
 
 export function getFooterColumns(
-  locale: Locale,
+  _locale: Locale,
   t: Dictionary,
   path: (routePath: string) => string,
 ): readonly FooterColumn[] {
-  if (locale === "fa") {
-    return [
-      {
-        title: t.footer.columns.products.title,
-        links: [
-          { label: t.footer.columns.products.links.allProducts, href: path("/products") },
-          { label: t.footer.columns.products.links.waterPipe, href: path("/products/water-supply-pipe") },
-          { label: t.footer.columns.products.links.gasPipe, href: path("/products/gas-pipe") },
-          { label: t.footer.columns.products.links.pe100, href: path("/products/pe100-pipe") },
-          { label: t.footer.columns.products.links.peGuide, href: path("/polyethylene-pipe") },
-        ],
-      },
-      {
-        title: t.footer.columns.resources.title,
-        links: [
-          { label: t.footer.columns.resources.links.technicalCenter, href: path("/technical-center") },
-          { label: t.footer.columns.resources.links.calculator, href: path("/calculator") },
-          { label: t.footer.columns.resources.links.downloads, href: path("/downloads") },
-          { label: t.footer.columns.resources.links.applications, href: path("/applications") },
-        ],
-      },
-      {
-        title: t.footer.columns.company.title,
-        links: [
-          { label: t.footer.columns.company.links.about, href: path("/about") },
-          { label: t.footer.columns.company.links.gallery, href: path("/gallery") },
-          { label: t.footer.columns.company.links.quality, href: path("/quality") },
-          { label: t.footer.columns.company.links.laboratory, href: path("/laboratory") },
-          { label: t.footer.columns.company.links.contact, href: path("/contact") },
-        ],
-      },
-    ];
-  }
-
   return [
     {
       title: t.footer.columns.products.title,
@@ -123,6 +90,7 @@ export function getFooterColumns(
         { label: t.footer.columns.products.links.waterPipe, href: path("/products/water-supply-pipe") },
         { label: t.footer.columns.products.links.gasPipe, href: path("/products/gas-pipe") },
         { label: t.footer.columns.products.links.pe100, href: path("/products/pe100-pipe") },
+        { label: t.footer.columns.products.links.industrialPipe, href: path("/products/industrial-pipe") },
         { label: t.footer.columns.products.links.peGuide, href: path("/polyethylene-pipe") },
       ],
     },
@@ -137,13 +105,15 @@ export function getFooterColumns(
     },
     {
       title: t.footer.columns.company.title,
-        links: [
-          { label: t.footer.columns.company.links.about, href: path("/about") },
-          { label: t.footer.columns.company.links.gallery, href: path("/gallery") },
-          { label: t.footer.columns.company.links.quality, href: path("/quality") },
-          { label: t.footer.columns.company.links.laboratory, href: path("/laboratory") },
-          { label: t.footer.columns.company.links.contact, href: path("/contact") },
-        ],
+      links: [
+        { label: t.footer.columns.company.links.about, href: path("/about") },
+        { label: t.footer.columns.company.links.gallery, href: path("/gallery") },
+        { label: t.footer.columns.company.links.laboratory, href: path("/laboratory") },
+        { label: t.footer.columns.company.links.quality, href: path("/quality") },
+        { label: t.footer.columns.company.links.certifications, href: path("/certifications") },
+        { label: t.footer.columns.company.links.requestQuote, href: path("/request-quote") },
+        { label: t.footer.columns.company.links.contact, href: path("/contact") },
+      ],
     },
   ];
 }

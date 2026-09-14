@@ -127,3 +127,12 @@ export function getOgImageForContent(doc: ContentDocument): OgImage {
 export function organizationLogoUrl(): string {
   return `${siteConfig.siteUrl}${brandAssets.logo}`;
 }
+
+export function organizationLogoObject(): Record<string, unknown> {
+  return {
+    "@type": "ImageObject",
+    url: organizationLogoUrl(),
+    width: brandAssets.logoWidth,
+    height: brandAssets.logoHeight,
+  };
+}

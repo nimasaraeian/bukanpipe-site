@@ -81,6 +81,7 @@ export const enLaboratoryHub = labPage(
         { label: "Factory Gallery", path: "/gallery" },
         { label: "About Bukan Pipe", path: "/about" },
         { label: "Quality", path: "/quality" },
+        { label: "Certifications", path: "/certifications" },
       ],
     },
   ],

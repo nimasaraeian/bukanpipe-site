@@ -34,6 +34,7 @@ export const dictionaryFa: Dictionary = {
     gallery: "گالری کارخانه",
     contact: "تماس",
     quality: "کیفیت",
+    certifications: "گواهی‌ها",
     company: "شرکت",
     engineering: "مهندسی",
     requestQuote: "استعلام قیمت",
@@ -136,6 +137,7 @@ export const dictionaryFa: Dictionary = {
     },
     requestQuote: {
       title: "استعلام قیمت",
+      seoTitle: "استعلام قیمت لوله پلی اتیلن | بوکان پایپ",
       purpose:
         "دریافت قیمت، پیش‌فاکتور و سفارش لوله پلی اتیلن مستقیم از کارخانه.",
       seoDescription:
@@ -194,6 +196,7 @@ export const dictionaryFa: Dictionary = {
           waterPipe: "لوله آبرسانی",
           gasPipe: "لوله گاز",
           pe100: "لوله PE100",
+          industrialPipe: "لوله صنعتی",
           peGuide: "راهنمای لوله پلی‌اتیلن",
         },
       },
@@ -213,6 +216,8 @@ export const dictionaryFa: Dictionary = {
           gallery: "گالری کارخانه",
           quality: "کیفیت",
           laboratory: "آزمایشگاه",
+          certifications: "گواهی‌ها",
+          requestQuote: "استعلام قیمت",
           contact: "تماس",
         },
       },
