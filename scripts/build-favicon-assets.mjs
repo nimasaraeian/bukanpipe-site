@@ -2,7 +2,8 @@
  * Official Bukan Pipe favicon set from /public/media/demo/logo.png.
  *
  * Google Search needs a stable square PNG (not SVG, not a hashed /icon.svg URL).
- * Tiles use a white field and padding so the mark stays inside Google's circular crop.
+ * Tab icons stay on a transparent field so the blue mark sits on the browser chrome
+ * without a white tile. Padding keeps the emblem inside Google's circular crop.
  *
  *   node scripts/build-favicon-assets.mjs
  */
@@ -20,7 +21,7 @@ const appDir = join(root, "app");
 /** Gap between the emblem and the "BUKAN" wordmark in the source lockup. */
 const EMBLEM_BOTTOM_Y = 995;
 const PAD_RATIO = 0.16;
-const TILE_BG = { r: 255, g: 255, b: 255, alpha: 255 };
+const TILE_BG = { r: 0, g: 0, b: 0, alpha: 0 };
 
 function pngToIco(pngImages) {
   const count = pngImages.length;
