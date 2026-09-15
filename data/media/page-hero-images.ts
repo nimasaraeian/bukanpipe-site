@@ -44,6 +44,8 @@ export type PageHeroImage = {
   variant?: "brand" | "default" | "product";
   /** Optional BEM modifier for page-specific crop tuning */
   sceneModifier?: "applications" | "about" | "calculator" | "laboratory" | "downloads" | "technical" | "quality";
+  /** FA keeps EN physical sides: copy left, photo right. Persian text only. */
+  matchEnLayout?: boolean;
 };
 
 /** Inner-page hero backgrounds (homepage hero is separate). */
@@ -101,6 +103,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     src: industrialSlides.extrusion,
     position: "60% center",
     mobilePosition: { ltr: "70% center", rtl: "30% center" },
+    matchEnLayout: true,
   },
   [routes.standards.path]: {
     src: industrialSlides.extrusion,
@@ -167,6 +170,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     src: industrialSlides.product,
     position: "64% 40%",
     mobilePosition: { ltr: "70% 42%", rtl: "30% 42%" },
+    matchEnLayout: true,
   },
 };
 
@@ -324,16 +328,32 @@ export function getPageHeroImage(path: string, _direction: Direction = "ltr"): P
   return defaultInnerHero;
 }
 
+const MATCH_EN_SCENE_MODIFIERS: ReadonlySet<NonNullable<PageHeroImage["sceneModifier"]>> = new Set([
+  "technical",
+  "calculator",
+  "downloads",
+  "about",
+  "laboratory",
+  "quality",
+]);
+
+/** Engineering + Company heroes keep EN sides in FA (copy left, photo right). */
+export function heroMatchesEnSides(hero: PageHeroImage): boolean {
+  return Boolean(hero.matchEnLayout || (hero.sceneModifier && MATCH_EN_SCENE_MODIFIERS.has(hero.sceneModifier)));
+}
+
 /** Props for IndustrialPageHero from a resolved hero config */
 export function getIndustrialPageHeroImageProps(hero: PageHeroImage) {
+  const matchEnSides = heroMatchesEnSides(hero);
   return {
     imageSrc: hero.src,
     imagePosition: hero.position,
-    imagePositionRtl: hero.positionRtl,
+    imagePositionRtl: matchEnSides ? undefined : hero.positionRtl,
     imageMobilePositionLtr: hero.mobilePosition?.ltr,
-    imageMobilePositionRtl: hero.mobilePosition?.rtl,
+    imageMobilePositionRtl: matchEnSides ? hero.mobilePosition?.ltr : hero.mobilePosition?.rtl,
     imageVariant: hero.variant,
     imageSceneModifier: hero.sceneModifier,
+    matchEnSides,
   };
 }
 

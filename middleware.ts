@@ -8,6 +8,7 @@ const CANONICAL_HOST = "bukanpipe.com";
 
 const STATIC_SEO_ASSETS = new Set([
   "/icon.svg",
+  "/icon.png",
   "/favicon.ico",
   "/favicon.svg",
   "/apple-touch-icon.png",
@@ -69,6 +70,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|api|icon\\.svg|favicon\\.ico|favicon\\.svg|apple-touch-icon\\.png|icon-192\\.png|icon-512\\.png|robots\\.txt|sitemap\\.xml|media).*)",
+    "/((?!_next|api|icon\\.svg|icon\\.png|favicon\\.ico|favicon\\.svg|apple-touch-icon\\.png|apple-touch-icon-precomposed\\.png|icon-192\\.png|icon-512\\.png|robots\\.txt|sitemap\\.xml|media).*)",
   ],
 };

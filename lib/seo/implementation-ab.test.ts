@@ -18,11 +18,13 @@ describe("robots disallow paths", () => {
 });
 
 describe("official brand icons", () => {
-  it("commits favicon.ico, favicon.svg and apple-touch-icon.png", () => {
-    const files = ["favicon.ico", "favicon.svg", "apple-touch-icon.png"];
+  it("commits stable PNG favicons and the ICO fallback", () => {
+    const files = ["favicon.ico", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
     for (const file of files) {
       expect(existsSync(resolve(process.cwd(), "public", file)), file).toBe(true);
     }
+    expect(existsSync(resolve(process.cwd(), "public", "favicon.svg"))).toBe(false);
+    expect(existsSync(resolve(process.cwd(), "app", "icon.svg"))).toBe(false);
   });
 });
 

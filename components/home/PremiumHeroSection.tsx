@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { enHomeApplications } from "@/data/content/en/home";
+import { faHomeApplications } from "@/data/content/fa/home";
 import { homeHeroImage } from "@/data/media/page-hero-images";
 import { routes } from "@/lib/config/routes";
 
@@ -68,6 +70,7 @@ const trustIcons = [
 export function PremiumHeroSection() {
   const { t, path, locale } = useLocale();
   const hero = t.home.hero;
+  const specIndex = (locale === "fa" ? faHomeApplications : enHomeApplications).slice(0, 3);
 
   return (
     <section
@@ -111,17 +114,27 @@ export function PremiumHeroSection() {
               <span className="engine-hero-kicker-line" />
             </div>
 
+            <nav className="engine-hero-spec-index" aria-label={hero.ctaSolutions}>
+              {specIndex.map((item) => (
+                <Link key={item.href} href={path(item.href)} className="engine-hero-spec-index-item">
+                  {item.kicker}
+                </Link>
+              ))}
+            </nav>
+
             <h1 className="engine-hero-headline ind-title-shine">
               {hero.titleLine1}
               <br />
-              {hero.titleLine2}
+              <span className="engine-hero-headline-accent">
+                {hero.titleLine2}
+                <span className="engine-hero-period">.</span>
+              </span>
               {hero.titleLine3 ? (
                 <>
                   <br />
                   {hero.titleLine3}
                 </>
               ) : null}
-              <span className="engine-hero-period">.</span>
             </h1>
 
             <p className="engine-hero-subtitle">{hero.subtitle}</p>

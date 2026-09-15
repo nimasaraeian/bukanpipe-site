@@ -57,8 +57,9 @@ export function createRootMetadata(): Metadata {
     applicationName: siteConfig.brandName,
     icons: {
       icon: [
+        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
         { url: "/favicon.ico", sizes: "48x48" },
-        { url: "/favicon.svg", type: "image/svg+xml" },
       ],
       shortcut: "/favicon.ico",
       apple: "/apple-touch-icon.png",

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { editorialPhotos } from "@/data/media/editorial-photos";
-import { getPageCardImages, getPageHeroImage, industrialSlides } from "@/data/media/page-hero-images";
+import { getPageCardImages, getPageHeroImage, getIndustrialPageHeroImageProps, industrialSlides } from "@/data/media/page-hero-images";
 import { routes } from "@/lib/config/routes";
 import { productSystemAssets } from "@/lib/products/product-assets";
 
@@ -65,6 +65,18 @@ describe("page hero images", () => {
     const hub = getPageHeroImage(routes.applications.path);
     expect(hub.src).toBe("/media/brand/applications-hero.png");
     expect(hub.variant).toBe("brand");
+  });
+
+  it("keeps Engineering and Company heroes on EN sides", () => {
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage("/technical-center")).matchEnSides).toBe(true);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage("/calculator")).matchEnSides).toBe(true);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage("/downloads")).matchEnSides).toBe(true);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage(routes.about.path)).matchEnSides).toBe(true);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage(routes.laboratory.path)).matchEnSides).toBe(true);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage("/quality")).matchEnSides).toBe(true);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage("/certifications")).matchEnSides).toBe(true);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage(routes.applications.path)).matchEnSides).toBe(false);
+    expect(getIndustrialPageHeroImageProps(getPageHeroImage(routes.contact.path)).matchEnSides).toBe(false);
   });
 
   it("assigns card images from the same slide set", () => {

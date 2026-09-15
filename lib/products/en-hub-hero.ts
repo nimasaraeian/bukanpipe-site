@@ -77,7 +77,21 @@ export const enProductsHeroCopy = {
       labelAt: { x: 18, y: 72 },
     },
   ] satisfies readonly HeroCallout[],
+  ctaPrimary: "Request a Quote",
+  ctaSecondary: "Downloads",
+  trustLabel: "Manufacturing",
+  trustItems: [
+    { title: "QC LAB", subtitle: "In-line and laboratory testing" },
+    { title: "PE100", subtitle: "Higher MRS pressure design" },
+    { title: "630 mm OD", subtitle: "Single-wall extrusion capacity" },
+    { title: "SINCE 1997", subtitle: "Polyethylene pipe production" },
+  ],
 } as const;
+
+export type ProductsHeroTrustItem = {
+  title: string;
+  subtitle: string;
+};
 
 export type ProductsHeroCopy = {
   eyebrowBrand: string;
@@ -87,6 +101,10 @@ export type ProductsHeroCopy = {
   lead: string;
   features: readonly HeroFeature[];
   callouts: readonly HeroCallout[];
+  ctaPrimary: string;
+  ctaSecondary: string;
+  trustLabel: string;
+  trustItems: readonly ProductsHeroTrustItem[];
 };
 
 export function getProductsHeroCopy(locale: Locale): ProductsHeroCopy {

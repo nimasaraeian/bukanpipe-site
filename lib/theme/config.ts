@@ -6,7 +6,7 @@ export const THEME_STORAGE_KEY = "bukan-theme";
 export const THEME_COLOR_DARK = "#05070a";
 
 /** Opt-in light canvas. Matches `--ind-bg-deep` in light theme. */
-export const THEME_COLOR_LIGHT = "#eef2f7";
+export const THEME_COLOR_LIGHT = "#f0f3f7";
 
 export function isTheme(value: string | null | undefined): value is Theme {
   return value === "dark" || value === "light";

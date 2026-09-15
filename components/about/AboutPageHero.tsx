@@ -20,13 +20,13 @@ export function AboutPageHero({ title, description }: AboutPageHeroProps) {
   const imageProps = getIndustrialPageHeroImageProps(hero);
   const heading = title.trim() || copy.title;
   const lead = description?.trim() || copy.lead;
-  const resolvedPosition = locale === "fa" ? "56% 50%" : imageProps.imagePosition;
+  const resolvedPosition = imageProps.imagePosition ?? "48% 52%";
   const mobilePosition = "56% 48%";
 
   return (
     <section
       className={cn(
-        "ind-page-hero ind-page-hero--brand-photo ind-page-hero--brand-about industrial-font",
+        "ind-page-hero ind-page-hero--brand-photo ind-page-hero--brand-about ind-page-hero--match-en industrial-font",
         locale === "fa" ? "about-hero--fa" : "about-hero--en",
       )}
       aria-labelledby="about-hero-heading"

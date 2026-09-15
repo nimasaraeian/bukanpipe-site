@@ -61,6 +61,10 @@ html[data-theme="light"] {
   background-color: var(--ind-bg-deep);
 }
 
+html[data-theme="light"] :focus-visible {
+  outline-color: #0066ff;
+}
+
 body.industrial-body {
   min-height: 100svh;
   background-color: var(--ind-bg-deep, #05070a);

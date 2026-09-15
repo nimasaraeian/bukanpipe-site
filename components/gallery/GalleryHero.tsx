@@ -22,7 +22,7 @@ export function GalleryHero({
   heroAlt,
 }: GalleryHeroProps) {
   return (
-    <header className="gallery-hero">
+    <header className="gallery-hero gallery-hero--match-en">
       <div className="gallery-hero__media" aria-hidden="true">
         <img
           src={heroSrc}

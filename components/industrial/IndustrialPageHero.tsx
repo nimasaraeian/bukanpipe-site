@@ -22,6 +22,7 @@ type IndustrialPageHeroProps = {
   imageMobilePositionRtl?: string;
   imageVariant?: PageHeroImage["variant"];
   imageSceneModifier?: PageHeroImage["sceneModifier"];
+  matchEnSides?: boolean;
   imageAlt?: string;
   breadcrumb?: BreadcrumbItem[];
   children?: React.ReactNode;
@@ -38,6 +39,7 @@ export function IndustrialPageHero({
   imageMobilePositionRtl,
   imageVariant = "default",
   imageSceneModifier,
+  matchEnSides = false,
   imageAlt = "",
   breadcrumb,
   children,
@@ -47,7 +49,7 @@ export function IndustrialPageHero({
   const isBrandPhoto = imageVariant === "brand";
   const isProductPhoto = imageVariant === "product";
   const resolvedPosition =
-    locale === "fa" && imagePositionRtl ? imagePositionRtl : imagePosition;
+    locale === "fa" && imagePositionRtl && !matchEnSides ? imagePositionRtl : imagePosition;
 
   return (
     <section
@@ -62,6 +64,7 @@ export function IndustrialPageHero({
           "ind-page-hero--brand-laboratory",
         imageSceneModifier === "downloads" && "ind-page-hero--brand-downloads",
         imageSceneModifier === "technical" && "ind-page-hero--brand-technical",
+        matchEnSides && "ind-page-hero--match-en",
       )}
       style={
         {

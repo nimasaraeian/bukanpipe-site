@@ -39,14 +39,16 @@ describe("createPageMetadata", () => {
 });
 
 describe("createRootMetadata", () => {
-  it("exposes official favicon, SVG, and Apple touch icons", () => {
+  it("exposes stable PNG favicons Google Search can rasterize", () => {
     const metadata = createRootMetadata();
     expect(metadata.icons).toMatchObject({
       shortcut: "/favicon.ico",
       apple: "/apple-touch-icon.png",
     });
-    const icons = metadata.icons as { icon?: readonly { url: string }[] };
+    const icons = metadata.icons as { icon?: readonly { url: string; type?: string }[] };
+    expect(icons.icon?.[0]).toMatchObject({ url: "/icon-512.png", type: "image/png" });
+    expect(icons.icon?.some((icon) => icon.url === "/icon-192.png")).toBe(true);
     expect(icons.icon?.some((icon) => icon.url === "/favicon.ico")).toBe(true);
-    expect(icons.icon?.some((icon) => icon.url === "/favicon.svg")).toBe(true);
+    expect(icons.icon?.some((icon) => icon.url === "/favicon.svg")).toBe(false);
   });
 });

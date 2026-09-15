@@ -43,4 +43,13 @@ export const faProductsHeroCopy = {
       labelAt: { x: 18, y: 72 },
     },
   ] satisfies readonly HeroCallout[],
+  ctaPrimary: "استعلام قیمت",
+  ctaSecondary: "دانلود",
+  trustLabel: "شاخص‌های تولید",
+  trustItems: [
+    { title: "آزمایشگاه QC", subtitle: "کنترل کیفیت در خط و آزمایشگاه" },
+    { title: "PE100", subtitle: "طراحی فشار با MRS بالاتر" },
+    { title: "۶۳۰ mm", subtitle: "حداکثر قطر خارجی منتشرشده" },
+    { title: "از سال ۱۳۷۶", subtitle: "تولید لوله PE در بوکان" },
+  ],
 } as const;
