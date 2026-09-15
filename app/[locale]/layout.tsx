@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Viewport } from "next";
-import { uiFontByLocale } from "@/lib/fonts";
+import { loadUiFont } from "@/lib/fonts";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
@@ -42,7 +42,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
   const direction = getDirection(locale);
-  const uiFont = uiFontByLocale[locale];
+  const uiFont = await loadUiFont(locale);
 
   return (
     <html
@@ -50,6 +50,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       data-theme="dark"
       dir={direction}
       lang={locale}
+      style={{ colorScheme: "dark" }}
       suppressHydrationWarning
     >
       <head>

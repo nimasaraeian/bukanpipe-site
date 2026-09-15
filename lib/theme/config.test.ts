@@ -41,4 +41,10 @@ describe("THEME_INIT_SCRIPT", () => {
     expect(THEME_INIT_SCRIPT).toContain('t==="light"||t==="dark"');
     expect(THEME_INIT_SCRIPT).toContain('?t:"dark"');
   });
+
+  it("does not rewrite color-scheme when the SSR dark canvas already matches", () => {
+    expect(THEME_INIT_SCRIPT).toContain('if(v==="light")');
+    expect(THEME_INIT_SCRIPT).not.toContain("r.style.colorScheme=v");
+    expect(THEME_INIT_SCRIPT).not.toContain('style.colorScheme="dark"');
+  });
 });

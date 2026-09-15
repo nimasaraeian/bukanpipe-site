@@ -45,7 +45,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const preferred = getPreferredTheme();
     setThemeState(preferred);
-    applyTheme(preferred);
+    const current = document.documentElement.dataset.theme;
+    if (current !== preferred) {
+      applyTheme(preferred);
+    }
   }, []);
 
   const value = useMemo(

@@ -1,0 +1,82 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { describe, expect, it } from "vitest";
+import { homeHeroImage } from "@/data/media/page-hero-images";
+
+const root = process.cwd();
+
+function read(rel: string) {
+  return readFileSync(path.join(root, rel), "utf8");
+}
+
+describe("homepage hero LCP architecture", () => {
+  it("uses a single picture element instead of two CSS-hidden imgs", () => {
+    const hero = read("components/home/HomeHeroPhoto.tsx");
+    const section = read("components/home/PremiumHeroSection.tsx");
+
+    expect(hero).toContain("<picture>");
+    expect(hero).toContain('(min-width: 1024px)');
+    expect(hero).toContain("homeHeroImage.src");
+    expect(hero).toContain("homeHeroImage.mobileSrc");
+    expect(hero).not.toContain("unoptimized");
+    expect(hero).not.toContain("scene-photo--mobile");
+    expect(hero).not.toContain("scene-photo--desktop");
+
+    expect(section).toContain("HomeHeroPhoto");
+    expect(section).not.toContain("engine-hero-scene-photo--mobile");
+    expect(section).not.toContain("priority");
+    expect(read("app/engine-hero.css")).not.toMatch(/engine-hero-copy[\s\S]{0,120}engine-fade-up/);
+  });
+
+  it("does not hide a second hero img with display none", () => {
+    const css = read("app/engine-hero.css");
+    expect(css).not.toMatch(/scene-photo--desktop\s*\{[^}]*display:\s*none/);
+    expect(css).not.toMatch(/scene-photo--mobile\s*\{[^}]*display:\s*none/);
+    expect(css).not.toContain("filter: brightness(0.96)");
+  });
+
+  it("keeps locale-specific pyramid sources", () => {
+    expect(homeHeroImage.src.fa).toBe("/media/brand/home-hero-pyramid-fa.jpg");
+    expect(homeHeroImage.mobileSrc.fa).toBe("/media/brand/home-hero-pyramid-mobile-fa.jpg");
+    expect(homeHeroImage.src.en).toBe("/media/brand/home-hero-pyramid-en.jpg");
+    expect(homeHeroImage.mobileSrc.en).toBe("/media/brand/home-hero-pyramid-mobile-en.jpg");
+  });
+});
+
+describe("theme first paint geometry", () => {
+  it("server-renders color-scheme on html and skips dark rewrite in the init script", () => {
+    const layout = read("app/[locale]/layout.tsx");
+    expect(layout).toContain('style={{ colorScheme: "dark" }}');
+    expect(layout).toContain("loadUiFont");
+    expect(layout).not.toContain("uiFontByLocale");
+
+    const rootLayout = read("app/layout.tsx");
+    expect(rootLayout).not.toContain("ThemeScript");
+  });
+});
+
+describe("locale font isolation", () => {
+  it("does not register both variable fonts in one module", () => {
+    const index = read("lib/fonts.ts");
+    expect(index).not.toContain("localFont");
+    expect(index).toContain("lib/fonts-fa");
+    expect(index).toContain("lib/fonts-en");
+    expect(read("lib/fonts-fa.ts")).toContain("Estedad-Variable.woff2");
+    expect(read("lib/fonts-en.ts")).toContain("Vazirmatn-Variable.woff2");
+    expect(read("lib/fonts-fa.ts")).not.toContain("Vazirmatn");
+    expect(read("lib/fonts-en.ts")).not.toContain("Estedad");
+    expect(read("lib/fonts-fa.ts")).toContain("preload: false");
+    expect(read("lib/fonts-en.ts")).toContain("preload: false");
+  });
+});
+
+describe("mobile motion budget", () => {
+  it("disables border-angle spin and blur reveal on small viewports", () => {
+    const css = read("app/industrial-system.css");
+    expect(css).toContain("@media (max-width: 768px)");
+    expect(css).toContain("Mobile motion budget");
+    expect(css).toMatch(/max-width:\s*768px[\s\S]*ind-border-light|max-width:\s*768px[\s\S]*animation:\s*none/);
+    expect(css).toMatch(/max-width:\s*768px[\s\S]*filter:\s*none/);
+    expect(css).toMatch(/max-width:\s*768px[\s\S]*translate3d\(0, 12px, 0\)/);
+  });
+});

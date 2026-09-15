@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { HomeHeroPhoto } from "@/components/home/HomeHeroPhoto";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { enHomeApplications } from "@/data/content/en/home";
 import { faHomeApplications } from "@/data/content/fa/home";
-import { homeHeroImage } from "@/data/media/page-hero-images";
 import { routes } from "@/lib/config/routes";
 
 const floatIcons = [
@@ -78,26 +77,7 @@ export function PremiumHeroSection() {
       aria-label={hero.kicker}
     >
       <div className="engine-hero-scene" aria-hidden="true">
-        <Image
-          src={homeHeroImage.mobileSrc[locale]}
-          alt=""
-          fill
-          priority
-          unoptimized
-          className="engine-hero-scene-photo engine-hero-scene-photo--mobile"
-          sizes="100vw"
-          style={{ objectPosition: homeHeroImage.mobilePosition[locale] }}
-        />
-        <Image
-          src={homeHeroImage.src[locale]}
-          alt=""
-          fill
-          priority
-          unoptimized
-          className="engine-hero-scene-photo engine-hero-scene-photo--desktop"
-          sizes="100vw"
-          style={{ objectPosition: homeHeroImage.position[locale] }}
-        />
+        <HomeHeroPhoto locale={locale} />
         <div className="engine-hero-scene-vignette" />
         <div className="engine-hero-scene-shade-left" />
         <div className="engine-hero-scene-shade-top" />
