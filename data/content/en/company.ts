@@ -71,11 +71,11 @@ export const enQuality: ContentDocument = {
   path: "/quality",
   locale: "en",
   kind: "company",
-  title: "Quality Policy",
-  seoTitle: "HDPE Pipe Quality Control | Bukan Pipe Manufacturing QC",
+  title: "Quality Control & Laboratory",
+  seoTitle: "Quality Control & Laboratory | Bukan Pipe",
   seoDescription:
     "Production quality control, in-line inspection and laboratory testing for polyethylene pipe.",
-  description: "Quality policy and QC process.",
+  description: "Quality control and laboratory testing.",
   primaryKeyword: "HDPE pipe quality control",
   secondaryKeywords: ["PE pipe QC", "polyethylene pipe inspection"],
   status: "published",
@@ -85,7 +85,7 @@ export const enQuality: ContentDocument = {
   references: ["https://bukanpipe.com/quality-policy/"],
   breadcrumbs: [
     { label: "Home", path: "/" },
-    { label: "Quality", path: "/quality" },
+    { label: "Quality Control & Laboratory", path: "/quality" },
   ],
   sections: [
     {

@@ -33,7 +33,7 @@ export const dictionaryFa: Dictionary = {
     about: "درباره ما",
     gallery: "گالری کارخانه",
     contact: "تماس",
-    quality: "کیفیت",
+    quality: "کنترل کیفیت و آزمایشگاه",
     certifications: "گواهی‌ها",
     company: "شرکت",
     engineering: "مهندسی",
@@ -214,7 +214,7 @@ export const dictionaryFa: Dictionary = {
         links: {
           about: "درباره ما",
           gallery: "گالری کارخانه",
-          quality: "کیفیت",
+          quality: "کنترل کیفیت و آزمایشگاه",
           laboratory: "آزمایشگاه",
           certifications: "گواهی‌ها",
           requestQuote: "استعلام قیمت",
@@ -295,7 +295,7 @@ export const dictionaryFa: Dictionary = {
         { value: "آزمون‌شده", label: "اعتبارسنجی مواد و کنترل فرآیند" },
         { value: "تأمین جهانی", label: "تحویل قابل اتکا در مقیاس پروژه" },
       ],
-      action: "کیفیت و آزمایشگاه",
+      action: "کنترل کیفیت و آزمایشگاه",
     },
     cta: {
       title: "در شبکه بعدی‌تان با بوکان پایپ همکاری کنید.",

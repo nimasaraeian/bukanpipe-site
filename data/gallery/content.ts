@@ -81,7 +81,7 @@ const copyFa: GalleryPageCopy = {
     links: [
       { label: "محصولات لوله پلی اتیلن", path: "/products", hint: "کاتالوگ HDPE" },
       { label: "آزمایشگاه", path: "/laboratory", hint: "کنترل کیفیت" },
-      { label: "کیفیت", path: "/quality", hint: "استانداردها" },
+      { label: "کنترل کیفیت و آزمایشگاه", path: "/quality", hint: "استانداردها" },
       { label: "درباره بوکان پایپ", path: "/about", hint: "کارخانه" },
       { label: "استعلام قیمت", path: "/request-quote", hint: "سفارش پروژه" },
     ],
@@ -140,7 +140,7 @@ const copyEn: GalleryPageCopy = {
     links: [
       { label: "HDPE pipe products", path: "/products", hint: "Product catalog" },
       { label: "Laboratory", path: "/laboratory", hint: "Quality testing" },
-      { label: "Quality", path: "/quality", hint: "Standards" },
+      { label: "Quality Control & Laboratory", path: "/quality", hint: "Standards" },
       { label: "About Bukan Pipe", path: "/about", hint: "Company" },
       { label: "Request quote", path: "/request-quote", hint: "Project orders" },
     ],

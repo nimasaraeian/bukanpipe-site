@@ -6,7 +6,7 @@ export const faAbout: ContentDocument = {
   path: "/about",
   locale: "fa",
   kind: "company",
-  title: "بیش از ۲۵ سال تخصص در تولید لوله پلی‌اتیلن",
+  title: "تأسیس ۱۳۷۶",
   seoTitle: "درباره بوکان پایپ | تولیدکننده لوله پلی اتیلن",
   seoDescription:
     "بوکان پایپ — تولیدکننده لوله پلی‌اتیلن تک‌جداره HDPE و PE100 تا قطر ۶۳۰ میلی‌متر. خرید مستقیم از کارخانه در بوکان، آذربایجان غربی.",
@@ -86,7 +86,7 @@ export const faAbout: ContentDocument = {
     },
     {
       type: "paragraph",
-      text: "آذربایجان غربی — بوکان، کیلومتر ۱۰ جاده میاندواب. کدپستی: ۵۹۵۵۱۶۴۳۴۱.",
+      text: "آذربایجان غربی — بوکان، کیلومتر ۱۰ جاده میاندوآب. کدپستی: ۵۹۵۵۱۶۴۳۴۱.",
     },
   ],
   faqs: [
@@ -119,10 +119,10 @@ export const faQuality: ContentDocument = {
   path: "/quality",
   locale: "fa",
   kind: "company",
-  title: "کنترل کیفیت تولید لوله پلی اتیلن",
-  seoTitle: "کنترل کیفیت لوله پلی اتیلن | QC کارخانه | بوکان پایپ",
+  title: "کنترل کیفیت و آزمایشگاه",
+  seoTitle: "کنترل کیفیت و آزمایشگاه | بوکان پایپ",
   seoDescription: "فرآیند کنترل کیفیت تولید لوله HDPE در خط اکستروژن و آزمایشگاه بوکان پایپ.",
-  description: "سیاست و فرآیند QC تولیدکننده لوله پلی اتیلن.",
+  description: "فرآیند کنترل کیفیت و آزمایشگاه تولید لوله پلی اتیلن.",
   primaryKeyword: "کنترل کیفیت لوله پلی اتیلن",
   secondaryKeywords: ["QC لوله PE", "آزمون لوله HDPE", "تولید کننده لوله پلی اتیلن"],
   status: "published",
@@ -132,7 +132,7 @@ export const faQuality: ContentDocument = {
   references: ["https://bukanpipe.com/quality-policy/"],
   breadcrumbs: [
     { label: "خانه", path: "/" },
-    { label: "کیفیت", path: "/quality" },
+    { label: "کنترل کیفیت و آزمایشگاه", path: "/quality" },
   ],
   sections: [
     {

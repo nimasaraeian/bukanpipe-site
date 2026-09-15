@@ -192,14 +192,14 @@ export const assistantIntents: readonly AssistantIntentDefinition[] = [
     keywords: ["quality", "qc"],
     phrases: ["quality assurance"],
     minScore: 40,
-    action: nav("/quality", "کنترل کیفیت", "Quality"),
+    action: nav("/quality", "کنترل کیفیت و آزمایشگاه", "Quality Control & Laboratory"),
   },
   {
     id: "QUALITY",
     keywords: ["کیفیت"],
     phrases: ["کنترل کیفیت"],
     minScore: 40,
-    action: nav("/quality", "کنترل کیفیت", "Quality"),
+    action: nav("/quality", "کنترل کیفیت و آزمایشگاه", "Quality Control & Laboratory"),
   },
   {
     id: "CERTIFICATIONS",

@@ -31,7 +31,7 @@ export const dictionaryEn = {
     about: "About",
     gallery: "Factory Gallery",
     contact: "Contact",
-    quality: "Quality",
+    quality: "Quality Control & Laboratory",
     certifications: "Certifications",
     company: "Company",
     engineering: "Engineering",
@@ -166,7 +166,7 @@ export const dictionaryEn = {
       purpose:
         "Factory identity and company narrative. Timeline, capacity and certification claims require verification.",
       seoDescription:
-        "About Bukan Pipe — HDPE pipe manufacturer in Bukan, Iran. Company history, quality policy and certifications.",
+        "About Bukan Pipe — HDPE pipe manufacturer in Bukan, Iran. Company history, quality control and certifications.",
     },
   },
   footer: {
@@ -211,7 +211,7 @@ export const dictionaryEn = {
         links: {
           about: "About",
           gallery: "Factory Gallery",
-          quality: "Quality",
+          quality: "Quality Control & Laboratory",
           laboratory: "Laboratory",
           certifications: "Certifications",
           requestQuote: "Request a quote",
@@ -292,7 +292,7 @@ export const dictionaryEn = {
         { value: "Lab tested", label: "Material validation and process control" },
         { value: "Global supply", label: "Reliable delivery for project-scale demand" },
       ],
-      action: "Quality & laboratory",
+      action: "Quality Control & Laboratory",
     },
     cta: {
       title: "Partner with Bukan Pipe on your next network.",

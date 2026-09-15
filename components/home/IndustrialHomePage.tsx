@@ -160,7 +160,7 @@ export function IndustrialHomePage() {
         <div className="ind-container">
           <IndustrialSectionHeader
             kicker={isFa ? "کیفیت" : "Quality"}
-            title={isFa ? "کنترل کیفیت و آزمایشگاه" : "Quality control & laboratory"}
+            title={isFa ? "کنترل کیفیت و آزمایشگاه" : "Quality Control & Laboratory"}
             description={
               isFa
                 ? "QC تولید، آزمون batch و خدمات آزمایشگاه برای مشتری."
@@ -169,7 +169,7 @@ export function IndustrialHomePage() {
           />
           <div className="mt-10 flex flex-wrap gap-4">
             <IndustrialButton href={path("/quality")} variant="secondary">
-              {isFa ? "سیاست کیفیت" : "Quality"}
+              {isFa ? "کنترل کیفیت و آزمایشگاه" : "Quality Control & Laboratory"}
             </IndustrialButton>
             <IndustrialButton href={path("/laboratory")} variant="secondary">
               {isFa ? "آزمایشگاه" : "Laboratory"}

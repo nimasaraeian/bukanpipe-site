@@ -26,7 +26,7 @@ const contextRulesFa: ContextRule[] = [
   {
     prefix: "/laboratory",
     actions: [
-      { id: "ctx-quality", label: "کنترل کیفیت", intentId: "QUALITY" },
+      { id: "ctx-quality", label: "کنترل کیفیت و آزمایشگاه", intentId: "QUALITY" },
       { id: "ctx-cert", label: "گواهینامه‌ها", intentId: "CERTIFICATIONS" },
       { id: "ctx-contact", label: "تماس", intentId: "CONTACT" },
     ],
@@ -70,7 +70,7 @@ const contextRulesEn: ContextRule[] = [
   {
     prefix: "/laboratory",
     actions: [
-      { id: "ctx-quality", label: "Quality", intentId: "QUALITY" },
+      { id: "ctx-quality", label: "Quality Control & Laboratory", intentId: "QUALITY" },
       { id: "ctx-cert", label: "Certifications", intentId: "CERTIFICATIONS" },
       { id: "ctx-contact", label: "Contact", intentId: "CONTACT" },
     ],
