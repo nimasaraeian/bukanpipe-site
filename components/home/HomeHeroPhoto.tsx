@@ -7,7 +7,7 @@ type HomeHeroPhotoProps = {
   locale: Locale;
 };
 
-const HERO_QUALITY = 82;
+const HERO_QUALITY = 90;
 const DESKTOP_MQ = "(min-width: 1024px)";
 const MOBILE_MQ = "(max-width: 1023.98px)";
 
@@ -21,7 +21,7 @@ export function HomeHeroPhoto({ locale }: HomeHeroPhotoProps) {
     fill: true,
     quality: HERO_QUALITY,
     sizes: "100vw",
-    priority: false,
+    priority: true,
   } as const;
 
   const {
@@ -66,7 +66,7 @@ export function HomeHeroPhoto({ locale }: HomeHeroPhotoProps) {
           width={width}
           height={height}
           className="engine-hero-scene-photo"
-          decoding="sync"
+          decoding="async"
           loading="eager"
           fetchPriority="high"
         />

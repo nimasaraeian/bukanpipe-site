@@ -16,7 +16,7 @@ export function IndustrialPanelCard({ href, kicker, title, image }: IndustrialPa
           src={image}
           alt=""
           fill
-          quality={92}
+          quality={82}
           className="ind-panel-card-img"
           sizes="(min-width: 1024px) 33vw, 100vw"
         />
@@ -41,7 +41,14 @@ export function IndustrialProductCard({ href, kicker, title, image }: Industrial
   return (
     <Link href={href} className="ind-product-card group">
       <div className="ind-product-card-media">
-        <Image src={image} alt="" fill className="ind-product-card-img" sizes="320px" />
+        <Image
+          src={image}
+          alt=""
+          fill
+          quality={82}
+          className="ind-product-card-img"
+          sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+        />
       </div>
       <div className="ind-product-card-footer">
         <div>

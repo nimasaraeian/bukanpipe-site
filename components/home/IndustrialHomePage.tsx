@@ -25,16 +25,16 @@ import {
 import { routes } from "@/lib/config/routes";
 
 const industryImages = [
-  "/media/demo/bukan-slide-03-product.png",
-  "/media/demo/bukan-slide-04-inventory.png",
-  "/media/demo/bukan-slide-02-extrusion.png",
+  "/media/demo/bukan-slide-03-product.webp",
+  "/media/demo/bukan-slide-04-inventory.webp",
+  "/media/demo/bukan-slide-02-extrusion.webp",
 ] as const;
 
 const productImages = [
-  "/media/demo/bukan-slide-03-product.png",
-  "/media/demo/bukan-slide-01-yard.png",
-  "/media/demo/bukan-slide-04-inventory.png",
-  "/media/demo/bukan-slide-02-extrusion.png",
+  "/media/demo/bukan-slide-03-product.webp",
+  "/media/demo/bukan-slide-01-yard.webp",
+  "/media/demo/bukan-slide-04-inventory.webp",
+  "/media/demo/bukan-slide-02-extrusion.webp",
 ] as const;
 
 export function IndustrialHomePage() {
@@ -55,15 +55,15 @@ export function IndustrialHomePage() {
         <div className="ind-container">
           <IndustrialSectionHeader
             kicker={isFa ? "محصولات" : "Products"}
-            title={isFa ? "خانواده محصولات لوله PE" : "HDPE & PE100 pipe families"}
+            title={isFa ? "خرید لوله پلی اتیلن از کارخانه" : "HDPE pipe product catalog"}
             description={
               isFa
-                ? "لوله پلی‌اتیلن تک‌جداره برای آبرسانی، گاز، کشاورزی، فاضلاب و PE100 — تا قطر ۶۳۰ میلی‌متر."
-                : "Single-wall HDPE pipe for water supply, gas, irrigation, sewerage and PE100 — up to 630 mm OD."
+                ? "انواع لوله پلی‌اتیلن تک‌جداره برای آبرسانی، گاز، آبیاری فشار قوی، صنعت و PE100 — تا قطر ۶۳۰ میلی‌متر. هر خانواده صفحه محصول جدا دارد."
+                : "Single-wall HDPE pipe families for water supply, gas, irrigation mains, industrial transfer and PE100 — up to 630 mm OD. Each family has its own product page."
             }
             action={
-              <IndustrialTextLink href={path("/polyethylene-pipe")}>
-                {isFa ? "راهنمای لوله پلی‌اتیلن" : "HDPE pipe guide"}
+              <IndustrialTextLink href={path(routes.products.path)}>
+                {isFa ? "کاتالوگ محصولات" : "Product catalog"}
                 <span aria-hidden="true">{t.common.arrow}</span>
               </IndustrialTextLink>
             }
@@ -122,6 +122,7 @@ export function IndustrialHomePage() {
               fill
               className="object-cover"
               style={{ objectPosition: "58% 48%" }}
+              quality={82}
               sizes="(min-width: 1024px) 560px, 100vw"
             />
           </div>
@@ -160,19 +161,19 @@ export function IndustrialHomePage() {
         <div className="ind-container">
           <IndustrialSectionHeader
             kicker={isFa ? "کیفیت" : "Quality"}
-            title={isFa ? "کنترل کیفیت و آزمایشگاه" : "Quality Control & Laboratory"}
+            title={isFa ? "کنترل کیفیت تولید" : "Production quality control"}
             description={
               isFa
-                ? "QC تولید، آزمون batch و خدمات آزمایشگاه برای مشتری."
-                : "Production QC, batch testing and customer laboratory services."
+                ? "کنترل کیفیت در خط تولید جدا از خدمات آزمایشگاه است. آزمون لوله و دامنه آزمایشگاه در صفحه آزمایشگاه آمده است."
+                : "In-process production QC is separate from laboratory testing services. Pipe tests and lab scope are on the laboratory page."
             }
           />
           <div className="mt-10 flex flex-wrap gap-4">
             <IndustrialButton href={path("/quality")} variant="secondary">
-              {isFa ? "کنترل کیفیت و آزمایشگاه" : "Quality Control & Laboratory"}
+              {isFa ? "کنترل کیفیت تولید" : "Production quality control"}
             </IndustrialButton>
             <IndustrialButton href={path("/laboratory")} variant="secondary">
-              {isFa ? "آزمایشگاه" : "Laboratory"}
+              {isFa ? "آزمایشگاه لوله پلی اتیلن" : "Polyethylene pipe laboratory"}
             </IndustrialButton>
             <IndustrialButton href={path("/certifications")} variant="secondary">
               {isFa ? "گواهی‌ها" : "Certifications"}
@@ -185,11 +186,11 @@ export function IndustrialHomePage() {
         <div className="ind-container">
           <IndustrialSectionHeader
             kicker={isFa ? "منابع فنی" : "Engineering resources"}
-            title={isFa ? "مرکز فنی و ابزار مهندسی" : "Technical Center & calculators"}
+            title={isFa ? "لوله پلی‌اتیلن چیست و منابع فنی" : "What polyethylene pipe is, and engineering resources"}
             description={
               isFa
-                ? "مقالات جوش، فشار و دما، شیر هوا — و ماشین‌حساب پیش‌طراحی خط لوله."
-                : "Welding, pressure and temperature guides, air valves — plus pipeline pre-design tools."
+                ? "معرفی عمومی لوله پلی‌اتیلن در صفحه چیست آمده است. مشخصات SDR و PN و راهنمای انتخاب در مرکز فنی جدا هستند."
+                : "The overview page explains what polyethylene pipe is. SDR, PN and selection guidance live in Technical Center."
             }
           />
           <div className="mt-10 flex flex-wrap gap-3">

@@ -9,30 +9,30 @@ const applications = [
     title: "آبرسانی",
     note: "شبکه‌های شهری و انتقال آب",
     href: routes.applications.path,
-    image: "/media/demo/bukan-slide-03-product.png",
+    image: "/media/demo/bukan-slide-03-product.webp",
     offset: 0,
   },
   {
     title: "کشاورزی",
     note: "آبیاری فشرده و شبکه مزرعه",
     href: routes.applications.path,
-    image: "/media/demo/bukan-slide-04-inventory.png",
+    image: "/media/demo/bukan-slide-04-inventory.webp",
     offset: 1,
   },
   {
     title: "صنعت",
     note: "خطوط فرآیند و زیرساخت",
     href: routes.applications.path,
-    image: "/media/demo/bukan-slide-02-extrusion.png",
+    image: "/media/demo/bukan-slide-02-extrusion.webp",
     offset: 2,
   },
 ] as const;
 
 const products = [
-  { title: "لوله PE", spec: "Ø 16–1200 mm", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.png", wide: true },
-  { title: "اتصالات", spec: "جوشی · کمپرسی", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.png", wide: false },
-  { title: "کلاف", spec: "استاندارد PE", href: routes.products.path, image: "/media/demo/bukan-slide-04-inventory.png", wide: false },
-  { title: "سیستم", spec: "راهکار یکپارچه", href: routes.products.path, image: "/media/demo/bukan-slide-01-yard.png", wide: false },
+  { title: "لوله PE", spec: "Ø 16–1200 mm", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.webp", wide: true },
+  { title: "اتصالات", spec: "جوشی · کمپرسی", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.webp", wide: false },
+  { title: "کلاف", spec: "استاندارد PE", href: routes.products.path, image: "/media/demo/bukan-slide-04-inventory.webp", wide: false },
+  { title: "سیستم", spec: "راهکار یکپارچه", href: routes.products.path, image: "/media/demo/bukan-slide-01-yard.webp", wide: false },
 ] as const;
 
 export function DepthHomeExperience() {
@@ -64,7 +64,7 @@ export function DepthHomeExperience() {
             <div className="depth-visual-ghost" />
             <div className="depth-visual-frame">
               <Image
-                src="/media/demo/bukan-slide-02-extrusion.png"
+                src="/media/demo/bukan-slide-02-extrusion.webp"
                 alt=""
                 fill
                 priority
@@ -166,7 +166,7 @@ export function DepthHomeExperience() {
               <div className="depth-visual-ghost depth-visual-ghost-teal" />
               <div className="depth-visual-frame depth-visual-frame-tall">
                 <Image
-                  src="/media/demo/bukan-slide-01-yard.png"
+                  src="/media/demo/bukan-slide-01-yard.webp"
                   alt=""
                   fill
                   className="object-cover"

@@ -33,7 +33,7 @@ describe("page hero images", () => {
     }
 
     const calculatorHero = getPageHeroImage("/calculator");
-    expect(calculatorHero.src).toBe("/media/brand/calculator-hero.png");
+    expect(calculatorHero.src).toBe("/media/brand/calculator-hero.webp");
     expect(calculatorHero.sceneModifier).toBe("calculator");
 
     const laboratoryHero = getPageHeroImage(routes.laboratory.path);
@@ -63,7 +63,7 @@ describe("page hero images", () => {
 
   it("keeps the applications hub on brand photography", () => {
     const hub = getPageHeroImage(routes.applications.path);
-    expect(hub.src).toBe("/media/brand/applications-hero.png");
+    expect(hub.src).toBe("/media/brand/applications-hero.webp");
     expect(hub.variant).toBe("brand");
   });
 

@@ -5,21 +5,21 @@ import { productSystemAssets } from "@/lib/products/product-assets";
 
 /** Approved demo photography — same set as homepage hero concept. Home keeps slide-03. */
 export const industrialSlides = {
-  yard: "/media/demo/bukan-slide-01-yard.png",
-  extrusion: "/media/demo/bukan-slide-02-extrusion.png",
-  product: "/media/demo/bukan-slide-03-product.png",
-  inventory: "/media/demo/bukan-slide-04-inventory.png",
+  yard: "/media/demo/bukan-slide-01-yard.webp",
+  extrusion: "/media/demo/bukan-slide-02-extrusion.webp",
+  product: "/media/demo/bukan-slide-03-product.webp",
+  inventory: "/media/demo/bukan-slide-04-inventory.webp",
 } as const;
 
 /** Homepage hero — full pyramid on desktop; cinematic crop on mobile. */
 export const homeHeroImage = {
   src: {
-    en: "/media/brand/home-hero-pyramid-en.jpg",
-    fa: "/media/brand/home-hero-pyramid-fa.jpg",
+    en: "/media/brand/home-hero-pyramid-en.webp",
+    fa: "/media/brand/home-hero-pyramid-fa.webp",
   },
   mobileSrc: {
-    en: "/media/brand/home-hero-pyramid-mobile-en.jpg",
-    fa: "/media/brand/home-hero-pyramid-mobile-fa.jpg",
+    en: "/media/brand/home-hero-pyramid-mobile-en.webp",
+    fa: "/media/brand/home-hero-pyramid-mobile-fa.webp",
   },
   /** Desktop — full frame, golden point on the pipe side */
   position: { en: "100% 50%", fa: "0% 50%" },
@@ -73,14 +73,14 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     mobilePosition: { ltr: "72% center", rtl: "28% center" },
   },
   [routes.applications.path]: {
-    src: "/media/brand/applications-hero.png",
+    src: "/media/brand/applications-hero.webp",
     position: "72% 88%",
     mobilePosition: { ltr: "68% 72%", rtl: "28% 68%" },
     variant: "brand",
     sceneModifier: "applications",
   },
   "/calculator": {
-    src: "/media/brand/calculator-hero.png",
+    src: "/media/brand/calculator-hero.webp",
     position: "84% 56%",
     mobilePosition: { ltr: "78% 50%", rtl: "22% 50%" },
     variant: "brand",
@@ -116,13 +116,13 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     mobilePosition: { ltr: "70% center", rtl: "30% center" },
   },
   "/technical-center": {
-    src: "/media/brand/technical-center-hero.jpg",
+    src: "/media/brand/technical-center-hero.webp",
     position: "74% center",
     mobilePosition: { ltr: "78% center", rtl: "22% center" },
     sceneModifier: "technical",
   },
   "/downloads": {
-    src: "/media/brand/downloads-hero.png",
+    src: "/media/brand/downloads-hero.webp",
     position: "72% center",
     mobilePosition: { ltr: "72% center", rtl: "72% center" },
     variant: "brand",

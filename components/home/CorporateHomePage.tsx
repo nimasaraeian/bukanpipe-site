@@ -8,27 +8,27 @@ const showcases = [
     category: "Water",
     title: "Water infrastructure",
     href: routes.applications.path,
-    image: "/media/demo/bukan-slide-03-product.png",
+    image: "/media/demo/bukan-slide-03-product.webp",
   },
   {
     category: "Agriculture",
     title: "Irrigation networks",
     href: routes.applications.path,
-    image: "/media/demo/bukan-slide-04-inventory.png",
+    image: "/media/demo/bukan-slide-04-inventory.webp",
   },
   {
     category: "Industry",
     title: "Industrial systems",
     href: routes.applications.path,
-    image: "/media/demo/bukan-slide-02-extrusion.png",
+    image: "/media/demo/bukan-slide-02-extrusion.webp",
   },
 ] as const;
 
 const products = [
-  { kicker: "Pipe", title: "HDPE pipe", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.png" },
-  { kicker: "Fittings", title: "Fittings", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.png" },
-  { kicker: "Coils", title: "Coils", href: routes.products.path, image: "/media/demo/bukan-slide-04-inventory.png" },
-  { kicker: "Systems", title: "Systems", href: routes.products.path, image: "/media/demo/bukan-slide-01-yard.png" },
+  { kicker: "Pipe", title: "HDPE pipe", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.webp" },
+  { kicker: "Fittings", title: "Fittings", href: routes.products.path, image: "/media/demo/bukan-slide-03-product.webp" },
+  { kicker: "Coils", title: "Coils", href: routes.products.path, image: "/media/demo/bukan-slide-04-inventory.webp" },
+  { kicker: "Systems", title: "Systems", href: routes.products.path, image: "/media/demo/bukan-slide-01-yard.webp" },
 ] as const;
 
 export function CorporateHomePage() {
@@ -111,7 +111,7 @@ export function CorporateHomePage() {
         <div className="premium-container grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-24">
           <div className="premium-editorial-media relative aspect-[4/5] overflow-hidden lg:aspect-[5/6]">
             <Image
-              src="/media/demo/bukan-slide-01-yard.png"
+              src="/media/demo/bukan-slide-01-yard.webp"
               alt=""
               fill
               className="object-cover"

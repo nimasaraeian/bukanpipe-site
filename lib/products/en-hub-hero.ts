@@ -28,7 +28,7 @@ export const enProductsHeroLayout = {
 } as const;
 
 export const enProductsHeroAssets = {
-  pipeRender: "/media/products/en/hero-pe100.png",
+  pipeRender: "/media/products/en/hero-pe100.webp",
   pipeRenderWidth: 780,
   pipeRenderHeight: 439,
   goldenReferenceOverlay: "/media/products/en/golden-reference-overlay.png",

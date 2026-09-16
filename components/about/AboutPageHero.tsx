@@ -44,7 +44,7 @@ export function AboutPageHero({ title, description }: AboutPageHeroProps) {
           alt={copy.imageAlt}
           fill
           priority
-          unoptimized
+          quality={90}
           className="ind-page-hero-photo"
           sizes="100vw"
         />

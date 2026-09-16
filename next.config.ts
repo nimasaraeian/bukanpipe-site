@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   headers: securityHeaders(),
   images: {
-    formats: ["image/webp"],
-    qualities: [75, 82],
+    formats: ["image/avif", "image/webp"],
+    qualities: [75, 82, 90],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [256, 384, 512, 640],
     remotePatterns: [

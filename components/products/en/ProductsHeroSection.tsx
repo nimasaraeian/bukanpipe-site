@@ -110,6 +110,7 @@ export function ProductsHeroSection({ doc, breadcrumbHrefs }: ProductsHeroSectio
               width={enProductsHeroAssets.pipeRenderWidth}
               height={enProductsHeroAssets.pipeRenderHeight}
               priority
+              quality={90}
               className="en-products-hero__pipe-image"
               sizes="(min-width: 1024px) 860px, 100vw"
             />

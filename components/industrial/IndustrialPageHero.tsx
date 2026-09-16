@@ -84,7 +84,7 @@ export function IndustrialPageHero({
           alt={imageAlt}
           fill
           priority
-          unoptimized
+          quality={90}
           className="ind-page-hero-photo"
           sizes="100vw"
         />

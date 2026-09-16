@@ -36,10 +36,10 @@ describe("homepage hero LCP architecture", () => {
   });
 
   it("keeps locale-specific pyramid sources", () => {
-    expect(homeHeroImage.src.fa).toBe("/media/brand/home-hero-pyramid-fa.jpg");
-    expect(homeHeroImage.mobileSrc.fa).toBe("/media/brand/home-hero-pyramid-mobile-fa.jpg");
-    expect(homeHeroImage.src.en).toBe("/media/brand/home-hero-pyramid-en.jpg");
-    expect(homeHeroImage.mobileSrc.en).toBe("/media/brand/home-hero-pyramid-mobile-en.jpg");
+    expect(homeHeroImage.src.fa).toBe("/media/brand/home-hero-pyramid-fa.webp");
+    expect(homeHeroImage.mobileSrc.fa).toBe("/media/brand/home-hero-pyramid-mobile-fa.webp");
+    expect(homeHeroImage.src.en).toBe("/media/brand/home-hero-pyramid-en.webp");
+    expect(homeHeroImage.mobileSrc.en).toBe("/media/brand/home-hero-pyramid-mobile-en.webp");
   });
 });
 
