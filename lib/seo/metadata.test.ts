@@ -46,6 +46,7 @@ describe("createRootMetadata", () => {
       apple: "/apple-touch-icon.png",
     });
     const icons = metadata.icons as { icon?: readonly { url: string; type?: string }[] };
+    expect(icons.icon?.[0]?.url).toBe("/icon-48.png");
     expect(icons.icon?.some((icon) => icon.url === "/favicon.svg" && icon.type === "image/svg+xml")).toBe(
       true,
     );

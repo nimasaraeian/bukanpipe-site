@@ -22,6 +22,7 @@ describe("official brand icons", () => {
     const files = [
       "favicon.svg",
       "favicon.ico",
+      "icon-48.png",
       "icon-192.png",
       "icon-512.png",
       "apple-touch-icon.png",
