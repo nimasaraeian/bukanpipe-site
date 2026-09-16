@@ -18,12 +18,17 @@ describe("robots disallow paths", () => {
 });
 
 describe("official brand icons", () => {
-  it("commits stable PNG favicons and the ICO fallback", () => {
-    const files = ["favicon.ico", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
+  it("commits the official Bukan Pipe mark as SVG, PNG, ICO and apple-touch icons", () => {
+    const files = [
+      "favicon.svg",
+      "favicon.ico",
+      "icon-192.png",
+      "icon-512.png",
+      "apple-touch-icon.png",
+    ];
     for (const file of files) {
       expect(existsSync(resolve(process.cwd(), "public", file)), file).toBe(true);
     }
-    expect(existsSync(resolve(process.cwd(), "public", "favicon.svg"))).toBe(false);
     expect(existsSync(resolve(process.cwd(), "app", "icon.svg"))).toBe(false);
   });
 });

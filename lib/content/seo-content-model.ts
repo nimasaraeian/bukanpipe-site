@@ -46,6 +46,8 @@ export type SeoProductSeed = {
   faqs: readonly ContentFaq[];
   curatedLinks: readonly { label: string; path: string; hint?: string }[];
   specCta?: string;
+  extraSections?: readonly ContentBlock[];
+  lastReviewed?: string;
   references?: readonly string[];
   heroImage: ContentHeroImage;
 };
@@ -64,6 +66,7 @@ export type SeoArticleSeed = {
   references?: readonly string[];
   faqs?: readonly ContentFaq[];
   curatedLinks?: readonly { label: string; path: string; hint?: string }[];
+  lastReviewed?: string;
 };
 
 const labels = {
@@ -107,6 +110,7 @@ export function buildSeoProductBlocks(
     | "qualityNote"
     | "curatedLinks"
     | "specCta"
+    | "extraSections"
   >,
 ): readonly ContentBlock[] {
   const L = labels[locale];
@@ -123,6 +127,7 @@ export function buildSeoProductBlocks(
     { type: "list", items: seed.advantages },
     { type: "heading", level: 2, text: L.applications },
     { type: "list", items: seed.applications },
+    ...(seed.extraSections ?? []),
     {
       type: "internal-links",
       title: L.explore,
@@ -172,7 +177,7 @@ export function buildSeoProductDocument(locale: Locale, seed: SeoProductSeed): C
     status: "published",
     evidenceStatus: "candidate",
     verificationStatus: "legacy-claim",
-    lastReviewed: "2026-09-05",
+    lastReviewed: seed.lastReviewed ?? "2026-09-05",
     references: seed.references ?? ["https://bukanpipe.com/about_us/"],
     breadcrumbs: [
       { label: home, path: "/" },
@@ -226,7 +231,7 @@ export function buildSeoArticleDocument(
     status: "published",
     evidenceStatus: "candidate",
     verificationStatus: "legacy-claim",
-    lastReviewed: "2026-09-05",
+    lastReviewed: seed.lastReviewed ?? "2026-09-05",
     references: seed.references,
     breadcrumbs: [
       { label: home, path: "/" },

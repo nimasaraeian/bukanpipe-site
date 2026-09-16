@@ -21,7 +21,9 @@ describe("structured data builders", () => {
     expect(schema.address).not.toHaveProperty("geo");
     expect(schema.logo).toMatchObject({
       "@type": "ImageObject",
-      url: expect.stringContaining("/media/demo/logo.png"),
+      url: expect.stringMatching(/^https?:\/\/.+\/media\/demo\/logo\.png$/),
+      width: 1024,
+      height: 1024,
     });
     expect(schema.sameAs).toEqual(["https://www.instagram.com/bukanpipe_company/"]);
     expect(schema.foundingDate).toBeUndefined();
