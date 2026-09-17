@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PremiumHeroSection } from "@/components/home/PremiumHeroSection";
 import { routes } from "@/lib/config/routes";
+import { getDictionary } from "@/lib/i18n/dictionary";
 
 const showcases = [
   {
@@ -34,7 +35,7 @@ const products = [
 export function CorporateHomePage() {
   return (
     <div className="premium-home bg-white text-neutral-950">
-      <PremiumHeroSection />
+      <PremiumHeroSection locale="en" t={getDictionary("en")} />
 
       {/* Showcase cards */}
       <section className="premium-section">

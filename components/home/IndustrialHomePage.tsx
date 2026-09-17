@@ -30,12 +30,14 @@ const industryImages = [
   "/media/demo/bukan-slide-02-extrusion.webp",
 ] as const;
 
+const fallbackProductCard = {
+  src: "/media/brand/bukan-pipe-hdpe-water-supply-pipe.webp",
+  altFa: "لوله پلی اتیلن آبرسانی HDPE با نوار آبی روی خط تولید بوکان پایپ",
+  altEn: "Bukan Pipe HDPE water supply pipe with blue stripe on the extrusion line",
+} as const;
+
 const productCardsByPath: Record<string, { src: string; altFa: string; altEn: string }> = {
-  "/products/water-supply-pipe": {
-    src: "/media/brand/bukan-pipe-hdpe-water-supply-pipe.webp",
-    altFa: "لوله پلی اتیلن آبرسانی HDPE با نوار آبی روی خط تولید بوکان پایپ",
-    altEn: "Bukan Pipe HDPE water supply pipe with blue stripe on the extrusion line",
-  },
+  "/products/water-supply-pipe": fallbackProductCard,
   "/products/gas-pipe": {
     src: "/media/brand/bukan-pipe-hdpe-gas-pipe.webp",
     altFa: "لوله پلی اتیلن گاز HDPE با نوار و درپوش زرد تولید بوکان پایپ",
@@ -97,7 +99,7 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {productItems.map((item) => {
               const href = "href" in item ? item.href : routes.products.path;
-              const card = productCardsByPath[href] ?? productCardsByPath["/products/water-supply-pipe"];
+              const card = productCardsByPath[href] ?? fallbackProductCard;
               return (
                 <IndustrialProductCard
                   key={item.title}
