@@ -39,14 +39,14 @@ describe("createPageMetadata", () => {
 });
 
 describe("createRootMetadata", () => {
-  it("exposes square PNG favicons Google Search can read at 48px", () => {
+  it("exposes square PNG favicons Google Search can read above 48px", () => {
     const metadata = createRootMetadata();
     expect(metadata.icons).toMatchObject({
-      shortcut: "/icon-48.png",
+      shortcut: "/icon-96.png",
       apple: "/apple-touch-icon.png",
     });
     const icons = metadata.icons as { icon?: readonly { url: string; type?: string }[] };
-    expect(icons.icon?.[0]).toMatchObject({ url: "/icon-48.png", sizes: "48x48", type: "image/png" });
+    expect(icons.icon?.[0]).toMatchObject({ url: "/icon-96.png", sizes: "96x96", type: "image/png" });
     expect(icons.icon?.some((icon) => icon.url === "/icon-96.png")).toBe(true);
     expect(icons.icon?.some((icon) => icon.url === "/icon-512.png" && icon.type === "image/png")).toBe(true);
     expect(icons.icon?.some((icon) => icon.url === "/icon-192.png")).toBe(true);

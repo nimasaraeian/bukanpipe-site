@@ -4,57 +4,84 @@ import sharp from "sharp";
 
 const logo = path.resolve("public/media/demo/logo.png");
 const publicDir = path.resolve("public");
-const WHITE = { r: 255, g: 255, b: 255, alpha: 1 };
+const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
 
-function pngToIco(png, size = 48) {
+function pngsToIco(images) {
   const header = Buffer.alloc(6);
   header.writeUInt16LE(0, 0);
   header.writeUInt16LE(1, 2);
-  header.writeUInt16LE(1, 4);
+  header.writeUInt16LE(images.length, 4);
 
-  const entry = Buffer.alloc(16);
-  entry.writeUInt8(size >= 256 ? 0 : size, 0);
-  entry.writeUInt8(size >= 256 ? 0 : size, 1);
-  entry.writeUInt8(0, 2);
-  entry.writeUInt8(0, 3);
-  entry.writeUInt16LE(1, 4);
-  entry.writeUInt16LE(32, 6);
-  entry.writeUInt32LE(png.length, 8);
-  entry.writeUInt32LE(22, 12);
+  const entries = [];
+  const payloads = [];
+  let offset = 6 + images.length * 16;
 
-  return Buffer.concat([header, entry, png]);
+  for (const { size, png } of images) {
+    const entry = Buffer.alloc(16);
+    entry.writeUInt8(size >= 256 ? 0 : size, 0);
+    entry.writeUInt8(size >= 256 ? 0 : size, 1);
+    entry.writeUInt8(0, 2);
+    entry.writeUInt8(0, 3);
+    entry.writeUInt16LE(1, 4);
+    entry.writeUInt16LE(32, 6);
+    entry.writeUInt32LE(png.length, 8);
+    entry.writeUInt32LE(offset, 12);
+    entries.push(entry);
+    payloads.push(png);
+    offset += png.length;
+  }
+
+  return Buffer.concat([header, ...entries, ...payloads]);
 }
 
-async function cutoutOnWhite(size) {
+async function whiteLogo() {
   const { data, info } = await sharp(logo).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   for (let i = 0; i < data.length; i += 4) {
     if (data[i] < 22 && data[i + 1] < 22 && data[i + 2] < 22) {
       data[i + 3] = 0;
+      continue;
     }
+    data[i] = 255;
+    data[i + 1] = 255;
+    data[i + 2] = 255;
   }
 
-  const trimmed = await sharp(data, { raw: info }).trim({ threshold: 8 }).png().toBuffer();
-  const pad = Math.round(size * 0.1);
-  const inner = Math.max(1, size - pad * 2);
-  const mark = await sharp(trimmed)
-    .resize(inner, inner, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+  const trimmed = await sharp(data, { raw: info }).trim({ threshold: 8 }).ensureAlpha().raw().toBuffer({
+    resolveWithObject: true,
+  });
+
+  return {
+    data: trimmed.data,
+    width: trimmed.info.width,
+    height: trimmed.info.height,
+  };
+}
+
+async function squareIcon(source, size) {
+  const mark = await sharp(source.data, {
+    raw: { width: source.width, height: source.height, channels: 4 },
+  })
+    .resize(size, size, { fit: "contain", background: TRANSPARENT })
     .png()
     .toBuffer();
 
   return sharp({
-    create: { width: size, height: size, channels: 4, background: WHITE },
+    create: { width: size, height: size, channels: 4, background: TRANSPARENT },
   })
     .composite([{ input: mark, gravity: "centre" }])
     .png()
     .toBuffer();
 }
 
-const png48 = await cutoutOnWhite(48);
-const png96 = await cutoutOnWhite(96);
-const png192 = await cutoutOnWhite(192);
-const png256 = await cutoutOnWhite(256);
-const png512 = await cutoutOnWhite(512);
-const png180 = await cutoutOnWhite(180);
+const source = await whiteLogo();
+const png16 = await squareIcon(source, 16);
+const png32 = await squareIcon(source, 32);
+const png48 = await squareIcon(source, 48);
+const png96 = await squareIcon(source, 96);
+const png180 = await squareIcon(source, 180);
+const png192 = await squareIcon(source, 192);
+const png256 = await squareIcon(source, 256);
+const png512 = await squareIcon(source, 512);
 
 writeFileSync(path.join(publicDir, "icon-48.png"), png48);
 writeFileSync(path.join(publicDir, "icon-96.png"), png96);
@@ -62,15 +89,21 @@ writeFileSync(path.join(publicDir, "icon-192.png"), png192);
 writeFileSync(path.join(publicDir, "icon-512.png"), png512);
 writeFileSync(path.join(publicDir, "apple-touch-icon.png"), png180);
 writeFileSync(path.join(publicDir, "apple-touch-icon-precomposed.png"), png180);
-writeFileSync(path.join(publicDir, "favicon.ico"), pngToIco(png48, 48));
+writeFileSync(
+  path.join(publicDir, "favicon.ico"),
+  pngsToIco([
+    { size: 16, png: png16 },
+    { size: 32, png: png32 },
+    { size: 48, png: png48 },
+  ]),
+);
 
 const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Bukan Pipe">
   <title>Bukan Pipe</title>
-  <rect width="256" height="256" fill="#ffffff"/>
   <image width="256" height="256" href="data:image/png;base64,${png256.toString("base64")}"/>
 </svg>
 `;
 writeFileSync(path.join(publicDir, "favicon.svg"), svg);
 
-console.log("Google SERP icons written: white tile + brand mark");
+console.log("Google SERP icons written: white logo, transparent background");
