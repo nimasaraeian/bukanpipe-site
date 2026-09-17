@@ -39,19 +39,18 @@ describe("createPageMetadata", () => {
 });
 
 describe("createRootMetadata", () => {
-  it("exposes the official SVG mark plus PNG and ICO favicons", () => {
+  it("exposes square PNG favicons Google Search can read at 48px", () => {
     const metadata = createRootMetadata();
     expect(metadata.icons).toMatchObject({
-      shortcut: "/favicon.ico",
+      shortcut: "/icon-48.png",
       apple: "/apple-touch-icon.png",
     });
     const icons = metadata.icons as { icon?: readonly { url: string; type?: string }[] };
-    expect(icons.icon?.[0]?.url).toBe("/icon-48.png");
-    expect(icons.icon?.some((icon) => icon.url === "/favicon.svg" && icon.type === "image/svg+xml")).toBe(
-      true,
-    );
+    expect(icons.icon?.[0]).toMatchObject({ url: "/icon-48.png", sizes: "48x48", type: "image/png" });
+    expect(icons.icon?.some((icon) => icon.url === "/icon-96.png")).toBe(true);
     expect(icons.icon?.some((icon) => icon.url === "/icon-512.png" && icon.type === "image/png")).toBe(true);
     expect(icons.icon?.some((icon) => icon.url === "/icon-192.png")).toBe(true);
     expect(icons.icon?.some((icon) => icon.url === "/favicon.ico")).toBe(true);
+    expect(icons.icon?.some((icon) => icon.url === "/favicon.svg")).toBe(false);
   });
 });
