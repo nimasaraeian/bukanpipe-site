@@ -16,6 +16,7 @@ const SOURCES = [
   "media/brand/applications-hero.png",
   "media/brand/calculator-hero.png",
   "media/brand/downloads-hero.png",
+  "media/brand/certifications-page-hero.png",
   "media/brand/about-factory-hero.png",
   "media/brand/technical-center-hero.jpg",
   "media/brand/home-hero-pyramid-en.jpg",

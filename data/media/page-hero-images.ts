@@ -167,9 +167,11 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     sceneModifier: "quality",
   },
   "/certifications": {
-    src: industrialSlides.product,
-    position: "64% 40%",
-    mobilePosition: { ltr: "70% 42%", rtl: "30% 42%" },
+    src: "/media/brand/certifications-page-hero.webp",
+    position: "70% 50%",
+    mobilePosition: { ltr: "74% 48%", rtl: "26% 48%" },
+    variant: "brand",
+    sceneModifier: "calculator",
     matchEnLayout: true,
   },
 };

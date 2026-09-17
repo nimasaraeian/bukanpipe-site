@@ -13,6 +13,7 @@ describe("page hero images", () => {
       routes.laboratory.path,
       "/calculator",
       "/quality",
+      "/certifications",
     ]);
 
     for (const path of Object.values(routes).map((r) => r.path)) {
@@ -46,6 +47,10 @@ describe("page hero images", () => {
     const qualityHero = getPageHeroImage("/quality");
     expect(qualityHero.src).toBe(editorialPhotos.qualityHero);
     expect(qualityHero.sceneModifier).toBe("quality");
+
+    const certificationsHero = getPageHeroImage("/certifications");
+    expect(certificationsHero.src).toBe("/media/brand/certifications-page-hero.webp");
+    expect(certificationsHero.variant).toBe("brand");
   });
 
   it("uses distinct heroes for each application detail page", () => {
