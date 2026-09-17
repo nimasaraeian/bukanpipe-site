@@ -17,6 +17,11 @@ export const enHomeProducts = [
     href: "/products/irrigation-pipe",
   },
   {
+    kicker: "Industrial",
+    title: "HDPE Industrial Pipe",
+    href: "/products/industrial-pipe",
+  },
+  {
     kicker: "PE100",
     title: "PE100 Pipe",
     href: "/products/pe100-pipe",

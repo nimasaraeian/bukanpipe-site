@@ -34,5 +34,5 @@ export default async function HomePage({ params }: PageProps) {
     notFound();
   }
 
-  return <IndustrialHomePage />;
+  return <IndustrialHomePage locale={localeParam} />;
 }

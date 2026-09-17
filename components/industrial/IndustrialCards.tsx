@@ -35,15 +35,16 @@ type IndustrialProductCardProps = {
   kicker: string;
   title: string;
   image: string;
+  imageAlt: string;
 };
 
-export function IndustrialProductCard({ href, kicker, title, image }: IndustrialProductCardProps) {
+export function IndustrialProductCard({ href, kicker, title, image, imageAlt }: IndustrialProductCardProps) {
   return (
     <Link href={href} className="ind-product-card group">
       <div className="ind-product-card-media">
         <Image
           src={image}
-          alt=""
+          alt={imageAlt}
           fill
           quality={82}
           className="ind-product-card-img"

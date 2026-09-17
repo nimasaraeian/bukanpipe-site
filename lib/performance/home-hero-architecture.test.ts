@@ -28,6 +28,15 @@ describe("homepage hero LCP architecture", () => {
     expect(read("app/engine-hero.css")).not.toMatch(/engine-hero-copy[\s\S]{0,120}engine-fade-up/);
   });
 
+  it("uses factory product stills on homepage catalog cards", () => {
+    const page = read("components/home/IndustrialHomePage.tsx");
+    expect(page).toContain("/media/brand/bukan-pipe-hdpe-water-supply-pipe.webp");
+    expect(page).toContain("/media/brand/bukan-pipe-hdpe-gas-pipe.webp");
+    expect(page).toContain("/media/brand/bukan-pipe-hdpe-irrigation-coil-pipe.webp");
+    expect(page).toContain("/media/brand/bukan-pipe-hdpe-industrial-pipe-stack.webp");
+    expect(page).toContain("/media/brand/bukan-pipe-hdpe-pe100-pipe.webp");
+  });
+
   it("does not hide a second hero img with display none", () => {
     const css = read("app/engine-hero.css");
     expect(css).not.toMatch(/scene-photo--desktop\s*\{[^}]*display:\s*none/);

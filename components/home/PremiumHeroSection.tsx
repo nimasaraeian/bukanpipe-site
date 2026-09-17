@@ -1,11 +1,11 @@
-"use client";
-
 import Link from "next/link";
 import { HomeHeroPhoto } from "@/components/home/HomeHeroPhoto";
-import { useLocale } from "@/components/i18n/LocaleProvider";
 import { enHomeApplications } from "@/data/content/en/home";
 import { faHomeApplications } from "@/data/content/fa/home";
 import { routes } from "@/lib/config/routes";
+import type { Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionary";
+import { withLocale } from "@/lib/i18n/path";
 
 const floatIcons = [
   (
@@ -66,8 +66,13 @@ const trustIcons = [
   ),
 ] as const;
 
-export function PremiumHeroSection() {
-  const { t, path, locale } = useLocale();
+type PremiumHeroSectionProps = {
+  locale: Locale;
+  t: Dictionary;
+};
+
+export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
+  const path = (href: string) => withLocale(href, locale);
   const hero = t.home.hero;
   const specIndex = (locale === "fa" ? faHomeApplications : enHomeApplications).slice(0, 3);
 

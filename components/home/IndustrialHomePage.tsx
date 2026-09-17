@@ -1,10 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { editorialPhotos } from "@/data/media/editorial-photos";
 import { PremiumHeroSection } from "@/components/home/PremiumHeroSection";
-import { useLocale } from "@/components/i18n/LocaleProvider";
 import {
   IndustrialCtaBand,
   IndustrialSectionHeader,
@@ -23,6 +20,9 @@ import {
   faHomeProducts,
 } from "@/data/content/fa/home";
 import { routes } from "@/lib/config/routes";
+import type { Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/dictionary";
+import { withLocale } from "@/lib/i18n/path";
 
 const industryImages = [
   "/media/demo/bukan-slide-03-product.webp",
@@ -30,15 +30,41 @@ const industryImages = [
   "/media/demo/bukan-slide-02-extrusion.webp",
 ] as const;
 
-const productImages = [
-  "/media/demo/bukan-slide-03-product.webp",
-  "/media/demo/bukan-slide-01-yard.webp",
-  "/media/demo/bukan-slide-04-inventory.webp",
-  "/media/demo/bukan-slide-02-extrusion.webp",
-] as const;
+const productCardsByPath: Record<string, { src: string; altFa: string; altEn: string }> = {
+  "/products/water-supply-pipe": {
+    src: "/media/brand/bukan-pipe-hdpe-water-supply-pipe.webp",
+    altFa: "لوله پلی اتیلن آبرسانی HDPE با نوار آبی روی خط تولید بوکان پایپ",
+    altEn: "Bukan Pipe HDPE water supply pipe with blue stripe on the extrusion line",
+  },
+  "/products/gas-pipe": {
+    src: "/media/brand/bukan-pipe-hdpe-gas-pipe.webp",
+    altFa: "لوله پلی اتیلن گاز HDPE با نوار و درپوش زرد تولید بوکان پایپ",
+    altEn: "Bukan Pipe HDPE gas pipe with yellow stripe and end caps",
+  },
+  "/products/irrigation-pipe": {
+    src: "/media/brand/bukan-pipe-hdpe-irrigation-coil-pipe.webp",
+    altFa: "کلاف لوله پلی اتیلن آبیاری HDPE روی کویلر کارخانه بوکان پایپ",
+    altEn: "Bukan Pipe HDPE irrigation coil pipe on the factory coiler",
+  },
+  "/products/industrial-pipe": {
+    src: "/media/brand/bukan-pipe-hdpe-industrial-pipe-stack.webp",
+    altFa: "لوله پلی اتیلن صنعتی HDPE چیده شده در محوطه کارخانه بوکان پایپ",
+    altEn: "Bukan Pipe industrial HDPE pipe stack at the factory",
+  },
+  "/products/pe100-pipe": {
+    src: "/media/brand/bukan-pipe-hdpe-pe100-pipe.webp",
+    altFa: "لوله پلی اتیلن PE100 روی خط اکستروژن کارخانه بوکان پایپ",
+    altEn: "Bukan Pipe PE100 HDPE pipe on the extrusion line",
+  },
+};
 
-export function IndustrialHomePage() {
-  const { t, path, locale } = useLocale();
+type IndustrialHomePageProps = {
+  locale: Locale;
+};
+
+export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
+  const t = getDictionary(locale);
+  const path = (href: string) => withLocale(href, locale);
   const isFa = locale === "fa";
 
   const productItems = isFa ? faHomeProducts : enHomeProducts;
@@ -49,7 +75,7 @@ export function IndustrialHomePage() {
 
   return (
     <div className="industrial-font">
-      <PremiumHeroSection />
+      <PremiumHeroSection locale={locale} t={t} />
 
       <section className="ind-section ind-section-muted" aria-labelledby="products-heading">
         <div className="ind-container">
@@ -69,15 +95,20 @@ export function IndustrialHomePage() {
             }
           />
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-            {productItems.map((item, index) => (
-              <IndustrialProductCard
-                key={item.title}
-                kicker={item.kicker}
-                title={item.title}
-                href={path("href" in item ? item.href : routes.products.path)}
-                image={productImages[index] ?? productImages[0]}
-              />
-            ))}
+            {productItems.map((item) => {
+              const href = "href" in item ? item.href : routes.products.path;
+              const card = productCardsByPath[href] ?? productCardsByPath["/products/water-supply-pipe"];
+              return (
+                <IndustrialProductCard
+                  key={item.title}
+                  kicker={item.kicker}
+                  title={item.title}
+                  href={path(href)}
+                  image={card.src}
+                  imageAlt={isFa ? card.altFa : card.altEn}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
