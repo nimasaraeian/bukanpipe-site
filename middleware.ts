@@ -13,6 +13,7 @@ const STATIC_SEO_ASSETS = new Set([
   "/favicon.svg",
   "/apple-touch-icon.png",
   "/apple-touch-icon-precomposed.png",
+  "/bukan-pipe-icon.png",
   "/icon-48.png",
   "/icon-96.png",
   "/icon-192.png",
@@ -72,6 +73,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|api|icon\\.svg|icon\\.png|favicon\\.ico|favicon\\.svg|apple-touch-icon\\.png|apple-touch-icon-precomposed\\.png|icon-48\\.png|icon-96\\.png|icon-192\\.png|icon-512\\.png|robots\\.txt|sitemap\\.xml|media).*)",
+    "/((?!_next|api|icon\\.svg|icon\\.png|favicon\\.ico|favicon\\.svg|apple-touch-icon\\.png|apple-touch-icon-precomposed\\.png|bukan-pipe-icon\\.png|icon-48\\.png|icon-96\\.png|icon-192\\.png|icon-512\\.png|robots\\.txt|sitemap\\.xml|media).*)",
   ],
 };

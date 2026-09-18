@@ -2,9 +2,10 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
-const logo = path.resolve("public/media/demo/logo.png");
+const logo = path.resolve("public/media/brand/bukan-pipe-google-favicon-source.png");
 const publicDir = path.resolve("public");
-const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
+const BLACK = { r: 0, g: 0, b: 0, alpha: 1 };
+const PAD_RATIO = 0.08;
 
 function pngsToIco(images) {
   const header = Buffer.alloc(6);
@@ -34,55 +35,31 @@ function pngsToIco(images) {
   return Buffer.concat([header, ...entries, ...payloads]);
 }
 
-async function whiteLogo() {
-  const { data, info } = await sharp(logo).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  for (let i = 0; i < data.length; i += 4) {
-    if (data[i] < 22 && data[i + 1] < 22 && data[i + 2] < 22) {
-      data[i + 3] = 0;
-      continue;
-    }
-    data[i] = 255;
-    data[i + 1] = 255;
-    data[i + 2] = 255;
-  }
-
-  const trimmed = await sharp(data, { raw: info }).trim({ threshold: 8 }).ensureAlpha().raw().toBuffer({
-    resolveWithObject: true,
-  });
-
-  return {
-    data: trimmed.data,
-    width: trimmed.info.width,
-    height: trimmed.info.height,
-  };
-}
-
-async function squareIcon(source, size) {
-  const mark = await sharp(source.data, {
-    raw: { width: source.width, height: source.height, channels: 4 },
-  })
-    .resize(size, size, { fit: "contain", background: TRANSPARENT })
+async function squareIcon(size) {
+  const inner = Math.max(1, Math.round(size * (1 - PAD_RATIO * 2)));
+  const mark = await sharp(logo)
+    .resize(inner, inner, { fit: "contain", background: BLACK })
     .png()
     .toBuffer();
 
   return sharp({
-    create: { width: size, height: size, channels: 4, background: TRANSPARENT },
+    create: { width: size, height: size, channels: 4, background: BLACK },
   })
     .composite([{ input: mark, gravity: "centre" }])
     .png()
     .toBuffer();
 }
 
-const source = await whiteLogo();
-const png16 = await squareIcon(source, 16);
-const png32 = await squareIcon(source, 32);
-const png48 = await squareIcon(source, 48);
-const png96 = await squareIcon(source, 96);
-const png180 = await squareIcon(source, 180);
-const png192 = await squareIcon(source, 192);
-const png256 = await squareIcon(source, 256);
-const png512 = await squareIcon(source, 512);
+const png16 = await squareIcon(16);
+const png32 = await squareIcon(32);
+const png48 = await squareIcon(48);
+const png96 = await squareIcon(96);
+const png180 = await squareIcon(180);
+const png192 = await squareIcon(192);
+const png256 = await squareIcon(256);
+const png512 = await squareIcon(512);
 
+writeFileSync(path.join(publicDir, "bukan-pipe-icon.png"), png96);
 writeFileSync(path.join(publicDir, "icon-48.png"), png48);
 writeFileSync(path.join(publicDir, "icon-96.png"), png96);
 writeFileSync(path.join(publicDir, "icon-192.png"), png192);
@@ -106,4 +83,4 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 writeFileSync(path.join(publicDir, "favicon.svg"), svg);
 
-console.log("Google SERP icons written: white logo, transparent background");
+console.log("Google SERP icons written: official white-on-black Bukan lockup");
