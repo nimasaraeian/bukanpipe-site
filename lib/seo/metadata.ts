@@ -57,6 +57,7 @@ export function createRootMetadata(): Metadata {
     applicationName: siteConfig.brandName,
     icons: {
       icon: [
+        { url: "/bukan-pipe-icon-gray.png", sizes: "96x96", type: "image/png" },
         { url: "/bukan-pipe-icon.png", sizes: "96x96", type: "image/png" },
         { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
         { url: "/icon-96.png", sizes: "96x96", type: "image/png" },
@@ -64,7 +65,7 @@ export function createRootMetadata(): Metadata {
         { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
         { url: "/favicon.ico", sizes: "48x48" },
       ],
-      shortcut: "/bukan-pipe-icon.png",
+      shortcut: "/bukan-pipe-icon-gray.png",
       apple: "/apple-touch-icon.png",
     },
     alternates: {

@@ -22,6 +22,7 @@ describe("official brand icons", () => {
     const files = [
       "favicon.svg",
       "favicon.ico",
+      "bukan-pipe-icon-gray.png",
       "bukan-pipe-icon.png",
       "icon-48.png",
       "icon-96.png",
