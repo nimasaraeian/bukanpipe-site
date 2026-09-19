@@ -7,7 +7,15 @@ const publicDir = path.resolve("public");
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
 /** Medium neutral gray requested for the official white logo. */
 const CHARCOAL = { r: 112, g: 112, b: 112, alpha: 1 };
-const PAD_RATIO = 0.08;
+const PAD_RATIO = 0.05;
+/**
+ * The source artwork is the full lockup: the arch monogram stacked over the
+ * "BUKAN" wordmark, separated by an empty band at y 965..1026. Google renders
+ * the favicon at 16px, where that wordmark collapses into an illegible smear
+ * and drags the monogram down with it, so every tile below is built from the
+ * monogram alone.
+ */
+const MONOGRAM_HEIGHT = 966;
 
 function pngsToIco(images) {
   const header = Buffer.alloc(6);
@@ -37,18 +45,22 @@ function pngsToIco(images) {
   return Buffer.concat([header, ...entries, ...payloads]);
 }
 
-async function whiteMark() {
-  // The original PNG already has an alpha channel. Preserve it: removing
-  // dark pixels from a JPEG was only needed for the previous black tile.
-  const { data, info } = await sharp(logo).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  return { data, width: info.width, height: info.height };
+async function whiteMonogram() {
+  // The original PNG already has an alpha channel. Preserve it, drop the
+  // wordmark band, then trim so the monogram fills its own bounding box.
+  const { width, height } = await sharp(logo).metadata();
+  const cropped = await sharp(logo)
+    .ensureAlpha()
+    .extract({ left: 0, top: 0, width, height: Math.min(MONOGRAM_HEIGHT, height) })
+    .png()
+    .toBuffer();
+
+  return sharp(cropped).trim({ threshold: 10 }).png().toBuffer();
 }
 
 async function squareIcon(source, size) {
   const inner = Math.max(1, Math.round(size * (1 - PAD_RATIO * 2)));
-  const mark = await sharp(source.data, {
-    raw: { width: source.width, height: source.height, channels: 4 },
-  })
+  const mark = await sharp(source)
     .resize(inner, inner, { fit: "contain", background: TRANSPARENT })
     .png()
     .toBuffer();
@@ -61,7 +73,7 @@ async function squareIcon(source, size) {
     .toBuffer();
 }
 
-const source = await whiteMark();
+const source = await whiteMonogram();
 const png16 = await squareIcon(source, 16);
 const png32 = await squareIcon(source, 32);
 const png48 = await squareIcon(source, 48);
@@ -96,4 +108,4 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 writeFileSync(path.join(publicDir, "favicon.svg"), svg);
 
-console.log("Official Bukan PNG icons written on medium gray #707070");
+console.log("Official Bukan monogram icons written on medium gray #707070");
