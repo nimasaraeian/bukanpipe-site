@@ -5,8 +5,8 @@ import sharp from "sharp";
 const logo = path.resolve("public/media/brand/bukan-pipe-google-favicon-source.png");
 const publicDir = path.resolve("public");
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
-/** Dark charcoal — lighter than pure black so the Google tile is not a black hole. */
-const CHARCOAL = { r: 74, g: 74, b: 74, alpha: 1 };
+/** Medium neutral gray requested for the official white logo. */
+const CHARCOAL = { r: 112, g: 112, b: 112, alpha: 1 };
 const PAD_RATIO = 0.08;
 
 function pngsToIco(images) {
@@ -38,12 +38,9 @@ function pngsToIco(images) {
 }
 
 async function whiteMark() {
+  // The original PNG already has an alpha channel. Preserve it: removing
+  // dark pixels from a JPEG was only needed for the previous black tile.
   const { data, info } = await sharp(logo).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  for (let i = 0; i < data.length; i += 4) {
-    if (data[i] < 32 && data[i + 1] < 32 && data[i + 2] < 32) {
-      data[i + 3] = 0;
-    }
-  }
   return { data, width: info.width, height: info.height };
 }
 
@@ -99,4 +96,4 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 writeFileSync(path.join(publicDir, "favicon.svg"), svg);
 
-console.log("Google SERP icons written: white Bukan lockup on charcoal gray");
+console.log("Official Bukan PNG icons written on medium gray #707070");
