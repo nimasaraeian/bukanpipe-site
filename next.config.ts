@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
+  // Next's own trailing-slash redirect runs before middleware, so every
+  // WordPress-era `/path/` URL cost two hops: 308 to `/path`, then 308 to the
+  // locale/legacy destination. Middleware strips the slash as part of the hop
+  // it was already issuing (see middleware.ts), so those URLs now resolve in
+  // one permanent redirect.
+  skipTrailingSlashRedirect: true,
   productionBrowserSourceMaps: false,
   headers: securityHeaders(),
   images: {
@@ -32,8 +38,11 @@ const nextConfig: NextConfig = {
     root: path.resolve(__dirname),
   },
   agentRules: false,
-  // Legacy path redirects stay empty unless ENABLE_LEGACY_REDIRECTS=true.
-  // Host/www/HTTP policy is not implemented here. Do not enable yet.
+  // Every entry here is `permanent: true` (308) by construction — both helpers
+  // return that in their types. Legacy path redirects stay empty unless
+  // ENABLE_LEGACY_REDIRECTS=true; they run in middleware instead, because this
+  // layer never sees a bare legacy path once locale routing has happened.
+  // www/HTTP host policy lives in vercel.json, which runs ahead of this.
   redirects: async () => [...getStubPermanentRedirects(), ...getNextLegacyRedirects()],
 };
 

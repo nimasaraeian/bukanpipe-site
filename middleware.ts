@@ -6,6 +6,13 @@ import { resolveLegacyRedirect } from "@/lib/migration/redirects";
 const LOCALE_COOKIE = "NEXT_LOCALE";
 const CANONICAL_HOST = "bukanpipe.com";
 
+/**
+ * Every redirect this file issues is permanent. `NextResponse.redirect()`
+ * defaults to 307, which does not consolidate ranking signals onto the
+ * destination, so the status is always passed explicitly.
+ */
+const PERMANENT = 308;
+
 const STATIC_SEO_ASSETS = new Set([
   "/icon.svg",
   "/icon.png",
@@ -23,6 +30,16 @@ const STATIC_SEO_ASSETS = new Set([
   "/sitemap.xml",
 ]);
 
+/**
+ * Built from `request.url` rather than `nextUrl.clone()` on purpose: a cloned
+ * `NextURL` re-applies the trailing slash of the incoming request when it is
+ * serialized, which would send `/contact-us/` to `/fa/contact/` and loop.
+ */
+function permanentRedirect(request: NextRequest, pathname: string): NextResponse {
+  const redirectUrl = new URL(`${pathname}${request.nextUrl.search}`, request.url);
+  return NextResponse.redirect(redirectUrl, PERMANENT);
+}
+
 function resolveCanonicalHostRedirect(request: NextRequest): NextResponse | null {
   const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
   if (host !== `www.${CANONICAL_HOST}`) {
@@ -32,7 +49,16 @@ function resolveCanonicalHostRedirect(request: NextRequest): NextResponse | null
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.protocol = "https:";
   redirectUrl.hostname = CANONICAL_HOST;
-  return NextResponse.redirect(redirectUrl, 308);
+  return NextResponse.redirect(redirectUrl, PERMANENT);
+}
+
+/**
+ * `trailingSlash: false` is enforced here rather than by Next, because
+ * `skipTrailingSlashRedirect` is set in next.config.ts. See the comment there.
+ */
+function stripTrailingSlash(pathname: string): string {
+  const stripped = pathname.replace(/\/+$/, "");
+  return stripped === "" ? "/" : stripped;
 }
 
 export function middleware(request: NextRequest) {
@@ -52,24 +78,37 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const firstSegment = pathname.split("/").filter(Boolean)[0];
+  // The WordPress permalinks were all trailing-slash, and Next's own slash
+  // normalization runs before middleware: `/contact-us/` used to spend one hop
+  // reaching `/contact-us` and a second reaching `/fa/contact`. With that
+  // normalization disabled, the slash is folded into the hop this function was
+  // already issuing, so the legacy URL resolves in a single 308.
+  const normalizedPathname = stripTrailingSlash(pathname);
+
+  const firstSegment = normalizedPathname.split("/").filter(Boolean)[0];
   if (firstSegment && isLocale(firstSegment)) {
-    return NextResponse.next();
+    if (normalizedPathname === pathname) {
+      return NextResponse.next();
+    }
+    return permanentRedirect(request, normalizedPathname);
   }
 
-  const legacyDestination = resolveLegacyRedirect(pathname);
+  const legacyDestination = resolveLegacyRedirect(normalizedPathname);
   if (legacyDestination) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = legacyDestination;
-    return NextResponse.redirect(redirectUrl, 308);
+    return permanentRedirect(request, legacyDestination);
   }
 
   const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
-  const locale = localeForUnprefixedPath(pathname, cookieLocale);
-  const redirectUrl = request.nextUrl.clone();
-  redirectUrl.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
+  const locale = localeForUnprefixedPath(normalizedPathname, cookieLocale);
+  const destination =
+    normalizedPathname === "/" ? `/${locale}` : `/${locale}${normalizedPathname}`;
 
-  return NextResponse.redirect(redirectUrl);
+  const response = permanentRedirect(request, destination);
+  // This is the one hop whose target depends on NEXT_LOCALE. Crawlers still see
+  // 308 (cookie-less, so always the x-default locale), but browsers must not
+  // replay a cached copy after the visitor switches language.
+  response.headers.set("Cache-Control", "no-store");
+  return response;
 }
 
 export const config = {

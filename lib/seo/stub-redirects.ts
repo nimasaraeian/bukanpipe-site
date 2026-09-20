@@ -11,16 +11,25 @@ export const STUB_REDIRECTS = [
   { from: "/standards", to: "/downloads" },
 ] as const;
 
+/**
+ * Both slash forms are emitted for every stub. `next.config` redirects are
+ * matched before middleware, and middleware is what normalizes trailing
+ * slashes now (`skipTrailingSlashRedirect`), so without the `/` variant a
+ * request for `/fa/engineering/` would spend one hop losing the slash before
+ * it could reach the rule below.
+ */
 export function getStubPermanentRedirects(): {
   source: string;
   destination: string;
   permanent: true;
 }[] {
   return STUB_REDIRECTS.flatMap(({ from, to }) =>
-    locales.map((locale) => ({
-      source: `/${locale}${from}`,
-      destination: `/${locale}${to}`,
-      permanent: true as const,
-    })),
+    locales.flatMap((locale) =>
+      [`/${locale}${from}`, `/${locale}${from}/`].map((source) => ({
+        source,
+        destination: `/${locale}${to}`,
+        permanent: true as const,
+      })),
+    ),
   );
 }
