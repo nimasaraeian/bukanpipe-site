@@ -1,40 +1,61 @@
 # Legacy Redirect Map (updated)
 
-**Inventory:** `data/migration/legacy-urls.ts`  
-**Engine:** `lib/migration/legacy-resolver.ts` (rule table in `lib/migration/redirects.ts`)  
-**Enable in production:** `ENABLE_LEGACY_REDIRECTS=true`
+**Map (source of truth):** `redirect-map-draft.csv` at the repo root — 248 rows  
+**Compiled to:** `data/migration/redirect-map.ts` (`npm run redirects:build`)  
+**Engine:** `lib/migration/legacy-resolver.ts`, called only from `middleware.ts`  
+**Always on** — the map is not gated on `ENABLE_LEGACY_REDIRECTS`, which now
+covers only the older `data/migration/legacy-urls.ts` inventory.
+
+Middleware runs on the edge and cannot read a file per request, so the CSV is
+compiled to a module. Edit the CSV, run `npm run redirects:build`, commit both.
+`redirect-map.test.ts` re-runs the compiler with `--check` and fails if they
+have drifted.
 
 ## How a request is resolved
 
-`resolveLegacyRequest(pathname, searchParams)` returns one of three outcomes,
-in this order. Middleware is the only caller.
+`resolveLegacyRequest(pathname, searchParams)` returns redirect, gone, or null
+(null = not ours, carry on). Order:
 
-1. **410 for spam parameters.** A request carrying `LOSS` or `Male` is gone on
-   any path, checked ahead of every redirect including the canonical-host hop,
-   so an injected URL is never rewritten into a real one first. This one does
-   not wait for `ENABLE_LEGACY_REDIRECTS`.
-2. **Nothing, when a path addresses a file** (`/wp-content/**.pdf`), except
-   `/index.php`. Those keep whatever the static layer answers.
-3. **410 for deleted pages** — the `IGNORE_NONINDEXABLE` rows, which are theme
-   demos, WooCommerce scaffolding, surveys and the WordPress feed. They are
-   never 301'd to the homepage; that is a soft 404.
-4. **Exact rows**, then **`?p=` / `?page_id=`** keyed by the inventory's own
-   `wordpressId`, then **prefix patterns** (longest first). Exact beats pattern,
-   so `/category/محصولات` keeps `/products` instead of falling into
-   `/category/*` → `/technical-center`.
+1. **410 for spam parameters.** `LOSS` or `Male` on any path, checked ahead of
+   every redirect including the canonical-host hop, so an injected URL is never
+   rewritten into a real one first.
+2. **Exact rows**, decoded and trailing-slash-insensitive.
+3. **Query rows** — the irantech CMS front controllers (`temp.php?irantech_cms=`,
+   `product2/detail.php?ID=`) and `/?download=catalog`. Anything else on a
+   `temp.php` path answers 410 rather than guessing.
+4. **Wildcard rows**, longest source first.
 
-Every redirect is 308, single-hop, and matches both slash forms. Persian
-permalinks arrive percent-encoded and are decoded before matching.
+Exact beats wildcard, so `/index.php/fa/products/irrigation-pipe` keeps its own
+destination instead of collapsing into `/index.php/fa/products/*`.
 
-Unmapped paths are left alone: `/wp-admin`, `/wp-includes`, `/wp-content`,
-`/wp-json` and anything addressing a file skip the locale hop so they 404
-directly rather than spending a 308 to reach the same 404.
+Every redirect is **308**, single-hop, and matches both slash forms. Persian and
+Arabic permalinks arrive percent-encoded and are decoded before matching.
 
-### Not implemented
+A row matched **by its query string** drops that query on the way out: the
+legacy parameter means nothing on the new page, and carrying it across would
+mint an indexable duplicate of the page being consolidated onto. A row matched
+by path keeps its query, so `utm_*` tags survive.
 
-The `irantech` query-string rows from the draft map are not here — no record of
-those parameters exists in the repo, and they are not derivable from the
-inventory. They need the original row data before they can be written.
+The map is consulted **before** locale routing, because many historical URLs are
+themselves locale-prefixed (`/fa/qc/tech/...`, `/en/contact-us`, `/ar/news`).
+
+### Not redirected
+
+`/wp-admin`, `/wp-includes`, `/wp-content`, `/wp-json` and anything addressing a
+file skip the locale hop, so they keep their own 404 instead of spending a 308
+to reach the same 404. Mapped rows that address a file (`/about.htm`,
+`/index.php`, `/sitemap.html`) are matched first and are unaffected.
+
+### Rows deliberately not implemented
+
+| CSV row | Why |
+|---|---|
+| L43 `/fa/products/irrigation-pipe` | Source and destination are the same live route — implementing it would be a redirect loop. It already answers 200. |
+| L91 `/about/` | The locale redirect already reaches `/fa/about` in one hop. |
+| L92 `/contact/` | The locale redirect already reaches `/fa/contact` in one hop. |
+
+These are listed in `SKIPPED_ROWS` in the compiled map, so the count stays
+auditable rather than silently dropped.
 
 ## High-priority redirects (updated for content phase)
 

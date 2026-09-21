@@ -1,145 +1,73 @@
-import { legacyUrls } from "../../data/migration/legacy-urls";
-import { normalizeLegacyPath } from "./normalize";
 import {
-  buildLegacyRedirectRules,
-  isLegacyRedirectsEnabled,
-  toCanonicalLegacyDestination,
-} from "./redirects";
+  EXACT_GONE,
+  EXACT_REDIRECTS,
+  PATTERN_RULES,
+  QUERY_FALLBACKS,
+  QUERY_RULES,
+} from "../../data/migration/redirect-map";
+import { normalizeLegacyPath } from "./normalize";
 import { hasSpamQueryParam } from "./gone";
-import type { LegacyUrlRecord } from "./types";
 
 /**
  * One decision for one incoming request.
  *
- * `null` means "not a legacy URL" — the caller carries on with locale routing,
- * which is what keeps unmapped paths (static files, /wp-admin) on their normal
- * 404 instead of being absorbed into this table.
+ * `null` means "not in the map" — the caller carries on, which is what keeps
+ * unmapped paths (static files, /wp-admin, typos) on their normal 404 instead
+ * of being absorbed here.
  */
 export type LegacyOutcome =
-  | { kind: "redirect"; destination: string }
+  | {
+      kind: "redirect";
+      destination: string;
+      /**
+       * False when the row was matched *by* its query string. The legacy
+       * parameter means nothing on the new page, and carrying it across would
+       * mint an indexable duplicate (`/fa/laboratory/services?irantech_cms=…`)
+       * of the very page the redirect is meant to consolidate onto.
+       */
+      preserveQuery: boolean;
+    }
   | { kind: "gone" }
   | null;
 
-/**
- * Prefix patterns from the historical map. A WordPress section that is gone
- * collapses onto one successor, so every child resolves in the same single hop
- * as the section root rather than 404-ing.
- *
- * Ordered longest-prefix-first at match time, so `/about_us/bukan-pipe-company`
- * keeps its own exact row instead of being swallowed by `/about_us/*`.
- */
-export const LEGACY_PATH_PATTERNS: readonly { prefix: string; destination: string }[] = [
-  { prefix: "/pipeline_design", destination: "/calculator/pipeline-design" },
-  { prefix: "/engineering", destination: "/technical-center" },
-  { prefix: "/knowledge", destination: "/technical-center" },
-  { prefix: "/category/blog", destination: "/technical-center" },
-  { prefix: "/category", destination: "/technical-center" },
-  { prefix: "/articles", destination: "/technical-center" },
-  { prefix: "/about_us", destination: "/about" },
-];
+const exactRedirects = new Map(EXACT_REDIRECTS.map((r) => [r.source, r.destination]));
+const exactGone = new Set(EXACT_GONE);
+const queryFallbackPaths = new Map(QUERY_FALLBACKS.map((f) => [f.path, f.destination]));
+const patterns = PATTERN_RULES.map((rule) => ({
+  destination: rule.destination,
+  regex: new RegExp(rule.regex),
+}));
 
-/**
- * WordPress' permalink-independent entry points. `?p=` addresses a post and
- * `?page_id=` a page; both survived in old links and feeds regardless of the
- * pretty permalink. The ids are the real `wordpressId` values already recorded
- * in the inventory, so these rows are the same map keyed a second way.
- */
-export const WORDPRESS_QUERY_KEYS = ["p", "page_id"] as const;
-
-/** Paths that must answer 410 rather than redirect anywhere. */
-function isGoneRecord(record: LegacyUrlRecord): boolean {
-  if (record.action !== "IGNORE_NONINDEXABLE" || record.proposedNewPath !== null) {
-    return false;
-  }
-  // Direct file URLs are left to the static layer — see resolveLegacyRequest.
-  return !/\.[a-z0-9]+$/i.test(normalizeLegacyPath(record.oldPath));
+function outcomeFor(destination: string | null, preserveQuery: boolean): LegacyOutcome {
+  return destination === null
+    ? { kind: "gone" }
+    : { kind: "redirect", destination, preserveQuery };
 }
 
-function isRedirectEligible(record: LegacyUrlRecord): boolean {
-  if (record.proposedNewPath === null) return false;
-  if (record.action === "REDIRECT_301" || record.action === "MERGE") return true;
-  if (record.action === "REBUILD") {
-    return (
-      normalizeLegacyPath(record.oldPath) !== normalizeLegacyPath(record.proposedNewPath)
-    );
-  }
-  return false;
-}
-
-type Tables = {
-  exact: Map<string, string>;
-  gone: Set<string>;
-  byWordpressId: Map<number, string>;
-};
-
-let tables: Tables | null = null;
-
-/** Test-only reset — vitest shares module state across cases. */
-export function resetLegacyResolver(): void {
-  tables = null;
-}
-
-function buildTables(): Tables {
-  const exact = new Map<string, string>();
-  for (const rule of buildLegacyRedirectRules()) {
-    exact.set(
-      normalizeLegacyPath(rule.source),
-      toCanonicalLegacyDestination(rule.destination),
-    );
+function matchQuery(pathname: string, searchParams: URLSearchParams): LegacyOutcome {
+  for (const rule of QUERY_RULES) {
+    if (rule.path !== pathname) continue;
+    const actual = searchParams.get(rule.param);
+    if (actual === null) continue;
+    if (rule.value !== null && actual !== rule.value) continue;
+    return outcomeFor(rule.destination, false);
   }
 
-  const gone = new Set<string>();
-  const byWordpressId = new Map<number, string>();
-
-  for (const record of legacyUrls) {
-    if (record.host !== "bukanpipe.com") continue;
-
-    if (isGoneRecord(record)) {
-      gone.add(normalizeLegacyPath(record.oldPath));
-      continue;
-    }
-
-    // A WordPress id can appear twice — once for the page, once for an
-    // attachment with no successor. Only the row that redirects is indexed.
-    if (record.wordpressId !== undefined && isRedirectEligible(record)) {
-      const destination = exact.get(normalizeLegacyPath(record.oldPath));
-      if (destination && !byWordpressId.has(record.wordpressId)) {
-        byWordpressId.set(record.wordpressId, destination);
-      }
-    }
+  // The old CMS front controllers served arbitrary content off one path. Once
+  // the ids above miss, the rest is unknown and answers 410 rather than
+  // guessing a destination.
+  if (queryFallbackPaths.has(pathname)) {
+    return outcomeFor(queryFallbackPaths.get(pathname) ?? null, false);
   }
 
-  return { exact, gone, byWordpressId };
+  return null;
 }
 
-function getTables(): Tables {
-  if (!tables) tables = buildTables();
-  return tables;
-}
-
-function matchPattern(pathname: string): string | null {
-  const candidates = LEGACY_PATH_PATTERNS.filter(
-    ({ prefix }) => pathname === prefix || pathname.startsWith(`${prefix}/`),
-  ).sort((a, b) => b.prefix.length - a.prefix.length);
-
-  const best = candidates[0];
-  return best ? toCanonicalLegacyDestination(best.destination) : null;
-}
-
-function matchWordpressQuery(
-  pathname: string,
-  searchParams: URLSearchParams,
-): string | null {
-  // Only WordPress' own front controller carries these ids.
-  if (pathname !== "/index.php" && pathname !== "/") return null;
-
-  for (const key of WORDPRESS_QUERY_KEYS) {
-    const raw = searchParams.get(key);
-    if (raw === null) continue;
-    const id = Number(raw);
-    if (!Number.isInteger(id)) continue;
-    const destination = getTables().byWordpressId.get(id);
-    if (destination) return destination;
+function matchPattern(pathname: string): LegacyOutcome {
+  // PATTERN_RULES is generated longest-source-first, so the most specific
+  // wildcard wins without re-sorting here.
+  for (const rule of patterns) {
+    if (rule.regex.test(pathname)) return outcomeFor(rule.destination, true);
   }
   return null;
 }
@@ -147,10 +75,9 @@ function matchWordpressQuery(
 /**
  * Resolve a full incoming request — path and query together.
  *
- * Order matters: spam is answered before anything can redirect it, 410 before
- * any redirect can resurrect a deleted URL, exact rows before patterns so a
- * child page keeps its own successor, and the WordPress query form last
- * because it is the same map addressed by id.
+ * Order matters: spam is answered before anything can redirect it, exact rows
+ * beat wildcards so a child page keeps its own successor, and the query rows
+ * sit between the two because they address one path by parameter.
  */
 export function resolveLegacyRequest(
   pathname: string,
@@ -160,30 +87,16 @@ export function resolveLegacyRequest(
     return { kind: "gone" };
   }
 
-  if (!isLegacyRedirectsEnabled()) {
-    return null;
-  }
-
   const normalized = normalizeLegacyPath(pathname);
 
-  // Direct file URLs (/wp-content/**.pdf) and anything else with an extension
-  // are never claimed here, so they keep whatever the static layer answers.
-  if (/\.[a-z0-9]+$/i.test(normalized) && normalized !== "/index.php") {
-    return null;
-  }
-
-  if (getTables().gone.has(normalized)) {
+  if (exactGone.has(normalized)) {
     return { kind: "gone" };
   }
 
-  const exact = getTables().exact.get(normalized);
-  if (exact) return { kind: "redirect", destination: exact };
+  const exact = exactRedirects.get(normalized);
+  if (exact !== undefined) {
+    return { kind: "redirect", destination: exact, preserveQuery: true };
+  }
 
-  const byQuery = matchWordpressQuery(normalized, searchParams);
-  if (byQuery) return { kind: "redirect", destination: byQuery };
-
-  const pattern = matchPattern(normalized);
-  if (pattern) return { kind: "redirect", destination: pattern };
-
-  return null;
+  return matchQuery(normalized, searchParams) ?? matchPattern(normalized);
 }

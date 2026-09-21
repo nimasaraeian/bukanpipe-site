@@ -18,7 +18,9 @@
     "media:gallery": "node scripts/build-gallery-assets.mjs",
     "verify:production-dns": "node scripts/verify-production-dns.mjs",
     "telegram:test": "node scripts/telegram-test.mjs",
-    "sms:test": "node scripts/sms-test.mjs"
+    "sms:test": "node scripts/sms-test.mjs",
+    "redirects:build": "node scripts/build-redirect-map.mjs",
+    "redirects:check": "node scripts/build-redirect-map.mjs --check"
   },
   "dependencies": {
     "next": "16.3.4",

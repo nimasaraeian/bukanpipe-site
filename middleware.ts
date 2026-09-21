@@ -36,8 +36,13 @@ const STATIC_SEO_ASSETS = new Set([
  * `NextURL` re-applies the trailing slash of the incoming request when it is
  * serialized, which would send `/contact-us/` to `/fa/contact/` and loop.
  */
-function permanentRedirect(request: NextRequest, pathname: string): NextResponse {
-  const redirectUrl = new URL(`${pathname}${request.nextUrl.search}`, request.url);
+function permanentRedirect(
+  request: NextRequest,
+  pathname: string,
+  { preserveQuery = true }: { preserveQuery?: boolean } = {},
+): NextResponse {
+  const search = preserveQuery ? request.nextUrl.search : "";
+  const redirectUrl = new URL(`${pathname}${search}`, request.url);
   return NextResponse.redirect(redirectUrl, PERMANENT);
 }
 
@@ -122,14 +127,10 @@ export function middleware(request: NextRequest) {
   // already issuing, so the legacy URL resolves in a single 308.
   const normalizedPathname = stripTrailingSlash(pathname);
 
-  const firstSegment = normalizedPathname.split("/").filter(Boolean)[0];
-  if (firstSegment && isLocale(firstSegment)) {
-    if (normalizedPathname === pathname) {
-      return NextResponse.next();
-    }
-    return permanentRedirect(request, normalizedPathname);
-  }
-
+  // The map is consulted before locale routing, because many historical URLs
+  // are themselves locale-prefixed (`/fa/qc/tech/...`, `/en/contact-us`,
+  // `/ar/news`). Deferring to the locale branch would hand those straight to a
+  // 404 that looks like a live page.
   const legacyOutcome = resolveLegacyRequest(
     normalizedPathname,
     request.nextUrl.searchParams,
@@ -138,12 +139,23 @@ export function middleware(request: NextRequest) {
     return goneResponse();
   }
   if (legacyOutcome?.kind === "redirect") {
-    return permanentRedirect(request, legacyOutcome.destination);
+    return permanentRedirect(request, legacyOutcome.destination, {
+      preserveQuery: legacyOutcome.preserveQuery,
+    });
   }
 
-  // After the map, because `/index.php?p=832` addresses a file and still has a
-  // successor. Before the locale hop, so everything left keeps its own status
-  // instead of spending a 308 to reach the same 404.
+  const firstSegment = normalizedPathname.split("/").filter(Boolean)[0];
+  if (firstSegment && isLocale(firstSegment)) {
+    if (normalizedPathname === pathname) {
+      return NextResponse.next();
+    }
+    return permanentRedirect(request, normalizedPathname);
+  }
+
+  // After the map, because plenty of mapped rows address a file
+  // (`/about.htm`, `/index.php`, `/sitemap.html`). Before the locale hop, so
+  // everything left keeps its own status instead of spending a 308 to reach
+  // the same 404.
   if (isPassthroughPath(normalizedPathname)) {
     return NextResponse.next();
   }

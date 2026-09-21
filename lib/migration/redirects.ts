@@ -9,6 +9,15 @@ import type {
   LegacyUrlRecord,
 } from "./types";
 
+/**
+ * NOTE: middleware no longer routes through this module. The live historical
+ * URL map is `redirect-map-draft.csv`, compiled to
+ * `data/migration/redirect-map.ts` and served by
+ * `lib/migration/legacy-resolver.ts`, which is not gated on the flag below.
+ *
+ * What remains here is the Phase-002 inventory (`data/migration/legacy-urls.ts`)
+ * and the rule builder its own tests exercise. Add new redirects to the CSV.
+ */
 export function isLegacyRedirectsEnabled(): boolean {
   return process.env.ENABLE_LEGACY_REDIRECTS === "true";
 }
