@@ -1,7 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { isLocale } from "@/lib/i18n/config";
 import { localeForUnprefixedPath } from "@/lib/i18n/apex-locale";
-import { resolveLegacyRedirect } from "@/lib/migration/redirects";
+import { goneResponseInit } from "@/lib/migration/gone";
+import { resolveLegacyRequest } from "@/lib/migration/legacy-resolver";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 const CANONICAL_HOST = "bukanpipe.com";
@@ -35,9 +36,19 @@ const STATIC_SEO_ASSETS = new Set([
  * `NextURL` re-applies the trailing slash of the incoming request when it is
  * serialized, which would send `/contact-us/` to `/fa/contact/` and loop.
  */
-function permanentRedirect(request: NextRequest, pathname: string): NextResponse {
-  const redirectUrl = new URL(`${pathname}${request.nextUrl.search}`, request.url);
+function permanentRedirect(
+  request: NextRequest,
+  pathname: string,
+  { preserveQuery = true }: { preserveQuery?: boolean } = {},
+): NextResponse {
+  const search = preserveQuery ? request.nextUrl.search : "";
+  const redirectUrl = new URL(`${pathname}${search}`, request.url);
   return NextResponse.redirect(redirectUrl, PERMANENT);
+}
+
+function goneResponse(): NextResponse {
+  const { status, headers, body } = goneResponseInit();
+  return new NextResponse(body, { status, headers });
 }
 
 function resolveCanonicalHostRedirect(request: NextRequest): NextResponse | null {
@@ -53,6 +64,26 @@ function resolveCanonicalHostRedirect(request: NextRequest): NextResponse | null
 }
 
 /**
+ * WordPress-era prefixes that were never content. They are not in the redirect
+ * map and must not be absorbed by the locale hop: prefixing `/wp-admin` with a
+ * locale spends a 308 to reach the same 404, and briefly makes a fake
+ * `/fa/wp-admin` URL look real to a crawler.
+ */
+const PASSTHROUGH_PREFIXES = ["/wp-admin", "/wp-includes", "/wp-content", "/wp-json"];
+
+/**
+ * A path that addresses a file is answered by the static layer or 404s there.
+ * Either way it keeps its own status instead of being redirected.
+ */
+function isPassthroughPath(pathname: string): boolean {
+  if (PASSTHROUGH_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
+    return true;
+  }
+  const lastSegment = pathname.split("/").pop() ?? "";
+  return /\.[a-z0-9]+$/i.test(lastSegment);
+}
+
+/**
  * `trailingSlash: false` is enforced here rather than by Next, because
  * `skipTrailingSlashRedirect` is set in next.config.ts. See the comment there.
  */
@@ -62,6 +93,17 @@ function stripTrailingSlash(pathname: string): string {
 }
 
 export function middleware(request: NextRequest) {
+  // Resolved before the canonical-host hop so a spam or deleted URL is
+  // answered where it arrives, instead of being rewritten into a real one on
+  // its way to a 410.
+  const earlyOutcome = resolveLegacyRequest(
+    request.nextUrl.pathname,
+    request.nextUrl.searchParams,
+  );
+  if (earlyOutcome?.kind === "gone") {
+    return goneResponse();
+  }
+
   const canonicalHostRedirect = resolveCanonicalHostRedirect(request);
   if (canonicalHostRedirect) {
     return canonicalHostRedirect;
@@ -85,6 +127,23 @@ export function middleware(request: NextRequest) {
   // already issuing, so the legacy URL resolves in a single 308.
   const normalizedPathname = stripTrailingSlash(pathname);
 
+  // The map is consulted before locale routing, because many historical URLs
+  // are themselves locale-prefixed (`/fa/qc/tech/...`, `/en/contact-us`,
+  // `/ar/news`). Deferring to the locale branch would hand those straight to a
+  // 404 that looks like a live page.
+  const legacyOutcome = resolveLegacyRequest(
+    normalizedPathname,
+    request.nextUrl.searchParams,
+  );
+  if (legacyOutcome?.kind === "gone") {
+    return goneResponse();
+  }
+  if (legacyOutcome?.kind === "redirect") {
+    return permanentRedirect(request, legacyOutcome.destination, {
+      preserveQuery: legacyOutcome.preserveQuery,
+    });
+  }
+
   const firstSegment = normalizedPathname.split("/").filter(Boolean)[0];
   if (firstSegment && isLocale(firstSegment)) {
     if (normalizedPathname === pathname) {
@@ -93,9 +152,12 @@ export function middleware(request: NextRequest) {
     return permanentRedirect(request, normalizedPathname);
   }
 
-  const legacyDestination = resolveLegacyRedirect(normalizedPathname);
-  if (legacyDestination) {
-    return permanentRedirect(request, legacyDestination);
+  // After the map, because plenty of mapped rows address a file
+  // (`/about.htm`, `/index.php`, `/sitemap.html`). Before the locale hop, so
+  // everything left keeps its own status instead of spending a 308 to reach
+  // the same 404.
+  if (isPassthroughPath(normalizedPathname)) {
+    return NextResponse.next();
   }
 
   const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;

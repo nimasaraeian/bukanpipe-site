@@ -108,7 +108,9 @@ describe("redirect rule builder", () => {
     const rules = buildLegacyRedirectRules(legacyUrls);
     const sources = new Set(rules.map((rule) => normalizeLegacyPath(rule.source)));
 
-    expect(sources.has("/shop")).toBe(false);
+    // /shop was ruled a redirect to the catalogue on 2026-09-21; /cart is
+    // still a non-indexable row and stands in for that case here.
+    expect(sources.has("/cart")).toBe(false);
     expect(sources.has("/sitemap.xml")).toBe(false);
     expect(sources.has("/wp-content/uploads/2022/10/Bukan-Pipe-Company.pdf")).toBe(
       false,

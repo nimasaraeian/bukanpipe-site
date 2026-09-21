@@ -9,6 +9,15 @@ import type {
   LegacyUrlRecord,
 } from "./types";
 
+/**
+ * The Phase-002 inventory is the BASE layer of the historical URL map and is
+ * live in production (ENABLE_LEGACY_REDIRECTS=true on Vercel). The flag below
+ * gates only this layer.
+ *
+ * `lib/migration/legacy-resolver.ts` consults it first, then the additions
+ * compiled from `redirect-map-draft.csv`. Where the two disagree the path is
+ * excluded from the compiled map — see data/migration/redirect-conflicts.json.
+ */
 export function isLegacyRedirectsEnabled(): boolean {
   return process.env.ENABLE_LEGACY_REDIRECTS === "true";
 }
@@ -26,10 +35,60 @@ export function toCanonicalLegacyDestination(path: string): string {
 }
 
 let legacyRedirectLookup: Map<string, string> | null = null;
+let legacyGonePaths: Set<string> | null = null;
 
 /** Test-only reset — vitest shares module state across cases. */
 export function resetLegacyRedirectLookup(): void {
   legacyRedirectLookup = null;
+  legacyGonePaths = null;
+}
+
+/**
+ * Inventory rows marked `IGNORE_NONINDEXABLE` with no successor. Their notes
+ * have always said "prefer 410"; until now nothing implemented it and they
+ * fell through to the locale hop and a soft 404.
+ *
+ * Rows addressing a file are excluded — those stay with the static layer.
+ */
+function getLegacyGonePaths(): Set<string> {
+  if (!legacyGonePaths) {
+    legacyGonePaths = new Set(
+      legacyUrls
+        .filter(
+          (record) =>
+            record.host === "bukanpipe.com" &&
+            record.action === "IGNORE_NONINDEXABLE" &&
+            record.proposedNewPath === null &&
+            !/\.[a-z0-9]+$/i.test(normalizeLegacyPath(record.oldPath)),
+        )
+        .map((record) => normalizeLegacyPath(record.oldPath)),
+    );
+  }
+  return legacyGonePaths;
+}
+
+export type InventoryOutcome =
+  | { kind: "redirect"; destination: string }
+  | { kind: "gone" }
+  | null;
+
+/**
+ * The inventory layer's full answer for a path: a redirect, a 410, or nothing.
+ * `lib/migration/legacy-resolver.ts` calls this before the CSV additions.
+ */
+export function resolveInventoryOutcome(pathname: string): InventoryOutcome {
+  if (!isLegacyRedirectsEnabled()) {
+    return null;
+  }
+
+  const normalized = normalizeLegacyPath(pathname);
+
+  const destination = getLegacyRedirectLookup().get(normalized);
+  if (destination !== undefined) {
+    return { kind: "redirect", destination };
+  }
+
+  return getLegacyGonePaths().has(normalized) ? { kind: "gone" } : null;
 }
 
 function getLegacyRedirectLookup(): Map<string, string> {

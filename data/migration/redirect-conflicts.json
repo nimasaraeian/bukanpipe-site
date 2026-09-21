@@ -1,0 +1,327 @@
+{
+  "_comment": "Paths present in BOTH data/migration/legacy-urls.ts and redirect-map-draft.csv. All differences have been decided and written into the inventory, so conflicts is empty. Verified against both sources by lib/migration/redirect-map.test.ts.",
+  "conflicts": [],
+  "decisions": [
+    {
+      "path": "/shop",
+      "csvLine": 132,
+      "winner": "agreed",
+      "outcome": "/fa/products"
+    },
+    {
+      "path": "/cart",
+      "csvLine": 144,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/my-account",
+      "csvLine": 145,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/about_us",
+      "csvLine": 186,
+      "winner": "agreed",
+      "outcome": "/fa/about"
+    },
+    {
+      "path": "/contact-us",
+      "csvLine": 187,
+      "winner": "agreed",
+      "outcome": "/fa/contact"
+    },
+    {
+      "path": "/gas-pipe",
+      "csvLine": 188,
+      "winner": "agreed",
+      "outcome": "/fa/products/gas-pipe"
+    },
+    {
+      "path": "/air-vent-valve",
+      "csvLine": 189,
+      "winner": "agreed",
+      "outcome": "/fa/technical-center/air-vent-valve"
+    },
+    {
+      "path": "/temp-cooficient",
+      "csvLine": 190,
+      "winner": "agreed",
+      "outcome": "/fa/technical-center/polyethylene-pipe-temperature-pressure"
+    },
+    {
+      "path": "/welding",
+      "csvLine": 191,
+      "winner": "agreed",
+      "outcome": "/fa/technical-center/polyethylene-pipe-welding"
+    },
+    {
+      "path": "/training",
+      "csvLine": 192,
+      "winner": "agreed",
+      "outcome": "/fa/laboratory/training"
+    },
+    {
+      "path": "/iso-iec17025",
+      "csvLine": 193,
+      "winner": "agreed",
+      "outcome": "/fa/laboratory/iso-17025"
+    },
+    {
+      "path": "/lab-scope",
+      "csvLine": 194,
+      "winner": "inventory",
+      "outcome": "/fa/laboratory/test-scope",
+      "csvWanted": "/fa/laboratory/iso-17025"
+    },
+    {
+      "path": "/qc-and-laboratory",
+      "csvLine": 195,
+      "winner": "agreed",
+      "outcome": "/fa/laboratory"
+    },
+    {
+      "path": "/standards",
+      "csvLine": 196,
+      "winner": "inventory",
+      "outcome": "/fa/downloads",
+      "csvWanted": "/fa/technical-center/polyethylene-pipe-standards"
+    },
+    {
+      "path": "/certs",
+      "csvLine": 197,
+      "winner": "agreed",
+      "outcome": "/fa/certifications"
+    },
+    {
+      "path": "/policy",
+      "csvLine": 198,
+      "winner": "agreed",
+      "outcome": "/fa/quality"
+    },
+    {
+      "path": "/خط-مشی-کیفیت-آزمایشگاه",
+      "csvLine": 199,
+      "winner": "inventory",
+      "outcome": "/fa/laboratory",
+      "csvWanted": "/fa/quality"
+    },
+    {
+      "path": "/articles",
+      "csvLine": 200,
+      "winner": "agreed",
+      "outcome": "/fa/technical-center"
+    },
+    {
+      "path": "/آخرین-نوشته-ها",
+      "csvLine": 201,
+      "winner": "agreed",
+      "outcome": "/fa/technical-center"
+    },
+    {
+      "path": "/category/مقالات",
+      "csvLine": 202,
+      "winner": "agreed",
+      "outcome": "/fa/technical-center"
+    },
+    {
+      "path": "/category/محصولات",
+      "csvLine": 203,
+      "winner": "agreed",
+      "outcome": "/fa/products"
+    },
+    {
+      "path": "/لوله-های-پلی-اتیلن-آبرسانی",
+      "csvLine": 204,
+      "winner": "agreed",
+      "outcome": "/fa/products/water-supply-pipe"
+    },
+    {
+      "path": "/آبیاری-زیرسطحی",
+      "csvLine": 205,
+      "winner": "inventory",
+      "outcome": "/fa/applications/agriculture-irrigation",
+      "csvWanted": "/fa/products/irrigation-pipe"
+    },
+    {
+      "path": "/تولید-بر-اساس-دانش-و-تکنولوژی-روز",
+      "csvLine": 216,
+      "winner": "agreed",
+      "outcome": "/fa/about"
+    },
+    {
+      "path": "/تولید-کننده-ای-با-تراز-اول-کیفیت",
+      "csvLine": 217,
+      "winner": "agreed",
+      "outcome": "/fa/about"
+    },
+    {
+      "path": "/customer-poll",
+      "csvLine": 218,
+      "winner": "inventory",
+      "outcome": "410",
+      "csvWanted": "/fa/contact"
+    },
+    {
+      "path": "/lab-poll",
+      "csvLine": 219,
+      "winner": "inventory",
+      "outcome": "410",
+      "csvWanted": "/fa/laboratory"
+    },
+    {
+      "path": "/pipeline_design",
+      "csvLine": 220,
+      "winner": "inventory",
+      "outcome": "/fa/calculator/pipeline-design",
+      "csvWanted": "/fa/technical-center"
+    },
+    {
+      "path": "/پیمان-دادخواه",
+      "csvLine": 222,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/محمد-عزیزنژاد",
+      "csvLine": 223,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/مهندس-رحمانی",
+      "csvLine": 224,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/مدیر-فروش",
+      "csvLine": 225,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/نظر-مشتری-امینی",
+      "csvLine": 226,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/صفحه-اصلی/پیمایش-تک-صفحه-ای",
+      "csvLine": 227,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/صفحه-اصلی-2",
+      "csvLine": 228,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/صفحه-اصلی-3",
+      "csvLine": 229,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/بدون-سایدبار",
+      "csvLine": 232,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/بدون-سایدبار-باریک",
+      "csvLine": 233,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/بلوک-ریکاردو",
+      "csvLine": 234,
+      "winner": "inventory",
+      "outcome": "/fa/projects",
+      "csvWanted": "410"
+    },
+    {
+      "path": "/الیزا-روما",
+      "csvLine": 235,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/استراتژی-محتوا",
+      "csvLine": 236,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/بازاریابی-آنلاین",
+      "csvLine": 237,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/بهینه-سازی-فروش",
+      "csvLine": 238,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/خرید،-شروع-راه-دوستی-ماست",
+      "csvLine": 239,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/اسلایدرهای-عالی-برای-نشان-دادن-محتوای",
+      "csvLine": 240,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/طرح-بندی-ها-با-ظاهر-جذاب،-همه-در-یک-قالب",
+      "csvLine": 241,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/صفحه-سفارشی-سازی-با-پیش-نمایش-زنده",
+      "csvLine": 242,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/چند-صفحه-اصلی،-بخش-نمونه-کارها-و-بخش-وبل",
+      "csvLine": 244,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/پشتیبانی-رایگان-از-سایت-شما-در-هر-زمان",
+      "csvLine": 245,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/category/تبلیغات",
+      "csvLine": 246,
+      "winner": "agreed",
+      "outcome": "410"
+    },
+    {
+      "path": "/category/blog",
+      "csvLine": 247,
+      "winner": "inventory",
+      "outcome": "/fa/technical-center",
+      "csvWanted": "410"
+    },
+    {
+      "path": "/category/blog/برندینگ",
+      "csvLine": 248,
+      "winner": "agreed",
+      "outcome": "410"
+    }
+  ]
+}

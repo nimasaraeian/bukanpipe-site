@@ -1,0 +1,249 @@
+﻿old_path,action,destination,reason,confidence,era
+/2021/10/08/onlajn-pinap-kazino-veb-resurs-dlja-aktivnyh/,410,,SPAM: injected casino/off-topic post (WordPress 2021-22),high,wp1-spam
+/2021/10/17/piabet-sitesinde-canli-casino-oynayin/,410,,SPAM: injected casino/off-topic post (WordPress 2021-22),high,wp1-spam
+/2021/10/18/1xbet-canli-bahis-sitesi-casino/,410,,SPAM: injected casino/off-topic post (WordPress 2021-22),high,wp1-spam
+/2022/01/20/oficialnyj-sajt-pinap-s-bonusami-za-registraciju-7789/,410,,SPAM: injected casino/off-topic post (WordPress 2021-22),high,wp1-spam
+/2022/01/20/vulkan-stars-privetstvuet-vseh-ljubitelej-igrovyh-7789/,410,,SPAM: injected casino/off-topic post (WordPress 2021-22),high,wp1-spam
+/2022/02/10/antivirus-for-iphone-those-that-are-the-best/,410,,SPAM: injected casino/off-topic post (WordPress 2021-22),high,wp1-spam
+/2022/03/01/korean-home-theater-devices/,410,,SPAM: injected casino/off-topic post (WordPress 2021-22),high,wp1-spam
+/?LOSS=*,410,,SPAM: pharma query-string injection; seen 200 as late as 2026-02 — block by query key,high,wp2-spam
+/?Male=*,410,,SPAM: pharma query-string injection — block by query key,high,wp2-spam
+/about.htm,301,/fa/about,2007 about page,high,static-2007
+/eabout.htm,301,/en/about,2007 English about,high,static-2007
+/contact.htm,301,/fa/contact,2007 contact,high,static-2007
+/contact.php,301,/fa/contact,2007 contact,high,static-2007
+/econtact.htm,301,/en/contact,2007 English contact [VERIFY slug],high,static-2007
+/econtact.php,301,/en/contact,2007 English contact [VERIFY slug],high,static-2007
+/index.htm,301,/fa,2007 homepage,high,static-2007
+/index.php,301,/fa,legacy homepage,high,static-2007
+/pe100.htm,301,/fa/polyethylene-pipe,2007 PE100 product page,medium,static-2007
+/pe80.htm,301,/fa/technical-center/pe80-vs-pe100,2007 PE80 product page,medium,static-2007
+/pe63.htm,301,/fa/polyethylene-pipe,2007 PE63 product page,medium,static-2007
+/epe100.htm,301,/en/polyethylene-pipe,2007 English PE100,medium,static-2007
+/epe80.htm,301,/en/polyethylene-pipe,2007 English PE80,medium,static-2007
+/epe63.htm,301,/en/polyethylene-pipe,2007 English PE63,medium,static-2007
+/project.php,301,/fa/applications,2007 projects page,medium,static-2007
+/fa/user/temp.php?irantech_cms=11801&*(PE),301,/fa/laboratory/services,old lab page: PE pipe testing,medium,irantech
+/fa/user/temp.php?irantech_cms=11801&*(PP),301,/fa/laboratory/services,old lab page: PP pipe testing,medium,irantech
+/fa/user/temp.php?irantech_cms=11801&*(PVC),301,/fa/laboratory/services,old lab page: PVC pipe testing,medium,irantech
+/en/user/temp.php?irantech_cms=11801&*,301,/en/laboratory,old EN lab testing pages,medium,irantech
+/fa/user/temp.php?irantech_cms=1141&*,301,/fa/gallery,old gallery (lab/warehouse/projects/staff),medium,irantech
+/en/user/temp.php?irantech_cms=1141&*,301,/en/gallery,old EN gallery,medium,irantech
+/fa/user/product2/detail.php?ID=*,301,/fa/products,old product detail by ID — IDs unknown,low,irantech
+/en/user/product2/detail.php?ID=*,301,/en/products,old EN product detail by ID,low,irantech
+/fa/user/temp.php (other params),410,,irantech pages with unknown content,low,irantech
+/en/user/temp.php (other params),410,,irantech pages with unknown content,low,irantech
+/fa/about-us,301,/fa/about,Joomla about,high,joomla
+/fa/contact-us,301,/fa/contact,Joomla contact,high,joomla
+/fa/contact_us,301,/fa/contact,Joomla contact,high,joomla
+/fa/contact-us/نظرسنجی-مشتریان,301,/fa/contact,customer survey,low,joomla
+/fa/gas-pipe,301,/fa/products/gas-pipe,Joomla gas pipe,high,joomla
+/fa/water-pipe,301,/fa/products/water-supply-pipe,Joomla water pipe,high,joomla
+/fa/products/water-pipe,301,/fa/products/water-supply-pipe,Joomla water pipe,high,joomla
+/fa/products/irrigation-pipe,301,/fa/products/irrigation-pipe,Joomla irrigation — may already be a live route [VERIFY slug],high,joomla
+/fa/home-fa/certs,301,/fa/certifications,certificates [VERIFY slug],high,joomla
+/fa/home-fa/honors,301,/fa/certifications,honors/awards [VERIFY slug],medium,joomla
+/fa/home-fa/map,301,/fa/contact,location map,medium,joomla
+/fa/home-fa/policy,301,/fa/quality,quality policy [VERIFY slug],high,joomla
+/fa/lab-scope,301,/fa/laboratory/iso-17025,ISO 17025 accreditation scope [VERIFY slug],medium,joomla
+/fa/qc,301,/fa/laboratory,QC hub,high,joomla
+/fa/qc/qc-intro,301,/fa/laboratory,QC intro,high,joomla
+/fa/qc/test,301,/fa/laboratory/services,lab tests,high,joomla
+/fa/qc/tech,301,/fa/technical-center,technical info hub,high,joomla
+/fa/qc/tech/15-pe-introduce,301,/fa/technical-center/polyethylene-pipe-complete-guide,PE introduction article,high,joomla
+/fa/qc/tech/16-pe-production,301,/fa/technical-center/polyethylene-pipe-complete-guide,PE production article,medium,joomla
+/fa/qc/tech/25-accuracy,301,/fa/technical-center/polyethylene-pipe-specifications,dimensional accuracy article,medium,joomla
+/fa/qc/tech/14-sds,301,/fa/technical-center,safety data sheet,low,joomla
+/fa/qc/tech/24-market-2017,410,,dated market report 2017,medium,joomla
+/fa/qc/survey,301,/fa/contact,customer survey,low,joomla
+/fa/qc/survey/ثبت-شکایت-از-خدمات-آزمایشگاه,301,/fa/contact,lab complaint form,medium,joomla
+/fa/qc/vote,301,/fa/contact,poll,low,joomla
+/fa/news,301,/fa/technical-center,news index — no news section on new site,low,joomla
+/fa/news/item/*,410,,dated news items (2018),medium,joomla
+/fa/news/itemlist/*,410,,news tag/author lists,high,joomla
+/fa/component/*,410,,Joomla system URLs (tags/users/search),high,joomla
+/fa/9,410,,unknown Joomla item,low,joomla
+/en/2-moarefi/18-history-and-introduction,301,/en/about,EN history/introduction,high,joomla
+/en/contact-us,301,/en/contact,EN contact [VERIFY slug],high,joomla
+/en/news,301,/en/technical-center,EN news index,low,joomla
+/en/index.php,301,/en,EN home,high,joomla
+/ar/,301,/en,Arabic home — no Arabic site; English is closest,medium,joomla
+/ar/contact-us,301,/en/contact,Arabic contact [VERIFY slug],medium,joomla
+/ar/2-moarefi/19-*,301,/en/about,Arabic introduction,medium,joomla
+/ar/news,410,,Arabic news,medium,joomla
+/ar/news/item/*,410,,Arabic news items,medium,joomla
+/index.php/fa/,301,/fa,Joomla FA home,high,joomla
+/index.php/en/,301,/en,Joomla EN home,high,joomla
+/index.php/ar/,301,/en,Joomla AR home,medium,joomla
+/index.php/fa/about-us,301,/fa/about,Joomla about,high,joomla
+/index.php/fa/contact-us,301,/fa/contact,Joomla contact,high,joomla
+/index.php/en/contact-us,301,/en/contact,Joomla EN contact [VERIFY slug],high,joomla
+/index.php/ar/contact-us,301,/en/contact,Joomla AR contact [VERIFY slug],medium,joomla
+/index.php/fa/products,301,/fa/products,Joomla products,high,joomla
+/index.php/fa/products/irrigation-pipe,301,/fa/products/irrigation-pipe,Joomla irrigation [VERIFY slug],high,joomla
+/index.php/fa/products/*,301,/fa/products,Joomla product items (date slugs),low,joomla
+/index.php/fa/home1/gallery-2,301,/fa/gallery,gallery,high,joomla
+/index.php/fa/blog,301,/fa/technical-center,blog index,low,joomla
+/index.php/fa/blog/item/*,410,,dated blog items,low,joomla
+/index.php/fa/home1/2018-*,410,,unknown date-slug items,low,joomla
+/index.php/fa/2016-* and /2018-*,410,,unknown date-slug items,low,joomla
+/index.php/*/component/* + ?format=feed,410,,Joomla system/feeds,high,joomla
+/about/,301,/fa/about,WP about (locale auto-redirect may already cover),high,wp1
+/contact/,301,/fa/contact,WP contact (locale auto-redirect may already cover),high,wp1
+/آزمایشگاه-لوله-بوکان/,301,/fa/laboratory,lab page,high,wp1
+/آزمون-لوله-پلیمری/,301,/fa/laboratory/services,polymer pipe testing — currently 404,high,wp1
+/اطلاعات-فنی/,301,/fa/technical-center,technical info,high,wp1
+/معرفی-آزمایشگاه/,301,/fa/laboratory,lab introduction,high,wp1
+/واحد-کنترل-کیفیت-و-آزمایشگاه/,301,/fa/laboratory,QC & lab unit,high,wp1
+/ثبت-شکایت-آزمایشگاه/,301,/fa/contact,lab complaint form,medium,wp1
+/نظرسنجی-خدمات‌-آزمایشگاه/,301,/fa/contact,lab service survey,low,wp1
+/لوله-آبرسانی/,301,/fa/products/water-supply-pipe,water pipe,high,wp1
+/لوله-گاز-رسانی/,301,/fa/products/gas-pipe,gas pipe,high,wp1
+/لوله-آبیاری-قطره-ای/,301,/fa/products/irrigation-pipe,drip irrigation pipe [VERIFY slug],high,wp1
+/محصولات-شرکت/,301,/fa/products,products,high,wp1
+/تصاویر-محصولات/,301,/fa/gallery,product photos,high,wp1
+/تصاویر-واحد-تولید/,301,/fa/gallery,production photos,high,wp1
+/تصاویر-واحد-کنترل-کیفی/,301,/fa/gallery,QC photos,high,wp1
+/گالری-تصاویر/,301,/fa/gallery,gallery,high,wp1
+/محوطه-و-سایر-واحدها/,301,/fa/gallery,site photos,high,wp1
+/پرسنل/,301,/fa/gallery,staff photos,medium,wp1
+/تقدیرنامه-ها/,301,/fa/certifications,commendations [VERIFY slug],high,wp1
+/گواهینامه-ها/,301,/fa/certifications,certificates [VERIFY slug],high,wp1
+/case-study/familiarity-with-polyethylene/,301,/fa/technical-center/polyethylene-pipe-complete-guide,PE intro article — currently 404,high,wp1
+/case-study/heavy-polyethylene/,301,/fa/technical-center/polyethylene-pipe-complete-guide,HDPE article,medium,wp1
+/case-study/آشنایی-با-دبی/,301,/fa/technical-center,flow-rate article,medium,wp1
+/case-study-category/technical-information/,301,/fa/technical-center,technical info category,high,wp1
+/portfolio-category/gas-delivery/,301,/fa/products/gas-pipe,WP product/portfolio page,high,wp1
+/portfolio-category/irrigation-pipe/,301,/fa/products/irrigation-pipe,WP product/portfolio page [VERIFY slug],high,wp1
+/portfolio-category/water-supply/,301,/fa/products/water-supply-pipe,WP product/portfolio page,high,wp1
+/portfolio-category/products/,301,/fa/products,WP product/portfolio page,high,wp1
+/portfolio/gas/,301,/fa/products/gas-pipe,WP product/portfolio page,high,wp1
+/portfolio/irrigation-products/,301,/fa/products/irrigation-pipe,WP product/portfolio page [VERIFY slug],high,wp1
+/portfolio/أبياري/,301,/fa/products/irrigation-pipe,WP product/portfolio page [VERIFY slug],high,wp1
+/portfolio/water-supply/,301,/fa/products/water-supply-pipe,WP product/portfolio page,high,wp1
+/portfolio/محصولات-ما/,301,/fa/products,WP product/portfolio page,high,wp1
+/service-category/gas-pipe/,301,/fa/products/gas-pipe,WP product/portfolio page,high,wp1
+/service-category/irrigation-pipe/,301,/fa/products/irrigation-pipe,WP product/portfolio page [VERIFY slug],high,wp1
+/service-category/water-pipe/,301,/fa/products/water-supply-pipe,WP product/portfolio page,high,wp1
+/service-category/products/,301,/fa/products,WP product/portfolio page,high,wp1
+/service/gas-supply-pipe/,301,/fa/products/gas-pipe,WP product/portfolio page,high,wp1
+/service/water-supply-pipe/,301,/fa/products/water-supply-pipe,WP product/portfolio page,high,wp1
+/service/drip-irrigation-pipe/,301,/fa/products/irrigation-pipe,WP product/portfolio page [VERIFY slug],high,wp1
+/shop/,301,/fa/products,WP product/portfolio page,high,wp1
+/service/sales-advisor/,301,/fa/contact,sales advisor,medium,wp1
+/service-category/bukanpipe/,301,/fa/about,brand category,low,wp1
+/bukanpipe-news/,410,,news index,low,wp1
+/2018/12/25/جلسه-هم-اندیشی/,410,,dated event post,medium,wp1
+/2021/09/27/title/,410,,WordPress theme demo / system page,high,wp1
+/2022/01/13/hello-world/,410,,WordPress theme demo / system page,high,wp1
+/author/admin/,410,,WordPress theme demo / system page,high,wp1
+/author/bukanpipe/,410,,WordPress theme demo / system page,high,wp1
+/category/symposium/,410,,WordPress theme demo / system page,high,wp1
+/category/uncategorized/,410,,WordPress theme demo / system page,high,wp1
+/elementor-6492/,410,,WordPress theme demo / system page,high,wp1
+/cart/,410,,WordPress theme demo / system page,high,wp1
+/my-account/,410,,WordPress theme demo / system page,high,wp1
+/shop-wishlist/,410,,WordPress theme demo / system page,high,wp1
+/shortcode/,410,,WordPress theme demo / system page,high,wp1
+/faq/,410,,WordPress theme demo / system page,medium,wp1
+/careers/,410,,WordPress theme demo / system page,medium,wp1
+/portfolio-grid/,410,,WordPress theme demo / system page,high,wp1
+/portfolio-masonry/,410,,WordPress theme demo / system page,high,wp1
+/portfolio/chan-agency/,410,,WordPress theme demo / system page,high,wp1
+/portfolio/court-imperial/,410,,WordPress theme demo / system page,high,wp1
+/portfolio/data-analytics/,410,,WordPress theme demo / system page,high,wp1
+/portfolio/digital-analysis/,410,,WordPress theme demo / system page,high,wp1
+/case-study/accuracy-and-layout/,410,,WordPress theme demo / system page,high,wp1
+/case-study/developing-a-program-to-be-alleviate-poverty/,410,,WordPress theme demo / system page,high,wp1
+/service-category/consulting/,410,,WordPress theme demo / system page,high,wp1
+/about-v-2/,410,,WordPress theme demo / system page,high,wp1
+/about-v-3/,410,,WordPress theme demo / system page,high,wp1
+/about-v-4/,410,,WordPress theme demo / system page,high,wp1
+/contact-v-2/,410,,WordPress theme demo / system page,high,wp1
+/contact-v-3/,410,,WordPress theme demo / system page,high,wp1
+/contact-v-4/,410,,WordPress theme demo / system page,high,wp1
+/services-v-1/,410,,WordPress theme demo / system page,high,wp1
+/services-v-2/,410,,WordPress theme demo / system page,high,wp1
+/pricing/,410,,WordPress theme demo / system page,high,wp1
+/pricing-v-2/,410,,WordPress theme demo / system page,high,wp1
+/team/,410,,WordPress theme demo / system page,high,wp1
+/team-details/,410,,WordPress theme demo / system page,high,wp1
+/team-v-2/,410,,WordPress theme demo / system page,high,wp1
+/team-v-3/,410,,WordPress theme demo / system page,high,wp1
+/team-v-4/,410,,WordPress theme demo / system page,high,wp1
+/testimonials/,410,,WordPress theme demo / system page,high,wp1
+/testimonials-v-2/,410,,WordPress theme demo / system page,high,wp1
+/testimonials-v-3/,410,,WordPress theme demo / system page,high,wp1
+/testimonials-v-4/,410,,WordPress theme demo / system page,high,wp1
+/blog-carousel/,410,,WordPress theme demo / system page,high,wp1
+/blog-grid-2-columns-sidebar-left/,410,,WordPress theme demo / system page,high,wp1
+/blog-grid-2-columns-sidebar-right/,410,,WordPress theme demo / system page,high,wp1
+/blog-grid-3-columns/,410,,WordPress theme demo / system page,high,wp1
+/blog-standard-left-sidebar/,410,,WordPress theme demo / system page,high,wp1
+/blog-standard-without-sidebar/,410,,WordPress theme demo / system page,high,wp1
+/footer/*,410,,WordPress theme demo / system page,high,wp1
+/ct-mega-menu/*,410,,WordPress theme demo / system page,high,wp1
+/about_us/,301,/fa/about,about,high,wp2
+/contact-us/,301,/fa/contact,contact — already works,high,wp2
+/gas-pipe/,301,/fa/products/gas-pipe,gas pipe — already works,high,wp2
+/air-vent-valve/,301,/fa/technical-center/air-vent-valve,air valve — ranks pos 1.6 on legacy URL,high,wp2
+/temp-cooficient/,301,/fa/technical-center/polyethylene-pipe-temperature-pressure,temperature coefficient,high,wp2
+/welding/,301,/fa/technical-center/polyethylene-pipe-welding,welding [VERIFY slug],high,wp2
+/training/,301,/fa/laboratory/training,lab training,high,wp2
+/iso-iec17025/,301,/fa/laboratory/iso-17025,ISO 17025 [VERIFY slug],high,wp2
+/lab-scope/,301,/fa/laboratory/iso-17025,accreditation scope [VERIFY slug],medium,wp2
+/qc-and-laboratory/,301,/fa/laboratory,QC & lab,high,wp2
+/standards/,301,/fa/technical-center/polyethylene-pipe-standards,standards,medium,wp2
+/certs/,301,/fa/certifications,certificates [VERIFY slug],high,wp2
+/policy/,301,/fa/quality,quality policy [VERIFY slug],high,wp2
+/خط-مشی-کیفیت-آزمایشگاه/,301,/fa/quality,lab quality policy — same decision as /policy/ [VERIFY slug],high,wp2
+/articles/,301,/fa/technical-center,articles index,high,wp2
+/آخرین-نوشته-ها/,301,/fa/technical-center,latest posts,medium,wp2
+/category/مقالات/,301,/fa/technical-center,articles category,high,wp2
+/category/محصولات/,301,/fa/products,products category,high,wp2
+/لوله-های-پلی-اتیلن-آبرسانی/,301,/fa/products/water-supply-pipe,PE water pipes,high,wp2
+/آبیاری-زیرسطحی/,301,/fa/products/irrigation-pipe,subsurface irrigation [VERIFY slug],medium,wp2
+/آبیاری-قطره‌ای-روشی-برای-آبیاری-موضعی-localized/,301,/fa/products/irrigation-pipe,drip irrigation article [VERIFY slug],medium,wp2
+/product-category/آزمون-لوله-pe/,301,/fa/laboratory/services,PE pipe testing,high,wp2
+/product-category/gas/,301,/fa/products/gas-pipe,gas category,high,wp2
+/product-category/water/,301,/fa/products/water-supply-pipe,water category,high,wp2
+/product-category/products/,301,/fa/products,products category,high,wp2
+/product-tag/لوله-آبیاری-قطره-ای/,301,/fa/products/irrigation-pipe,drip tag [VERIFY slug],medium,wp2
+/product-tag/لوله-2-اینچ/,301,/fa/products,2-inch tag — retarget to size page /63 later,medium,wp2
+/product/آبرسانی-63-میلیمتر-دو-اینچ/,301,/fa/products/water-supply-pipe,63mm water — retarget to size page later,high,wp2
+/product/لوله-آبیاری-قطره-ای/,301,/fa/products/irrigation-pipe,drip product [VERIFY slug],high,wp2
+/product/لوله-پلی-اتیلن-گازرسانی-sdr11-63/,301,/fa/products/gas-pipe,gas SDR11 63,high,wp2
+/تولید-بر-اساس-دانش-و-تکنولوژی-روز/,301,/fa/about,company feature text,medium,wp2
+/تولید-کننده-ای-با-تراز-اول-کیفیت/,301,/fa/about,company feature text,medium,wp2
+/customer-poll/,301,/fa/contact,customer poll,low,wp2
+/lab-poll/,301,/fa/laboratory,lab poll,low,wp2
+/pipeline_design/,301,/fa/technical-center,pipeline design (from GSC),low,wp2
+/?download=catalog,301,/fa/products,catalog download — point to catalog if new site has one,low,wp2
+/پیمان-دادخواه/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/محمد-عزیزنژاد/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/مهندس-رحمانی/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/مدیر-فروش/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/نظر-مشتری-امینی/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/صفحه-اصلی/پیمایش-تک-صفحه-ای/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/صفحه-اصلی-2/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/صفحه-اصلی-3/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/ساید-بار-راست/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/ساید-بار-چپ-2/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/بدون-سایدبار/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/بدون-سایدبار-باریک/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/بلوک-ریکاردو/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/الیزا-روما/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/استراتژی-محتوا/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/بازاریابی-آنلاین/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/بهینه-سازی-فروش/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/خرید،-شروع-راه-دوستی-ماست/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/اسلایدرهای-عالی-برای-نشان-دادن-محتوای/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/طرح-بندی-ها-با-ظاهر-جذاب،-همه-در-یک-قالب/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/صفحه-سفارشی-سازی-با-پیش-نمایش-زنده/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/کاملاً-واکنشگرا-با-هر-اندازه-صفحه-نمای/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/چند-صفحه-اصلی،-بخش-نمونه-کارها-و-بخش-وبل/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/پشتیبانی-رایگان-از-سایت-شما-در-هر-زمان/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/category/تبلیغات/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/category/blog/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/category/blog/برندینگ/,410,,WordPress author archive / theme demo / off-topic,high,wp2
+/sitemap.html,410,,WordPress author archive / theme demo / off-topic,high,wp2

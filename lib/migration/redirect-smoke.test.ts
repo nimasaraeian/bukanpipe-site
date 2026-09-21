@@ -12,12 +12,12 @@ const HIGH_VALUE_CASES = [
   { source: "/lab-scope", destination: "/laboratory/test-scope" },
   { source: "/qc-and-laboratory", destination: "/laboratory" },
   { source: "/about_us", destination: "/about" },
-  { source: "/policy", destination: "/about" },
-  { source: "/certs", destination: "/about" },
+  { source: "/policy", destination: "/quality" },
+  { source: "/certs", destination: "/certifications" },
   { source: "/contact-us", destination: "/contact" },
   { source: "/gas-pipe", destination: "/products/gas-pipe" },
   { source: "/standards", destination: "/downloads" },
-  { source: "/training", destination: "/laboratory" },
+  { source: "/training", destination: "/laboratory/training" },
 ] as const;
 
 describe("legacy redirect smoke test (rule map)", () => {
