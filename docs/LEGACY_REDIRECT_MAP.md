@@ -1,15 +1,31 @@
 # Legacy Redirect Map (updated)
 
-**Map (source of truth):** `redirect-map-draft.csv` at the repo root — 248 rows  
-**Compiled to:** `data/migration/redirect-map.ts` (`npm run redirects:build`)  
-**Engine:** `lib/migration/legacy-resolver.ts`, called only from `middleware.ts`  
-**Always on** — the map is not gated on `ENABLE_LEGACY_REDIRECTS`, which now
-covers only the older `data/migration/legacy-urls.ts` inventory.
+The historical URL map has **two layers**. The inventory is the base and wins;
+the CSV only ever adds.
 
-Middleware runs on the edge and cannot read a file per request, so the CSV is
-compiled to a module. Edit the CSV, run `npm run redirects:build`, commit both.
-`redirect-map.test.ts` re-runs the compiler with `--check` and fails if they
-have drifted.
+| Layer | Source | Engine | Gate |
+|---|---|---|---|
+| Base | `data/migration/legacy-urls.ts` (Phase-002 inventory) | `lib/migration/redirects.ts` | `ENABLE_LEGACY_REDIRECTS` — **true in production** |
+| Additions | `redirect-map-draft.csv` (248 rows) → `data/migration/redirect-map.ts` | `lib/migration/legacy-resolver.ts` | always on |
+
+`npm run redirects:build` compiles the CSV; middleware runs on the edge and
+cannot read a file per request. `redirect-map.test.ts` re-runs the compiler
+with `--check`, so the CSV and the module cannot drift.
+
+## Overlap between the two layers
+
+`data/migration/redirect-conflicts.json` records every path present in both.
+
+- **31 conflicts** — same path, different outcome. These are **excluded from
+  the compiled map** and keep serving whatever the inventory serves today.
+  They are waiting on a human decision; nothing about them changed.
+- **21 covered** — the two agree. 14 are already served by the inventory and
+  are skipped. The other 7 are paths the inventory marked
+  `IGNORE_NONINDEXABLE` ("prefer 410") but never implemented, so the CSV row is
+  what finally returns the 410.
+
+The test recomputes both sets from the inventory and the CSV and fails if this
+file no longer describes reality.
 
 ## How a request is resolved
 
@@ -19,11 +35,13 @@ have drifted.
 1. **410 for spam parameters.** `LOSS` or `Male` on any path, checked ahead of
    every redirect including the canonical-host hop, so an injected URL is never
    rewritten into a real one first.
-2. **Exact rows**, decoded and trailing-slash-insensitive.
-3. **Query rows** — the irantech CMS front controllers (`temp.php?irantech_cms=`,
-   `product2/detail.php?ID=`) and `/?download=catalog`. Anything else on a
-   `temp.php` path answers 410 rather than guessing.
-4. **Wildcard rows**, longest source first.
+2. **The inventory**, so the live base layer outranks every addition.
+3. **Exact CSV rows**, decoded and trailing-slash-insensitive.
+4. **Query rows** — the irantech CMS front controllers
+   (`temp.php?irantech_cms=`, `product2/detail.php?ID=`) and
+   `/?download=catalog`. Anything else on a `temp.php` path answers 410 rather
+   than guessing.
+5. **Wildcard rows**, longest source first.
 
 Exact beats wildcard, so `/index.php/fa/products/irrigation-pipe` keeps its own
 destination instead of collapsing into `/index.php/fa/products/*`.
@@ -46,7 +64,7 @@ file skip the locale hop, so they keep their own 404 instead of spending a 308
 to reach the same 404. Mapped rows that address a file (`/about.htm`,
 `/index.php`, `/sitemap.html`) are matched first and are unaffected.
 
-### Rows deliberately not implemented
+### Rows not implemented for structural reasons
 
 | CSV row | Why |
 |---|---|
@@ -54,8 +72,8 @@ to reach the same 404. Mapped rows that address a file (`/about.htm`,
 | L91 `/about/` | The locale redirect already reaches `/fa/about` in one hop. |
 | L92 `/contact/` | The locale redirect already reaches `/fa/contact` in one hop. |
 
-These are listed in `SKIPPED_ROWS` in the compiled map, so the count stays
-auditable rather than silently dropped.
+All skipped rows — structural, conflicting and already-covered — carry their
+reason in `SKIPPED_ROWS` in the compiled map, so the count stays auditable.
 
 ## High-priority redirects (updated for content phase)
 

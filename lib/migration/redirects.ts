@@ -10,13 +10,13 @@ import type {
 } from "./types";
 
 /**
- * NOTE: middleware no longer routes through this module. The live historical
- * URL map is `redirect-map-draft.csv`, compiled to
- * `data/migration/redirect-map.ts` and served by
- * `lib/migration/legacy-resolver.ts`, which is not gated on the flag below.
+ * The Phase-002 inventory is the BASE layer of the historical URL map and is
+ * live in production (ENABLE_LEGACY_REDIRECTS=true on Vercel). The flag below
+ * gates only this layer.
  *
- * What remains here is the Phase-002 inventory (`data/migration/legacy-urls.ts`)
- * and the rule builder its own tests exercise. Add new redirects to the CSV.
+ * `lib/migration/legacy-resolver.ts` consults it first, then the additions
+ * compiled from `redirect-map-draft.csv`. Where the two disagree the path is
+ * excluded from the compiled map — see data/migration/redirect-conflicts.json.
  */
 export function isLegacyRedirectsEnabled(): boolean {
   return process.env.ENABLE_LEGACY_REDIRECTS === "true";

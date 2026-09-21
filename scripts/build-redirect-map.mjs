@@ -15,6 +15,7 @@ import path from "node:path";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CSV = path.join(root, "redirect-map-draft.csv");
+const CONFLICTS = path.join(root, "data/migration/redirect-conflicts.json");
 const OUT = path.join(root, "data/migration/redirect-map.ts");
 
 /** Strip trailing slashes (origin `/` survives) and percent-decode. */
@@ -42,6 +43,29 @@ function parseCsv(text) {
       return { line: i + 2, old_path, action, destination, reason, confidence, era };
     });
 }
+
+/**
+ * Paths the CSV shares with data/migration/legacy-urls.ts.
+ *
+ * The inventory is live in production (ENABLE_LEGACY_REDIRECTS=true), so this
+ * map only ever ADDS. A `conflicts` entry — same path, different outcome —
+ * is left to the inventory and awaits a human decision. A `covered` entry
+ * agrees with the inventory: the redirect ones are already served and are
+ * skipped, the 410 ones were only an intent the inventory never implemented,
+ * so the CSV row is what finally implements them.
+ */
+const overlap = JSON.parse(readFileSync(CONFLICTS, "utf8"));
+const conflictPaths = new Map(
+  overlap.conflicts.map((c) => [
+    c.path,
+    `conflicts with the live inventory (${c.inventory}); awaiting a decision — CSV L${c.csvLine} wants ${c.csv}`,
+  ]),
+);
+const coveredRedirects = new Map(
+  overlap.covered
+    .filter((c) => c.outcome !== "410")
+    .map((c) => [c.path, `already served by the inventory (${c.outcome}) — CSV L${c.csvLine} agrees`]),
+);
 
 /**
  * Rows the map deliberately does not implement, with the reason. Kept in the
@@ -172,7 +196,8 @@ function build() {
     }
 
     const source = normalize(row.old_path);
-    const skipReason = SKIP.get(source);
+    const skipReason =
+      SKIP.get(source) ?? conflictPaths.get(source) ?? coveredRedirects.get(source);
     if (skipReason) {
       skipped.push({ source, reason: skipReason });
       continue;
@@ -244,6 +269,9 @@ export const SPAM_QUERY_PARAMS_FROM_MAP: readonly string[] = ${j(spamParams)};
 export const SKIPPED_ROWS: readonly SkippedRow[] = ${j(skipped)};
 
 export const MAP_ROW_COUNT = ${rows.length};
+
+/** Paths left to the live inventory pending a decision. */
+export const CONFLICT_COUNT = ${overlap.conflicts.length};
 `;
 }
 

@@ -6,6 +6,7 @@ import {
   QUERY_RULES,
 } from "../../data/migration/redirect-map";
 import { normalizeLegacyPath } from "./normalize";
+import { resolveLegacyRedirect } from "./redirects";
 import { hasSpamQueryParam } from "./gone";
 
 /**
@@ -75,9 +76,10 @@ function matchPattern(pathname: string): LegacyOutcome {
 /**
  * Resolve a full incoming request — path and query together.
  *
- * Order matters: spam is answered before anything can redirect it, exact rows
- * beat wildcards so a child page keeps its own successor, and the query rows
- * sit between the two because they address one path by parameter.
+ * Order matters: spam is answered before anything can redirect it, the live
+ * inventory outranks the CSV additions, and exact rows beat wildcards so a
+ * child page keeps its own successor. The query rows sit between the two
+ * because they address one path by parameter.
  */
 export function resolveLegacyRequest(
   pathname: string,
@@ -88,6 +90,16 @@ export function resolveLegacyRequest(
   }
 
   const normalized = normalizeLegacyPath(pathname);
+
+  // The Phase-002 inventory is the base layer and is live in production
+  // (ENABLE_LEGACY_REDIRECTS=true). It is consulted first so the CSV can only
+  // ever add: where the two disagree, the path is excluded from the compiled
+  // map and listed in data/migration/redirect-conflicts.json for a decision,
+  // and this lookup is what keeps serving it.
+  const fromInventory = resolveLegacyRedirect(normalized);
+  if (fromInventory !== null) {
+    return { kind: "redirect", destination: fromInventory, preserveQuery: true };
+  }
 
   if (exactGone.has(normalized)) {
     return { kind: "gone" };

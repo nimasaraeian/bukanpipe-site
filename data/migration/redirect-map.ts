@@ -398,96 +398,12 @@ export const EXACT_REDIRECTS: readonly ExactRedirect[] = [
     "destination": "/fa/products/irrigation-pipe"
   },
   {
-    "source": "/shop",
-    "destination": "/fa/products"
-  },
-  {
     "source": "/service/sales-advisor",
     "destination": "/fa/contact"
   },
   {
     "source": "/service-category/bukanpipe",
     "destination": "/fa/about"
-  },
-  {
-    "source": "/about_us",
-    "destination": "/fa/about"
-  },
-  {
-    "source": "/contact-us",
-    "destination": "/fa/contact"
-  },
-  {
-    "source": "/gas-pipe",
-    "destination": "/fa/products/gas-pipe"
-  },
-  {
-    "source": "/air-vent-valve",
-    "destination": "/fa/technical-center/air-vent-valve"
-  },
-  {
-    "source": "/temp-cooficient",
-    "destination": "/fa/technical-center/polyethylene-pipe-temperature-pressure"
-  },
-  {
-    "source": "/welding",
-    "destination": "/fa/technical-center/polyethylene-pipe-welding"
-  },
-  {
-    "source": "/training",
-    "destination": "/fa/laboratory/training"
-  },
-  {
-    "source": "/iso-iec17025",
-    "destination": "/fa/laboratory/iso-17025"
-  },
-  {
-    "source": "/lab-scope",
-    "destination": "/fa/laboratory/iso-17025"
-  },
-  {
-    "source": "/qc-and-laboratory",
-    "destination": "/fa/laboratory"
-  },
-  {
-    "source": "/standards",
-    "destination": "/fa/technical-center/polyethylene-pipe-standards"
-  },
-  {
-    "source": "/certs",
-    "destination": "/fa/certifications"
-  },
-  {
-    "source": "/policy",
-    "destination": "/fa/quality"
-  },
-  {
-    "source": "/خط-مشی-کیفیت-آزمایشگاه",
-    "destination": "/fa/quality"
-  },
-  {
-    "source": "/articles",
-    "destination": "/fa/technical-center"
-  },
-  {
-    "source": "/آخرین-نوشته-ها",
-    "destination": "/fa/technical-center"
-  },
-  {
-    "source": "/category/مقالات",
-    "destination": "/fa/technical-center"
-  },
-  {
-    "source": "/category/محصولات",
-    "destination": "/fa/products"
-  },
-  {
-    "source": "/لوله-های-پلی-اتیلن-آبرسانی",
-    "destination": "/fa/products/water-supply-pipe"
-  },
-  {
-    "source": "/آبیاری-زیرسطحی",
-    "destination": "/fa/products/irrigation-pipe"
   },
   {
     "source": "/آبیاری-قطره‌ای-روشی-برای-آبیاری-موضعی-localized",
@@ -528,26 +444,6 @@ export const EXACT_REDIRECTS: readonly ExactRedirect[] = [
   {
     "source": "/product/لوله-پلی-اتیلن-گازرسانی-sdr11-63",
     "destination": "/fa/products/gas-pipe"
-  },
-  {
-    "source": "/تولید-بر-اساس-دانش-و-تکنولوژی-روز",
-    "destination": "/fa/about"
-  },
-  {
-    "source": "/تولید-کننده-ای-با-تراز-اول-کیفیت",
-    "destination": "/fa/about"
-  },
-  {
-    "source": "/customer-poll",
-    "destination": "/fa/contact"
-  },
-  {
-    "source": "/lab-poll",
-    "destination": "/fa/laboratory"
-  },
-  {
-    "source": "/pipeline_design",
-    "destination": "/fa/technical-center"
   }
 ];
 
@@ -612,11 +508,6 @@ export const EXACT_GONE: readonly string[] = [
   "/blog-grid-3-columns",
   "/blog-standard-left-sidebar",
   "/blog-standard-without-sidebar",
-  "/پیمان-دادخواه",
-  "/محمد-عزیزنژاد",
-  "/مهندس-رحمانی",
-  "/مدیر-فروش",
-  "/نظر-مشتری-امینی",
   "/صفحه-اصلی/پیمایش-تک-صفحه-ای",
   "/صفحه-اصلی-2",
   "/صفحه-اصلی-3",
@@ -624,21 +515,7 @@ export const EXACT_GONE: readonly string[] = [
   "/ساید-بار-چپ-2",
   "/بدون-سایدبار",
   "/بدون-سایدبار-باریک",
-  "/بلوک-ریکاردو",
-  "/الیزا-روما",
-  "/استراتژی-محتوا",
-  "/بازاریابی-آنلاین",
-  "/بهینه-سازی-فروش",
-  "/خرید،-شروع-راه-دوستی-ماست",
-  "/اسلایدرهای-عالی-برای-نشان-دادن-محتوای",
-  "/طرح-بندی-ها-با-ظاهر-جذاب،-همه-در-یک-قالب",
-  "/صفحه-سفارشی-سازی-با-پیش-نمایش-زنده",
   "/کاملاً-واکنشگرا-با-هر-اندازه-صفحه-نمای",
-  "/چند-صفحه-اصلی،-بخش-نمونه-کارها-و-بخش-وبل",
-  "/پشتیبانی-رایگان-از-سایت-شما-در-هر-زمان",
-  "/category/تبلیغات",
-  "/category/blog",
-  "/category/blog/برندینگ",
   "/sitemap.html"
 ];
 
@@ -788,7 +665,190 @@ export const SKIPPED_ROWS: readonly SkippedRow[] = [
   {
     "source": "/contact",
     "reason": "locale redirect already reaches /fa/contact in one hop (CSV L92)"
+  },
+  {
+    "source": "/shop",
+    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L132 wants /fa/products"
+  },
+  {
+    "source": "/about_us",
+    "reason": "already served by the inventory (/fa/about) — CSV L186 agrees"
+  },
+  {
+    "source": "/contact-us",
+    "reason": "already served by the inventory (/fa/contact) — CSV L187 agrees"
+  },
+  {
+    "source": "/gas-pipe",
+    "reason": "already served by the inventory (/fa/products/gas-pipe) — CSV L188 agrees"
+  },
+  {
+    "source": "/air-vent-valve",
+    "reason": "already served by the inventory (/fa/technical-center/air-vent-valve) — CSV L189 agrees"
+  },
+  {
+    "source": "/temp-cooficient",
+    "reason": "already served by the inventory (/fa/technical-center/polyethylene-pipe-temperature-pressure) — CSV L190 agrees"
+  },
+  {
+    "source": "/welding",
+    "reason": "already served by the inventory (/fa/technical-center/polyethylene-pipe-welding) — CSV L191 agrees"
+  },
+  {
+    "source": "/training",
+    "reason": "conflicts with the live inventory (/fa/laboratory); awaiting a decision — CSV L192 wants /fa/laboratory/training"
+  },
+  {
+    "source": "/iso-iec17025",
+    "reason": "already served by the inventory (/fa/laboratory/iso-17025) — CSV L193 agrees"
+  },
+  {
+    "source": "/lab-scope",
+    "reason": "conflicts with the live inventory (/fa/laboratory/test-scope); awaiting a decision — CSV L194 wants /fa/laboratory/iso-17025"
+  },
+  {
+    "source": "/qc-and-laboratory",
+    "reason": "already served by the inventory (/fa/laboratory) — CSV L195 agrees"
+  },
+  {
+    "source": "/standards",
+    "reason": "conflicts with the live inventory (/fa/downloads); awaiting a decision — CSV L196 wants /fa/technical-center/polyethylene-pipe-standards"
+  },
+  {
+    "source": "/certs",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L197 wants /fa/certifications"
+  },
+  {
+    "source": "/policy",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L198 wants /fa/quality"
+  },
+  {
+    "source": "/خط-مشی-کیفیت-آزمایشگاه",
+    "reason": "conflicts with the live inventory (/fa/laboratory); awaiting a decision — CSV L199 wants /fa/quality"
+  },
+  {
+    "source": "/articles",
+    "reason": "already served by the inventory (/fa/technical-center) — CSV L200 agrees"
+  },
+  {
+    "source": "/آخرین-نوشته-ها",
+    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L201 wants /fa/technical-center"
+  },
+  {
+    "source": "/category/مقالات",
+    "reason": "already served by the inventory (/fa/technical-center) — CSV L202 agrees"
+  },
+  {
+    "source": "/category/محصولات",
+    "reason": "already served by the inventory (/fa/products) — CSV L203 agrees"
+  },
+  {
+    "source": "/لوله-های-پلی-اتیلن-آبرسانی",
+    "reason": "already served by the inventory (/fa/products/water-supply-pipe) — CSV L204 agrees"
+  },
+  {
+    "source": "/آبیاری-زیرسطحی",
+    "reason": "conflicts with the live inventory (/fa/applications/agriculture-irrigation); awaiting a decision — CSV L205 wants /fa/products/irrigation-pipe"
+  },
+  {
+    "source": "/تولید-بر-اساس-دانش-و-تکنولوژی-روز",
+    "reason": "already served by the inventory (/fa/about) — CSV L216 agrees"
+  },
+  {
+    "source": "/تولید-کننده-ای-با-تراز-اول-کیفیت",
+    "reason": "already served by the inventory (/fa/about) — CSV L217 agrees"
+  },
+  {
+    "source": "/customer-poll",
+    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L218 wants /fa/contact"
+  },
+  {
+    "source": "/lab-poll",
+    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L219 wants /fa/laboratory"
+  },
+  {
+    "source": "/pipeline_design",
+    "reason": "conflicts with the live inventory (/fa/calculator/pipeline-design); awaiting a decision — CSV L220 wants /fa/technical-center"
+  },
+  {
+    "source": "/پیمان-دادخواه",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L222 wants 410"
+  },
+  {
+    "source": "/محمد-عزیزنژاد",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L223 wants 410"
+  },
+  {
+    "source": "/مهندس-رحمانی",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L224 wants 410"
+  },
+  {
+    "source": "/مدیر-فروش",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L225 wants 410"
+  },
+  {
+    "source": "/نظر-مشتری-امینی",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L226 wants 410"
+  },
+  {
+    "source": "/بلوک-ریکاردو",
+    "reason": "conflicts with the live inventory (/fa/projects); awaiting a decision — CSV L234 wants 410"
+  },
+  {
+    "source": "/الیزا-روما",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L235 wants 410"
+  },
+  {
+    "source": "/استراتژی-محتوا",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L236 wants 410"
+  },
+  {
+    "source": "/بازاریابی-آنلاین",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L237 wants 410"
+  },
+  {
+    "source": "/بهینه-سازی-فروش",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L238 wants 410"
+  },
+  {
+    "source": "/خرید،-شروع-راه-دوستی-ماست",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L239 wants 410"
+  },
+  {
+    "source": "/اسلایدرهای-عالی-برای-نشان-دادن-محتوای",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L240 wants 410"
+  },
+  {
+    "source": "/طرح-بندی-ها-با-ظاهر-جذاب،-همه-در-یک-قالب",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L241 wants 410"
+  },
+  {
+    "source": "/صفحه-سفارشی-سازی-با-پیش-نمایش-زنده",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L242 wants 410"
+  },
+  {
+    "source": "/چند-صفحه-اصلی،-بخش-نمونه-کارها-و-بخش-وبل",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L244 wants 410"
+  },
+  {
+    "source": "/پشتیبانی-رایگان-از-سایت-شما-در-هر-زمان",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L245 wants 410"
+  },
+  {
+    "source": "/category/تبلیغات",
+    "reason": "conflicts with the live inventory (/fa/technical-center); awaiting a decision — CSV L246 wants 410"
+  },
+  {
+    "source": "/category/blog",
+    "reason": "conflicts with the live inventory (/fa/technical-center); awaiting a decision — CSV L247 wants 410"
+  },
+  {
+    "source": "/category/blog/برندینگ",
+    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L248 wants 410"
   }
 ];
 
 export const MAP_ROW_COUNT = 248;
+
+/** Paths left to the live inventory pending a decision. */
+export const CONFLICT_COUNT = 31;

@@ -1,11 +1,39 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { resolveLegacyRequest } from "@/lib/migration/legacy-resolver";
-import { MAP_ROW_COUNT, SKIPPED_ROWS } from "@/data/migration/redirect-map";
+import { CONFLICT_COUNT, MAP_ROW_COUNT, SKIPPED_ROWS } from "@/data/migration/redirect-map";
+import { resetLegacyRedirectLookup } from "@/lib/migration/redirects";
+import { legacyUrls } from "@/data/migration/legacy-urls";
+import overlap from "@/data/migration/redirect-conflicts.json";
 import { getAllPublishedPaths } from "@/lib/content/registry";
 import { locales } from "@/lib/i18n/config";
+
+/**
+ * Production runs ENABLE_LEGACY_REDIRECTS=true, so the inventory base layer is
+ * live. Every assertion below is made against that reality.
+ */
+beforeAll(() => {
+  process.env.ENABLE_LEGACY_REDIRECTS = "true";
+  resetLegacyRedirectLookup();
+});
+
+/** The inventory outcome for a path, recomputed here rather than trusted. */
+function inventoryOutcome(p: string): string | null {
+  const record = legacyUrls.find(
+    (r) => r.host === "bukanpipe.com" && normalize(r.oldPath) === p,
+  );
+  if (!record || record.proposedNewPath === null) return null;
+  const eligible =
+    record.action === "REDIRECT_301" ||
+    record.action === "MERGE" ||
+    (record.action === "REBUILD" &&
+      normalize(record.oldPath) !== normalize(record.proposedNewPath));
+  if (!eligible) return null;
+  const d = normalize(record.proposedNewPath);
+  return d === "/" ? "/fa" : `/fa${d}`;
+}
 
 const ROOT = path.resolve(__dirname, "../..");
 
@@ -103,13 +131,77 @@ describe("redirect map is compiled from the CSV", () => {
     expect(rows.length).toBe(248);
   });
 
-  it("only skips rows that are already correct without a redirect", () => {
-    expect(SKIPPED_ROWS.map((r) => r.source).sort()).toEqual([
+  it("gives a reason for every skipped row", () => {
+    expect(SKIPPED_ROWS).toHaveLength(48);
+    for (const row of SKIPPED_ROWS) expect(row.reason).toMatch(/\S/);
+  });
+
+  it("skips the three structurally unimplementable rows", () => {
+    const structural = SKIPPED_ROWS.filter((r) => !/inventory/.test(r.reason));
+    expect(structural.map((r) => r.source).sort()).toEqual([
       "/about",
       "/contact",
       "/fa/products/irrigation-pipe",
     ]);
-    for (const row of SKIPPED_ROWS) expect(row.reason).toMatch(/\S/);
+  });
+});
+
+describe("overlap with the live inventory", () => {
+  it("records exactly the conflicts the two sources actually have", () => {
+    expect(overlap.conflicts).toHaveLength(CONFLICT_COUNT);
+    expect(overlap.conflicts).toHaveLength(31);
+
+    // Every recorded conflict must really be one: the path must exist in the
+    // inventory and the two sources must really disagree.
+    for (const c of overlap.conflicts) {
+      const row = rows.find((r) => r.line === c.csvLine);
+      expect(row, `CSV L${c.csvLine} missing`).toBeDefined();
+      expect(normalize(row!.oldPath)).toBe(c.path);
+
+      const csvOutcome = row!.action === "410" ? "410" : row!.destination;
+      expect(csvOutcome, `L${c.csvLine} csv outcome`).toBe(c.csv);
+
+      const inv = inventoryOutcome(c.path);
+      if (inv === null) {
+        expect(c.inventory, `L${c.csvLine}`).toMatch(/never implemented|no redirect/);
+      } else {
+        expect(inv, `L${c.csvLine} inventory outcome`).toBe(c.inventory);
+        expect(inv).not.toBe(csvOutcome);
+      }
+    }
+  });
+
+  it("leaves every conflicting path on its inventory behaviour, untouched", () => {
+    for (const c of overlap.conflicts) {
+      const inv = inventoryOutcome(c.path);
+      const outcome = resolveLegacyRequest(c.path);
+
+      if (inv === null) {
+        // Inventory only intended a 410 and never implemented one; the CSV
+        // wanted a redirect. Neither is applied until a decision is made.
+        expect(outcome, `${c.path} must stay untouched`).toBeNull();
+      } else {
+        expect(outcome?.kind, c.path).toBe("redirect");
+        expect((outcome as { destination: string }).destination, c.path).toBe(inv);
+        expect((outcome as { destination: string }).destination, c.path).not.toBe(c.csv);
+      }
+    }
+  });
+
+  it("implements the 410s the inventory intended but never shipped", () => {
+    const newly = overlap.covered.filter((c) => c.outcome === "410");
+    expect(newly).toHaveLength(7);
+    for (const c of newly) {
+      expect(resolveLegacyRequest(c.path)?.kind, c.path).toBe("gone");
+    }
+  });
+
+  it("keeps already-served inventory redirects exactly as they were", () => {
+    for (const c of overlap.covered.filter((x) => x.outcome !== "410")) {
+      const outcome = resolveLegacyRequest(c.path);
+      expect(outcome?.kind, c.path).toBe("redirect");
+      expect((outcome as { destination: string }).destination, c.path).toBe(c.outcome);
+    }
   });
 });
 
@@ -127,7 +219,13 @@ describe("every plain CSV row", () => {
 
       it(`resolves to ${action === "410" ? "410" : destination}`, () => {
         if (skipped.has(source)) {
-          expect(resolveLegacyRequest(source)).toBeNull();
+          // Conflicts and already-covered paths stay on the inventory; the
+          // three structural skips resolve to nothing. Asserted in detail by
+          // the overlap suite above.
+          const inv = inventoryOutcome(source);
+          const outcome = resolveLegacyRequest(source);
+          if (inv === null) expect([null, "gone"]).toContain(outcome?.kind ?? null);
+          else expect((outcome as { destination: string }).destination).toBe(inv);
           return;
         }
 
@@ -143,7 +241,7 @@ describe("every plain CSV row", () => {
       });
 
       it("matches with and without a trailing slash, encoded or not", () => {
-        if (skipped.has(source) || source === "/") return;
+        if (source === "/") return;
 
         const expected = resolveLegacyRequest(source);
         for (const variant of [`${source}/`, encodeURI(source), `${encodeURI(source)}/`]) {
