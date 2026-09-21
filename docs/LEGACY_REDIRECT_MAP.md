@@ -15,17 +15,48 @@ with `--check`, so the CSV and the module cannot drift.
 ## Overlap between the two layers
 
 `data/migration/redirect-conflicts.json` records every path present in both.
+**There are no open conflicts.** All 52 shared paths were ruled on 2026-09-21
+and the ruling written into the inventory, so the inventory serves every one of
+them and the CSV rows for them are skipped.
 
-- **31 conflicts** — same path, different outcome. These are **excluded from
-  the compiled map** and keep serving whatever the inventory serves today.
-  They are waiting on a human decision; nothing about them changed.
-- **21 covered** — the two agree. 14 are already served by the inventory and
-  are skipped. The other 7 are paths the inventory marked
-  `IGNORE_NONINDEXABLE` ("prefer 410") but never implemented, so the CSV row is
-  what finally returns the 410.
+Each entry carries its `winner`:
 
-The test recomputes both sets from the inventory and the CSV and fails if this
-file no longer describes reality.
+- **43 `agreed`** — the inventory now returns what the CSV asks for. 21 already
+  did; 22 were changed by the ruling.
+- **9 `inventory`** — the CSV asked for something else and was overruled. The
+  entry keeps `csvWanted` so the rejected value stays on record.
+
+### What the ruling changed
+
+| Path | Was | Now |
+|---|---|---|
+| `/certs` | `/fa/about` | `/fa/certifications` |
+| `/policy` | `/fa/about` | `/fa/quality` |
+| `/training` | `/fa/laboratory` | `/fa/laboratory/training` |
+| `/shop` | soft 404 | `/fa/products` |
+| `/آخرین-نوشته-ها` | soft 404 | `/fa/technical-center` |
+| `/category/تبلیغات` | `/fa/technical-center` | **410** |
+| `/category/blog/برندینگ` | `/fa/about` | **410** |
+| 15 author / theme-demo pages | `/fa/about` | **410** |
+| `/customer-poll`, `/lab-poll` | soft 404 | **410** |
+
+The last row is the reason `IGNORE_NONINDEXABLE` is now honoured:
+`resolveInventoryOutcome()` answers 410 for those rows instead of letting them
+fall through to the locale hop and a soft 404. Rows addressing a file are
+excluded and stay with the static layer.
+
+### What the ruling kept
+
+`/pipeline_design` (`/fa/calculator/pipeline-design`), `/lab-scope`
+(`/fa/laboratory/test-scope`), `/standards` (`/fa/downloads`),
+`/خط-مشی-کیفیت-آزمایشگاه` (`/fa/laboratory`), `/آبیاری-زیرسطحی`
+(`/fa/applications/agriculture-irrigation`), `/category/blog`
+(`/fa/technical-center`) and `/بلوک-ریکاردو` (`/fa/projects`) keep their
+inventory destinations; the CSV wanted something different for each.
+
+The test recomputes the whole overlap from the inventory and the CSV and fails
+if this file stops describing reality — including if a future edit reopens a
+conflict.
 
 ## How a request is resolved
 

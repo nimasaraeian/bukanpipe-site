@@ -468,8 +468,6 @@ export const EXACT_GONE: readonly string[] = [
   "/category/symposium",
   "/category/uncategorized",
   "/elementor-6492",
-  "/cart",
-  "/my-account",
   "/shop-wishlist",
   "/shortcode",
   "/faq",
@@ -508,13 +506,8 @@ export const EXACT_GONE: readonly string[] = [
   "/blog-grid-3-columns",
   "/blog-standard-left-sidebar",
   "/blog-standard-without-sidebar",
-  "/صفحه-اصلی/پیمایش-تک-صفحه-ای",
-  "/صفحه-اصلی-2",
-  "/صفحه-اصلی-3",
   "/ساید-بار-راست",
   "/ساید-بار-چپ-2",
-  "/بدون-سایدبار",
-  "/بدون-سایدبار-باریک",
   "/کاملاً-واکنشگرا-با-هر-اندازه-صفحه-نمای",
   "/sitemap.html"
 ];
@@ -668,187 +661,218 @@ export const SKIPPED_ROWS: readonly SkippedRow[] = [
   },
   {
     "source": "/shop",
-    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L132 wants /fa/products"
+    "reason": "the inventory already serves this (/fa/products), which is what CSV L132 asks for"
+  },
+  {
+    "source": "/cart",
+    "reason": "the inventory already serves this (410), which is what CSV L144 asks for"
+  },
+  {
+    "source": "/my-account",
+    "reason": "the inventory already serves this (410), which is what CSV L145 asks for"
   },
   {
     "source": "/about_us",
-    "reason": "already served by the inventory (/fa/about) — CSV L186 agrees"
+    "reason": "the inventory already serves this (/fa/about), which is what CSV L186 asks for"
   },
   {
     "source": "/contact-us",
-    "reason": "already served by the inventory (/fa/contact) — CSV L187 agrees"
+    "reason": "the inventory already serves this (/fa/contact), which is what CSV L187 asks for"
   },
   {
     "source": "/gas-pipe",
-    "reason": "already served by the inventory (/fa/products/gas-pipe) — CSV L188 agrees"
+    "reason": "the inventory already serves this (/fa/products/gas-pipe), which is what CSV L188 asks for"
   },
   {
     "source": "/air-vent-valve",
-    "reason": "already served by the inventory (/fa/technical-center/air-vent-valve) — CSV L189 agrees"
+    "reason": "the inventory already serves this (/fa/technical-center/air-vent-valve), which is what CSV L189 asks for"
   },
   {
     "source": "/temp-cooficient",
-    "reason": "already served by the inventory (/fa/technical-center/polyethylene-pipe-temperature-pressure) — CSV L190 agrees"
+    "reason": "the inventory already serves this (/fa/technical-center/polyethylene-pipe-temperature-pressure), which is what CSV L190 asks for"
   },
   {
     "source": "/welding",
-    "reason": "already served by the inventory (/fa/technical-center/polyethylene-pipe-welding) — CSV L191 agrees"
+    "reason": "the inventory already serves this (/fa/technical-center/polyethylene-pipe-welding), which is what CSV L191 asks for"
   },
   {
     "source": "/training",
-    "reason": "conflicts with the live inventory (/fa/laboratory); awaiting a decision — CSV L192 wants /fa/laboratory/training"
+    "reason": "the inventory already serves this (/fa/laboratory/training), which is what CSV L192 asks for"
   },
   {
     "source": "/iso-iec17025",
-    "reason": "already served by the inventory (/fa/laboratory/iso-17025) — CSV L193 agrees"
+    "reason": "the inventory already serves this (/fa/laboratory/iso-17025), which is what CSV L193 asks for"
   },
   {
     "source": "/lab-scope",
-    "reason": "conflicts with the live inventory (/fa/laboratory/test-scope); awaiting a decision — CSV L194 wants /fa/laboratory/iso-17025"
+    "reason": "decided in favour of the inventory (/fa/laboratory/test-scope); CSV L194 wanted /fa/laboratory/iso-17025"
   },
   {
     "source": "/qc-and-laboratory",
-    "reason": "already served by the inventory (/fa/laboratory) — CSV L195 agrees"
+    "reason": "the inventory already serves this (/fa/laboratory), which is what CSV L195 asks for"
   },
   {
     "source": "/standards",
-    "reason": "conflicts with the live inventory (/fa/downloads); awaiting a decision — CSV L196 wants /fa/technical-center/polyethylene-pipe-standards"
+    "reason": "decided in favour of the inventory (/fa/downloads); CSV L196 wanted /fa/technical-center/polyethylene-pipe-standards"
   },
   {
     "source": "/certs",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L197 wants /fa/certifications"
+    "reason": "the inventory already serves this (/fa/certifications), which is what CSV L197 asks for"
   },
   {
     "source": "/policy",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L198 wants /fa/quality"
+    "reason": "the inventory already serves this (/fa/quality), which is what CSV L198 asks for"
   },
   {
     "source": "/خط-مشی-کیفیت-آزمایشگاه",
-    "reason": "conflicts with the live inventory (/fa/laboratory); awaiting a decision — CSV L199 wants /fa/quality"
+    "reason": "decided in favour of the inventory (/fa/laboratory); CSV L199 wanted /fa/quality"
   },
   {
     "source": "/articles",
-    "reason": "already served by the inventory (/fa/technical-center) — CSV L200 agrees"
+    "reason": "the inventory already serves this (/fa/technical-center), which is what CSV L200 asks for"
   },
   {
     "source": "/آخرین-نوشته-ها",
-    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L201 wants /fa/technical-center"
+    "reason": "the inventory already serves this (/fa/technical-center), which is what CSV L201 asks for"
   },
   {
     "source": "/category/مقالات",
-    "reason": "already served by the inventory (/fa/technical-center) — CSV L202 agrees"
+    "reason": "the inventory already serves this (/fa/technical-center), which is what CSV L202 asks for"
   },
   {
     "source": "/category/محصولات",
-    "reason": "already served by the inventory (/fa/products) — CSV L203 agrees"
+    "reason": "the inventory already serves this (/fa/products), which is what CSV L203 asks for"
   },
   {
     "source": "/لوله-های-پلی-اتیلن-آبرسانی",
-    "reason": "already served by the inventory (/fa/products/water-supply-pipe) — CSV L204 agrees"
+    "reason": "the inventory already serves this (/fa/products/water-supply-pipe), which is what CSV L204 asks for"
   },
   {
     "source": "/آبیاری-زیرسطحی",
-    "reason": "conflicts with the live inventory (/fa/applications/agriculture-irrigation); awaiting a decision — CSV L205 wants /fa/products/irrigation-pipe"
+    "reason": "decided in favour of the inventory (/fa/applications/agriculture-irrigation); CSV L205 wanted /fa/products/irrigation-pipe"
   },
   {
     "source": "/تولید-بر-اساس-دانش-و-تکنولوژی-روز",
-    "reason": "already served by the inventory (/fa/about) — CSV L216 agrees"
+    "reason": "the inventory already serves this (/fa/about), which is what CSV L216 asks for"
   },
   {
     "source": "/تولید-کننده-ای-با-تراز-اول-کیفیت",
-    "reason": "already served by the inventory (/fa/about) — CSV L217 agrees"
+    "reason": "the inventory already serves this (/fa/about), which is what CSV L217 asks for"
   },
   {
     "source": "/customer-poll",
-    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L218 wants /fa/contact"
+    "reason": "decided in favour of the inventory (410); CSV L218 wanted /fa/contact"
   },
   {
     "source": "/lab-poll",
-    "reason": "conflicts with the live inventory (410 (IGNORE_NONINDEXABLE intent, never implemented)); awaiting a decision — CSV L219 wants /fa/laboratory"
+    "reason": "decided in favour of the inventory (410); CSV L219 wanted /fa/laboratory"
   },
   {
     "source": "/pipeline_design",
-    "reason": "conflicts with the live inventory (/fa/calculator/pipeline-design); awaiting a decision — CSV L220 wants /fa/technical-center"
+    "reason": "decided in favour of the inventory (/fa/calculator/pipeline-design); CSV L220 wanted /fa/technical-center"
   },
   {
     "source": "/پیمان-دادخواه",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L222 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L222 asks for"
   },
   {
     "source": "/محمد-عزیزنژاد",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L223 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L223 asks for"
   },
   {
     "source": "/مهندس-رحمانی",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L224 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L224 asks for"
   },
   {
     "source": "/مدیر-فروش",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L225 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L225 asks for"
   },
   {
     "source": "/نظر-مشتری-امینی",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L226 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L226 asks for"
+  },
+  {
+    "source": "/صفحه-اصلی/پیمایش-تک-صفحه-ای",
+    "reason": "the inventory already serves this (410), which is what CSV L227 asks for"
+  },
+  {
+    "source": "/صفحه-اصلی-2",
+    "reason": "the inventory already serves this (410), which is what CSV L228 asks for"
+  },
+  {
+    "source": "/صفحه-اصلی-3",
+    "reason": "the inventory already serves this (410), which is what CSV L229 asks for"
+  },
+  {
+    "source": "/بدون-سایدبار",
+    "reason": "the inventory already serves this (410), which is what CSV L232 asks for"
+  },
+  {
+    "source": "/بدون-سایدبار-باریک",
+    "reason": "the inventory already serves this (410), which is what CSV L233 asks for"
   },
   {
     "source": "/بلوک-ریکاردو",
-    "reason": "conflicts with the live inventory (/fa/projects); awaiting a decision — CSV L234 wants 410"
+    "reason": "decided in favour of the inventory (/fa/projects); CSV L234 wanted 410"
   },
   {
     "source": "/الیزا-روما",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L235 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L235 asks for"
   },
   {
     "source": "/استراتژی-محتوا",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L236 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L236 asks for"
   },
   {
     "source": "/بازاریابی-آنلاین",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L237 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L237 asks for"
   },
   {
     "source": "/بهینه-سازی-فروش",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L238 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L238 asks for"
   },
   {
     "source": "/خرید،-شروع-راه-دوستی-ماست",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L239 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L239 asks for"
   },
   {
     "source": "/اسلایدرهای-عالی-برای-نشان-دادن-محتوای",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L240 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L240 asks for"
   },
   {
     "source": "/طرح-بندی-ها-با-ظاهر-جذاب،-همه-در-یک-قالب",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L241 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L241 asks for"
   },
   {
     "source": "/صفحه-سفارشی-سازی-با-پیش-نمایش-زنده",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L242 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L242 asks for"
   },
   {
     "source": "/چند-صفحه-اصلی،-بخش-نمونه-کارها-و-بخش-وبل",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L244 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L244 asks for"
   },
   {
     "source": "/پشتیبانی-رایگان-از-سایت-شما-در-هر-زمان",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L245 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L245 asks for"
   },
   {
     "source": "/category/تبلیغات",
-    "reason": "conflicts with the live inventory (/fa/technical-center); awaiting a decision — CSV L246 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L246 asks for"
   },
   {
     "source": "/category/blog",
-    "reason": "conflicts with the live inventory (/fa/technical-center); awaiting a decision — CSV L247 wants 410"
+    "reason": "decided in favour of the inventory (/fa/technical-center); CSV L247 wanted 410"
   },
   {
     "source": "/category/blog/برندینگ",
-    "reason": "conflicts with the live inventory (/fa/about); awaiting a decision — CSV L248 wants 410"
+    "reason": "the inventory already serves this (410), which is what CSV L248 asks for"
   }
 ];
 
 export const MAP_ROW_COUNT = 248;
 
-/** Paths left to the live inventory pending a decision. */
-export const CONFLICT_COUNT = 31;
+/** Shared paths still awaiting a ruling. Zero means the map is fully decided. */
+export const CONFLICT_COUNT = 0;
+
+/** Shared paths whose outcome has been decided and lives in the inventory. */
+export const DECISION_COUNT = 52;

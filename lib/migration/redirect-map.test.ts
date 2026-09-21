@@ -3,7 +3,12 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { resolveLegacyRequest } from "@/lib/migration/legacy-resolver";
-import { CONFLICT_COUNT, MAP_ROW_COUNT, SKIPPED_ROWS } from "@/data/migration/redirect-map";
+import {
+  CONFLICT_COUNT,
+  DECISION_COUNT,
+  MAP_ROW_COUNT,
+  SKIPPED_ROWS,
+} from "@/data/migration/redirect-map";
 import { resetLegacyRedirectLookup } from "@/lib/migration/redirects";
 import { legacyUrls } from "@/data/migration/legacy-urls";
 import overlap from "@/data/migration/redirect-conflicts.json";
@@ -19,20 +24,39 @@ beforeAll(() => {
   resetLegacyRedirectLookup();
 });
 
-/** The inventory outcome for a path, recomputed here rather than trusted. */
+/**
+ * The inventory outcome for a path, recomputed from the records here rather
+ * than trusted from the compiled map. "410" for a gone row, a `/fa...` path
+ * for a redirect, null when the inventory does not claim the path.
+ */
 function inventoryOutcome(p: string): string | null {
   const record = legacyUrls.find(
     (r) => r.host === "bukanpipe.com" && normalize(r.oldPath) === p,
   );
-  if (!record || record.proposedNewPath === null) return null;
+  if (!record) return null;
+
+  if (record.proposedNewPath === null) {
+    const gone =
+      record.action === "IGNORE_NONINDEXABLE" && !/\.[a-z0-9]+$/i.test(p);
+    return gone ? "410" : null;
+  }
+
   const eligible =
     record.action === "REDIRECT_301" ||
     record.action === "MERGE" ||
     (record.action === "REBUILD" &&
       normalize(record.oldPath) !== normalize(record.proposedNewPath));
   if (!eligible) return null;
+
   const d = normalize(record.proposedNewPath);
   return d === "/" ? "/fa" : `/fa${d}`;
+}
+
+/** What the resolver actually answers, in the same vocabulary. */
+function actualOutcome(p: string): string | null {
+  const outcome = resolveLegacyRequest(p);
+  if (outcome === null) return null;
+  return outcome.kind === "gone" ? "410" : outcome.destination;
 }
 
 const ROOT = path.resolve(__dirname, "../..");
@@ -132,12 +156,14 @@ describe("redirect map is compiled from the CSV", () => {
   });
 
   it("gives a reason for every skipped row", () => {
-    expect(SKIPPED_ROWS).toHaveLength(48);
+    expect(SKIPPED_ROWS).toHaveLength(55);
     for (const row of SKIPPED_ROWS) expect(row.reason).toMatch(/\S/);
   });
 
   it("skips the three structurally unimplementable rows", () => {
-    const structural = SKIPPED_ROWS.filter((r) => !/inventory/.test(r.reason));
+    const structural = SKIPPED_ROWS.filter(
+      (r) => !/inventory/.test(r.reason) && !/decided/.test(r.reason),
+    );
     expect(structural.map((r) => r.source).sort()).toEqual([
       "/about",
       "/contact",
@@ -147,61 +173,97 @@ describe("redirect map is compiled from the CSV", () => {
 });
 
 describe("overlap with the live inventory", () => {
-  it("records exactly the conflicts the two sources actually have", () => {
-    expect(overlap.conflicts).toHaveLength(CONFLICT_COUNT);
-    expect(overlap.conflicts).toHaveLength(31);
+  it("has no undecided conflicts left", () => {
+    expect(CONFLICT_COUNT).toBe(0);
+    expect(overlap.conflicts).toEqual([]);
+  });
 
-    // Every recorded conflict must really be one: the path must exist in the
-    // inventory and the two sources must really disagree.
-    for (const c of overlap.conflicts) {
-      const row = rows.find((r) => r.line === c.csvLine);
-      expect(row, `CSV L${c.csvLine} missing`).toBeDefined();
-      expect(normalize(row!.oldPath)).toBe(c.path);
+  it("records a decision for every path the two sources share", () => {
+    expect(overlap.decisions).toHaveLength(DECISION_COUNT);
+    expect(overlap.decisions).toHaveLength(52);
 
+    const shared = rows.filter((r) => {
+      if (isSpecial(r.oldPath)) return false;
+      return inventoryOutcome(normalize(r.oldPath)) !== null;
+    });
+    expect(new Set(overlap.decisions.map((d) => d.path))).toEqual(
+      new Set(shared.map((r) => normalize(r.oldPath))),
+    );
+  });
+
+  it("serves every decided path from the inventory, exactly as decided", () => {
+    for (const d of overlap.decisions) {
+      expect(inventoryOutcome(d.path), `${d.path} inventory`).toBe(d.outcome);
+      expect(actualOutcome(d.path), `${d.path} served`).toBe(d.outcome);
+    }
+  });
+
+  it("keeps the inventory's answer where the inventory won the ruling", () => {
+    const invWins = overlap.decisions.filter((d) => d.winner === "inventory");
+    expect(invWins).toHaveLength(9);
+
+    for (const d of invWins) {
+      expect(actualOutcome(d.path), d.path).toBe(d.outcome);
+      expect(actualOutcome(d.path), `${d.path} must not take the CSV value`).not.toBe(
+        d.csvWanted,
+      );
+    }
+  });
+
+  it("matches the CSV wherever the ruling adopted it", () => {
+    const agreed = overlap.decisions.filter((d) => d.winner === "agreed");
+    expect(agreed).toHaveLength(43);
+
+    for (const d of agreed) {
+      const row = rows.find((r) => r.line === d.csvLine);
       const csvOutcome = row!.action === "410" ? "410" : row!.destination;
-      expect(csvOutcome, `L${c.csvLine} csv outcome`).toBe(c.csv);
-
-      const inv = inventoryOutcome(c.path);
-      if (inv === null) {
-        expect(c.inventory, `L${c.csvLine}`).toMatch(/never implemented|no redirect/);
-      } else {
-        expect(inv, `L${c.csvLine} inventory outcome`).toBe(c.inventory);
-        expect(inv).not.toBe(csvOutcome);
-      }
+      expect(csvOutcome, `L${d.csvLine}`).toBe(d.outcome);
+      expect(actualOutcome(d.path), d.path).toBe(csvOutcome);
     }
   });
 
-  it("leaves every conflicting path on its inventory behaviour, untouched", () => {
-    for (const c of overlap.conflicts) {
-      const inv = inventoryOutcome(c.path);
-      const outcome = resolveLegacyRequest(c.path);
-
-      if (inv === null) {
-        // Inventory only intended a 410 and never implemented one; the CSV
-        // wanted a redirect. Neither is applied until a decision is made.
-        expect(outcome, `${c.path} must stay untouched`).toBeNull();
-      } else {
-        expect(outcome?.kind, c.path).toBe("redirect");
-        expect((outcome as { destination: string }).destination, c.path).toBe(inv);
-        expect((outcome as { destination: string }).destination, c.path).not.toBe(c.csv);
-      }
+  it("answers 410 for the rows the inventory marks non-indexable", () => {
+    // These used to fall through to the locale hop and a soft 404.
+    for (const p of ["/customer-poll", "/lab-poll", "/cart", "/my-account", "/feed"]) {
+      expect(actualOutcome(p), p).toBe("410");
     }
   });
 
-  it("implements the 410s the inventory intended but never shipped", () => {
-    const newly = overlap.covered.filter((c) => c.outcome === "410");
-    expect(newly).toHaveLength(7);
-    for (const c of newly) {
-      expect(resolveLegacyRequest(c.path)?.kind, c.path).toBe("gone");
-    }
+  it("applies the rulings that moved an inventory destination", () => {
+    const moved: [string, string][] = [
+      ["/certs", "/fa/certifications"],
+      ["/policy", "/fa/quality"],
+      ["/training", "/fa/laboratory/training"],
+      ["/shop", "/fa/products"],
+      ["/آخرین-نوشته-ها", "/fa/technical-center"],
+    ];
+    for (const [p, expected] of moved) expect(actualOutcome(p), p).toBe(expected);
   });
 
-  it("keeps already-served inventory redirects exactly as they were", () => {
-    for (const c of overlap.covered.filter((x) => x.outcome !== "410")) {
-      const outcome = resolveLegacyRequest(c.path);
-      expect(outcome?.kind, c.path).toBe("redirect");
-      expect((outcome as { destination: string }).destination, c.path).toBe(c.outcome);
-    }
+  it("410s the author and demo pages that used to dilute About", () => {
+    const demos = [
+      "/پیمان-دادخواه",
+      "/مدیر-فروش",
+      "/الیزا-روما",
+      "/استراتژی-محتوا",
+      "/پشتیبانی-رایگان-از-سایت-شما-در-هر-زمان",
+      "/category/تبلیغات",
+      "/category/blog/برندینگ",
+    ];
+    for (const p of demos) expect(actualOutcome(p), p).toBe("410");
+  });
+
+  it("leaves the rulings that kept the inventory destination", () => {
+    const kept: [string, string][] = [
+      ["/pipeline_design", "/fa/calculator/pipeline-design"],
+      ["/lab-scope", "/fa/laboratory/test-scope"],
+      ["/standards", "/fa/downloads"],
+      ["/خط-مشی-کیفیت-آزمایشگاه", "/fa/laboratory"],
+      ["/آبیاری-زیرسطحی", "/fa/applications/agriculture-irrigation"],
+      ["/category/blog", "/fa/technical-center"],
+      ["/بلوک-ریکاردو", "/fa/projects"],
+    ];
+    for (const [p, expected] of kept) expect(actualOutcome(p), p).toBe(expected);
   });
 });
 
@@ -223,9 +285,8 @@ describe("every plain CSV row", () => {
           // three structural skips resolve to nothing. Asserted in detail by
           // the overlap suite above.
           const inv = inventoryOutcome(source);
-          const outcome = resolveLegacyRequest(source);
-          if (inv === null) expect([null, "gone"]).toContain(outcome?.kind ?? null);
-          else expect((outcome as { destination: string }).destination).toBe(inv);
+          if (inv === null) expect(actualOutcome(source)).toBeNull();
+          else expect(actualOutcome(source), source).toBe(inv);
           return;
         }
 

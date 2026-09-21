@@ -6,7 +6,7 @@ import {
   QUERY_RULES,
 } from "../../data/migration/redirect-map";
 import { normalizeLegacyPath } from "./normalize";
-import { resolveLegacyRedirect } from "./redirects";
+import { resolveInventoryOutcome } from "./redirects";
 import { hasSpamQueryParam } from "./gone";
 
 /**
@@ -93,12 +93,14 @@ export function resolveLegacyRequest(
 
   // The Phase-002 inventory is the base layer and is live in production
   // (ENABLE_LEGACY_REDIRECTS=true). It is consulted first so the CSV can only
-  // ever add: where the two disagree, the path is excluded from the compiled
-  // map and listed in data/migration/redirect-conflicts.json for a decision,
-  // and this lookup is what keeps serving it.
-  const fromInventory = resolveLegacyRedirect(normalized);
+  // ever add. Every path the two sources shared has been decided and written
+  // into the inventory — data/migration/redirect-conflicts.json records each
+  // decision and now carries no open conflicts.
+  const fromInventory = resolveInventoryOutcome(normalized);
   if (fromInventory !== null) {
-    return { kind: "redirect", destination: fromInventory, preserveQuery: true };
+    return fromInventory.kind === "gone"
+      ? { kind: "gone" }
+      : { kind: "redirect", destination: fromInventory.destination, preserveQuery: true };
   }
 
   if (exactGone.has(normalized)) {

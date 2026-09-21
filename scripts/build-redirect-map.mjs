@@ -47,24 +47,29 @@ function parseCsv(text) {
 /**
  * Paths the CSV shares with data/migration/legacy-urls.ts.
  *
- * The inventory is live in production (ENABLE_LEGACY_REDIRECTS=true), so this
- * map only ever ADDS. A `conflicts` entry — same path, different outcome —
- * is left to the inventory and awaits a human decision. A `covered` entry
- * agrees with the inventory: the redirect ones are already served and are
- * skipped, the 410 ones were only an intent the inventory never implemented,
- * so the CSV row is what finally implements them.
+ * The inventory is the base layer and is live in production
+ * (ENABLE_LEGACY_REDIRECTS=true), so this map only ever ADDS. Every shared
+ * path has been decided and the decision written into the inventory, so the
+ * inventory already serves all of them and the CSV rows are skipped here.
+ *
+ * `conflicts` is for differences that have NOT been decided yet. It is empty;
+ * anything appearing there is likewise left to the inventory until someone
+ * rules on it.
  */
 const overlap = JSON.parse(readFileSync(CONFLICTS, "utf8"));
+const decidedPaths = new Map(
+  overlap.decisions.map((d) => [
+    d.path,
+    d.winner === "inventory"
+      ? `decided in favour of the inventory (${d.outcome}); CSV L${d.csvLine} wanted ${d.csvWanted}`
+      : `the inventory already serves this (${d.outcome}), which is what CSV L${d.csvLine} asks for`,
+  ]),
+);
 const conflictPaths = new Map(
   overlap.conflicts.map((c) => [
     c.path,
-    `conflicts with the live inventory (${c.inventory}); awaiting a decision — CSV L${c.csvLine} wants ${c.csv}`,
+    `undecided conflict with the live inventory (${c.inventory}); CSV L${c.csvLine} wants ${c.csv}`,
   ]),
-);
-const coveredRedirects = new Map(
-  overlap.covered
-    .filter((c) => c.outcome !== "410")
-    .map((c) => [c.path, `already served by the inventory (${c.outcome}) — CSV L${c.csvLine} agrees`]),
 );
 
 /**
@@ -197,7 +202,7 @@ function build() {
 
     const source = normalize(row.old_path);
     const skipReason =
-      SKIP.get(source) ?? conflictPaths.get(source) ?? coveredRedirects.get(source);
+      SKIP.get(source) ?? conflictPaths.get(source) ?? decidedPaths.get(source);
     if (skipReason) {
       skipped.push({ source, reason: skipReason });
       continue;
@@ -270,8 +275,11 @@ export const SKIPPED_ROWS: readonly SkippedRow[] = ${j(skipped)};
 
 export const MAP_ROW_COUNT = ${rows.length};
 
-/** Paths left to the live inventory pending a decision. */
+/** Shared paths still awaiting a ruling. Zero means the map is fully decided. */
 export const CONFLICT_COUNT = ${overlap.conflicts.length};
+
+/** Shared paths whose outcome has been decided and lives in the inventory. */
+export const DECISION_COUNT = ${overlap.decisions.length};
 `;
 }
 
