@@ -1,8 +1,40 @@
 # Legacy Redirect Map (updated)
 
 **Inventory:** `data/migration/legacy-urls.ts`  
-**Engine:** `lib/migration/redirects.ts`  
+**Engine:** `lib/migration/legacy-resolver.ts` (rule table in `lib/migration/redirects.ts`)  
 **Enable in production:** `ENABLE_LEGACY_REDIRECTS=true`
+
+## How a request is resolved
+
+`resolveLegacyRequest(pathname, searchParams)` returns one of three outcomes,
+in this order. Middleware is the only caller.
+
+1. **410 for spam parameters.** A request carrying `LOSS` or `Male` is gone on
+   any path, checked ahead of every redirect including the canonical-host hop,
+   so an injected URL is never rewritten into a real one first. This one does
+   not wait for `ENABLE_LEGACY_REDIRECTS`.
+2. **Nothing, when a path addresses a file** (`/wp-content/**.pdf`), except
+   `/index.php`. Those keep whatever the static layer answers.
+3. **410 for deleted pages** — the `IGNORE_NONINDEXABLE` rows, which are theme
+   demos, WooCommerce scaffolding, surveys and the WordPress feed. They are
+   never 301'd to the homepage; that is a soft 404.
+4. **Exact rows**, then **`?p=` / `?page_id=`** keyed by the inventory's own
+   `wordpressId`, then **prefix patterns** (longest first). Exact beats pattern,
+   so `/category/محصولات` keeps `/products` instead of falling into
+   `/category/*` → `/technical-center`.
+
+Every redirect is 308, single-hop, and matches both slash forms. Persian
+permalinks arrive percent-encoded and are decoded before matching.
+
+Unmapped paths are left alone: `/wp-admin`, `/wp-includes`, `/wp-content`,
+`/wp-json` and anything addressing a file skip the locale hop so they 404
+directly rather than spending a 308 to reach the same 404.
+
+### Not implemented
+
+The `irantech` query-string rows from the draft map are not here — no record of
+those parameters exists in the repo, and they are not derivable from the
+inventory. They need the original row data before they can be written.
 
 ## High-priority redirects (updated for content phase)
 
