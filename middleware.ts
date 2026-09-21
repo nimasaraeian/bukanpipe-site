@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { isLocale } from "@/lib/i18n/config";
 import { localeForUnprefixedPath } from "@/lib/i18n/apex-locale";
 import { resolveLegacyRedirect } from "@/lib/migration/redirects";
+import { goneResponseInit, hasSpamQueryParam } from "@/lib/migration/gone";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 const CANONICAL_HOST = "bukanpipe.com";
@@ -40,6 +41,11 @@ function permanentRedirect(request: NextRequest, pathname: string): NextResponse
   return NextResponse.redirect(redirectUrl, PERMANENT);
 }
 
+function goneResponse(): NextResponse {
+  const { status, headers, body } = goneResponseInit();
+  return new NextResponse(body, { status, headers });
+}
+
 function resolveCanonicalHostRedirect(request: NextRequest): NextResponse | null {
   const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
   if (host !== `www.${CANONICAL_HOST}`) {
@@ -62,6 +68,12 @@ function stripTrailingSlash(pathname: string): string {
 }
 
 export function middleware(request: NextRequest) {
+  // Checked before every redirect, including the canonical-host hop: a spam
+  // URL must not be rewritten into a real one on its way to being answered.
+  if (hasSpamQueryParam(request.nextUrl.searchParams)) {
+    return goneResponse();
+  }
+
   const canonicalHostRedirect = resolveCanonicalHostRedirect(request);
   if (canonicalHostRedirect) {
     return canonicalHostRedirect;
