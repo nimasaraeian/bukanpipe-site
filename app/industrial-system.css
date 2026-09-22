@@ -1733,22 +1733,34 @@
   }
 
   [dir="rtl"] .ind-page-hero--brand-photo .ind-page-hero-content,
+  /*
+    Column flex: the cross axis is the inline axis, so in RTL `flex-start` is
+    the right edge and `flex-end` is the left one. These heroes want the copy
+    on the right, which is `flex-start` here — `flex-end` was pushing every FA
+    hero to the left below 1024px.
+  */
   [dir="rtl"] .ind-page-hero--brand-technical .ind-page-hero-content,
   [dir="rtl"] .ind-page-hero--product-photo .ind-page-hero-content {
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
   [dir="rtl"] .ind-page-hero:not(.ind-page-hero--brand-photo):not(.ind-page-hero--brand-technical):not(.ind-page-hero--product-photo) .ind-page-hero-content {
     align-items: flex-start;
   }
 
+  /*
+    The auto margin has to sit on the inline END (the left in RTL) to push the
+    block right. On inline-start it did the opposite, and together with the
+    `flex-end` above it left the copy stack stranded on the left of the screen
+    over the photo.
+  */
   [dir="rtl"] .ind-page-hero--brand-photo:not(.ind-page-hero--brand-about) .ind-page-hero-copy-stack--brand,
   [dir="rtl"] .ind-page-hero--brand-photo:not(.ind-page-hero--brand-about) .ind-page-hero-copy-stack,
   [dir="rtl"] .ind-page-hero--brand-technical .ind-page-hero-copy-stack,
   [dir="rtl"] .ind-page-hero--product-photo .ind-page-hero-copy-stack {
-    margin-inline-start: auto !important;
-    margin-inline-end: 0 !important;
-    align-self: flex-end;
+    margin-inline-start: 0 !important;
+    margin-inline-end: auto !important;
+    align-self: flex-start;
     text-align: right;
   }
 

@@ -28,7 +28,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       { label: "Jointing", value: "Butt fusion and electrofusion (project-specific)" },
     ]),
     specNote:
-      "Diameter, SDR, PN and weight-per-metre tables are issued per project. Request a specification sheet from sales.",
+      "A sample of the catalogue dimension table follows; the full diameter, SDR and wall thickness chart is published in the technical centre.",
     advantages: [
       "Corrosion-free service life in buried installations",
       "Smooth internal surface supports hydraulic design",
@@ -51,6 +51,18 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       "hdpe-installation-guide",
       "polyethylene-pipe-temperature-pressure",
       "air-vent-valve",
+    ],
+    extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "Catalogue dimensions — sample",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "water-supply",
+        sizes: [63, 110, 160, 250, 400, 630],
+      },
     ],
     curatedLinks: [
       { label: "PE100 Technical Guide", path: seoLandingPaths.pe100Guide, hint: "MRS, SDR and PN" },
@@ -111,6 +123,18 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedProducts: ["pe100-pipe", "water-supply-pipe"],
     relatedApplications: ["gas-distribution"],
     relatedArticles: ["hdpe-installation-guide", "polyethylene-pipe-welding", "polyethylene-pipe-temperature-pressure"],
+    extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "Catalogue dimensions — sample",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "gas-supply",
+        sizes: [63, 90, 110, 160, 225],
+      },
+    ],
     curatedLinks: [
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
       { label: "HDPE pipe welding guide", path: seoLandingPaths.welding },
@@ -168,6 +192,18 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedProducts: ["water-supply-pipe"],
     relatedApplications: ["agriculture-irrigation"],
     relatedArticles: ["subsurface-drip-irrigation", "hdpe-installation-guide"],
+    extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "Catalogue dimensions — sample",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "drip-irrigation",
+        sizes: [16, 20, 25, 32],
+      },
+    ],
     curatedLinks: [
       { label: "Agriculture & irrigation applications", path: "/applications/agriculture-irrigation" },
       { label: "Water HDPE Pipes", path: seoLandingPaths.water },
@@ -277,6 +313,18 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedProducts: ["water-supply-pipe", "gas-pipe", "industrial-pipe"],
     relatedApplications: ["water-transfer", "industrial", "gas-distribution"],
     relatedArticles: ["pe100-technical-guide", "polyethylene-pipe-temperature-pressure", "air-vent-valve"],
+    extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "Catalogue dimensions — sample",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "water-supply",
+        sizes: [110, 160, 250, 400, 630],
+      },
+    ],
     curatedLinks: [
       { label: "PE100 Technical Guide", path: seoLandingPaths.pe100Guide },
       { label: "HDPE Pipe Guide (pillar)", path: seoLandingPaths.pillar },

@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ContentBlock } from "@/content/models/content-document";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { routes } from "@/lib/config/routes";
+import { DimensionExcerpt, DimensionTableBlock } from "@/components/content/DimensionTables";
 
 const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
 
@@ -223,6 +224,12 @@ export function ContentBlockRenderer({
   options?: ContentBlockOptions;
 }) {
   const { contactLinks = false, articleMode = false } = options;
+  const { locale, path: localePath } = useLocale();
+
+  const fullTablePath =
+    locale === "fa"
+      ? "/technical-center/polyethylene-pipe-dimensions-table"
+      : "/technical-center/hdpe-pipe-dimensions-chart";
 
   if (block.type === "paragraph") {
     return (
@@ -271,6 +278,21 @@ export function ContentBlockRenderer({
 
   if (block.type === "definition") {
     return <DefinitionBlock term={block.term} text={block.text} />;
+  }
+
+  if (block.type === "dimension-table") {
+    return <DimensionTableBlock table={block.table} locale={locale} />;
+  }
+
+  if (block.type === "dimension-excerpt") {
+    return (
+      <DimensionExcerpt
+        table={block.table}
+        sizes={block.sizes}
+        locale={locale}
+        href={localePath(fullTablePath)}
+      />
+    );
   }
 
   if (block.type === "spec-table") {

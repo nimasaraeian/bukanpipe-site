@@ -86,6 +86,11 @@ export const faTechnicalHub: ContentDocument = {
       type: "internal-links",
       title: "راهنماهای پرتقاضا",
       links: [
+        {
+          label: "جدول سایز، ضخامت و SDR لوله پلی اتیلن",
+          path: "/technical-center/polyethylene-pipe-dimensions-table",
+          hint: "جدول کامل کاتالوگ برای آبرسانی، گاز و آبیاری قطره‌ای",
+        },
         { label: "لوله پلی اتیلن چیست؟", path: "/polyethylene-pipe" },
         { label: "راهنمای انتخاب لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
         { label: "مشخصات فنی، SDR و PN", path: "/technical-center/polyethylene-pipe-specifications" },
@@ -221,6 +226,11 @@ export const faPillarPolyethylene: ContentDocument = {
       type: "internal-links",
       title: "از معرفی به محصول و مرجع فنی",
       links: [
+        {
+          label: "جدول سایز، ضخامت و SDR لوله پلی اتیلن",
+          path: "/technical-center/polyethylene-pipe-dimensions-table",
+          hint: "جدول کامل کاتالوگ برای آبرسانی، گاز و آبیاری قطره‌ای",
+        },
         { label: "لوله پلی اتیلن PE100", path: "/products/pe100-pipe" },
         { label: "لوله پلی اتیلن آبرسانی", path: "/products/water-supply-pipe" },
         { label: "لوله پلی اتیلن گاز", path: "/products/gas-pipe" },
@@ -293,12 +303,134 @@ export const faPillarPolyethylene: ContentDocument = {
   ],
 };
 
+/**
+ * Catalogue dimension tables. Every number is rendered from
+ * bukanpipe-dimension-tables.json, transcribed from the factory catalogue —
+ * nothing on this page is computed or estimated.
+ */
+export const faPipeDimensionsTable: ContentDocument = {
+  id: "article-polyethylene-pipe-dimensions-table",
+  slug: "polyethylene-pipe-dimensions-table",
+  path: "/technical-center/polyethylene-pipe-dimensions-table",
+  locale: "fa",
+  kind: "article",
+  title: "جدول سایز، ضخامت و SDR لوله پلی اتیلن",
+  seoTitle: "جدول سایز، ضخامت و SDR لوله پلی اتیلن (PE80 و PE100) | بوکان پایپ",
+  seoDescription:
+    "جدول کامل قطر، ضخامت جداره و SDR لوله پلی اتیلن آبرسانی، گازرسانی و آبیاری قطره‌ای بوکان پایپ — از ۱۶ تا ۶۳۰ میلی‌متر، بر پایه کاتالوگ کارخانه.",
+  description:
+    "جدول ابعاد کاتالوگ بوکان پایپ برای لوله آبرسانی، گازرسانی و آبیاری قطره‌ای.",
+  primaryKeyword: "جدول سایز لوله پلی اتیلن",
+  secondaryKeywords: [
+    "جدول ضخامت لوله پلی اتیلن",
+    "SDR لوله پلی اتیلن",
+    "جدول وزن لوله پلی اتیلن",
+    "سایز لوله پلی اتیلن آبرسانی",
+  ],
+  status: "published",
+  evidenceStatus: "verified",
+  verificationStatus: "verified",
+  lastReviewed: "2026-09-22",
+  references: ["کاتالوگ شرکت لوله پلی‌اتیلن بوکان (بوکان پایپ)"],
+  breadcrumbs: [
+    { label: "خانه", path: "/" },
+    { label: "مرکز فنی", path: "/technical-center" },
+    {
+      label: "جدول سایز، ضخامت و SDR",
+      path: "/technical-center/polyethylene-pipe-dimensions-table",
+    },
+  ],
+  sections: [
+    {
+      type: "paragraph",
+      text: "این صفحه جدول‌های ابعاد کاتالوگ بوکان پایپ را همان‌طور که هست منتشر می‌کند: قطر خارجی، ضخامت جداره و SDR برای لوله آبرسانی، گازرسانی و آبیاری قطره‌ای. هیچ عددی محاسبه یا گرد نشده است و خط تیره در جدول یعنی آن قطر در آن SDR تولید نمی‌شود.",
+    },
+    { type: "heading", level: 2, text: "رابطه SDR، PN و ضخامت جداره" },
+    {
+      type: "paragraph",
+      text: "SDR نسبت قطر خارجی به ضخامت جداره است؛ یعنی SDR = DN ÷ en. هرچه SDR کوچک‌تر باشد جداره نسبت به قطر ضخیم‌تر است و لوله فشار بیشتری را تحمل می‌کند. به همین دلیل در جدول آبرسانی، ستون SDR 6 ضخیم‌ترین جداره و بالاترین PN را دارد و ستون SDR 51 نازک‌ترین.",
+    },
+    {
+      type: "paragraph",
+      text: "PN فشار اسمی بر حسب بار در دمای مرجع ۲۰ درجه سانتی‌گراد است. برای یک SDR مشخص، گرید ماده هم در PN اثر می‌گذارد: PE100 با استحکام بلندمدت بالاتر، در همان SDR یک پله PN بالاتر از PE80 می‌دهد. در جدول آبرسانی همین را می‌بینید — مثلاً SDR 11 برای PE80 برابر PN 12.5 و برای PE100 برابر PN 16 است.",
+    },
+    {
+      type: "paragraph",
+      text: "اگر دمای کارکرد از ۲۰ درجه بالاتر باشد، فشار مجاز با ضریب کاهش دما اصلاح می‌شود. انتخاب نهایی SDR باید بر پایه فشار طراحی، دما و شرایط نصب انجام شود، نه فقط از روی جدول.",
+    },
+    { type: "heading", level: 2, text: "جدول لوله آبرسانی" },
+    { type: "dimension-table", table: "water-supply" },
+    { type: "heading", level: 2, text: "جدول لوله گازرسانی" },
+    {
+      type: "paragraph",
+      text: "لوله گازرسانی در SDR 11 و SDR 13.6 تولید می‌شود و ضخامت جدول حداقل است؛ عدد داخل پرانتز رواداری مثبت کاتالوگ را نشان می‌دهد.",
+    },
+    { type: "dimension-table", table: "gas-supply" },
+    { type: "heading", level: 2, text: "جدول لوله آبیاری قطره‌ای" },
+    { type: "dimension-table", table: "drip-irrigation" },
+    {
+      type: "internal-links",
+      title: "ادامه مسیر",
+      links: [
+        {
+          label: "ماشین‌حساب طراحی خط لوله",
+          path: "/calculator/pipeline-design",
+          hint: "محاسبه قطر و افت فشار بر پایه دبی و طول مسیر",
+        },
+        {
+          label: "راهنمای فنی PE100",
+          path: "/technical-center/pe100-technical-guide",
+          hint: "MRS، SDR و انتخاب گرید",
+        },
+        {
+          label: "مقایسه PE80 و PE100",
+          path: "/technical-center/pe80-vs-pe100",
+        },
+        { label: "لوله آبرسانی", path: "/products/water-supply-pipe" },
+        { label: "لوله گازرسانی", path: "/products/gas-pipe" },
+      ],
+    },
+  ],
+  related: {
+    products: ["water-supply-pipe", "gas-pipe", "pe100-pipe", "irrigation-pipe"],
+    articles: ["pe100-technical-guide", "pe80-vs-pe100"],
+  },
+  faqs: [
+    {
+      question: "SDR لوله پلی اتیلن یعنی چه؟",
+      answer:
+        "SDR نسبت قطر خارجی لوله به ضخامت جداره آن است (SDR = DN ÷ en). SDR کوچک‌تر یعنی جداره ضخیم‌تر و تحمل فشار بیشتر.",
+    },
+    {
+      question: "تفاوت PE80 و PE100 در جدول ابعاد چیست؟",
+      answer:
+        "ضخامت جداره در یک SDR برای هر دو گرید یکسان است، اما PN متفاوت می‌شود. PE100 استحکام بلندمدت بالاتری دارد، بنابراین در همان SDR فشار اسمی بالاتری می‌دهد؛ مثلاً SDR 11 برای PE80 برابر PN 12.5 و برای PE100 برابر PN 16 است.",
+    },
+    {
+      question: "بوکان پایپ چه قطرهایی تولید می‌کند؟",
+      answer:
+        "جدول آبرسانی کاتالوگ قطرهای ۱۶ تا ۶۳۰ میلی‌متر را پوشش می‌دهد، لوله گازرسانی ۲۵ تا ۲۲۵ میلی‌متر و لوله آبیاری قطره‌ای ۱۲ تا ۳۲ میلی‌متر است. همه ترکیب‌های قطر و SDR موجود نیستند؛ خط تیره در جدول یعنی آن ترکیب تولید نمی‌شود.",
+    },
+    {
+      question: "چرا ستون وزن در جدول نیست؟",
+      answer:
+        "کاتالوگ کارخانه عدد کیلوگرم بر متر منتشر نکرده است. تا زمانی که واحد فنی این اعداد را تأیید نکند، ستون وزن نمایش داده نمی‌شود تا عدد تأییدنشده به‌عنوان مشخصات رسمی منتشر نشود.",
+    },
+    {
+      question: "آیا می‌توانم از روی این جدول لوله انتخاب کنم؟",
+      answer:
+        "جدول ابعاد نقطه شروع است، نه انتخاب نهایی. SDR مناسب باید بر پایه فشار طراحی، دمای کارکرد و شرایط نصب تعیین شود. برای محاسبه اولیه از ماشین‌حساب طراحی خط لوله استفاده کنید و برای تأیید نهایی با واحد فنی تماس بگیرید.",
+    },
+  ],
+};
+
 export const faTechnicalArticles: readonly ContentDocument[] = [
   buildSeoArticleDocument("fa", faHdpePillarArticle),
   buildSeoArticleDocument("fa", faWaterPillarArticle),
   buildSeoArticleDocument("fa", faGasPillarArticle),
   faTechnicalHub,
   faPillarPolyethylene,
+  faPipeDimensionsTable,
   article(
     "polyethylene-pipe-welding",
     "جوش لوله‌های پلی‌اتیلن",

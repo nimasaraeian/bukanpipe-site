@@ -31,7 +31,8 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       { label: "استاندارد متداول", value: "INSO 14427-2 برای تولید آبرسانی واجد شرایط" },
       { label: "اتصال", value: "جوش لب به لب و الکتروفیوژن (مطابق پروژه)" },
     ]),
-    specNote: "جدول قطر، SDR، PN و وزن واحد طول برای هر پروژه صادر می‌شود.",
+    specNote:
+      "نمونه‌ای از جدول ابعاد کاتالوگ در ادامه آمده است؛ جدول کامل قطر، SDR و ضخامت در مرکز فنی منتشر شده است.",
     advantages: [
       "عمر مفید بدون خوردگی در دفن",
       "سطح داخلی صاف برای طراحی هیدرولیک",
@@ -52,6 +53,18 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       "polyethylene-pipe-specifications",
       "polyethylene-pipe-temperature-pressure",
       "air-vent-valve",
+    ],
+    extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "نمونه جدول ابعاد کاتالوگ",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "water-supply",
+        sizes: [63, 110, 160, 250, 400, 630],
+      },
     ],
     curatedLinks: [
       { label: "مشخصات فنی، SDR و PN", path: "/technical-center/polyethylene-pipe-specifications" },
@@ -122,6 +135,18 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedProducts: ["pe100-pipe", "water-supply-pipe"],
     relatedApplications: ["gas-distribution"],
     relatedArticles: ["hdpe-installation-guide", "polyethylene-pipe-welding", "polyethylene-pipe-temperature-pressure"],
+    extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "نمونه جدول ابعاد کاتالوگ",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "gas-supply",
+        sizes: [63, 90, 110, 160, 225],
+      },
+    ],
     curatedLinks: [
       { label: "راهنمای نصب HDPE", path: seoLandingPaths.installGuide },
       { label: "راهنمای جوش لوله PE", path: seoLandingPaths.welding },
@@ -189,6 +214,18 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedProducts: ["water-supply-pipe"],
     relatedApplications: ["agriculture-irrigation"],
     relatedArticles: ["subsurface-drip-irrigation", "hdpe-installation-guide"],
+    extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "نمونه جدول ابعاد کاتالوگ",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "drip-irrigation",
+        sizes: [16, 20, 25, 32],
+      },
+    ],
     curatedLinks: [
       { label: "کاربرد کشاورزی و آبیاری", path: "/applications/agriculture-irrigation" },
       { label: "لوله HDPE آبرسانی", path: seoLandingPaths.water },
@@ -292,7 +329,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ]),
     specNote:
-      "جدول قطر، SDR، PN و وزن واحد طول برای هر سفارش از واحد فروش صادر می‌شود؛ فهرست عمومی ابعاد منتشر نمی‌شود.",
+      "ضخامت جداره در یک SDR برای PE100 و PE80 یکسان است و تفاوت در PN ظاهر می‌شود. نمونه جدول در ادامه و جدول کامل در مرکز فنی آمده است.",
     advantages: [
       "استحکام بلندمدت بالاتر ترکیب نسبت به PE80 در شرایط مرجع MRS",
       "امکان طراحی فشار اسمی بالاتر یا کاهش ضخامت در قطر خارجی ثابت — اگر SDR و استاندارد پروژه اجازه دهد",
@@ -305,6 +342,16 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       "گازرسانی فقط اگر کارفرما گرید PE100 و استاندارد گاز همان سفارش را تعیین کرده باشد",
     ],
     extraSections: [
+      {
+        type: "heading",
+        level: 2,
+        text: "نمونه جدول ابعاد کاتالوگ",
+      },
+      {
+        type: "dimension-excerpt",
+        table: "water-supply",
+        sizes: [110, 160, 250, 400, 630],
+      },
       {
         type: "heading",
         level: 2,
