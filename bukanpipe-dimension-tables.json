@@ -1,0 +1,787 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "document": "Bukan Pipe company catalogue (PDF)",
+    "pages": {
+      "waterSupply": 12,
+      "gasSupply": 14,
+      "dripIrrigation": 17
+    },
+    "transcribedOn": "2026-09-22",
+    "note": "Values transcribed verbatim from the factory catalogue. Nothing is computed, rounded or inferred. '-' in the catalogue is null here."
+  },
+  "flags": {
+    "showWeightColumn": false,
+    "showWeightColumnNote": "The catalogue publishes no kg/m figures. weightKgPerMApprox is absent from every row; the flag stays false until the factory supplies and confirms them."
+  },
+  "tables": {
+    "waterSupply": {
+      "id": "water-supply",
+      "standard": "DIN 8074 / ISO 4427-2",
+      "materials": [
+        "PE80",
+        "PE100"
+      ],
+      "measure": "en",
+      "unit": "mm",
+      "legend": {
+        "sdr": "Standard dimension ratio",
+        "en": "Nominal wall thickness (mm)",
+        "dn": "Outer diameter (mm)"
+      },
+      "columns": [
+        {
+          "sdr": 51,
+          "pnPe80": 2.5,
+          "pnPe100": 3.2
+        },
+        {
+          "sdr": 41,
+          "pnPe80": 3.2,
+          "pnPe100": 4
+        },
+        {
+          "sdr": 33,
+          "pnPe80": 4,
+          "pnPe100": 5
+        },
+        {
+          "sdr": 26,
+          "pnPe80": 5,
+          "pnPe100": 6
+        },
+        {
+          "sdr": 21,
+          "pnPe80": 6,
+          "pnPe100": 8
+        },
+        {
+          "sdr": 17,
+          "pnPe80": 8,
+          "pnPe100": 10
+        },
+        {
+          "sdr": 13.6,
+          "pnPe80": 10,
+          "pnPe100": 12.5
+        },
+        {
+          "sdr": 11,
+          "pnPe80": 12.5,
+          "pnPe100": 16
+        },
+        {
+          "sdr": 9,
+          "pnPe80": 16,
+          "pnPe100": 20
+        },
+        {
+          "sdr": 7.4,
+          "pnPe80": 20,
+          "pnPe100": 25
+        },
+        {
+          "sdr": 6,
+          "pnPe80": 25,
+          "pnPe100": null
+        }
+      ],
+      "rows": [
+        {
+          "dnMm": 16,
+          "wallThicknessMm": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2,
+            2.3,
+            3
+          ]
+        },
+        {
+          "dnMm": 20,
+          "wallThicknessMm": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2,
+            2.3,
+            3,
+            3.4
+          ]
+        },
+        {
+          "dnMm": 25,
+          "wallThicknessMm": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            2,
+            2.3,
+            3,
+            3.5,
+            4.2
+          ]
+        },
+        {
+          "dnMm": 32,
+          "wallThicknessMm": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2,
+            2.4,
+            3,
+            3.6,
+            4.4,
+            5.4
+          ]
+        },
+        {
+          "dnMm": 40,
+          "wallThicknessMm": [
+            null,
+            null,
+            null,
+            1.8,
+            2,
+            2.4,
+            3,
+            3.7,
+            4.5,
+            5.5,
+            6.7
+          ]
+        },
+        {
+          "dnMm": 50,
+          "wallThicknessMm": [
+            null,
+            null,
+            1.8,
+            2,
+            2.4,
+            3,
+            3.7,
+            4.6,
+            5.6,
+            6.9,
+            8.3
+          ]
+        },
+        {
+          "dnMm": 63,
+          "wallThicknessMm": [
+            null,
+            1.8,
+            2,
+            2.5,
+            3,
+            3.8,
+            4.7,
+            5.8,
+            7.1,
+            8.6,
+            10.5
+          ]
+        },
+        {
+          "dnMm": 75,
+          "wallThicknessMm": [
+            1.8,
+            2,
+            2.3,
+            2.9,
+            3.6,
+            4.5,
+            5.6,
+            6.8,
+            8.4,
+            10.3,
+            12.5
+          ]
+        },
+        {
+          "dnMm": 90,
+          "wallThicknessMm": [
+            1.8,
+            2.2,
+            2.8,
+            3.5,
+            4.3,
+            5.4,
+            6.7,
+            8.2,
+            10.1,
+            12.3,
+            15
+          ]
+        },
+        {
+          "dnMm": 110,
+          "wallThicknessMm": [
+            2.2,
+            2.7,
+            3.4,
+            4.2,
+            5.3,
+            6.6,
+            8.1,
+            10,
+            12.3,
+            15.1,
+            18.3
+          ]
+        },
+        {
+          "dnMm": 125,
+          "wallThicknessMm": [
+            2.5,
+            3.1,
+            3.9,
+            4.8,
+            6,
+            7.4,
+            9.2,
+            11.4,
+            14,
+            17.1,
+            20.8
+          ]
+        },
+        {
+          "dnMm": 140,
+          "wallThicknessMm": [
+            2.8,
+            3.5,
+            4.3,
+            5.4,
+            6.7,
+            8.3,
+            10.3,
+            12.7,
+            15.7,
+            19.2,
+            23.3
+          ]
+        },
+        {
+          "dnMm": 160,
+          "wallThicknessMm": [
+            3.2,
+            4,
+            4.9,
+            6.2,
+            7.7,
+            9.5,
+            11.8,
+            14.6,
+            17.9,
+            21.9,
+            26.6
+          ]
+        },
+        {
+          "dnMm": 180,
+          "wallThicknessMm": [
+            3.6,
+            4.4,
+            5.5,
+            6.9,
+            8.6,
+            10.7,
+            13.3,
+            16.4,
+            20.1,
+            24.6,
+            29.9
+          ]
+        },
+        {
+          "dnMm": 200,
+          "wallThicknessMm": [
+            3.9,
+            4.9,
+            6.2,
+            7.7,
+            9.6,
+            11.9,
+            14.7,
+            18.2,
+            22.4,
+            27.4,
+            33.2
+          ]
+        },
+        {
+          "dnMm": 225,
+          "wallThicknessMm": [
+            4.4,
+            5.5,
+            6.9,
+            8.6,
+            10.8,
+            13.4,
+            16.6,
+            20.5,
+            25.2,
+            30.8,
+            37.4
+          ]
+        },
+        {
+          "dnMm": 250,
+          "wallThicknessMm": [
+            4.9,
+            6.2,
+            7.7,
+            9.6,
+            11.9,
+            14.8,
+            18.4,
+            22.7,
+            27.9,
+            34.2,
+            41.6
+          ]
+        },
+        {
+          "dnMm": 280,
+          "wallThicknessMm": [
+            5.5,
+            6.9,
+            8.6,
+            10.7,
+            13.4,
+            16.6,
+            20.6,
+            25.4,
+            31.3,
+            38.3,
+            46.5
+          ]
+        },
+        {
+          "dnMm": 315,
+          "wallThicknessMm": [
+            6.2,
+            7.7,
+            9.7,
+            12.1,
+            15,
+            18.7,
+            23.2,
+            28.6,
+            35.2,
+            43.1,
+            52.3
+          ]
+        },
+        {
+          "dnMm": 355,
+          "wallThicknessMm": [
+            7,
+            8.7,
+            10.9,
+            13.6,
+            16.9,
+            21.1,
+            26.1,
+            32.2,
+            39.7,
+            48.5,
+            59
+          ]
+        },
+        {
+          "dnMm": 400,
+          "wallThicknessMm": [
+            7.9,
+            9.8,
+            12.3,
+            15.3,
+            19.1,
+            23.7,
+            29.4,
+            36.3,
+            44.7,
+            54.7,
+            66.5
+          ]
+        },
+        {
+          "dnMm": 450,
+          "wallThicknessMm": [
+            8.8,
+            11,
+            13.8,
+            17.2,
+            21.5,
+            26.7,
+            33.1,
+            40.9,
+            50.3,
+            61.5,
+            null
+          ]
+        },
+        {
+          "dnMm": 500,
+          "wallThicknessMm": [
+            9.8,
+            12.3,
+            15.3,
+            19.1,
+            23.9,
+            29.7,
+            36.8,
+            45.4,
+            55.8,
+            68.3,
+            null
+          ]
+        },
+        {
+          "dnMm": 560,
+          "wallThicknessMm": [
+            11,
+            13.7,
+            17.2,
+            21.4,
+            26.7,
+            33.2,
+            41.2,
+            50.8,
+            62.5,
+            null,
+            null
+          ]
+        },
+        {
+          "dnMm": 630,
+          "wallThicknessMm": [
+            12.3,
+            15.4,
+            19.3,
+            24.1,
+            30,
+            37.4,
+            46.3,
+            57.2,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    "gasSupply": {
+      "id": "gas-supply",
+      "standard": "INSO 11233",
+      "measure": "eMin",
+      "unit": "mm",
+      "note": "Wall thickness is a minimum with the catalogue's plus tolerance. Maximum 10% wall thickness.",
+      "rows": [
+        {
+          "nominalSizeMm": 25,
+          "maxExternalDiameterMm": 25.3,
+          "maxDoubleWidthBranchMm": 1.2,
+          "eMinSdr11Mm": {
+            "min": 3,
+            "tolerancePlus": 0.4
+          },
+          "eMinSdr13_6Mm": null,
+          "packageTypes": [
+            "coil"
+          ],
+          "packingLengthM": [
+            "100"
+          ],
+          "yellowBarWidthDepthMm": "3 - 5"
+        },
+        {
+          "nominalSizeMm": 32,
+          "maxExternalDiameterMm": 32.3,
+          "maxDoubleWidthBranchMm": 1.3,
+          "eMinSdr11Mm": {
+            "min": 3,
+            "tolerancePlus": 0.4
+          },
+          "eMinSdr13_6Mm": null,
+          "packageTypes": [
+            "coil"
+          ],
+          "packingLengthM": [
+            "100"
+          ],
+          "yellowBarWidthDepthMm": "3 - 5"
+        },
+        {
+          "nominalSizeMm": 63,
+          "maxExternalDiameterMm": 63.4,
+          "maxDoubleWidthBranchMm": 1.5,
+          "eMinSdr11Mm": {
+            "min": 5.8,
+            "tolerancePlus": 0.7
+          },
+          "eMinSdr13_6Mm": {
+            "min": 4.7,
+            "tolerancePlus": 0.6
+          },
+          "packageTypes": [
+            "coil"
+          ],
+          "packingLengthM": [
+            "100"
+          ],
+          "yellowBarWidthDepthMm": "3 - 5"
+        },
+        {
+          "nominalSizeMm": 90,
+          "maxExternalDiameterMm": 90.6,
+          "maxDoubleWidthBranchMm": 1.8,
+          "eMinSdr11Mm": {
+            "min": 8.2,
+            "tolerancePlus": 1.0
+          },
+          "eMinSdr13_6Mm": {
+            "min": 6.7,
+            "tolerancePlus": 0.8
+          },
+          "packageTypes": [
+            "branch",
+            "coil"
+          ],
+          "packingLengthM": [
+            "12",
+            "50"
+          ],
+          "yellowBarWidthDepthMm": "5 - 10"
+        },
+        {
+          "nominalSizeMm": 110,
+          "maxExternalDiameterMm": 110.7,
+          "maxDoubleWidthBranchMm": 2.2,
+          "eMinSdr11Mm": {
+            "min": 10,
+            "tolerancePlus": 1.2
+          },
+          "eMinSdr13_6Mm": {
+            "min": 8.1,
+            "tolerancePlus": 1.1
+          },
+          "packageTypes": [
+            "branch"
+          ],
+          "packingLengthM": [
+            "12"
+          ],
+          "yellowBarWidthDepthMm": "3 - 10"
+        },
+        {
+          "nominalSizeMm": 125,
+          "maxExternalDiameterMm": 125.8,
+          "maxDoubleWidthBranchMm": 2.5,
+          "eMinSdr11Mm": {
+            "min": 11.4,
+            "tolerancePlus": 1.3
+          },
+          "eMinSdr13_6Mm": {
+            "min": 9.2,
+            "tolerancePlus": 1.1
+          },
+          "packageTypes": [
+            "branch"
+          ],
+          "packingLengthM": [
+            "12"
+          ],
+          "yellowBarWidthDepthMm": "3 - 11"
+        },
+        {
+          "nominalSizeMm": 160,
+          "maxExternalDiameterMm": 161,
+          "maxDoubleWidthBranchMm": 3.2,
+          "eMinSdr11Mm": {
+            "min": 14.6,
+            "tolerancePlus": 1.6
+          },
+          "eMinSdr13_6Mm": {
+            "min": 11.8,
+            "tolerancePlus": 1.3
+          },
+          "packageTypes": [
+            "branch"
+          ],
+          "packingLengthM": [
+            "12"
+          ],
+          "yellowBarWidthDepthMm": "3 - 12"
+        },
+        {
+          "nominalSizeMm": 200,
+          "maxExternalDiameterMm": 201.2,
+          "maxDoubleWidthBranchMm": 4,
+          "eMinSdr11Mm": {
+            "min": 18.2,
+            "tolerancePlus": 2
+          },
+          "eMinSdr13_6Mm": {
+            "min": 14.7,
+            "tolerancePlus": 1.6
+          },
+          "packageTypes": [
+            "branch"
+          ],
+          "packingLengthM": [
+            "12"
+          ],
+          "yellowBarWidthDepthMm": "3 - 13"
+        },
+        {
+          "nominalSizeMm": 225,
+          "maxExternalDiameterMm": 226.4,
+          "maxDoubleWidthBranchMm": 4.5,
+          "eMinSdr11Mm": {
+            "min": 20.5,
+            "tolerancePlus": 2.2
+          },
+          "eMinSdr13_6Mm": {
+            "min": 16.6,
+            "tolerancePlus": 1.8
+          },
+          "packageTypes": [
+            "branch"
+          ],
+          "packingLengthM": [
+            "12"
+          ],
+          "yellowBarWidthDepthMm": "3 - 14"
+        }
+      ]
+    },
+    "dripIrrigation": {
+      "id": "drip-irrigation",
+      "standard": "ISO 8779",
+      "materials": [
+        "PE32",
+        "PE40"
+      ],
+      "measure": "eMin",
+      "unit": "mm",
+      "catalogueNotes": [
+        "Outer diameter mainly 16 mm (other sizes to order).",
+        "Coil length 400 m (other lengths to order)."
+      ],
+      "columns": [
+        {
+          "series": "S 4",
+          "sdr": 9,
+          "pnPe32": 6,
+          "pnPe40": 8
+        },
+        {
+          "series": "S 5",
+          "sdr": 11,
+          "pnPe32": null,
+          "pnPe40": 6
+        },
+        {
+          "series": "S 6.3",
+          "sdr": 13.6,
+          "pnPe32": 4,
+          "pnPe40": null
+        },
+        {
+          "series": "S 8",
+          "sdr": 17,
+          "pnPe32": null,
+          "pnPe40": 4
+        },
+        {
+          "series": "S 10",
+          "sdr": 21,
+          "pnPe32": 2.5,
+          "pnPe40": null
+        },
+        {
+          "series": "S 12.5",
+          "sdr": 26,
+          "pnPe32": null,
+          "pnPe40": 2.5
+        }
+      ],
+      "rows": [
+        {
+          "nominalSizeMm": 12,
+          "wallThicknessMm": [
+            1.4,
+            1.1,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "nominalSizeMm": 16,
+          "wallThicknessMm": [
+            1.8,
+            1.5,
+            1.2,
+            1.0,
+            null,
+            null
+          ]
+        },
+        {
+          "nominalSizeMm": 20,
+          "wallThicknessMm": [
+            2.3,
+            1.9,
+            1.5,
+            1.2,
+            1.0,
+            null
+          ]
+        },
+        {
+          "nominalSizeMm": 25,
+          "wallThicknessMm": [
+            2.8,
+            2.3,
+            1.9,
+            1.5,
+            1.2,
+            1.0
+          ]
+        },
+        {
+          "nominalSizeMm": 32,
+          "wallThicknessMm": [
+            3.6,
+            2.9,
+            2.4,
+            1.9,
+            1.6,
+            1.3
+          ]
+        }
+      ]
+    }
+  }
+}

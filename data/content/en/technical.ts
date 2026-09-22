@@ -80,6 +80,11 @@ export const enTechnicalHub: ContentDocument = {
       title: "High-demand guides",
       links: [
         {
+          label: "HDPE pipe dimensions chart",
+          path: "/technical-center/hdpe-pipe-dimensions-chart",
+          hint: "Full catalogue chart for water supply, gas and drip irrigation",
+        },
+        {
           label: "Complete polyethylene pipe selection guide",
           path: "/technical-center/polyethylene-pipe-complete-guide",
         },
@@ -193,6 +198,18 @@ export const enPillarPolyethylene: ContentDocument = {
       ],
     },
     {
+      type: "internal-links",
+      title: "Dimension reference",
+      links: [
+        {
+          label: "HDPE pipe dimensions chart",
+          path: "/technical-center/hdpe-pipe-dimensions-chart",
+          hint: "Full catalogue chart for water supply, gas and drip irrigation",
+        },
+        { label: "Pipeline design calculator", path: "/calculator/pipeline-design" },
+      ],
+    },
+    {
       type: "spec-cta",
       text: "Contact sales or request a quote for diameter, SDR, PN and weight-per-metre tables for your project.",
     },
@@ -233,12 +250,130 @@ export const enPillarPolyethylene: ContentDocument = {
   ],
 };
 
+/**
+ * Catalogue dimension tables. Every number is rendered from
+ * bukanpipe-dimension-tables.json, transcribed from the factory catalogue —
+ * nothing on this page is computed or estimated.
+ */
+export const enPipeDimensionsChart: ContentDocument = {
+  id: "article-hdpe-pipe-dimensions-chart",
+  slug: "hdpe-pipe-dimensions-chart",
+  path: "/technical-center/hdpe-pipe-dimensions-chart",
+  locale: "en",
+  kind: "article",
+  title: "HDPE Pipe Dimensions Chart",
+  seoTitle: "HDPE Pipe Dimensions Chart (PE100/PE80, 16–630 mm) | Bukan Pipe",
+  seoDescription:
+    "Full HDPE pipe dimensions chart: outer diameter, wall thickness and SDR for water supply, gas and drip irrigation pipe, 16–630 mm, from the Bukan Pipe catalogue.",
+  description:
+    "Catalogue dimension charts for Bukan Pipe water supply, gas and drip irrigation pipe.",
+  primaryKeyword: "HDPE pipe dimensions chart",
+  secondaryKeywords: [
+    "PE100 pipe dimensions",
+    "HDPE pipe wall thickness chart",
+    "SDR pipe chart",
+    "polyethylene pipe size chart",
+  ],
+  status: "published",
+  evidenceStatus: "verified",
+  verificationStatus: "verified",
+  lastReviewed: "2026-09-22",
+  references: ["Bukan Pipe Polyethylene Company catalogue"],
+  breadcrumbs: [
+    { label: "Home", path: "/" },
+    { label: "Technical centre", path: "/technical-center" },
+    {
+      label: "HDPE pipe dimensions chart",
+      path: "/technical-center/hdpe-pipe-dimensions-chart",
+    },
+  ],
+  sections: [
+    {
+      type: "paragraph",
+      text: "This page publishes the Bukan Pipe catalogue dimension tables as they stand: outer diameter, wall thickness and SDR for water supply, gas and drip irrigation pipe. No figure is calculated or rounded, and a dash means that diameter is not produced in that SDR.",
+    },
+    { type: "heading", level: 2, text: "How SDR, PN and wall thickness relate" },
+    {
+      type: "paragraph",
+      text: "SDR is the ratio of outer diameter to wall thickness: SDR = DN ÷ en. The smaller the SDR, the thicker the wall relative to the diameter, and the more pressure the pipe carries. That is why SDR 6 is the thickest wall and the highest PN in the water table, and SDR 51 the thinnest.",
+    },
+    {
+      type: "paragraph",
+      text: "PN is the nominal pressure in bar at the 20 °C reference temperature. For a given SDR the material grade also moves the rating: PE100 has the higher long-term strength, so at the same SDR it rates one PN step above PE80. The water table shows this directly — SDR 11 is PN 12.5 in PE80 and PN 16 in PE100.",
+    },
+    {
+      type: "paragraph",
+      text: "Above 20 °C the allowable pressure is corrected by a temperature derating factor. Choose the SDR from the design pressure, operating temperature and installation conditions — not from the chart alone.",
+    },
+    { type: "heading", level: 2, text: "Water supply pipe" },
+    { type: "dimension-table", table: "water-supply" },
+    { type: "heading", level: 2, text: "Gas supply pipe" },
+    {
+      type: "paragraph",
+      text: "Gas pipe is produced in SDR 11 and SDR 13.6. The tabulated wall thickness is a minimum; the bracketed figure is the catalogue's plus tolerance.",
+    },
+    { type: "dimension-table", table: "gas-supply" },
+    { type: "heading", level: 2, text: "Drip irrigation pipe" },
+    { type: "dimension-table", table: "drip-irrigation" },
+    {
+      type: "internal-links",
+      title: "Next steps",
+      links: [
+        {
+          label: "Pipeline design calculator",
+          path: "/calculator/pipeline-design",
+          hint: "Size the diameter and head loss from flow and route length",
+        },
+        {
+          label: "PE100 technical guide",
+          path: "/technical-center/pe100-technical-guide",
+          hint: "MRS, SDR and grade selection",
+        },
+        { label: "Water supply pipe", path: "/products/water-supply-pipe" },
+        { label: "Gas supply pipe", path: "/products/gas-pipe" },
+      ],
+    },
+  ],
+  related: {
+    products: ["water-supply-pipe", "gas-pipe", "pe100-pipe", "irrigation-pipe"],
+    articles: ["pe100-technical-guide"],
+  },
+  faqs: [
+    {
+      question: "What does SDR mean on a polyethylene pipe?",
+      answer:
+        "SDR is the standard dimension ratio — the outer diameter divided by the wall thickness (SDR = DN ÷ en). A lower SDR means a thicker wall and a higher pressure rating.",
+    },
+    {
+      question: "What is the difference between PE80 and PE100 in the chart?",
+      answer:
+        "At a given SDR the wall thickness is the same for both grades, but the pressure rating differs. PE100 has the higher long-term strength, so it rates one PN step above PE80 — SDR 11 is PN 12.5 in PE80 and PN 16 in PE100.",
+    },
+    {
+      question: "Which diameters does Bukan Pipe produce?",
+      answer:
+        "The water supply chart covers 16 to 630 mm, gas pipe 25 to 225 mm and drip irrigation pipe 12 to 32 mm. Not every diameter and SDR combination is made; a dash in the chart means that combination is not produced.",
+    },
+    {
+      question: "Why is there no weight column?",
+      answer:
+        "The factory catalogue publishes no kg/m figures. The weight column stays hidden until the technical department confirms those numbers, so that an unverified figure is never presented as a specification.",
+    },
+    {
+      question: "Can I select a pipe straight from this chart?",
+      answer:
+        "The chart is a starting point, not a selection. The SDR has to follow from the design pressure, operating temperature and installation conditions. Use the pipeline design calculator for a first pass and confirm with the technical department.",
+    },
+  ],
+};
+
 export const enTechnicalArticles: readonly ContentDocument[] = [
   buildSeoArticleDocument("en", enHdpePillarArticle),
   buildSeoArticleDocument("en", enWaterPillarArticle),
   buildSeoArticleDocument("en", enGasPillarArticle),
   enTechnicalHub,
   enPillarPolyethylene,
+  enPipeDimensionsChart,
   article(
     "polyethylene-pipe-welding",
     "HDPE Pipe Welding: Butt Fusion and Electrofusion",

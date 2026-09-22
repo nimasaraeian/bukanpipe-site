@@ -13,6 +13,21 @@ export type ContentBlock =
   | { type: "list"; items: readonly string[] }
   | { type: "spec-cta"; text: string }
   | {
+      /** A full catalogue dimension table, rendered as a real HTML table. */
+      type: "dimension-table";
+      table: "water-supply" | "gas-supply" | "drip-irrigation";
+    }
+  | {
+      /**
+       * A few rows of one catalogue table, for a product page, with a link to
+       * the full table. `sizes` are nominal sizes that must exist in the data —
+       * the renderer throws in development if one does not.
+       */
+      type: "dimension-excerpt";
+      table: "water-supply" | "gas-supply" | "drip-irrigation";
+      sizes: readonly number[];
+    }
+  | {
       type: "definition";
       term: string;
       text: string;
