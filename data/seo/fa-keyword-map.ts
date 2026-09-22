@@ -323,14 +323,18 @@ export const faKeywordMap: readonly FaKeywordMapEntry[] = [
   {
     path: "/technical-center/pe100-technical-guide",
     primaryKeyword: "راهنمای فنی PE100",
-    secondaryKeywords: ["MRS PE100", "SDR لوله", "PN لوله پلی اتیلن"],
+    secondaryKeywords: ["MRS PE100", "محاسبه PN لوله", "انتخاب SDR لوله پلی اتیلن"],
     intent: "informational",
     cluster: "technical",
   },
   {
     path: "/technical-center/pe80-vs-pe100",
     primaryKeyword: "تفاوت PE80 و PE100",
-    secondaryKeywords: ["PE80 یا PE100", "MRS لوله پلی اتیلن", "لوله پلی اتیلن PE100"],
+    secondaryKeywords: [
+      "PE80 یا PE100",
+      "MRS لوله پلی اتیلن",
+      "انتخاب گرید لوله پلی اتیلن",
+    ],
     intent: "informational",
     cluster: "technical",
   },
@@ -375,7 +379,12 @@ export const faKeywordMap: readonly FaKeywordMapEntry[] = [
   {
     path: "/technical-center/polyethylene-pipe-standards",
     primaryKeyword: "استاندارد لوله پلی اتیلن",
-    secondaryKeywords: ["INSO 14427", "INSO 11233", "EN 1555", "IGS-M-PL-014-1"],
+    secondaryKeywords: [
+      "INSO 14427",
+      "استاندارد اجباری لوله پلی اتیلن",
+      "علامت استاندارد لوله",
+      "پروانه استاندارد لوله پلی اتیلن",
+    ],
     intent: "informational",
     cluster: "technical",
   },
