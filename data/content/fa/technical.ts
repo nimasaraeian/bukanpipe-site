@@ -80,26 +80,116 @@ export const faTechnicalHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "مقالات این بخش برای تصمیم‌های مهندسی، انتخاب گرید ماده، استاندارد و نصب شبکه لوله PE تهیه شده‌اند. برای خرید و استعلام قیمت به محصولات و فرم پیش‌فاکتور مراجعه کنید.",
+      text: "این بخش برای تصمیم‌های مهندسی است: انتخاب گرید ماده و کلاس فشار، استاندارد حاکم بر هر کاربرد، روش اتصال، و اجرای شبکه. اگر هدفتان استعلام قیمت است، صفحه محصولات مسیر کوتاه‌تری است.",
+    },
+    { type: "heading", level: 2, text: "از کجا شروع کنم" },
+    {
+      type: "paragraph",
+      text: "بیشتر پرسش‌هایی که به ما می‌رسد، یکی از این چهار حالت است. مسیر خودتان را انتخاب کنید:",
+    },
+    {
+      type: "list",
+      items: [
+        "تازه با پلی اتیلن آشنا می‌شوید: از «لوله پلی اتیلن چیست» و سپس «تفاوت PE80 و PE100» شروع کنید",
+        "می‌دانید چه می‌خواهید و دنبال عدد هستید: مستقیم به جدول سایز، ضخامت و SDR بروید",
+        "در حال طراحی خط هستید: با ماشین‌حساب طراحی، قطر را برآورد کنید و بعد با راهنمای فشار کاری، کلاس را تثبیت کنید",
+        "در مرحله اجرا هستید: راهنمای نصب، راهنمای جوش و مقاله شیر هوا را بخوانید",
+      ],
     },
     {
       type: "internal-links",
-      title: "راهنماهای پرتقاضا",
+      title: "۱. شناخت ماده و انتخاب گرید",
+      links: [
+        { label: "لوله پلی اتیلن چیست؟", path: "/polyethylene-pipe" },
+        { label: "لوله HDPE چیست؟", path: "/technical-center/hdpe-pipe-what-is" },
+        { label: "تفاوت PE80 و PE100", path: "/technical-center/pe80-vs-pe100" },
+        {
+          label: "راهنمای فنی PE100",
+          path: "/technical-center/pe100-technical-guide",
+        },
+      ],
+    },
+    {
+      type: "internal-links",
+      title: "۲. ابعاد، فشار و مشخصات",
       links: [
         {
-          label: "جدول سایز، ضخامت و SDR لوله پلی اتیلن",
+          label: "جدول سایز، ضخامت و SDR",
           path: "/technical-center/polyethylene-pipe-dimensions-table",
-          hint: "جدول کامل کاتالوگ برای آبرسانی، گاز و آبیاری قطره‌ای",
+          hint: "جدول کامل کاتالوگ: آبرسانی، گاز و آبیاری قطره‌ای",
         },
-        { label: "لوله پلی اتیلن چیست؟", path: "/polyethylene-pipe" },
-        { label: "راهنمای انتخاب لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
         { label: "مشخصات فنی، SDR و PN", path: "/technical-center/polyethylene-pipe-specifications" },
+        {
+          label: "تأثیر دما بر فشار کاری",
+          path: "/technical-center/polyethylene-pipe-temperature-pressure",
+          hint: "محاسبه MOP پیش از انتخاب SDR",
+        },
+        {
+          label: "ماشین‌حساب طراحی خط لوله",
+          path: "/calculator/pipeline-design",
+          hint: "برآورد قطر، سرعت، افت فشار و توان پمپ",
+        },
+      ],
+    },
+    {
+      type: "internal-links",
+      title: "۳. استاندارد و الزامات کاربرد",
+      links: [
         { label: "استاندارد لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-standards" },
+        { label: "راهنمای انتخاب لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
         { label: "راهنمای فنی لوله آبرسانی", path: "/technical-center/water-supply-polyethylene-pipe-guide" },
         { label: "استاندارد و تولید لوله گاز", path: "/technical-center/gas-polyethylene-pipe-guide" },
-        { label: "تفاوت PE80 و PE100", path: "/technical-center/pe80-vs-pe100" },
+      ],
+    },
+    {
+      type: "internal-links",
+      title: "۴. اجرا، اتصال و بهره‌برداری",
+      links: [
+        { label: "راهنمای نصب HDPE", path: "/technical-center/hdpe-installation-guide" },
+        { label: "جوش لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-welding" },
+        {
+          label: "شیر هوا در خط انتقال آب",
+          path: "/technical-center/air-vent-valve",
+          hint: "جلوگیری از کتابی شدن لوله و افت دبی",
+        },
+        { label: "آبیاری زیرسطحی", path: "/technical-center/subsurface-drip-irrigation" },
+      ],
+    },
+    { type: "heading", level: 2, text: "سه اشتباهی که بیشترین هزینه را می‌سازند" },
+    {
+      type: "list",
+      items: [
+        "سفارش دادن فقط با قطر، بدون SDR و گرید ماده — در یک قطر، چند محصول کاملاً متفاوت وجود دارد",
+        "انتخاب کلاس فشار از روی فشار کاری معمول، به‌جای حداکثر فشار به‌علاوه سهم ضربه قوچ",
+        "نادیده گرفتن دمای واقعی خط — عدد PN روی لوله برای دمای ۲۰ درجه است",
+      ],
+    },
+    {
+      type: "internal-links",
+      title: "مسیر بعدی",
+      links: [
+        { label: "محصولات و استعلام قیمت", path: "/products" },
+        { label: "کاربردهای لوله پلی اتیلن", path: "/applications" },
+        { label: "آزمایشگاه و کنترل کیفیت", path: "/laboratory" },
         { label: "استعلام قیمت", path: "/request-quote" },
       ],
+    },
+  ],
+  faqs: [
+    {
+      question: "SDR و PN چه فرقی دارند؟",
+      answer:
+        "SDR نسبت قطر خارجی به ضخامت جداره است و یک عدد هندسی است. PN فشار کاری مجاز متناظر همان SDR برای یک گرید ماده مشخص در دمای ۲۰ درجه است. چون PN با تغییر گرید ماده جابه‌جا می‌شود، در سفارش هر دو را بنویسید.",
+    },
+    {
+      question: "برای طراحی خط، از کجا شروع کنم؟",
+      answer:
+        "از دبی طرح و پروفیل مسیر. قطر را از دبی و سرعت مجاز برآورد کنید، سپس کلاس فشار را از حداکثر فشار ایستابی به‌علاوه سهم ضربه و با اعمال ضریب دما تثبیت کنید. در آخر، قطر خارجی و SDR متناظر را از جدول ابعاد بردارید.",
+    },
+    {
+      question: "کدام استاندارد بر پروژه من حاکم است؟",
+      answer:
+        "استاندارد را کاربرد تعیین می‌کند، نه لوله. آب آشامیدنی، گاز و آبیاری هرکدام استاندارد ملی جداگانه‌ای دارند و در آب و گاز، رعایت آن الزامی است. مقاله استاندارد لوله پلی اتیلن این تفکیک را باز می‌کند.",
     },
   ],
   related: {
