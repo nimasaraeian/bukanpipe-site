@@ -58,7 +58,7 @@ export const enDownloadsHub: ContentDocument = {
   title: "Downloads",
   seoTitle: "HDPE Pipe Catalogues & Standards Downloads | Bukan Pipe",
   seoDescription:
-    "Catalogues, standards and technical PDFs — files published after preparation and rights clearance.",
+    "HDPE pipe catalogue download, standards references and technical PDFs from Bukan Pipe — published as each file is prepared and cleared.",
   description: "Downloadable resources.",
   primaryKeyword: "HDPE pipe catalogue download",
   secondaryKeywords: ["PE pipe technical documents", "polyethylene pipe standards PDF"],
@@ -88,7 +88,7 @@ export const enCalculatorHub: ContentDocument = {
   title: "Pipeline Design Calculator",
   seoTitle: "HDPE Pipeline Design Calculator | Water Transfer Pre-Design",
   seoDescription:
-    "Preliminary diameter, velocity, head loss and pump power estimates for water transfer lines.",
+    "Estimate HDPE pipe pressure loss, flow velocity, diameter and pump power for a water transfer line — Hazen-Williams with C=145 for polyethylene.",
   description: "Pre-design tool for water transfer networks.",
   primaryKeyword: "HDPE pipe pressure loss",
   secondaryKeywords: ["pipeline design calculator", "PE pipe diameter calculation"],

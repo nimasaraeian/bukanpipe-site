@@ -128,7 +128,7 @@ export const enCertifications: ContentDocument = {
   title: "Certifications & Awards",
   seoTitle: "Certifications & Awards | Bukan Pipe",
   seoDescription:
-    "Company awards and certificates — copies available on request from sales or quality control.",
+    "HDPE pipe certifications held by Bukan Pipe — ISO 9001, ISO 14001, ISO 45001, ISO/IEC 17025, the mandatory standard mark and CE conformity.",
   description: "Certificates and company awards.",
   primaryKeyword: "HDPE pipe certifications",
   secondaryKeywords: ["INSO pipe standard", "PE pipe manufacturer awards"],
@@ -163,7 +163,7 @@ export const enContact: ContentDocument = {
   title: "Contact",
   seoTitle: "Contact Bukan Pipe | Sales & Factory",
   seoDescription:
-    "Factory address, sales phone numbers and email — Bukan, West Azerbaijan, Iran.",
+    "Contact the Bukan Pipe polyethylene pipe factory — sales numbers, laboratory contact and the factory address in Bukan, West Azerbaijan, Iran.",
   description: "Contact factory and sales.",
   primaryKeyword: "contact Bukan Pipe",
   secondaryKeywords: ["Bukan Pipe factory address", "HDPE pipe supplier contact"],
