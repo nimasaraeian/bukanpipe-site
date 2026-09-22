@@ -81,6 +81,41 @@ export const dripIrrigationTable = tables.tables.dripIrrigation as {
   rows: readonly IrrigationRow[];
 };
 
+export type PackagingRow = {
+  sdr: string;
+  nominalPressureAtm: string;
+  sizeFromMm: number;
+  sizeToMm: number;
+  packageType: "coil" | "branch";
+  packingLengthM: readonly string[];
+  /** The catalogue marks only the three lightest-wall SDRs for sewerage. */
+  use: "water-supply" | "water-supply-sewerage";
+};
+
+export type CoilRow = {
+  pipeSizesMm: readonly string[];
+  packageType: "coil" | "branch";
+  packingLengthM: readonly string[];
+  coilOuterDiameterM: string | null;
+};
+
+export const packagingTable = tables.tables.packaging as {
+  id: string;
+  note: string;
+  rows: readonly PackagingRow[];
+};
+
+export const coilDimensionsTable = tables.tables.coilDimensions as {
+  id: string;
+  note: string;
+  rows: readonly CoilRow[];
+};
+
+/** The SDRs the catalogue lists for sewerage, not just water supply. */
+export function sewerageSdrRows(): readonly PackagingRow[] {
+  return packagingTable.rows.filter((row) => row.use === "water-supply-sewerage");
+}
+
 /**
  * The weight column stays off until the factory confirms kg/m values.
  * Flipping `flags.showWeightColumn` in the JSON is not enough on its own —

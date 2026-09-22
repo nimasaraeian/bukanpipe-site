@@ -15,7 +15,12 @@ export type ContentBlock =
   | {
       /** A full catalogue dimension table, rendered as a real HTML table. */
       type: "dimension-table";
-      table: "water-supply" | "gas-supply" | "drip-irrigation";
+      table:
+        | "water-supply"
+        | "gas-supply"
+        | "drip-irrigation"
+        | "supply-form"
+        | "supply-form-sewerage";
     }
   | {
       /**

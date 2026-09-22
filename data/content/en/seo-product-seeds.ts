@@ -371,7 +371,25 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     ],
     standardsNote: "Pressure class, SDR and line gradient must follow the sewer design and project specification.",
     qualityNote: "Dimensional, mechanical and pressure-related tests per factory QC scope.",
-    relatedProducts: ["drainage-pipe"],
+    extraSections: [
+      { type: "heading", level: 2, text: "What the catalogue lists for sewerage" },
+      {
+        type: "paragraph",
+        text: "The consumption column of the catalogue packing table marks its first three rows as water supply AND sewerage: SDR 41 at 3.2 atm, SDR 33 at 4 and SDR 26 at 5. The first two run 315 to 630 mm and the third from 50 to 630 mm, all supplied as 12 m branches. Sewer pipe is the same polyethylene pressure pipe in a lighter wall, not a separate product.",
+      },
+      { type: "dimension-table", table: "supply-form-sewerage" },
+      { type: "heading", level: 2, text: "Gravity network or pumped main?" },
+      {
+        type: "paragraph",
+        text: "Most sewer networks are gravity: flow follows the gradient and the pipe carries little internal pressure, which is why the light-wall SDRs are the ones listed. A rising main downstream of a pumping station is a genuine pressure line and has to be selected from its design pressure like a water main.",
+      },
+      { type: "heading", level: 2, text: "The thing that gets confused: SDR is not SN" },
+      {
+        type: "paragraph",
+        text: "SDR is the diameter-to-wall-thickness ratio and describes internal pressure capability. SN is ring stiffness and describes resistance to soil and traffic load. In a buried gravity sewer the threat is deflection under load, not internal pressure. The catalogue publishes SDR and states no SN class, so if the project specification calls for one, confirm it with the technical department before ordering. Bedding and compaction around the pipe matter as much as wall thickness in controlling deflection.",
+      },
+    ],
+    relatedProducts: ["drainage-pipe", "water-supply-pipe"],
     relatedApplications: ["sewage"],
     relatedArticles: ["hdpe-installation-guide"],
     curatedLinks: [
@@ -379,7 +397,33 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
       { label: "HDPE Drainage Pipe", path: "/products/drainage-pipe" },
     ],
-    faqs: [],
+    faqs: [
+      {
+        question: "What SDR is HDPE sewer pipe?",
+        answer:
+          "The Bukan Pipe catalogue lists SDR 41, 33 and 26 for water supply and sewerage. Which of the three applies depends on the network: a gravity sewer needs only a light wall, while a pumped rising main must be selected from its design pressure.",
+      },
+      {
+        question: "What diameters are available for HDPE sewer pipe?",
+        answer:
+          "From the catalogue packing table, SDR 41 and 33 run 315 to 630 mm and SDR 26 runs 50 to 630 mm. All three are supplied as 12 m branches.",
+      },
+      {
+        question: "What is the difference between SDR and SN for sewer pipe?",
+        answer:
+          "SDR is the ratio of outer diameter to wall thickness and relates to internal pressure. SN is ring stiffness and relates to soil and traffic load on a buried pipe. Ring stiffness is the governing property in a gravity sewer. The catalogue publishes SDR and states no SN class, so confirm before ordering if your specification calls for one.",
+      },
+      {
+        question: "How is HDPE sewer pipe jointed?",
+        answer:
+          "Butt fusion and electrofusion. A fused joint has a clear advantage in wastewater: there is no leak path, so neither does sewage escape to ground nor groundwater infiltrate the network.",
+      },
+      {
+        question: "Can HDPE be used for industrial effluent?",
+        answer:
+          "It depends on the chemistry, concentration and temperature of the effluent. Polyethylene resists a wide range of substances, but compatibility has to be confirmed for that specific effluent. Send the effluent analysis with your enquiry.",
+      },
+    ],
     heroImage: seoProductHeroImages.sewer,
   },
   {
@@ -413,14 +457,53 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     ],
     standardsNote: "Diameter and gradient follow hydraulic design and construction drawings.",
     qualityNote: "Production QC aligned with other PE pipe families.",
-    relatedProducts: ["sewage-pipe"],
+    extraSections: [
+      { type: "heading", level: 2, text: "Drainage is not sewerage" },
+      {
+        type: "paragraph",
+        text: "The two get conflated in enquiries and the wrong product follows. Sanitary sewage is a continuous organic-loaded flow bound for treatment. Drainage is intermittent, driven by rainfall, and usually discharges to surface water. Pollution load, flow pattern and discharge point all differ, so the design diameter differs too.",
+      },
+      { type: "heading", level: 2, text: "Sizing a drainage line" },
+      {
+        type: "paragraph",
+        text: "Unlike a water main, which starts from design pressure, drainage starts from peak flow: design rainfall intensity times catchment area times runoff coefficient. That gives a flow rate, and the diameter follows from hydraulic capacity at the available gradient. Because the line is gravity-driven and carries little internal pressure, a heavy wall is not what matters — resistance to soil and traffic load on the buried pipe is.",
+      },
+      { type: "heading", level: 2, text: "Supply form in the catalogue" },
+      {
+        type: "paragraph",
+        text: "The catalogue marks its consumption column for water supply and sewerage and carries no separate drainage row. Drainage pipe is supplied from the same production range; the table below shows which diameters each SDR covers and whether it ships as a coil or a 12 m branch. Confirm availability of your diameter and SDR combination with sales before ordering.",
+      },
+      { type: "dimension-table", table: "supply-form" },
+    ],
+    relatedProducts: ["sewage-pipe", "water-supply-pipe"],
     relatedApplications: ["drainage"],
     relatedArticles: [],
     curatedLinks: [
       { label: "Drainage applications", path: "/applications/drainage" },
       { label: "HDPE Sewer Pipe", path: "/products/sewage-pipe" },
     ],
-    faqs: [],
+    faqs: [
+      {
+        question: "What is the difference between drainage pipe and sewer pipe?",
+        answer:
+          "Drainage carries stormwater and surface runoff — intermittent flow that usually discharges to surface water. Sanitary sewer carries continuous organic-loaded flow to treatment. The flow pattern and discharge point differ, so the design diameter differs.",
+      },
+      {
+        question: "How is drainage pipe diameter selected?",
+        answer:
+          "From peak runoff: design rainfall intensity, catchment area and runoff coefficient. The diameter then follows from hydraulic capacity at the available gradient. Use the pipeline design calculator for a first pass and have the result confirmed by the design engineer.",
+      },
+      {
+        question: "What diameters of HDPE drainage pipe are available?",
+        answer:
+          "The catalogue has no separate drainage row; drainage pipe comes from the same production range. The supply form table on this page shows the diameter band and packing for each SDR. Confirm your combination with sales before ordering.",
+      },
+      {
+        question: "What SDR does drainage pipe need?",
+        answer:
+          "A gravity drainage line carries little internal pressure, so a heavy wall is not required. What governs a buried pipe is soil and traffic load, and the quality of bedding and compaction around it. If your specification calls for a stiffness class, confirm before ordering.",
+      },
+    ],
     heroImage: seoProductHeroImages.drainage,
   },
 ];
