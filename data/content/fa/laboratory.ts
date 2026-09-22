@@ -1,5 +1,10 @@
 import type { ContentDocument } from "@/content/models/content-document";
 
+/**
+ * All six laboratory pages used to declare the same primary keyword, so they
+ * competed with each other for it and none of them ranked. Each now owns the
+ * intent its own title already targets; the hub keeps the generic term.
+ */
 function labPage(
   slug: string,
   title: string,
@@ -7,6 +12,7 @@ function labPage(
   seoDescription: string,
   description: string,
   sections: ContentDocument["sections"],
+  keywords: { primary: string; secondary: readonly string[] },
 ): ContentDocument {
   const path = slug ? `/laboratory/${slug}` : "/laboratory";
   return {
@@ -19,8 +25,8 @@ function labPage(
     seoTitle,
     seoDescription,
     description,
-    primaryKeyword: "آزمایشگاه لوله پلی اتیلن",
-    secondaryKeywords: ["ISO IEC 17025", "تست هیدرواستاتیک", "آزمایش لوله پلی اتیلن"],
+    primaryKeyword: keywords.primary,
+    secondaryKeywords: keywords.secondary,
     status: "published",
     evidenceStatus: "requires-verification",
     verificationStatus: "legacy-claim",
@@ -80,7 +86,8 @@ export const faLaboratoryHub = labPage(
       ],
     },
   ],
-);
+    { primary: "آزمایشگاه لوله پلی اتیلن", secondary: ["کنترل کیفیت لوله پلی اتیلن", "آزمایشگاه پلیمر", "تست لوله پلی اتیلن"] },
+  );
 
 export const faLaboratoryPages: readonly ContentDocument[] = [
   faLaboratoryHub,
@@ -104,6 +111,7 @@ export const faLaboratoryPages: readonly ContentDocument[] = [
         ],
       },
     ],
+      { primary: "خدمات آزمون لوله پلی اتیلن", secondary: ["آزمون لوله و اتصالات", "خدمات آزمایشگاه پلیمر", "تست نمونه لوله"] },
   ),
   labPage(
     "iso-17025",
@@ -121,6 +129,7 @@ export const faLaboratoryPages: readonly ContentDocument[] = [
         text: "برای دریافت گواهی یا دامنه اعتبارسنجی فعلی با lab@bukanpipe.com تماس بگیرید.",
       },
     ],
+      { primary: "ایزو ۱۷۰۲۵ آزمایشگاه", secondary: ["ISO IEC 17025", "اعتباربخشی آزمایشگاه", "گواهی ISO 17025 آزمایشگاه"] },
   ),
   labPage(
     "test-scope",
@@ -144,6 +153,7 @@ export const faLaboratoryPages: readonly ContentDocument[] = [
         ],
       },
     ],
+      { primary: "دامنه آزمون لوله پلی اتیلن", secondary: ["فهرست آزمون لوله PE", "آزمون هیدرواستاتیک لوله", "دامنه اعتبار آزمایشگاه"] },
   ),
   labPage(
     "standards",
@@ -157,6 +167,7 @@ export const faLaboratoryPages: readonly ContentDocument[] = [
         text: "هر آزمون با روش و استاندارد مرجع مشخص گزارش می‌شود. INSO و ISO مرجع اصلی در تولید و آزمون لوله PE هستند.",
       },
     ],
+      { primary: "استاندارد آزمون لوله پلی اتیلن", secondary: ["INSO آزمون لوله", "ISO آزمون پلی اتیلن", "روش آزمون لوله PE"] },
   ),
   labPage(
     "training",
@@ -170,5 +181,6 @@ export const faLaboratoryPages: readonly ContentDocument[] = [
         text: "واحد آموزش دوره‌های فنی مرتبط با لوله PE برگزار می‌کند. سرفصل و ثبت‌نام از طریق تماس با کارخانه هماهنگ می‌شود.",
       },
     ],
+      { primary: "آموزش فنی لوله پلی اتیلن", secondary: ["دوره جوش پلی اتیلن", "آموزش کنترل کیفیت لوله", "آموزش جوشکار PE"] },
   ),
 ];
