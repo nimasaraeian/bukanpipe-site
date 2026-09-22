@@ -65,7 +65,6 @@ describe.each(locales)("%s keyword ownership", (locale) => {
         "/technical-center/polyethylene-pipe-complete-guide uses \"تولید کننده لوله پلی اتیلن\", owned by /about",
         "/technical-center/polyethylene-pipe-complete-guide uses \"استاندارد لوله پلی اتیلن\", owned by /technical-center/polyethylene-pipe-standards",
         "/polyethylene-pipe uses \"کاربرد لوله پلی اتیلن\", owned by /applications",
-        "/technical-center/hdpe-pipe-what-is uses \"لوله پلی اتیلن چیست\", owned by /polyethylene-pipe",
         "/about uses \"خرید لوله پلی اتیلن از کارخانه\", owned by /products",
         "/quality uses \"تولید کننده لوله پلی اتیلن\", owned by /about",
         "/certifications uses \"استاندارد لوله پلی اتیلن\", owned by /technical-center/polyethylene-pipe-standards",

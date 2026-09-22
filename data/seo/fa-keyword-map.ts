@@ -309,14 +309,14 @@ export const faKeywordMap: readonly FaKeywordMapEntry[] = [
   {
     path: "/technical-center/hdpe-installation-guide",
     primaryKeyword: "راهنمای نصب HDPE",
-    secondaryKeywords: ["نصب لوله پلی اتیلن", "جوش لوله PE", "آزمون فشار HDPE"],
+    secondaryKeywords: ["نصب لوله پلی اتیلن", "ترانشه لوله پلی اتیلن", "آزمون فشار HDPE"],
     intent: "informational",
     cluster: "technical",
   },
   {
     path: "/technical-center/hdpe-pipe-what-is",
     primaryKeyword: "لوله HDPE چیست",
-    secondaryKeywords: ["لوله پلی اتیلن چیست", "HDPE pipe", "تفاوت HDPE و PVC"],
+    secondaryKeywords: ["تفاوت HDPE و PVC", "لوله HDPE یا فولادی", "معنی HDPE"],
     intent: "informational",
     cluster: "technical",
   },
