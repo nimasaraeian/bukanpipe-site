@@ -28,6 +28,13 @@ export function getPrimaryNavStructure(
   path: (routePath: string) => string,
 ): readonly PrimaryNavEntry[] {
   const engineeringItems: readonly NavItem[] = [
+    /*
+     * The complete guide owns the head term "لوله پلی اتیلن" but was reachable
+     * from neither the nav nor the footer, so it carried five inbound internal
+     * links while /products/water-supply-pipe carried thirty-six. The site was
+     * voting against its own most valuable page. It leads this group now.
+     */
+    { label: t.nav.peGuide, href: path("/technical-center/polyethylene-pipe-complete-guide") },
     { label: t.nav.technicalCenter, href: path("/technical-center") },
     { label: t.nav.calculator, href: path("/calculator") },
     { label: t.nav.downloads, href: path("/downloads") },
@@ -92,11 +99,16 @@ export function getFooterColumns(
         { label: t.footer.columns.products.links.pe100, href: path("/products/pe100-pipe") },
         { label: t.footer.columns.products.links.industrialPipe, href: path("/products/industrial-pipe") },
         { label: t.footer.columns.products.links.peGuide, href: path("/polyethylene-pipe") },
+        { label: t.footer.columns.products.links.pipeSizes, href: path("/pipe-size") },
       ],
     },
     {
       title: t.footer.columns.resources.title,
       links: [
+        {
+          label: t.footer.columns.resources.links.peGuide,
+          href: path("/technical-center/polyethylene-pipe-complete-guide"),
+        },
         { label: t.footer.columns.resources.links.technicalCenter, href: path("/technical-center") },
         { label: t.footer.columns.resources.links.calculator, href: path("/calculator") },
         { label: t.footer.columns.resources.links.downloads, href: path("/downloads") },

@@ -58,7 +58,7 @@ export const enTechnicalHub: ContentDocument = {
   title: "Technical Center",
   seoTitle: "HDPE Pipe Technical Resources | Bukan Pipe",
   seoDescription:
-    "Engineering guides on PE welding, pressure/temperature, air valves and irrigation for designers and contractors.",
+    "HDPE pipe technical guides for designers and contractors — welding, pressure and temperature derating, air valves, dimensions and irrigation.",
   description: "Technical resources for PE network design and installation.",
   primaryKeyword: "HDPE pipe technical guide",
   secondaryKeywords: ["PE pipe welding", "HDPE pipe pressure rating", "PE100 pipe design"],
@@ -73,7 +73,30 @@ export const enTechnicalHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "Articles in this section support engineering, installation and maintenance decisions for PE pipe networks. For product selection and quotes, see the Products section.",
+      text: "This section is for engineering decisions: material grade and pressure class, the standard governing each application, jointing method, and network installation. If you are here to get a price, the products page is the shorter route.",
+    },
+    { type: "heading", level: 2, text: "Where to start" },
+    {
+      type: "paragraph",
+      text: "Most enquiries that reach us are one of four cases. Pick your route:",
+    },
+    {
+      type: "list",
+      items: [
+        "New to polyethylene: start with the pipe overview, then PE100",
+        "You know what you want and need a number: go straight to the dimensions chart",
+        "You are designing a line: estimate diameter with the calculator, then fix the class with the temperature and pressure guide",
+        "You are building: read the installation guide, the welding guide and the air valve article",
+      ],
+    },
+    { type: "heading", level: 2, text: "Three mistakes that cost the most" },
+    {
+      type: "list",
+      items: [
+        "Ordering on diameter alone, without SDR and material grade — one diameter covers several quite different products",
+        "Selecting pressure class from ordinary working pressure instead of maximum pressure plus a surge allowance",
+        "Ignoring the line's real temperature — the PN marked on the pipe applies at 20 °C",
+      ],
     },
     {
       type: "internal-links",
@@ -103,9 +126,40 @@ export const enTechnicalHub: ContentDocument = {
           label: "Temperature and pressure derating",
           path: "/technical-center/polyethylene-pipe-temperature-pressure",
         },
+        {
+          label: "Air valves in a water transmission line",
+          path: "/technical-center/air-vent-valve",
+          hint: "Preventing pipe collapse and flow loss",
+        },
+        {
+          label: "Subsurface drip irrigation",
+          path: "/technical-center/subsurface-drip-irrigation",
+        },
+        {
+          label: "Pipeline design calculator",
+          path: "/calculator/pipeline-design",
+          hint: "Diameter, velocity, head loss and pump power",
+        },
         { label: "HDPE pipe overview (pillar)", path: "/polyethylene-pipe" },
         { label: "Request a quote", path: "/request-quote" },
       ],
+    },
+  ],
+  faqs: [
+    {
+      question: "What is the difference between SDR and PN?",
+      answer:
+        "SDR is the ratio of outside diameter to wall thickness — a geometric number. PN is the working pressure corresponding to that SDR for a given material grade at 20 °C. Because PN shifts when the grade changes, quote both in an order.",
+    },
+    {
+      question: "Where do I start when designing a line?",
+      answer:
+        "From design flow and the route profile. Estimate diameter from flow and permissible velocity, then fix pressure class from maximum static head plus a surge allowance, with the temperature derating applied. Finally take the matching outside diameter and SDR from the dimensions chart.",
+    },
+    {
+      question: "Which standard governs my project?",
+      answer:
+        "The application decides, not the pipe. Potable water, gas and irrigation each have their own national standard, and for water and gas compliance is mandatory. The water supply and gas guides cover that split.",
     },
   ],
   related: {
@@ -378,7 +432,7 @@ export const enTechnicalArticles: readonly ContentDocument[] = [
     "polyethylene-pipe-welding",
     "HDPE Pipe Welding: Butt Fusion and Electrofusion",
     "HDPE Pipe Welding | Butt Fusion & Electrofusion Guide",
-    "Engineering guide to butt fusion and electrofusion for PE pipe — INSO 18648 context.",
+    "HDPE pipe welding guide — butt fusion and electrofusion to INSO 18648: procedure steps, the parameters that matter and how joint quality is inspected.",
     "Standard PE pipe jointing methods.",
     "HDPE pipe welding",
     ["butt fusion", "electrofusion", "PE pipe fusion"],
@@ -419,61 +473,225 @@ export const enTechnicalArticles: readonly ContentDocument[] = [
   article(
     "air-vent-valve",
     "Air Release Valves in PE Water Pipelines",
-    "Air Release Valves in HDPE Water Pipes | Pipeline Design",
-    "Role of air vents in preventing vacuum, flow reduction and pipe collapse on PE lines.",
-    "Air valve design for PE water transfer.",
+    "Air Valves in HDPE Pipelines | Selection, Placement, Installation",
+    "What an air valve does in a polyethylene pipeline, how the three types differ, why vacuum collapse is SDR-dependent, and where valves belong on the route.",
+    "Air valve design, selection and installation for PE water transfer.",
     "air release valve pipeline",
     ["HDPE pipe vacuum", "water hammer PE pipe", "air vent valve"],
     [
       {
         type: "paragraph",
-        text: "In water transfer lines, trapped air at high points or vacuum during draining can impair network performance. Air release and check valves are essential design elements — not optional accessories.",
+        text: "An air valve does three jobs: during filling it expels the large volume of air in the pipe; in service it releases the air that comes out of solution under pressure and collects at high points; and during draining or a sudden pump trip it admits air so that a vacuum cannot form. Its absence usually announces itself as reduced flow, a line that vibrates, or — at worst — a collapsed pipe.",
       },
-      { type: "heading", level: 2, text: "Vacuum and pipe collapse" },
+      {
+        type: "definition",
+        term: "Air valve",
+        text: "A valve mounted vertically at a high point on the line which, depending on its type, either expels air from the line or admits air into it. It is not a pressure control device and does not replace a relief valve.",
+      },
+      { type: "heading", level: 2, text: "Three types, and the real difference between them" },
       {
         type: "paragraph",
-        text: "On descending profiles, rapid pump shutdown without a check valve can create negative pressure and inward deflection of the pipe wall. With PE100 and thinner walls, air/vacuum protection becomes more critical.",
+        text: "Most field problems start here: one type is bought and the work of another is expected from it. The difference is the size of the orifice and the conditions under which the valve stays open.",
       },
-      { type: "heading", level: 2, text: "Flow reduction and water hammer" },
+      {
+        type: "spec-table",
+        title: "Air valve types and what each one does",
+        rows: [
+          {
+            label: "Air release valve (small orifice)",
+            value: "Opens under working pressure and vents air that has accumulated at high points during operation. Not sufficient for initial filling or for vacuum protection.",
+          },
+          {
+            label: "Air/vacuum valve (large orifice)",
+            value: "Expels a large volume of air as the line fills, and admits air on draining or pressure loss. Once the line is full its float seats and it will not reopen under pressure.",
+          },
+          {
+            label: "Combination (double orifice)",
+            value: "Both functions in one body. The default choice for high points on a water transmission main, because it covers all three duties.",
+          },
+        ],
+        note: "Type and size must be confirmed against the manufacturer's air flow curves and the project's filling and draining conditions.",
+      },
+      { type: "heading", level: 2, text: "Why vacuum matters more in polyethylene" },
       {
         type: "paragraph",
-        text: "Air pockets at line peaks reduce effective flow area, cut delivered flow and can contribute to transient pressure events.",
+        text: "Polyethylene pipe is extremely tolerant of internal pressure but behaves differently under net external pressure — when the pressure inside falls below the pressure outside. Rather than bursting, it buckles: the section goes oval and then flattens. That failure is generally irreversible.",
       },
-      { type: "heading", level: 2, text: "Installation practice" },
+      {
+        type: "paragraph",
+        text: "Resistance to that buckling is a direct function of wall thickness, so the higher the SDR — the thinner the wall — the less negative pressure it takes to start. Soil load and groundwater add to the same external load. The practical conclusion: on high-SDR lines, or lines buried below the water table, air/vacuum valve placement is not optional.",
+      },
+      { type: "heading", level: 2, text: "How trapped air eats flow" },
+      {
+        type: "paragraph",
+        text: "A stationary air pocket at a high point occupies part of the flow area. The flow has to squeeze through a smaller section, which acts exactly like a local constriction: head loss rises, the pump moves to a different duty point and energy consumption goes up. If the pocket suddenly shifts or releases, the rapid movement of the water column can itself generate a surge. Meters and flow instruments also read incorrectly in the presence of air.",
+      },
+      { type: "heading", level: 2, text: "Where the line needs air valves" },
       {
         type: "list",
         items: [
-          "Mount air valves vertically at high points",
-          "Typical spacing near 600 m on long horizontal runs (project-specific)",
-          "Inspect and service valves periodically (e.g. every six months)",
+          "Every high point on the longitudinal profile — the primary, non-negotiable location",
+          "Points where the grade changes, even if they are not true peaks (a break in grade toward a descent)",
+          "At regular intervals on long horizontal runs — around every 600 m is common on water supply projects",
+          "Upstream and downstream of in-line isolation valves, since closing them splits the line into two separate sections",
+          "At the pump discharge, where a power failure drops pressure quickly",
+          "At the end of the line and on dead-end branches, where air has nowhere else to go",
+        ],
+      },
+      { type: "heading", level: 2, text: "Mounting on polyethylene specifically" },
+      {
+        type: "list",
+        items: [
+          "The valve must sit truly vertical on the pipe crown; mounted at an angle, the float will not seat correctly",
+          "Take the branch with an electrofusion saddle or a stub end and backing flange, not by threading directly into the PE wall",
+          "Support the weight of the valve and its metallic fittings independently, so that load does not bear on the pipe wall",
+          "Install it in a chamber with drainage; if the chamber floods, the valve draws dirty water into the line instead of air during a vacuum event",
+          "Fit an isolation valve beneath it for servicing — and record that it must be left open afterwards",
+          "The valve's vent must sit above any likely flood level and carry an insect screen",
+        ],
+      },
+      { type: "heading", level: 2, text: "The failure modes that keep recurring" },
+      {
+        type: "list",
+        items: [
+          "Fitting only an air release valve and expecting vacuum protection from it",
+          "Filling too fast, so the water column hits the float and generates a surge — filling must be controlled and slow",
+          "Closing the isolation valve beneath the air valve after servicing and forgetting it; the line then runs with no air valve at all",
+          "A flooded chamber that blocks the air inlet path",
+          "Using an air valve in place of a relief or pressure-reducing valve",
+        ],
+      },
+      { type: "heading", level: 2, text: "Maintenance" },
+      {
+        type: "paragraph",
+        text: "An air valve is the component nobody visits until the day the line fails. A periodic inspection — in practice around every six months — should cover draining and cleaning the chamber, checking the seat and float, confirming the isolation valve below is open, and confirming the vent is clear. Sediment and suspended particles are the commonest cause of a leaking or stuck float.",
+      },
+      {
+        type: "internal-links",
+        title: "Related",
+        links: [
+          {
+            label: "Temperature and pressure derating",
+            path: "/technical-center/polyethylene-pipe-temperature-pressure",
+            hint: "Calculating MOP",
+          },
+          {
+            label: "HDPE pipe dimensions chart",
+            path: "/technical-center/hdpe-pipe-dimensions-chart",
+            hint: "How SDR relates to wall thickness",
+          },
+          {
+            label: "Pipeline design calculator",
+            path: "/calculator/pipeline-design",
+          },
+          { label: "Water supply pipe", path: "/products/water-supply-pipe" },
         ],
       },
     ],
     { applications: ["water-transfer"], products: ["water-supply-pipe", "pe100-pipe"] },
     ["https://bukanpipe.com/air-vent-valve/"],
+    [
+      {
+        question: "How far apart should air valves be?",
+        answer:
+          "Spacing is not the primary basis — the longitudinal profile is. Every peak and every break in grade needs one. On long horizontal runs with no defined peak, regular intervals around every 600 m are common on water supply projects. The final figure comes from the project specification.",
+      },
+      {
+        question: "What is the difference between an air release valve and an air/vacuum valve?",
+        answer:
+          "An air release valve has a small orifice and vents accumulated air under working pressure during operation. An air/vacuum valve has a large orifice and handles filling and air admission during draining; once the line is full it stays shut. A combination valve does both.",
+      },
+      {
+        question: "Why does polyethylene pipe collapse?",
+        answer:
+          "When the pressure inside falls below the pressure outside — draining without air admission, or a sudden pump trip — the wall buckles under net external load and the section flattens. The higher the SDR and the thinner the wall, the less negative pressure it takes.",
+      },
+      {
+        question: "Does an air valve prevent water hammer?",
+        answer:
+          "It is part of transient management, not all of it. Admitting air during a pressure drop reduces the severity of the negative wave, but the sudden release of trapped air can itself be a source of surge. Full surge control needs a separate calculation and sometimes additional equipment.",
+      },
+      {
+        question: "How is an air valve mounted on polyethylene pipe?",
+        answer:
+          "Take the branch with an electrofusion saddle or a stub end and backing flange, never by threading into the wall. The valve sits vertical on the pipe crown, its weight is supported independently, and an isolation valve for servicing goes beneath it.",
+      },
+    ],
   ),
   article(
     "polyethylene-pipe-temperature-pressure",
     "Temperature Effects on PE Pipe Working Pressure",
     "HDPE Pipe Temperature Derating & MOP | PE Pressure Rating",
-    "Temperature factor fT and MOP calculation — INSO 14427 and INSO 14563-1 context.",
+    "HDPE pipe pressure above the 20 °C reference — the temperature derating factor, calculating MOP, and selecting SDR from the line's real temperature.",
     "Operating temperature and allowable pressure.",
     "HDPE pipe temperature derating",
     ["PE pipe pressure rating", "MOP", "PN derating"],
     [
       {
         type: "paragraph",
-        text: "PN marked on water supply pipe is defined at 20 °C. At higher temperatures, maximum operating pressure (MOP) must include a temperature factor fT: MOP = fT × PN.",
+        text: "The number printed on polyethylene pipe — PN10, PN16 and so on — is not an absolute. It is the allowable working pressure for water at 20 °C over a 50-year design life. If your line runs warmer, the real allowable pressure is lower than the number on the pipe and has to be calculated with a temperature derating factor.",
       },
-      { type: "heading", level: 2, text: "Practical example" },
+      {
+        type: "definition",
+        term: "MOP",
+        text: "Maximum operating pressure at the line's actual working temperature, from MOP = fT × PN, where fT is the derating factor for that temperature and that material grade. MOP, not the printed PN, is the design basis.",
+      },
+      { type: "heading", level: 2, text: "Why temperature reduces allowable pressure" },
       {
         type: "paragraph",
-        text: "If direct solar exposure raises pipe temperature to 40 °C, allowable pressure on PN10 pipe may be approximately 7.4 bar — operating at 10 bar risks damage.",
+        text: "Polyethylene is viscoelastic: its behaviour depends on time and temperature. The PN figure derives from the material's long-term strength (MRS) at the reference temperature, and that strength is resistance to slow crack growth over 50 years, not instantaneous burst resistance. As temperature rises, molecular chains slide past one another more readily and the same stress produces more strain in less time. The result is that a hotter line reaches the end of its design life sooner — not that it necessarily bursts that day. Which is exactly why temperature-related failure usually appears years later and without warning.",
       },
-      { type: "heading", level: 2, text: "Responsible design" },
+      { type: "heading", level: 2, text: "A worked example" },
       {
         type: "paragraph",
-        text: "The design engineer must account for line temperature, fT and service factors. For preliminary diameter and pump estimates, use the pipeline design calculator — not as a substitute for full hydraulic design.",
+        text: "Take a line laid on the surface in direct sun, where the water inside reaches 40 °C in summer. The derating factor at that temperature is around 0.74. So PN10 pipe has an allowable working pressure of roughly 7.4 bar under those conditions. Run it at 10 bar and it is being loaded beyond its design capacity.",
+      },
+      {
+        type: "paragraph",
+        text: "The practical consequence is to invert the order of selection: instead of choosing PN and then worrying about temperature, start from the required working pressure and the line's real temperature, and derive the PN you need from PN = working pressure ÷ fT. In the example above, delivering an effective 10 bar at 40 °C requires a class above PN10.",
+      },
+      { type: "heading", level: 2, text: "Where to get the factor" },
+      {
+        type: "paragraph",
+        text: "The derating table depends on the material grade (PE80 or PE100) and on the fluid, and is published in the standard governing your project. Do not take it from a generic table found online, and do not apply one grade's factor to another. For water supply lines the basis is the national standard for that product; on projects with a client specification, the client's approved table.",
+      },
+      { type: "heading", level: 2, text: "Transient and continuous temperature are not the same" },
+      {
+        type: "paragraph",
+        text: "What counts is the temperature the line operates at, not an instantaneous maximum. A short peak lasting a few hours a year is not the same as continuous operation at that temperature. Equally, if the line runs hot for months every summer, that is no longer transient and should be the design basis. For lines that cycle hot and cold, the designer has to weight the time spent in each condition.",
+      },
+      { type: "heading", level: 2, text: "Buried versus above ground" },
+      {
+        type: "list",
+        items: [
+          "Buried line: soil temperature at depth is stable and usually close to the local annual mean — daily swings do not reach it",
+          "Surface line: wall temperature in direct sun runs above air temperature, especially when flow stops and water stands in the pipe",
+          "Line in an unventilated duct or culvert: can run hotter than a surface line",
+          "Warm process fluid: the fluid temperature governs, not the ambient",
+        ],
+      },
+      { type: "heading", level: 2, text: "Below 20 °C" },
+      {
+        type: "paragraph",
+        text: "Below the reference temperature the factor exceeds one, so in long-term strength terms a cold pipe is better off. In practice that gain is usually not taken in design, because cold introduces a different problem: polyethylene becomes stiffer and more notch-sensitive at low temperature. Unloading, handling and welding pipe in cold weather calls for more care, not less.",
+      },
+      {
+        type: "internal-links",
+        title: "Related",
+        links: [
+          {
+            label: "HDPE pipe dimensions chart",
+            path: "/technical-center/hdpe-pipe-dimensions-chart",
+            hint: "Selecting SDR after calculating MOP",
+          },
+          {
+            label: "PE100 technical guide",
+            path: "/technical-center/pe100-technical-guide",
+            hint: "Why the factor depends on material grade",
+          },
+          { label: "Pipeline design calculator", path: "/calculator/pipeline-design" },
+          { label: "Water supply pipe", path: "/products/water-supply-pipe" },
+        ],
       },
     ],
     {
@@ -485,35 +703,136 @@ export const enTechnicalArticles: readonly ContentDocument[] = [
       {
         question: "Does buried pipe need temperature derating?",
         answer:
-          "Soil temperature is usually more stable than above-ground exposure, but the engineer must assess actual project conditions.",
+          "Soil temperature at burial depth is more stable than air and usually stays near the local annual mean, so on most buried water mains the design temperature is close to the reference. That is not an automatic exemption: a shallow line, a hot climate, or a line carrying warm fluid has to be checked at its real temperature.",
+      },
+      {
+        question: "How do I calculate MOP?",
+        answer:
+          "MOP = fT × PN. Take PN from the pipe specification and fT from the derating table for that material grade at the line's operating temperature. If you are working toward a required working pressure, invert it: the PN you need is working pressure divided by fT.",
+      },
+      {
+        question: "What happens to pipe at high temperature?",
+        answer:
+          "It usually does not burst immediately. What happens is that design life shortens: slow crack growth proceeds faster and failure appears years earlier than intended, without prior warning. That is what makes a temperature error so hard to detect in service.",
+      },
+      {
+        question: "Does pipe colour affect its temperature?",
+        answer:
+          "Black pipe runs hotter in direct sun, but the carbon black responsible is also what protects it against UV. The right answer for a surface line is not to avoid black; it is to apply the temperature factor in selecting the pressure class, and to shade or bury the line where possible.",
+      },
+      {
+        question: "Can I apply more pressure in cold weather?",
+        answer:
+          "In long-term strength terms the factor below 20 °C is greater than one, but that gain is usually not taken in design. In cold conditions polyethylene becomes stiffer and more impact-sensitive, and that is the governing constraint for handling, installation and welding.",
       },
     ],
   ),
   article(
     "subsurface-drip-irrigation",
     "Subsurface Drip Irrigation Systems",
-    "Subsurface Drip Irrigation with HDPE Pipe | Farm Water Networks",
-    "Role of PE mains in subsurface irrigation and water-efficiency context.",
-    "PE feeder mains for subsurface irrigation.",
+    "Subsurface Drip Irrigation (SDI) with HDPE Pipe | Design & Maintenance",
+    "What subsurface drip irrigation is, burial depth for dripline, preventing root intrusion and soil suction, and the role of the polyethylene main.",
+    "PE mains and design for subsurface irrigation.",
     "subsurface drip irrigation",
     ["HDPE irrigation pipe", "agricultural PE pipe"],
     [
       {
         type: "paragraph",
-        text: "Subsurface drip irrigation reduces surface evaporation and can improve water use efficiency. HDPE pipe typically forms pressurised feeder mains between the water source and the subsurface emitter network.",
+        text: "Subsurface drip irrigation, or SDI, is ordinary drip irrigation with one difference: the emitter line is buried in the root zone instead of lying on the surface. Water reaches the roots directly and the soil surface stays dry. The result is that most surface evaporation disappears, weed growth falls, and field operations can be carried out without working around irrigation lines. In exchange, it is a system you cannot diagnose by eye — which is why its design and maintenance are held to a stricter standard.",
       },
-      { type: "heading", level: 2, text: "Network design" },
+      { type: "heading", level: 2, text: "Network structure and where the PE pipe sits" },
+      {
+        type: "paragraph",
+        text: "The network has three layers. The main line runs from well or reservoir to the control and filtration station and carries the highest flow and pressure. The manifold or submain distributes between field blocks. The emitter laterals are buried. Pressure-rated polyethylene pipe makes up the first two layers; the third is a separate product. The point that is often understood too late is that the durability and uniformity of the whole system are set by those first two layers, not by the emitter.",
+      },
+      { type: "heading", level: 2, text: "Burial depth" },
+      {
+        type: "paragraph",
+        text: "Lateral burial depth is determined by crop rooting, soil texture and tillage practice. On row crops a range of roughly 20 to 40 cm is usually chosen. Shallower than that exposes the line to damage from implements and brings moisture to the surface; deeper puts water below the root zone of young plants and disrupts germination and establishment. The final figure has to come from an irrigation specialist familiar with the crop and the region.",
+      },
+      { type: "heading", level: 2, text: "The three things that kill an SDI system" },
+      {
+        type: "paragraph",
+        text: "In surface drip you can see a blockage. In SDI the first symptom is usually a yellow patch in the field — by which time the damage is done. The three main failure mechanisms are:",
+      },
       {
         type: "list",
         items: [
-          "Diameter and pressure matched to field area and crop",
-          "Filtration and control valves upstream of emitters",
-          "Coordination with crop-specific subsurface tubing products",
+          "Root intrusion into the emitter passage — roots grow toward moisture and block it",
+          "Soil suction when the system shuts down — as pressure falls the line tends to empty, and instead of air it draws soil and silt in through the emitters",
+          "Chemical and biological scaling — calcium carbonate, iron and microbial slime progressively narrowing the passage",
+        ],
+      },
+      { type: "heading", level: 2, text: "The answers belong in design, not in operation" },
+      {
+        type: "list",
+        items: [
+          "Root-resistant emitters, or a periodic injection programme per the emitter manufacturer's recommendation",
+          "Air/vacuum valves on the manifold and at high points — the component that prevents soil being drawn into the emitters, and the cheapest insurance this system has",
+          "A flush manifold at the ends of the laterals, so the line can be flushed at velocity periodically; without one, accumulated particles have nowhere to leave",
+          "A filtration station matched to the water source: screen or disc for clean water, sand for water carrying algae and organic matter",
+          "Pressure-compensating emitters on sloping ground or long laterals",
+          "Pressure gauges at the head and tail of each block — a change in the differential is the first sign of clogging, and appears before the field goes yellow",
+        ],
+      },
+      { type: "heading", level: 2, text: "Distribution uniformity is the real measure of success" },
+      {
+        type: "paragraph",
+        text: "In SDI you cannot assess uniformity by looking, so it has to be guaranteed in design. The conventional criterion is that pressure variation between the head and the tail of an irrigation block should not exceed about 20 per cent of emitter operating pressure. Meeting it usually makes the manifold and main larger than flow alone would have required — and this is exactly where saving on main-line diameter reappears later as an uneven crop.",
+      },
+      { type: "heading", level: 2, text: "Where it makes sense" },
+      {
+        type: "paragraph",
+        text: "SDI carries a higher capital cost and expects more disciplined maintenance. It earns its place where the planting is perennial or the crop is high-value, where water is expensive or limited, where strong wind undermines the efficiency of sprinkler irrigation, or where you want to carry out field operations and harvest without lifting irrigation lines. For a low-value annual crop with abundant water, it usually does not pay.",
+      },
+      {
+        type: "internal-links",
+        title: "Related",
+        links: [
+          {
+            label: "Agricultural irrigation",
+            path: "/applications/agriculture-irrigation",
+            hint: "Main line and submain design",
+          },
+          {
+            label: "Air valves in a transmission line",
+            path: "/technical-center/air-vent-valve",
+            hint: "Preventing soil suction into emitters",
+          },
+          { label: "Pipeline design calculator", path: "/calculator/pipeline-design" },
+          { label: "Irrigation pipe", path: "/products/irrigation-pipe" },
         ],
       },
     ],
     { applications: ["agriculture-irrigation"], products: ["irrigation-pipe"] },
     ["https://bukanpipe.com/"],
+    [
+      {
+        question: "How deep should subsurface dripline be buried?",
+        answer:
+          "Depending on crop, soil texture and tillage, usually somewhere between about 20 and 40 cm. Shallower exposes the line to implements; deeper puts water below the root zone of young plants. The exact figure should come from an irrigation specialist for that crop and region.",
+      },
+      {
+        question: "How do I prevent root intrusion into emitters?",
+        answer:
+          "With root-resistant emitters, or a periodic injection programme following the emitter manufacturer's recommendation. Short, frequent irrigations that keep the soil around the emitter continuously moist also reduce the root's incentive to enter it.",
+      },
+      {
+        question: "Why does a subsurface system need air valves?",
+        answer:
+          "When the system shuts down, line pressure falls and the line tends to empty. If air cannot enter elsewhere, the line draws air through the emitters — and soil and silt with it. An air/vacuum valve on the manifold closes that path.",
+      },
+      {
+        question: "How long does an SDI system last?",
+        answer:
+          "Its life depends far less on the pipe than on filtration quality, the periodic flushing programme and scale control. A system with no flush manifold, or one that is never flushed, fails early regardless of pipe quality.",
+      },
+      {
+        question: "Can SDI be used with saline well water?",
+        answer:
+          "It can, but water with high hardness or iron greatly increases the risk of scaling inside the emitter passage. In that case water quality analysis, appropriate filtration and an acid flushing programme per the emitter manufacturer are an inseparable part of the design.",
+      },
+    ],
   ),
   buildSeoArticleDocument("en", enPe100TechnicalGuideSeed),
   buildSeoArticleDocument("en", enHdpeInstallationGuideSeed),

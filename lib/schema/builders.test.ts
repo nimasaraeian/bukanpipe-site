@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { publishedDocuments, withheldDocuments } from "@/data/company/documents";
+import { awards } from "@/data/company/awards";
 import {
   organizationSchema,
   manufacturingBusinessSchema,
@@ -15,7 +17,7 @@ describe("structured data builders", () => {
     expect(schema.name).toBe("Bukan Pipe");
     expect(schema.address).toMatchObject({
       "@type": "PostalAddress",
-      postalCode: "5955164341",
+      postalCode: "5955116757",
       addressLocality: "Bukan",
     });
     expect(schema.address).not.toHaveProperty("geo");
@@ -26,7 +28,18 @@ describe("structured data builders", () => {
       height: 1024,
     });
     expect(schema.sameAs).toEqual(["https://www.instagram.com/bukanpipe_company/"]);
-    expect(schema.foundingDate).toBeUndefined();
+    /*
+     * This used to assert foundingDate was absent, because nothing in the repo
+     * established it. The industrial operating licence does: registration 121
+     * of 1373/06/26. The guard now pins the verified value instead of the gap.
+     */
+    expect(schema.foundingDate).toBe("1994-09-17");
+    expect(schema.identifier).toMatchObject({
+      "@type": "PropertyValue",
+      propertyID: "IR-NationalID",
+      value: "10220007922",
+    });
+    expect(schema.legalName).toBe("Bukan Polyethylene Pipe Company");
     expect(schema.alternateName).toBe("بوکان پایپ");
     expect(schema.description).toEqual(expect.any(String));
     expect(schema.contactPoint).toMatchObject({
@@ -73,5 +86,35 @@ describe("structured data builders", () => {
 describe("serializeJsonLd", () => {
   it("escapes < to avoid script breakout", () => {
     expect(serializeJsonLd({ name: "</script>" })).toContain("\\u003c/script>");
+  });
+});
+
+describe("organization credentials in structured data", () => {
+  it("lists only credentials the document registry publishes", () => {
+    const schema = organizationSchema();
+    const credentials = schema.hasCredential as { identifier?: string; name: string }[];
+
+    expect(credentials.length).toBeGreaterThan(0);
+
+    const published = new Set(
+      publishedDocuments()
+        .filter((d) => d.group === "management-system" || d.group === "standard-mark")
+        .map((d) => d.title.en),
+    );
+    for (const credential of credentials) {
+      expect(published.has(credential.name)).toBe(true);
+    }
+  });
+
+  it("never emits a withheld document's number", () => {
+    const serialized = JSON.stringify(organizationSchema());
+    for (const doc of withheldDocuments()) {
+      if (doc.reference) expect(serialized).not.toContain(doc.reference);
+    }
+  });
+
+  it("carries every published award", () => {
+    const schema = organizationSchema();
+    expect((schema.award as string[]).length).toBe(awards.length);
   });
 });

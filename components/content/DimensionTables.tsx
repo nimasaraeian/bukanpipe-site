@@ -1,5 +1,6 @@
 import {
   dripIrrigationTable,
+  packagingTable,
   gasSupplyTable,
   shouldShowWeightColumn,
   waterSupplyTable,
@@ -15,7 +16,12 @@ import {
  * inside the RTL page.
  */
 
-export type DimensionTableId = "water-supply" | "gas-supply" | "drip-irrigation";
+export type DimensionTableId =
+  | "water-supply"
+  | "gas-supply"
+  | "drip-irrigation"
+  | "supply-form"
+  | "supply-form-sewerage";
 
 const cellNumber = "tabular-nums";
 
@@ -381,6 +387,86 @@ function ExcerptTable({
   return <DripIrrigationDimensionTable locale={locale} only={keep} />;
 }
 
+/**
+ * How the pipe ships: coil or 12 m branch, and at which lengths, per SDR.
+ * `sewerageOnly` narrows it to the three SDRs the catalogue marks for
+ * sewerage, which is what the sewage product page shows.
+ */
+export function SupplyFormTable({
+  locale,
+  sewerageOnly = false,
+}: {
+  locale: "fa" | "en";
+  sewerageOnly?: boolean;
+}) {
+  const isFa = locale === "fa";
+  const rows = sewerageOnly
+    ? packagingTable.rows.filter((row) => row.use === "water-supply-sewerage")
+    : packagingTable.rows;
+
+  const headers = isFa
+    ? ["فشار اسمی (اتمسفر)", "بازه سایز (mm)", "نوع بسته‌بندی", "متراژ (متر)"]
+    : ["Nominal pressure (atm)", "Size range (mm)", "Package", "Length (m)"];
+
+  return (
+    <TableShell
+      caption={
+        isFa
+          ? sewerageOnly
+            ? "شکل عرضه لوله فاضلابی در کاتالوگ بوکان پایپ"
+            : "شکل عرضه و بسته‌بندی لوله در کاتالوگ بوکان پایپ"
+          : sewerageOnly
+            ? "Supply form for sewerage pipe, Bukan Pipe catalogue"
+            : "Supply form and packing, Bukan Pipe catalogue"
+      }
+      summary={
+        isFa
+          ? "کلاف برای قطرهای کوچک و شاخه ۱۲ متری برای قطرهای بزرگ. ستون مصرف کاتالوگ، SDR ۴۱، ۳۳ و ۲۶ را برای آبرسانی و فاضلاب علامت زده است."
+          : "Small diameters ship as coils, large ones as 12 m branches. The catalogue's consumption column marks SDR 41, 33 and 26 for water supply and sewerage."
+      }
+    >
+      <thead>
+        <tr>
+          <th scope="col" className={STICKY_HEAD} style={stickyStart}>
+            SDR
+          </th>
+          {headers.map((label) => (
+            <th scope="col" key={label} className={HEAD}>
+              {label}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr
+            key={`${row.sdr}-${row.sizeFromMm}-${row.packageType}`}
+            className="border-t border-[color:var(--ind-border)]"
+          >
+            <th scope="row" className={STICKY_CELL} style={stickyStart}>
+              <span dir="ltr" className={cellNumber}>{row.sdr}</span>
+            </th>
+            <td className={CELL}>
+              <span dir="ltr" className={cellNumber}>{row.nominalPressureAtm}</span>
+            </td>
+            <td className={CELL}>
+              <span dir="ltr" className={cellNumber}>
+                {row.sizeFromMm}–{row.sizeToMm}
+              </span>
+            </td>
+            <td className={CELL}>
+              {isFa ? (row.packageType === "coil" ? "کلاف" : "شاخه") : row.packageType}
+            </td>
+            <td className={CELL}>
+              <span dir="ltr" className={cellNumber}>{row.packingLengthM.join(" / ")}</span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </TableShell>
+  );
+}
+
 /** Rendered by the `dimension-table` content block. */
 export function DimensionTableBlock({
   table,
@@ -395,5 +481,9 @@ export function DimensionTableBlock({
 
   if (table === "water-supply") return <WaterSupplyDimensionTable locale={locale} />;
   if (table === "gas-supply") return <GasSupplyDimensionTable locale={locale} />;
+  if (table === "supply-form") return <SupplyFormTable locale={locale} />;
+  if (table === "supply-form-sewerage") {
+    return <SupplyFormTable locale={locale} sewerageOnly />;
+  }
   return <DripIrrigationDimensionTable locale={locale} />;
 }

@@ -5,7 +5,7 @@ export const enGasPillarArticle: SeoArticleSeed = {
   title: "Gas Polyethylene Pipe: Standards, Production Process, and Application in Gas Networks",
   seoTitle: "Gas Polyethylene Pipe: Standards & Production | Bukan Pipe",
   seoDescription:
-    "Guide to gas polyethylene pipe and HDPE gas pipe: ISO 4437, material grade and SDR, production control, traceability, jointing requirements, and procurement documentation for gas networks.",
+    "Gas polyethylene pipe: ISO 4437, material grade and SDR, production control, traceability and the jointing requirements for gas networks.",
   description:
     "Technical and procurement guide to gas polyethylene pipe for owners and contractors — from standards and production through inspection, jointing, and handover documentation.",
   primaryKeyword: "gas polyethylene pipe",

@@ -4,7 +4,7 @@ export const enWaterPillarArticle: SeoArticleSeed = {
   slug: "water-supply-polyethylene-pipe-guide",
   title: "Water Supply Polyethylene Pipe: Technical Specifications, Standards, Pressure Ratings, and Applications",
   seoTitle: "Water Supply Polyethylene Pipe: Pressure, Standards & Procurement | Bukan Pipe",
-  seoDescription: "Guide to water supply polyethylene pipe: selecting diameter and SDR, PE100 working pressure, potable water requirements, quality control, and information needed to procure water transmission pipe.",
+  seoDescription: "Water supply polyethylene pipe: selecting diameter and SDR, PE100 working pressure, potable water requirements and what to specify when procuring.",
   description: "A practical reference for defining water transmission line specifications, comparing supply proposals, and controlling installation and delivery of water supply polyethylene pipe.",
   primaryKeyword: "water supply polyethylene pipe",
   secondaryKeywords: ["PE water pipe", "PE100 water pipe", "water transmission pipe", "water supply pipe procurement"],

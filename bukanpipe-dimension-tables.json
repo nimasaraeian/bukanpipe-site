@@ -5,7 +5,8 @@
     "pages": {
       "waterSupply": 12,
       "gasSupply": 14,
-      "dripIrrigation": 17
+      "dripIrrigation": 17,
+      "packaging": 13
     },
     "transcribedOn": "2026-09-22",
     "note": "Values transcribed verbatim from the factory catalogue. Nothing is computed, rounded or inferred. '-' in the catalogue is null here."
@@ -780,6 +781,259 @@
             1.6,
             1.3
           ]
+        }
+      ]
+    },
+    "packaging": {
+      "id": "packaging",
+      "note": "Supply form per SDR. The catalogue's 'Consumption' column marks SDR 41, 33 and 26 as water supply AND sewerage; every lighter-wall row is water supply only.",
+      "rows": [
+        {
+          "sdr": "41",
+          "nominalPressureAtm": "3.2",
+          "sizeFromMm": 315,
+          "sizeToMm": 630,
+          "packageType": "branch",
+          "packingLengthM": [
+            "12"
+          ],
+          "use": "water-supply-sewerage"
+        },
+        {
+          "sdr": "33",
+          "nominalPressureAtm": "4",
+          "sizeFromMm": 315,
+          "sizeToMm": 630,
+          "packageType": "branch",
+          "packingLengthM": [
+            "12"
+          ],
+          "use": "water-supply-sewerage"
+        },
+        {
+          "sdr": "26",
+          "nominalPressureAtm": "5",
+          "sizeFromMm": 50,
+          "sizeToMm": 630,
+          "packageType": "branch",
+          "packingLengthM": [
+            "12"
+          ],
+          "use": "water-supply-sewerage"
+        },
+        {
+          "sdr": "21",
+          "nominalPressureAtm": "6",
+          "sizeFromMm": 40,
+          "sizeToMm": 75,
+          "packageType": "coil",
+          "packingLengthM": [
+            "100"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "21",
+          "nominalPressureAtm": "6",
+          "sizeFromMm": 90,
+          "sizeToMm": 630,
+          "packageType": "branch",
+          "packingLengthM": [
+            "12"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "17",
+          "nominalPressureAtm": "8",
+          "sizeFromMm": 32,
+          "sizeToMm": 63,
+          "packageType": "coil",
+          "packingLengthM": [
+            "200"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "17",
+          "nominalPressureAtm": "8",
+          "sizeFromMm": 75,
+          "sizeToMm": 125,
+          "packageType": "coil",
+          "packingLengthM": [
+            "100"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "17",
+          "nominalPressureAtm": "8",
+          "sizeFromMm": 140,
+          "sizeToMm": 630,
+          "packageType": "branch",
+          "packingLengthM": [
+            "12"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "13.6",
+          "nominalPressureAtm": "10",
+          "sizeFromMm": 25,
+          "sizeToMm": 63,
+          "packageType": "coil",
+          "packingLengthM": [
+            "200"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "13.6",
+          "nominalPressureAtm": "10",
+          "sizeFromMm": 75,
+          "sizeToMm": 125,
+          "packageType": "coil",
+          "packingLengthM": [
+            "100"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "13.6",
+          "nominalPressureAtm": "10",
+          "sizeFromMm": 140,
+          "sizeToMm": 630,
+          "packageType": "branch",
+          "packingLengthM": [
+            "12"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "9, 7.4, 6",
+          "nominalPressureAtm": "16, 20, 25",
+          "sizeFromMm": 20,
+          "sizeToMm": 32,
+          "packageType": "coil",
+          "packingLengthM": [
+            "200"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "9, 7.4, 6",
+          "nominalPressureAtm": "16, 20, 25",
+          "sizeFromMm": 40,
+          "sizeToMm": 75,
+          "packageType": "coil",
+          "packingLengthM": [
+            "100"
+          ],
+          "use": "water-supply"
+        },
+        {
+          "sdr": "9, 7.4, 6",
+          "nominalPressureAtm": "16, 20, 25",
+          "sizeFromMm": 90,
+          "sizeToMm": 630,
+          "packageType": "branch",
+          "packingLengthM": [
+            "12"
+          ],
+          "use": "water-supply"
+        }
+      ]
+    },
+    "coilDimensions": {
+      "id": "coil-dimensions",
+      "note": "Outer diameter of the packed coil, from the catalogue.",
+      "rows": [
+        {
+          "pipeSizesMm": [
+            "16"
+          ],
+          "packageType": "coil",
+          "packingLengthM": [
+            "400"
+          ],
+          "coilOuterDiameterM": null
+        },
+        {
+          "pipeSizesMm": [
+            "20",
+            "25",
+            "32"
+          ],
+          "packageType": "coil",
+          "packingLengthM": [
+            "200"
+          ],
+          "coilOuterDiameterM": null
+        },
+        {
+          "pipeSizesMm": [
+            "40",
+            "50"
+          ],
+          "packageType": "coil",
+          "packingLengthM": [
+            "200"
+          ],
+          "coilOuterDiameterM": "1.9"
+        },
+        {
+          "pipeSizesMm": [
+            "63"
+          ],
+          "packageType": "coil",
+          "packingLengthM": [
+            "100",
+            "200"
+          ],
+          "coilOuterDiameterM": "1.7-2.35"
+        },
+        {
+          "pipeSizesMm": [
+            "75"
+          ],
+          "packageType": "coil",
+          "packingLengthM": [
+            "100",
+            "200"
+          ],
+          "coilOuterDiameterM": "2.5"
+        },
+        {
+          "pipeSizesMm": [
+            "90"
+          ],
+          "packageType": "coil",
+          "packingLengthM": [
+            "100"
+          ],
+          "coilOuterDiameterM": "2.9"
+        },
+        {
+          "pipeSizesMm": [
+            "110"
+          ],
+          "packageType": "coil",
+          "packingLengthM": [
+            "100"
+          ],
+          "coilOuterDiameterM": "3.6"
+        },
+        {
+          "pipeSizesMm": [
+            "125",
+            "630"
+          ],
+          "packageType": "branch",
+          "packingLengthM": [
+            "6",
+            "12"
+          ],
+          "coilOuterDiameterM": null
         }
       ]
     }

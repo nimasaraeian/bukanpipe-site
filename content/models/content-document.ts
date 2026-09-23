@@ -15,7 +15,12 @@ export type ContentBlock =
   | {
       /** A full catalogue dimension table, rendered as a real HTML table. */
       type: "dimension-table";
-      table: "water-supply" | "gas-supply" | "drip-irrigation";
+      table:
+        | "water-supply"
+        | "gas-supply"
+        | "drip-irrigation"
+        | "supply-form"
+        | "supply-form-sewerage";
     }
   | {
       /**
@@ -26,6 +31,19 @@ export type ContentBlock =
       type: "dimension-excerpt";
       table: "water-supply" | "gas-supply" | "drip-irrigation";
       sizes: readonly number[];
+    }
+  | {
+      /** A table of the factory's certificates, licences or licensed capacity. */
+      type: "document-table";
+      table:
+        | "standard-mark"
+        | "management-system"
+        | "sector-approval"
+        | "registration"
+        | "capacity"
+        | "awards";
+      caption: string;
+      summary?: string;
     }
   | {
       type: "definition";
