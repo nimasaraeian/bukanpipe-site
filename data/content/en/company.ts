@@ -82,6 +82,11 @@ export const enAbout: ContentDocument = {
       type: "internal-links",
       title: "Explore the factory",
       links: [
+        {
+          label: "Complete polyethylene pipe guide",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "Grade, SDR, standards and buying",
+        },
         { label: "Factory Gallery", path: "/gallery", hint: "Real manufacturing photographs" },
         { label: "Products", path: "/products" },
         {
@@ -166,6 +171,11 @@ export const enQuality: ContentDocument = {
           label: "Certifications and licences",
           path: "/certifications",
           hint: "Standard mark numbers and certificates",
+        },
+        {
+          label: "Complete polyethylene pipe guide",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "Grade, SDR, standards and buying",
         },
         { label: "Factory Gallery", path: "/gallery" },
         { label: "Laboratory", path: "/laboratory" },
@@ -308,6 +318,11 @@ export const enCertifications: ContentDocument = {
           label: "Gas pipe guide",
           path: "/technical-center/gas-polyethylene-pipe-guide",
           hint: "What INSO 11233-2 requires",
+        },
+        {
+          label: "Complete polyethylene pipe guide",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "Grade, SDR, standards and buying",
         },
         { label: "Quality control", path: "/quality" },
         { label: "Laboratory", path: "/laboratory" },

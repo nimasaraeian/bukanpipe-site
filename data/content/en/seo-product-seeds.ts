@@ -65,6 +65,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "PE100 Technical Guide", path: seoLandingPaths.pe100Guide, hint: "MRS, SDR and PN" },
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
       { label: "Water transfer applications", path: "/applications/water-transfer" },
@@ -136,6 +137,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
       { label: "HDPE pipe welding guide", path: seoLandingPaths.welding },
       { label: "Gas distribution applications", path: "/applications/gas-distribution" },
@@ -205,6 +207,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "Agriculture & irrigation applications", path: "/applications/agriculture-irrigation" },
       { label: "Water HDPE Pipes", path: seoLandingPaths.water },
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
@@ -259,6 +262,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedApplications: ["industrial"],
     relatedArticles: ["pe100-technical-guide", "hdpe-installation-guide", "polyethylene-pipe-temperature-pressure"],
     curatedLinks: [
+      { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "Industrial applications", path: "/applications/industrial" },
       { label: "PE100 Technical Guide", path: seoLandingPaths.pe100Guide },
       { label: "Water HDPE Pipes", path: seoLandingPaths.water },
@@ -326,6 +330,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "PE100 Technical Guide", path: seoLandingPaths.pe100Guide },
       { label: "HDPE Pipe Guide (pillar)", path: seoLandingPaths.pillar },
       { label: "Water HDPE Pipes", path: seoLandingPaths.water },
@@ -393,6 +398,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedApplications: ["sewage"],
     relatedArticles: ["hdpe-installation-guide"],
     curatedLinks: [
+      { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "Sewage applications", path: "/applications/sewage" },
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
       { label: "HDPE Drainage Pipe", path: "/products/drainage-pipe" },
@@ -479,6 +485,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedApplications: ["drainage"],
     relatedArticles: [],
     curatedLinks: [
+      { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "Drainage applications", path: "/applications/drainage" },
       { label: "HDPE Sewer Pipe", path: "/products/sewage-pipe" },
     ],

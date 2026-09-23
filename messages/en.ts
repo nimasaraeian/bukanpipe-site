@@ -26,6 +26,7 @@ export const dictionaryEn = {
     applications: "Applications",
     laboratory: "Laboratory",
     technicalCenter: "Technical Center",
+    peGuide: "Polyethylene Pipe",
     downloads: "Downloads",
     calculator: "Calculator",
     about: "About",
@@ -201,6 +202,7 @@ export const dictionaryEn = {
         title: "Resources",
         links: {
           technicalCenter: "Technical center",
+          peGuide: "Complete polyethylene pipe guide",
           calculator: "Engineering calculator",
           downloads: "Downloads",
           applications: "Applications",

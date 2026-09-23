@@ -2,8 +2,8 @@ import type { SeoArticleSeed } from "@/lib/content/seo-content-model";
 
 export const faHdpePillarArticle: SeoArticleSeed = {
   slug: "polyethylene-pipe-complete-guide",
-  title: "لوله پلی اتیلن چیست؟ راهنمای جامع HDPE Pipe، کاربردها، استانداردها و انتخاب بهترین لوله",
-  seoTitle: "لوله پلی اتیلن چیست؟ راهنمای انتخاب و خرید HDPE | بوکان پایپ",
+  title: "لوله پلی اتیلن: راهنمای کامل انتخاب، استاندارد و خرید",
+  seoTitle: "لوله پلی اتیلن | راهنمای کامل انتخاب، استاندارد و خرید | بوکان پایپ",
   seoDescription: "راهنمای جامع لوله پلی اتیلن و PE100؛ شناخت SDR و فشار کاری، استاندارد آب و گاز، کنترل کیفیت و نکات خرید صنعتی از بوکان پایپ.",
   description: "راهنمای تصمیم‌گیری مهندسی و خرید لوله HDPE، از شناخت ماده و استاندارد تا ارزیابی پیشنهاد فنی و تحویل پروژه.",
   primaryKeyword: "لوله پلی اتیلن",

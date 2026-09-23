@@ -28,6 +28,7 @@ export const dictionaryFa: Dictionary = {
     applications: "کاربردها",
     laboratory: "آزمایشگاه",
     technicalCenter: "مرکز فنی",
+    peGuide: "لوله پلی اتیلن",
     downloads: "دانلود",
     calculator: "ماشین‌حساب",
     about: "درباره ما",
@@ -204,6 +205,7 @@ export const dictionaryFa: Dictionary = {
         title: "منابع",
         links: {
           technicalCenter: "مرکز فنی",
+          peGuide: "راهنمای کامل لوله پلی اتیلن",
           calculator: "ماشین‌حساب مهندسی",
           downloads: "دانلود",
           applications: "کاربردها",

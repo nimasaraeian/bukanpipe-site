@@ -96,6 +96,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "راهنمای کامل لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "مشخصات فنی، SDR و PN", path: "/technical-center/polyethylene-pipe-specifications" },
       { label: "کاربرد انتقال آب", path: "/applications/water-transfer" },
       { label: "لوله پلی اتیلن PE100", path: seoLandingPaths.pe100 },
@@ -225,6 +226,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "راهنمای کامل لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "راهنمای نصب HDPE", path: seoLandingPaths.installGuide },
       { label: "راهنمای جوش لوله PE", path: seoLandingPaths.welding },
       { label: "کاربرد گازرسانی", path: "/applications/gas-distribution" },
@@ -340,6 +342,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "راهنمای کامل لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "کاربرد کشاورزی و آبیاری", path: "/applications/agriculture-irrigation" },
       { label: "لوله HDPE آبرسانی", path: seoLandingPaths.water },
       { label: "راهنمای نصب HDPE", path: seoLandingPaths.installGuide },
@@ -456,6 +459,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       },
     ],
     curatedLinks: [
+      { label: "راهنمای کامل لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "کاربرد صنعتی", path: "/applications/industrial" },
       { label: "راهنمای فنی PE100", path: seoLandingPaths.pe100Guide },
       { label: "لوله HDPE آبرسانی", path: seoLandingPaths.water },
@@ -618,6 +622,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
     ],
     lastReviewed: "2026-09-16",
     curatedLinks: [
+      { label: "راهنمای کامل لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "مرکز فنی لوله پلی اتیلن", path: "/technical-center" },
       { label: "راهنمای فنی PE100", path: seoLandingPaths.pe100Guide },
       { label: "مشخصات فنی، SDR و PN", path: "/technical-center/polyethylene-pipe-specifications" },
@@ -711,6 +716,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedApplications: ["sewage"],
     relatedArticles: ["hdpe-installation-guide"],
     curatedLinks: [
+      { label: "راهنمای کامل لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "کاربرد فاضلاب", path: "/applications/sewage" },
       { label: "جدول سایز، ضخامت و SDR", path: "/technical-center/polyethylene-pipe-dimensions-table" },
       { label: "راهنمای نصب HDPE", path: seoLandingPaths.installGuide },
@@ -798,6 +804,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedApplications: ["drainage"],
     relatedArticles: ["hdpe-installation-guide"],
     curatedLinks: [
+      { label: "راهنمای کامل لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
       { label: "کاربرد زهکشی", path: "/applications/drainage" },
       { label: "لوله فاضلاب HDPE", path: "/products/sewage-pipe" },
       { label: "جدول سایز، ضخامت و SDR", path: "/technical-center/polyethylene-pipe-dimensions-table" },

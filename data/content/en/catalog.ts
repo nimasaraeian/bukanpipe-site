@@ -73,6 +73,11 @@ export const enProductsHub: ContentDocument = {
       type: "internal-links",
       title: "Guides and enquiry",
       links: [
+        {
+          label: "Complete polyethylene pipe guide",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "Grade, SDR, standards and buying",
+        },
         { label: "Request a quote", path: "/request-quote" },
         {
           label: "HDPE pipe dimensions chart",
@@ -183,6 +188,11 @@ export const enApplicationsHub: ContentDocument = {
       type: "internal-links",
       title: "Application guides",
       links: [
+        {
+          label: "Complete polyethylene pipe guide",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "Grade, SDR, standards and buying",
+        },
         { label: "Water transfer", path: "/applications/water-transfer" },
         { label: "Agricultural irrigation", path: "/applications/agriculture-irrigation" },
         { label: "Gas distribution", path: "/applications/gas-distribution" },

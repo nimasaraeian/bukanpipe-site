@@ -90,6 +90,11 @@ export const faProductsHub: ContentDocument = {
       type: "internal-links",
       title: "راهنما و استعلام",
       links: [
+        {
+          label: "راهنمای کامل لوله پلی اتیلن",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "انتخاب گرید، SDR، استاندارد و خرید",
+        },
         { label: "استعلام قیمت", path: "/request-quote" },
         {
           label: "جدول سایز، ضخامت و SDR",
@@ -211,6 +216,11 @@ export const faApplicationsHub: ContentDocument = {
       type: "internal-links",
       title: "کاربردهای اصلی",
       links: [
+        {
+          label: "راهنمای کامل لوله پلی اتیلن",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "انتخاب گرید، SDR، استاندارد و خرید",
+        },
         { label: "انتقال آب", path: "/applications/water-transfer" },
         { label: "آبیاری کشاورزی", path: "/applications/agriculture-irrigation" },
         { label: "گازرسانی", path: "/applications/gas-distribution" },

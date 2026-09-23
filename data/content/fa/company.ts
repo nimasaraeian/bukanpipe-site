@@ -99,6 +99,11 @@ export const faAbout: ContentDocument = {
       type: "internal-links",
       title: "مسیر خرید و محصولات",
       links: [
+        {
+          label: "راهنمای کامل لوله پلی اتیلن",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "انتخاب گرید، SDR، استاندارد و خرید",
+        },
         { label: "محصولات لوله پلی اتیلن", path: "/products", hint: "آبرسانی، گاز، آبیاری، صنعت" },
         { label: "گالری کارخانه", path: "/gallery", hint: "تصاویر واقعی کارخانه" },
         { label: "استعلام قیمت لوله", path: "/request-quote", hint: "پیش‌فاکتور پروژه" },
@@ -217,6 +222,11 @@ export const faQuality: ContentDocument = {
           label: "گواهی‌ها و مجوزها",
           path: "/certifications",
           hint: "شماره پروانه استاندارد و گواهینامه‌ها",
+        },
+        {
+          label: "راهنمای کامل لوله پلی اتیلن",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "انتخاب گرید، SDR، استاندارد و خرید",
         },
         { label: "آزمایشگاه", path: "/laboratory" },
         { label: "گالری کارخانه", path: "/gallery" },
@@ -355,6 +365,11 @@ export const faCertifications: ContentDocument = {
           label: "استاندارد لوله پلی اتیلن",
           path: "/technical-center/polyethylene-pipe-standards",
           hint: "تفاوت استانداردهای آب، گاز و آبیاری",
+        },
+        {
+          label: "راهنمای کامل لوله پلی اتیلن",
+          path: "/technical-center/polyethylene-pipe-complete-guide",
+          hint: "انتخاب گرید، SDR، استاندارد و خرید",
         },
         { label: "کنترل کیفیت و آزمایشگاه", path: "/quality" },
         { label: "آزمایشگاه", path: "/laboratory" },
