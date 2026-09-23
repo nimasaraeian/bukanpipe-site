@@ -73,7 +73,30 @@ export const enTechnicalHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "Articles in this section support engineering, installation and maintenance decisions for PE pipe networks. For product selection and quotes, see the Products section.",
+      text: "This section is for engineering decisions: material grade and pressure class, the standard governing each application, jointing method, and network installation. If you are here to get a price, the products page is the shorter route.",
+    },
+    { type: "heading", level: 2, text: "Where to start" },
+    {
+      type: "paragraph",
+      text: "Most enquiries that reach us are one of four cases. Pick your route:",
+    },
+    {
+      type: "list",
+      items: [
+        "New to polyethylene: start with the pipe overview, then PE100",
+        "You know what you want and need a number: go straight to the dimensions chart",
+        "You are designing a line: estimate diameter with the calculator, then fix the class with the temperature and pressure guide",
+        "You are building: read the installation guide, the welding guide and the air valve article",
+      ],
+    },
+    { type: "heading", level: 2, text: "Three mistakes that cost the most" },
+    {
+      type: "list",
+      items: [
+        "Ordering on diameter alone, without SDR and material grade — one diameter covers several quite different products",
+        "Selecting pressure class from ordinary working pressure instead of maximum pressure plus a surge allowance",
+        "Ignoring the line's real temperature — the PN marked on the pipe applies at 20 °C",
+      ],
     },
     {
       type: "internal-links",
@@ -103,9 +126,40 @@ export const enTechnicalHub: ContentDocument = {
           label: "Temperature and pressure derating",
           path: "/technical-center/polyethylene-pipe-temperature-pressure",
         },
+        {
+          label: "Air valves in a water transmission line",
+          path: "/technical-center/air-vent-valve",
+          hint: "Preventing pipe collapse and flow loss",
+        },
+        {
+          label: "Subsurface drip irrigation",
+          path: "/technical-center/subsurface-drip-irrigation",
+        },
+        {
+          label: "Pipeline design calculator",
+          path: "/calculator/pipeline-design",
+          hint: "Diameter, velocity, head loss and pump power",
+        },
         { label: "HDPE pipe overview (pillar)", path: "/polyethylene-pipe" },
         { label: "Request a quote", path: "/request-quote" },
       ],
+    },
+  ],
+  faqs: [
+    {
+      question: "What is the difference between SDR and PN?",
+      answer:
+        "SDR is the ratio of outside diameter to wall thickness — a geometric number. PN is the working pressure corresponding to that SDR for a given material grade at 20 °C. Because PN shifts when the grade changes, quote both in an order.",
+    },
+    {
+      question: "Where do I start when designing a line?",
+      answer:
+        "From design flow and the route profile. Estimate diameter from flow and permissible velocity, then fix pressure class from maximum static head plus a surge allowance, with the temperature derating applied. Finally take the matching outside diameter and SDR from the dimensions chart.",
+    },
+    {
+      question: "Which standard governs my project?",
+      answer:
+        "The application decides, not the pipe. Potable water, gas and irrigation each have their own national standard, and for water and gas compliance is mandatory. The water supply and gas guides cover that split.",
     },
   ],
   related: {
