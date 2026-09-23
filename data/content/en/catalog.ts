@@ -9,6 +9,7 @@ import {
   enCalculatorIndex,
 } from "@/data/content/en/downloads";
 import type { ContentDocument } from "@/content/models/content-document";
+import { pipeSizeDocuments } from "@/data/content/pipe-sizes";
 
 export const enProductsHub: ContentDocument = {
   id: "products-hub",
@@ -77,6 +78,11 @@ export const enProductsHub: ContentDocument = {
           label: "Complete polyethylene pipe guide",
           path: "/technical-center/polyethylene-pipe-complete-guide",
           hint: "Grade, SDR, standards and buying",
+        },
+        {
+          label: "HDPE pipe sizes",
+          path: "/pipe-size",
+          hint: "Catalogue specifications per diameter",
         },
         { label: "Request a quote", path: "/request-quote" },
         {
@@ -237,4 +243,5 @@ export const contentCatalogEn: readonly ContentDocument[] = [
   enDownloadsHub,
   enCalculatorIndex,
   enCalculatorHub,
+  ...pipeSizeDocuments("en"),
 ];

@@ -9,6 +9,7 @@ import {
   faCalculatorIndex,
 } from "@/data/content/fa/downloads";
 import type { ContentDocument } from "@/content/models/content-document";
+import { pipeSizeDocuments } from "@/data/content/pipe-sizes";
 
 export const faProductsHub: ContentDocument = {
   id: "products-hub",
@@ -94,6 +95,11 @@ export const faProductsHub: ContentDocument = {
           label: "راهنمای کامل لوله پلی اتیلن",
           path: "/technical-center/polyethylene-pipe-complete-guide",
           hint: "انتخاب گرید، SDR، استاندارد و خرید",
+        },
+        {
+          label: "سایزهای لوله پلی اتیلن",
+          path: "/pipe-size",
+          hint: "مشخصات کاتالوگ برای هر قطر",
         },
         { label: "استعلام قیمت", path: "/request-quote" },
         {
@@ -265,4 +271,5 @@ export const contentCatalogFa: readonly ContentDocument[] = [
   faDownloadsHub,
   faCalculatorIndex,
   faCalculatorHub,
+  ...pipeSizeDocuments("fa"),
 ];

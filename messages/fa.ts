@@ -199,6 +199,7 @@ export const dictionaryFa: Dictionary = {
           pe100: "لوله PE100",
           industrialPipe: "لوله صنعتی",
           peGuide: "راهنمای لوله پلی‌اتیلن",
+          pipeSizes: "سایزهای لوله",
         },
       },
       resources: {

@@ -118,6 +118,11 @@ export const faTechnicalHub: ContentDocument = {
           path: "/technical-center/polyethylene-pipe-dimensions-table",
           hint: "جدول کامل کاتالوگ: آبرسانی، گاز و آبیاری قطره‌ای",
         },
+        {
+          label: "سایزهای لوله پلی اتیلن",
+          path: "/pipe-size",
+          hint: "مشخصات کاتالوگ برای هر قطر",
+        },
         { label: "مشخصات فنی، SDR و PN", path: "/technical-center/polyethylene-pipe-specifications" },
         {
           label: "تأثیر دما بر فشار کاری",

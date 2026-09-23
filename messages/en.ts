@@ -196,6 +196,7 @@ export const dictionaryEn = {
           pe100: "PE100 pipe",
           industrialPipe: "Industrial pipe",
           peGuide: "Polyethylene guide",
+          pipeSizes: "Pipe sizes",
         },
       },
       resources: {
