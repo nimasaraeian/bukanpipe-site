@@ -46,7 +46,7 @@ export const enAbout: ContentDocument = {
     { type: "heading", level: 2, text: "Factory location" },
     {
       type: "paragraph",
-      text: "West Azerbaijan Province — Bukan, 10 km Miandoab Road. Postal code: 5955164341, Iran.",
+      text: "West Azerbaijan Province — Bukan, 10 km Miandoab Road. Postal code: 5955116757, Iran.",
     },
     {
       type: "internal-links",

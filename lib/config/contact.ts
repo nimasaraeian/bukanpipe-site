@@ -88,7 +88,13 @@ export const contactConfig = {
       fa: "آذربایجان غربی، بوکان، کیلومتر ۱۰ جاده میاندوآب،\nکارخانه لوله پلی اتیلن بوکان",
       en: "West Azerbaijan Province, Bukan, 10 km Miandoab Road,\nBukan Polyethylene Pipe Factory, Iran",
     },
-    postalCode: "5955164341",
+    /*
+     * From the factory's own documents, not from the previous site. The
+     * industrial operating licence (113/7/256493) and the NACI laboratory
+     * accreditation (NACI/Lab/269) both print 5955116757; the site had been
+     * carrying 5955164341, which matched neither.
+     */
+    postalCode: "5955116757",
     region: {
       fa: "آذربایجان غربی",
       en: "West Azerbaijan Province",
