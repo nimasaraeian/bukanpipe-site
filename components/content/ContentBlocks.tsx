@@ -5,6 +5,7 @@ import type { ContentBlock } from "@/content/models/content-document";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { routes } from "@/lib/config/routes";
 import { DimensionExcerpt, DimensionTableBlock } from "@/components/content/DimensionTables";
+import { DocumentTableBlock } from "@/components/content/DocumentTable";
 
 const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
 
@@ -291,6 +292,17 @@ export function ContentBlockRenderer({
         sizes={block.sizes}
         locale={locale}
         href={localePath(fullTablePath)}
+      />
+    );
+  }
+
+  if (block.type === "document-table") {
+    return (
+      <DocumentTableBlock
+        table={block.table}
+        caption={block.caption}
+        summary={block.summary}
+        locale={locale}
       />
     );
   }
