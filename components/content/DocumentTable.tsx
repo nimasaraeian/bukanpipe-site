@@ -1,3 +1,4 @@
+import { awards, awardCategoryLabels } from "@/data/company/awards";
 import {
   publishedDocuments,
   licensedCapacities,
@@ -21,6 +22,10 @@ const COPY = {
     capacity: "ظرفیت سالانه (تن)",
     goodsId: "شناسه کالا",
     total: "مجموع",
+    award: "عنوان",
+    category: "دسته",
+    level: "سطح",
+    year: "سال",
   },
   en: {
     document: "Document",
@@ -36,6 +41,10 @@ const COPY = {
     capacity: "Annual capacity (t)",
     goodsId: "Goods ID",
     total: "Total",
+    award: "Award",
+    category: "Category",
+    level: "Level",
+    year: "Year",
   },
 } as const;
 
@@ -228,6 +237,59 @@ export function CapacityTable({
   );
 }
 
+export function AwardsTable({
+  caption,
+  summary,
+  locale,
+}: {
+  caption: string;
+  summary?: string;
+  locale: "fa" | "en";
+}) {
+  const t = COPY[locale];
+
+  return (
+    <TableShell caption={caption} summary={summary}>
+      <thead>
+        <tr className="border-b border-[color:var(--ind-border)]">
+          <th scope="col" className={HEAD}>
+            {t.award}
+          </th>
+          <th scope="col" className={HEAD}>
+            {t.category}
+          </th>
+          <th scope="col" className={HEAD}>
+            {t.issuer}
+          </th>
+          <th scope="col" className={HEAD}>
+            {t.level}
+          </th>
+          <th scope="col" className={HEAD}>
+            {t.year}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {awards.map((award) => (
+          <tr key={award.id} className="border-b border-[color:var(--ind-border)]/40">
+            <th scope="row" className={`${HEAD} max-w-[24rem] font-semibold`}>
+              {award.title[locale]}
+            </th>
+            <td className={CELL}>{awardCategoryLabels[award.category][locale]}</td>
+            <td className={`${CELL} max-w-[20rem]`}>{award.issuer[locale]}</td>
+            <td className={CELL}>{award.level}</td>
+            <td className={CELL}>
+              <span dir="ltr" className="tabular-nums whitespace-nowrap">
+                {award.year}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </TableShell>
+  );
+}
+
 /** Rendered by the `document-table` content block. */
 export function DocumentTableBlock({
   table,
@@ -235,13 +297,16 @@ export function DocumentTableBlock({
   summary,
   locale,
 }: {
-  table: DocumentGroup | "capacity";
+  table: DocumentGroup | "capacity" | "awards";
   caption: string;
   summary?: string;
   locale: "fa" | "en";
 }) {
   if (table === "capacity") {
     return <CapacityTable caption={caption} summary={summary} locale={locale} />;
+  }
+  if (table === "awards") {
+    return <AwardsTable caption={caption} summary={summary} locale={locale} />;
   }
   return <DocumentTable group={table} caption={caption} summary={summary} locale={locale} />;
 }

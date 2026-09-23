@@ -35,7 +35,13 @@ export type ContentBlock =
   | {
       /** A table of the factory's certificates, licences or licensed capacity. */
       type: "document-table";
-      table: "standard-mark" | "management-system" | "sector-approval" | "registration" | "capacity";
+      table:
+        | "standard-mark"
+        | "management-system"
+        | "sector-approval"
+        | "registration"
+        | "capacity"
+        | "awards";
       caption: string;
       summary?: string;
     }

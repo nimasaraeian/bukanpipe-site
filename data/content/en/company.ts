@@ -194,6 +194,22 @@ export const enCertifications: ContentDocument = {
       table: "capacity",
       caption: "Annual capacity stated on the industrial operating licence",
     },
+    { type: "heading", level: 2, text: "Awards and commendations" },
+    {
+      type: "paragraph",
+      text: "Alongside the licences, the factory has been recognised by government bodies over two decades. The one that carries most weight for a pipe buyer is the Iranian National Standards Organization's own \"model quality unit\" award, held seven times between 1388 and 1397 (2009–2018), twice at national level. A title repeated across consecutive years says something a single plaque does not: that quality held up across successive inspections.",
+    },
+    {
+      type: "paragraph",
+      text: "The archive holds 48 plaques. The table lists the 27 whose year and issuing body are printed on the document and legible. The rest are deliberately absent — a year inferred from a filename is not a date, and a second scan of the same plaque is not a second award.",
+    },
+    {
+      type: "document-table",
+      table: "awards",
+      caption: "Awards and commendations",
+      summary:
+        "Years are quoted as printed, in the Iranian calendar where the document uses it. The Erbil and Sulaymaniyah exhibition entries evidence export activity into Iraq.",
+    },
     { type: "heading", level: 2, text: "How to verify these documents" },
     {
       type: "list",

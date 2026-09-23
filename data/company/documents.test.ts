@@ -6,6 +6,7 @@ import {
   withheldDocuments,
   totalLicensedTonnesPerYear,
 } from "@/data/company/documents";
+import { awards, AWARD_ARCHIVE_SIZE, awardsByCategory } from "@/data/company/awards";
 import { getContentCatalog } from "@/lib/content/registry";
 import type { ContentBlock } from "@/content/models/content-document";
 
@@ -102,6 +103,7 @@ describe("certifications page", () => {
       "sector-approval",
       "registration",
       "capacity",
+      "awards",
     ]);
   });
 
@@ -132,5 +134,55 @@ describe("certifications page", () => {
       }
     }
     expect(hits).toEqual([]);
+  });
+});
+
+describe("awards", () => {
+  it("publishes 27 of the 48 catalogued plaques", () => {
+    expect(AWARD_ARCHIVE_SIZE).toBe(48);
+    expect(awards).toHaveLength(27);
+  });
+
+  it("uses unique ids", () => {
+    const ids = awards.map((a) => a.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("gives every award a printed year and an issuer in both locales", () => {
+    const incomplete = awards.filter(
+      (a) => !a.year.trim() || !a.issuer.fa.trim() || !a.issuer.en.trim(),
+    );
+    expect(incomplete.map((a) => a.id)).toEqual([]);
+  });
+
+  it("never carries a year the archive marked as inferred", () => {
+    // The archive flags these with "نام فایل" or "شعار سال". Neither is a date,
+    // so no published year may contain that wording.
+    const inferred = awards.filter(
+      (a) => a.year.includes("نام فایل") || a.year.includes("شعار"),
+    );
+    expect(inferred.map((a) => a.id)).toEqual([]);
+  });
+
+  it("keeps the seven standards-organisation quality awards", () => {
+    expect(awardsByCategory("quality")).toHaveLength(7);
+  });
+
+  it("claims the quality awards only between 1388 and 1397", () => {
+    const years = awardsByCategory("quality").map((a) =>
+      Number((a.year.match(/13\d\d/) ?? ["0"])[0]),
+    );
+    expect(Math.min(...years)).toBe(1388);
+    expect(Math.max(...years)).toBe(1397);
+  });
+
+  it("renders the awards table on the certifications page in both locales", () => {
+    for (const locale of ["fa", "en"] as const) {
+      const doc = getContentCatalog(locale).find((d) => d.path === "/certifications");
+      const hasAwards = doc!.sections.some(
+        (b) => b.type === "document-table" && b.table === "awards",
+      );
+      expect(hasAwards, locale).toBe(true);
+    }
   });
 });
