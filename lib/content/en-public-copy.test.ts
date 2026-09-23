@@ -4,7 +4,13 @@ import { contentCatalogEn } from "@/data/content/en/catalog";
 
 /** Phrases that must not appear in visitor-facing EN copy (sections, descriptions, FAQs). */
 const FORBIDDEN_PUBLIC_PHRASES = [
-  /Source:/i,
+  /*
+   * "Source:" is an editorial label, so it only counts as one where a label
+   * can stand: at the start of a string or after a sentence ends. Unanchored
+   * it also matched ordinary prose such as "matched to the water source:
+   * screen or disc", which is not an editorial note.
+   */
+  /(?:^|[.!?]\s+)Source:/i,
   /commercial intent/i,
   /search intent/i,
   /cannibalization/i,

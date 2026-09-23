@@ -6,10 +6,10 @@ export const enAbout: ContentDocument = {
   path: "/about",
   locale: "en",
   kind: "company",
-  title: "Engineering Reliable Flow Systems Since 1997",
-  seoTitle: "About Bukan Pipe | HDPE Pipe Manufacturer Since 1997",
+  title: "The Bukan Polyethylene Pipe Factory",
+  seoTitle: "About Bukan Pipe | HDPE Pipe Manufacturer, Iran",
   seoDescription:
-    "Bukan Pipe manufactures single-wall HDPE and PE100 polyethylene pipe up to 630 mm OD for water, gas, agriculture and industrial networks since 1997.",
+    "Bukan Pipe manufactures single-wall HDPE and PE100 polyethylene pipe up to 630 mm OD for water, gas, agriculture and industrial networks in West Azerbaijan.",
   description:
     "Single-wall HDPE and PE100 polyethylene pipe for water, gas, agriculture and industrial networks — manufactured in Bukan, West Azerbaijan.",
   primaryKeyword: "HDPE pipe manufacturer",
@@ -26,14 +26,44 @@ export const enAbout: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "Bukan Pipe has manufactured single-wall polyethylene pipe since 1997 (Persian calendar 1376) and is established in Iran's PE pipe industry. The factory produces pipe up to 630 mm outside diameter (25 in) in a range of wall thicknesses and pressure classes.",
+      text: "The company was registered under number 121 on 1373/06/26 in the Iranian calendar, and manufactures single-wall polyethylene pipe in Bukan, West Azerbaijan. The factory produces pipe up to 630 mm outside diameter (25 in) across a range of wall thicknesses and pressure classes, in PE80 and PE100.",
+    },
+    { type: "heading", level: 2, text: "Registration details" },
+    {
+      type: "spec-table",
+      title: "Official identifiers",
+      rows: [
+        { label: "Registration number", value: "121, dated 1373/06/26" },
+        { label: "National ID", value: "10220007922" },
+        { label: "Industrial operating licence", value: "113/7/256493 — Ministry of Industry, Mine and Trade" },
+        { label: "Trademark", value: "LB Bukan Pipe — registration 370560" },
+        { label: "Factory address", value: "10th km of Bukan–Miandoab road, Bukan, West Azerbaijan" },
+        { label: "Postal code", value: "5955116757" },
+      ],
+      note: "These identifiers appear on the industrial operating licence and the company's other official documents, and can be verified independently.",
+    },
+    { type: "heading", level: 2, text: "Licensed capacity" },
+    {
+      type: "paragraph",
+      text: "The industrial operating licence sets a permitted annual capacity per product: 14,000 tonnes per year in total, on three shifts. This is the licence ceiling rather than output in any particular year.",
+    },
+    {
+      type: "document-table",
+      table: "capacity",
+      caption: "Annual capacity stated on the industrial operating licence",
+    },
+    { type: "heading", level: 2, text: "Quality record" },
+    {
+      type: "paragraph",
+      text: "Between 1388 and 1397 in the Iranian calendar (2009–2018), the Iranian National Standards Organization named the factory a model quality unit seven times, twice at national level. What distinguishes that from a single plaque is the repetition across successive inspections. The full list, with issuer and year, is on the certifications page.",
     },
     { type: "heading", level: 2, text: "Primary applications" },
     {
       type: "list",
       items: [
-        "Municipal and rural water supply, pressurised irrigation and industrial water transfer",
-        "Gas service connections and distribution networks",
+        "Municipal and rural water supply, pressurised irrigation and industrial water transfer — mandatory standard mark licence to INSO 14427-2",
+        "Gas service connections and distribution networks — licence to INSO 11233-2",
+        "Irrigation — licence to INSO 7607",
         "Sewerage, drainage and cable protection",
         "Industrial fluid transfer where PE is specified",
       ],
@@ -54,6 +84,11 @@ export const enAbout: ContentDocument = {
       links: [
         { label: "Factory Gallery", path: "/gallery", hint: "Real manufacturing photographs" },
         { label: "Products", path: "/products" },
+        {
+          label: "Certifications and licences",
+          path: "/certifications",
+          hint: "Standard marks, ISO certificates and awards",
+        },
         { label: "Laboratory", path: "/laboratory" },
         { label: "Request quote", path: "/request-quote" },
       ],
@@ -102,6 +137,23 @@ export const enQuality: ContentDocument = {
         "Batch traceability and result documentation",
       ],
     },
+    { type: "heading", level: 2, text: "The documented framework" },
+    {
+      type: "paragraph",
+      text: "The factory's quality management system has been certified to ISO 9001 since 2008; the current certificate is CH08/0870 from SGS Switzerland, with a scope covering pressure water pipe from 2 to 40 atm in 16 to 630 mm. ISO 14001 (environmental), ISO 45001 (occupational health and safety) and ISO 10002 (complaints handling) are held alongside it.",
+    },
+    {
+      type: "document-table",
+      table: "management-system",
+      caption: "Management system certificates",
+      summary:
+        "Each certificate's number and issuing body are given so it can be verified directly. The full list of licences and approvals is on the certifications page.",
+    },
+    { type: "heading", level: 2, text: "What ISO 9001 says, and what it does not" },
+    {
+      type: "paragraph",
+      text: "ISO 9001 certifies that the production and control process is documented, followed and audited. It says nothing about whether a particular pipe conforms to the standard for its application — that is the job of the mandatory standard mark licence and the batch test report. Ask for both separately when ordering.",
+    },
     {
       type: "paragraph",
       text: "For sensitive projects, coordination on laboratory test scope and QC documentation is available through sales.",
@@ -110,6 +162,11 @@ export const enQuality: ContentDocument = {
       type: "internal-links",
       title: "Related",
       links: [
+        {
+          label: "Certifications and licences",
+          path: "/certifications",
+          hint: "Standard mark numbers and certificates",
+        },
         { label: "Factory Gallery", path: "/gallery" },
         { label: "Laboratory", path: "/laboratory" },
         { label: "About Bukan Pipe", path: "/about" },
@@ -293,10 +350,14 @@ export const enContact: ContentDocument = {
     { label: "Contact", path: "/contact" },
   ],
   sections: [
-    { type: "heading", level: 2, text: "Phone" },
+    {
+      type: "paragraph",
+      text: "Contact the factory directly for orders, quotations or technical questions. If the question is about diameter, pressure class or the standard governing your application, the technical unit answers it; for price and availability, sales.",
+    },
+    { type: "heading", level: 2, text: "Factory phone" },
     {
       type: "list",
-      items: ["+98 44 4643 3444–5", "+98 44 4150"],
+      items: ["+98 44 4643 3444–5", "+98 44 4150", "Fax: +98 44 4643 3455"],
     },
     { type: "heading", level: 2, text: "Sales" },
     {
@@ -308,7 +369,66 @@ export const enContact: ContentDocument = {
       type: "list",
       items: ["+98 901 341 4979", "lab@bukanpipe.com"],
     },
+    { type: "heading", level: 2, text: "Factory address" },
+    {
+      type: "spec-table",
+      title: "Address and registration",
+      rows: [
+        { label: "Address", value: "10th km of Bukan–Miandoab road, Bukan, West Azerbaijan, Iran" },
+        { label: "Postal code", value: "5955116757" },
+        { label: "National ID", value: "10220007922" },
+        { label: "Registration number", value: "121" },
+      ],
+      note: "Postal code and national ID are as printed on the industrial operating licence and the company's other official documents.",
+    },
+    { type: "heading", level: 2, text: "To get a faster answer" },
+    {
+      type: "paragraph",
+      text: "An enquiry giving only a diameter cannot be priced, because one diameter covers several pressure classes of different weight and cost. State these five items in the first message and the answer comes back in one round trip:",
+    },
+    {
+      type: "list",
+      items: [
+        "Application: water supply, gas, irrigation, sewerage or industrial",
+        "Outside diameter in millimetres",
+        "Pressure class: SDR or PN",
+        "Material grade: PE80 or PE100",
+        "Length, supply form (straight lengths or coil) and delivery destination",
+      ],
+    },
+    {
+      type: "internal-links",
+      title: "Other routes",
+      links: [
+        { label: "Request a quote", path: "/request-quote", hint: "The fastest route" },
+        { label: "Products", path: "/products" },
+        {
+          label: "HDPE pipe dimensions chart",
+          path: "/technical-center/hdpe-pipe-dimensions-chart",
+          hint: "Settle the pressure class before calling",
+        },
+        { label: "Certifications and licences", path: "/certifications" },
+      ],
+    },
   ],
+  faqs: [
+    {
+      question: "Where is the Bukan Pipe factory?",
+      answer:
+        "On the 10th km of the Bukan–Miandoab road, Bukan, West Azerbaijan province, Iran, postal code 5955116757.",
+    },
+    {
+      question: "Which number should I call for a quotation?",
+      answer:
+        "Sales: +98 914 482 2511 or +98 914 382 0556, or email info@bukanpipe.com. The factory switchboard is +98 44 4643 3444–5. The website's quote form reaches the same unit.",
+    },
+    {
+      question: "Who do I contact for a technical question or a test report?",
+      answer:
+        "Quality control and laboratory: +98 901 341 4979 or lab@bukanpipe.com. Request the batch test report for a shipment from the same unit.",
+    },
+  ],
+  related: { products: ["water-supply-pipe", "gas-pipe"] },
 };
 
 export const enCompanyPages: readonly ContentDocument[] = [
