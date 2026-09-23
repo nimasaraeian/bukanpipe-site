@@ -173,6 +173,23 @@ export const enQuality: ContentDocument = {
       ],
     },
   ],
+  faqs: [
+    {
+      question: "How does ISO 9001 differ from a standard mark licence?",
+      answer:
+        "ISO 9001 covers the factory's management system and certifies that production and control are documented and audited. Conformity of a given pipe to the standard for its application is shown by the mandatory standard mark licence and the batch test report. Ask for both separately when ordering.",
+    },
+    {
+      question: "How do I obtain the test report for my shipment?",
+      answer:
+        "From the quality control and laboratory unit, at lab@bukanpipe.com or +98 901 341 4979. Reports are tied to a production batch and issued per shipment.",
+    },
+    {
+      question: "How can I check pipe quality before acceptance?",
+      answer:
+        "Three things: compare wall thickness against the dimensions chart for that diameter and SDR, read the marking printed on the pipe (manufacturer, diameter, SDR or PN, material grade and standard), and request the batch test report.",
+    },
+  ],
   related: { laboratory: ["services", "test-scope", "iso-17025"] },
 };
 

@@ -73,7 +73,76 @@ export const enDownloadsHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "Catalogue and standard PDFs will be listed here when available. Until then, contact sales for specifications and catalogue requests.",
+      text: "Catalogue and standard PDFs will be listed here once prepared and cleared for publication. Most of what people come here to download, however, is already published on the site without a file.",
+    },
+    { type: "heading", level: 2, text: "Available now" },
+    {
+      type: "internal-links",
+      title: "Published on the site",
+      links: [
+        {
+          label: "HDPE pipe dimensions chart",
+          path: "/technical-center/hdpe-pipe-dimensions-chart",
+          hint: "The catalogue table itself, as searchable text",
+        },
+        {
+          label: "Certifications and licences",
+          path: "/certifications",
+          hint: "Standard mark numbers, ISO certificates and issuing bodies",
+        },
+        {
+          label: "Technical Center",
+          path: "/technical-center",
+          hint: "Selection, pressure, welding and installation guides",
+        },
+        { label: "Pipeline design calculator", path: "/calculator/pipeline-design" },
+      ],
+    },
+    {
+      type: "paragraph",
+      text: "The catalogue dimensions chart is deliberately published as an HTML table rather than an image or a PDF: the numbers can be selected and copied, they are found by in-page search, and they stay legible on a phone.",
+    },
+    { type: "heading", level: 2, text: "What to request instead" },
+    {
+      type: "paragraph",
+      text: "Some documents cannot be published openly because they are tied to your shipment or your project:",
+    },
+    {
+      type: "list",
+      items: [
+        "The test report for the production batch supplied to you — from the laboratory, lab@bukanpipe.com",
+        "Certificate and licence copies for attaching to tender documents — from sales",
+        "A quotation and project specification — through the quote request form",
+      ],
+    },
+    {
+      type: "paragraph",
+      text: "The national standards themselves (INSO 14427-2, 11233-2 and 7607) are copyrighted and must be obtained from the Iranian National Standards Organization; we do not republish their text. What the technical centre publishes is an explanation of their requirements, not the standards.",
+    },
+    {
+      type: "internal-links",
+      title: "Requests",
+      links: [
+        { label: "Request a quote", path: "/request-quote" },
+        { label: "Contact the factory", path: "/contact" },
+      ],
+    },
+  ],
+  faqs: [
+    {
+      question: "Where can I download the HDPE pipe catalogue?",
+      answer:
+        "The catalogue dimensions table — diameter, wall thickness and SDR for water supply, gas and drip irrigation — is already published in the technical centre as copyable text. The PDF catalogue will be posted on this page once the design is cleared.",
+    },
+    {
+      question: "How do I obtain a test report?",
+      answer:
+        "Test reports are tied to a production batch and issued per shipment, so they cannot be published openly. Request one from the laboratory at lab@bukanpipe.com.",
+    },
+    {
+      question: "Do you have the text of INSO 14427?",
+      answer:
+        "The national standards are copyrighted and must be obtained from the Iranian National Standards Organization. The technical centre explains what those standards require, but does not republish their text.",
     },
   ],
   related: { products: ["water-supply-pipe", "gas-pipe"] },

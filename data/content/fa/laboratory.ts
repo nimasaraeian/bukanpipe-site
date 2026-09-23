@@ -13,6 +13,7 @@ function labPage(
   description: string,
   sections: ContentDocument["sections"],
   keywords: { primary: string; secondary: readonly string[] },
+  faqs?: ContentDocument["faqs"],
 ): ContentDocument {
   const path = slug ? `/laboratory/${slug}` : "/laboratory";
   return {
@@ -43,6 +44,7 @@ function labPage(
           { label: "آزمایشگاه", path: "/laboratory" },
         ],
     sections,
+    faqs,
     related: {
       laboratory: slug === "iso-17025" ? ["services", "test-scope"] : ["iso-17025"],
       products: ["water-supply-pipe", "gas-pipe"],
@@ -217,5 +219,22 @@ export const faLaboratoryPages: readonly ContentDocument[] = [
       },
     ],
       { primary: "آموزش فنی لوله پلی اتیلن", secondary: ["دوره جوش پلی اتیلن", "آموزش کنترل کیفیت لوله", "آموزش جوشکار PE"] },
+    [
+      {
+        question: "دوره‌های آموزشی بوکان پایپ مجوز دارد؟",
+        answer:
+          "بله. واحد آموزش دارای پروانه فعالیت مرکز کارآموزی بین‌کارگاهی به شماره ۱۴/۱۱۲۲۱ از سازمان آموزش فنی و حرفه‌ای کشور است، صادرشده در ۱۴۰۴/۰۷/۲۳ با اعتبار پنج سال.",
+      },
+      {
+        question: "آیا کارکنان شرکت‌های دیگر هم می‌توانند شرکت کنند؟",
+        answer:
+          "بله. مجوز از نوع «بین‌کارگاهی» است، یعنی آموزش برای شاغلان سایر واحدهای صنعتی استان هم مجاز است — نه فقط کارکنان خود کارخانه.",
+      },
+      {
+        question: "دوره جوش پلی اتیلن چه سرفصل‌هایی دارد؟",
+        answer:
+          "جوش لب‌به‌لب و الکتروفیوژن، آماده‌سازی سطح و زمان خنک‌کاری، بازرسی چشمی اتصال و تشخیص عیوب رایج، کنترل کیفیت لوله و ایمنی کار. سرفصل دقیق و مدت دوره بسته به گروه متقاضی تعیین می‌شود.",
+      },
+    ],
   ),
 ];
