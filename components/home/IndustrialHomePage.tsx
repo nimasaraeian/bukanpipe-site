@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { editorialPhotos } from "@/data/media/editorial-photos";
-import { PremiumHeroSection } from "@/components/home/PremiumHeroSection";
+import { HeroPipeViewer } from "@/components/home/HeroPipeViewer";
 import {
   IndustrialCtaBand,
   IndustrialSectionHeader,
@@ -77,7 +77,7 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
 
   return (
     <div className="industrial-font">
-      <PremiumHeroSection locale={locale} t={t} />
+      <HeroPipeViewer />
 
       <section className="ind-section ind-section-muted" aria-labelledby="products-heading">
         <div className="ind-container">
