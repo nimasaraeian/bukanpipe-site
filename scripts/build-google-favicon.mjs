@@ -5,8 +5,17 @@ import sharp from "sharp";
 const logo = path.resolve("public/media/brand/bukan-pipe-google-favicon-source.png");
 const publicDir = path.resolve("public");
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
-/** Medium neutral gray requested for the official white logo. */
-const CHARCOAL = { r: 112, g: 112, b: 112, alpha: 1 };
+/**
+ * The tile is white and the monogram is the logo's own blue (#0015BF, sampled
+ * from the original artwork). The earlier tiles were a white monogram on
+ * #707070 gray, which at the 16px Google paints in a result row washed out to
+ * a featureless blob: white-on-gray holds almost no contrast once the mark is
+ * that small, and the brand color was gone. Blue-on-white keeps the mark's
+ * silhouette readable on both the light and the dark result row, and matches
+ * the icon Google already shows for the old bukanpipe.ir entry.
+ */
+const TILE = { r: 255, g: 255, b: 255, alpha: 1 };
+const BRAND_BLUE = { r: 0, g: 21, b: 191 };
 const PAD_RATIO = 0.05;
 /**
  * The source artwork is the full lockup: the arch monogram stacked over the
@@ -45,7 +54,21 @@ function pngsToIco(images) {
   return Buffer.concat([header, ...entries, ...payloads]);
 }
 
-async function whiteMonogram() {
+/** Repaint the white source artwork in the brand blue, keeping its alpha. */
+async function recolour(png) {
+  const mark = sharp(png);
+  const { width, height } = await mark.metadata();
+  const alpha = await mark.clone().extractChannel("alpha").raw().toBuffer();
+
+  return sharp({
+    create: { width, height, channels: 3, background: BRAND_BLUE },
+  })
+    .joinChannel(alpha, { raw: { width, height, channels: 1 } })
+    .png()
+    .toBuffer();
+}
+
+async function brandMonogram() {
   // The original PNG already has an alpha channel. Preserve it, drop the
   // wordmark band, then trim so the monogram fills its own bounding box.
   const { width, height } = await sharp(logo).metadata();
@@ -55,7 +78,8 @@ async function whiteMonogram() {
     .png()
     .toBuffer();
 
-  return sharp(cropped).trim({ threshold: 10 }).png().toBuffer();
+  const trimmed = await sharp(cropped).trim({ threshold: 10 }).png().toBuffer();
+  return recolour(trimmed);
 }
 
 async function squareIcon(source, size) {
@@ -66,14 +90,14 @@ async function squareIcon(source, size) {
     .toBuffer();
 
   return sharp({
-    create: { width: size, height: size, channels: 4, background: CHARCOAL },
+    create: { width: size, height: size, channels: 4, background: TILE },
   })
     .composite([{ input: mark, gravity: "centre" }])
     .png()
     .toBuffer();
 }
 
-const source = await whiteMonogram();
+const source = await brandMonogram();
 const png16 = await squareIcon(source, 16);
 const png32 = await squareIcon(source, 32);
 const png48 = await squareIcon(source, 48);
@@ -83,7 +107,6 @@ const png192 = await squareIcon(source, 192);
 const png256 = await squareIcon(source, 256);
 const png512 = await squareIcon(source, 512);
 
-writeFileSync(path.join(publicDir, "bukan-pipe-icon-gray.png"), png96);
 writeFileSync(path.join(publicDir, "bukan-pipe-icon.png"), png96);
 writeFileSync(path.join(publicDir, "icon-48.png"), png48);
 writeFileSync(path.join(publicDir, "icon-96.png"), png96);
@@ -108,4 +131,4 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 writeFileSync(path.join(publicDir, "favicon.svg"), svg);
 
-console.log("Official Bukan monogram icons written on medium gray #707070");
+console.log("Official Bukan monogram icons written in brand blue #0015BF on a white tile");

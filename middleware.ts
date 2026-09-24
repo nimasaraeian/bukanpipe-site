@@ -21,6 +21,9 @@ const STATIC_SEO_ASSETS = new Set([
   "/favicon.svg",
   "/apple-touch-icon.png",
   "/apple-touch-icon-precomposed.png",
+  // Retired when the tiles moved to brand blue; kept so the URL the old
+  // <link rel="icon"> shipped still 404s cleanly instead of being redirected
+  // into a locale path.
   "/bukan-pipe-icon-gray.png",
   "/bukan-pipe-icon.png",
   "/icon-48.png",
