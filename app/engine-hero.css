@@ -2679,3 +2679,73 @@
   background:
     radial-gradient(120% 95% at 50% 24%, #14263e 0%, #0b1728 46%, #05070d 100%);
 }
+
+/* ======================================================================
+   Hero copy: one arrangement, both themes.
+
+   The light theme had a different hero than the dark one — it showed the
+   application index (water / gas / agriculture) under the kicker and put the
+   second headline line in brand blue, while the dark theme hid the index and
+   left the headline one colour. The light arrangement is the one that reads,
+   so it becomes the arrangement, and the dark theme keeps only its own
+   colours for it.
+   ====================================================================== */
+.engine-hero--luminous .engine-hero-spec-index {
+  display: flex;
+  position: static;
+  z-index: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+  inset: auto;
+}
+
+.engine-hero--luminous-fa .engine-hero-spec-index {
+  direction: rtl;
+  justify-content: flex-end;
+}
+
+.engine-hero--luminous .engine-hero-spec-index-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 1.75rem;
+  padding-block: 0.2rem;
+  padding-inline: 0.55rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(226, 235, 247, 0.92);
+  box-shadow: none;
+}
+
+.engine-hero--luminous-fa .engine-hero-spec-index-item {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.engine-hero--luminous .engine-hero-spec-index-item::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border: none;
+  background: var(--ind-blue, #0066ff);
+}
+
+.engine-hero--luminous .engine-hero-spec-index-item:hover {
+  color: #fff;
+  border-color: rgba(10, 100, 245, 0.55);
+  background: rgba(10, 100, 245, 0.14);
+}
+
+/* the second headline line carries the brand blue in both themes */
+.engine-hero--luminous .engine-hero-headline-accent {
+  color: var(--ind-blue, #0066ff);
+  -webkit-text-fill-color: var(--ind-blue, #0066ff);
+}
