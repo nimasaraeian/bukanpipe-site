@@ -60,7 +60,14 @@ export const enLaboratoryHub = labPage(
   [
     {
       type: "paragraph",
-      text: "Bukan Pipe's quality-control and polymer laboratory supports production monitoring, pipe and polymer testing, and technical services. For accreditation status, current test scope, or certificate documentation, please contact the laboratory directly.",
+      text: "Luleh Bukan Laboratory is the factory's independent polymer and pipe testing unit. It performs 16 tests across three product families — polyolefin pipes and fittings up to 630 mm, polyethylene pipe, and unplasticized PVC pipe — each to a named national and international method standard. It both monitors production and tests samples commissioned from outside.",
+    },
+    {
+      type: "document-table",
+      table: "lab-scope",
+      caption: "Laboratory testing scope",
+      summary:
+        "Each test with its equipment range and method standard. What each test actually catches is explained on the test scope page.",
     },
     { type: "heading", level: 2, text: "Services" },
     {
@@ -102,14 +109,39 @@ export const enLaboratoryPages: readonly ContentDocument[] = [
     [
       {
         type: "paragraph",
-        text: "The laboratory provides production QC and externally commissioned testing. Exact test lists, sample requirements and lead times are confirmed with the laboratory unit before scheduling.",
+        text: "The laboratory does two jobs: monitoring the factory's own production, and testing samples commissioned by customers and projects. Both rest on the same basis — the same 16 tests to the same method standards.",
       },
+      { type: "heading", level: 2, text: "Testing for external customers" },
+      {
+        type: "paragraph",
+        text: "If you are a contractor, consultant or client wanting an independent check on a delivery, the laboratory accepts samples. The available tests are the ones listed on the test scope page, each with its equipment range and method standard.",
+      },
+      { type: "heading", level: 2, text: "Before sending a sample" },
       {
         type: "list",
         items: [
-          "Mechanical and thermal property tests",
-          "Pressure and performance testing",
-          "PE system and joint-related tests where in scope",
+          "Material: polyethylene, general polyolefin or unplasticized PVC",
+          "Outside diameter and wall thickness of the sample",
+          "Which tests you need, or which product standard is to be checked against",
+          "The purpose: delivery acceptance, dispute resolution, or supplier assessment",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Sample quantity, storage conditions and lead time depend on the test. Resistance to internal pressure is inherently slow and not comparable with a dimensional check, so confirm with the laboratory before sending anything.",
+      },
+      {
+        type: "internal-links",
+        title: "Related",
+        links: [
+          {
+            label: "Test scope",
+            path: "/laboratory/test-scope",
+            hint: "The full list with ranges and methods",
+          },
+          { label: "Testing standards", path: "/laboratory/standards" },
+          { label: "Technical training", path: "/laboratory/training" },
+          { label: "Contact the laboratory", path: "/contact" },
         ],
       },
     ],
@@ -125,11 +157,45 @@ export const enLaboratoryPages: readonly ContentDocument[] = [
     [
       {
         type: "paragraph",
-        text: "ISO/IEC 17025 defines requirements for testing laboratory competence. Bukan Pipe does not publish current accreditation status on this website without an up-to-date certificate on file.",
+        text: "ISO/IEC 17025 is the standard for the competence of testing and calibration laboratories. It differs from ISO 9001: ISO 9001 is about how an organisation is run, while 17025 addresses directly whether a laboratory is technically competent to produce a valid result.",
+      },
+      { type: "heading", level: 2, text: "What 17025 examines" },
+      {
+        type: "list",
+        items: [
+          "Technical competence of laboratory staff",
+          "Calibration and metrological traceability of measuring equipment",
+          "Validation of test methods and estimation of measurement uncertainty",
+          "Laboratory environmental conditions and sample handling",
+          "Impartiality and confidentiality of results",
+        ],
+      },
+      { type: "heading", level: 2, text: "The point a buyer should know" },
+      {
+        type: "paragraph",
+        text: "17025 accreditation always comes with a scope. No laboratory is accredited in general; it is accredited for a defined list of tests, on defined products, within a defined equipment range. So the right question to ask any laboratory is not \"are you 17025 accredited?\" but \"send me your scope\" — and then check whether the test you actually need is inside it.",
       },
       {
         type: "paragraph",
-        text: "For accreditation scope or certificate copies, contact lab@bukanpipe.com.",
+        text: "The scope of Luleh Bukan Laboratory, with the equipment range and method standard for every test, is published on the test scope page.",
+      },
+      { type: "heading", level: 2, text: "Accreditation status" },
+      {
+        type: "paragraph",
+        text: "Current accreditation status and a copy of the valid certificate are available from the laboratory at lab@bukanpipe.com. This page does not publish a claim of accreditation without a current certificate on file.",
+      },
+      {
+        type: "internal-links",
+        title: "Related",
+        links: [
+          {
+            label: "Test scope",
+            path: "/laboratory/test-scope",
+            hint: "Every test with its range and method",
+          },
+          { label: "Testing standards", path: "/laboratory/standards" },
+          { label: "Certifications and licences", path: "/certifications" },
+        ],
       },
     ],
   ),
@@ -144,16 +210,33 @@ export const enLaboratoryPages: readonly ContentDocument[] = [
     [
       {
         type: "paragraph",
-        text: "Test scope covers mechanical, thermal, pressure and dimensional evaluation of pipe and polymer materials. The full published scope list is issued by laboratory management on request.",
+        text: "The laboratory works on three product families — polyolefin pipes and fittings from 16 to 630 mm, polyethylene pipe, and unplasticized PVC pipe — performing 16 tests in total, each to a named national and international method standard. The table gives every test with its equipment range and reference.",
       },
       {
-        type: "list",
-        items: [
-          "Hydrostatic / pressure testing",
-          "MFR, Vicat, density",
-          "OIT, carbon black dispersion",
-          "ESCR, impact, ring stiffness",
-          "Dimensional and PE system performance",
+        type: "document-table",
+        table: "lab-scope",
+        caption: "Accreditation scope of Luleh Bukan Laboratory",
+        summary:
+          "The ranges are the real capability of the equipment: internal pressure to 100 bar and dimensional measurement to 850 mm outside diameter, beyond the largest diameter the factory produces.",
+      },
+      { type: "heading", level: 2, text: "What each test catches" },
+      {
+        type: "paragraph",
+        text: "The list is not arbitrary; each test targets a specific failure. Dimensional measurement and resistance to internal pressure check that the pipe matches the pressure class it claims. MFR and density show the raw material is what it was said to be. Carbon black content and dispersion only mean something together — black that is not evenly dispersed does not protect the pipe against UV even at the right percentage. OIT measures the thermal stability of the compound and therefore its long-term life, and longitudinal reversion shows whether extrusion stresses were properly relieved or are still locked in the pipe.",
+      },
+      { type: "heading", level: 2, text: "What to ask of a test report" },
+      {
+        type: "paragraph",
+        text: "For any delivery, request the test report for that production batch. A report giving only the test name and the word \"pass\" cannot be assessed; it needs the method (standard number), the test conditions and the numerical result.",
+      },
+      {
+        type: "internal-links",
+        title: "Related",
+        links: [
+          { label: "Laboratory services", path: "/laboratory/services" },
+          { label: "Testing standards", path: "/laboratory/standards" },
+          { label: "Quality control", path: "/quality" },
+          { label: "Contact the laboratory", path: "/contact" },
         ],
       },
     ],
@@ -169,7 +252,53 @@ export const enLaboratoryPages: readonly ContentDocument[] = [
     [
       {
         type: "paragraph",
-        text: "Each test is reported against a defined method and reference standard. INSO and ISO are primary references in PE pipe production and testing for qualifying projects.",
+        text: "Every test is reported against a defined method and reference standard — and that distinction matters: a product standard says what properties the pipe must have, a method standard says how to measure that property. The laboratory works with the second kind.",
+      },
+      { type: "heading", level: 2, text: "Two kinds of standard, routinely confused" },
+      {
+        type: "spec-table",
+        title: "Product standard versus test method standard",
+        rows: [
+          {
+            label: "Product standard",
+            value: "Such as INSO 14427-2 for water supply or INSO 11233-2 for gas. It fixes the dimensions, strength and marking the pipe must have. The mandatory standard mark licence rests on this.",
+          },
+          {
+            label: "Test method standard",
+            value: "Such as ISO 1167 for internal pressure or ISO 1133 for MFR. It fixes the apparatus, conditions and calculation by which the property is measured. A test report cites these.",
+          },
+        ],
+        note: "A usable test report cites the method standard number, not just the name of the test.",
+      },
+      { type: "heading", level: 2, text: "The references the laboratory works to" },
+      {
+        type: "paragraph",
+        text: "The laboratory's tests cite Iranian national standards (INSO and ISIRI) and their international equivalents in ISO, with one EN reference. In most cases the national standard is a transposition of the ISO one and both numbers appear in the report — INSO 6980-1 and ISO 1133-1 for MFR, for example.",
+      },
+      {
+        type: "document-table",
+        table: "lab-scope",
+        caption: "Method standard for each test, by product",
+        summary:
+          "The last column is the method standard the result is reported against. Those same numbers should appear on the test report for your own delivery.",
+      },
+      { type: "heading", level: 2, text: "Why one test carries two numbers" },
+      {
+        type: "paragraph",
+        text: "Where the table shows two or more numbers together, one is usually the national standard and the other its international equivalent, or the method is published in parts. Resistance to internal pressure has two: ISO 1167-1 for the general method and ISO 1167-2 for pipes specifically. Both appear on the report.",
+      },
+      {
+        type: "internal-links",
+        title: "Related",
+        links: [
+          { label: "Test scope", path: "/laboratory/test-scope" },
+          {
+            label: "Water supply pipe guide",
+            path: "/technical-center/water-supply-polyethylene-pipe-guide",
+            hint: "Product standards, not methods",
+          },
+          { label: "Certifications and licences", path: "/certifications" },
+        ],
       },
     ],
     "candidate",

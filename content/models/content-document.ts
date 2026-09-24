@@ -41,7 +41,8 @@ export type ContentBlock =
         | "sector-approval"
         | "registration"
         | "capacity"
-        | "awards";
+        | "awards"
+        | "lab-scope";
       caption: string;
       summary?: string;
     }

@@ -1,4 +1,5 @@
 import { awards, awardCategoryLabels } from "@/data/company/awards";
+import { labScope } from "@/data/company/lab-scope";
 import {
   publishedDocuments,
   licensedCapacities,
@@ -23,6 +24,9 @@ const COPY = {
     goodsId: "شناسه کالا",
     total: "مجموع",
     award: "عنوان",
+    testTitle: "عنوان آزمون",
+    range: "محدوده کاربرد",
+    method: "روش آزمون (مرجع)",
     category: "دسته",
     level: "سطح",
     year: "سال",
@@ -42,6 +46,9 @@ const COPY = {
     goodsId: "Goods ID",
     total: "Total",
     award: "Award",
+    testTitle: "Test",
+    range: "Applicable range",
+    method: "Method (reference)",
     category: "Category",
     level: "Level",
     year: "Year",
@@ -290,6 +297,67 @@ export function AwardsTable({
   );
 }
 
+export function LabScopeTable({
+  caption,
+  summary,
+  locale,
+}: {
+  caption: string;
+  summary?: string;
+  locale: "fa" | "en";
+}) {
+  const t = COPY[locale];
+
+  return (
+    <TableShell caption={caption} summary={summary}>
+      <thead>
+        <tr className="border-b border-[color:var(--ind-border)]">
+          <th scope="col" className={HEAD}>
+            {t.product}
+          </th>
+          <th scope="col" className={HEAD}>
+            {t.testTitle}
+          </th>
+          <th scope="col" className={HEAD}>
+            {t.range}
+          </th>
+          <th scope="col" className={HEAD}>
+            {t.method}
+          </th>
+        </tr>
+      </thead>
+      {labScope.map((group) => (
+        <tbody key={group.id}>
+          {group.tests.map((test, i) => (
+            <tr key={test.id} className="border-b border-[color:var(--ind-border)]/40">
+              {i === 0 ? (
+                <th
+                  scope="rowgroup"
+                  rowSpan={group.tests.length}
+                  className={`${HEAD} max-w-[16rem] align-top font-semibold`}
+                >
+                  {group.product[locale]}
+                </th>
+              ) : null}
+              <td className={`${CELL} max-w-[24rem]`}>{test.title[locale]}</td>
+              <td className={`${CELL} max-w-[14rem]`}>
+                {test.range ? test.range[locale] : t.notStated}
+              </td>
+              <td className={CELL}>
+                {test.references.map((ref) => (
+                  <span key={ref} dir="ltr" className="block whitespace-nowrap tabular-nums">
+                    {ref}
+                  </span>
+                ))}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      ))}
+    </TableShell>
+  );
+}
+
 /** Rendered by the `document-table` content block. */
 export function DocumentTableBlock({
   table,
@@ -297,7 +365,7 @@ export function DocumentTableBlock({
   summary,
   locale,
 }: {
-  table: DocumentGroup | "capacity" | "awards";
+  table: DocumentGroup | "capacity" | "awards" | "lab-scope";
   caption: string;
   summary?: string;
   locale: "fa" | "en";
@@ -307,6 +375,9 @@ export function DocumentTableBlock({
   }
   if (table === "awards") {
     return <AwardsTable caption={caption} summary={summary} locale={locale} />;
+  }
+  if (table === "lab-scope") {
+    return <LabScopeTable caption={caption} summary={summary} locale={locale} />;
   }
   return <DocumentTable group={table} caption={caption} summary={summary} locale={locale} />;
 }
