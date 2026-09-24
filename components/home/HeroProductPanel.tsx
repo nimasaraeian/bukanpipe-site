@@ -62,11 +62,14 @@ const CSS = String.raw`
 .engine-hero-hall::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,rgba(4,8,14,.78) 0%,rgba(4,8,14,.5) 45%,rgba(4,8,14,.3) 100%)}
 
+/* On a phone the product leads and the copy follows it, which buys the product
+   the width of the column instead of a corner of it. */
 @media (max-width:1023.98px){
-  .hp{position:static;padding:0 16px 8px}
-  .hp-wrap{flex-direction:column;width:100%;height:auto;margin:0}
-  [dir="ltr"] .hp-wrap{flex-direction:column;margin:0}
-  .hp-stage{height:min(42vh,320px)}
+  .engine-hero .engine-hero-body{flex-direction:column;align-items:stretch}
+  .hp{position:static;order:-1;padding:0;width:100%}
+  .hp-wrap{width:100%;height:auto;margin:0}
+  [dir="ltr"] .hp-wrap{margin:0}
+  .hp-stage{height:min(52vh,420px)}
 }
 @media (prefers-reduced-motion:reduce){.hp-stage canvas{display:none}.hp-stage.nogl .hp-fallback{display:grid}}
 `;
