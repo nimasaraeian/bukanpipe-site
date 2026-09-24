@@ -1942,6 +1942,78 @@
   -webkit-text-fill-color: var(--ind-blue, #0066ff);
 }
 
+/* ---------------------------------------------------------------- phone
+   The light theme already stacked the phone hero properly — the stage ordered
+   first, the trust strip taken out of its pin and ordered last, the actions
+   and the second subtitle allowed back. The dark theme kept the old pinned
+   layout, which is why the trust strip sat on top of the copy there. Those
+   rules are promoted to both themes below, so there is one phone hero, and the
+   light theme's own colour rules still sit on top of it. */
+@media (max-width: 1023.98px) {
+  .engine-hero--luminous .engine-hero-stage {
+    order: 1;
+    min-height: 0;
+    padding: 5.25rem 1.25rem 1.5rem;
+  }
+
+  .engine-hero--luminous .engine-hero-body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .engine-hero--luminous .engine-hero-copy {
+    grid-column: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .engine-hero--luminous .engine-hero-actions {
+    display: flex;
+  }
+
+  .engine-hero--luminous .engine-hero-btn-secondary {
+    display: inline-flex;
+  }
+
+  .engine-hero--luminous .engine-hero-copy .engine-hero-subtitle.mt-4 {
+    display: block;
+  }
+
+  .engine-hero--luminous .engine-hero-trust {
+    position: relative;
+    inset: auto;
+    order: 3;
+  }
+
+  :root:not([data-theme="light"]) .engine-hero--luminous .engine-hero-trust {
+    background: rgba(8, 14, 24, 0.72);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* the three application chips fit one row at this size */
+  .engine-hero--luminous .engine-hero-spec-index {
+    gap: 0.375rem;
+    margin-top: 0.85rem;
+  }
+
+  .engine-hero--luminous .engine-hero-spec-index-item {
+    min-height: 1.5rem;
+    padding-inline: 0.4rem 0.5rem;
+    gap: 0.3rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* the rule beside the kicker has nowhere to sit once the kicker wraps */
+  .engine-hero-kicker-line {
+    display: none;
+  }
+}
+
 [data-theme="light"] .engine-hero--luminous .engine-hero-subtitle {
   color: var(--ind-text-muted, #3a4553);
 }
@@ -2714,13 +2786,17 @@
   min-height: 1.75rem;
   padding-block: 0.2rem;
   padding-inline: 0.55rem 0.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/* colour only where the light theme has not already set its own */
+:root:not([data-theme="light"]) .engine-hero--luminous .engine-hero-spec-index-item {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
   color: rgba(226, 235, 247, 0.92);
   box-shadow: none;
 }
@@ -2738,7 +2814,7 @@
   background: var(--ind-blue, #0066ff);
 }
 
-.engine-hero--luminous .engine-hero-spec-index-item:hover {
+:root:not([data-theme="light"]) .engine-hero--luminous .engine-hero-spec-index-item:hover {
   color: #fff;
   border-color: rgba(10, 100, 245, 0.55);
   background: rgba(10, 100, 245, 0.14);
