@@ -13,15 +13,13 @@ import { useEffect, useRef } from "react";
 
 const CSS = String.raw`
 .hp{position:absolute;inset:0;z-index:2;display:flex;align-items:center;pointer-events:none}
-.hp-wrap{display:flex;flex-direction:row-reverse;gap:22px;align-items:stretch;
-  width:min(52%,720px);height:min(62vh,460px);margin-inline-start:clamp(24px,4vw,64px);
+.hp-wrap{display:flex;align-items:stretch;
+  width:min(54%,760px);height:min(70vh,540px);margin-inline-start:clamp(8px,2vw,40px);
   pointer-events:auto}
 [dir="ltr"] .hp{justify-content:flex-end}
-[dir="ltr"] .hp-wrap{flex-direction:row;margin-inline-start:0;margin-inline-end:clamp(24px,4vw,64px)}
+[dir="ltr"] .hp-wrap{margin-inline-start:0;margin-inline-end:clamp(8px,2vw,40px)}
 
-.hp-stage{position:relative;flex:1;min-width:0;border-radius:16px;overflow:hidden;
-  background:radial-gradient(120% 100% at 50% 20%,rgba(30,52,82,.55),rgba(6,12,22,.62));
-  border:1px solid rgba(255,255,255,.07);touch-action:none}
+.hp-stage{position:relative;flex:1;min-width:0;touch-action:none}
 .hp-stage canvas{display:block;width:100%;height:100%;cursor:grab;outline:none}
 .hp-stage canvas:active{cursor:grabbing}
 .hp-hint{position:absolute;inset-inline-start:12px;bottom:10px;font-size:11.5px;
@@ -33,8 +31,7 @@ const CSS = String.raw`
 .hp-stage.nogl .hp-fallback{display:grid}
 .hp-stage.nogl canvas,.hp-stage.nogl .hp-hint{display:none}
 
-.hp-side{width:clamp(186px,17vw,224px);display:flex;flex-direction:column;gap:12px;
-  overflow:hidden}
+.hp-side{display:none}
 .hp-lab{font-size:10.5px;letter-spacing:.02em;color:rgba(168,186,210,.72);margin:0 0 6px}
 .hp-chips{display:flex;flex-wrap:wrap;gap:5px;max-height:92px;overflow-y:auto;
   mask-image:linear-gradient(180deg,#000 82%,transparent 100%);
@@ -60,18 +57,16 @@ const CSS = String.raw`
 
 /* the hall: far back, out of focus, and dark enough that the product owns the frame */
 .engine-hero-hall{position:absolute;inset:0;background-image:var(--hall);
-  background-size:cover;background-position:60% 45%;filter:blur(18px) saturate(.5);
-  transform:scale(1.12);opacity:.5}
+  background-size:cover;background-position:60% 45%;filter:blur(22px) saturate(.55);
+  transform:scale(1.15);opacity:1}
 .engine-hero-hall::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(100% 90% at 50% 40%,rgba(5,9,16,.55),rgba(3,6,11,.92))}
+  background:linear-gradient(90deg,rgba(4,8,14,.78) 0%,rgba(4,8,14,.5) 45%,rgba(4,8,14,.3) 100%)}
 
 @media (max-width:1023.98px){
   .hp{position:static;padding:0 16px 8px}
   .hp-wrap{flex-direction:column;width:100%;height:auto;margin:0}
   [dir="ltr"] .hp-wrap{flex-direction:column;margin:0}
-  .hp-stage{height:min(38vh,280px)}
-  .hp-side{width:100%}
-  .hp-specs{grid-template-columns:1fr 1fr}
+  .hp-stage{height:min(42vh,320px)}
 }
 @media (prefers-reduced-motion:reduce){.hp-stage canvas{display:none}.hp-stage.nogl .hp-fallback{display:grid}}
 `;
@@ -81,7 +76,7 @@ const MARKUP = String.raw`
     <div class="hp-hint" id="hint">برای چرخاندن بکشید</div>
     <p class="hp-fallback">مرورگر شما WebGL را پشتیبانی نمی‌کند. مشخصات کنار تصویر همچنان درست است.</p>
   </div>
-  <div class="hp-side">
+  <div class="hp-side" hidden>
     <div>
       <p class="hp-lab">قطر خارجی اسمی — DN (میلی‌متر)</p>
       <div class="hp-chips" id="dnRow" role="group" aria-label="انتخاب قطر"></div>
