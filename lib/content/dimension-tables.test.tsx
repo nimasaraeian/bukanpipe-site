@@ -29,13 +29,13 @@ function countBodyCells(html: string): { rows: number; dataCells: number } {
 }
 
 describe("catalogue figures match the source JSON", () => {
-  it("water supply: 25 diameters x 11 SDR columns, 236 filled cells", () => {
+  it("water supply: 25 diameters x 11 SDR columns, 238 filled cells", () => {
     expect(waterSupplyTable.rows).toHaveLength(25);
     expect(waterSupplyTable.columns).toHaveLength(11);
     for (const row of waterSupplyTable.rows) {
       expect(row.wallThicknessMm, `DN${row.dnMm}`).toHaveLength(11);
     }
-    expect(countFilledCells(waterSupplyTable.rows)).toBe(236);
+    expect(countFilledCells(waterSupplyTable.rows)).toBe(238);
   });
 
   it("gas supply: 9 rows", () => {
@@ -66,6 +66,10 @@ describe("catalogue figures match the source JSON", () => {
 });
 
 describe("rendered tables match the JSON row for row", () => {
+  /*
+   * 238, not the 236 the catalogue scan gave: the factory's spreadsheet fills
+   * DN 25 at SDR 21 and SDR 17, where the scan printed dashes.
+   */
   it("water table renders every diameter and every cell", () => {
     const html = renderToStaticMarkup(<WaterSupplyDimensionTable locale="fa" />);
     const { rows, dataCells } = countBodyCells(html);
@@ -75,7 +79,33 @@ describe("rendered tables match the JSON row for row", () => {
     expect(dataCells).toBe(waterSupplyTable.rows.length * waterSupplyTable.columns.length);
     // The dashes are exactly the nulls.
     const dashes = (html.slice(html.indexOf("<tbody")).match(/—/g) ?? []).length;
-    expect(dataCells - dashes).toBe(236);
+    expect(dataCells - dashes).toBe(238);
+  });
+
+  /*
+   * The scan had the site publishing SDR 11 walls for DN 110-225. The factory's
+   * own sheet marks those as not produced, so they must stay null: a filled
+   * cell here is the site offering pipe the factory does not make.
+   */
+  it("offers gas pipe in SDR 11 only up to DN 90", () => {
+    const sdr11 = new Map(
+      gasSupplyTable.rows.map((row) => [row.nominalSizeMm, row.eMinSdr11Mm]),
+    );
+
+    for (const dn of [25, 32, 63, 90]) expect(sdr11.get(dn)).not.toBeNull();
+    for (const dn of [110, 125, 160, 200, 225]) expect(sdr11.get(dn)).toBeNull();
+  });
+
+  it("carries an e max for every irrigation e min", () => {
+    // The scan had no maxima at all; the sheet gives one per filled cell.
+    for (const row of dripIrrigationTable.rows) {
+      expect(row.wallThicknessMaxMm).toHaveLength(row.wallThicknessMm.length);
+      row.wallThicknessMm.forEach((min, i) => {
+        const max = row.wallThicknessMaxMm[i];
+        if (min === null) expect(max).toBeNull();
+        else expect(max).toBeGreaterThan(min);
+      });
+    }
   });
 
   it("gas table renders all 9 rows", () => {

@@ -364,7 +364,7 @@ export const enPipeDimensionsChart: ContentDocument = {
     { type: "heading", level: 2, text: "Gas supply pipe" },
     {
       type: "paragraph",
-      text: "Gas pipe is produced in SDR 11 and SDR 13.6. The tabulated wall thickness is a minimum; the bracketed figure is the catalogue's plus tolerance.",
+      text: "Gas pipe is produced in SDR 11 up to DN 90 and in SDR 13.6 from DN 63 upwards; a dash in the table means that size is not made in that SDR. The tabulated wall thickness is a minimum and the bracketed figure is the plus tolerance.",
     },
     { type: "dimension-table", table: "gas-supply" },
     { type: "heading", level: 2, text: "Drip irrigation pipe" },

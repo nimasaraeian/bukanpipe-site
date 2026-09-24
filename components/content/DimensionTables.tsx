@@ -36,6 +36,17 @@ function Num({ value }: { value: number | null }) {
   return <span dir="ltr" className={cellNumber}>{value}</span>;
 }
 
+/** e min – e max. A row with no max falls back to showing the minimum alone. */
+function Range({ min, max }: { min: number | null; max: number | null }) {
+  if (min === null) return <Num value={null} />;
+  if (max === null) return <Num value={min} />;
+  return (
+    <span dir="ltr" className={cellNumber}>
+      {min} – {max}
+    </span>
+  );
+}
+
 function TableShell({
   caption,
   summary,
@@ -100,8 +111,8 @@ export function WaterSupplyDimensionTable({
     <TableShell
       caption={
         isFa
-          ? `جدول ابعاد لوله آبرسانی پلی اتیلن — ${waterSupplyTable.standard}`
-          : `HDPE water supply pipe dimensions — ${waterSupplyTable.standard}`
+          ? `جدول ابعاد لوله آبرسانی پلی اتیلن — ${waterSupplyTable.standard} / ${waterSupplyTable.nationalStandard}`
+          : `HDPE water supply pipe dimensions — ${waterSupplyTable.standard} / ${waterSupplyTable.nationalStandard}`
       }
       summary={
         isFa
@@ -183,8 +194,8 @@ export function GasSupplyDimensionTable({
       }
       summary={
         isFa
-          ? "ضخامت دیواره حداقل است و عدد داخل پرانتز رواداری مثبت کاتالوگ. حداکثر ۱۰٪ ضخامت جداره."
-          : "Wall thickness is a minimum; the bracketed figure is the catalogue's plus tolerance. Maximum 10% wall thickness."
+          ? `ضخامت دیواره حداقل است و عدد داخل پرانتز رواداری مثبت. عمق نوار زرد: ${gasSupplyTable.yellowBarDepthNote}. خط تیره یعنی آن قطر در آن SDR تولید نمی‌شود.`
+          : "Wall thickness is a minimum; the bracketed figure is the plus tolerance. Yellow strip depth: at most 10% of the wall thickness. A dash means that size is not produced in that SDR."
       }
     >
       <thead>
@@ -255,13 +266,13 @@ export function DripIrrigationDimensionTable({
     <TableShell
       caption={
         isFa
-          ? `جدول ابعاد لوله آبیاری قطره‌ای — ${dripIrrigationTable.standard}`
-          : `Drip irrigation pipe dimensions — ${dripIrrigationTable.standard}`
+          ? `جدول ابعاد لوله آبیاری قطره‌ای — ${dripIrrigationTable.standard} / ${dripIrrigationTable.nationalStandard}`
+          : `Drip irrigation pipe dimensions — ${dripIrrigationTable.standard} / ${dripIrrigationTable.nationalStandard}`
       }
       summary={
         isFa
-          ? "ضخامت دیواره حداقل (e min) بر حسب میلی‌متر. قطر خارجی رایج ۱۶ میلی‌متر و طول کلاف ۴۰۰ متر است؛ سایر اندازه‌ها بنا به سفارش."
-          : "Wall thickness is the minimum (e min) in mm. The usual outer diameter is 16 mm and the coil length 400 m; other sizes are made to order."
+          ? "هر خانه بازه ضخامت دیواره است: حداقل تا حداکثر (e min – e max) بر حسب میلی‌متر. قطر خارجی رایج ۱۶ میلی‌متر و طول کلاف ۴۰۰ متر است؛ سایر اندازه‌ها بنا به سفارش."
+          : "Each cell is the wall thickness range, minimum to maximum (e min – e max) in mm. The usual outer diameter is 16 mm and the coil length 400 m; other sizes are made to order."
       }
     >
       <thead>
@@ -300,7 +311,7 @@ export function DripIrrigationDimensionTable({
             </th>
             {row.wallThicknessMm.map((value, index) => (
               <td key={`${row.nominalSizeMm}-${columns[index]!.series}`} className={CELL}>
-                <Num value={value} />
+                <Range min={value} max={row.wallThicknessMaxMm[index] ?? null} />
               </td>
             ))}
           </tr>

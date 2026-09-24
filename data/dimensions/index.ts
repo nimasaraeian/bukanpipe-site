@@ -1,9 +1,10 @@
 import tables from "../../bukanpipe-dimension-tables.json";
 
 /**
- * Factory dimension tables, transcribed verbatim from the Bukan Pipe
- * catalogue. Nothing here is computed — a `null` is a dash in the catalogue,
- * meaning that diameter is not offered in that SDR.
+ * Factory dimension tables. The three pressure tables come from the factory's
+ * own spreadsheet (see `scripts/build-dimension-tables.py`), the packaging and
+ * coil tables from the catalogue PDF. Nothing here is computed — a `null` is a
+ * dash in the source, meaning that diameter is not offered in that SDR.
  *
  * The catalogue publishes no kg/m figures, so no row carries
  * `weightKgPerMApprox` and `flags.showWeightColumn` stays false. See
@@ -31,7 +32,7 @@ export type GasRow = {
   eMinSdr13_6Mm: GasThickness | null;
   packageTypes: readonly string[];
   packingLengthM: readonly string[];
-  yellowBarWidthDepthMm: string;
+  yellowBarWidthDepthMm: string | null;
   weightKgPerMApprox?: number | null;
 };
 
@@ -44,7 +45,10 @@ export type IrrigationColumn = {
 
 export type IrrigationRow = {
   nominalSizeMm: number;
+  /** e min per SDR column. */
   wallThicknessMm: readonly (number | null)[];
+  /** e max per SDR column, same order. The catalogue scan did not carry these. */
+  wallThicknessMaxMm: readonly (number | null)[];
   weightKgPerMApprox?: readonly (number | null)[];
 };
 
@@ -53,6 +57,7 @@ export const dimensionSource = tables.source;
 export const waterSupplyTable = tables.tables.waterSupply as {
   id: string;
   standard: string;
+  nationalStandard: string;
   materials: readonly string[];
   measure: string;
   unit: string;
@@ -67,12 +72,15 @@ export const gasSupplyTable = tables.tables.gasSupply as {
   measure: string;
   unit: string;
   note: string;
+  /** The sheet gives the strip depth as a rule, not a per-row number. */
+  yellowBarDepthNote: string;
   rows: readonly GasRow[];
 };
 
 export const dripIrrigationTable = tables.tables.dripIrrigation as {
   id: string;
   standard: string;
+  nationalStandard: string;
   materials: readonly string[];
   measure: string;
   unit: string;
