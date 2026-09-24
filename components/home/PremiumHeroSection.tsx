@@ -1,34 +1,11 @@
 import Link from "next/link";
-import { HeroPipeStage } from "@/components/home/HeroPipeStage";
+import { HeroProductPanel } from "@/components/home/HeroProductPanel";
 import { enHomeApplications } from "@/data/content/en/home";
 import { faHomeApplications } from "@/data/content/fa/home";
 import { routes } from "@/lib/config/routes";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionary";
 import { withLocale } from "@/lib/i18n/path";
-
-const floatIcons = [
-  (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="engine-float-icon">
-      <path
-        d="M12 3c3.6 3.2 5.5 6.6 5.5 10a5.5 5.5 0 1 1-11 0c0-3.4 1.9-6.8 5.5-10z"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-      <path d="M12 14.5v3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-    </svg>
-  ),
-  (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="engine-float-icon">
-      <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.2" />
-      <path
-        d="M3.5 12h17M12 3.5c2.2 2.8 3.4 6 3.4 8.5S14.2 17.7 12 20.5M12 3.5C9.8 6.3 8.6 9.5 8.6 12s1.2 5.7 3.4 8.5"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-    </svg>
-  ),
-] as const;
 
 const trustIcons = [
   (
@@ -82,9 +59,11 @@ export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
       aria-label={hero.kicker}
     >
       <div className="engine-hero-scene" aria-hidden="true">
-        <HeroPipeStage locale={locale} markSrc="/media/brand/pipe-mark-bukan-pe100.png" />
+        <div
+          className="engine-hero-hall"
+          style={{ ["--hall" as string]: "url(/media/brand/hero-hall-blur.webp)" }}
+        />
         <div className="engine-hero-scene-shade-left" />
-        <div className="engine-hero-scene-glow" />
       </div>
 
       <div className="engine-hero-stage">
@@ -143,17 +122,7 @@ export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
             ) : null}
           </div>
 
-          <div className="engine-hero-floats" aria-label={hero.highlightsLabel}>
-            {t.home.floatCards.map((card, index) => (
-              <div key={card.title} className="engine-hero-float-card">
-                {floatIcons[index]}
-                <div>
-                  <p className="engine-hero-float-title">{card.title}</p>
-                  <p className="engine-hero-float-subtitle">{card.subtitle}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <HeroProductPanel />
         </div>
       </div>
 

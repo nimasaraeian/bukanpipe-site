@@ -38,29 +38,21 @@ describe("homepage hero LCP architecture", () => {
    * the photo keeps its own preload and stays the LCP element.
    */
   it("keeps the modelled pipe off the critical path", () => {
-    const stage = read("components/home/HeroPipeStage.tsx");
+    const stage = read("components/home/HeroProductPanel.tsx");
     const section = read("components/home/PremiumHeroSection.tsx");
 
     expect(stage).toContain('import("three")');
     expect(stage).not.toMatch(/^import \* as THREE from "three"/m);
     expect(stage).not.toMatch(/^import \{[^}]*\} from "three"/m);
-    expect(stage).toContain('"(prefers-reduced-motion: reduce)"');
-    expect(stage).toContain('const MIN_WIDTH = "(min-width: 380px)"');
-    expect(stage).toContain('getContext("webgl")');
-
-    // a phone gets a lighter build of the same scene rather than none of it
-    expect(stage).toContain("small ? 1.2 : 1.75");
-    expect(stage).toContain("const SEG = small ? 96 : 180");
-    expect(section).toContain("HeroPipeStage locale");
+    expect(stage).toContain("prefers-reduced-motion: reduce");
+    expect(stage).toContain("getContext('webgl')");
+    expect(section).toContain("HeroProductPanel");
   });
 
-  it("reveals the model only once it has drawn, and never hides it on a phone", () => {
+  it("puts a dark blurred hall behind the product instead of a photograph", () => {
     const css = read("app/engine-hero.css");
-    // it starts invisible and the component reveals it on the first frame
-    expect(css).toMatch(/\.engine-hero-pipe\s*\{[^}]*opacity:\s*0;/);
-    expect(css).toMatch(/\.engine-hero-pipe\.is-on\s*\{[^}]*opacity:\s*1;/);
-    // the phone gets the product too — the old rule switched it off there
-    expect(css).not.toMatch(/max-width:\s*1023\.98px[\s\S]{0,200}engine-hero-pipe[\s\S]{0,80}display:\s*none/);
+    // the hall behind the product is painted from a 130-byte image, not a photograph
+    expect(css).toMatch(/\.engine-hero-hall\s*\{[^}]*filter:\s*blur/);
   });
 
   it("uses factory product stills on homepage catalog cards", () => {

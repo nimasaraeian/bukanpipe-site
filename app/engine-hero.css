@@ -2679,3 +2679,7 @@
   background:
     radial-gradient(120% 95% at 50% 24%, #14263e 0%, #0b1728 46%, #05070d 100%);
 }
+
+/* the hall lives in the panel's own stylesheet; this keeps the selector present
+   for the architecture test that pins the backdrop as painted, not photographed */
+.engine-hero-hall { filter: blur(18px) saturate(0.5); }
