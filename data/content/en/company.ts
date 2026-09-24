@@ -39,7 +39,7 @@ export const enAbout: ContentDocument = {
         { label: "Industrial operating licence", value: "113/7/256493 — Ministry of Industry, Mine and Trade" },
         { label: "Trademark", value: "LB Bukan Pipe — registration 370560" },
         { label: "Factory address", value: "10th km of Bukan–Miandoab road, Bukan, West Azerbaijan" },
-        { label: "Postal code", value: "5955116757" },
+        { label: "Postal code", value: "5955164341" },
       ],
       note: "These identifiers appear on the industrial operating licence and the company's other official documents, and can be verified independently.",
     },
@@ -82,7 +82,7 @@ export const enAbout: ContentDocument = {
     { type: "heading", level: 2, text: "Factory location" },
     {
       type: "paragraph",
-      text: "West Azerbaijan Province — Bukan, 10 km Miandoab Road. Postal code: 5955116757, Iran.",
+      text: "West Azerbaijan Province — Bukan, 10 km Miandoab Road. Postal code: 5955164341, Iran.",
     },
     {
       type: "internal-links",
@@ -413,7 +413,7 @@ export const enContact: ContentDocument = {
       title: "Address and registration",
       rows: [
         { label: "Address", value: "10th km of Bukan–Miandoab road, Bukan, West Azerbaijan, Iran" },
-        { label: "Postal code", value: "5955116757" },
+        { label: "Postal code", value: "5955164341" },
         { label: "National ID", value: "10220007922" },
         { label: "Registration number", value: "121" },
       ],
@@ -453,7 +453,7 @@ export const enContact: ContentDocument = {
     {
       question: "Where is the Bukan Pipe factory?",
       answer:
-        "On the 10th km of the Bukan–Miandoab road, Bukan, West Azerbaijan province, Iran, postal code 5955116757.",
+        "On the 10th km of the Bukan–Miandoab road, Bukan, West Azerbaijan province, Iran, postal code 5955164341.",
     },
     {
       question: "Which number should I call for a quotation?",

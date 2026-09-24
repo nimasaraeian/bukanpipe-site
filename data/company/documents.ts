@@ -350,7 +350,7 @@ export const companyIdentity = {
   nationalId: "۱۰۲۲۰۰۰۷۹۲۲",
   registrationNumber: "۱۲۱",
   registeredOn: "۱۳۷۳/۰۶/۲۶",
-  postalCode: "۵۹۵۵۱۱۶۷۵۷",
+  postalCode: "۵۹۵۵۱۶۴۳۴۱",
   address: {
     fa: "آذربایجان غربی، بوکان، کیلومتر ۱۰ جاده بوکان–میاندوآب",
     en: "10th km of Bukan–Miandoab road, Bukan, West Azerbaijan, Iran",

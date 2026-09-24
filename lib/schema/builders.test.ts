@@ -17,7 +17,7 @@ describe("structured data builders", () => {
     expect(schema.name).toBe("Bukan Pipe");
     expect(schema.address).toMatchObject({
       "@type": "PostalAddress",
-      postalCode: "5955116757",
+      postalCode: "5955164341",
       addressLocality: "Bukan",
     });
     expect(schema.address).not.toHaveProperty("geo");

@@ -21,7 +21,7 @@ Legacy website copy is a **claim source**, not verification.
 | Current annual capacity | About | Legacy mentions 10000 t historically; timeline fragment claims 14000 t / 7 lines | UNVERIFIED — conflicting LEGACY CLAIMS; need **current** |
 | Equipment brands (Cincinnati, Inoex) | About | Legacy homepage | UNVERIFIED |
 | Official factory address | Contact, schema | Legacy: West Azerbaijan, Bukan, km 10 Miandoab road | UNVERIFIED |
-| Postal code 5955164341 | Contact | Legacy about | UNVERIFIED |
+| Postal code 5955164341 | Contact | Legacy about, **confirmed by the company 1405-07-02** | CONFIRMED — but the operating licence, NACI/Lab/269 and the 1404 MAJ producer list all print 5955116757. The company's word governs the site; worth reconciling with whoever maintains those records. |
 | Working hours | Contact | Legacy footer | UNVERIFIED |
 | Awards: واحد نمونه کیفی، رتبه A جهاد کشاورزی، صادرکننده نمونه | About | Legacy home/about | UNVERIFIED — need issuer, year, document |
 | “First gas PE producer in NW Iran” | Product/about | Legacy gas page | UNVERIFIED — do not publish superlatives without evidence |

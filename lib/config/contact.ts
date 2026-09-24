@@ -89,12 +89,16 @@ export const contactConfig = {
       en: "West Azerbaijan Province, Bukan, 10 km Miandoab Road,\nBukan Polyethylene Pipe Factory, Iran",
     },
     /*
-     * From the factory's own documents, not from the previous site. The
-     * industrial operating licence (113/7/256493) and the NACI laboratory
-     * accreditation (NACI/Lab/269) both print 5955116757; the site had been
-     * carrying 5955164341, which matched neither.
+     * Confirmed by the company, and it does NOT match the documents: the
+     * industrial operating licence (113/7/256493), the NACI laboratory
+     * accreditation (NACI/Lab/269) and the 1404 Ministry of Agriculture
+     * producer list all print 5955116757. This was briefly changed to that
+     * value on the strength of those three, and changed back on the owner's
+     * instruction — they are the authority on their own address. Leave it
+     * alone unless the company says otherwise; the discrepancy with the
+     * documents is tracked in research/FACTS_TO_VERIFY.md.
      */
-    postalCode: "5955116757",
+    postalCode: "5955164341",
     region: {
       fa: "آذربایجان غربی",
       en: "West Azerbaijan Province",

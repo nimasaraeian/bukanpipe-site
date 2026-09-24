@@ -69,7 +69,7 @@ describe("contactConfig", () => {
 
   it("provides postal address schema without geo", () => {
     const address = postalAddressSchema();
-    expect(address.postalCode).toBe("5955116757");
+    expect(address.postalCode).toBe("5955164341");
     expect(address).not.toHaveProperty("latitude");
   });
 });

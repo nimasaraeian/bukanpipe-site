@@ -12,7 +12,7 @@ describe("contactPageSchemas", () => {
     expect(localBusiness).toBeDefined();
     const address = localBusiness.address as Record<string, string>;
     expect(address["@type"]).toBe("PostalAddress");
-    expect(address.postalCode).toBe("5955116757");
+    expect(address.postalCode).toBe("5955164341");
     expect(address).not.toHaveProperty("geo");
   });
 });
