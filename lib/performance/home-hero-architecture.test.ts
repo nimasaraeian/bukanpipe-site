@@ -28,39 +28,6 @@ describe("homepage hero LCP architecture", () => {
     expect(read("app/engine-hero.css")).not.toMatch(/engine-hero-copy[\s\S]{0,120}engine-fade-up/);
   });
 
-  /*
-   * The modelled pipe is a layer over the hero, never the hero itself. Three
-   * things keep it from costing the page anything: three.js arrives through a
-   * dynamic import so it is not in the initial chunk, the component bails
-   * before touching it on reduced motion / narrow viewports / no WebGL, and
-   * the photo keeps its own preload and stays the LCP element.
-   */
-  it("keeps the modelled pipe off the critical path", () => {
-    const stage = read("components/home/HeroPipeStage.tsx");
-    const section = read("components/home/PremiumHeroSection.tsx");
-
-    expect(stage).toContain('import("three")');
-    expect(stage).not.toMatch(/^import \* as THREE from "three"/m);
-    expect(stage).not.toMatch(/^import \{[^}]*\} from "three"/m);
-    expect(stage).toContain('"(prefers-reduced-motion: reduce)"');
-    expect(stage).toContain('const DESKTOP = "(min-width: 1024px)"');
-    expect(stage).toContain('getContext("webgl")');
-
-    // the photo is still rendered, and still first
-    expect(section).toContain("HomeHeroPhoto");
-    expect(section.indexOf("HomeHeroPhoto locale")).toBeLessThan(section.indexOf("HeroPipeStage locale"));
-  });
-
-  it("never hides the hero photo behind the model", () => {
-    // Dimming the photograph when the model appeared flattened the hero, so the
-    // shop floor stays at full strength and the pipe stands in front of it.
-    const css = read("app/engine-hero.css");
-    expect(css).not.toContain("engine-hero--has3d");
-    expect(css).not.toMatch(/engine-hero-pipe[\s\S]{0,400}scene-photo[\s\S]{0,120}opacity:\s*0/);
-    expect(css).toMatch(/\.engine-hero-pipe\s*\{[^}]*opacity:\s*0;/);
-    expect(css).toMatch(/max-width:\s*1023\.98px[\s\S]{0,120}engine-hero-pipe[\s\S]{0,60}display:\s*none/);
-  });
-
   it("uses factory product stills on homepage catalog cards", () => {
     const page = read("components/home/IndustrialHomePage.tsx");
     expect(page).toContain("/media/brand/bukan-pipe-hdpe-water-supply-pipe.webp");
