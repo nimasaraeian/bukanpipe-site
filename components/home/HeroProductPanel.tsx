@@ -60,7 +60,7 @@ const CSS = String.raw`
   .hp{position:static;order:-1;padding:0;width:100%}
   .hp-wrap{width:100%;height:auto;margin:0}
   [dir="ltr"] .hp-wrap{margin:0}
-  .hp-stage{height:min(52vh,420px)}
+  .hp-stage{height:min(34vh,290px)}
 }
 @media (prefers-reduced-motion:reduce){.hp-stage canvas{display:none}.hp-stage.nogl .hp-fallback{display:grid}}
 `;
@@ -89,7 +89,7 @@ const MARKUP = String.raw`
 </div>
 `;
 
-export function HeroProductPanel() {
+export function HeroProductPanel({ locale }: { locale: "fa" | "en" }) {
   const host = useRef<HTMLDivElement | null>(null);
   const started = useRef(false);
 
@@ -112,7 +112,20 @@ export function HeroProductPanel() {
   return (
     <div className="hp" ref={host}>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <div dangerouslySetInnerHTML={{ __html: MARKUP }} style={{ display: "contents" }} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html:
+            locale === "en"
+              ? MARKUP
+                  .replace("برای چرخاندن بکشید", "Drag to rotate")
+                  .replace(
+                    "مرورگر شما WebGL را پشتیبانی نمی‌کند. مشخصات کنار تصویر همچنان درست است.",
+                    "This browser does not support WebGL, so the model is not shown.",
+                  )
+              : MARKUP,
+        }}
+        style={{ display: "contents" }}
+      />
     </div>
   );
 }

@@ -118,7 +118,7 @@ export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
             ) : null}
           </div>
 
-          <HeroProductPanel />
+          <HeroProductPanel locale={locale} />
         </div>
       </div>
 
