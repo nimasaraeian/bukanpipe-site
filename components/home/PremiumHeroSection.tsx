@@ -59,10 +59,6 @@ export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
       aria-label={hero.kicker}
     >
       <div className="engine-hero-scene" aria-hidden="true">
-        <div
-          className="engine-hero-hall"
-          style={{ ["--hall" as string]: "url(/media/brand/hero-hall-blur.webp)" }}
-        />
         <div className="engine-hero-scene-shade-left" />
       </div>
 

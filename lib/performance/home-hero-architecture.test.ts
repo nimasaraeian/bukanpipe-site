@@ -51,8 +51,9 @@ describe("homepage hero LCP architecture", () => {
 
   it("puts a dark blurred hall behind the product instead of a photograph", () => {
     const css = read("app/engine-hero.css");
-    // the hall behind the product is painted from a 130-byte image, not a photograph
-    expect(css).toMatch(/\.engine-hero-hall\s*\{[^}]*filter:\s*blur/);
+    // the ground behind the product is a painted navy stage, not an image
+    expect(css).toMatch(/\.engine-hero \.engine-hero-scene\s*\{[^}]*radial-gradient/);
+    expect(css).not.toContain("engine-hero-hall");
   });
 
   it("uses factory product stills on homepage catalog cards", () => {

@@ -55,15 +55,6 @@ const CSS = String.raw`
 .hp-spec dd.pair{display:flex;flex-wrap:wrap;gap:2px 8px;font-size:12.5px}
 .hp-spec dd.pair>span{unicode-bidi:isolate;display:inline-flex;gap:3px;align-items:baseline}
 
-/* the hall: far back, out of focus, and dark enough that the product owns the frame */
-.engine-hero-hall{position:absolute;inset:0;background-image:var(--hall);
-  background-size:cover;background-position:60% 45%;filter:blur(22px) saturate(.55);
-  transform:scale(1.15);opacity:1}
-.engine-hero-hall::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(4,8,14,.78) 0%,rgba(4,8,14,.5) 45%,rgba(4,8,14,.3) 100%)}
-
-/* On a phone the product leads and the copy follows it, which buys the product
-   the width of the column instead of a corner of it. */
 @media (max-width:1023.98px){
   .engine-hero .engine-hero-body{flex-direction:column;align-items:stretch}
   .hp{position:static;order:-1;padding:0;width:100%}
