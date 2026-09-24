@@ -68,10 +68,23 @@ describe("company documents", () => {
     expect(scopes.some((s) => s.includes("۷۶۰۷"))).toBe(true);
   });
 
-  it("withholds the gas mark's licence number rather than inventing one", () => {
+  it("carries the gas mark's licence number now that it has been supplied", () => {
+    /*
+     * This asserted the number was ABSENT while the only scan of the licence
+     * was illegible. The factory supplied it from the INSO portal, so the
+     * guard now pins the value instead of the gap.
+     */
     const gas = companyDocuments.find((doc) => doc.id === "standard-mark-gas")!;
-    expect(gas.reference).toBeUndefined();
-    expect(gas.note?.fa).toContain("خوانا");
+    expect(gas.reference).toBe("۶۱۳۱۷۷۲۹۱");
+    expect(gas.note).toBeUndefined();
+  });
+
+  it("publishes the Ministry of Agriculture producer listing with its rank", () => {
+    const maj = companyDocuments.find((doc) => doc.id === "maj-producer-listing")!;
+    expect(maj.publish).toBe(true);
+    expect(maj.scope.fa).toContain("رتبه A");
+    expect(maj.scope.en).toContain("rank A");
+    expect(maj.validUntil).toBe("۱۴۰۶/۱۰/۱۲");
   });
 
   it("carries the four licensed capacities and their sum", () => {

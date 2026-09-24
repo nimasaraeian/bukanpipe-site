@@ -26,14 +26,15 @@ export const enAbout: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "The company was registered under number 121 on 1373/06/26 in the Iranian calendar, and manufactures single-wall polyethylene pipe in Bukan, West Azerbaijan. The factory produces pipe up to 630 mm outside diameter (25 in) across a range of wall thicknesses and pressure classes, in PE80 and PE100.",
+      text: "The company was founded in 1373 in the Iranian calendar (1994) under registration number 121, and the factory came into operation in 1376 (1997). It manufactures single-wall polyethylene pipe in Bukan, West Azerbaijan, up to 630 mm outside diameter (25 in) across a range of wall thicknesses and pressure classes, in PE80 and PE100.",
     },
     { type: "heading", level: 2, text: "Registration details" },
     {
       type: "spec-table",
       title: "Official identifiers",
       rows: [
-        { label: "Registration number", value: "121, dated 1373/06/26" },
+        { label: "Founded", value: "1373 (1994) — registration 121, dated 1373/06/26" },
+        { label: "Operations began", value: "1376 (1997)" },
         { label: "National ID", value: "10220007922" },
         { label: "Industrial operating licence", value: "113/7/256493 — Ministry of Industry, Mine and Trade" },
         { label: "Trademark", value: "LB Bukan Pipe — registration 370560" },
@@ -51,6 +52,11 @@ export const enAbout: ContentDocument = {
       type: "document-table",
       table: "capacity",
       caption: "Annual capacity stated on the industrial operating licence",
+    },
+    { type: "heading", level: 2, text: "Ministry of Agriculture producer ranking" },
+    {
+      type: "paragraph",
+      text: "On the official list of heavy-duty HD polyethylene water supply pipe producers published by the Ministry of Agriculture's modern irrigation systems programme, Bukan Pipe holds rank A with a score of 92 out of 100, for 20 to 630 mm, valid to 1406/10/12. The list, as reported on 1404/04/17, covered 126 producers, 62 of which held rank A.",
     },
     { type: "heading", level: 2, text: "Quality record" },
     {

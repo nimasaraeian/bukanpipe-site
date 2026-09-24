@@ -76,6 +76,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
       fa: "سازمان ملی استاندارد ایران — اداره کل استاندارد آذربایجان غربی",
       en: "Iranian National Standards Organization — West Azerbaijan",
     },
+    reference: "۶۱۳۱۷۷۲۹۱",
     issued: "۱۳۹۱/۰۴/۲۴",
     renewed: "۱۴۰۴/۰۹/۰۷",
     scope: {
@@ -83,10 +84,6 @@ export const companyDocuments: readonly CompanyDocument[] = [
       en: "INSO 11233-2 — polyethylene pipes for gas supply; single-layer pipe without identification stripe",
     },
     publish: true,
-    note: {
-      fa: "شماره پروانه روی اسکن موجود خوانا نبود و تا تهیه تصویر بهتر درج نشده است.",
-      en: "The licence number is not legible on the available scan and is withheld until a clearer copy is supplied.",
-    },
   },
   {
     id: "standard-mark-irrigation",
@@ -234,6 +231,25 @@ export const companyDocuments: readonly CompanyDocument[] = [
       fa: "دوره اعتبار درج‌شده روی گواهی در ۱۴۰۴/۱۱/۰۱ به پایان رسیده است. تا ارائه گواهی تمدیدشده منتشر نمی‌شود.",
       en: "The accreditation period printed on the certificate ended on 1404/11/01; withheld until a renewed certificate is supplied.",
     },
+  },
+  {
+    id: "maj-producer-listing",
+    group: "sector-approval",
+    title: {
+      fa: "فهرست تولیدکنندگان تأییدشده — سامانه نوین آبیاری",
+      en: "Approved producer listing — modern irrigation systems programme",
+    },
+    issuer: {
+      fa: "وزارت جهاد کشاورزی — مجری طرح سامانه‌های نوین آبیاری",
+      en: "Ministry of Agriculture — modern irrigation systems programme",
+    },
+    issued: "گزارش ۱۴۰۴/۰۴/۱۷",
+    validUntil: "۱۴۰۶/۱۰/۱۲",
+    scope: {
+      fa: "لوله پلی اتیلن آبرسانی سنگین HD در قطر ۲۰ تا ۶۳۰ میلی‌متر — رتبه A با امتیاز ۹۲ از ۱۰۰",
+      en: "Heavy-duty HD polyethylene water supply pipe, 20 to 630 mm — rank A, score 92 of 100",
+    },
+    publish: true,
   },
   {
     id: "training-centre-licence",
