@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroPipeStage } from "@/components/home/HeroPipeStage";
 import { HomeHeroPhoto } from "@/components/home/HomeHeroPhoto";
 import { enHomeApplications } from "@/data/content/en/home";
 import { faHomeApplications } from "@/data/content/fa/home";
@@ -83,6 +84,7 @@ export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
     >
       <div className="engine-hero-scene" aria-hidden="true">
         <HomeHeroPhoto locale={locale} />
+        <HeroPipeStage locale={locale} markSrc="/media/brand/pipe-mark-bukan-pe100.png" />
         <div className="engine-hero-scene-vignette" />
         <div className="engine-hero-scene-shade-left" />
         <div className="engine-hero-scene-shade-top" />
