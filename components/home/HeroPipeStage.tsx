@@ -20,7 +20,7 @@ import type { Locale } from "@/lib/i18n/config";
  * proportion rather than a pleasing one.
  */
 
-const DESKTOP = "(min-width: 1024px)";
+const MIN_WIDTH = "(min-width: 380px)"; // below this a phone is too small to read the product on
 const WALL_FRACTION = (2 * 10) / 110; // DN 110, SDR 11 — wall as a fraction of the radius
 const BODY = 0x212328; // sampled from the factory's own product render
 const STRIPE_BLUE = 0x0a64f5;
@@ -41,7 +41,7 @@ export function HeroPipeStage({ locale, markSrc }: Props) {
     if (!mount) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduced.matches || !window.matchMedia(DESKTOP).matches) return;
+    if (reduced.matches || !window.matchMedia(MIN_WIDTH).matches) return;
 
     let probe: WebGLRenderingContext | null = null;
     try {
@@ -85,7 +85,8 @@ function build(
     alpha: true,
     powerPreference: "high-performance",
   });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+  const small = window.innerWidth < 1024;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.2 : 1.75));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 0;
   mount.appendChild(renderer.domElement);
@@ -122,18 +123,18 @@ function build(
     m.lookAt(0, 0, 0);
     studio.add(m);
   };
-  softbox(12, 2.4, -3, 7, 5, new THREE.Color(5.4, 5.4, 5.2)); // key strip overhead
-  softbox(1.6, 10, 8, 1.5, -3, new THREE.Color(4.6, 5.8, 7.6)); // cool rim, back right
+  softbox(12, 2.8, -3, 7, 5, new THREE.Color(7.2, 7.2, 7)); // key strip overhead
+  softbox(1.8, 11, 8, 1.5, -3, new THREE.Color(6.4, 8, 10.5)); // cool rim, back right
   softbox(1.2, 9, -8, 1, -3.5, new THREE.Color(5.2, 4.2, 3.2)); // warm rim, back left
   softbox(12, 1.2, 0, -3.4, 7, new THREE.Color(1.5, 1.6, 1.8)); // low fill
   const env = pmrem.fromScene(studio, 0.03);
   scene.environment = env.texture;
 
-  const key = new THREE.DirectionalLight(0xfff4e8, 3.2);
+  const key = new THREE.DirectionalLight(0xfff4e8, 4.6);
   key.position.set(-3, 6, 5);
-  const rim = new THREE.DirectionalLight(0x9dc8ff, 5.5);
+  const rim = new THREE.DirectionalLight(0x9dc8ff, 9);
   rim.position.set(5, 2, -4);
-  const hemi = new THREE.HemisphereLight(0xc4d4e8, 0x070d18, 0.45);
+  const hemi = new THREE.HemisphereLight(0xc4d4e8, 0x070d18, 0.62);
   scene.add(key, rim, hemi);
 
   /* ------------------------------------------------------------ surfaces */
@@ -169,8 +170,8 @@ function build(
   logo.src = markSrc;
 
   /* -------------------------------------------------------------- the pipe */
-  const L = 3.6;
-  const SEG = 180;
+  const L = 3.5;
+  const SEG = small ? 96 : 180;
   const ARC = 0.124; // 7.1 degrees, measured off the factory's product render
   const STRIPES = 4;
   const r = 1 - WALL_FRACTION;
@@ -222,10 +223,18 @@ function build(
     camera.aspect = w / h;
     const vf = (camera.fov * Math.PI) / 180;
     const hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
-    camera.position.set(0, 0.42, (2.1 / Math.sin(Math.min(vf, hf) / 2)) * 2.15);
+    const portrait = w / h < 1;
+    camera.position.set(0, 0.42, (2.1 / Math.sin(Math.min(vf, hf) / 2)) * (portrait ? 1.1 : 1.34));
     camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
-    spin.position.x = side * (w / h > 2.2 ? 3.1 : 2.4);
+    if (portrait) {
+      // the copy owns the top of the column, so the pipe sits under it, centred
+      spin.position.x = 0;
+      spin.position.y = -1.15;
+    } else {
+      spin.position.x = side * (w / h > 2.2 ? 1.85 : 1.35);
+      spin.position.y = -0.32; // sits under the headline rather than through it
+    }
   };
   fit();
   const ro = new ResizeObserver(fit);
@@ -371,7 +380,7 @@ function build(
     // the opening: exposure comes up and the pipe eases out of a slight turn
     const intro = Math.min(1, t / 1.5);
     const eased = 1 - Math.pow(1 - intro, 3);
-    renderer.toneMappingExposure = (0.96 - past * 0.5) * eased;
+    renderer.toneMappingExposure = (1.32 - past * 0.7) * eased;
 
     if (dragging) {
       // the hand is on it

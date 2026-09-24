@@ -10,22 +10,24 @@ function read(rel: string) {
 }
 
 describe("homepage hero LCP architecture", () => {
-  it("uses a single picture element instead of two CSS-hidden imgs", () => {
-    const hero = read("components/home/HomeHeroPhoto.tsx");
+  /*
+   * The hero no longer stands on a photograph at all: the modelled pipe is the
+   * subject and the ground behind it is a CSS stage. That removes the hero's
+   * image download outright, so the largest paint is the headline — nothing to
+   * art-direct, nothing to preload, and no second img hidden with CSS.
+   */
+  it("carries no hero photograph to art-direct", () => {
     const section = read("components/home/PremiumHeroSection.tsx");
 
-    expect(hero).toContain("<picture>");
-    expect(hero).toContain('(min-width: 1024px)');
-    expect(hero).toContain("homeHeroImage.src");
-    expect(hero).toContain("homeHeroImage.mobileSrc");
-    expect(hero).not.toContain("unoptimized");
-    expect(hero).not.toContain("scene-photo--mobile");
-    expect(hero).not.toContain("scene-photo--desktop");
-
-    expect(section).toContain("HomeHeroPhoto");
-    expect(section).not.toContain("engine-hero-scene-photo--mobile");
+    expect(section).not.toContain("HomeHeroPhoto");
+    expect(section).not.toContain("engine-hero-scene-photo");
     expect(section).not.toContain("priority");
-    expect(read("app/engine-hero.css")).not.toMatch(/engine-hero-copy[\s\S]{0,120}engine-fade-up/);
+    expect(section).not.toContain("<img");
+
+    // the stage is painted, not loaded
+    const css = read("app/engine-hero.css");
+    expect(css).toMatch(/\.engine-hero \.engine-hero-scene\s*\{[^}]*radial-gradient/);
+    expect(css).not.toMatch(/engine-hero-copy[\s\S]{0,120}engine-fade-up/);
   });
 
   /*
@@ -43,22 +45,22 @@ describe("homepage hero LCP architecture", () => {
     expect(stage).not.toMatch(/^import \* as THREE from "three"/m);
     expect(stage).not.toMatch(/^import \{[^}]*\} from "three"/m);
     expect(stage).toContain('"(prefers-reduced-motion: reduce)"');
-    expect(stage).toContain('const DESKTOP = "(min-width: 1024px)"');
+    expect(stage).toContain('const MIN_WIDTH = "(min-width: 380px)"');
     expect(stage).toContain('getContext("webgl")');
 
-    // the photo is still rendered, and still first
-    expect(section).toContain("HomeHeroPhoto");
-    expect(section.indexOf("HomeHeroPhoto locale")).toBeLessThan(section.indexOf("HeroPipeStage locale"));
+    // a phone gets a lighter build of the same scene rather than none of it
+    expect(stage).toContain("small ? 1.2 : 1.75");
+    expect(stage).toContain("const SEG = small ? 96 : 180");
+    expect(section).toContain("HeroPipeStage locale");
   });
 
-  it("never hides the hero photo behind the model", () => {
-    // Dimming the photograph when the model appeared flattened the hero, so the
-    // shop floor stays at full strength and the pipe stands in front of it.
+  it("reveals the model only once it has drawn, and never hides it on a phone", () => {
     const css = read("app/engine-hero.css");
-    expect(css).not.toContain("engine-hero--has3d");
-    expect(css).not.toMatch(/engine-hero-pipe[\s\S]{0,400}scene-photo[\s\S]{0,120}opacity:\s*0/);
+    // it starts invisible and the component reveals it on the first frame
     expect(css).toMatch(/\.engine-hero-pipe\s*\{[^}]*opacity:\s*0;/);
-    expect(css).toMatch(/max-width:\s*1023\.98px[\s\S]{0,120}engine-hero-pipe[\s\S]{0,60}display:\s*none/);
+    expect(css).toMatch(/\.engine-hero-pipe\.is-on\s*\{[^}]*opacity:\s*1;/);
+    // the phone gets the product too — the old rule switched it off there
+    expect(css).not.toMatch(/max-width:\s*1023\.98px[\s\S]{0,200}engine-hero-pipe[\s\S]{0,80}display:\s*none/);
   });
 
   it("uses factory product stills on homepage catalog cards", () => {
@@ -77,6 +79,8 @@ describe("homepage hero LCP architecture", () => {
     expect(css).not.toContain("filter: brightness(0.96)");
   });
 
+  /* The homepage no longer uses these, but other page heroes still read the
+     same module, so the entries stay pinned rather than deleted. */
   it("keeps locale-specific pyramid sources", () => {
     expect(homeHeroImage.src.fa).toBe("/media/brand/home-hero-pyramid-fa.webp");
     expect(homeHeroImage.mobileSrc.fa).toBe("/media/brand/home-hero-pyramid-mobile-fa.webp");
