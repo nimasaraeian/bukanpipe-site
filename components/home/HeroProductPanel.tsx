@@ -96,16 +96,71 @@ export function HeroProductPanel({ locale }: { locale: "fa" | "en" }) {
   useEffect(() => {
     if (started.current) return;
     started.current = true;
+
+    /*
+     * Two gates before three.js is fetched at all, and a wait after them.
+     *
+     * The gate: the vendored scene script probes for WebGL itself, but it can
+     * only do that once it has loaded, which meant every visitor paid 179 KB
+     * for a library they might not be able to use — measured: a browser with
+     * WebGL switched off downloaded exactly as much as one without. The probe
+     * happens before the import now, so a visitor with no WebGL, or one who
+     * has asked for reduced motion, fetches nothing.
+     *
+     * The wait: the import used to start during hydration and competed with
+     * first paint. Both the probe and the import go after load and then into
+     * idle time — the probe too, because asking the platform for a GL context
+     * is itself slow enough to show up in first paint.
+     */
+    const stage = document.getElementById("stage");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      stage?.classList.add("nogl");
+      return;
+    }
+
     let cancelled = false;
-    import("three")
-      .then((THREE) => {
-        if (cancelled || !host.current) return;
-        (window as unknown as { THREE: unknown }).THREE = THREE;
-        run();
-      })
-      .catch(() => {});
+    let idle = 0;
+
+    const load = () => {
+      if (cancelled) return;
+      // the probe itself asks the platform for a GL context, which is not free;
+      // it waits with the import so nothing GL-shaped runs before the page paints
+      let probe: WebGLRenderingContext | null = null;
+      try {
+        probe = document.createElement("canvas").getContext("webgl");
+      } catch {
+        probe = null;
+      }
+      if (!probe) {
+        stage?.classList.add("nogl");
+        return;
+      }
+      import("three")
+        .then((THREE) => {
+          if (cancelled || !host.current) return;
+          (window as unknown as { THREE: unknown }).THREE = THREE;
+          run();
+        })
+        .catch(() => {
+          stage?.classList.add("nogl");
+        });
+    };
+
+    const schedule = () => {
+      const ric = (window as unknown as {
+        requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number;
+      }).requestIdleCallback;
+      idle = ric ? ric(load, { timeout: 2000 }) : window.setTimeout(load, 200);
+    };
+
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+
     return () => {
       cancelled = true;
+      window.removeEventListener("load", schedule);
+      const cic = (window as unknown as { cancelIdleCallback?: (h: number) => void }).cancelIdleCallback;
+      if (idle) (cic ?? window.clearTimeout)(idle);
     };
   }, []);
 
