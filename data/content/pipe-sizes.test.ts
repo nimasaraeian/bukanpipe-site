@@ -83,3 +83,14 @@ describe("pipe size pages", () => {
     }
   });
 });
+
+describe("FAQ parity", () => {
+  it("gives every size page FAQs in both locales", () => {
+    // The EN pages shipped without FAQs while FA had them, so half the new
+    // pages emitted no FAQPage schema. This keeps the two locales level.
+    for (const locale of ["fa", "en"] as const) {
+      const missing = pipeSizeDocuments(locale).filter((d) => (d.faqs?.length ?? 0) === 0);
+      expect(missing.map((d) => d.path), locale).toEqual([]);
+    }
+  });
+});

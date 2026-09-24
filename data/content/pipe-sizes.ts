@@ -373,6 +373,38 @@ function faFaqs(dn: number, f: PipeSizeFacts): ContentDocument["faqs"] {
   ];
 }
 
+function enFaqs(dn: number, f: PipeSizeFacts): ContentDocument["faqs"] {
+  const thinnest = f.classes[0];
+  const thickest = f.classes[f.classes.length - 1];
+  if (!thinnest || !thickest) return undefined;
+  const pressures = statedPressures(f);
+  const hasCoil = f.supply.some((s) => s.packageType === "coil");
+  const hasBranch = f.supply.some((s) => s.packageType === "branch");
+  return [
+    {
+      question: `What wall thickness does ${dn} mm HDPE pipe have?`,
+      answer: `It depends on the pressure class. At ${dn} mm the catalogue offers ${f.classes.length} classes, from SDR ${thinnest.sdr} at ${thinnest.wallMm} mm to SDR ${thickest.sdr} at ${thickest.wallMm} mm. Without an SDR, the wall thickness is undefined.`,
+    },
+    {
+      question: `What is the pressure rating of ${dn} mm pipe?`,
+      answer: `From ${Math.min(...pressures)} to ${Math.max(...pressures)} bar, depending on the SDR and material grade. Those figures apply at 20 °C; above that they must be corrected with the temperature derating factor.`,
+    },
+    {
+      question: `Is ${dn} mm supplied in coils or straight lengths?`,
+      answer:
+        hasCoil && hasBranch
+          ? "Both, depending on the pressure class. The lighter classes at this diameter come in coils and the heavier ones in 12 m straight lengths."
+          : hasCoil
+            ? "In coils, which reduces the number of joints along the route."
+            : "In 12 m straight lengths; at this wall thickness the pipe cannot be coiled.",
+    },
+    {
+      question: `How is ${dn} mm HDPE pipe priced?`,
+      answer: `By weight, not by the metre. Weight per metre follows from diameter, wall thickness and material density — which is why ${dn} mm costs differently in each SDR. Quote the diameter, SDR and quantity to get a current price.`,
+    },
+  ];
+}
+
 function buildDoc(locale: Locale, dn: number, f: PipeSizeFacts): ContentDocument {
   const c = COPY[locale];
   const path = `${PATH_PREFIX}/${dn}`;
@@ -407,7 +439,7 @@ function buildDoc(locale: Locale, dn: number, f: PipeSizeFacts): ContentDocument
       { label: c.title(dn), path },
     ],
     sections: locale === "fa" ? fa(dn, f) : en(dn, f),
-    faqs: locale === "fa" ? faFaqs(dn, f) : undefined,
+    faqs: locale === "fa" ? faFaqs(dn, f) : enFaqs(dn, f),
     related: {
       products: ["water-supply-pipe", "pe100-pipe"],
       articles: ["polyethylene-pipe-complete-guide"],
@@ -525,8 +557,19 @@ function buildIndex(locale: Locale): ContentDocument {
     ],
     sections: locale === "fa" ? faSections : enSections,
     faqs:
-      locale === "fa"
+      locale === "en"
         ? [
+            {
+              question: "What sizes is HDPE pipe produced in?",
+              answer: `Bukan Pipe produces ${sizes.length} outside diameters, from ${sizes[0]} to ${sizes[sizes.length - 1]} mm. At each diameter several pressure classes are available, differing in wall thickness.`,
+            },
+            {
+              question: "How do I choose a pipe size?",
+              answer:
+                "Diameter comes from design flow and permissible velocity; pressure class comes separately from the maximum pressure on the line plus a surge allowance. The two are independent choices, and swapping them is the commonest ordering mistake.",
+            },
+          ]
+        : [
             {
               question: "لوله پلی اتیلن در چه سایزهایی تولید می‌شود؟",
               answer: `بوکان پایپ ${sizes.length} قطر خارجی تولید می‌کند، از ${sizes[0]} تا ${sizes[sizes.length - 1]} میلی‌متر. در هر قطر، چند کلاس فشار با ضخامت جداره متفاوت موجود است.`,
@@ -536,8 +579,7 @@ function buildIndex(locale: Locale): ContentDocument {
               answer:
                 "قطر از دبی طرح و سرعت مجاز جریان می‌آید، و کلاس فشار جداگانه از حداکثر فشار خط به‌علاوه سهم ضربه. این دو انتخاب مستقل‌اند؛ جابه‌جا کردنشان رایج‌ترین خطای سفارش است.",
             },
-          ]
-        : undefined,
+          ],
     related: {
       products: ["water-supply-pipe", "pe100-pipe"],
       articles: ["polyethylene-pipe-complete-guide"],
