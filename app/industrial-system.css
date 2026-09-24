@@ -1423,6 +1423,46 @@
   color: var(--ind-text-subtle);
 }
 
+/* Designer credit. It sits at the end of the meta row and is the quietest
+   thing in the footer: subtle weight, tracked letters, and two thirds
+   opacity until it is hovered or focused. Only the Telegram glyph carries
+   colour, and only enough to say what the link is. */
+.ind-footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: inherit;
+  opacity: 0.62;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.ind-footer-credit svg {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  flex: none;
+  color: #2aabee;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+
+.ind-footer-credit:hover,
+.ind-footer-credit:focus-visible {
+  opacity: 1;
+  color: var(--ind-text);
+}
+
+.ind-footer-credit:hover svg,
+.ind-footer-credit:focus-visible svg {
+  opacity: 1;
+}
+
+[data-theme="light"] .ind-footer-credit:hover,
+[data-theme="light"] .ind-footer-credit:focus-visible {
+  color: var(--text-primary);
+}
+
 .ind-footer-col-title {
   font-size: 0.6875rem;
   font-weight: 600;

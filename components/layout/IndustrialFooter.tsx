@@ -58,6 +58,23 @@ export function IndustrialFooter() {
             © {new Date().getFullYear()} {siteConfig.brandName}
           </p>
           <p>{t.footer.tagline}</p>
+          {/* the designer's credit: a single quiet line, deliberately the
+              faintest thing in the footer until it is hovered */}
+          <a
+            className="ind-footer-credit"
+            href="https://t.me/nimasaraeian"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram: @nimasaraeian"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M21.9 4.3 18.8 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L6.9 13 2.4 11.6c-1-.3-1-1 .2-1.4L20.6 3.3c.8-.3 1.6.2 1.3 1Z"
+              />
+            </svg>
+            <span>{t.footer.credit}</span>
+          </a>
         </div>
       </div>
     </footer>

@@ -173,6 +173,7 @@ export const dictionaryEn = {
   footer: {
     tagline: "Bukan Pipe",
     socialLabel: "Social and messaging",
+    credit: "Design & development by Nima Saraeian",
     description:
       "Polyethylene pipe manufacturing for water, gas, irrigation and infrastructure applications.",
     columns: {

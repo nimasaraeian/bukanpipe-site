@@ -176,6 +176,7 @@ export const dictionaryFa: Dictionary = {
   footer: {
     tagline: "اعتماد مهندسی برای زیرساخت",
     socialLabel: "شبکه‌های اجتماعی و پیام‌رسان‌ها",
+    credit: "طراحی و اجرا: نیما سرائیان",
     description:
       "تولید لوله پلی‌اتیلن تک‌جداره برای شبکه‌های آب، گاز و کشاورزی.",
     columns: {
