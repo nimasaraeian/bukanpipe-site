@@ -21,6 +21,33 @@ describe("FA keyword map", () => {
     expect(home?.intent).toBe("commercial");
   });
 
+  /*
+   * keyword-ownership.test.ts checks this over content documents, which the
+   * home page is not — so "/" and /about both claimed
+   * "تولید کننده لوله پلی اتیلن" and nothing caught it. The map is the one
+   * place every route appears, document-backed or not, so the clash check
+   * belongs here too.
+   */
+  it("never lets two routes claim the same primary keyword", () => {
+    const owners = new Map<string, string[]>();
+    for (const entry of faKeywordMap) {
+      const key = entry.primaryKeyword.trim();
+      owners.set(key, [...(owners.get(key) ?? []), entry.path]);
+    }
+
+    const clashes = [...owners.entries()]
+      .filter(([, paths]) => paths.length > 1)
+      .map(([keyword, paths]) => `${keyword} → ${paths.join(" , ")}`);
+
+    expect(clashes).toEqual([]);
+  });
+
+  it("gives the factory phrase an owner", () => {
+    // The exact phrase buyers search when they want the plant, not a trader.
+    const owner = faKeywordMap.find((entry) => entry.primaryKeyword === "کارخانه لوله پلی اتیلن");
+    expect(owner?.path).toBe("/about");
+  });
+
   it("covers every published FA page", () => {
     const mapped = new Set(faKeywordMap.map((entry) => entry.path));
     const missing = publishedDocs.map((doc) => doc.path).filter((path) => !mapped.has(path));

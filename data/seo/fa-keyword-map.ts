@@ -23,13 +23,14 @@ export const faKeywordMap: readonly FaKeywordMapEntry[] = [
   {
     path: "/",
     primaryKeyword: "تولید کننده لوله پلی اتیلن",
-    secondaryKeywords: ["کارخانه لوله پلی اتیلن", "بوکان پایپ", "تولید کننده لوله HDPE"],
+    // "کارخانه لوله پلی اتیلن" moved to /about, which owns it outright.
+    secondaryKeywords: ["بوکان پایپ", "تولید کننده لوله HDPE"],
     intent: "commercial",
     cluster: "commercial",
   },
   {
     path: "/about",
-    primaryKeyword: "تولید کننده لوله پلی اتیلن",
+    primaryKeyword: "کارخانه لوله پلی اتیلن",
     secondaryKeywords: [
       "کارخانه تولید لوله پلی اتیلن",
       "تولید کننده لوله HDPE",

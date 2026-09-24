@@ -62,11 +62,9 @@ describe.each(locales)("%s keyword ownership", (locale) => {
         "/applications/water-transfer uses \"لوله پلی اتیلن آبرسانی\", owned by /products/water-supply-pipe",
         "/applications/gas-distribution uses \"لوله پلی اتیلن گاز\", owned by /products/gas-pipe",
         "/laboratory uses \"کنترل کیفیت لوله پلی اتیلن\", owned by /quality",
-        "/technical-center/polyethylene-pipe-complete-guide uses \"تولید کننده لوله پلی اتیلن\", owned by /about",
         "/technical-center/polyethylene-pipe-complete-guide uses \"استاندارد لوله پلی اتیلن\", owned by /technical-center/polyethylene-pipe-standards",
         "/polyethylene-pipe uses \"کاربرد لوله پلی اتیلن\", owned by /applications",
         "/about uses \"خرید لوله پلی اتیلن از کارخانه\", owned by /products",
-        "/quality uses \"تولید کننده لوله پلی اتیلن\", owned by /about",
         "/certifications uses \"استاندارد لوله پلی اتیلن\", owned by /technical-center/polyethylene-pipe-standards",
       ],
       en: [

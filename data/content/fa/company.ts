@@ -7,12 +7,19 @@ export const faAbout: ContentDocument = {
   locale: "fa",
   kind: "company",
   title: "کارخانه لوله پلی اتیلن بوکان",
-  seoTitle: "درباره بوکان پایپ | تولیدکننده لوله پلی اتیلن",
+  seoTitle: "کارخانه لوله پلی اتیلن بوکان | تولیدکننده HDPE و PE100",
   seoDescription:
     "بوکان پایپ — تولیدکننده لوله پلی‌اتیلن تک‌جداره HDPE و PE100 تا قطر ۶۳۰ میلی‌متر. خرید مستقیم از کارخانه در بوکان، آذربایجان غربی.",
   description:
     "تولیدکننده لوله‌های HDPE و PE100 برای شبکه‌های آبرسانی، گازرسانی، آبیاری و کاربردهای صنعتی در بوکان، آذربایجان غربی.",
-  primaryKeyword: "تولید کننده لوله پلی اتیلن",
+  /*
+   * The home page already owns "تولید کننده لوله پلی اتیلن" and led its title
+   * with it, so this page claiming the same phrase split the intent between
+   * two URLs — the failure that kept the head term down. This page's own H1 is
+   * "کارخانه لوله پلی اتیلن بوکان", so the factory phrase is its to own, and
+   * nothing else on the site had claimed it.
+   */
+  primaryKeyword: "کارخانه لوله پلی اتیلن",
   secondaryKeywords: [
     "کارخانه تولید لوله پلی اتیلن",
     "تولید کننده لوله HDPE",
