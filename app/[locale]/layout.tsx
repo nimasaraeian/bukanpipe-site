@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Viewport } from "next";
-import { loadUiFont } from "@/lib/fonts";
+import { uiFont } from "@/lib/fonts";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
@@ -42,11 +42,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
   const direction = getDirection(locale);
-  const uiFont = await loadUiFont(locale);
+  const font = uiFont(locale);
 
   return (
     <html
-      className={`${uiFont.variable} industrial-root`}
+      className="industrial-root"
       data-theme="dark"
       dir={direction}
       lang={locale}
@@ -54,9 +54,18 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       suppressHydrationWarning
     >
       <head>
+        {/* One font, named before the stylesheet asks for it, so it is in place
+            by the first paint and nothing reflows when it arrives. */}
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href={font.href}
+          crossOrigin="anonymous"
+        />
         <ThemeBlockingScript />
       </head>
-      <body className={`${uiFont.className} industrial-font industrial-body antialiased`}>
+      <body className="industrial-font industrial-body antialiased">
         <JsonLd data={[organizationSchema(), manufacturingBusinessSchema(), webSiteSchema(locale)]} />
         <LocaleProvider locale={locale} dictionary={dictionary}>
           <ThemeProvider>

@@ -3,6 +3,58 @@
 @import "./industrial-system.css";
 @import "./assistant.css";
 
+/*
+ * The two UI fonts, one per language. Both faces are declared here but only
+ * the family the page actually sets is ever fetched, and the document head
+ * preloads that one by name — so a reader downloads a single font.
+ *
+ * The fallback faces carry the metric overrides that make a system font stand
+ * in at the right size while the real one loads. next/font used to generate
+ * these against local(Arial) alone, which resolves to nothing on Android and
+ * on most Linux, and there the substitution fell back to a raw system font at
+ * the wrong size: the page reflowed the moment the real font arrived. The
+ * local() list here names a face that exists on each of the platforms.
+ */
+@font-face {
+  font-family: "Estedad";
+  src: url("/fonts/estedad-variable.eb38f569.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Estedad Fallback";
+  src: local("Arial"), local("Liberation Sans"), local("Arimo"), local("Roboto"), local("Tahoma");
+  ascent-override: 97.52%;
+  descent-override: 47.57%;
+  line-gap-override: 0%;
+  size-adjust: 105.11%;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazirmatn-variable.8addd9db.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn Fallback";
+  src: local("Arial"), local("Liberation Sans"), local("Arimo"), local("Roboto"), local("Tahoma");
+  ascent-override: 101.52%;
+  descent-override: 53.18%;
+  line-gap-override: 0%;
+  size-adjust: 101%;
+}
+
+html[lang="fa"] {
+  --font-ui: "Estedad", "Estedad Fallback";
+}
+
+html[lang="en"] {
+  --font-ui: "Vazirmatn", "Vazirmatn Fallback";
+}
+
 @theme {
   --font-sans: var(--font-ui), Tahoma, "Segoe UI", "Noto Naskh Arabic",
     "Noto Sans Arabic", Arial, sans-serif;

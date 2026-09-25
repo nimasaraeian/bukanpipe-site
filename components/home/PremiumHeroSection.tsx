@@ -64,6 +64,13 @@ export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
 
       <div className="engine-hero-stage">
         <div className="engine-hero-body">
+          {/* The product comes first in the source because on a phone it is
+              drawn first: when it sat last and was pulled up with `order`, the
+              copy rendered at the top of the hero and then dropped 287px the
+              moment the panel's own markup arrived. On a wide screen the panel
+              is taken out of flow, so its place in the source costs nothing. */}
+          <HeroProductPanel locale={locale} />
+
           <div className="engine-hero-copy">
             <div className="engine-hero-kicker-row">
               <span className="engine-hero-kicker">{hero.kicker}</span>
@@ -117,8 +124,6 @@ export function PremiumHeroSection({ locale, t }: PremiumHeroSectionProps) {
               </p>
             ) : null}
           </div>
-
-          <HeroProductPanel locale={locale} />
         </div>
       </div>
 

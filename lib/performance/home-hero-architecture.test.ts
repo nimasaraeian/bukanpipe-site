@@ -142,7 +142,7 @@ describe("theme first paint geometry", () => {
   it("server-renders color-scheme on html and skips dark rewrite in the init script", () => {
     const layout = read("app/[locale]/layout.tsx");
     expect(layout).toContain('style={{ colorScheme: "dark" }}');
-    expect(layout).toContain("loadUiFont");
+    expect(layout).toContain("uiFont");
     expect(layout).not.toContain("uiFontByLocale");
 
     const rootLayout = read("app/layout.tsx");
@@ -151,17 +151,50 @@ describe("theme first paint geometry", () => {
 });
 
 describe("locale font isolation", () => {
-  it("does not register both variable fonts in one module", () => {
-    const index = read("lib/fonts.ts");
-    expect(index).not.toContain("localFont");
-    expect(index).toContain("lib/fonts-fa");
-    expect(index).toContain("lib/fonts-en");
-    expect(read("lib/fonts-fa.ts")).toContain("Estedad-Variable.woff2");
-    expect(read("lib/fonts-en.ts")).toContain("Vazirmatn-Variable.woff2");
-    expect(read("lib/fonts-fa.ts")).not.toContain("Vazirmatn");
-    expect(read("lib/fonts-en.ts")).not.toContain("Estedad");
-    expect(read("lib/fonts-fa.ts")).toContain("preload: false");
-    expect(read("lib/fonts-en.ts")).toContain("preload: false");
+  /*
+   * One [locale] layout serves both languages, which is why next/font could
+   * not be used to preload: turning preload on there emitted a link for every
+   * font the route could reach, so each reader was sent both. Left off, the
+   * font was found late and swapped in after the first paint, moving every
+   * line on the page. Serving them from /public lets each page name the one
+   * font it uses.
+   */
+  it("preloads exactly one font per locale, with the other left alone", () => {
+    const layout = read("app/[locale]/layout.tsx");
+    const fonts = read("lib/fonts.ts");
+
+    expect(fonts).not.toContain("localFont");
+    expect(fonts).toContain("/fonts/estedad-variable.");
+    expect(fonts).toContain("/fonts/vazirmatn-variable.");
+
+    // the head names the locale's own font, and only that one
+    expect(layout).toContain('rel="preload"');
+    expect(layout).toContain("href={font.href}");
+    expect(layout).not.toContain("Estedad");
+    expect(layout).not.toContain("Vazirmatn");
+  });
+
+  it("keeps the hashed font files cacheable forever", () => {
+    const headers = read("lib/config/security-headers.ts");
+    expect(headers).toContain('source: "/fonts/:file*"');
+    expect(headers).toContain("public, max-age=31536000, immutable");
+  });
+
+  /*
+   * The metric-matched fallback has to resolve to a font that is actually
+   * installed, or the substitution falls through to a system face at the
+   * wrong size and the page reflows when the real font lands. Arial alone
+   * covers Windows and Apple but neither Android nor most Linux.
+   */
+  it("gives the fallback faces a family that exists on every platform", () => {
+    const css = read("app/globals.css");
+    for (const family of ["Estedad Fallback", "Vazirmatn Fallback"]) {
+      const face = css.slice(css.indexOf(`font-family: "${family}"`));
+      expect(face.slice(0, 400)).toContain("local(\"Roboto\")");
+      expect(face.slice(0, 400)).toContain("size-adjust");
+    }
+    expect(css).toContain('html[lang="fa"]');
+    expect(css).toContain('html[lang="en"]');
   });
 });
 

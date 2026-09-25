@@ -50,7 +50,15 @@ export function DepthHeader() {
             aria-label="منو"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? "×" : "☰"}
+            {open ? (
+              "×"
+            ) : (
+              /* drawn, not typed: neither UI font carries the trigram, so as a
+                 character it came out of whatever face the system chose */
+              <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true">
+                <path d="M0 1h16M0 6h16M0 11h16" stroke="currentColor" strokeWidth="1.6" />
+              </svg>
+            )}
           </button>
         </div>
       </div>

@@ -91,7 +91,7 @@ export function GalleryLightbox({
             onClick={onClose}
             aria-label={copy.lightboxClose}
           >
-            ✕
+            ×
           </button>
         </div>
       </div>

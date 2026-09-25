@@ -44,7 +44,7 @@ export type CompanyDocument = {
 };
 
 export const companyDocuments: readonly CompanyDocument[] = [
-  // ─── Mandatory national standard marks ────────────────────────────────────
+  // --- Mandatory national standard marks ------------------------------------
   {
     id: "standard-mark-water",
     group: "standard-mark",
@@ -106,7 +106,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
     publish: true,
   },
 
-  // ─── Management system certificates ───────────────────────────────────────
+  // --- Management system certificates ---------------------------------------
   {
     id: "iso-9001",
     group: "management-system",
@@ -171,7 +171,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
     publish: true,
   },
 
-  // ─── Sector approvals ─────────────────────────────────────────────────────
+  // --- Sector approvals -----------------------------------------------------
   {
     id: "gas-vendor-qualification",
     group: "sector-approval",
@@ -272,7 +272,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
     publish: true,
   },
 
-  // ─── Registration ─────────────────────────────────────────────────────────
+  // --- Registration ---------------------------------------------------------
   {
     id: "industrial-operating-licence",
     group: "registration",
