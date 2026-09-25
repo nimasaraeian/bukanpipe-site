@@ -83,6 +83,21 @@ describe("homepage hero LCP architecture", () => {
     expect(panel).toContain("Math.hypot(L / 2, OUT) * FILL");
   });
 
+  it("keeps the printed mark in proportion at every diameter", () => {
+    const panel = read("components/home/HeroProductPanel.tsx");
+
+    /* The mark's canvas wraps once round the pipe, so its height runs with the
+       circumference and its length with the axis. Only one of those grows with
+       the diameter, so without this the lockup stretches on a large pipe and
+       squashes on a small one. repeat.x must stay repeat.y times the diameter
+       for a texture pixel to remain square on the surface. */
+    expect(panel).toContain("const k = Math.sqrt(R)");
+    expect(panel).toContain("markTex.repeat.set(k, 1 / k)");
+    expect(panel).toContain("markTex.offset.set(MARK_U * (1 - k), .5 * (1 - 1 / k))");
+    // and the rescaled window must not wrap, or the far side gets a second copy
+    expect(panel).toContain("markTex.wrapS = markTex.wrapT = T.ClampToEdgeWrapping");
+  });
+
   it("restates the rail colours for the light page", () => {
     const panel = read("components/home/HeroProductPanel.tsx");
 

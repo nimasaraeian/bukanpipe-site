@@ -381,11 +381,16 @@ function sync() {
 
   /* the marking: the blue lockup and the grade, printed once down one side.
      Drawn into a wrapped canvas, so it curves with the pipe instead of floating on it. */
-  const MARK_W = 2048, MARK_H = 1024;
+  const MARK_W = 2048, MARK_H = 1024, MARK_U = 890 / 2048;
   const markCv = document.createElement('canvas'); markCv.width = MARK_W; markCv.height = MARK_H;
   const mk = markCv.getContext('2d');
   const markTex = new T.CanvasTexture(markCv);
-  markTex.wrapS = markTex.wrapT = T.RepeatWrapping; markTex.colorSpace = T.SRGBColorSpace;
+  /* Clamped, not repeated. The printed mark is resized per diameter below, and
+     once its window reaches past the canvas the wrapped edges would bring a
+     second copy of the lettering round the far side. The canvas is clear at
+     all four edges, so clamping puts nothing there instead. */
+  markTex.wrapS = markTex.wrapT = T.ClampToEdgeWrapping;
+  markTex.colorSpace = T.SRGBColorSpace;
   markTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
   const MARK = new T.MeshStandardMaterial({ map: markTex, alphaTest: .08, roughness: .34,
     metalness: 0, envMapIntensity: 1 });
@@ -395,7 +400,7 @@ function sync() {
   function drawMark() {
     mk.clearRect(0, 0, MARK_W, MARK_H);
     mk.save();
-    mk.translate(890, MARK_H / 2);   /* about 20 degrees off the stripe, as on the real pipe */
+    mk.translate(MARK_U * MARK_W, MARK_H / 2);   /* about 20 degrees off the stripe, as on the real pipe */
     mk.rotate(AXIS_FLIP ? Math.PI / 2 : -Math.PI / 2);   /* the lettering runs along the pipe */
     const lh = 210, lw = logo.width ? lh * logo.width / logo.height : lh;
     let x = -(lw + 42 + 265) / 2;
@@ -426,6 +431,31 @@ function sync() {
     /* the moulding grain is a property of the surface, not of the size, so it
        keeps its density as the circumference grows */
     grain.repeat.set(26 * R, 14);
+
+    /*
+     * The printed mark, kept in proportion.
+     *
+     * Its canvas is wrapped once round the pipe, so the lettering's height
+     * runs with the circumference while its length runs with the pipe's axis.
+     * The circumference grows with the diameter and the length does not, so
+     * left alone the mark stretched taller on a large pipe and squashed flat
+     * on a small one — the same lockup, out of shape at every size but the
+     * one it was drawn for.
+     *
+     * Scaling the texture by the square root of the diameter in one direction
+     * and its inverse in the other holds the two in step: repeat.x is always
+     * repeat.y times the diameter, which is exactly the condition for a canvas
+     * pixel to stay square on the surface. What is left over is the mark's
+     * overall size, and the square root puts it between the two wrong answers
+     * — a mark that grew with the pipe would run off the ends of the largest,
+     * and one held to a fixed size would wrap halfway round the smallest.
+     *
+     * At the reference diameter the scale is 1 and the offsets are 0, so the
+     * mark is untouched there.
+     */
+    const k = Math.sqrt(R);
+    markTex.repeat.set(k, 1 / k);
+    markTex.offset.set(MARK_U * (1 - k), .5 * (1 - 1 / k));
 
     const outer = new T.Mesh(new T.CylinderGeometry(R, R, L, SEG, 1, true), WALL);
     const bore  = new T.Mesh(new T.CylinderGeometry(r, r, L, SEG, 1, true), BORE);
