@@ -31,36 +31,84 @@ const CSS = String.raw`
 .hp-stage.nogl .hp-fallback{display:grid}
 .hp-stage.nogl canvas,.hp-stage.nogl .hp-hint{display:none}
 
-.hp-side{display:none}
-.hp-lab{font-size:10.5px;letter-spacing:.02em;color:rgba(168,186,210,.72);margin:0 0 6px}
-.hp-chips{display:flex;flex-wrap:wrap;gap:5px;max-height:92px;overflow-y:auto;
-  mask-image:linear-gradient(180deg,#000 82%,transparent 100%);
-  scrollbar-width:thin;padding-inline-end:2px}
-.hp-chip{font:inherit;font-size:12px;font-variant-numeric:tabular-nums;line-height:1;
-  padding:6px 9px;border-radius:7px;cursor:pointer;
-  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);color:rgba(214,226,242,.86);
-  transition:background .15s,border-color .15s,color .15s}
-.hp-chip:hover:not(:disabled){border-color:rgba(30,111,217,.75);color:#fff}
-.hp-chip[aria-pressed="true"]{background:#0A64F5;border-color:#0A64F5;color:#fff;font-weight:600}
-.hp-chip:disabled{opacity:.28;cursor:not-allowed}
-.hp-chip:focus-visible{outline:2px solid #0A64F5;outline-offset:2px}
+/* The size rail. It stands beside the product, not around it: no panel, no
+   box, no fill — a caption, five numbers separated by hairlines, and a short
+   blue tick against the one in view. Everything that could compete with the
+   pipe for attention has been taken out. */
+.hp-side{display:flex;flex-direction:column;justify-content:center;gap:13px;
+  flex:none;width:clamp(96px,10vw,124px);padding-inline-start:clamp(12px,1.5vw,24px)}
+.hp-lab{font-size:9px;letter-spacing:.14em;text-transform:uppercase;line-height:1.5;
+  color:rgba(168,186,210,.48);margin:0 0 7px}
+.hp-chips{display:flex;flex-direction:column}
+.hp-chip{position:relative;font:inherit;font-size:13.5px;font-variant-numeric:tabular-nums;
+  line-height:1;text-align:start;padding:8px 0;cursor:pointer;
+  background:none;border:0;border-top:1px solid rgba(255,255,255,.07);
+  color:rgba(214,226,242,.58);transition:color .2s ease}
+.hp-chip:first-child{border-top:0}
+.hp-chip:hover{color:rgba(255,255,255,.92)}
+.hp-chip[aria-pressed="true"]{color:#fff;font-weight:600}
+.hp-chip[aria-pressed="true"]::before{content:"";position:absolute;inset-inline-start:-11px;
+  top:50%;margin-top:-7px;width:2px;height:14px;border-radius:2px;background:#0A64F5}
+.hp-chip:focus-visible{outline:2px solid #0A64F5;outline-offset:3px;border-radius:3px}
+.hp-note{margin:7px 0 0;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(160,180,206,.4)}
 
-.hp-specs{margin:2px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:1px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden}
-.hp-spec{background:rgba(9,17,30,.86);padding:9px 10px;display:grid;gap:2px}
-.hp-spec dt{font-size:10px;color:rgba(160,180,206,.75)}
-.hp-spec dd{margin:0;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;color:#EAF1FA;
+
+/* The light page turns the hero's ground from navy to near-white, and every
+   colour above was written for the dark one. They are restated here against
+   the light palette so the rail keeps the same weight either way: the same
+   hairlines, the same hierarchy, the same blue marker. */
+[data-theme="light"] .hp-lab,
+[data-theme="light"] .hp-note,
+[data-theme="light"] .hp-spec dt{color:rgba(38,58,86,.6)}
+[data-theme="light"] .hp-chip{color:rgba(20,38,62,.6);border-top-color:rgba(18,32,52,.14)}
+[data-theme="light"] .hp-chip:hover{color:#0b1728}
+[data-theme="light"] .hp-chip[aria-pressed="true"]{color:#0b1728}
+[data-theme="light"] .hp-specs{border-top-color:rgba(18,32,52,.14)}
+[data-theme="light"] .hp-spec dd{color:#132540}
+[data-theme="light"] .hp-spec dd small{color:rgba(38,58,86,.66)}
+
+/* The hero body is laid out left-to-right even on the Persian page, so that
+   the product keeps the same side in both languages. The rail's words are
+   Persian though, and inherited that direction with them — which put the unit
+   ahead of the number it belongs to. The text is set back to the page's
+   direction here, while the alignment and the marker stay on the side nearest
+   the product, exactly where the English page has them. */
+[dir="rtl"] .hp-side{direction:rtl}
+[dir="rtl"] .hp-lab,[dir="rtl"] .hp-note,
+[dir="rtl"] .hp-chip,[dir="rtl"] .hp-spec dt,[dir="rtl"] .hp-spec dd{text-align:end}
+[dir="rtl"] .hp-spec dd.pair{justify-content:flex-end}
+[dir="rtl"] .hp-chip[aria-pressed="true"]::before{inset-inline-start:auto;inset-inline-end:-11px}
+.hp-specs{margin:0;display:grid;gap:8px;padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.07)}
+.hp-spec{display:grid;gap:2px}
+.hp-spec dt{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(160,180,206,.48)}
+.hp-spec dd{margin:0;font-size:12.5px;font-variant-numeric:tabular-nums;color:rgba(234,241,250,.9);
   font-family:ui-monospace,"SF Mono",Menlo,monospace}
-.hp-spec dd small{font-size:9.5px;font-weight:400;color:rgba(160,180,206,.75);font-family:inherit}
-.hp-spec dd.pair{display:flex;flex-wrap:wrap;gap:2px 8px;font-size:12.5px}
+.hp-spec dd small{font-size:9px;color:rgba(160,180,206,.6);font-family:inherit}
+.hp-spec dd.pair{display:flex;flex-wrap:wrap;gap:1px 9px;font-size:11.5px}
 .hp-spec dd.pair>span{unicode-bidi:isolate;display:inline-flex;gap:3px;align-items:baseline}
 
 @media (max-width:1023.98px){
   .engine-hero .engine-hero-body{flex-direction:column;align-items:stretch}
   .hp{position:static;order:-1;padding:0;width:100%}
-  .hp-wrap{width:100%;height:auto;margin:0}
+  .hp-wrap{width:100%;height:auto;margin:0;flex-direction:column}
   [dir="ltr"] .hp-wrap{margin:0}
   .hp-stage{height:min(34vh,290px)}
+  /* On a phone the rail lies down under the product: the same five numbers,
+     turned a quarter turn, with the marker as an underline. The readout goes
+     — the hero is already tall here, and the figures are a tap away on the
+     size's own page. */
+  .hp-side{width:auto;flex-direction:row;align-items:center;justify-content:center;
+    gap:0;padding:12px 2px 2px}
+  .hp-lab,.hp-note,.hp-specs{display:none}
+  .hp-chips{flex-direction:row;gap:0}
+  .hp-chip{padding:5px 13px 9px;border-top:0;border-inline-start:1px solid rgba(255,255,255,.08)}
+  .hp-chip:first-child{border-inline-start:0}
+  .hp-chip[aria-pressed="true"]::before,
+  [dir="rtl"] .hp-chip[aria-pressed="true"]::before{inset-inline:11px;top:auto;bottom:1px;
+    margin-top:0;width:auto;height:2px}
+  [data-theme="light"] .hp-chip{border-inline-start-color:rgba(18,32,52,.14)}
 }
 @media (prefers-reduced-motion:reduce){.hp-stage canvas{display:none}.hp-stage.nogl .hp-fallback{display:grid}}
 `;
@@ -70,17 +118,13 @@ const MARKUP = String.raw`
     <div class="hp-hint" id="hint">برای چرخاندن بکشید</div>
     <p class="hp-fallback">مرورگر شما WebGL را پشتیبانی نمی‌کند. مشخصات کنار تصویر همچنان درست است.</p>
   </div>
-  <div class="hp-side" hidden>
+  <div class="hp-side">
     <div>
-      <p class="hp-lab">قطر خارجی اسمی — DN (میلی‌متر)</p>
-      <div class="hp-chips" id="dnRow" role="group" aria-label="انتخاب قطر"></div>
-    </div>
-    <div>
-      <p class="hp-lab">کلاس فشار — SDR</p>
-      <div class="hp-chips" id="sdrRow" role="group" aria-label="انتخاب کلاس فشار"></div>
+      <p class="hp-lab">قطر خارجی — میلی‌متر</p>
+      <div class="hp-chips" id="dnRow" role="group" aria-label="انتخاب قطر لوله"></div>
+      <p class="hp-note">کلاس SDR ۱۱</p>
     </div>
     <dl class="hp-specs">
-      <div class="hp-spec"><dt>قطر خارجی</dt><dd id="oOd">—</dd></div>
       <div class="hp-spec"><dt>ضخامت دیواره</dt><dd id="oWall">—</dd></div>
       <div class="hp-spec"><dt>قطر داخلی</dt><dd id="oId">—</dd></div>
       <div class="hp-spec"><dt>فشار اسمی</dt><dd id="oPn" class="pair">—</dd></div>
@@ -88,6 +132,25 @@ const MARKUP = String.raw`
   </div>
 </div>
 `;
+
+/* The English panel is the same markup with its words swapped. The scene
+   script reads the page's lang itself, so the numerals and the unit inside
+   the readout follow without being listed here. */
+const EN_WORDS: readonly (readonly [string, string])[] = [
+  ["برای چرخاندن بکشید", "Drag to rotate"],
+  [
+    "مرورگر شما WebGL را پشتیبانی نمی‌کند. مشخصات کنار تصویر همچنان درست است.",
+    "This browser does not support WebGL, so the model is not shown.",
+  ],
+  ["قطر خارجی — میلی‌متر", "Outside diameter — mm"],
+  ["انتخاب قطر لوله", "Choose a pipe diameter"],
+  ["کلاس SDR ۱۱", "SDR 11 class"],
+  ["ضخامت دیواره", "Wall thickness"],
+  ["قطر داخلی", "Bore"],
+  ["فشار اسمی", "Pressure rating"],
+];
+
+const EN_MARKUP = EN_WORDS.reduce((markup, [fa, en]) => markup.replace(fa, en), MARKUP);
 
 export function HeroProductPanel({ locale }: { locale: "fa" | "en" }) {
   const host = useRef<HTMLDivElement | null>(null);
@@ -171,12 +234,7 @@ export function HeroProductPanel({ locale }: { locale: "fa" | "en" }) {
         dangerouslySetInnerHTML={{
           __html:
             locale === "en"
-              ? MARKUP
-                  .replace("برای چرخاندن بکشید", "Drag to rotate")
-                  .replace(
-                    "مرورگر شما WebGL را پشتیبانی نمی‌کند. مشخصات کنار تصویر همچنان درست است.",
-                    "This browser does not support WebGL, so the model is not shown.",
-                  )
+              ? EN_MARKUP
               : MARKUP,
         }}
         style={{ display: "contents" }}
@@ -189,50 +247,62 @@ function run() {
 
 const TABLE = {"sdr":[51,41,33,26,21,17,13.6,11,9,7.4,6],"pn80":[2.5,3.2,4,5,6,8,10,12.5,16,20,25],"pn100":[3.2,4,5,6,8,10,12.5,16,20,25,null],"dn":[16,20,25,32,40,50,63,75,90,110,125,140,160,180,200,225,250,280,315,355,400,450,500,560,630],"wall":[[null,null,null,null,null,null,null,null,2,2.3,3],[null,null,null,null,null,null,null,2,2.3,3,3.4],[null,null,null,null,1.5,1.8,2,2.3,3,3.5,4.2],[null,null,null,null,null,2,2.4,3,3.6,4.4,5.4],[null,null,null,1.8,2,2.4,3,3.7,4.5,5.5,6.7],[null,null,1.8,2,2.4,3,3.7,4.6,5.6,6.9,8.3],[null,1.8,2,2.5,3,3.8,4.7,5.8,7.1,8.6,10.5],[1.8,2,2.3,2.9,3.6,4.5,5.6,6.8,8.4,10.3,12.5],[1.8,2.2,2.8,3.5,4.3,5.4,6.7,8.2,10.1,12.3,15],[2.2,2.7,3.4,4.2,5.3,6.6,8.1,10,12.3,15.1,18.3],[2.5,3.1,3.9,4.8,6,7.4,9.2,11.4,14,17.1,20.8],[2.8,3.5,4.3,5.4,6.7,8.3,10.3,12.7,15.7,19.2,23.3],[3.2,4,4.9,6.2,7.7,9.5,11.8,14.6,17.9,21.9,26.6],[3.6,4.4,5.5,6.9,8.6,10.7,13.3,16.4,20.1,24.6,29.9],[3.9,4.9,6.2,7.7,9.6,11.9,14.7,18.2,22.4,27.4,33.2],[4.4,5.5,6.9,8.6,10.8,13.4,16.6,20.5,25.2,30.8,37.4],[4.9,6.2,7.7,9.6,11.9,14.8,18.4,22.7,27.9,34.2,41.6],[5.5,6.9,8.6,10.7,13.4,16.6,20.6,25.4,31.3,38.3,46.5],[6.2,7.7,9.7,12.1,15,18.7,23.2,28.6,35.2,43.1,52.3],[7,8.7,10.9,13.6,16.9,21.1,26.1,32.2,39.7,48.5,59],[7.9,9.8,12.3,15.3,19.1,23.7,29.4,36.3,44.7,54.7,66.5],[8.8,11,13.8,17.2,21.5,26.7,33.1,40.9,50.3,61.5,null],[9.8,12.3,15.3,19.1,23.9,29.7,36.8,45.4,55.8,68.3,null],[11,13.7,17.2,21.4,26.7,33.2,41.2,50.8,62.5,null,null],[12.3,15.4,19.3,24.1,30,37.4,46.3,57.2,null,null,null]]};
 
-/* ---------------------------------------------------------------- state */
-let dnIdx = TABLE.dn.indexOf(110), sdrIdx = TABLE.sdr.indexOf(11);
+/* ---------------------------------------------------------------- state
+   Five diameters out of the catalogue's twenty-five. They are the ones the
+   factory makes for more than one product line: 25 is in the water, gas and
+   irrigation tables all three; 63, 110, 160 and 225 are in both water and
+   gas, and 225 is the largest diameter the gas licence covers. So each is a
+   size the plant runs as a matter of course, not to order, and together they
+   span the range end to end.
+
+   All five are held at SDR 11 — the class the gas standard works in, and one
+   the water catalogue lists a wall for at every one of these diameters — so
+   the wall the viewer sees is one real pressure class throughout, never an
+   average of several.
+
+   DN 110 is the reference: it renders exactly as the approved viewer did, and
+   the others are drawn true to it — the same length of pipe, the diameter to
+   scale. */
+const SIZES = [25, 63, 110, 160, 225], REF = 110;
+let dnIdx = TABLE.dn.indexOf(REF);
+const sdrIdx = TABLE.sdr.indexOf(11);
 const wallOf = (d, s) => TABLE.wall[d][s];
 
 /* ------------------------------------------------------------ the chips */
-const dnRow = document.getElementById('dnRow'), sdrRow = document.getElementById('sdrRow');
-const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]).replace('.', '٫');
+const dnRow = document.getElementById('dnRow');
+const EN = document.documentElement.lang === 'en';
+const fa = n => EN ? String(n)
+  : String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]).replace('.', '٫');
+const MM = EN ? 'mm' : 'میلی‌متر';
 
-TABLE.dn.forEach((dn, i) => {
+SIZES.forEach(dn => {
+  const i = TABLE.dn.indexOf(dn);
   const b = document.createElement('button');
   b.className = 'hp-chip'; b.type = 'button'; b.textContent = fa(dn);
-  b.addEventListener('click', () => { dnIdx = i; if (wallOf(dnIdx, sdrIdx) == null) sdrIdx = firstSdr(i); sync(); });
+  b.dataset.i = i;
+  b.addEventListener('click', () => { dnIdx = i; sync(); });
   dnRow.appendChild(b);
 });
-TABLE.sdr.forEach((sdr, i) => {
-  const b = document.createElement('button');
-  b.className = 'hp-chip'; b.type = 'button'; b.textContent = fa(sdr);
-  b.addEventListener('click', () => { sdrIdx = i; sync(); });
-  sdrRow.appendChild(b);
-});
-function firstSdr(d) { return TABLE.wall[d].findIndex(v => v != null); }
 
 /* --------------------------------------------------------- the readout */
 function sync() {
   const dn = TABLE.dn[dnIdx], t = wallOf(dnIdx, sdrIdx);
-  [...dnRow.children].forEach((b, i) => b.setAttribute('aria-pressed', i === dnIdx));
-  [...sdrRow.children].forEach((b, i) => {
-    b.setAttribute('aria-pressed', i === sdrIdx);
-    b.disabled = wallOf(dnIdx, i) == null;           /* the dash in the catalogue: not produced */
-  });
+  [...dnRow.children].forEach(b => b.setAttribute('aria-pressed', +b.dataset.i === dnIdx));
 
-  document.getElementById('oOd').innerHTML = fa(dn) + ' <small>میلی‌متر</small>';
   const wallEl = document.getElementById('oWall'), idEl = document.getElementById('oId');
   if (t == null) {
     wallEl.textContent = '—'; idEl.textContent = '—';
   } else {
-    wallEl.innerHTML = fa(t) + ' <small>میلی‌متر</small>';
-    idEl.innerHTML = fa(Math.round((dn - 2 * t) * 10) / 10) + ' <small>میلی‌متر</small>';
+    wallEl.innerHTML = fa(t) + ' <small>' + MM + '</small>';
+    idEl.innerHTML = fa(Math.round((dn - 2 * t) * 10) / 10) + ' <small>' + MM + '</small>';
   }
   const p80 = TABLE.pn80[sdrIdx], p100 = TABLE.pn100[sdrIdx];
   const pn = (v, grade) => '<span>' + (v != null ? fa(v) : '—') + '<small>' + grade + '</small></span>';
   document.getElementById('oPn').innerHTML = pn(p80, 'PE80') + pn(p100, 'PE100');
 
-  if (window.__setPipe) window.__setPipe(t == null ? null : (2 * t) / dn);
+  /* the model takes the wall as a fraction of the diameter, and the diameter
+     itself relative to DN 110 — length is the same cut of pipe either way */
+  if (window.__setPipe) window.__setPipe(t == null ? null : (2 * t) / dn, dn / REF);
 }
 
 /* ------------------------------------------------------------ the model */
@@ -347,41 +417,53 @@ function sync() {
   const tube = new T.Group(); tube.rotation.z = Math.PI / 2; spin.add(tube);   /* lay the axis along X */
 
   const L = 3.5, SEG = 160, STRIPES = 4, ARC = .12;
-  let parts = [];
-  function rebuild(wallFrac) {
+  let parts = [], OUT = 1;                           /* OUT: outer radius, 1 at the reference DN 110 */
+  function rebuild(wallFrac, outerR) {
     parts.forEach(m => { tube.remove(m); m.geometry.dispose(); }); parts = [];
     if (wallFrac == null) return;
-    const r = Math.max(.04, 1 - wallFrac);
+    OUT = outerR || 1;
+    const R = OUT, r = Math.max(.04, 1 - wallFrac) * R;
+    /* the moulding grain is a property of the surface, not of the size, so it
+       keeps its density as the circumference grows */
+    grain.repeat.set(26 * R, 14);
 
-    const outer = new T.Mesh(new T.CylinderGeometry(1, 1, L, SEG, 1, true), WALL);
+    const outer = new T.Mesh(new T.CylinderGeometry(R, R, L, SEG, 1, true), WALL);
     const bore  = new T.Mesh(new T.CylinderGeometry(r, r, L, SEG, 1, true), BORE);
     parts.push(outer, bore);
     for (const s of [1, -1]) {                       /* the sawn ends: the annulus is the whole point */
-      const ring = new T.Mesh(new T.RingGeometry(r, 1, SEG, 1), FACE);
+      const ring = new T.Mesh(new T.RingGeometry(r, R, SEG, 1), FACE);
       ring.rotation.x = Math.PI / 2 * s; ring.position.y = s * L / 2;
       parts.push(ring);
     }
     for (let i = 0; i < STRIPES; i++) {              /* the blue lines that mark it as water pipe */
       const th = i * Math.PI * 2 / STRIPES - ARC / 2;
-      const st = new T.Mesh(new T.CylinderGeometry(1.004, 1.004, L, 24, 1, true, th, ARC), STRIPE);
+      const st = new T.Mesh(new T.CylinderGeometry(R * 1.004, R * 1.004, L, 24, 1, true, th, ARC), STRIPE);
       parts.push(st);
     }
-    const sleeve = new T.Mesh(new T.CylinderGeometry(1.006, 1.006, L, SEG, 1, true), MARK);
+    const sleeve = new T.Mesh(new T.CylinderGeometry(R * 1.006, R * 1.006, L, SEG, 1, true), MARK);
     parts.push(sleeve);
     for (const s2 of [1, -1]) {                      /* the cut edge catches a hard highlight */
-      const lip = new T.Mesh(new T.TorusGeometry(.998, .006, 8, SEG), EDGE);
+      const lip = new T.Mesh(new T.TorusGeometry(R * .998, R * .006, 8, SEG), EDGE);
       lip.rotation.x = Math.PI / 2; lip.position.y = s2 * L / 2;
       parts.push(lip);
     }
     parts.forEach(m => tube.add(m));
+    fit();                                           /* a fatter pipe needs the camera a step back */
   }
   window.__setPipe = rebuild;
 
+  /* The camera follows the pipe instead of sitting at a fixed distance. The
+     geometry is never distorted to fit the frame — every wall, bore and
+     diameter stays exactly to the catalogue, and only the camera moves, the
+     way you step closer to a small pipe and back from a large one. FILL is
+     chosen so the reference DN 110 lands at 2.15, the distance the approved
+     viewer used, which leaves that size rendering exactly as it did. */
+  const FILL = 2.15 / Math.hypot(L / 2, 1);
   const fit = () => {
     const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    const R = 2.15, vf = camera.fov * Math.PI / 180;
+    const R = Math.hypot(L / 2, OUT) * FILL, vf = camera.fov * Math.PI / 180;
     const hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
     camera.position.set(0, .55, R / Math.sin(Math.min(vf, hf) / 2) * .92);
     camera.lookAt(0, 0, 0);
@@ -403,7 +485,9 @@ function sync() {
   cv.style.touchAction = 'none';
   cv.setAttribute('tabindex', '0');
   cv.setAttribute('role', 'img');
-  cv.setAttribute('aria-label', 'مدل سه‌بعدی لوله پلی اتیلن — با کشیدن بچرخانید');
+  cv.setAttribute('aria-label', EN
+    ? 'Three-dimensional model of a polyethylene pipe — drag to rotate'
+    : 'مدل سه‌بعدی لوله پلی اتیلن — با کشیدن بچرخانید');
   const qU = new T.Quaternion(), qT = new T.Quaternion();
   const UP = new T.Vector3(0, 1, 0), RIGHT = new T.Vector3();
   let dragging = false, lastX = 0, lastY = 0, lastT = 0, wx = 0, wy = 0, touched = false;

@@ -56,6 +56,42 @@ describe("homepage hero LCP architecture", () => {
     expect(css).not.toContain("engine-hero-hall");
   });
 
+  /*
+   * The size rail. Three things about it are worth pinning, because all three
+   * have a way of drifting: which sizes it offers, that the walls beside them
+   * are one real pressure class rather than an average, and that the rail is
+   * legible on the light page — its colours were written for the dark one and
+   * went invisible on the light one once before.
+   */
+  it("offers the five catalogue diameters against one pressure class", () => {
+    const panel = read("components/home/HeroProductPanel.tsx");
+
+    expect(panel).toContain("const SIZES = [25, 63, 110, 160, 225]");
+    // every one of them is a diameter the catalogue lists a SDR 11 wall for
+    expect(panel).toContain("TABLE.sdr.indexOf(11)");
+    // and DN 110 stays the reference the model and the camera are built around
+    expect(panel).toContain("REF = 110");
+  });
+
+  it("scales the model with the chosen diameter instead of only the wall", () => {
+    const panel = read("components/home/HeroProductPanel.tsx");
+
+    // the diameter reaches the model, not just the wall fraction
+    expect(panel).toContain("window.__setPipe(t == null ? null : (2 * t) / dn, dn / REF)");
+    expect(panel).toContain("function rebuild(wallFrac, outerR)");
+    // and the camera follows the object rather than sitting at a fixed radius
+    expect(panel).toContain("Math.hypot(L / 2, OUT) * FILL");
+  });
+
+  it("restates the rail colours for the light page", () => {
+    const panel = read("components/home/HeroProductPanel.tsx");
+
+    expect(panel).toMatch(/\[data-theme="light"\] \.hp-chip\{/);
+    expect(panel).toMatch(/\[data-theme="light"\] \.hp-spec dd\{/);
+    // and the Persian page reads its own direction inside the rail
+    expect(panel).toContain('[dir="rtl"] .hp-side{direction:rtl}');
+  });
+
   it("uses factory product stills on homepage catalog cards", () => {
     const page = read("components/home/IndustrialHomePage.tsx");
     expect(page).toContain("/media/brand/bukan-pipe-hdpe-water-supply-pipe.webp");
