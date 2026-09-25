@@ -442,20 +442,31 @@ function sync() {
      * on a small one — the same lockup, out of shape at every size but the
      * one it was drawn for.
      *
-     * Scaling the texture by the square root of the diameter in one direction
-     * and its inverse in the other holds the two in step: repeat.x is always
-     * repeat.y times the diameter, which is exactly the condition for a canvas
-     * pixel to stay square on the surface. What is left over is the mark's
-     * overall size, and the square root puts it between the two wrong answers
-     * — a mark that grew with the pipe would run off the ends of the largest,
-     * and one held to a fixed size would wrap halfway round the smallest.
+     * Holding repeat.x at repeat.y times the diameter is exactly the condition
+     * for a canvas pixel to stay square on the surface, so the shape of the
+     * lettering is fixed whatever else is done. What that leaves free is S,
+     * the mark's size against the reference, and it is pinched from both
+     * sides.
      *
-     * At the reference diameter the scale is 1 and the offsets are 0, so the
-     * mark is untouched there.
+     * Above the reference the limit is the pipe's length: the lockup already
+     * runs half the length at DN 110, so a mark that grew with the diameter
+     * would run off both ends of the largest. The square root keeps it on.
+     *
+     * Below the reference the limit is the blue stripe. The four stripes sit
+     * at fixed angles, and the arc between two of them is all the room the
+     * mark has. A mark that shrinks more slowly than the pipe takes a wider
+     * arc as the pipe thins — which is what put the lockup under the stripe
+     * at DN 63 and buried it at DN 25. Growing with the diameter instead
+     * holds its arc constant, so it keeps the clearance it has at DN 110 all
+     * the way down.
+     *
+     * The smaller of the two is the one that satisfies both, and at the
+     * reference they meet at 1 with the offsets at 0, leaving DN 110 exactly
+     * as it was drawn.
      */
-    const k = Math.sqrt(R);
-    markTex.repeat.set(k, 1 / k);
-    markTex.offset.set(MARK_U * (1 - k), .5 * (1 - 1 / k));
+    const S = Math.min(R, Math.sqrt(R)), kx = R / S, ky = 1 / S;
+    markTex.repeat.set(kx, ky);
+    markTex.offset.set(MARK_U * (1 - kx), .5 * (1 - ky));
 
     const outer = new T.Mesh(new T.CylinderGeometry(R, R, L, SEG, 1, true), WALL);
     const bore  = new T.Mesh(new T.CylinderGeometry(r, r, L, SEG, 1, true), BORE);

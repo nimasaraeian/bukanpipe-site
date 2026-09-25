@@ -91,9 +91,14 @@ describe("homepage hero LCP architecture", () => {
        the diameter, so without this the lockup stretches on a large pipe and
        squashes on a small one. repeat.x must stay repeat.y times the diameter
        for a texture pixel to remain square on the surface. */
-    expect(panel).toContain("const k = Math.sqrt(R)");
-    expect(panel).toContain("markTex.repeat.set(k, 1 / k)");
-    expect(panel).toContain("markTex.offset.set(MARK_U * (1 - k), .5 * (1 - 1 / k))");
+    expect(panel).toContain("const S = Math.min(R, Math.sqrt(R)), kx = R / S, ky = 1 / S");
+    expect(panel).toContain("markTex.repeat.set(kx, ky)");
+    expect(panel).toContain("markTex.offset.set(MARK_U * (1 - kx), .5 * (1 - ky))");
+    /* The min is what keeps the mark off the stripe. Below the reference it
+       picks R, which holds the mark's arc constant; a mark that shrank more
+       slowly than the pipe would spread over a wider arc as the pipe thinned
+       and run under the stripe, which is what happened at DN 63 and DN 25. */
+    expect(panel).toContain("Math.min(R, Math.sqrt(R))");
     // and the rescaled window must not wrap, or the far side gets a second copy
     expect(panel).toContain("markTex.wrapS = markTex.wrapT = T.ClampToEdgeWrapping");
   });
