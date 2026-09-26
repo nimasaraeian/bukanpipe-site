@@ -2046,8 +2046,8 @@
 
 [data-theme="light"] .engine-hero--luminous .engine-hero-spec-index {
   display: flex;
-  position: static;
-  z-index: auto;
+  position: relative;
+  z-index: 2;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
@@ -2762,10 +2762,18 @@
    so it becomes the arrangement, and the dark theme keeps only its own
    colours for it.
    ====================================================================== */
+/*
+ * The chip row sits directly above the headline. In the dark theme the
+ * headline's shine rule pulls it up with a negative margin, and its glyph box
+ * (Estedad's ascent is taller than a 1.18 line) reaches over the chips; the
+ * headline comes later in the source, so it took every click meant for them.
+ * The row gets its own layer, here and in the light rule above, so the links
+ * stay on top whatever the headline's margins do.
+ */
 .engine-hero--luminous .engine-hero-spec-index {
   display: flex;
-  position: static;
-  z-index: auto;
+  position: relative;
+  z-index: 2;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;

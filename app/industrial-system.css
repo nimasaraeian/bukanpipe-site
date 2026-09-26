@@ -2066,6 +2066,16 @@
   transform: translate3d(-2rem, 1.25rem, 0);
 }
 
+/* Below 1024px the column has a 20px gutter, so a 2rem sideways start pushed
+   the aside 12px past the viewport and made the whole page scroll sideways
+   until it was revealed. On a phone it rises into place instead. */
+@media (max-width: 1023.98px) {
+  [dir="ltr"] .ind-editorial-grid > .ind-scroll-reveal--aside:not(.is-revealed),
+  [dir="rtl"] .ind-editorial-grid > .ind-scroll-reveal--aside:not(.is-revealed) {
+    transform: translate3d(0, 1.25rem, 0);
+  }
+}
+
 .ind-scroll-reveal--aside.is-revealed {
   transform: translate3d(0, 0, 0);
   filter: blur(0);
