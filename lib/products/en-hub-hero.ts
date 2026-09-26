@@ -83,7 +83,7 @@ export const enProductsHeroCopy = {
   trustItems: [
     { title: "QC LAB", subtitle: "In-line and laboratory testing" },
     { title: "PE100", subtitle: "Higher MRS pressure design" },
-    { title: "630 mm OD", subtitle: "Single-wall extrusion capacity" },
+    { title: "16–630 mm", subtitle: "Pressure rating 2.5 to 25 bar" },
     { title: "SINCE 1997", subtitle: "Polyethylene pipe production" },
   ],
 } as const;

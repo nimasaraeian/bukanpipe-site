@@ -86,8 +86,8 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
             title={isFa ? "خرید لوله پلی اتیلن از کارخانه" : "HDPE pipe product catalog"}
             description={
               isFa
-                ? "انواع لوله پلی‌اتیلن تک‌جداره برای آبرسانی، گاز، آبیاری فشار قوی، صنعت و PE100 — تا قطر ۶۳۰ میلی‌متر. هر خانواده صفحه محصول جدا دارد."
-                : "Single-wall HDPE pipe families for water supply, gas, irrigation mains, industrial transfer and PE100 — up to 630 mm OD. Each family has its own product page."
+                ? "انواع لوله پلی‌اتیلن تک‌جداره برای آبرسانی، گاز، آبیاری فشار قوی، صنعت و PE100 — از سایز ۱۶ تا ۶۳۰ میلی‌متر، فشار کاری ۲.۵ تا ۲۵ بار. هر خانواده صفحه محصول جدا دارد."
+                : "Single-wall HDPE pipe families for water supply, gas, irrigation mains, industrial transfer and PE100 — from 16 mm to 630 mm, pressure rating 2.5 to 25 bar. Each family has its own product page."
             }
             action={
               <IndustrialTextLink href={path(routes.products.path)}>
@@ -165,7 +165,7 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
               <span className="ind-kicker-line" aria-hidden="true" />
             </div>
             <h2 className="ind-display mt-5 max-w-[18ch]">
-              {isFa ? "تولید لوله تک‌جداره تا قطر ۶۳۰ میلی‌متر" : "Single-wall extrusion up to 630 mm OD"}
+              {isFa ? "تولید لوله تک‌جداره از سایز ۱۶ تا ۶۳۰ میلی‌متر" : "Single-wall extrusion from 16 mm to 630 mm"}
             </h2>
             <p className="ind-lead mt-6 max-w-md">
               {isFa

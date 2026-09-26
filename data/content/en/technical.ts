@@ -208,7 +208,7 @@ export const enPillarPolyethylene: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "High-density polyethylene (HDPE) pipe is widely used in water supply, gas distribution, irrigation, sewerage, drainage and industrial networks. Bukan Pipe has manufactured single-wall PE pipe since 1997, up to 630 mm outside diameter.",
+      text: "High-density polyethylene (HDPE) pipe is widely used in water supply, gas distribution, irrigation, sewerage, drainage and industrial networks. Bukan Pipe has manufactured single-wall PE pipe since 1997, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR).",
     },
     { type: "heading", level: 2, text: "PE and HDPE terminology" },
     {

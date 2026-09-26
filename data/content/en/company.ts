@@ -9,7 +9,7 @@ export const enAbout: ContentDocument = {
   title: "The Bukan Polyethylene Pipe Factory",
   seoTitle: "About Bukan Pipe | HDPE Pipe Manufacturer, Iran",
   seoDescription:
-    "Bukan Pipe manufactures single-wall HDPE and PE100 polyethylene pipe up to 630 mm OD for water, gas, agriculture and industrial networks in West Azerbaijan.",
+    "Bukan Pipe makes single-wall HDPE and PE100 pipe from 16 mm to 630 mm, pressure rating 2.5 to 25 bar, for water, gas, agriculture and industry in West Azerbaijan.",
   description:
     "Single-wall HDPE and PE100 polyethylene pipe for water, gas, agriculture and industrial networks — manufactured in Bukan, West Azerbaijan.",
   primaryKeyword: "HDPE pipe manufacturer",
@@ -17,7 +17,7 @@ export const enAbout: ContentDocument = {
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-26",
   references: ["https://bukanpipe.com/about_us/"],
   breadcrumbs: [
     { label: "Home", path: "/" },
@@ -26,7 +26,11 @@ export const enAbout: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "The company was founded in 1373 in the Iranian calendar (1994) under registration number 121, and the factory came into operation in 1376 (1997). It manufactures single-wall polyethylene pipe in Bukan, West Azerbaijan, up to 630 mm outside diameter (25 in) across a range of wall thicknesses and pressure classes, in PE80 and PE100.",
+      text: "The company was registered in 1373 in the Iranian calendar (1994) under registration number 121, and the factory was established in 1376 (1997) with machinery purchased from Cincinnati of Austria, starting out on two production lines. It has grown steadily since, and today runs seven production lines with a nominal capacity of 14,000 tonnes a year, manufacturing single-wall polyethylene pipe in Bukan, West Azerbaijan, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR), in PE80 and PE100.",
+    },
+    {
+      type: "paragraph",
+      text: "That growth has been recognised by the bodies that assess the industry. The Agricultural Jihad Organization ranks Bukan Pipe in grade A among polyethylene pipe producers; the factory was named a national model quality unit in 1393 (2014) and a provincial model quality unit in 1388, 1390, 1395, 1396 and 1397 (2009–2018), and it was named a provincial model exporter in 1389, 1391 and 1393 (2010–2014). Pipe is supplied directly from the factory to contractors, consulting engineers and infrastructure project owners.",
     },
     { type: "heading", level: 2, text: "Registration details" },
     {
@@ -46,7 +50,7 @@ export const enAbout: ContentDocument = {
     { type: "heading", level: 2, text: "Licensed capacity" },
     {
       type: "paragraph",
-      text: "The industrial operating licence sets a permitted annual capacity per product: 14,000 tonnes per year in total, on three shifts. This is the licence ceiling rather than output in any particular year.",
+      text: "Production today runs on seven extrusion lines with a nominal capacity of 14,000 tonnes a year — the same total the industrial operating licence sets out per product, on three shifts. This is the capacity ceiling rather than output in any particular year.",
     },
     {
       type: "document-table",
@@ -61,7 +65,7 @@ export const enAbout: ContentDocument = {
     { type: "heading", level: 2, text: "Quality record" },
     {
       type: "paragraph",
-      text: "Between 1388 and 1397 in the Iranian calendar (2009–2018), the Iranian National Standards Organization named the factory a model quality unit seven times, twice at national level. What distinguishes that from a single plaque is the repetition across successive inspections. The full list, with issuer and year, is on the certifications page.",
+      text: "The model quality unit title is not a single plaque: the factory received it at national level in 1393 (2014) and at provincial level in 1388, 1390, 1395, 1396 and 1397 (2009–2018), and it is that repetition across successive inspections that shows quality holding steady. Alongside it, Bukan Pipe was named a provincial model exporter in 1389, 1391 and 1393. The full list, with issuer and year, is on the certifications page.",
     },
     { type: "heading", level: 2, text: "Primary applications" },
     {

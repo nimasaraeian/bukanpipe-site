@@ -15,7 +15,7 @@ export const enPe100TechnicalGuideSeed: SeoArticleSeed = {
   sections: [
     {
       type: "paragraph",
-      text: "Designers specify PE100 when higher allowable stress enables thinner walls or higher pressure at the same outside diameter (SDR). Bukan Pipe produces PE100 HDPE pipes up to 630 mm OD for water, gas and industrial networks.",
+      text: "Designers specify PE100 when higher allowable stress enables thinner walls or higher pressure at the same outside diameter (SDR). Bukan Pipe produces PE100 HDPE pipes from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR) for water, gas and industrial networks.",
     },
     { type: "heading", level: 2, text: "MRS and hoop stress" },
     {
@@ -34,7 +34,7 @@ export const enPe100TechnicalGuideSeed: SeoArticleSeed = {
         { label: "PE100 MRS", value: "10 MPa" },
         { label: "PE80 MRS", value: "8 MPa" },
         { label: "PN reference temperature", value: "20 °C for marked PN on supply pipe" },
-        { label: "Maximum OD (Bukan Pipe)", value: "630 mm single-wall HDPE" },
+        { label: "Production range (Bukan Pipe)", value: "Single-wall HDPE, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR)" },
       ],
       note: "Project-specific diameter, SDR and PN tables are issued on request.",
     },

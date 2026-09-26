@@ -20,15 +20,27 @@ const CSS = String.raw`
 [dir="ltr"] .hp-wrap{margin-inline-start:0;margin-inline-end:clamp(8px,2vw,40px)}
 
 .hp-stage{position:relative;flex:1;min-width:0;touch-action:none}
-.hp-stage canvas{display:block;width:100%;height:100%;cursor:grab;outline:none}
+/* A soft backlight behind the model. The pipe is black polyethylene on a navy
+   ground, and without something lighter behind it the silhouette sank into
+   the page on a wide screen — the product read as faded rather than lit. */
+.hp-stage::before{content:"";position:absolute;inset:6% 4%;pointer-events:none;
+  background:radial-gradient(ellipse 60% 55% at 50% 52%,rgba(86,140,220,.22) 0%,rgba(40,86,170,.1) 45%,transparent 72%)}
+[data-theme="light"] .hp-stage::before{background:radial-gradient(ellipse 60% 55% at 50% 52%,rgba(255,255,255,.7) 0%,rgba(255,255,255,.25) 50%,transparent 74%)}
+.hp-stage canvas{position:relative;display:block;width:100%;height:100%;cursor:grab;outline:none}
 .hp-stage canvas:active{cursor:grabbing}
 .hp-hint{position:absolute;inset-inline-start:12px;bottom:10px;font-size:11.5px;
   color:rgba(214,226,242,.66);background:rgba(8,18,32,.6);border:1px solid rgba(255,255,255,.09);
   border-radius:99px;padding:4px 11px;pointer-events:none;transition:opacity .5s ease}
 .hp-hint.gone{opacity:0}
-.hp-fallback{position:absolute;inset:0;display:none;place-items:center;text-align:center;
-  padding:22px;font-size:13px;color:rgba(200,214,232,.8)}
-.hp-stage.nogl .hp-fallback{display:grid}
+/* Without WebGL (or with reduced motion) the stage shows the product photo
+   instead of an empty box. It is a CSS background on purpose: the rule only
+   matches once .nogl is set, so a visitor who gets the model never downloads it. */
+.hp-fallback{position:absolute;inset:0;display:none;margin:0;
+  background:url("/media/brand/home-hero-luminous-pipe.webp") no-repeat 74% 50%/cover;
+  -webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent);
+  mask-image:radial-gradient(closest-side,#000 72%,transparent)}
+.hp-stage.nogl::before{display:none}
+.hp-stage.nogl .hp-fallback{display:block}
 .hp-stage.nogl canvas,.hp-stage.nogl .hp-hint{display:none}
 
 /* The size rail. It stands beside the product, not around it: no panel, no
@@ -115,13 +127,13 @@ const CSS = String.raw`
     margin-top:0;width:auto;height:2px}
   [data-theme="light"] .hp-chip{border-inline-start-color:rgba(18,32,52,.14)}
 }
-@media (prefers-reduced-motion:reduce){.hp-stage canvas{display:none}.hp-stage.nogl .hp-fallback{display:grid}}
+@media (prefers-reduced-motion:reduce){.hp-stage canvas{display:none}.hp-stage.nogl .hp-fallback{display:block}}
 `;
 const MARKUP = String.raw`
 <div class="hp-wrap">
   <div class="hp-stage" id="stage">
     <div class="hp-hint" id="hint">برای چرخاندن بکشید</div>
-    <p class="hp-fallback">مرورگر شما WebGL را پشتیبانی نمی‌کند. مشخصات کنار تصویر همچنان درست است.</p>
+    <div class="hp-fallback" role="img" aria-label="لوله پلی اتیلن HDPE بوکان پایپ با نوار آبی"></div>
   </div>
   <div class="hp-side">
     <div>
@@ -149,10 +161,7 @@ const MARKUP = String.raw`
    the readout follow without being listed here. */
 const EN_WORDS: readonly (readonly [string, string])[] = [
   ["برای چرخاندن بکشید", "Drag to rotate"],
-  [
-    "مرورگر شما WebGL را پشتیبانی نمی‌کند. مشخصات کنار تصویر همچنان درست است.",
-    "This browser does not support WebGL, so the model is not shown.",
-  ],
+  ["لوله پلی اتیلن HDPE بوکان پایپ با نوار آبی", "Bukan Pipe HDPE pipe with a blue stripe"],
   ["قطر خارجی — میلی‌متر", "Outside diameter — mm"],
   ["انتخاب قطر لوله", "Choose a pipe diameter"],
   ["کلاس SDR ۱۱", "SDR 11 class"],
@@ -200,6 +209,7 @@ export function HeroProductPanel({ locale }: { locale: "fa" | "en" }) {
     }
 
     let cancelled = false;
+    let loaded = false;
     let idle = 0;
 
     const load = () => {
@@ -219,6 +229,7 @@ export function HeroProductPanel({ locale }: { locale: "fa" | "en" }) {
       import("three")
         .then((THREE) => {
           if (cancelled || !host.current) return;
+          loaded = true;
           (window as unknown as { THREE: unknown }).THREE = THREE;
           run();
         })
@@ -239,6 +250,9 @@ export function HeroProductPanel({ locale }: { locale: "fa" | "en" }) {
 
     return () => {
       cancelled = true;
+      // React's development double-run unmounts before the load ever starts;
+      // without this the remount returns at the guard and the model never loads
+      if (!loaded) started.current = false;
       window.removeEventListener("load", schedule);
       const cic = (window as unknown as { cancelIdleCallback?: (h: number) => void }).cancelIdleCallback;
       if (idle) (cic ?? window.clearTimeout)(idle);
@@ -536,9 +550,11 @@ function sync() {
   };
   const theme = () => {
     const d = dark();
-    renderer.toneMappingExposure = d ? .86 : 1.06;
-    hemi.intensity = d ? .26 : .45;
-    WALL.envMapIntensity = d ? .72 : 1;
+    /* the dark page used to pull every one of these down, which left a black
+       pipe on a navy ground with almost nothing to separate the two */
+    renderer.toneMappingExposure = d ? 1.02 : 1.06;
+    hemi.intensity = d ? .42 : .45;
+    WALL.envMapIntensity = d ? .95 : 1;
   };
   theme(); fit();
   new ResizeObserver(fit).observe(stage);

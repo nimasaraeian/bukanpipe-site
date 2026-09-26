@@ -49,7 +49,7 @@ export const faProductsHeroCopy = {
   trustItems: [
     { title: "آزمایشگاه QC", subtitle: "کنترل کیفیت در خط و آزمایشگاه" },
     { title: "PE100", subtitle: "طراحی فشار با MRS بالاتر" },
-    { title: "۶۳۰ mm", subtitle: "حداکثر قطر خارجی منتشرشده" },
+    { title: "۱۶ تا ۶۳۰ mm", subtitle: "فشار کاری ۲.۵ تا ۲۵ بار" },
     { title: "از سال ۱۳۷۶", subtitle: "تولید لوله PE در بوکان" },
   ],
 } as const;

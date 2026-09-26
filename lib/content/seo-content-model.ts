@@ -10,13 +10,13 @@ import { productSystemAssets } from "@/lib/products/product-assets";
 /** Factory-verified production facts — safe for public spec tables. */
 export const factoryProductionFacts = {
   en: {
-    maxOd: "630 mm (25 in) outside diameter",
+    productionRange: "16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR)",
     type: "Single-wall HDPE extrusion",
     since: "Manufacturing since 1997",
     location: "Bukan, West Azerbaijan, Iran",
   },
   fa: {
-    maxOd: "۶۳۰ میلی‌متر (۲۵ اینچ) قطر خارجی",
+    productionRange: "از سایز ۱۶ تا ۶۳۰ میلی‌متر، فشار کاری ۲.۵ تا ۲۵ بار (بسته به گرید و SDR)",
     type: "اکستروژن تک‌جداره HDPE",
     since: "تولید از سال ۱۳۷۶",
     location: "بوکان، آذربایجان غربی، ایران",
@@ -253,18 +253,18 @@ export function baseProductSpecRows(
     locale === "fa"
       ? {
           pipeType: "نوع لوله",
-          maxOd: "حداکثر قطر خارجی",
+          productionRange: "محدوده تولید",
           factory: "تولیدکننده",
         }
       : {
           pipeType: "Pipe type",
-          maxOd: "Maximum outside diameter",
+          productionRange: "Production range",
           factory: "Manufacturer",
         };
 
   return [
     { label: L.pipeType, value: f.type },
-    { label: L.maxOd, value: f.maxOd },
+    { label: L.productionRange, value: f.productionRange },
     ...extra,
     {
       label: L.factory,
