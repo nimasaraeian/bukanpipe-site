@@ -2985,6 +2985,11 @@
     padding-block: 4.75rem 0;
   }
 
+  /* The hero drops its overflow clip here (overflow: visible above), but the
+     photo inside the scene is scaled 1.02-1.06 for the slow zoom, so without
+     a clip of its own it ran 4-12px past the viewport and every inner page
+     scrolled sideways in the light theme on a phone. The dark theme gets this
+     clip from the hero; here the scene carries it. */
   [data-theme="light"] .ind-page-hero-scene {
     position: relative;
     inset: auto;
@@ -2994,6 +2999,7 @@
     width: 100%;
     height: min(56vw, 18rem);
     min-height: 12rem;
+    overflow: hidden;
   }
 
   [data-theme="light"] .ind-page-hero-content,
