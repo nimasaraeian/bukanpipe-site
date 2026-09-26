@@ -50,7 +50,7 @@ export const enPe100TechnicalGuideSeed: SeoArticleSeed = {
     { type: "heading", level: 2, text: "Standards context" },
     {
       type: "paragraph",
-      text: "Qualifying water supply production references INSO 14427-2. Gas projects may reference EN 1555, INSO 11233 and utility documents such as IGS-M-PL-014-1. Always follow the engineer's basis of design.",
+      text: "Qualifying water supply production references INSO 14427-2. Gas projects may reference EN 1555, INSO 11223 and utility documents such as IGS-M-PL-014-1. Always follow the engineer's basis of design.",
     },
   ],
   related: {

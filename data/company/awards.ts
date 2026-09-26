@@ -7,6 +7,10 @@
  * a filename or from that year's national slogan is not a date, an illegible
  * issuer is not a source, and a second scan of a plaque already listed is not a
  * second award. The archive keeps them; the site does not claim them.
+ *
+ * A second, smaller set carries `source: "catalogue"`: titles the company's
+ * official catalogue lists but whose plaque is not in the archive. They are
+ * marked as such on the page rather than presented as transcribed plaques.
  */
 
 export type AwardCategory =
@@ -24,6 +28,8 @@ export type Award = {
   year: string;
   /** National, provincial, district — as the document describes itself. */
   level: string;
+  /** Where the entry comes from: a plaque in the archive (default) or the official catalogue. */
+  source?: "plaque" | "catalogue";
   issuer: { fa: string; en: string };
   title: { fa: string; en: string };
 };
@@ -119,7 +125,7 @@ export const awards: readonly Award[] = [
     year: "1397",
     level: "ملی",
     issuer: { fa: "وزارت تعاون، کار و رفاه اجتماعی", en: "Ministry of Cooperatives, Labour and Social Welfare" },
-    title: { fa: "انتخاب به عنوان «تعاونی شایسته تقدیر»", en: "Cooperative commended at national level" },
+    title: { fa: "تعاونی برتر ملی در سال 1397 (عبارت روی لوح: «تعاونی شایسته تقدیر»)", en: "Top national cooperative (plaque wording: “commended cooperative”)" },
   },
   {
     id: "award-2",
@@ -256,6 +262,69 @@ export const awards: readonly Award[] = [
     level: "شهرستانی",
     issuer: { fa: "وزارت بهداشت، درمان و آموزش پزشکی – دانشگاه علوم پزشکی و خدمات بهداشتی درمانی آذربایجان غربی – مرکز بهداشت شهرستان بوکان", en: "Ministry of Health — Bukan District Health Centre" },
     title: { fa: "کسب رتبه برتر در سطح شهرستان بر اساس عملکرد سال 1403", en: "Top-ranked in the district on 1403 occupational health performance" },
+  },
+  {
+    id: "catalogue-industrial-1385",
+    category: "industrial",
+    source: "catalogue",
+    year: "1385",
+    level: "استانی",
+    issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
+    title: { fa: "واحد نمونه صنعتی استان در سال 1385", en: "Provincial model industrial unit" },
+  },
+  {
+    id: "catalogue-industrial-1386",
+    category: "industrial",
+    source: "catalogue",
+    year: "1386",
+    level: "استانی",
+    issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
+    title: { fa: "واحد نمونه صنعتی استان در سال 1386", en: "Provincial model industrial unit" },
+  },
+  {
+    id: "catalogue-industrial-1387",
+    category: "industrial",
+    source: "catalogue",
+    year: "1387",
+    level: "استانی",
+    issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
+    title: { fa: "واحد نمونه صنعتی استان در سال 1387", en: "Provincial model industrial unit" },
+  },
+  {
+    id: "catalogue-industrial-1388",
+    category: "industrial",
+    source: "catalogue",
+    year: "1388",
+    level: "استانی",
+    issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
+    title: { fa: "واحد نمونه صنعتی استان در سال 1388", en: "Provincial model industrial unit" },
+  },
+  {
+    id: "catalogue-cooperative-1388",
+    category: "cooperative",
+    source: "catalogue",
+    year: "1388",
+    level: "استانی",
+    issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
+    title: { fa: "تعاونی برتر استان در سال 1388", en: "Top provincial cooperative" },
+  },
+  {
+    id: "catalogue-cooperative-1392",
+    category: "cooperative",
+    source: "catalogue",
+    year: "1392",
+    level: "استانی",
+    issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
+    title: { fa: "تعاونی برتر استان در سال 1392", en: "Top provincial cooperative" },
+  },
+  {
+    id: "catalogue-qc-manager-1391",
+    category: "other",
+    source: "catalogue",
+    year: "1391",
+    level: "استانی",
+    issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
+    title: { fa: "مدیر کنترل کیفی نمونه استان در سال 1391", en: "Provincial model quality control manager" },
   },
 ];
 

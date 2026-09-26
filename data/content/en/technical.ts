@@ -159,7 +159,7 @@ export const enTechnicalHub: ContentDocument = {
     {
       question: "Which standard governs my project?",
       answer:
-        "The application decides, not the pipe. Potable water, gas and irrigation each have their own national standard, and for water and gas compliance is mandatory. The water supply and gas guides cover that split.",
+        "The application decides, not the pipe. Potable water, gas and irrigation each have their own national standard, and for water supply compliance is mandatory, while the gas mark is an incentive (voluntary) one. The water supply and gas guides cover that split.",
     },
   ],
   related: {
@@ -220,7 +220,7 @@ export const enPillarPolyethylene: ContentDocument = {
       type: "list",
       items: [
         "Water supply — INSO 14427-2 for qualifying Bukan Pipe production",
-        "Gas distribution branches — EN 1555, INSO 11233, IGS-M-PL-014-1 where applicable",
+        "Gas distribution branches — EN 1555, INSO 11223, IGS-M-PL-014-1 where applicable",
         "Pressurised irrigation and agricultural mains",
         "Sewerage and surface drainage",
         "Cable protection and industrial transfer where specified",

@@ -37,8 +37,8 @@ export const faDownloadsInternalQueue: readonly DownloadItem[] = [
     verificationStatus: "missing-source",
   },
   {
-    id: "gas-ins-11233",
-    title: "INSO 11233 — لوله گاز",
+    id: "gas-ins-11223",
+    title: "INSO 11223 — لوله گاز",
     description: "مرجع استاندارد گاز.",
     category: "gas-standards",
     verificationStatus: "missing-source",
@@ -136,7 +136,7 @@ export const faDownloadsHub: ContentDocument = {
     },
     {
       type: "paragraph",
-      text: "متن استانداردهای ملی (۱۴۴۲۷-۲، ۱۱۲۳۳-۲ و ۷۶۰۷) حق انتشار دارند و باید از سازمان ملی استاندارد ایران تهیه شوند؛ ما نسخه آن‌ها را بازنشر نمی‌کنیم. آنچه در مرکز فنی منتشر شده، توضیح الزامات آن‌هاست، نه متنشان.",
+      text: "متن استانداردهای ملی (۱۴۴۲۷-۲، ۱۱۲۲۳ و ۷۶۰۷) حق انتشار دارند و باید از سازمان ملی استاندارد ایران تهیه شوند؛ ما نسخه آن‌ها را بازنشر نمی‌کنیم. آنچه در مرکز فنی منتشر شده، توضیح الزامات آن‌هاست، نه متنشان.",
     },
     {
       type: "internal-links",

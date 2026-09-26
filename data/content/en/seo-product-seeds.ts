@@ -91,7 +91,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     title: "Gas HDPE Pipes",
     seoTitle: "Gas HDPE Pipes | PE100 Gas Distribution Pipe | Bukan Pipe",
     seoDescription:
-      "Gas HDPE pipes for municipal and rural gas distribution. Manufactured to EN 1555, INSO 11233 and IGS-M-PL-014-1 where applicable to the project.",
+      "Gas HDPE pipes for municipal and rural gas distribution. Manufactured to EN 1555, INSO 11223 and IGS-M-PL-014-1 where applicable to the project.",
     description:
       "Single-wall polyethylene gas pipes for service connections and distribution — corrosion-resistant and suited to fusion joints.",
     primaryKeyword: "gas HDPE pipes",
@@ -99,10 +99,10 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     definition:
       "Gas HDPE pipes are polyethylene pressure pipes designed for low and medium-pressure natural gas distribution and service connections, joined primarily by electrofusion in Iran.",
     overview:
-      "Main transmission lines in gas networks are often steel. Gas HDPE pipes are widely used for urban and rural service connections and distribution branches. Bukan Pipe manufactures gas HDPE pipes aligned with EN 1555, INSO 11233 and National Iranian Gas Company reference IGS-M-PL-014-1 for qualifying projects.",
+      "Main transmission lines in gas networks are often steel. Gas HDPE pipes are widely used for urban and rural service connections and distribution branches. Bukan Pipe manufactures gas HDPE pipes aligned with EN 1555, INSO 11223 and National Iranian Gas Company reference IGS-M-PL-014-1 for qualifying projects.",
     specifications: baseProductSpecRows("en", [
       { label: "Material grade", value: "PE100 / PE80 per gas utility specification" },
-      { label: "Typical standards", value: "EN 1555, INSO 11233, IGS-M-PL-014-1 (project-specific)" },
+      { label: "Typical standards", value: "EN 1555, INSO 11223, IGS-M-PL-014-1 (project-specific)" },
       { label: "Approved jointing (Iran)", value: "Electrofusion for gas distribution networks" },
       { label: "Service", value: "Low and medium-pressure distribution and service lines" },
     ]),
@@ -299,7 +299,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     specifications: baseProductSpecRows("en", [
       { label: "MRS", value: "10 MPa (PE100 designation)" },
       { label: "Design benefit", value: "Higher PN or reduced wall thickness vs PE80 at same SDR" },
-      { label: "Typical standards", value: "INSO 14427-2 (water), EN 1555 / INSO 11233 (gas) — project-specific" },
+      { label: "Typical standards", value: "INSO 14427-2 (water), EN 1555 / INSO 11223 (gas) — project-specific" },
     ]),
     advantages: [
       "Higher MRS — smaller diameter or higher pressure in design",

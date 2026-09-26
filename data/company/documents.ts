@@ -2,7 +2,9 @@
  * The factory's certificates, licences and registrations, transcribed from the
  * documents themselves.
  *
- * Every field here is copied from a document. Nothing is inferred: where a
+ * Every field here is copied from a document, except the two rows marked in
+ * their `note` as taken from the company's official catalogue, whose documents
+ * have not been supplied yet. Nothing is inferred: where a
  * document does not state an expiry, `validUntil` is undefined rather than
  * guessed, and where a number could not be read off the scan, `reference` is
  * undefined and `note` says so.
@@ -44,7 +46,8 @@ export type CompanyDocument = {
 };
 
 export const companyDocuments: readonly CompanyDocument[] = [
-  // --- Mandatory national standard marks ------------------------------------
+  // --- National standard marks: water and irrigation are mandatory, gas is
+  // an incentive (voluntary) mark -----------------------------------------------
   {
     id: "standard-mark-water",
     group: "standard-mark",
@@ -69,8 +72,8 @@ export const companyDocuments: readonly CompanyDocument[] = [
     id: "standard-mark-gas",
     group: "standard-mark",
     title: {
-      fa: "پروانه کاربرد علامت استاندارد اجباری — لوله گاز",
-      en: "Mandatory standard mark licence — gas pipe",
+      fa: "پروانه کاربرد علامت استاندارد تشویقی — لوله گاز",
+      en: "Incentive (voluntary) standard mark licence — gas pipe",
     },
     issuer: {
       fa: "سازمان ملی استاندارد ایران — اداره کل استاندارد آذربایجان غربی",
@@ -80,8 +83,8 @@ export const companyDocuments: readonly CompanyDocument[] = [
     issued: "۱۳۹۱/۰۴/۲۴",
     renewed: "۱۴۰۴/۰۹/۰۷",
     scope: {
-      fa: "استاندارد ملی ۱۱۲۳۳-۲ — لوله‌های پلاستیکی از جنس پلی اتیلن برای کاربرد گازرسانی؛ لوله تک‌لایه بدون نوار باریک شناسایی",
-      en: "INSO 11233-2 — polyethylene pipes for gas supply; single-layer pipe without identification stripe",
+      fa: "استاندارد ملی ۱۱۲۲۳ — لوله‌های پلاستیکی از جنس پلی اتیلن برای کاربرد گازرسانی؛ لوله تک‌لایه بدون نوار باریک شناسایی",
+      en: "INSO 11223 — polyethylene pipes for gas supply; single-layer pipe without identification stripe",
     },
     publish: true,
   },
@@ -270,6 +273,44 @@ export const companyDocuments: readonly CompanyDocument[] = [
       en: "Operation of an inter-workshop training centre under Note 2 of Article 110 of the Labour Law",
     },
     publish: true,
+  },
+
+  {
+    id: "rnd-licence",
+    group: "sector-approval",
+    title: { fa: "پروانه تحقیق و توسعه", en: "Research and development licence" },
+    issuer: { fa: "وزارت صنعت، معدن و تجارت", en: "Ministry of Industry, Mine and Trade" },
+    issued: "۱۳۹۶",
+    scope: {
+      fa: "فعالیت واحد تحقیق و توسعه کارخانه",
+      en: "The factory's research and development unit",
+    },
+    publish: true,
+    note: {
+      fa: "برگرفته از کاتالوگ رسمی شرکت؛ شماره پروانه هنوز ارائه نشده است.",
+      en: "From the company's official catalogue; the licence number has not been supplied yet.",
+    },
+  },
+  {
+    id: "pe-pipe-association",
+    group: "sector-approval",
+    title: {
+      fa: "عضویت در انجمن صنفی تولیدکنندگان لوله و اتصالات پلی اتیلن",
+      en: "Membership of the Polyethylene Pipe and Fittings Manufacturers' Association",
+    },
+    issuer: {
+      fa: "انجمن صنفی تولیدکنندگان لوله و اتصالات پلی اتیلن",
+      en: "Polyethylene Pipe and Fittings Manufacturers' Association (Iran)",
+    },
+    scope: {
+      fa: "عضو انجمن صنفی تولیدکنندگان لوله و اتصالات پلی اتیلن",
+      en: "Member of the national trade association of PE pipe and fittings producers",
+    },
+    publish: true,
+    note: {
+      fa: "برگرفته از کاتالوگ رسمی شرکت.",
+      en: "From the company's official catalogue.",
+    },
   },
 
   // --- Registration ---------------------------------------------------------

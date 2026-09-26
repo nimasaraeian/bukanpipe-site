@@ -195,7 +195,7 @@ function fa(dn: number, f: PipeSizeFacts): ContentBlock[] {
     if (f.gas.sdr13_6Mm) gasBits.push(`SDR 13.6 با حداقل ضخامت ${f.gas.sdr13_6Mm} میلی‌متر`);
     blocks.push({
       type: "paragraph",
-      text: `قطر ${dn} در جدول گاز کاتالوگ هم آمده است: ${gasBits.join(" و ")}، با تحویل ${f.gas.lengths.join(" یا ")} متری. توجه کنید که لوله گاز محصول جداگانه‌ای است — مطابق استاندارد ملی ۱۱۲۳۳-۲، با علامت‌گذاری و تأییدیه مخصوص خود، و اتصال الکتروفیوژن. لوله آبرسانی همین قطر را نمی‌توان در شبکه گاز به کار برد.`,
+      text: `قطر ${dn} در جدول گاز کاتالوگ هم آمده است: ${gasBits.join(" و ")}، با تحویل ${f.gas.lengths.join(" یا ")} متری. توجه کنید که لوله گاز محصول جداگانه‌ای است — مطابق استاندارد ملی ۱۱۲۲۳، با علامت‌گذاری و تأییدیه مخصوص خود، و اتصال الکتروفیوژن. لوله آبرسانی همین قطر را نمی‌توان در شبکه گاز به کار برد.`,
     });
   }
 
@@ -296,7 +296,7 @@ function en(dn: number, f: PipeSizeFacts): ContentBlock[] {
     if (f.gas.sdr13_6Mm) gasBits.push(`SDR 13.6 at a minimum wall of ${f.gas.sdr13_6Mm} mm`);
     blocks.push({
       type: "paragraph",
-      text: `${dn} mm also appears in the catalogue's gas table: ${gasBits.join(" and ")}, supplied in ${f.gas.lengths.join(" or ")} m. Note that gas pipe is a separate product — produced to INSO 11233-2, with its own marking and approval and electrofusion jointing. Water supply pipe of the same diameter cannot be used in a gas network.`,
+      text: `${dn} mm also appears in the catalogue's gas table: ${gasBits.join(" and ")}, supplied in ${f.gas.lengths.join(" or ")} m. Note that gas pipe is a separate product — produced to INSO 11223, with its own marking and approval and electrofusion jointing. Water supply pipe of the same diameter cannot be used in a gas network.`,
     });
   }
 

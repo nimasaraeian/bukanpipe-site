@@ -52,7 +52,7 @@ describe("company documents", () => {
     ]);
   });
 
-  it("keeps the three mandatory standard marks published", () => {
+  it("keeps the three standard marks published", () => {
     const marks = publishedDocuments("standard-mark");
     expect(marks.map((doc) => doc.id).sort()).toEqual([
       "standard-mark-gas",
@@ -64,8 +64,18 @@ describe("company documents", () => {
   it("names the standard each mark covers", () => {
     const scopes = publishedDocuments("standard-mark").map((doc) => doc.scope.fa);
     expect(scopes.some((s) => s.includes("۱۴۴۲۷-۲"))).toBe(true);
-    expect(scopes.some((s) => s.includes("۱۱۲۳۳-۲"))).toBe(true);
+    expect(scopes.some((s) => s.includes("۱۱۲۲۳"))).toBe(true);
     expect(scopes.some((s) => s.includes("۷۶۰۷"))).toBe(true);
+  });
+
+  it("labels the gas mark as an incentive licence and the other two as mandatory", () => {
+    const byId = (id: string) => companyDocuments.find((doc) => doc.id === id)!;
+    expect(byId("standard-mark-gas").title.fa).toContain("تشویقی");
+    expect(byId("standard-mark-gas").title.en).toContain("Incentive");
+    for (const id of ["standard-mark-water", "standard-mark-irrigation"]) {
+      expect(byId(id).title.fa).toContain("اجباری");
+      expect(byId(id).title.en).toContain("Mandatory");
+    }
   });
 
   it("carries the gas mark's licence number now that it has been supplied", () => {
@@ -151,9 +161,10 @@ describe("certifications page", () => {
 });
 
 describe("awards", () => {
-  it("publishes 27 of the 48 catalogued plaques", () => {
+  it("publishes 27 of the 48 catalogued plaques, plus the titles only the catalogue lists", () => {
     expect(AWARD_ARCHIVE_SIZE).toBe(48);
-    expect(awards).toHaveLength(27);
+    expect(awards.filter((a) => a.source !== "catalogue")).toHaveLength(27);
+    expect(awards.filter((a) => a.source === "catalogue")).toHaveLength(7);
   });
 
   it("uses unique ids", () => {

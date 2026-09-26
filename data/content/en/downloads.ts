@@ -20,8 +20,8 @@ export const enDownloadsInternalQueue: readonly DownloadItem[] = [
     verificationStatus: "missing-source",
   },
   {
-    id: "gas-ins-11233-en",
-    title: "INSO 11233 — Gas pipe",
+    id: "gas-ins-11223-en",
+    title: "INSO 11223 — Gas pipe",
     description: "Gas pipe standard reference.",
     category: "gas-standards",
     verificationStatus: "missing-source",
@@ -117,7 +117,7 @@ export const enDownloadsHub: ContentDocument = {
     },
     {
       type: "paragraph",
-      text: "The national standards themselves (INSO 14427-2, 11233-2 and 7607) are copyrighted and must be obtained from the Iranian National Standards Organization; we do not republish their text. What the technical centre publishes is an explanation of their requirements, not the standards.",
+      text: "The national standards themselves (INSO 14427-2, 11223 and 7607) are copyrighted and must be obtained from the Iranian National Standards Organization; we do not republish their text. What the technical centre publishes is an explanation of their requirements, not the standards.",
     },
     {
       type: "internal-links",

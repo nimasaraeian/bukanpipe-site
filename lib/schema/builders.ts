@@ -88,7 +88,7 @@ export function manufacturingBusinessSchema(): Record<string, unknown> {
     name: siteConfig.brandName,
     url: siteConfig.siteUrl,
     logo: organizationLogoUrl(),
-    image: `${siteConfig.siteUrl}/media/demo/ChatGPT Image Sep 8, 2026, 10_35_51 AM.png`,
+    image: `${siteConfig.siteUrl}/media/brand/bukan-pipe-factory-aerial-view.png`,
     description: siteConfig.defaultDescription,
     address: postalAddressSchema(),
     telephone: "+98-44-46433444",

@@ -42,7 +42,7 @@ Legacy website copy is a **claim source**, not verification.
 | Irrigation pipe manufactured? | `/products/irrigation-pipe` | Legacy about; regional strategy | CANDIDATE |
 | Sewer / drainage pipe manufactured? | `/products/sewer-pipe` | Legacy about list | REQUIRES VERIFICATION |
 | Industrial / oil / cable-duct products | Whether to create URLs | Legacy about bullets | REQUIRES VERIFICATION — no URL reserved |
-| Gas standards EN 1555 / INSO 11233 / IGS-M-PL-014-1 | Gas page | Legacy gas page | UNVERIFIED |
+| Gas standards EN 1555 / INSO 11223 / IGS-M-PL-014-1 | Gas page | Legacy gas page | UNVERIFIED |
 | Gas approvals / vendor status | What may be claimed | Legacy gas page | UNVERIFIED |
 | Markings, packaging, MOQ, lead time | RFQ / product | Not verified | UNVERIFIED |
 

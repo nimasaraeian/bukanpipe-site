@@ -35,7 +35,7 @@ Representative queries were reviewed for:
 | Observation | Implication |
 |-------------|-------------|
 | Strong association with distribution, electrofusion, EN 1555 | Gas product page primary: **HDPE gas pipe**; welding article supports jointing |
-| Compliance language is standard-specific | Only claim EN 1555 / INSO 11233 / IGS where verified for Bukan production |
+| Compliance language is standard-specific | Only claim EN 1555 / INSO 11223 / IGS where verified for Bukan production |
 
 ### HDPE irrigation pipe
 
