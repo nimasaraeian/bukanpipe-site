@@ -468,6 +468,11 @@ export const faPipeDimensionsTable: ContentDocument = {
       title: "ادامه مسیر",
       links: [
         {
+          label: "راهنمای لوله پلی اتیلن گازرسانی",
+          path: "/technical-center/gas-polyethylene-pipe-guide",
+          hint: "فشار کاری MOP برای PE80 و PE100، ضریب طراحی گاز و استاندارد ۱۱۲۲۳",
+        },
+        {
           label: "ماشین‌حساب طراحی خط لوله",
           path: "/calculator/pipeline-design",
           hint: "محاسبه قطر و افت فشار بر پایه دبی و طول مسیر",

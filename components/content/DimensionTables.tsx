@@ -6,6 +6,11 @@ import {
   shouldShowWeightColumn,
   waterSupplyTable,
 } from "@/data/dimensions";
+import {
+  DESIGN_COEFFICIENT,
+  GAS_SDRS,
+  gasPressureRows,
+} from "@/data/dimensions/gas-pressure";
 import { routes } from "@/lib/config/routes";
 import { withLocale } from "@/lib/i18n/path";
 
@@ -24,7 +29,8 @@ export type DimensionTableId =
   | "gas-supply"
   | "drip-irrigation"
   | "supply-form"
-  | "supply-form-sewerage";
+  | "supply-form-sewerage"
+  | "gas-pressure";
 
 const cellNumber = "tabular-nums";
 
@@ -54,11 +60,14 @@ function TableShell({
   caption,
   summary,
   locale,
+  source,
   children,
 }: {
   caption: string;
   summary?: string;
   locale: "fa" | "en";
+  /** Overrides the catalogue source line, for a table that is not read from it. */
+  source?: string;
   children: React.ReactNode;
 }) {
   const isFa = locale === "fa";
@@ -67,7 +76,7 @@ function TableShell({
       {/* Every table says where its figures come from, and that a catalogue
           row is not an order confirmation. */}
       <p className="mb-3 text-xs font-medium text-[color:var(--ind-text-muted)]">
-        {isFa ? "منبع: کاتالوگ رسمی بوکان پایپ" : "Source: official Bukan Pipe catalogue"}
+        {source ?? (isFa ? "منبع: کاتالوگ رسمی بوکان پایپ" : "Source: official Bukan Pipe catalogue")}
       </p>
       {/*
         `overflow-x-auto` plus `tabindex` so a keyboard user can scroll the
@@ -205,8 +214,8 @@ export function GasSupplyDimensionTable({
     : gasSupplyTable.rows;
 
   const headers = isFa
-    ? ["قطر خارجی متوسط حداکثر", "حداکثر دوپهنی (شاخه)", "حداقل ضخامت SDR 11", "حداقل ضخامت SDR 13.6", "بسته‌بندی", "متراژ (متر)"]
-    : ["Max external diameter", "Max double width (branch)", "Min wall thickness SDR 11", "Min wall thickness SDR 13.6", "Package", "Length (m)"];
+    ? ["قطر خارجی متوسط حداکثر", "حداکثر دوپهنی (شاخه)", "حداقل ضخامت SDR 11", "حداقل ضخامت SDR 13.6", "بسته‌بندی", "متراژ (متر)", "عرض نوار زرد (mm)"]
+    : ["Max external diameter", "Max double width (branch)", "Min wall thickness SDR 11", "Min wall thickness SDR 13.6", "Package", "Length (m)", "Yellow strip width (mm)"];
 
   return (
     <TableShell
@@ -265,6 +274,13 @@ export function GasSupplyDimensionTable({
             </td>
             <td className={CELL}>
               <span dir="ltr" className={cellNumber}>{row.packingLengthM.join(" / ")}</span>
+            </td>
+            <td className={CELL}>
+              {row.yellowBarWidthDepthMm === null ? (
+                <Num value={null} />
+              ) : (
+                <span dir="ltr" className={cellNumber}>{row.yellowBarWidthDepthMm}</span>
+              )}
             </td>
           </tr>
         ))}
@@ -505,6 +521,82 @@ export function SupplyFormTable({
 }
 
 /** Rendered by the `dimension-table` content block. */
+/**
+ * Maximum operating pressure of the gas SDR series, PE80 and PE100, computed
+ * from the ISO 4437 design relation with the gas coefficient C = 2, beside the
+ * PN the catalogue's water table gives the same pipe. Every figure comes from
+ * data/dimensions/gas-pressure.ts; nothing is typed in here.
+ */
+export function GasOperatingPressureTable({ locale }: { locale: "fa" | "en" }) {
+  const isFa = locale === "fa";
+  return (
+    <TableShell
+      locale={locale}
+      source={
+        isFa
+          ? `مبنا: رابطه طراحی ISO 4437 — MOP = 20 × MRS ÷ (C × (SDR − 1))، با C = ${DESIGN_COEFFICIENT.gas} برای گاز`
+          : `Basis: ISO 4437 design relation — MOP = 20 × MRS ÷ (C × (SDR − 1)), with C = ${DESIGN_COEFFICIENT.gas} for gas`
+      }
+      caption={
+        isFa
+          ? "حداکثر فشار کاری لوله گاز (MOP) در دمای ۲۰ درجه، بر حسب بار"
+          : "Maximum operating pressure of gas pipe (MOP) at 20 °C, in bar"
+      }
+      summary={
+        isFa
+          ? `اعداد سقف مجاز استاندارد در ۲۰ درجه‌اند و به پایین گرد شده‌اند. مشخصات شرکت گاز برای هر شبکه ممکن است MOP کمتری تعیین کند و اتصال، شیر و دمای کارکرد می‌توانند محدوده یک بخش را پایین‌تر بیاورند. ستون آب، PN همان لوله در جدول آبرسانی کاتالوگ است (ضریب ${DESIGN_COEFFICIENT.water}) و برای گاز معتبر نیست.`
+          : `Figures are the standard's upper bound at 20 °C, rounded down. The gas operator's specification may set a lower MOP for a network, and fittings, valves and operating temperature can limit a section further. The water column is the PN the catalogue's water table gives the same pipe (coefficient ${DESIGN_COEFFICIENT.water}) and does not apply to gas.`
+      }
+    >
+      <thead>
+        <tr>
+          <th scope="col" rowSpan={2} className={STICKY_HEAD} style={stickyStart}>
+            {isFa ? "گرید ماده" : "Material grade"}
+          </th>
+          <th scope="col" rowSpan={2} className={HEAD}>
+            MRS <span dir="ltr" className="text-xs font-normal">(MPa)</span>
+          </th>
+          <th scope="col" colSpan={GAS_SDRS.length} className={HEAD}>
+            {isFa ? `MOP گاز (C = ${DESIGN_COEFFICIENT.gas})` : `Gas MOP (C = ${DESIGN_COEFFICIENT.gas})`}
+          </th>
+          <th scope="col" colSpan={GAS_SDRS.length} className={HEAD}>
+            {isFa ? `PN آب (C = ${DESIGN_COEFFICIENT.water})` : `Water PN (C = ${DESIGN_COEFFICIENT.water})`}
+          </th>
+        </tr>
+        <tr>
+          {[...GAS_SDRS, ...GAS_SDRS].map((sdr, index) => (
+            <th scope="col" key={`${sdr}-${index}`} className={HEAD}>
+              SDR <Num value={sdr} />
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {gasPressureRows.map((row) => (
+          <tr key={row.grade} className="border-t border-[color:var(--ind-border)]">
+            <th scope="row" className={STICKY_CELL} style={stickyStart}>
+              <span dir="ltr">{row.grade}</span>
+            </th>
+            <td className={CELL}>
+              <Num value={row.mrsMpa} />
+            </td>
+            {row.mopBar.map((value, index) => (
+              <td key={`mop-${index}`} className={`${CELL} font-semibold`}>
+                <Num value={value} />
+              </td>
+            ))}
+            {row.waterPnBar.map((value, index) => (
+              <td key={`pn-${index}`} className={CELL}>
+                <Num value={value} />
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </TableShell>
+  );
+}
+
 export function DimensionTableBlock({
   table,
   locale,
@@ -518,6 +610,7 @@ export function DimensionTableBlock({
 
   if (table === "water-supply") return <WaterSupplyDimensionTable locale={locale} />;
   if (table === "gas-supply") return <GasSupplyDimensionTable locale={locale} />;
+  if (table === "gas-pressure") return <GasOperatingPressureTable locale={locale} />;
   if (table === "supply-form") return <SupplyFormTable locale={locale} />;
   if (table === "supply-form-sewerage") {
     return <SupplyFormTable locale={locale} sewerageOnly />;

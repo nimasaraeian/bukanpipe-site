@@ -141,6 +141,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
       { label: "HDPE pipe welding guide", path: seoLandingPaths.welding },
       { label: "Gas distribution applications", path: "/applications/gas-distribution" },
+      { label: "HDPE gas pipe guide", path: "/technical-center/gas-polyethylene-pipe-guide" },
       { label: "PE100 Technical Guide", path: seoLandingPaths.pe100Guide },
     ],
     references: ["https://bukanpipe.com/gas-pipe/"],

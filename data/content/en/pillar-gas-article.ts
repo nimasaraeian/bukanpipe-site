@@ -3,9 +3,9 @@ import type { SeoArticleSeed } from "@/lib/content/seo-content-model";
 export const enGasPillarArticle: SeoArticleSeed = {
   slug: "gas-polyethylene-pipe-guide",
   title: "Gas Polyethylene Pipe: Standards, Production Process, and Application in Gas Networks",
-  seoTitle: "Gas Polyethylene Pipe: Standards & Production | Bukan Pipe",
+  seoTitle: "HDPE Gas Pipe | SDR Chart, Wall Thickness & ISO 4437 | Bukan Pipe",
   seoDescription:
-    "Gas polyethylene pipe: ISO 4437, material grade and SDR, production control, traceability and the jointing requirements for gas networks.",
+    "HDPE gas pipe from Bukan Pipe: size chart 25 to 225 mm, SDR 11 and 13.6 wall thickness, PE80 and PE100 operating pressure, ISO 4437 and INSO 11223.",
   description:
     "Technical and procurement guide to gas polyethylene pipe for owners and contractors — from standards and production through inspection, jointing, and handover documentation.",
   primaryKeyword: "gas polyethylene pipe",
@@ -78,9 +78,29 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "paragraph",
       text: "SDR is the ratio of nominal outside diameter to nominal wall thickness. At a fixed diameter, a lower SDR means a thicker wall, but pressure selection is not derived from geometry alone. Material class, design factor, temperature, standard, and system limits must all be considered. In the purchase request, state the design pressure together with the reference used to define it, and ask the supplier to align the proposed class with those conditions. Using a pressure figure without stating whether it is sustained, maximum allowable, or test-related can lead to unsuitable orders or misinterpretation on site.",
     },
+    { type: "heading", level: 3, text: "Bukan Pipe Gas Pipe Specification Chart" },
     {
       type: "paragraph",
-      text: "This article does not provide a numerical gas pressure selection table, because calculated values might be used without standard or operator limits. The correct approach is to define the permitted project range first, then verify the material and SDR combination against the applicable design method, and finally align all system components. A valve, fitting, or transition piece with a different range can limit the choice for the whole section. A thicker pipe wall does not automatically remove that constraint. Recording the basis of selection in procurement documents helps preserve the technical decision if the supplier changes.",
+      text: "Bukan Pipe produces gas pipe from 25 to 225 mm in SDR 11 and SDR 13.6: 25 and 32 mm in SDR 11 only, 63 and 90 mm in both, and 110 to 225 mm in SDR 13.6 only. The chart below reads the same catalogue data as the HDPE pipe dimensions chart; wall thickness is the minimum, with its plus tolerance in brackets.",
+    },
+    { type: "dimension-table", table: "gas-supply" },
+    { type: "heading", level: 3, text: "Maximum Operating Pressure (MOP) and the Gas Design Coefficient" },
+    {
+      type: "paragraph",
+      text: "The maximum operating pressure of gas pipe follows the ISO 4437 design relation: MOP = 20 × MRS ÷ (C × (SDR − 1)). MRS is the material's minimum required strength at 20 °C over 50 years — 8 MPa for PE80 and 10 MPa for PE100 — and C is the overall design coefficient. For gas it is at least 2, where water supply uses 1.25. That is why a PE100 SDR 11 pipe rated PN 16 in the water table is limited to 10 bar in gas: never read the water table for a gas line.",
+    },
+    { type: "dimension-table", table: "gas-pressure" },
+    {
+      type: "paragraph",
+      text: "These figures are the standard's upper bound at 20 °C, not the design pressure of a particular network; the gas operator's specification may set a lower one. The correct approach is to define the permitted project range first, then verify the material and SDR combination against the applicable design method, and finally align all system components. A valve, fitting, or transition piece with a different range can limit the choice for the whole section. A thicker pipe wall does not automatically remove that constraint. Recording the basis of selection in procurement documents helps preserve the technical decision if the supplier changes.",
+    },
+    {
+      type: "internal-links",
+      title: "Full charts",
+      links: [
+        { label: "HDPE pipe dimensions chart", path: "/technical-center/hdpe-pipe-dimensions-chart", hint: "Water, gas and drip irrigation tables from the factory catalogue" },
+        { label: "Gas HDPE pipes", path: "/products/gas-pipe", hint: "Product specification and enquiry" },
+      ],
     },
     { type: "heading", level: 3, text: "Gas Flow Capacity and Diameter Selection" },
     {
@@ -125,7 +145,7 @@ export const enGasPillarArticle: SeoArticleSeed = {
     { type: "heading", level: 2, text: "Quality Control and Interpretation of Test Results" },
     {
       type: "paragraph",
-      text: "The quality control programme must align with the standard and contract requirements. Visual and dimensional checks, material properties, and performance tests each answer a different question. Tests such as pressure behaviour assessment or slow crack growth evaluation have meaning only in their defined role and must not be interpreted without regard to test type and sampling. This article does not set generic numerical acceptance limits. The buyer should require the supplier to state method, conditions, sample identifier, and acceptance criterion in the report so the result is genuinely reviewable.",
+      text: "The quality control programme must align with the standard and contract requirements. Visual and dimensional checks, material properties, and performance tests each answer a different question. Tests such as pressure behaviour assessment or slow crack growth evaluation have meaning only in their defined role and must not be interpreted without regard to test type and sampling. The buyer should require the supplier to state method, conditions, sample identifier, and acceptance criterion in the report so the result is genuinely reviewable.",
     },
     {
       type: "paragraph",
@@ -218,6 +238,20 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "paragraph",
       text: "The same logic applies to a proposed change of fitting or delivery form. If the main item is not ready on schedule, the seller should introduce a substitute with clear specification. Procurement may review time and cost impact, but technical compliance and operator acceptance must be confirmed through the responsible authority. After the decision, update the item table and execution plan so the site team does not use an old version. In gas projects, discipline in these small changes matters as much as initial contract setup. The goal is that delivered product, accepted documentation, and installed item always tie to one defined decision, and no significant change remains only in a phone conversation.",
     },
+    { type: "heading", level: 2, text: "Bukan Pipe in Gas Pipe Supply" },
+    {
+      type: "list",
+      items: [
+        "The first producer of polyethylene gas pipe in north-west Iran",
+        "Vendor qualification with the National Iranian Gas Company since 1390 (2011)",
+        "Incentive (voluntary) standard mark licence for gas to INSO 11223 since 1391 (2012) — an incentive licence, not a mandatory one",
+        "Gas pipe range: 25 to 225 mm in SDR 11 and SDR 13.6; 25 and 32 mm in SDR 11 only, 110 to 225 mm in SDR 13.6 only",
+      ],
+    },
+    {
+      type: "paragraph",
+      text: "Each licence's number and issuing body are listed on the certifications page. For every shipment, ask separately for the test report of that production batch; a factory document does not replace the shipment report.",
+    },
     { type: "heading", level: 2, text: "References and Next Steps for a Bukan Pipe Enquiry" },
     {
       type: "paragraph",
@@ -252,7 +286,17 @@ export const enGasPillarArticle: SeoArticleSeed = {
     {
       question: "Is a water pressure table enough to select SDR for gas?",
       answer:
-        "No. Design factor, standard limits, and operator gas requirements differ. Allowable pressure must be set for actual network conditions and all components. A calculation result cannot create permission to exceed standard scope or approved project limits.",
+        "No. Design factor, standard limits, and operator gas requirements differ. Allowable pressure must be set for actual network conditions and all components. A calculation result cannot create permission to exceed standard scope or approved project limits. The operating pressure table on this page shows the difference: the gas design coefficient is at least 2, against 1.25 for water.",
+    },
+    {
+      question: "What is the maximum operating pressure of PE100 and PE80 gas pipe?",
+      answer:
+        "By the ISO 4437 relation with a design coefficient of 2, at 20 °C: PE100 SDR 11 up to 10 bar and SDR 13.6 up to 7.9 bar; PE80 SDR 11 up to 8 bar and SDR 13.6 up to 6.3 bar. The gas operator's specification may set a lower pressure for a given network.",
+    },
+    {
+      question: "Which sizes does Bukan Pipe produce in gas pipe?",
+      answer:
+        "25 to 225 mm. 25 and 32 mm are made in SDR 11 only, 63 and 90 mm in SDR 11 and 13.6, and 110 to 225 mm in SDR 13.6 only. The full chart with wall tolerance, packing and yellow strip width is on this page.",
     },
     {
       question: "What documentation is needed for a Bukan Pipe enquiry?",
@@ -272,6 +316,7 @@ export const enGasPillarArticle: SeoArticleSeed = {
     "https://www.plasticpipe.org/Shared_Content/Shop/PE-Handbook.aspx",
   ],
   curatedLinks: [
+    { label: "HDPE pipe dimensions chart", path: "/technical-center/hdpe-pipe-dimensions-chart", hint: "Full gas, water and irrigation charts" },
     { label: "Request a gas pipe quotation", path: "/request-quote", hint: "Send specifications and project acceptance requirements for review." },
     { label: "Contact Bukan Pipe", path: "/contact", hint: "For technical coordination and required documentation" },
   ],

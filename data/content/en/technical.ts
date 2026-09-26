@@ -374,6 +374,11 @@ export const enPipeDimensionsChart: ContentDocument = {
       title: "Next steps",
       links: [
         {
+          label: "HDPE gas pipe guide",
+          path: "/technical-center/gas-polyethylene-pipe-guide",
+          hint: "MOP for PE80 and PE100, the gas design coefficient and INSO 11223",
+        },
+        {
           label: "Pipeline design calculator",
           path: "/calculator/pipeline-design",
           hint: "Size the diameter and head loss from flow and route length",

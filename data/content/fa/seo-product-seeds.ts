@@ -230,6 +230,7 @@ export const faSeoProductSeeds: readonly SeoProductSeed[] = [
       { label: "راهنمای نصب HDPE", path: seoLandingPaths.installGuide },
       { label: "راهنمای جوش لوله PE", path: seoLandingPaths.welding },
       { label: "کاربرد گازرسانی", path: "/applications/gas-distribution" },
+      { label: "راهنمای لوله پلی اتیلن گازرسانی", path: "/technical-center/gas-polyethylene-pipe-guide" },
       { label: "راهنمای فنی PE100", path: seoLandingPaths.pe100Guide },
     ],
     references: ["https://bukanpipe.com/gas-pipe/"],
