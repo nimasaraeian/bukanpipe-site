@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   dripIrrigationTable,
   packagingTable,
@@ -5,6 +6,8 @@ import {
   shouldShowWeightColumn,
   waterSupplyTable,
 } from "@/data/dimensions";
+import { routes } from "@/lib/config/routes";
+import { withLocale } from "@/lib/i18n/path";
 
 /**
  * Catalogue dimension tables as real HTML tables — never an image, so the
@@ -50,14 +53,22 @@ function Range({ min, max }: { min: number | null; max: number | null }) {
 function TableShell({
   caption,
   summary,
+  locale,
   children,
 }: {
   caption: string;
   summary?: string;
+  locale: "fa" | "en";
   children: React.ReactNode;
 }) {
+  const isFa = locale === "fa";
   return (
     <figure className="ind-glass mt-8 p-4 sm:p-6">
+      {/* Every table says where its figures come from, and that a catalogue
+          row is not an order confirmation. */}
+      <p className="mb-3 text-xs font-medium text-[color:var(--ind-text-muted)]">
+        {isFa ? "منبع: کاتالوگ رسمی بوکان پایپ" : "Source: official Bukan Pipe catalogue"}
+      </p>
       {/*
         `overflow-x-auto` plus `tabindex` so a keyboard user can scroll the
         table without a pointer. role="region" gives it an accessible name.
@@ -80,6 +91,17 @@ function TableShell({
           {summary}
         </figcaption>
       ) : null}
+      <p className="mt-3 text-xs text-[color:var(--ind-text-muted)]">
+        {isFa
+          ? "برای سفارش پروژه، مشخصات نهایی را با واحد فروش تأیید کنید. "
+          : "For a project order, confirm the final specification with our sales team. "}
+        <Link
+          href={withLocale(routes.requestQuote.path, locale)}
+          className="font-medium text-[color:var(--ind-accent)] underline underline-offset-4"
+        >
+          {isFa ? "استعلام قیمت" : "Request a quote"}
+        </Link>
+      </p>
     </figure>
   );
 }
@@ -109,6 +131,7 @@ export function WaterSupplyDimensionTable({
 
   return (
     <TableShell
+      locale={locale}
       caption={
         isFa
           ? `جدول ابعاد لوله آبرسانی پلی اتیلن — ${waterSupplyTable.standard} / ${waterSupplyTable.nationalStandard}`
@@ -187,6 +210,7 @@ export function GasSupplyDimensionTable({
 
   return (
     <TableShell
+      locale={locale}
       caption={
         isFa
           ? `جدول ابعاد لوله گازرسانی پلی اتیلن — ${gasSupplyTable.standard}`
@@ -264,6 +288,7 @@ export function DripIrrigationDimensionTable({
 
   return (
     <TableShell
+      locale={locale}
       caption={
         isFa
           ? `جدول ابعاد لوله آبیاری قطره‌ای — ${dripIrrigationTable.standard} / ${dripIrrigationTable.nationalStandard}`
@@ -421,6 +446,7 @@ export function SupplyFormTable({
 
   return (
     <TableShell
+      locale={locale}
       caption={
         isFa
           ? sewerageOnly

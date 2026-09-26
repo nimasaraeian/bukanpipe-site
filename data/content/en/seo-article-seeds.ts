@@ -36,7 +36,7 @@ export const enPe100TechnicalGuideSeed: SeoArticleSeed = {
         { label: "PN reference temperature", value: "20 °C for marked PN on supply pipe" },
         { label: "Production range (Bukan Pipe)", value: "Single-wall HDPE, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR)" },
       ],
-      note: "Project-specific diameter, SDR and PN tables are issued on request.",
+      note: "The catalogue diameter, wall thickness and SDR tables are published in the HDPE pipe dimensions chart; for a project order, confirm the final specification with sales.",
     },
     { type: "heading", level: 2, text: "PE100 vs PE80 in practice" },
     {

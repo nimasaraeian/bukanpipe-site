@@ -162,6 +162,11 @@ export const enHdpePillarArticle: SeoArticleSeed = {
           path: "/technical-center",
           hint: "Read supplementary guides on selection, pressure, and installation.",
         },
+        {
+          label: "HDPE pipe dimensions chart",
+          path: "/technical-center/hdpe-pipe-dimensions-chart",
+          hint: "Outside diameter, wall thickness and SDR for water, gas and drip pipe, from the factory catalogue.",
+        },
       ],
     },
     { type: "heading", level: 2, text: "Hydraulics, energy, and the real cost of a transmission line" },
