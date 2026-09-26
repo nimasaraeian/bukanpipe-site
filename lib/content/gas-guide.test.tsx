@@ -126,3 +126,82 @@ describe("gas guide links", () => {
     }
   });
 });
+
+describe("gas guide article sections", () => {
+  type Block = { type: string; level?: number; text?: string };
+
+  /** The h2 a heading sits under, and the blocks that follow it up to the next heading. */
+  function sectionOf(locale: "fa" | "en", heading: string) {
+    const blocks = guide(locale).sections as readonly Block[];
+    const at = blocks.findIndex((b) => b.type === "heading" && b.text === heading);
+    expect(at, `${locale}: "${heading}" missing`).toBeGreaterThan(-1);
+    let parent = "";
+    for (let i = at; i >= 0; i--) {
+      if (blocks[i]!.type === "heading" && blocks[i]!.level === 2) {
+        parent = blocks[i]!.text!;
+        break;
+      }
+    }
+    const body: Block[] = [];
+    for (let i = at + 1; i < blocks.length && blocks[i]!.type !== "heading"; i++) body.push(blocks[i]!);
+    return { parent, level: blocks[at]!.level, body };
+  }
+
+  // [fa heading, en heading, fa parent h2, en parent h2]
+  const placements: [string, string, string, string][] = [
+    ["PE80 یا PE100؟ تفاوت در کاربرد گاز", "PE80 versus PE100", "گرید ماده و قابلیت ردیابی ترکیب", "Material Grade and Compound Traceability"],
+    ["رنگ و نوار شناسایی", "Colour and identification", "گرید ماده و قابلیت ردیابی ترکیب", "Material Grade and Compound Traceability"],
+    ["آزمون‌های کنترل کیفیت", "Quality control tests", "کنترل کیفیت و تفسیر نتایج آزمون", "Quality Control and Interpretation of Test Results"],
+    ["جوشکاری و اتصالات", "Jointing", "اتصال؛ هماهنگی لوله، قطعه و روش اجرا", "Jointing: Coordinating Pipe, Fitting, and Execution Method"],
+    ["دو قطعه که در اجرا فراموش می‌شوند", "Two items routinely forgotten on site", "نصب مدفون، تقاطع‌ها و اجزای انتقالی", "Buried Installation, Crossings, and Transition Components"],
+    ["شش اشتباه رایج", "Six common mistakes", "شش اشتباه رایج", "Six common mistakes"],
+  ];
+
+  it("places each new section under the same parent section in both locales", () => {
+    for (const [fa, en, faParent, enParent] of placements) {
+      const a = sectionOf("fa", fa);
+      const b = sectionOf("en", en);
+      expect(a.parent, fa).toBe(faParent);
+      expect(b.parent, en).toBe(enParent);
+      expect(a.level, fa).toBe(b.level);
+    }
+  });
+
+  it("keeps the two pages' heading structure identical", () => {
+    const shape = (locale: "fa" | "en") =>
+      (guide(locale).sections as readonly Block[]).filter((b) => b.type === "heading").map((b) => b.level);
+    expect(shape("fa")).toEqual(shape("en"));
+  });
+
+  it("carries the MRS table, the six numbered mistakes and the named tests", () => {
+    expect(JSON.stringify(sectionOf("fa", "PE80 یا PE100؟ تفاوت در کاربرد گاز").body)).toContain("MRS ۱۰ مگاپاسکال");
+    expect(JSON.stringify(sectionOf("en", "PE80 versus PE100").body)).toContain("MRS 10 MPa");
+
+    const faMistakes = sectionOf("fa", "شش اشتباه رایج").body.filter((b) => b.type === "paragraph");
+    const enMistakes = sectionOf("en", "Six common mistakes").body.filter((b) => b.type === "paragraph");
+    expect(faMistakes.map((b) => b.text!.slice(0, 2))).toEqual(["۱.", "۲.", "۳.", "۴.", "۵.", "۶."]);
+    expect(enMistakes.map((b) => b.text!.slice(0, 2))).toEqual(["1.", "2.", "3.", "4.", "5.", "6."]);
+
+    const enQc = JSON.stringify(sectionOf("en", "Quality control tests").body);
+    for (const test of ["Hydrostatic pressure test", "Melt flow rate (MFR)", "Oxidation induction time (OIT)", "Carbon black content and dispersion", "Thermal reversion"]) {
+      expect(enQc, test).toContain(test);
+    }
+    const faQc = JSON.stringify(sectionOf("fa", "آزمون‌های کنترل کیفیت").body);
+    for (const test of ["آزمون فشار هیدرواستاتیک", "MFR", "OIT", "مقدار و پخش دوده", "بازگشت حرارتی"]) {
+      expect(faQc, test).toContain(test);
+    }
+
+    expect(JSON.stringify(sectionOf("fa", "دو قطعه که در اجرا فراموش می‌شوند").body)).toContain("سیم ردیاب");
+    expect(JSON.stringify(sectionOf("en", "Two items routinely forgotten on site").body)).toContain("Tracer wire");
+  });
+
+  it("adds the article's four questions to each FAQ", () => {
+    const faQ = guide("fa").faqs!.map((f) => f.question);
+    const enQ = guide("en").faqs!.map((f) => f.question);
+    expect(faQ).toHaveLength(12);
+    expect(enQ).toHaveLength(12);
+    expect(faQ).toContain("آیا لوله پلی اتیلن با فلزیاب پیدا می‌شود؟");
+    expect(enQ).toContain("Can polyethylene pipe be located with a metal detector?");
+    expect(enQ).toContain("Is coiled or straight-length pipe better?");
+  });
+});

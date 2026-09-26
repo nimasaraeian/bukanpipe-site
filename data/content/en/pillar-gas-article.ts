@@ -73,6 +73,21 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "paragraph",
       text: "PE100 refers to a strength class and does not replace gas-service documentation. Titles related to specific resistance to slow crack growth must be read against the standard and supporting evidence. A commercial suffix or alternate name should not enter approved specifications without review. For the buyer, the key question is which property is mandatory and how it will be demonstrated. If a substitute material is proposed, a compliance table and list of deviations are required. Acceptance of a change must be by the project's technical authority and reflected in the final order version.",
     },
+    { type: "heading", level: 3, text: "PE80 versus PE100" },
+    { type: "paragraph", text: "The number after PE is the MRS — minimum required strength in MPa, derived by extrapolating long-term hydrostatic test data to a 50-year design life at 20 °C." },
+    {
+      type: "spec-table",
+      title: "Grade, MRS and practical effect",
+      rows: [
+        { label: "PE80 — MRS 8 MPa", value: "Established grade, still widely specified in gas networks" },
+        { label: "PE100 — MRS 10 MPa", value: "Higher strength; thinner wall at equal pressure rating" },
+      ],
+    },
+    { type: "paragraph", text: "At a given diameter and pressure, PE100 allows a higher SDR — a thinner wall — which increases bore and flow capacity while reducing material per metre. Conversely, at equal wall thickness PE100 carries a higher operating pressure." },
+    { type: "paragraph", text: "PE100 is not automatically the better choice. In the small diameters typical of domestic distribution, the minimum wall thickness required by the standard governs rather than the pressure calculation, so PE80 performs the same duty. In gas networks the grade is usually fixed by the project specification, not chosen by the contractor." },
+    { type: "heading", level: 3, text: "Colour and identification" },
+    { type: "paragraph", text: "Gas pipe must be distinguishable from water pipe in the trench. Bukan Pipe produces it black with longitudinal yellow stripes. Stripe width and depth are specified, not cosmetic." },
+    { type: "paragraph", text: "Alongside colour, the marking printed on the pipe body — manufacturer, diameter, SDR, material grade, standard number and production date — is part of the standard's requirements and is checked at incoming inspection." },
     { type: "heading", level: 2, text: "SDR, Wall Thickness, and Allowable Network Pressure" },
     {
       type: "paragraph",
@@ -151,6 +166,15 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "paragraph",
       text: "The distinction between type testing and batch control matters. A test confirming one design or compound is not necessarily repeated for every length; conversely, routine dimensional control does not replace long-term performance evidence. Separate these categories in the document list and avoid attributing one sample result to the entire order without a sampling basis. If testing is done at an external laboratory, the scope of accreditation required for the project should be checked. A laboratory name or stamp alone does not decide whether the method and result linkage to the shipment are appropriate.",
     },
+    { type: "heading", level: 3, text: "Quality control tests" },
+    { type: "paragraph", text: "Defects in gas pipe rarely show at delivery; they appear years later. Testing is therefore laboratory-based rather than visual." },
+    { type: "paragraph", text: "Hydrostatic pressure test. A pipe sample is held at elevated temperature under defined stress for a long period. It simulates long-term behaviour in a short time and is the most critical test for this product." },
+    { type: "paragraph", text: "Melt flow rate (MFR). Confirms the raw material is as declared and has not degraded thermally during extrusion." },
+    { type: "paragraph", text: "Oxidation induction time (OIT). How long a sample resists oxidation at elevated temperature. It shows whether the formulation contains enough antioxidant — in effect, how many years the pipe will last." },
+    { type: "paragraph", text: "Carbon black content and dispersion. Carbon black gives both the black colour and UV protection. The quantity must be within the standard's range and, more importantly, uniformly dispersed through the wall. Localised concentration is where cracking starts." },
+    { type: "paragraph", text: "Thermal reversion. A sample is heated and its change in length measured. High reversion means high residual stress from processing, which later appears as deformation or cracking." },
+    { type: "paragraph", text: "Dimensions. Mean outside diameter, wall thickness at several points around the circumference, and ovality." },
+    { type: "paragraph", text: "A practical note for buyers: request the batch test certificate for the material delivered, not only the company's standard licence. They are not the same document." },
     { type: "heading", level: 3, text: "Inspection Programme and Hold Points" },
     {
       type: "paragraph",
@@ -182,6 +206,21 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "paragraph",
       text: "Execution qualification includes personnel, equipment, and record keeping. Cleanliness, surface preparation, and alignment must be controlled in the work method, and adverse environmental conditions must be managed. End-of-cycle indication on the machine alone is not complete proof of joint quality. The operator must know how to act on error or cycle interruption according to the approved procedure and what to record. Unauthorised repetition or acceptance of a suspect joint on appearance does not replace a technical decision. Recording fitting identifier, component, and installation location supports traceability and should be part of the site programme.",
     },
+    { type: "heading", level: 3, text: "Jointing" },
+    { type: "paragraph", text: "Mechanical and threaded joints have no place in a gas network. Joints must be fused." },
+    { type: "paragraph", text: "Butt fusion heats both pipe ends against a hot plate, then fuses them under controlled pressure. It is the primary method for larger diameters. Both pipes must match in both diameter and SDR — butt fusing two different wall thicknesses produces a defective joint." },
+    { type: "paragraph", text: "Electrofusion uses a fitting with an embedded heating coil that melts the pipe against itself from the inside. It suits small diameters, branch connections, confined trenches and repairs. Surface preparation is critical: the oxidised outer skin must be scraped away and the surface kept clean and untouched. Most electrofusion failures originate at this step." },
+    { type: "paragraph", text: "Common to both methods:" },
+    {
+      type: "list",
+      items: [
+        "Re-round coiled pipe with a clamp before fusion",
+        "Keep surfaces dry, clean and free of grease; touching a scraped surface counts as contamination",
+        "Record temperature, pressure and cooling time",
+        "Use qualified welders — a requirement in gas work, not a recommendation",
+      ],
+    },
+    { type: "paragraph", text: "Polyethylene also permits temporary flow stoppage by squeezing the pipe for repair without shutting down the network. This must be done with the correct tool and procedure; squeezing with unsuitable tooling causes permanent wall damage." },
     { type: "heading", level: 2, text: "Buried Installation, Crossings, and Transition Components" },
     {
       type: "paragraph",
@@ -191,6 +230,10 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "paragraph",
       text: "Transitions to metallic components, valves, or plant equipment must be reviewed as separate design sections. Pressure capability, restraint, access, and protection at those points matter. Procurement should not order pipe alone and defer transition component selection to installation. In a coordinated purchase package, main items and interfaces are reviewed against one specification reference. That reduces the likelihood of components with a different standard or range arriving on site. Any proposed substitution must also be dispositioned for compatibility and project acceptance before dispatch.",
     },
+    { type: "heading", level: 3, text: "Two items routinely forgotten on site" },
+    { type: "paragraph", text: "Yellow warning tape is laid a set distance above the pipe inside the trench, so that future excavation is alerted before the bucket reaches the main." },
+    { type: "paragraph", text: "Tracer wire. Polyethylene cannot be located with a metal detector. Without tracer wire buried alongside the pipe, the route becomes untraceable and every later excavation in the area becomes a risk. This is one of the most common omissions in installed networks, and correcting it after burial means digging again." },
+    { type: "paragraph", text: "Also: polyethylene is UV-sensitive. Carbon black in the formulation protects it for years, but prolonged storage in direct sunlight is not advised. Trenches must be free of sharp stone, and the pipe bedded and covered with fine material." },
     { type: "heading", level: 2, text: "Testing and Handover: Boundaries of Responsibility" },
     {
       type: "paragraph",
@@ -238,6 +281,13 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "paragraph",
       text: "The same logic applies to a proposed change of fitting or delivery form. If the main item is not ready on schedule, the seller should introduce a substitute with clear specification. Procurement may review time and cost impact, but technical compliance and operator acceptance must be confirmed through the responsible authority. After the decision, update the item table and execution plan so the site team does not use an old version. In gas projects, discipline in these small changes matters as much as initial contract setup. The goal is that delivered product, accepted documentation, and installed item always tie to one defined decision, and no significant change remains only in a phone conversation.",
     },
+    { type: "heading", level: 2, text: "Six common mistakes" },
+    { type: "paragraph", text: "1. Using water pipe in a gas network. The most common and most dangerous mistake. Matching wall thickness does not make it compliant; design coefficient, formulation and marking all differ." },
+    { type: "paragraph", text: "2. Ordering without stating SDR. \"110 mm gas pipe\" is an incomplete specification. Without SDR, wall thickness and pressure rating are undefined." },
+    { type: "paragraph", text: "3. Butt fusing two different SDRs. Unequal walls give an incomplete joint. If two thicknesses must be connected, use an appropriate fitting, not a direct weld." },
+    { type: "paragraph", text: "4. Omitting tracer wire. Negligible cost; without it the whole line becomes untraceable." },
+    { type: "paragraph", text: "5. Backfilling with unsuitable material. Sharp stone against the wall initiates stress cracking years later — with no sign of it on handover day." },
+    { type: "paragraph", text: "6. Judging quality by appearance. Uniform colour and a glossy surface guarantee nothing. Real quality is in the test certificate: OIT, hydrostatic pressure, and carbon black dispersion." },
     { type: "heading", level: 2, text: "Bukan Pipe in Gas Pipe Supply" },
     {
       type: "list",
@@ -302,6 +352,26 @@ export const enGasPillarArticle: SeoArticleSeed = {
       question: "What documentation is needed for a Bukan Pipe enquiry?",
       answer:
         "Send project specification, diameter and SDR table, material class, length, pressure and temperature conditions, and requested standard. Define supplier approval requirements, test documentation, and inspection hold points. That information helps assess supply capability and delivery proposal for the specific order.",
+    },
+    {
+      question: "What is the difference between gas and water polyethylene pipe?",
+      answer:
+        "Three differences: material grade and formulation, design coefficient (minimum 2 for gas against 1.25 for water), and marking and identification colour. Water pipe of identical wall thickness is not an approved substitute.",
+    },
+    {
+      question: "How long does polyethylene gas pipe last?",
+      answer:
+        "Standards are based on a 50-year design life under defined operating conditions. Actual service life depends on material quality, installation practice and operating temperature.",
+    },
+    {
+      question: "Can polyethylene pipe be located with a metal detector?",
+      answer:
+        "No. That is why tracer wire must be buried with the line.",
+    },
+    {
+      question: "Is coiled or straight-length pipe better?",
+      answer:
+        "Coils sharply reduce the number of joints in small diameters and speed up installation, but need re-rounding before fusion. Twelve-metre straight lengths are standard for larger diameters.",
     },
   ],
   related: {
