@@ -30,7 +30,7 @@ export const enAbout: ContentDocument = {
     },
     {
       type: "paragraph",
-      text: "That growth has been recognised by the bodies that assess the industry. The Agricultural Jihad Organization ranks Bukan Pipe in grade A among polyethylene pipe producers; at national level the factory was named a model quality unit in 1393 (2014) and a top national cooperative in 1397 (2018). The provincial titles and the licences are set out under Quality record below. Pipe is supplied directly from the factory to contractors, consulting engineers and infrastructure project owners.",
+      text: "That growth has been recognised by the bodies that assess the industry. The Agricultural Jihad Organization ranks Bukan Pipe in grade A among polyethylene pipe producers; it has been recognised at national level too, most recently as a top national cooperative in 1405 (2026). The full list of titles and licences is set out under Quality record below. Pipe is supplied directly from the factory to contractors, consulting engineers and infrastructure project owners.",
     },
     { type: "heading", level: 2, text: "Registration details" },
     {
@@ -64,19 +64,24 @@ export const enAbout: ContentDocument = {
     },
     { type: "heading", level: 2, text: "Quality record" },
     {
-      type: "paragraph",
-      text: "Bukan Pipe's quality record is not one plaque; it has been repeated over two decades by different assessing bodies. At national level, the factory was named a national model quality unit by the Iranian National Standards Organization in 1393 (2014) and a top national cooperative in 1397 (2018). At provincial level it was named a model quality unit in 1388, 1390, 1395, 1396 and 1397, and a model industrial unit in 1384, 1385, 1386, 1387 and 1388 and again in 1397; in 1391 its quality control manager was named the province's model quality control manager. It is that repetition across successive inspections that shows quality holding steady.",
+      type: "definition",
+      term: "Latest national title — 1405 (2026)",
+      text: "In Shahrivar 1405 (September 2026) the Ministry of Cooperatives, Labour and Social Welfare named Bukan Pipe a top national cooperative.",
     },
     {
       type: "paragraph",
-      text: "Alongside quality, the company was a top provincial cooperative in 1388, 1392, 1398 and 1399, and a provincial model exporter in 1389, 1391 and 1393. Behind that record are the factory's licences: the mandatory standard mark licence to INSO 14427-2 (pressure water supply, sewerage and drainage) since 1380 (2001), the mandatory standard mark licence to INSO 7607 (lateral irrigation) since 1387 (2008) and the incentive (voluntary) standard mark licence for gas to INSO 11223 since 1391 (2012); together with a research and development licence from the Ministry of Industry, Mine and Trade since 1396 (2017) and membership of the Polyethylene Pipe and Fittings Manufacturers' Association. The full list of awards and documents, with issuer and year, is on the certifications page.",
+      text: "Bukan Pipe's quality record is not one plaque; it has been repeated over two decades by different assessing bodies. At national level, the latest title is top national cooperative, awarded by the Ministry of Cooperatives, Labour and Social Welfare in 1405 (2026). Before that, in 1393 (2014) the Iranian National Standards Organization named the factory both a national model quality unit and the maker of a superior-quality polyethylene pipe; in 1397 (2018) the same ministry commended it as a cooperative at national level; and in 1381 (2002) the National Petrochemical Company named it a model customer. At provincial level it was named a model quality unit in 1388, 1390, 1395, 1396 and 1397, and a model industrial unit in 1384, 1385, 1386, 1387 and 1388 and again in 1397; in 1391 its quality control manager was named the province's model quality control manager. It is that repetition across successive inspections that shows quality holding steady.",
+    },
+    {
+      type: "paragraph",
+      text: "Alongside quality, the company was a top provincial cooperative in 1388, 1392, 1398 and 1399, and a provincial model exporter in 1389, 1391 and 1393. Behind that record are the factory's licences: the mandatory standard mark licence to INSO 7607 (lateral irrigation) since 1380 (2001), the mandatory standard mark licence to INSO 14427-2 (pressure water supply, sewerage and drainage) since 1390 (2011) and the incentive (voluntary) standard mark licence for gas to INSO 11223 since 1391 (2012); together with a research and development licence from the Ministry of Industry, Mine and Trade since 1396 (2017) and membership of the Polyethylene Pipe and Fittings Manufacturers' Association. The full list of awards and documents, with issuer and year, is on the certifications page.",
     },
     { type: "heading", level: 2, text: "Primary applications" },
     {
       type: "list",
       items: [
-        "Municipal and rural water supply, pressurised irrigation and industrial water transfer — mandatory standard mark licence to INSO 14427-2, since 1380 (2001)",
-        "Lateral irrigation — mandatory standard mark licence to INSO 7607, since 1387 (2008)",
+        "Lateral irrigation — mandatory standard mark licence to INSO 7607, since 1380 (2001)",
+        "Municipal and rural water supply, pressurised irrigation and industrial water transfer — mandatory standard mark licence to INSO 14427-2, since 1390 (2011)",
         "Gas service connections and distribution networks — incentive (voluntary) standard mark licence to INSO 11223, since 1391 (2012)",
         "Sewerage, drainage and cable protection",
         "Industrial fluid transfer where PE is specified",
@@ -247,7 +252,7 @@ export const enCertifications: ContentDocument = {
     { type: "heading", level: 2, text: "Standard mark licences" },
     {
       type: "paragraph",
-      text: "These are issued by the Iranian National Standards Organization: two mandatory licences — INSO 14427-2 for pressure water supply, sewerage and drainage since 1380 (2001), and INSO 7607 for lateral irrigation since 1387 (2008) — and one incentive (voluntary) licence, INSO 11223 for gas, since 1391 (2012). Each covers only the application named in its scope. A water supply licence is not an authorisation to produce gas pipe, and the reverse is equally true.",
+      text: "These are issued by the Iranian National Standards Organization: two mandatory licences — INSO 7607 for lateral irrigation since 1380 (2001), and INSO 14427-2 for pressure water supply, sewerage and drainage since 1390 (2011) — and one incentive (voluntary) licence, INSO 11223 for gas, since 1391 (2012). Each covers only the application named in its scope. A water supply licence is not an authorisation to produce gas pipe, and the reverse is equally true.",
     },
     {
       type: "document-table",
@@ -294,8 +299,13 @@ export const enCertifications: ContentDocument = {
     },
     { type: "heading", level: 2, text: "Awards and commendations" },
     {
+      type: "definition",
+      term: "Latest national title — 1405 (2026)",
+      text: "In Shahrivar 1405 (September 2026) the Ministry of Cooperatives, Labour and Social Welfare named Bukan Pipe a top national cooperative.",
+    },
+    {
       type: "paragraph",
-      text: "Alongside the licences, the factory has been recognised by government bodies over two decades. Two of the titles are national: model quality unit in 1393 (2014) and top national cooperative in 1397 (2018). The one that carries most weight for a pipe buyer is the Iranian National Standards Organization's \"model quality unit\" award — national in 1393 and provincial in 1388, 1390, 1395, 1396 and 1397. Provincial model industrial unit (1384–1388 and 1397), top provincial cooperative (1388, 1392, 1398 and 1399) and provincial model quality control manager (1391) complete the list. A title repeated across consecutive years says something a single plaque does not: that quality held up across successive inspections.",
+      text: "Alongside the licences, the factory has been recognised by government bodies over two decades. The national titles, newest first: top national cooperative from the Ministry of Cooperatives, Labour and Social Welfare (1405, 2026); commended cooperative at national level from the same ministry (1397); national model quality unit and superior product quality for polyethylene pipe from the Iranian National Standards Organization (both 1393); and model customer of the National Petrochemical Company (1381). The one that carries most weight for a pipe buyer is the Iranian National Standards Organization's \"model quality unit\" award — national in 1393 and provincial in 1388, 1390, 1395, 1396 and 1397. Provincial model industrial unit (1384–1388 and 1397), top provincial cooperative (1388, 1392, 1398 and 1399) and provincial model quality control manager (1391) complete the list. A title repeated across consecutive years says something a single plaque does not: that quality held up across successive inspections.",
     },
     {
       type: "paragraph",
@@ -349,7 +359,7 @@ export const enCertifications: ContentDocument = {
     {
       question: "Which standards does Bukan Pipe hold?",
       answer:
-        "Two mandatory licences and one incentive licence: the mandatory standard mark licence to INSO 14427-2 for pressure water supply, sewerage and drainage (since 1380); the mandatory licence to INSO 7607 for lateral irrigation (since 1387); and the incentive (voluntary) standard mark licence for gas to INSO 11223 (since 1391). Each licence covers only its own application.",
+        "Two mandatory licences and one incentive licence: the mandatory standard mark licence to INSO 7607 for lateral irrigation (since 1380); the mandatory licence to INSO 14427-2 for pressure water supply, sewerage and drainage (since 1390); and the incentive (voluntary) standard mark licence for gas to INSO 11223 (since 1391). Each licence covers only its own application.",
     },
     {
       question: "How is a standard mark licence different from ISO 9001?",

@@ -125,7 +125,7 @@ export const awards: readonly Award[] = [
     year: "1397",
     level: "ملی",
     issuer: { fa: "وزارت تعاون، کار و رفاه اجتماعی", en: "Ministry of Cooperatives, Labour and Social Welfare" },
-    title: { fa: "تعاونی برتر ملی در سال 1397 (عبارت روی لوح: «تعاونی شایسته تقدیر»)", en: "Top national cooperative (plaque wording: “commended cooperative”)" },
+    title: { fa: "انتخاب به عنوان «تعاونی شایسته تقدیر»", en: "Cooperative commended at national level" },
   },
   {
     id: "award-2",

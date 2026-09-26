@@ -49,6 +49,26 @@ export const companyDocuments: readonly CompanyDocument[] = [
   // --- National standard marks: water and irrigation are mandatory, gas is
   // an incentive (voluntary) mark -----------------------------------------------
   {
+    id: "standard-mark-irrigation",
+    group: "standard-mark",
+    title: {
+      fa: "پروانه کاربرد علامت استاندارد اجباری — آبیاری",
+      en: "Mandatory standard mark licence — irrigation",
+    },
+    issuer: {
+      fa: "سازمان ملی استاندارد ایران — اداره کل استاندارد آذربایجان غربی",
+      en: "Iranian National Standards Organization — West Azerbaijan",
+    },
+    reference: "6105139804",
+    issued: "۱۳۸۰/۰۵/۱۵",
+    renewed: "۱۴۰۴/۰۵/۱۵",
+    scope: {
+      fa: "استاندارد ملی ۷۶۰۷ — لوله‌های پلی اتیلن بدون قطره‌چکان و قطره‌چکان‌دار برای کاربرد آبیاری؛ پروانه مربوط به لوله تک‌لایه بدون قطره‌چکان",
+      en: "INSO 7607 — polyethylene pipes with and without emitters for irrigation; the licence covers single-layer pipe without emitters",
+    },
+    publish: true,
+  },
+  {
     id: "standard-mark-water",
     group: "standard-mark",
     title: {
@@ -85,26 +105,6 @@ export const companyDocuments: readonly CompanyDocument[] = [
     scope: {
       fa: "استاندارد ملی ۱۱۲۲۳ — لوله‌های پلاستیکی از جنس پلی اتیلن برای کاربرد گازرسانی؛ لوله تک‌لایه بدون نوار باریک شناسایی",
       en: "INSO 11223 — polyethylene pipes for gas supply; single-layer pipe without identification stripe",
-    },
-    publish: true,
-  },
-  {
-    id: "standard-mark-irrigation",
-    group: "standard-mark",
-    title: {
-      fa: "پروانه کاربرد علامت استاندارد اجباری — آبیاری",
-      en: "Mandatory standard mark licence — irrigation",
-    },
-    issuer: {
-      fa: "سازمان ملی استاندارد ایران — اداره کل استاندارد آذربایجان غربی",
-      en: "Iranian National Standards Organization — West Azerbaijan",
-    },
-    reference: "6105139804",
-    issued: "۱۳۸۰/۰۵/۱۵",
-    renewed: "۱۴۰۴/۰۵/۱۵",
-    scope: {
-      fa: "استاندارد ملی ۷۶۰۷ — لوله‌های پلی اتیلن بدون قطره‌چکان و قطره‌چکان‌دار برای کاربرد آبیاری؛ پروانه مربوط به لوله تک‌لایه بدون قطره‌چکان",
-      en: "INSO 7607 — polyethylene pipes with and without emitters for irrigation; the licence covers single-layer pipe without emitters",
     },
     publish: true,
   },
