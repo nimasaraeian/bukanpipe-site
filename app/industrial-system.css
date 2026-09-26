@@ -3301,3 +3301,101 @@
 
 
 
+
+/*
+ * Product-render heroes (application and product detail pages), dark theme.
+ *
+ * These read as washed out because the dark fade was sitting on the wrong
+ * side. On the Persian page the copy is on the visual left at desktop width
+ * and on the right below it, but the shade ran from the opposite edge both
+ * times, so the darkest part of the gradient lay over the pipe and its logo,
+ * and a heavy top and bottom shade dimmed what was left. The image itself has
+ * no opacity or filter on it.
+ *
+ * The renders sit on a near-black ground, so at desktop width the whole
+ * product is shown in the half opposite the copy (contain, anchored to that
+ * side, feathered into the page) and the copy stands on the page ground. Below
+ * 1024px the copy has to sit on the photo, so the shade is drawn only behind
+ * the copy column, from the copy's own side, and the lettering carries a soft
+ * shadow. Light theme already lays these out side by side and is untouched.
+ */
+@media (min-width: 1024px) {
+  html[data-theme="dark"] .ind-page-hero--product-photo {
+    min-height: clamp(26rem, 52vh, 34rem);
+  }
+
+  html[data-theme="dark"] .ind-page-hero--product-photo .ind-page-hero-photo,
+  html[data-theme="dark"][dir="rtl"] .ind-page-hero--product-photo .ind-page-hero-photo {
+    transform: none;
+    object-fit: contain;
+    object-position: 100% 50%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 38%, #000 52%);
+    mask-image: linear-gradient(90deg, transparent 38%, #000 52%);
+  }
+
+  /* the copy is on the left in both languages here */
+  html[data-theme="dark"] .ind-page-hero--product-photo .ind-page-hero-shade-left,
+  html[data-theme="dark"][dir="rtl"] .ind-page-hero--product-photo .ind-page-hero-shade-left {
+    background: linear-gradient(
+      90deg,
+      rgba(5, 7, 10, 0.72) 0%,
+      rgba(5, 7, 10, 0.5) 28%,
+      transparent 44%
+    );
+  }
+}
+
+html[data-theme="dark"] .ind-page-hero--product-photo .ind-page-hero-shade-top {
+  background: linear-gradient(to bottom, rgba(5, 7, 10, 0.4) 0%, transparent 16%);
+}
+
+html[data-theme="dark"] .ind-page-hero--product-photo .ind-page-hero-shade-bottom {
+  background: linear-gradient(
+    to top,
+    var(--ind-bg-base) 0%,
+    rgba(10, 16, 24, 0.55) 7%,
+    transparent 20%
+  );
+}
+
+@media (max-width: 1023.98px) {
+  /* copy on the left in English, on the right in Persian: shade that side only */
+  html[data-theme="dark"][dir="ltr"] .ind-page-hero--product-photo .ind-page-hero-shade-left {
+    background: linear-gradient(
+      90deg,
+      rgba(5, 7, 10, 0.92) 0%,
+      rgba(5, 7, 10, 0.86) 50%,
+      rgba(5, 7, 10, 0.5) 66%,
+      transparent 82%
+    );
+  }
+
+  html[data-theme="dark"][dir="rtl"] .ind-page-hero--product-photo .ind-page-hero-shade-left {
+    background: linear-gradient(
+      270deg,
+      rgba(5, 7, 10, 0.92) 0%,
+      rgba(5, 7, 10, 0.86) 50%,
+      rgba(5, 7, 10, 0.5) 66%,
+      transparent 82%
+    );
+  }
+
+  /* the title is gradient-clipped text, so a text-shadow would show through
+     its transparent fill — a drop-shadow filter sits behind the glyphs instead */
+  html[data-theme="dark"] .ind-page-hero--product-photo .ind-page-hero-title {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 14px rgba(0, 0, 0, 0.55));
+  }
+
+  html[data-theme="dark"] .ind-page-hero--product-photo :is(.ind-page-hero-lead, .ind-page-hero-breadcrumb, .ind-kicker) {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+  }
+
+  /* a step lighter than the page default, since this copy sits on a photo */
+  html[data-theme="dark"] .ind-page-hero--product-photo .ind-page-hero-lead {
+    color: rgb(206, 214, 226);
+  }
+
+  html[data-theme="dark"] .ind-page-hero--product-photo .ind-kicker {
+    color: rgb(110, 196, 255);
+  }
+}
