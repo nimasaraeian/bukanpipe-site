@@ -68,9 +68,15 @@ describe("structured data coverage", () => {
     });
   });
 
-  it("gives every product page a Product, and no other page one", () => {
+  /*
+   * ProductModel, schema.org's "datasheet or vendor specification", rather
+   * than Product, which it defines as something *offered*. These pages quote
+   * nothing, so the offer-less Product was a claim the page could not back.
+   */
+  it("gives every product page a ProductModel, and no other page one", () => {
     every((doc, types) => {
-      expect(types.includes("Product"), doc.path).toBe(doc.kind === "product");
+      expect(types.includes("ProductModel"), doc.path).toBe(doc.kind === "product");
+      expect(types, doc.path).not.toContain("Product");
     });
   });
 
@@ -121,7 +127,7 @@ describe("structured data coverage", () => {
     every((doc) => {
       if (doc.kind !== "product") return;
       const product = contentDocumentSchemas(doc, localePath(doc.locale)).find(
-        (s) => s["@type"] === "Product",
+        (s) => s["@type"] === "ProductModel",
       ) as { additionalProperty?: { name: string; value: string }[]; material?: string };
 
       const rows = doc.sections.flatMap((b) => (b.type === "spec-table" ? b.rows : []));

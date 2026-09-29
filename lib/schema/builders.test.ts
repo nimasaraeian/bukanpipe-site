@@ -109,7 +109,7 @@ describe("structured data builders", () => {
     expect(site.publisher).toEqual({ "@id": entityIds.organization });
   });
 
-  it("omits Product offers and unverified specifications", () => {
+  it("omits offers and unverified specifications", () => {
     const schema = productSchema({
       id: "draft-1",
       slug: "example",
@@ -119,7 +119,7 @@ describe("structured data builders", () => {
       updatedAt: "2026-09-03",
     });
 
-    expect(schema["@type"]).toBe("Product");
+    expect(schema["@type"]).toBe("ProductModel");
     expect(schema.offers).toBeUndefined();
     expect(schema.brand).toMatchObject({ name: "Bukan Pipe" });
     expect(schema.manufacturer).toEqual({ "@id": entityIds.organization });

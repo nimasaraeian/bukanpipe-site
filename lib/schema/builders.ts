@@ -232,10 +232,16 @@ export function breadcrumbListSchema(
   };
 }
 
+/**
+ * The older builder, for the `Product` content model. No page renders it —
+ * product pages go through contentProductSchema — but it is kept in step
+ * with that one so it cannot quietly reintroduce the offer-less Product the
+ * comment below describes.
+ */
 export function productSchema(product: Product): Record<string, unknown> {
   return omitUndefined({
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "ProductModel",
     name: product.title,
     description: product.description,
     url: canonicalUrl(`/products/${product.slug}`),
@@ -249,9 +255,33 @@ export function productSchema(product: Product): Record<string, unknown> {
 }
 
 /*
- * No offers, and no price. The site publishes neither — every product page
- * sends the reader to a quote — and an offer with no price is an invitation
- * for Google to show a blank one.
+ * ProductModel, not Product.
+ *
+ * Search Console was reporting "Either offers, review, or aggregateRating
+ * should be specified" on every product page. The cause is in schema.org's
+ * own definition: a Product is "any *offered* product or service", so a
+ * consumer is entitled to ask what the offer is. These pages make no offer.
+ * They are what schema.org calls a ProductModel — "a datasheet or vendor
+ * specification of a product (in the sense of a prototypical description)" —
+ * which is exactly what a pipe family published as a dimension table across
+ * diameters and pressure classes is. Nothing on the page is a purchasable
+ * item with a price; every one of them sends the reader to a quote.
+ *
+ * The alternative considered was ItemPage with the product nested inside
+ * mainEntity. It is the wrong tool twice over: ItemPage describes the page
+ * rather than the thing, and the vocabulary does not allow brand,
+ * manufacturer or additionalProperty on it, so the specification would have
+ * had to sit in a nested Product anyway — the same node, one level down.
+ *
+ * ProductModel is a subclass of Product, so this is a narrowing rather than
+ * a retreat: everything true of the page before is still declared, and the
+ * grade, diameters and pressure classes are still there to be read. What
+ * changes is that the markup no longer says a sale is on offer, so there is
+ * no missing price to report.
+ *
+ * Still no offers and no price, and there never can be while the site
+ * publishes neither. An offer without a price is an invitation for Google to
+ * show a blank one, and a made-up price is worse than the warning.
  */
 export function contentProductSchema(input: {
   name: string;
@@ -265,7 +295,7 @@ export function contentProductSchema(input: {
 }): Record<string, unknown> {
   return omitUndefined({
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "ProductModel",
     name: input.name,
     description: input.description,
     url: input.url,

@@ -170,8 +170,8 @@ describe("Google rich result requirements", () => {
   const ofType = (type: string) =>
     nodes.filter(({ node }) => typesOf(node).includes(type));
 
-  it("gives every Product a name and an image", () => {
-    const products = ofType("Product");
+  it("gives every ProductModel a name and an image", () => {
+    const products = ofType("ProductModel");
     expect(products.length).toBeGreaterThan(0);
     for (const { page, node } of products) {
       expect(node.name, page).toEqual(expect.any(String));
