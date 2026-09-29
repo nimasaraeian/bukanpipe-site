@@ -10,7 +10,7 @@ const SOURCES = [
   "media/demo/bukan-slide-02-extrusion.png",
   "media/demo/bukan-slide-03-product.png",
   "media/demo/bukan-slide-04-inventory.png",
-  "media/demo/ChatGPT Image Sep 8, 2026, 10_35_51 AM.png",
+  "media/brand/bukan-pipe-factory-aerial-view.png",
   "media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
   "media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (4).png",
   "media/brand/applications-hero.png",

@@ -159,7 +159,7 @@ export const enTechnicalHub: ContentDocument = {
     {
       question: "Which standard governs my project?",
       answer:
-        "The application decides, not the pipe. Potable water, gas and irrigation each have their own national standard, and for water and gas compliance is mandatory. The water supply and gas guides cover that split.",
+        "The application decides, not the pipe. Potable water, gas and irrigation each have their own national standard, and for water supply compliance is mandatory, while the gas mark is an incentive (voluntary) one. The water supply and gas guides cover that split.",
     },
   ],
   related: {
@@ -208,7 +208,7 @@ export const enPillarPolyethylene: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "High-density polyethylene (HDPE) pipe is widely used in water supply, gas distribution, irrigation, sewerage, drainage and industrial networks. Bukan Pipe has manufactured single-wall PE pipe since 1997, up to 630 mm outside diameter.",
+      text: "High-density polyethylene (HDPE) pipe is widely used in water supply, gas distribution, irrigation, sewerage, drainage and industrial networks. Bukan Pipe has manufactured single-wall PE pipe since 1997, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR).",
     },
     { type: "heading", level: 2, text: "PE and HDPE terminology" },
     {
@@ -220,7 +220,7 @@ export const enPillarPolyethylene: ContentDocument = {
       type: "list",
       items: [
         "Water supply — INSO 14427-2 for qualifying Bukan Pipe production",
-        "Gas distribution branches — EN 1555, INSO 11233, IGS-M-PL-014-1 where applicable",
+        "Gas distribution branches — EN 1555, INSO 11223, IGS-M-PL-014-1 where applicable",
         "Pressurised irrigation and agricultural mains",
         "Sewerage and surface drainage",
         "Cable protection and industrial transfer where specified",
@@ -373,6 +373,11 @@ export const enPipeDimensionsChart: ContentDocument = {
       type: "internal-links",
       title: "Next steps",
       links: [
+        {
+          label: "HDPE gas pipe guide",
+          path: "/technical-center/gas-polyethylene-pipe-guide",
+          hint: "MOP for PE80 and PE100, the gas design coefficient and INSO 11223",
+        },
         {
           label: "Pipeline design calculator",
           path: "/calculator/pipeline-design",

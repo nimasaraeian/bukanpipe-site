@@ -26,9 +26,9 @@ export const OG_IMAGES = {
     alt: "Bukan Pipe HDPE pipe factory — Bukan, Iran",
   },
   about: {
-    url: "/media/demo/ChatGPT Image Sep 8, 2026, 10_35_51 AM.png",
-    width: 1536,
-    height: 1024,
+    url: "/media/brand/bukan-pipe-factory-aerial-view-og.jpg",
+    width: 1200,
+    height: 630,
     alt: "Bukan Pipe manufacturing facility aerial view — Bukan, West Azerbaijan",
   },
   products: DEFAULT_OG_IMAGE,

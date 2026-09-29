@@ -15,7 +15,7 @@ export const enPe100TechnicalGuideSeed: SeoArticleSeed = {
   sections: [
     {
       type: "paragraph",
-      text: "Designers specify PE100 when higher allowable stress enables thinner walls or higher pressure at the same outside diameter (SDR). Bukan Pipe produces PE100 HDPE pipes up to 630 mm OD for water, gas and industrial networks.",
+      text: "Designers specify PE100 when higher allowable stress enables thinner walls or higher pressure at the same outside diameter (SDR). Bukan Pipe produces PE100 HDPE pipes from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR) for water, gas and industrial networks.",
     },
     { type: "heading", level: 2, text: "MRS and hoop stress" },
     {
@@ -34,9 +34,9 @@ export const enPe100TechnicalGuideSeed: SeoArticleSeed = {
         { label: "PE100 MRS", value: "10 MPa" },
         { label: "PE80 MRS", value: "8 MPa" },
         { label: "PN reference temperature", value: "20 °C for marked PN on supply pipe" },
-        { label: "Maximum OD (Bukan Pipe)", value: "630 mm single-wall HDPE" },
+        { label: "Production range (Bukan Pipe)", value: "Single-wall HDPE, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR)" },
       ],
-      note: "Project-specific diameter, SDR and PN tables are issued on request.",
+      note: "The catalogue diameter, wall thickness and SDR tables are published in the HDPE pipe dimensions chart; for a project order, confirm the final specification with sales.",
     },
     { type: "heading", level: 2, text: "PE100 vs PE80 in practice" },
     {
@@ -50,7 +50,7 @@ export const enPe100TechnicalGuideSeed: SeoArticleSeed = {
     { type: "heading", level: 2, text: "Standards context" },
     {
       type: "paragraph",
-      text: "Qualifying water supply production references INSO 14427-2. Gas projects may reference EN 1555, INSO 11233 and utility documents such as IGS-M-PL-014-1. Always follow the engineer's basis of design.",
+      text: "Qualifying water supply production references INSO 14427-2. Gas projects may reference EN 1555, INSO 11223 and utility documents such as IGS-M-PL-014-1. Always follow the engineer's basis of design.",
     },
   ],
   related: {

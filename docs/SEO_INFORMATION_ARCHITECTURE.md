@@ -174,7 +174,7 @@ Candidate methods discussed in strategy (OIT, hydrostatic, MFI, carbon black, de
 **Hub:** `/standards`  
 Product/process standards and certificates that procurement asks for.
 
-- Child URLs: `/standards/{code-slug}` only for verified codes (example legacy *claims* such as EN 1555 / INSO 11233 / IGS-M-PL-014-1 are not approved for publication yet).
+- Child URLs: `/standards/{code-slug}` only for verified codes (example legacy *claims* such as EN 1555 / INSO 11223 / IGS-M-PL-014-1 are not approved for publication yet).
 - Laboratory accreditation lives under `/laboratory/accreditation`, not as a duplicate standards page.
 - Company awards live on `/about` only with dated evidence; they are not SEO award farms.
 

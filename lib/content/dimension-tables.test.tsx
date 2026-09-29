@@ -142,6 +142,21 @@ describe("rendered tables match the JSON row for row", () => {
     expect(html).toContain("630");
   });
 
+  it("names its source above every table and sends orders to sales below it", () => {
+    for (const [locale, source, note, quote] of [
+      ["fa", "منبع: کاتالوگ رسمی بوکان پایپ", "برای سفارش پروژه، مشخصات نهایی را با واحد فروش تأیید کنید", "/fa/request-quote"],
+      ["en", "Source: official Bukan Pipe catalogue", "confirm the final specification with our sales team", "/en/request-quote"],
+    ] as const) {
+      for (const Table of [WaterSupplyDimensionTable, GasSupplyDimensionTable, DripIrrigationDimensionTable]) {
+        const html = renderToStaticMarkup(<Table locale={locale} />);
+        expect(html.indexOf(source), `${locale} source`).toBeGreaterThan(-1);
+        expect(html.indexOf(source)).toBeLessThan(html.indexOf("<table"));
+        expect(html.indexOf(note)).toBeGreaterThan(html.indexOf("</table>"));
+        expect(html).toContain(`href="${quote}"`);
+      }
+    }
+  });
+
   it("only renders the rows an excerpt asks for", () => {
     const html = renderToStaticMarkup(
       <WaterSupplyDimensionTable locale="fa" only={new Set([63, 110])} />,
@@ -202,8 +217,16 @@ describe("the two pages", () => {
 });
 
 describe("pages that point at the tables", () => {
-  const FA_SOURCES = ["/technical-center", "/polyethylene-pipe"];
-  const EN_SOURCES = ["/technical-center", "/polyethylene-pipe"];
+  const FA_SOURCES = [
+    "/technical-center",
+    "/polyethylene-pipe",
+    "/technical-center/polyethylene-pipe-complete-guide",
+  ];
+  const EN_SOURCES = [
+    "/technical-center",
+    "/polyethylene-pipe",
+    "/technical-center/polyethylene-pipe-complete-guide",
+  ];
 
   it("the technical hub and the PE guide link to the table page", () => {
     for (const path of FA_SOURCES) {

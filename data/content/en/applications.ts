@@ -214,7 +214,7 @@ export const enApplications: readonly ContentDocument[] = [
       { type: "heading", level: 2, text: "Which part of a gas network is polyethylene" },
       {
         type: "paragraph",
-        text: "In gas systems, polyethylene does the distribution and service work — from the pressure reduction station onward, to the customer's service valve. High-pressure transmission remains steel. The governing product standard in Iran is INSO 11233-2, and the yellow body or yellow stripe is a convention so that a later excavation distinguishes the gas line from the water line at a glance.",
+        text: "In gas systems, polyethylene does the distribution and service work — from the pressure reduction station onward, to the customer's service valve. High-pressure transmission remains steel. The governing product standard in Iran is INSO 11223, and the yellow body or yellow stripe is a convention so that a later excavation distinguishes the gas line from the water line at a glance.",
       },
       { type: "heading", level: 2, text: "Why electrofusion is the accepted method" },
       {
@@ -245,7 +245,7 @@ export const enApplications: readonly ContentDocument[] = [
       {
         question: "Up to what pressure can PE gas pipe be used?",
         answer:
-          "Its role is distribution and service connection, not high-pressure transmission. The maximum operating pressure is set by INSO 11233-2 and the gas company specification on the basis of SDR and material grade, and must be taken from the project documents.",
+          "Its role is distribution and service connection, not high-pressure transmission. The maximum operating pressure is set by INSO 11223 and the gas company specification on the basis of SDR and material grade, and must be taken from the project documents.",
       },
       {
         question: "How does gas pipe differ from water pipe?",

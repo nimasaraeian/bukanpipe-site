@@ -70,7 +70,7 @@ Raw report: `docs/lighthouse-en-home-mobile.json`
 | No unverified global positioning | PASS — no "global leader", "worldwide exporter" |
 | Established 1997 (1376 validated) | PASS — About, home manufacturing |
 | No "30+ years" exaggeration | PASS |
-| Verified standards only as compliance claims | PASS — INSO 14427-2 water; EN 1555 / INSO 11233 / IGS gas |
+| Verified standards only as compliance claims | PASS — INSO 14427-2 water; EN 1555 / INSO 11223 / IGS gas |
 | ISO/IEC 17025 not claimed without certificate | PASS — framework language only |
 | No fabricated specs (OD, SDR, PN tables) | PASS — spec CTA to sales |
 | Single H1 per page | PASS — via ContentDocumentPage |

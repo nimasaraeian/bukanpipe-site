@@ -59,7 +59,7 @@ export const dictionaryEn = {
       purpose:
         "HDPE / PE100 pipe manufacturer positioning for international buyers, engineers and procurement teams.",
       seoDescription:
-        "Bukan Pipe — HDPE and PE100 pipe manufacturer for water supply, gas distribution and irrigation. Factory in Bukan, Iran since 1997.",
+        "Bukan Pipe — HDPE and PE100 pipe manufacturer for water supply, gas distribution and irrigation, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar. Factory in Bukan, Iran since 1997.",
     },
     products: {
       title: "Products",
@@ -167,7 +167,7 @@ export const dictionaryEn = {
       purpose:
         "Factory identity and company narrative. Timeline, capacity and certification claims require verification.",
       seoDescription:
-        "About Bukan Pipe — HDPE pipe manufacturer in Bukan, Iran. Company history, quality control and certifications.",
+        "About Bukan Pipe — HDPE pipe manufacturer in Bukan, Iran, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar. Company history, quality control and certifications.",
     },
   },
   footer: {
@@ -175,7 +175,7 @@ export const dictionaryEn = {
     socialLabel: "Social and messaging",
     credit: "Design & development by Nima Saraeian",
     description:
-      "Polyethylene pipe manufacturing for water, gas, irrigation and infrastructure applications.",
+      "Polyethylene pipe manufacturing for water, gas, irrigation and infrastructure applications, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar.",
     columns: {
       solutions: {
         title: "Solutions",
@@ -231,7 +231,7 @@ export const dictionaryEn = {
       titleLine2: "water, gas and irrigation systems",
       titleLine3: "",
       subtitle:
-        "Single-wall HDPE pipe up to 630 mm OD — manufacturing, QC and laboratory testing at our Bukan factory since 1997.",
+        "Single-wall HDPE pipe from 16 mm to 630 mm, pressure rating 2.5 to 25 bar — manufacturing, QC and laboratory testing at our Bukan factory since 1997.",
       ctaPrimary: "Request a Quote",
       ctaProducts: "View Products",
       ctaTechnical: "Technical Center",
@@ -241,7 +241,7 @@ export const dictionaryEn = {
     },
     floatCards: [
       { title: "SINCE 1997", subtitle: "Polyethylene pipe production" },
-      { title: "630 mm OD", subtitle: "Single-wall extrusion capacity" },
+      { title: "16–630 mm", subtitle: "Pressure rating 2.5 to 25 bar" },
     ],
     trustItems: [
       { title: "INSO 14427-2", subtitle: "Water supply production standard" },

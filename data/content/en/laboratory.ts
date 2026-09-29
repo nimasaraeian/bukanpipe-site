@@ -261,7 +261,7 @@ export const enLaboratoryPages: readonly ContentDocument[] = [
         rows: [
           {
             label: "Product standard",
-            value: "Such as INSO 14427-2 for water supply or INSO 11233-2 for gas. It fixes the dimensions, strength and marking the pipe must have. The mandatory standard mark licence rests on this.",
+            value: "Such as INSO 14427-2 for water supply or INSO 11223 for gas. It fixes the dimensions, strength and marking the pipe must have. The standard mark licence rests on this — mandatory for water supply, an incentive (voluntary) mark for gas.",
           },
           {
             label: "Test method standard",

@@ -130,7 +130,7 @@ Products: water, gas, irrigation, **industrial (new)**, PE100, sewer, drainage.
 
 ### P2 — Long-tail SEO
 
-- [ ] Standards hub pages (INSO 14427-2, INSO 11233) as articles
+- [ ] Standards hub pages (INSO 14427-2, INSO 11223) as articles
 - [ ] Electrofusion vs butt fusion decision tree (interactive)
 - [ ] Cable protection product landing (application exists, no product slug)
 

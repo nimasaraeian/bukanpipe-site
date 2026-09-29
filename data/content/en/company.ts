@@ -9,7 +9,7 @@ export const enAbout: ContentDocument = {
   title: "The Bukan Polyethylene Pipe Factory",
   seoTitle: "About Bukan Pipe | HDPE Pipe Manufacturer, Iran",
   seoDescription:
-    "Bukan Pipe manufactures single-wall HDPE and PE100 polyethylene pipe up to 630 mm OD for water, gas, agriculture and industrial networks in West Azerbaijan.",
+    "Bukan Pipe makes single-wall HDPE and PE100 pipe from 16 mm to 630 mm, pressure rating 2.5 to 25 bar, for water, gas, agriculture and industry in West Azerbaijan.",
   description:
     "Single-wall HDPE and PE100 polyethylene pipe for water, gas, agriculture and industrial networks — manufactured in Bukan, West Azerbaijan.",
   primaryKeyword: "HDPE pipe manufacturer",
@@ -17,7 +17,7 @@ export const enAbout: ContentDocument = {
   status: "published",
   evidenceStatus: "candidate",
   verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
+  lastReviewed: "2026-09-26",
   references: ["https://bukanpipe.com/about_us/"],
   breadcrumbs: [
     { label: "Home", path: "/" },
@@ -26,7 +26,11 @@ export const enAbout: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "The company was founded in 1373 in the Iranian calendar (1994) under registration number 121, and the factory came into operation in 1376 (1997). It manufactures single-wall polyethylene pipe in Bukan, West Azerbaijan, up to 630 mm outside diameter (25 in) across a range of wall thicknesses and pressure classes, in PE80 and PE100.",
+      text: "The company was registered in 1373 in the Iranian calendar (1994) under registration number 121, and the factory was established in 1376 (1997) with machinery purchased from Cincinnati of Austria, starting out on two production lines. It has grown steadily since, and today runs seven production lines with a nominal capacity of 14,000 tonnes a year, manufacturing single-wall polyethylene pipe in Bukan, West Azerbaijan, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR), in PE80 and PE100.",
+    },
+    {
+      type: "paragraph",
+      text: "That growth has been recognised by the bodies that assess the industry. The Agricultural Jihad Organization ranks Bukan Pipe in grade A among polyethylene pipe producers; it has been recognised at national level too, most recently as a top national cooperative in 1405 (2026). The full list of titles and licences is set out under Quality record below. Pipe is supplied directly from the factory to contractors, consulting engineers and infrastructure project owners.",
     },
     { type: "heading", level: 2, text: "Registration details" },
     {
@@ -47,7 +51,7 @@ export const enAbout: ContentDocument = {
     { type: "heading", level: 2, text: "Licensed capacity" },
     {
       type: "paragraph",
-      text: "The industrial operating licence sets a permitted annual capacity per product: 14,000 tonnes per year in total, on three shifts. This is the licence ceiling rather than output in any particular year.",
+      text: "Production today runs on seven extrusion lines with a nominal capacity of 14,000 tonnes a year — the same total the industrial operating licence sets out per product, on three shifts. This is the capacity ceiling rather than output in any particular year.",
     },
     {
       type: "document-table",
@@ -61,16 +65,25 @@ export const enAbout: ContentDocument = {
     },
     { type: "heading", level: 2, text: "Quality record" },
     {
+      type: "definition",
+      term: "Latest national title — 1405 (2026)",
+      text: "In Shahrivar 1405 (September 2026) the Ministry of Cooperatives, Labour and Social Welfare named Bukan Pipe a top national cooperative.",
+    },
+    {
       type: "paragraph",
-      text: "Between 1388 and 1397 in the Iranian calendar (2009–2018), the Iranian National Standards Organization named the factory a model quality unit seven times, twice at national level. What distinguishes that from a single plaque is the repetition across successive inspections. The full list, with issuer and year, is on the certifications page.",
+      text: "Bukan Pipe's quality record is not one plaque; it has been repeated over two decades by different assessing bodies. At national level, the latest title is top national cooperative, awarded by the Ministry of Cooperatives, Labour and Social Welfare in 1405 (2026). Before that, in 1393 (2014) the Iranian National Standards Organization named the factory both a national model quality unit and the maker of a superior-quality polyethylene pipe; in 1397 (2018) the same ministry commended it as a cooperative at national level; and in 1381 (2002) the National Petrochemical Company named it a model customer. At provincial level it was named a model quality unit in 1388, 1390, 1395, 1396 and 1397, and a model industrial unit in 1384, 1385, 1386, 1387 and 1388 and again in 1397; in 1391 its quality control manager was named the province's model quality control manager. It is that repetition across successive inspections that shows quality holding steady.",
+    },
+    {
+      type: "paragraph",
+      text: "Alongside quality, the company was a top provincial cooperative in 1388, 1392, 1398 and 1399, and a provincial model exporter in 1389, 1391 and 1393. Behind that record are the factory's licences: the mandatory standard mark licence to INSO 7607 (lateral irrigation) since 1380 (2001), the mandatory standard mark licence to INSO 14427-2 (pressure water supply, sewerage and drainage) since 1390 (2011) and the incentive (voluntary) standard mark licence for gas to INSO 11223 since 1391 (2012); together with a research and development licence from the Ministry of Industry, Mine and Trade since 1396 (2017) and membership of the Polyethylene Pipe and Fittings Manufacturers' Association. The full list of awards and documents, with issuer and year, is on the certifications page.",
     },
     { type: "heading", level: 2, text: "Primary applications" },
     {
       type: "list",
       items: [
-        "Municipal and rural water supply, pressurised irrigation and industrial water transfer — mandatory standard mark licence to INSO 14427-2",
-        "Gas service connections and distribution networks — licence to INSO 11233-2",
-        "Irrigation — licence to INSO 7607",
+        "Lateral irrigation — mandatory standard mark licence to INSO 7607, since 1380 (2001)",
+        "Municipal and rural water supply, pressurised irrigation and industrial water transfer — mandatory standard mark licence to INSO 14427-2, since 1390 (2011)",
+        "Gas service connections and distribution networks — incentive (voluntary) standard mark licence to INSO 11223, since 1391 (2012)",
         "Sewerage, drainage and cable protection",
         "Industrial fluid transfer where PE is specified",
       ],
@@ -164,7 +177,7 @@ export const enQuality: ContentDocument = {
     { type: "heading", level: 2, text: "What ISO 9001 says, and what it does not" },
     {
       type: "paragraph",
-      text: "ISO 9001 certifies that the production and control process is documented, followed and audited. It says nothing about whether a particular pipe conforms to the standard for its application — that is the job of the mandatory standard mark licence and the batch test report. Ask for both separately when ordering.",
+      text: "ISO 9001 certifies that the production and control process is documented, followed and audited. It says nothing about whether a particular pipe conforms to the standard for its application — that is the job of the standard mark licence and the batch test report. Ask for both separately when ordering.",
     },
     {
       type: "paragraph",
@@ -194,7 +207,7 @@ export const enQuality: ContentDocument = {
     {
       question: "How does ISO 9001 differ from a standard mark licence?",
       answer:
-        "ISO 9001 covers the factory's management system and certifies that production and control are documented and audited. Conformity of a given pipe to the standard for its application is shown by the mandatory standard mark licence and the batch test report. Ask for both separately when ordering.",
+        "ISO 9001 covers the factory's management system and certifies that production and control are documented and audited. Conformity of a given pipe to the standard for its application is shown by the standard mark licence and the batch test report. Ask for both separately when ordering.",
     },
     {
       question: "How do I obtain the test report for my shipment?",
@@ -219,7 +232,7 @@ export const enCertifications: ContentDocument = {
   title: "Certifications & Licences",
   seoTitle: "HDPE Pipe Certifications | INSO Standard Marks & ISO 9001 | Bukan Pipe",
   seoDescription:
-    "Bukan Pipe certifications with numbers and issuers — INSO 14427-2, 11233-2 and 7607 standard mark licences, ISO 9001, 14001, 45001 and the industrial operating licence.",
+    "Bukan Pipe certifications with numbers and issuers — INSO 14427-2, 11223 and 7607 standard mark licences, ISO 9001, 14001, 45001 and the industrial operating licence.",
   description: "Certificates, licences and registrations with their numbers and issuing bodies.",
   primaryKeyword: "HDPE pipe certifications",
   secondaryKeywords: ["INSO pipe standard", "PE pipe manufacturer awards"],
@@ -235,17 +248,17 @@ export const enCertifications: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "For drinking water and gas networks in Iran, the document that actually decides whether a pipe may be used is the mandatory standard mark licence for that specific application — not a management system certificate. The tables below give both, each with its number, issuing body and exact scope, so any of them can be verified independently.",
+      text: "For drinking water networks in Iran, the document that actually decides whether a pipe may be used is the mandatory standard mark licence for that specific application — not a management system certificate. For gas, the standard mark is an incentive (voluntary) one and sits alongside qualification with the National Iranian Gas Company. The tables below give both, each with its number, issuing body and exact scope, so any of them can be verified independently.",
     },
-    { type: "heading", level: 2, text: "Mandatory standard mark licences" },
+    { type: "heading", level: 2, text: "Standard mark licences" },
     {
       type: "paragraph",
-      text: "These are issued by the Iranian National Standards Organization, and each covers only the application named in its scope. A water supply licence is not an authorisation to produce gas pipe, and the reverse is equally true.",
+      text: "These are issued by the Iranian National Standards Organization: two mandatory licences — INSO 7607 for lateral irrigation since 1380 (2001), and INSO 14427-2 for pressure water supply, sewerage and drainage since 1390 (2011) — and one incentive (voluntary) licence, INSO 11223 for gas, since 1391 (2012). Each covers only the application named in its scope. A water supply licence is not an authorisation to produce gas pipe, and the reverse is equally true.",
     },
     {
       type: "document-table",
       table: "standard-mark",
-      caption: "Mandatory standard mark licences",
+      caption: "Standard mark licences — two mandatory, one incentive",
       summary:
         "Dates are quoted as printed on the licence. \"Last renewed\" is a renewal date, not an expiry; verify current validity with the issuing body.",
     },
@@ -287,12 +300,17 @@ export const enCertifications: ContentDocument = {
     },
     { type: "heading", level: 2, text: "Awards and commendations" },
     {
-      type: "paragraph",
-      text: "Alongside the licences, the factory has been recognised by government bodies over two decades. The one that carries most weight for a pipe buyer is the Iranian National Standards Organization's own \"model quality unit\" award, held seven times between 1388 and 1397 (2009–2018), twice at national level. A title repeated across consecutive years says something a single plaque does not: that quality held up across successive inspections.",
+      type: "definition",
+      term: "Latest national title — 1405 (2026)",
+      text: "In Shahrivar 1405 (September 2026) the Ministry of Cooperatives, Labour and Social Welfare named Bukan Pipe a top national cooperative.",
     },
     {
       type: "paragraph",
-      text: "The archive holds 48 plaques. The table lists the 27 whose year and issuing body are printed on the document and legible. The rest are deliberately absent — a year inferred from a filename is not a date, and a second scan of the same plaque is not a second award.",
+      text: "Alongside the licences, the factory has been recognised by government bodies over two decades. The national titles, newest first: top national cooperative from the Ministry of Cooperatives, Labour and Social Welfare (1405, 2026); commended cooperative at national level from the same ministry (1397); national model quality unit and superior product quality for polyethylene pipe from the Iranian National Standards Organization (both 1393); and model customer of the National Petrochemical Company (1381). The one that carries most weight for a pipe buyer is the Iranian National Standards Organization's \"model quality unit\" award — national in 1393 and provincial in 1388, 1390, 1395, 1396 and 1397. Provincial model industrial unit (1384–1388 and 1397), top provincial cooperative (1388, 1392, 1398 and 1399) and provincial model quality control manager (1391) complete the list. A title repeated across consecutive years says something a single plaque does not: that quality held up across successive inspections.",
+    },
+    {
+      type: "paragraph",
+      text: "The archive holds 48 plaques. The table lists the 27 whose year and issuing body are printed on the document and legible. The rest are deliberately absent — a year inferred from a filename is not a date, and a second scan of the same plaque is not a second award. Seven further titles — model industrial unit 1385 to 1388, top provincial cooperative 1388 and 1392, and model quality control manager 1391 — appear in the company's official catalogue but their plaques are not in the archive; the table marks them as such.",
     },
     {
       type: "document-table",
@@ -324,7 +342,7 @@ export const enCertifications: ContentDocument = {
         {
           label: "Gas pipe guide",
           path: "/technical-center/gas-polyethylene-pipe-guide",
-          hint: "What INSO 11233-2 requires",
+          hint: "What INSO 11223 requires",
         },
         {
           label: "Complete polyethylene pipe guide",
@@ -342,12 +360,12 @@ export const enCertifications: ContentDocument = {
     {
       question: "Which standards does Bukan Pipe hold?",
       answer:
-        "Three mandatory standard mark licences: INSO 14427-2 for pressure water supply, sewerage and drainage; INSO 11233-2 for gas supply; and INSO 7607 for irrigation. Each licence covers only its own application.",
+        "Two mandatory licences and one incentive licence: the mandatory standard mark licence to INSO 7607 for lateral irrigation (since 1380); the mandatory licence to INSO 14427-2 for pressure water supply, sewerage and drainage (since 1390); and the incentive (voluntary) standard mark licence for gas to INSO 11223 (since 1391). Each licence covers only its own application.",
     },
     {
       question: "How is a standard mark licence different from ISO 9001?",
       answer:
-        "The standard mark licence is about the product — it certifies conformity to the national standard for that application and is mandatory for water and gas networks. ISO 9001 is about the factory's management system and does not substitute for it.",
+        "The standard mark licence is about the product — it certifies conformity to the national standard for that application; it is mandatory for water supply and an incentive (voluntary) mark for gas. ISO 9001 is about the factory's management system and does not substitute for it.",
     },
     {
       question: "What should I ask for on a drinking water project?",

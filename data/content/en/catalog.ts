@@ -110,7 +110,7 @@ export const enProductsHub: ContentDocument = {
     {
       question: "What sizes does Bukan Pipe produce?",
       answer:
-        "Up to 630 mm outside diameter, in PE80 and PE100. The full catalogue table of diameter, wall thickness and SDR is published in the technical centre.",
+        "From 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR), in PE80 and PE100. The full catalogue table of diameter, wall thickness and SDR is published in the technical centre.",
     },
   ],
   related: {

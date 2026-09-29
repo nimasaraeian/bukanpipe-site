@@ -10,9 +10,9 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     id: "product-water-supply-pipe",
     slug: "water-supply-pipe",
     title: "Water HDPE Pipes",
-    seoTitle: "Water HDPE Pipes | PE100 Water Supply Pipe to 630 mm | Bukan Pipe",
+    seoTitle: "Water HDPE Pipes | PE100 Water Supply Pipe 16–630 mm | Bukan Pipe",
     seoDescription:
-      "Water HDPE pipes for potable and raw water networks. Single-wall PE100 extrusion up to 630 mm OD. INSO 14427-2 production for qualifying projects.",
+      "Water HDPE pipes for potable and raw water networks: single-wall PE100 from 16 mm to 630 mm, pressure rating 2.5 to 25 bar. INSO 14427-2 for qualifying projects.",
     description:
       "HDPE water pipes for municipal, rural and industrial water transfer — smooth bore, fusion-friendly and corrosion-free in soil.",
     primaryKeyword: "water HDPE pipes",
@@ -20,7 +20,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     definition:
       "Water HDPE pipes are single-wall high-density polyethylene (PE) pressure pipes used to convey potable, raw and treated water in buried or exposed networks.",
     overview:
-      "Bukan Pipe manufactures water HDPE pipes up to 630 mm outside diameter (25 in) in a range of SDR and PN classes. For qualifying water projects, production follows INSO 14427-2 with PN marked on the pipe body at 20 °C reference temperature.",
+      "Bukan Pipe manufactures water HDPE pipes from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR). For qualifying water projects, production follows INSO 14427-2 with PN marked on the pipe body at 20 °C reference temperature.",
     specifications: baseProductSpecRows("en", [
       { label: "Material grade", value: "PE100 / PE80 per project specification" },
       { label: "Pressure marking", value: "PN at 20 °C (apply temperature derating on site)" },
@@ -79,8 +79,8 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
           "No. PN is defined at 20 °C reference. Maximum operating pressure (MOP) must include temperature and service factors from the project engineer.",
       },
       {
-        question: "What is the maximum diameter for water HDPE pipes from Bukan Pipe?",
-        answer: "Single-wall HDPE water pipe is manufactured up to 630 mm (25 in) outside diameter.",
+        question: "What size and pressure range do Bukan Pipe water HDPE pipes cover?",
+        answer: "Single-wall HDPE water pipe is manufactured from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR).",
       },
     ],
     heroImage: seoProductHeroImages.water,
@@ -91,7 +91,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     title: "Gas HDPE Pipes",
     seoTitle: "Gas HDPE Pipes | PE100 Gas Distribution Pipe | Bukan Pipe",
     seoDescription:
-      "Gas HDPE pipes for municipal and rural gas distribution. Manufactured to EN 1555, INSO 11233 and IGS-M-PL-014-1 where applicable to the project.",
+      "Gas HDPE pipes for municipal and rural gas distribution. Manufactured to EN 1555, INSO 11223 and IGS-M-PL-014-1 where applicable to the project.",
     description:
       "Single-wall polyethylene gas pipes for service connections and distribution — corrosion-resistant and suited to fusion joints.",
     primaryKeyword: "gas HDPE pipes",
@@ -99,10 +99,10 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     definition:
       "Gas HDPE pipes are polyethylene pressure pipes designed for low and medium-pressure natural gas distribution and service connections, joined primarily by electrofusion in Iran.",
     overview:
-      "Main transmission lines in gas networks are often steel. Gas HDPE pipes are widely used for urban and rural service connections and distribution branches. Bukan Pipe manufactures gas HDPE pipes aligned with EN 1555, INSO 11233 and National Iranian Gas Company reference IGS-M-PL-014-1 for qualifying projects.",
+      "Main transmission lines in gas networks are often steel. Gas HDPE pipes are widely used for urban and rural service connections and distribution branches. Bukan Pipe manufactures gas HDPE pipes aligned with EN 1555, INSO 11223 and National Iranian Gas Company reference IGS-M-PL-014-1 for qualifying projects.",
     specifications: baseProductSpecRows("en", [
       { label: "Material grade", value: "PE100 / PE80 per gas utility specification" },
-      { label: "Typical standards", value: "EN 1555, INSO 11233, IGS-M-PL-014-1 (project-specific)" },
+      { label: "Typical standards", value: "EN 1555, INSO 11223, IGS-M-PL-014-1 (project-specific)" },
       { label: "Approved jointing (Iran)", value: "Electrofusion for gas distribution networks" },
       { label: "Service", value: "Low and medium-pressure distribution and service lines" },
     ]),
@@ -141,6 +141,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       { label: "HDPE Installation Guide", path: seoLandingPaths.installGuide },
       { label: "HDPE pipe welding guide", path: seoLandingPaths.welding },
       { label: "Gas distribution applications", path: "/applications/gas-distribution" },
+      { label: "HDPE gas pipe guide", path: "/technical-center/gas-polyethylene-pipe-guide" },
       { label: "PE100 Technical Guide", path: seoLandingPaths.pe100Guide },
     ],
     references: ["https://bukanpipe.com/gas-pipe/"],
@@ -171,7 +172,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     definition:
       "Irrigation HDPE pipes are polyethylene pressure pipes that form the pressurised mains between water sources, pumps and field irrigation systems including drip and sprinkler zones.",
     overview:
-      "In agriculture, HDPE forms the pressurised mains between the well, pump station and field irrigation network. Bukan Pipe lists pressurised irrigation among the primary applications for its polyethylene pipe production up to 630 mm OD.",
+      "In agriculture, HDPE forms the pressurised mains between the well, pump station and field irrigation network. Bukan Pipe lists pressurised irrigation among the primary applications for its polyethylene pipe production from 16 mm to 630 mm, pressure rating 2.5 to 25 bar.",
     specifications: baseProductSpecRows("en", [
       { label: "Typical service", value: "Pressurised irrigation feeder mains" },
       { label: "Pressure class", value: "PN per hydraulic design and pump duty" },
@@ -236,7 +237,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     definition:
       "Industrial HDPE pipes are polyethylene pressure or gravity lines used in factories, mines and utilities to convey process water, cooling water, slurries and compatible chemicals where PE is specified by the engineer.",
     overview:
-      "HDPE is selected in industrial projects for chemical resistance, joint integrity and durability in corrosive soil. Bukan Pipe supplies industrial HDPE pipes in PE100 and other grades per project specification, with production up to 630 mm OD.",
+      "HDPE is selected in industrial projects for chemical resistance, joint integrity and durability in corrosive soil. Bukan Pipe supplies industrial HDPE pipes in PE100 and other grades per project specification, with production from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR).",
     specifications: baseProductSpecRows("en", [
       { label: "Material grade", value: "PE100 / PE80 per process specification" },
       { label: "Chemical compatibility", value: "Project-specific — confirm fluid and concentration with engineer" },
@@ -299,7 +300,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     specifications: baseProductSpecRows("en", [
       { label: "MRS", value: "10 MPa (PE100 designation)" },
       { label: "Design benefit", value: "Higher PN or reduced wall thickness vs PE80 at same SDR" },
-      { label: "Typical standards", value: "INSO 14427-2 (water), EN 1555 / INSO 11233 (gas) — project-specific" },
+      { label: "Typical standards", value: "INSO 14427-2 (water), EN 1555 / INSO 11223 (gas) — project-specific" },
     ]),
     advantages: [
       "Higher MRS — smaller diameter or higher pressure in design",

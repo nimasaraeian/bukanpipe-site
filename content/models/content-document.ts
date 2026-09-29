@@ -20,7 +20,8 @@ export type ContentBlock =
         | "gas-supply"
         | "drip-irrigation"
         | "supply-form"
-        | "supply-form-sewerage";
+        | "supply-form-sewerage"
+        | "gas-pressure";
     }
   | {
       /**

@@ -5,7 +5,7 @@ import {
   postalAddressSchema,
 } from "@/lib/config/contact";
 import { canonicalUrl } from "@/lib/seo/canonical";
-import { organizationLogoObject, organizationLogoUrl } from "@/lib/seo/page-config";
+import { organizationLogoObject } from "@/lib/seo/page-config";
 import { omitUndefined } from "@/lib/schema/serialize";
 import type { Locale } from "@/lib/i18n/config";
 import type { Article } from "@/content/models/article";
@@ -144,7 +144,9 @@ export function organizationSchema(locale: Locale = siteConfig.defaultLocale): R
     description: siteConfig.organizationDescription,
     url: siteConfig.siteUrl,
     logo: organizationLogoObject(),
-    image: organizationLogoUrl(),
+    /* the factory itself, not the logo — main brought this in while this
+       branch was merging the two company nodes into one */
+    image: `${siteConfig.siteUrl}/media/brand/bukan-pipe-factory-aerial-view.png`,
     isicV4: "2220",
     naics: "326122",
     address: postalAddressSchema(),

@@ -22,7 +22,7 @@
 | URL | کلمه اصلی | کلمات ثانویه | Intent |
 |-----|-----------|--------------|--------|
 | `/products/water-supply-pipe` | لوله پلی اتیلن آبرسانی | انتقال آب، HDPE آبرسانی | commercial |
-| `/products/gas-pipe` | لوله پلی اتیلن گاز | گازرسانی، INSO 11233 | commercial |
+| `/products/gas-pipe` | لوله پلی اتیلن گاز | گازرسانی، INSO 11223 | commercial |
 | `/products/irrigation-pipe` | لوله آبیاری پلی اتیلن | کشاورزی، خط اصلی | commercial |
 | `/products/industrial-pipe` | لوله پلی اتیلن صنعتی | HDPE صنعتی | commercial |
 | `/products/pe100-pipe` | لوله پلی اتیلن PE100 | تولیدکننده PE100 | commercial |

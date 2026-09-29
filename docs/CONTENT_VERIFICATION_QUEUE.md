@@ -27,7 +27,7 @@ Classification key:
 
 | Claim | Status | Notes |
 |---|---|---|
-| گاز: EN 1555, INSO 11233, IGS-M-PL-014-1 | VERIFIED_LEGACY | gas-pipe page |
+| گاز: EN 1555, INSO 11223, IGS-M-PL-014-1 | VERIFIED_LEGACY | gas-pipe page |
 | اولین تولیدکننده گاز در شمال‌غرب | VERIFY_BEFORE_PRODUCTION | ادعای بازاری — حذف از copy عمومی |
 | آب: INSO 14427-2 | VERIFIED_LEGACY | temp article |
 | جدول SDR/PN/وزن | MISSING_SOURCE | spec CTA only |
