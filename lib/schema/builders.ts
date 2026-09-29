@@ -1,6 +1,7 @@
 import { siteConfig } from "@/lib/config/site";
 import {
   contactConfig,
+  getGoogleMapsDirectionsUrl,
   getMessagingChatUrl,
   postalAddressSchema,
 } from "@/lib/config/contact";
@@ -73,6 +74,21 @@ export const entityIds = {
 /** A reference to the company, for the manufacturer and publisher slots. */
 export function organizationRef(): Record<string, unknown> {
   return { "@id": entityIds.organization };
+}
+
+/**
+ * The factory's coordinate, for the LocalBusiness half of the node.
+ *
+ * Only emitted where contactConfig actually holds a pin. It stood empty for
+ * a long time and nothing was declared, which was the right answer then: a
+ * guessed latitude sends a lorry to the wrong field. The same coordinate is
+ * what the contact page's map and its directions link point at, so the
+ * reader and the search engine are given the same place.
+ */
+function geoSchema(): Record<string, unknown> | undefined {
+  const { latitude, longitude } = contactConfig.factory.googleMaps;
+  if (latitude === null || longitude === null) return undefined;
+  return { "@type": "GeoCoordinates", latitude, longitude };
 }
 
 /**
@@ -150,6 +166,9 @@ export function organizationSchema(locale: Locale = siteConfig.defaultLocale): R
     isicV4: "2220",
     naics: "326122",
     address: postalAddressSchema(),
+    geo: geoSchema(),
+    /* the same link the contact page offers under the map */
+    hasMap: getGoogleMapsDirectionsUrl(),
     /*
      * foundingDate is the company's registration, 1373/06/26 in the Iranian
      * calendar, which the About page prints as "Founded 1373 (1994)". The

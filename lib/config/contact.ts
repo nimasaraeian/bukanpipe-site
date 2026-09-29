@@ -44,6 +44,9 @@ export type FactoryLocationConfig = {
     readonly embedUrl: string | null;
     readonly directionsUrl: string | null;
     readonly placeId: string | null;
+    /** The factory gate, supplied by the company. Null until they give it. */
+    readonly latitude: number | null;
+    readonly longitude: number | null;
     readonly verificationStatus: VerificationStatus;
     readonly verificationNote: string;
   };
@@ -118,10 +121,23 @@ export const contactConfig = {
     googleMaps: {
       embedUrl: null,
       directionsUrl: null,
+      /* Still null: the company gave a coordinate, not a Google Place ID. */
       placeId: null,
-      verificationStatus: "pin-pending" as const,
+      /*
+       * The factory gate, given by the company on 2026-09-29.
+       *
+       * It checks out against the address this file already states: the point
+       * is 10.5 km from the centre of Bukan on a bearing of due north, and
+       * Miandoab lies north-north-west at 347 degrees — which is the 10th
+       * kilometre of the Bukan–Miandoab road, as printed on the operating
+       * licence and on the About page. A coordinate that disagreed with the
+       * address would mean one of the two is wrong.
+       */
+      latitude: 36.615659,
+      longitude: 46.209512,
+      verificationStatus: "verified" as const,
       verificationNote:
-        "Factory Google Maps pin not verified. Embed and directions use address search until Place ID is confirmed.",
+        "Factory coordinate supplied by the company and consistent with the stated address (10.5 km north of Bukan on the Miandoab road). Map, directions and LocalBusiness geo all use it. Place ID still unconfirmed.",
     },
   } satisfies FactoryLocationConfig,
 
@@ -271,16 +287,32 @@ export function factoryAddressQuery(): string {
   return contactConfig.factory.addressLines.en.replace(/\n/g, ", ");
 }
 
+/**
+ * The map destination: the coordinate where there is one, the address text
+ * otherwise.
+ *
+ * Address search put the pin wherever Google decided "10 km Miandoab Road"
+ * was, which for a factory on a road between two towns is a guess. With the
+ * coordinate the map shows the gate, and the same point is what the
+ * LocalBusiness geo declares — so the structured data and the map a reader
+ * sees cannot drift apart.
+ */
+function mapDestination(): string {
+  const { latitude, longitude } = contactConfig.factory.googleMaps;
+  if (latitude !== null && longitude !== null) return `${latitude},${longitude}`;
+  return factoryAddressQuery();
+}
+
 export function getGoogleMapsEmbedUrl(): string {
   const { embedUrl } = contactConfig.factory.googleMaps;
   if (embedUrl) return embedUrl;
-  return `https://www.google.com/maps?q=${encodeURIComponent(factoryAddressQuery())}&output=embed`;
+  return `https://www.google.com/maps?q=${encodeURIComponent(mapDestination())}&z=15&output=embed`;
 }
 
 export function getGoogleMapsDirectionsUrl(): string {
   const { directionsUrl } = contactConfig.factory.googleMaps;
   if (directionsUrl) return directionsUrl;
-  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(factoryAddressQuery())}`;
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapDestination())}`;
 }
 
 export function postalAddressSchema(): Record<string, string> {

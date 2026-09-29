@@ -22,11 +22,17 @@ describe("contactPageSchemas", () => {
     expect(types).not.toContain("LocalBusiness");
   });
 
-  it("carries no geo coordinates, because the factory pin is unverified", () => {
+  /*
+   * The coordinate lives on the one company node, which the layout emits on
+   * every page. It was briefly tempting to repeat it here, on the page that
+   * shows the map — but that is how the company came to be described four
+   * times in the first place.
+   */
+  it("leaves the coordinate to the company node it points at", () => {
     const doc = getContentByPath("en", "/contact");
     expect(doc).toBeDefined();
     const serialized = JSON.stringify(contactPageSchemas(doc!, (p) => `/en${p}`));
     expect(serialized).not.toContain("GeoCoordinates");
-    expect(serialized).not.toContain("latitude");
+    expect(serialized).toContain(entityIds.organization);
   });
 });

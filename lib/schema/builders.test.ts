@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { publishedDocuments, withheldDocuments } from "@/data/company/documents";
 import { awards } from "@/data/company/awards";
-import { contactConfig } from "@/lib/config/contact";
+import { contactConfig, getGoogleMapsDirectionsUrl } from "@/lib/config/contact";
 import {
   entityIds,
   organizationSchema,
@@ -30,6 +30,16 @@ describe("structured data builders", () => {
       addressLocality: "Bukan",
     });
     expect(schema.address).not.toHaveProperty("geo");
+    /*
+     * geo belongs to the node, not to the postal address, and it must be the
+     * same point the contact page's map shows.
+     */
+    expect(schema.geo).toEqual({
+      "@type": "GeoCoordinates",
+      latitude: contactConfig.factory.googleMaps.latitude,
+      longitude: contactConfig.factory.googleMaps.longitude,
+    });
+    expect(schema.hasMap).toBe(getGoogleMapsDirectionsUrl());
     expect(schema.logo).toMatchObject({
       "@type": "ImageObject",
       url: expect.stringMatching(/^https?:\/\/.+\/media\/demo\/logo\.png$/),
