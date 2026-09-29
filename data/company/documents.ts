@@ -33,8 +33,18 @@ export type CompanyDocument = {
   issued?: string;
   /** Most recent renewal, as printed. Not an expiry date. */
   renewed?: string;
-  /** Expiry, only where the document states one. */
+  /** Expiry, only where the document states one, printed as the document prints it. */
   validUntil?: string;
+  /**
+   * The same expiry in ISO 8601, for structured data.
+   *
+   * validUntil is the printed form — "۹ اوت ۲۰۲۷" — which is what belongs on
+   * the page and what a reader can check against the certificate. schema.org
+   * wants a Date, and was being handed the Persian string, so the credential's
+   * expiry was unreadable to anything consuming it. A test holds the two to
+   * the same day.
+   */
+  validUntilIso?: string;
   /** What the document covers. */
   scope: { fa: string; en: string };
   /** Whether it may be rendered. False means its stated validity has lapsed. */
@@ -119,6 +129,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
     issued: "۲۰۰۸ (صدور نخست)",
     renewed: "۱۰ اوت ۲۰۲۴",
     validUntil: "۹ اوت ۲۰۲۷",
+    validUntilIso: "2027-08-09",
     scope: {
       fa: "سیستم مدیریت کیفیت برای تولید محصولات پلی اتیلن — لوله آب تحت فشار ۲ تا ۴۰ اتمسفر در قطر ۱۶ تا ۶۳۰ میلی‌متر، و لوله فاضلاب دوجداره کروگیت بدون فشار ۶۳ تا ۵۰۰ میلی‌متر",
       en: "Quality management for PE production — pressure water pipe 2 to 40 atm in 16 to 630 mm, and non-pressure double-wall corrugated sewage pipe 63 to 500 mm",
@@ -134,6 +145,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
     issued: "۲۷ ژوئیه ۲۰۱۷",
     renewed: "۲۷ ژوئیه ۲۰۲۴",
     validUntil: "۲۶ ژوئیه ۲۰۲۷",
+    validUntilIso: "2027-07-26",
     scope: {
       fa: "سیستم مدیریت زیست‌محیطی — تولید لوله پلی اتیلن",
       en: "Environmental management — production of polyethylene pipe",
@@ -149,6 +161,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
     issued: "۲۷ ژوئیه ۲۰۱۷",
     renewed: "۲۷ ژوئیه ۲۰۲۴",
     validUntil: "۲۶ ژوئیه ۲۰۲۷",
+    validUntilIso: "2027-07-26",
     scope: {
       fa: "سیستم مدیریت ایمنی و بهداشت شغلی — تولید لوله پلی اتیلن",
       en: "Occupational health and safety management — production of polyethylene pipe",
@@ -164,6 +177,7 @@ export const companyDocuments: readonly CompanyDocument[] = [
     issued: "۲۷ ژوئیه ۲۰۱۷",
     renewed: "۲۷ ژوئیه ۲۰۲۴",
     validUntil: "۲۶ ژوئیه ۲۰۲۷",
+    validUntilIso: "2027-07-26",
     scope: {
       fa: "رسیدگی به شکایات و رضایت مشتری — تولید لوله پلی اتیلن",
       en: "Complaints handling and customer satisfaction — production of polyethylene pipe",

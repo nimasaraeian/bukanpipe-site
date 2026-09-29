@@ -50,6 +50,7 @@ export const faAbout: ContentDocument = {
       type: "spec-table",
       title: "شناسه‌های رسمی شرکت",
       rows: [
+        { label: "نام ثبتی", value: "شرکت تعاونی لوله پلی اتیلن بوکان" },
         { label: "تأسیس شرکت", value: "۱۳۷۳ — شماره ثبت ۱۲۱، مورخ ۱۳۷۳/۰۶/۲۶" },
         { label: "شروع بهره‌برداری", value: "۱۳۷۶" },
         { label: "شناسه ملی", value: "۱۰۲۲۰۰۰۷۹۲۲" },

@@ -3301,3 +3301,16 @@
 
 
 
+
+/* The article dateline: the publication and review dates the page's structured
+   data declares, set quietly under the title so a reader can check them. */
+.ind-article-dateline {
+  margin: 0 0 1.75rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ind-text-subtle);
+}
+
+[data-theme="light"] .ind-article-dateline {
+  color: var(--text-secondary);
+}

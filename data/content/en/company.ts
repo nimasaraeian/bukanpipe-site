@@ -33,6 +33,7 @@ export const enAbout: ContentDocument = {
       type: "spec-table",
       title: "Official identifiers",
       rows: [
+        { label: "Registered name", value: "Bukan Polyethylene Pipe Cooperative Company" },
         { label: "Founded", value: "1373 (1994) — registration 121, dated 1373/06/26" },
         { label: "Operations began", value: "1376 (1997)" },
         { label: "National ID", value: "10220007922" },

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArticleDateline } from "@/components/content/ArticleDateline";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   ArticleTableOfContents,
@@ -122,6 +123,7 @@ export function ContentDocumentPage({ doc }: ContentDocumentPageProps) {
 
       <section className="ind-section" id={isAbout ? "about-story" : undefined}>
         <div className="ind-container max-w-4xl">
+          {isArticle ? <ArticleDateline doc={doc} locale={locale} /> : null}
           {isArticle ? <ArticleTableOfContents sections={doc.sections} /> : null}
 
           {doc.sections.map((block, index) => (

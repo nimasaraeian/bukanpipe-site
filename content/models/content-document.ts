@@ -124,6 +124,12 @@ export type ContentDocument = {
   evidenceStatus: EvidenceStatus;
   verificationStatus: VerificationStatus;
   lastReviewed: string;
+  /**
+   * The day this document was first published, ISO. Distinct from
+   * lastReviewed, which moves every time the text is checked again. Articles
+   * must carry one — see data/content/publication-dates.ts.
+   */
+  publishedAt?: string;
   references?: readonly string[];
   breadcrumbs: readonly ContentBreadcrumb[];
   sections: readonly ContentBlock[];

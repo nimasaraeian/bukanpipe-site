@@ -36,6 +36,7 @@
     "@types/three": "^0.186.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "schema-dts": "^2.0.0",
     "sharp": "^0.35.4",
     "tailwindcss": "^4",
     "typescript": "^5",

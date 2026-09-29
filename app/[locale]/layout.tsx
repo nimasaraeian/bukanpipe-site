@@ -9,7 +9,7 @@ import { THEME_COLOR_DARK } from "@/lib/theme/config";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getDirection, isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionary";
-import { organizationSchema, manufacturingBusinessSchema, webSiteSchema } from "@/lib/schema/builders";
+import { organizationSchema, webSiteSchema } from "@/lib/schema/builders";
 import { createRootMetadata } from "@/lib/seo/metadata";
 import "../globals.css";
 
@@ -66,7 +66,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <ThemeBlockingScript />
       </head>
       <body className="industrial-font industrial-body antialiased">
-        <JsonLd data={[organizationSchema(), manufacturingBusinessSchema(), webSiteSchema(locale)]} />
+        <JsonLd data={[organizationSchema(locale), webSiteSchema(locale)]} />
         <LocaleProvider locale={locale} dictionary={dictionary}>
           <ThemeProvider>
             <SiteShell>{children}</SiteShell>

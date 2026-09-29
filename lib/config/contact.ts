@@ -201,6 +201,17 @@ export const contactConfig = {
     fa: "ساعات پاسخگویی: شنبه تا پنج‌شنبه، ۸:۳۰ تا ۱۶:۰۰.",
     en: "Office hours: Saturday to Thursday, 08:30–16:00 (Iran time).",
   },
+
+  /**
+   * The same hours a machine can read, for openingHoursSpecification. It sits
+   * beside the prose rather than being parsed out of it, and a test holds the
+   * two together so structured data cannot drift from the sentence on the page.
+   */
+  officeHoursSpec: {
+    days: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+    opens: "08:30",
+    closes: "16:00",
+  },
 } as const;
 
 export type MessagingChannelId = keyof typeof contactConfig.messaging;

@@ -3,9 +3,23 @@ import type { Locale } from "@/lib/i18n/config";
 import { contentCatalogFa } from "@/data/content/fa/catalog";
 import { contentCatalogEn } from "@/data/content/en/catalog";
 
+import { publishedAtFor } from "@/data/content/publication-dates";
+
+/**
+ * The publication date is attached here rather than repeated in every seed:
+ * one document exists twice, once per language, and both versions of a page
+ * went up on the same day.
+ */
+function withPublicationDate(docs: readonly ContentDocument[]): readonly ContentDocument[] {
+  return docs.map((doc) => {
+    const publishedAt = publishedAtFor(doc.path);
+    return publishedAt ? { ...doc, publishedAt } : doc;
+  });
+}
+
 const catalogs: Record<Locale, readonly ContentDocument[]> = {
-  fa: contentCatalogFa,
-  en: contentCatalogEn,
+  fa: withPublicationDate(contentCatalogFa),
+  en: withPublicationDate(contentCatalogEn),
 };
 
 export function getContentCatalog(locale: Locale): readonly ContentDocument[] {

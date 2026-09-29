@@ -61,9 +61,13 @@ describe.each(slugs)("Persian pillar: %s", (slug) => {
       name: entry.question,
       acceptedAnswer: { "@type": "Answer", text: entry.answer },
     })));
-    expect(schemas.find((schema) => schema["@type"] === "Article")).toMatchObject({
+    /* A pillar is an engineering guide, so it is a TechArticle, not an Article. */
+    expect(schemas.find((schema) => schema["@type"] === "TechArticle")).toMatchObject({
       headline: doc.title,
       inLanguage: "fa",
+      datePublished: doc.publishedAt,
+      dateModified: doc.lastReviewed,
     });
+    expect(schemas.some((schema) => schema["@type"] === "Article")).toBe(false);
   });
 });

@@ -81,20 +81,25 @@ export function galleryPageSchema(locale: Locale): Record<string, unknown>[] {
     mainEntity: { "@id": `${pageUrl}#gallery` },
   });
 
+  /*
+   * The gallery listed forty images by @id and then described twelve, so
+   * twenty-eight of its references pointed at nodes that were never in the
+   * graph. It lists the ones it describes.
+   */
+  const featuredImages = images.filter((img) => img.featured).slice(0, 12);
+  const described = featuredImages.length > 0 ? featuredImages : images.slice(0, 12);
+  const imageObjects = described.map((img) => imageObjectSchema(img, locale));
+  const imageRefs = described.map((img) => ({ "@id": `${pageUrl}#${img.id}` }));
+
   const imageGallery = omitUndefined({
     "@type": "ImageGallery",
     "@id": `${pageUrl}#gallery`,
     name: pageName,
     description: pageDescription,
     url: pageUrl,
-    image: images.slice(0, 40).map((img) => ({ "@id": `${pageUrl}#${img.id}` })),
-    associatedMedia: images.slice(0, 40).map((img) => ({ "@id": `${pageUrl}#${img.id}` })),
+    image: imageRefs,
+    associatedMedia: imageRefs,
   });
-
-  const featuredImages = images.filter((img) => img.featured).slice(0, 12);
-  const imageObjects = (featuredImages.length > 0 ? featuredImages : images.slice(0, 12)).map(
-    (img) => imageObjectSchema(img, locale),
-  );
 
   return [
     {
