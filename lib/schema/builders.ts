@@ -13,7 +13,7 @@ import type { Article } from "@/content/models/article";
 import type { Product } from "@/content/models/product";
 import type { Project } from "@/content/models/project";
 import { companyDocuments, publishedDocuments } from "@/data/company/documents";
-import { awards } from "@/data/company/awards";
+import { awardNames } from "@/lib/schema/awards";
 
 /**
  * The company's registration identifiers, from its own documents. Search
@@ -53,9 +53,7 @@ function credentialSchema(): Record<string, unknown>[] {
     );
 }
 
-function awardNames(): string[] {
-  return awards.map((award) => `${award.title.en} — ${award.issuer.en} (${award.year})`);
-}
+
 
 /**
  * Stable identifiers for the two nodes every page carries.

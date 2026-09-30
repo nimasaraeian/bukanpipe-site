@@ -215,6 +215,59 @@ describe("Google rich result requirements", () => {
     }
   });
 
+  /*
+   * Persian numerals are right in Persian prose and wrong in an identifier.
+   * A licence number is the same number in either script, and in Persian
+   * digits the gas licence was the one entry in hasCredential a consumer
+   * could not read and the one number on the English certificates page in a
+   * script of its own. This checks the fields that carry identifiers, and
+   * deliberately leaves the prose alone: the Persian pages say "از سایز ۱۶ تا
+   * ۶۳۰ میلی‌متر" on screen and should say it in the markup too.
+   */
+  it("writes identifiers in latin digits, and leaves prose in its own script", () => {
+    const ID_KEYS = ["identifier", "sku", "gtin", "productID", "postalCode", "telephone"];
+    const offenders: string[] = [];
+
+    for (const { page, node } of nodes) {
+      walk(node, (n) => {
+        /*
+         * `value` is shared: on a PropertyValue with a propertyID it is an
+         * identifier, and on the product spec rows it is the line the page
+         * prints — "از سایز ۱۶ تا ۶۳۰ میلی‌متر" — which must keep its own
+         * numerals. Only the first is an identifier.
+         */
+        const keys = "propertyID" in n ? [...ID_KEYS, "value"] : ID_KEYS;
+        for (const [key, value] of Object.entries(n)) {
+          if (!keys.includes(key)) continue;
+          for (const one of Array.isArray(value) ? value : [value]) {
+            if (typeof one === "string" && /[\u06F0-\u06F9\u0660-\u0669]/.test(one)) {
+              offenders.push(`${page}: ${key} = ${one}`);
+            }
+          }
+        }
+      });
+    }
+    expect([...new Set(offenders)]).toEqual([]);
+  });
+
+  /*
+   * /media/demo is where the placeholder art lived. Nothing that ships in
+   * structured data should still be pointing at it.
+   */
+  it("points at no placeholder asset", () => {
+    const offenders: string[] = [];
+    for (const { page, node } of nodes) {
+      walk(node, (n) => {
+        for (const [key, value] of Object.entries(n)) {
+          if (typeof value === "string" && value.includes("/media/demo/")) {
+            offenders.push(`${page}: ${key} = ${value}`);
+          }
+        }
+      });
+    }
+    expect([...new Set(offenders)]).toEqual([]);
+  });
+
   it("gives the company a name, a logo, an address and a telephone", () => {
     for (const locale of locales) {
       const org = organizationSchema(locale);

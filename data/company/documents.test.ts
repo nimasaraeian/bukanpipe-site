@@ -83,10 +83,20 @@ describe("company documents", () => {
      * This asserted the number was ABSENT while the only scan of the licence
      * was illegible. The factory supplied it from the INSO portal, so the
      * guard now pins the value instead of the gap.
+     *
+     * Latin digits, as the water and irrigation licences already were. The
+     * number is an identifier, the same number in either script, and in
+     * Persian digits it was unreadable in hasCredential and out of step with
+     * its neighbours on the English certificates page.
      */
     const gas = companyDocuments.find((doc) => doc.id === "standard-mark-gas")!;
-    expect(gas.reference).toBe("۶۱۳۱۷۷۲۹۱");
+    expect(gas.reference).toBe("613177291");
     expect(gas.note).toBeUndefined();
+
+    /* Every standard mark's number is written the same way. */
+    for (const doc of companyDocuments.filter((d) => d.group === "standard-mark")) {
+      expect(doc.reference, doc.id).toMatch(/^[0-9]+$/);
+    }
   });
 
   it("publishes the Ministry of Agriculture producer listing with its rank", () => {

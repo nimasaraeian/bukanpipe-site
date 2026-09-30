@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { FooterSocialLinks } from "@/components/layout/FooterSocialLinks";
+import { brandAssets } from "@/lib/media/brand-assets";
 import { getFooterColumns } from "@/lib/i18n/nav-items";
 import { siteConfig } from "@/lib/config/site";
 
@@ -18,7 +19,7 @@ export function IndustrialFooter() {
           <div>
             <div className="flex items-center gap-3">
               <Image
-                src="/media/demo/logo.png"
+                src={brandAssets.logo}
                 alt=""
                 width={32}
                 height={32}

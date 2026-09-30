@@ -1,7 +1,7 @@
 /** Verified brand files in /public (not legacy WordPress). */
 export const brandAssets = {
-  logo: "/media/demo/logo.png",
-  logo3d: "/media/demo/logo.png",
+  logo: "/media/brand/bukan-pipe-logo.png",
+  logo3d: "/media/brand/bukan-pipe-logo.png",
   eitaaIcon: "/media/demo/eitaa.png",
   logoWidth: 1024,
   logoHeight: 1024,

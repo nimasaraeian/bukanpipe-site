@@ -109,7 +109,18 @@ export const companyDocuments: readonly CompanyDocument[] = [
       fa: "سازمان ملی استاندارد ایران — اداره کل استاندارد آذربایجان غربی",
       en: "Iranian National Standards Organization — West Azerbaijan",
     },
-    reference: "۶۱۳۱۷۷۲۹۱",
+    /*
+   * Latin digits, like the water and irrigation licences beside it. The
+   * number is an identifier rather than prose — the same number whichever
+   * script it is written in — and in Persian digits it was the one entry in
+   * hasCredential a consumer could not read, and the one number on the
+   * English certificates page in a different script from its neighbours.
+   *
+   * Still nine digits where the other two licences have ten; that remains
+   * open in research/FACTS_TO_VERIFY.md and is not something to quietly
+   * pad.
+   */
+  reference: "613177291",
     issued: "۱۳۹۱/۰۴/۲۴",
     renewed: "۱۴۰۴/۰۹/۰۷",
     scope: {

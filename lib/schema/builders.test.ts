@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { publishedDocuments, withheldDocuments } from "@/data/company/documents";
 import { awards } from "@/data/company/awards";
+import { schemaAwards } from "@/lib/schema/awards";
 import { contactConfig, getGoogleMapsDirectionsUrl } from "@/lib/config/contact";
 import {
   entityIds,
@@ -42,7 +43,7 @@ describe("structured data builders", () => {
     expect(schema.hasMap).toBe(getGoogleMapsDirectionsUrl());
     expect(schema.logo).toMatchObject({
       "@type": "ImageObject",
-      url: expect.stringMatching(/^https?:\/\/.+\/media\/demo\/logo\.png$/),
+      url: expect.stringMatching(/^https?:\/\/.+\/media\/brand\/bukan-pipe-logo\.png$/),
       width: 1024,
       height: 1024,
     });
@@ -159,9 +160,55 @@ describe("organization credentials in structured data", () => {
     }
   });
 
-  it("carries every published award", () => {
+  /*
+   * The page lists all thirty-four commendations, with the provenance of
+   * each written beside it. The graph cannot qualify a claim, so it carries
+   * only the ones the archive can show — see lib/schema/awards.ts.
+   */
+  it("claims only the awards the selection keeps", () => {
     const schema = organizationSchema();
-    expect((schema.award as string[]).length).toBe(awards.length);
+    const claimed = schema.award as string[];
+
+    expect(claimed.length).toBe(schemaAwards().length);
+    expect(claimed.length).toBeLessThan(awards.length);
+    expect(claimed.length).toBeLessThanOrEqual(15);
+  });
+
+  /*
+   * Matched by identity, not by title: several plaques share a title across
+   * different years, so a catalogue entry's words can legitimately appear in
+   * the graph by way of a different, evidenced award.
+   */
+  it("never claims an award with no plaque behind it", () => {
+    const kept = schemaAwards();
+    for (const award of awards) {
+      if ((award.source ?? "plaque") === "plaque") continue;
+      expect(kept, `${award.id} has no plaque in the archive`).not.toContain(award);
+    }
+    // and the caveat the page carries must never reach the graph as an issuer
+    expect((organizationSchema().award as string[]).join(" | ")).not.toContain(
+      "plaque not in the archive",
+    );
+  });
+
+  it("does not count turning up at a trade fair as an award", () => {
+    const kept = schemaAwards();
+    for (const award of awards.filter((a) => a.category === "exhibition")) {
+      expect(kept, award.id).not.toContain(award);
+    }
+    expect((organizationSchema().award as string[]).join(" | ")).not.toContain("Participation");
+  });
+
+  /*
+   * `year` on the data is the plaque's whole date line, which belongs on the
+   * page. In an English award string it reads as Persian prose dropped into
+   * an English sentence.
+   */
+  it("writes a bare year, with no Persian left in the English string", () => {
+    for (const name of organizationSchema().award as string[]) {
+      expect(name, name).not.toMatch(/[\u0600-\u06FF]/);
+      expect(name, name).toMatch(/\((1[34]\d{2}|(19|20)\d{2})\)$/);
+    }
   });
 });
 
