@@ -88,8 +88,8 @@ describe("head term distribution", () => {
   it("opens with a featured-snippet definition that starts with the head term", () => {
     const guide = getContentCatalog("fa").find((d) => d.path === GUIDE)!;
     const first = guide.sections[0];
-    expect(first.type).toBe("definition");
-    if (first.type !== "definition") return;
+    expect(first?.type).toBe("definition");
+    if (!first || first.type !== "definition") return;
     expect(first.text.startsWith(HEAD_TERM)).toBe(true);
     const words = first.text.split(/\s+/).length;
     expect(words).toBeGreaterThanOrEqual(40);
