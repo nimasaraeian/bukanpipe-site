@@ -4,7 +4,7 @@ const BASE = process.env.STAGING_BASE ?? "https://bukanpipe.vercel.app";
 
 const ROUTES = [
   "/en",
-  "/en/polyethylene-pipe",
+  "/en/technical-center/polyethylene-pipe-complete-guide",
   "/en/laboratory",
   "/en/laboratory/iso-17025",
   "/en/certifications",

@@ -26,7 +26,7 @@ export function getSitemapPathsForLocale(locale: Locale): readonly string[] {
 
 export function sitemapPriorityForPath(path: string): number {
   if (path === "/") return 1;
-  if (path === "/products" || path === "/polyethylene-pipe") return 0.9;
+  if (path === "/products" || path === "/technical-center/polyethylene-pipe-complete-guide") return 0.9;
   if (path.startsWith("/products/")) return 0.85;
   if (path === "/applications" || path === "/laboratory" || path === "/technical-center") {
     return 0.85;

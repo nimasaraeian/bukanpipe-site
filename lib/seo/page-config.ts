@@ -97,7 +97,7 @@ export function getOgImageForPath(path: string): OgImage {
   if (path === "/applications" || path.startsWith("/applications/")) return OG_IMAGES.applications;
   if (path === "/laboratory" || path.startsWith("/laboratory/")) return OG_IMAGES.laboratory;
   if (path === "/quality") return OG_IMAGES.quality;
-  if (path.startsWith("/technical-center") || path === "/polyethylene-pipe") return OG_IMAGES.technical;
+  if (path.startsWith("/technical-center")) return OG_IMAGES.technical;
   if (path.startsWith("/calculator")) return OG_IMAGES.calculator;
   if (path === "/about") return OG_IMAGES.about;
   if (path === "/gallery") {

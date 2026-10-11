@@ -9,6 +9,12 @@ export const STUB_REDIRECTS = [
   { from: "/knowledge", to: "/technical-center" },
   { from: "/tools", to: "/calculator" },
   { from: "/standards", to: "/downloads" },
+  /**
+   * The short "what is polyethylene pipe" pillar was merged into the complete
+   * guide on 2026-10-11: two pages were splitting the head term, and the
+   * stronger one was the one Google showed least.
+   */
+  { from: "/polyethylene-pipe", to: "/technical-center/polyethylene-pipe-complete-guide" },
 ] as const;
 
 /**

@@ -2,12 +2,12 @@ import type { SeoArticleSeed } from "@/lib/content/seo-content-model";
 
 export const enHdpePillarArticle: SeoArticleSeed = {
   slug: "polyethylene-pipe-complete-guide",
-  title: "What Is Polyethylene Pipe? Complete HDPE Guide — Applications, Standards, and Pipe Selection",
-  seoTitle: "Polyethylene Pipe: HDPE Guide & Selection | Bukan Pipe",
+  title: "What Is Polyethylene Pipe? Complete HDPE Guide to Selection, Standards and Buying",
+  seoTitle: "What Is Polyethylene Pipe? Complete HDPE Guide | Bukan Pipe",
   seoDescription:
-    "Complete guide to polyethylene and PE100 HDPE pipe: SDR, working pressure, water and gas standards, quality control, and industrial procurement from Bukan Pipe.",
+    "Polyethylene pipe explained: PE80 vs PE100, reading SDR and pressure rating, water and gas standards, quality control, and how to buy HDPE pipe from a manufacturer.",
   description:
-    "Engineering and procurement guide to HDPE pipe — from material and standard basics through technical offer review and project delivery.",
+    "From the definition of polyethylene pipe and the PE80/PE100 difference to SDR, service standards, quality control and evaluating a manufacturer's offer — in one guide.",
   primaryKeyword: "polyethylene pipe",
   secondaryKeywords: [
     "HDPE pipe",
@@ -16,10 +16,23 @@ export const enHdpePillarArticle: SeoArticleSeed = {
     "HDPE pipe factory",
     "buy polyethylene pipe",
     "polyethylene pipe standard",
+    "what is polyethylene pipe",
+    "HDPE pipe SDR",
+    "PE pipe pressure rating",
+    "polyethylene piping systems",
   ],
   definition:
-    "Polyethylene pipe is a polymer product for fluid conveyance or other defined applications. In pressurized networks, selection is based on compound grade, outside diameter, wall thickness, design pressure and temperature, and the applicable service standard; the label HDPE alone does not define a complete purchase specification.",
+    "Polyethylene pipe is a high-density polyethylene (HDPE) pipe produced by single-wall extrusion and used to convey fluid in water supply, gas distribution, pressurised irrigation and industrial networks. Its purchase specification is set by compound grade (PE80 or PE100), outside diameter, SDR or PN and the service standard, not by the label HDPE alone.",
+  lastReviewed: "2026-10-11",
   sections: [
+    { type: "spec-table", title: "PE80 and PE100 at a glance", rows: [
+      { label: "MRS (minimum required strength, 20 °C, 50 years)", value: "PE80: 8 MPa — PE100: 10 MPa" },
+      { label: "Water PN at SDR 17", value: "PE80: 8 bar — PE100: 10 bar" },
+      { label: "Water PN at SDR 11", value: "PE80: 12.5 bar — PE100: 16 bar" },
+      { label: "Gas MOP at SDR 11 (C = 2)", value: "PE80: 8 bar — PE100: 10 bar" },
+      { label: "Bukan Pipe production range", value: "16 to 630 mm, pressure rating 2.5 to 25 bar depending on grade and SDR" },
+      { label: "Typical choice", value: "PE100 for high-pressure water mains and gas; PE80 for irrigation and low-pressure networks" },
+    ], note: "Water PN comes from the factory catalogue's water supply chart; gas MOP from the ISO 4437 relation with design coefficient 2. The full diameter and wall-thickness chart is on the dimensions page." },
     {
       type: "paragraph",
       text: "Selecting polyethylene pipe for a transmission line is a shared decision among engineering, procurement, and operations. The buyer focuses on price and delivery schedule, the contractor on transport, welding, and installation, and the operator on service reliability and maintainability. When each group considers only its own criteria, the product purchased may look acceptable on paper yet fail to match existing connections in the field, create excessive pressure loss, or lack adequate acceptance documentation. This guide helps establish a common language for defining the order and answers the main questions that should be resolved before a purchase request is issued.",
@@ -121,6 +134,18 @@ export const enHdpePillarArticle: SeoArticleSeed = {
         },
       ],
     },
+    { type: "heading", level: 2, text: "Types of polyethylene pipe by network service" },
+    { type: "paragraph", text: "Read the types of polyethylene pipe from the network service, not from catalogue colour. Water supply pipe is pressure pipe for water. Gas pipe is a separate product with its own standard, identification stripe and jointing method. Irrigation pipe at Bukan Pipe means pressurised field mains, not drip tape. Industrial pipe is for process fluid where compatibility is confirmed. Pressure sewerage and gravity drainage are two different services and must not be mixed in one specification. PE100 is a material grade that sits across several families, not a fourth type beside water and gas." },
+    { type: "list", items: [
+      "Polyethylene water supply pipe — potable and raw water mains; mandatory standard mark licence INSO 14427-2",
+      "Polyethylene gas pipe — service and distribution lines; yellow identification stripe and INSO 11223 incentive licence",
+      "Polyethylene irrigation pipe — pressurised field mains; mandatory standard mark licence INSO 7607",
+      "Industrial polyethylene pipe — compatible process fluid to the order specification",
+      "Sewerage and drainage pipe — only to that family's specification, with soil loading checked",
+    ] },
+    { type: "heading", level: 2, text: "Advantages of polyethylene pipe: why it is chosen for buried networks" },
+    { type: "paragraph", text: "In the ground, metallic corrosion is not an issue for a polymer pipe, and that is the main reason polyethylene has replaced steel and cast iron in water and gas networks. Lower weight than a metal pipe of the same diameter makes transport and laying simpler and cheaper. Fusion jointing, done correctly, gives a continuous line without the leak paths of mechanical joints. The material's flexibility accommodates limited ground movement and traffic loading, though it does not excuse a poor bed or sharp rock. A smooth bore keeps head loss low compared with aged metal pipe." },
+    { type: "paragraph", text: "These are general advantages and do not replace a head-loss calculation, the fluid temperature or the gas standard. Where a \"fifty-year life\" is quoted, that is the MRS assessment basis under reference conditions, not a commercial warranty from the factory; the real life of a line depends on temperature, pressure, installation and operation, and the design-life section of this guide opens that up separately." },
     { type: "heading", level: 2, text: "Polyethylene pipe standards: what does the standard number fix?" },
     {
       type: "paragraph",
@@ -279,40 +304,22 @@ export const enHdpePillarArticle: SeoArticleSeed = {
     },
   ],
   faqs: [
-    {
-      question: "Do HDPE pipe and PE100 pipe mean exactly the same thing?",
-      answer:
-        "No. HDPE refers to the high-density polyethylene material family and PE100 is a compound strength class. For ordering, diameter, SDR, application, standard, and required documents must be specified in addition to these names. Neither title alone proves potable-water approval or permission for use in a gas network.",
-    },
-    {
-      question: "For buying polyethylene pipe, should we choose diameter first or pressure first?",
-      answer:
-        "Both must be coordinated in one design process. Flow need and pressure loss determine required internal diameter; pressure and service conditions affect effective wall thickness. After initial selection, resulting internal diameter should be checked again. Final order is usually defined by outside diameter and SDR, not diameter name alone.",
-    },
-    {
-      question: "Is a lower SDR always the better choice?",
-      answer:
-        "No. At fixed outside diameter, lower SDR means thicker wall and less internal space. Selection must answer pressure need, flow, installation, and cost together. Extra thickness without hydraulic review does not necessarily improve the whole network and can change required fitting specifications.",
-    },
-    {
-      question: "Can water supply pipe be used in a gas line?",
-      answer:
-        "Such a decision cannot be made from material or dimensional similarity alone. The product must be accepted for gas application and operator requirements. Standard, identification, documents, and required gas execution method must be reviewed independently; a water pressure table does not replace gas network engineering approval.",
-    },
-    {
-      question: "What information is needed to compare price between two manufacturers?",
-      answer:
-        "First verify sameness of application, grade, diameter, SDR, meterage, standard, and delivery documents. Then place transport cost, inspection conditions, delivery time, and offer exceptions beside price. Comparing price per meter for two products with different specifications is not a reliable basis for economic choice.",
-    },
-    {
-      question: "How do we receive a technical proposal from Bukan Pipe?",
-      answer:
-        "Use the quote request form or contact page and send the item table together with service conditions and project documents. For staged orders, write required timing for each section separately. Requesting technical review and delivery documentation helps ensure the received offer matches actual project need.",
-    },
+    { question: "What is polyethylene pipe?", answer: "A polymer pipe made from high-density polyethylene (HDPE) by single-wall extrusion, used in pressure and gravity networks to convey water, gas and compatible fluids. In the pipe industry it is usually called HDPE pipe. An order is completed with grade (PE80 or PE100), outside diameter, SDR or PN and the service standard." },
+    { question: "What is the difference between polyethylene pipe and HDPE pipe?", answer: "In practice they are one product family. Polyethylene is the material name and HDPE refers to its high-density type used for pressure pipe. The two names are used interchangeably in day-to-day correspondence; what defines an order is compound grade, diameter, SDR and service standard, not the choice between the two labels." },
+    { question: "What is the difference between PE80 and PE100?", answer: "Both are compound grades of polyethylene pipe and they differ in minimum required strength (MRS): 8 MPa for PE80 and 10 MPa for PE100. At the same SDR, PE100 carries more pressure or reaches the same pressure with a thinner wall; in water SDR 11, for example, PE80 is PN 12.5 and PE100 is PN 16." },
+    { question: "What is the difference between polyethylene pipe and PVC?", answer: "Both are polymers but they behave differently. Polyethylene is flexible, joins by butt fusion or electrofusion into a continuous line and is also produced in coils; PVC is more rigid and is usually solvent-cemented or ring-jointed. For buried water and gas networks and routes with ground movement, polyethylene is the more common choice." },
+    { question: "How long does polyethylene pipe last?", answer: "The PE80 and PE100 classes are defined from an assessment of material strength over 50 years at 20 °C. That is a design basis, not a commercial warranty. Actual line life depends on temperature, operating pressure, installation and jointing quality and bedding; under design conditions, polyethylene networks normally run for decades without replacement." },
+    { question: "What does the price of polyethylene pipe depend on?", answer: "Outside diameter, SDR or pressure class, material grade, order quantity, delivery form (straight lengths or coils) and the day's raw-material price. Because weight per metre changes with diameter and wall thickness, a price cannot be quoted without these. Bukan Pipe does not publish a general price list and quotes each line through the enquiry form." },
+    { question: "Is a lower SDR always the better choice?", answer: "No. At fixed outside diameter, lower SDR means thicker wall and less internal space. Selection must answer pressure need, flow, installation and cost together. Extra thickness without a hydraulic check raises both the weight and price per metre and the head loss." },
+    { question: "Can water supply pipe be used in a gas line?", answer: "Such a decision cannot be made from material or dimensional similarity. Gas pipe must be supplied to INSO 11223 with the yellow identification stripe, batch traceability documents and the jointing method the gas operator accepts. The gas design coefficient (2) also differs from water (1.25), so the allowed pressure of a pipe of the same size is far lower in gas." },
+    { question: "For buying polyethylene pipe, should we choose diameter first or pressure first?", answer: "Both must be coordinated in one design process. Flow need and head loss determine the required internal diameter; pressure and service conditions set the wall. After choosing outside diameter and SDR, check the result against the catalogue dimension chart and the project standard." },
+    { question: "What information is needed to compare price between two manufacturers?", answer: "First verify that application, grade, diameter, SDR, quantity, standard and delivery documents are the same. Then place transport cost, inspection conditions, delivery time and offer exceptions beside the price per metre. An offer with a smaller internal diameter or incomplete documents is not really cheaper at a lower price." },
+    { question: "How do we receive a technical proposal from Bukan Pipe?", answer: "Use the quote request form or contact page and send the item table together with service conditions and project documents. For staged orders, state the timing each section needs so the proposal matches the construction programme." },
   ],
   related: {
-    products: ["pe100-pipe", "water-supply-pipe", "gas-pipe"],
-    articles: ["water-supply-polyethylene-pipe-guide", "gas-polyethylene-pipe-guide"],
+    products: ["pe100-pipe", "water-supply-pipe", "gas-pipe", "irrigation-pipe", "sewage-pipe", "drainage-pipe"],
+    applications: ["water-transfer", "gas-distribution", "agriculture-irrigation"],
+    articles: ["water-supply-polyethylene-pipe-guide", "gas-polyethylene-pipe-guide", "pe100-technical-guide", "polyethylene-pipe-welding", "polyethylene-pipe-temperature-pressure", "air-vent-valve"],
     laboratory: ["test-scope"],
   },
   references: [
@@ -321,6 +328,11 @@ export const enHdpePillarArticle: SeoArticleSeed = {
     "https://www.plasticpipe.org/Shared_Content/Shop/PE-Handbook.aspx",
   ],
   curatedLinks: [
+    { label: "HDPE pipe dimensions chart", path: "/technical-center/hdpe-pipe-dimensions-chart", hint: "Outside diameter, wall thickness and PN for every SDR, from the factory catalogue" },
+    { label: "PE100 technical guide", path: "/technical-center/pe100-technical-guide", hint: "Pressure rating and design of the PE100 grade" },
+    { label: "HDPE pipe welding", path: "/technical-center/polyethylene-pipe-welding", hint: "Butt fusion and electrofusion, parameters and inspection" },
+    { label: "Pipeline design calculator", path: "/calculator/pipeline-design", hint: "Head loss and diameter for a given flow" },
+    { label: "Product catalogue", path: "/products", hint: "Water, gas, irrigation and industrial product families" },
     {
       label: "Request a quote from Bukan Pipe",
       path: "/request-quote",

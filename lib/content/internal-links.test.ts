@@ -36,7 +36,7 @@ function collectInternalLinks(
   for (const item of [...homeProducts, ...homeApplications, ...homeArticles]) {
     links.push(item.href);
   }
-  links.push("/calculator/pipeline-design", "/polyethylene-pipe", "/request-quote");
+  links.push("/calculator/pipeline-design", "/technical-center/polyethylene-pipe-complete-guide", "/request-quote");
 
   for (const doc of catalog) {
     for (const crumb of doc.breadcrumbs) {
@@ -54,9 +54,7 @@ function collectInternalLinks(
     }
     if (related?.articles) {
       for (const slug of related.articles) {
-        links.push(
-          slug === "polyethylene-pipe" ? "/polyethylene-pipe" : `/technical-center/${slug}`,
-        );
+        links.push(`/technical-center/${slug}`);
       }
     }
   }
@@ -129,7 +127,8 @@ describe("internal link crawl (EN)", () => {
     expect(enPaths).toContain("/solutions");
     expect(enPaths).toContain("/industries");
     expect(enPaths.some((p) => p.startsWith("/technical-center"))).toBe(true);
-    expect(enPaths).toContain("/polyethylene-pipe");
+    expect(enPaths).toContain("/technical-center/polyethylene-pipe-complete-guide");
+    expect(enPaths).not.toContain("/polyethylene-pipe");
     expect(enPaths).not.toContain("/projects");
   });
 });

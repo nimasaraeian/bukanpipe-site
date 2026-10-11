@@ -74,7 +74,7 @@ describe("SEO Wave A FA destinations", () => {
     const docs = [
       getContentByPath("fa", "/products/pe100-pipe"),
       getContentByPath("fa", "/technical-center/polyethylene-pipe-specifications"),
-      getContentByPath("fa", "/polyethylene-pipe"),
+      getContentByPath("fa", "/technical-center/polyethylene-pipe-complete-guide"),
     ];
     for (const doc of docs) {
       expect(doc, "missing Wave A document").toBeDefined();
@@ -88,11 +88,11 @@ describe("SEO Wave A FA destinations", () => {
     }
   });
 
-  it("keeps the polyethylene overview distinct from specifications and PE100", () => {
-    const overview = getContentByPath("fa", "/polyethylene-pipe")!;
+  it("keeps the polyethylene guide distinct from specifications and PE100", () => {
+    const overview = getContentByPath("fa", "/technical-center/polyethylene-pipe-complete-guide")!;
     const specs = getContentByPath("fa", "/technical-center/polyethylene-pipe-specifications")!;
     const pe100 = getContentByPath("fa", "/products/pe100-pipe")!;
-    expect(overview.primaryKeyword).toBe("لوله پلی اتیلن چیست");
+    expect(overview.primaryKeyword).toBe("لوله پلی اتیلن");
     expect(specs.primaryKeyword).toBe("مشخصات فنی لوله پلی اتیلن");
     expect(pe100.primaryKeyword).toBe("لوله پلی اتیلن PE100");
     expect(new Set([overview.seoTitle, specs.seoTitle, pe100.seoTitle]).size).toBe(3);

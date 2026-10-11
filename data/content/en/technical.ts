@@ -140,7 +140,7 @@ export const enTechnicalHub: ContentDocument = {
           path: "/calculator/pipeline-design",
           hint: "Diameter, velocity, head loss and pump power",
         },
-        { label: "HDPE pipe overview (pillar)", path: "/polyethylene-pipe" },
+        { label: "Complete polyethylene pipe guide", path: "/technical-center/polyethylene-pipe-complete-guide" },
         { label: "Request a quote", path: "/request-quote" },
       ],
     },
@@ -176,133 +176,6 @@ export const enTechnicalHub: ContentDocument = {
   },
 };
 
-export const enPillarPolyethylene: ContentDocument = {
-  id: "pillar-polyethylene-pipe",
-  slug: "polyethylene-pipe",
-  path: "/polyethylene-pipe",
-  locale: "en",
-  kind: "pillar",
-  title: "HDPE Pipe Guide",
-  seoTitle:
-    "HDPE Pipe Guide: PE100, SDR, Pressure Ratings, Applications and Selection | Bukan Pipe",
-  seoDescription:
-    "Independent guide to HDPE / PE pipe: PE100, SDR, PN, water, gas, irrigation, sewerage, fusion and selection — links to Bukan Pipe products.",
-  description: "Guide for engineers, contractors and procurement teams.",
-  primaryKeyword: "HDPE pipe",
-  secondaryKeywords: [
-    "polyethylene pipe",
-    "PE100 pipe",
-    "HDPE pipe SDR",
-    "PE pipe pressure rating",
-    "polyethylene piping systems",
-  ],
-  status: "published",
-  evidenceStatus: "candidate",
-  verificationStatus: "legacy-claim",
-  lastReviewed: "2026-09-03",
-  references: ["https://bukanpipe.com/about_us/"],
-  breadcrumbs: [
-    { label: "Home", path: "/" },
-    { label: "HDPE Pipe Guide", path: "/polyethylene-pipe" },
-  ],
-  sections: [
-    {
-      type: "paragraph",
-      text: "High-density polyethylene (HDPE) pipe is widely used in water supply, gas distribution, irrigation, sewerage, drainage and industrial networks. Bukan Pipe has manufactured single-wall PE pipe since 1997, from 16 mm to 630 mm, pressure rating 2.5 to 25 bar (depending on grade and SDR).",
-    },
-    { type: "heading", level: 2, text: "PE and HDPE terminology" },
-    {
-      type: "paragraph",
-      text: "Polyethylene (PE) is the polymer family; HDPE denotes high density grade used for pressure pipe. In procurement documents you may see PE, HDPE, PE80 or PE100 — the grade affects pressure design at a given SDR.",
-    },
-    { type: "heading", level: 2, text: "Application overview" },
-    {
-      type: "list",
-      items: [
-        "Water supply — INSO 14427-2 for qualifying Bukan Pipe production",
-        "Gas distribution branches — EN 1555, INSO 11223, IGS-M-PL-014-1 where applicable",
-        "Pressurised irrigation and agricultural mains",
-        "Sewerage and surface drainage",
-        "Cable protection and industrial transfer where specified",
-      ],
-    },
-    { type: "heading", level: 2, text: "PE80 and PE100" },
-    {
-      type: "paragraph",
-      text: "Material grade (PE80, PE100) sets MRS and wall thickness for a given pressure. PE100 allows thinner walls or higher pressure at the same SDR. See the PE100 product page for specifications and supply options for that grade.",
-    },
-    { type: "heading", level: 2, text: "SDR and PN / pressure rating" },
-    {
-      type: "paragraph",
-      text: "SDR is the ratio of outside diameter to wall thickness. PN is the nominal pressure marked on pipe at 20 °C reference temperature. At higher fluid or ambient temperatures, apply derating to obtain maximum operating pressure (MOP).",
-    },
-    { type: "heading", level: 2, text: "Connection methods" },
-    {
-      type: "paragraph",
-      text: "Butt fusion is common in water supply; electrofusion is the approved method for gas distribution in Iran. Joint quality depends on operator qualification, equipment parameters and inspection.",
-    },
-    { type: "heading", level: 2, text: "Selection checklist" },
-    {
-      type: "list",
-      items: [
-        "Application and fluid (water, gas, wastewater, drainage)",
-        "Design pressure and operating temperature",
-        "Project standard and engineer approval",
-        "Jointing method and ancillaries (air valves, check valves)",
-      ],
-    },
-    {
-      type: "internal-links",
-      title: "Dimension reference",
-      links: [
-        {
-          label: "HDPE pipe dimensions chart",
-          path: "/technical-center/hdpe-pipe-dimensions-chart",
-          hint: "Full catalogue chart for water supply, gas and drip irrigation",
-        },
-        { label: "Pipeline design calculator", path: "/calculator/pipeline-design" },
-      ],
-    },
-    {
-      type: "spec-cta",
-      text: "Contact sales or request a quote for diameter, SDR, PN and weight-per-metre tables for your project.",
-    },
-  ],
-  related: {
-    products: [
-      "water-supply-pipe",
-      "gas-pipe",
-      "irrigation-pipe",
-      "sewage-pipe",
-      "drainage-pipe",
-      "pe100-pipe",
-    ],
-    applications: [
-      "water-transfer",
-      "gas-distribution",
-      "agriculture-irrigation",
-      "sewage",
-      "drainage",
-    ],
-    articles: [
-      "polyethylene-pipe-welding",
-      "polyethylene-pipe-temperature-pressure",
-      "air-vent-valve",
-    ],
-  },
-  faqs: [
-    {
-      question: "How is HDPE pipe priced?",
-      answer:
-        "Price depends on diameter, SDR, PN, quantity and delivery terms. Request a current quote from sales.",
-    },
-    {
-      question: "What is the difference between water and gas PE pipe?",
-      answer:
-        "Each application has distinct standards, pressure class and jointing requirements. See the relevant product pages for pipe specifications.",
-    },
-  ],
-};
 
 /**
  * Catalogue dimension tables. Every number is rendered from
@@ -431,7 +304,6 @@ export const enTechnicalArticles: readonly ContentDocument[] = [
   buildSeoArticleDocument("en", enWaterPillarArticle),
   buildSeoArticleDocument("en", enGasPillarArticle),
   enTechnicalHub,
-  enPillarPolyethylene,
   enPipeDimensionsChart,
   article(
     "polyethylene-pipe-welding",

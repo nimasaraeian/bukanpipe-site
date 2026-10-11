@@ -51,7 +51,7 @@ export const EXACT_REDIRECTS: readonly ExactRedirect[] = [
   },
   {
     "source": "/pe100.htm",
-    "destination": "/fa/polyethylene-pipe"
+    "destination": "/fa/technical-center/polyethylene-pipe-complete-guide"
   },
   {
     "source": "/pe80.htm",
@@ -59,19 +59,19 @@ export const EXACT_REDIRECTS: readonly ExactRedirect[] = [
   },
   {
     "source": "/pe63.htm",
-    "destination": "/fa/polyethylene-pipe"
+    "destination": "/fa/technical-center/polyethylene-pipe-complete-guide"
   },
   {
     "source": "/epe100.htm",
-    "destination": "/en/polyethylene-pipe"
+    "destination": "/en/technical-center/polyethylene-pipe-complete-guide"
   },
   {
     "source": "/epe80.htm",
-    "destination": "/en/polyethylene-pipe"
+    "destination": "/en/technical-center/polyethylene-pipe-complete-guide"
   },
   {
     "source": "/epe63.htm",
-    "destination": "/en/polyethylene-pipe"
+    "destination": "/en/technical-center/polyethylene-pipe-complete-guide"
   },
   {
     "source": "/project.php",

@@ -13,7 +13,6 @@
  * with a missing or invented date. Add the row when you add the article.
  */
 export const publicationDates: Readonly<Record<string, string>> = {
-  "/polyethylene-pipe": "2026-09-03",
   "/technical-center": "2026-09-03",
   "/technical-center/air-vent-valve": "2026-09-03",
   "/technical-center/gas-polyethylene-pipe-guide": "2026-09-03",

@@ -139,7 +139,7 @@ export const faProductsHub: ContentDocument = {
   ],
   related: {
     products: ["water-supply-pipe", "gas-pipe", "irrigation-pipe", "industrial-pipe", "pe100-pipe"],
-    articles: ["pe100-technical-guide", "hdpe-installation-guide", "polyethylene-pipe"],
+    articles: ["pe100-technical-guide", "hdpe-installation-guide", "polyethylene-pipe-complete-guide"],
   },
 };
 

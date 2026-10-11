@@ -283,7 +283,7 @@ export const seoLandingPaths = {
   installGuide: "/technical-center/hdpe-installation-guide",
   welding: "/technical-center/polyethylene-pipe-welding",
   temperature: "/technical-center/polyethylene-pipe-temperature-pressure",
-  pillar: "/polyethylene-pipe",
+  pillar: "/technical-center/polyethylene-pipe-complete-guide",
 } as const;
 
 export const seoProductHeroImages = {

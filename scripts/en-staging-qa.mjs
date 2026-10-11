@@ -30,7 +30,7 @@ const EN_PATHS = [
   "/technical-center/air-vent-valve",
   "/technical-center/polyethylene-pipe-temperature-pressure",
   "/technical-center/subsurface-drip-irrigation",
-  "/polyethylene-pipe",
+  "/technical-center/polyethylene-pipe-complete-guide",
   "/downloads",
   "/calculator",
   "/calculator/pipeline-design",
@@ -69,7 +69,7 @@ async function checkRoutes() {
 }
 
 async function checkMetadata() {
-  const samples = ["/en", "/en/products/gas-pipe", "/en/about", "/en/polyethylene-pipe"];
+  const samples = ["/en", "/en/products/gas-pipe", "/en/about", "/en/technical-center/polyethylene-pipe-complete-guide"];
   const out = [];
   for (const route of samples) {
     const html = await (await fetch(`${BASE}${route}`)).text();

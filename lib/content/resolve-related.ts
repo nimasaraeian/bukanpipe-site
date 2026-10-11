@@ -10,7 +10,7 @@ function pathForRelation(
   if (key === "applications") return `/applications/${slug}`;
   if (key === "laboratory") return `/laboratory/${slug}`;
   if (key === "articles") {
-    return slug === "polyethylene-pipe" ? "/polyethylene-pipe" : `/technical-center/${slug}`;
+    return `/technical-center/${slug}`;
   }
   return `/${slug}`;
 }

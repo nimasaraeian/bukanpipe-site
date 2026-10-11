@@ -60,7 +60,7 @@ function HeroActions({ doc }: { doc: ContentDocument }) {
     );
   }
 
-  if (doc.kind === "article" || doc.path.startsWith("/technical-center") || doc.path === "/polyethylene-pipe") {
+  if (doc.kind === "article" || doc.path.startsWith("/technical-center")) {
     return (
       <>
         <IndustrialButton href={localePath("/calculator/pipeline-design")} variant="secondary">
@@ -92,8 +92,7 @@ export function ContentDocumentPage({ doc }: ContentDocumentPageProps) {
   const related = resolveRelatedLinks(locale, doc);
   const isArticle =
     doc.kind === "article" ||
-    doc.path.startsWith("/technical-center") ||
-    doc.path === "/polyethylene-pipe";
+    doc.path.startsWith("/technical-center");
   const blockOptions = {
     contactLinks: doc.path === "/contact",
     articleMode: isArticle,
