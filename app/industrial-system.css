@@ -3423,6 +3423,20 @@ html[data-theme="dark"] .ind-page-hero--product-photo .ind-page-hero-shade-botto
   font-size: 0.8125rem;
   font-variant-numeric: tabular-nums;
   color: var(--ind-text-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.ind-article-dateline p {
+  margin: 0;
+}
+.ind-article-byline a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.ind-article-byline a:hover {
+  color: var(--ind-accent, inherit);
 }
 
 [data-theme="light"] .ind-article-dateline {

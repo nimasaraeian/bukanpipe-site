@@ -142,7 +142,6 @@ export const extraSearchDestinations: readonly GuideDestination[] = [
   ]),
   dest(
     "pe-pillar",
-    "/polyethylene-pipe",
     "راهنمای لوله پلی‌اتیلن",
     "Polyethylene Pipe Guide",
     ["pe100", "polyethylene", "hdpe", "پلی اتیلن"],

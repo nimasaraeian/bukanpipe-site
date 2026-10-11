@@ -50,7 +50,7 @@ export const faHomeArticles = [
   },
   {
     title: "راهنمای جامع لوله PE",
-    href: "/polyethylene-pipe",
+    href: "/technical-center/polyethylene-pipe-complete-guide",
   },
 ] as const;
 

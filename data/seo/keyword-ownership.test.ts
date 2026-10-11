@@ -63,15 +63,13 @@ describe.each(locales)("%s keyword ownership", (locale) => {
         "/applications/gas-distribution uses \"لوله پلی اتیلن گاز\", owned by /products/gas-pipe",
         "/laboratory uses \"کنترل کیفیت لوله پلی اتیلن\", owned by /quality",
         "/technical-center/polyethylene-pipe-complete-guide uses \"استاندارد لوله پلی اتیلن\", owned by /technical-center/polyethylene-pipe-standards",
-        "/polyethylene-pipe uses \"کاربرد لوله پلی اتیلن\", owned by /applications",
+        "/technical-center/polyethylene-pipe-complete-guide uses \"کاربرد لوله پلی اتیلن\", owned by /applications",
         "/about uses \"خرید لوله پلی اتیلن از کارخانه\", owned by /products",
         "/certifications uses \"استاندارد لوله پلی اتیلن\", owned by /technical-center/polyethylene-pipe-standards",
       ],
       en: [
         "/laboratory/services uses \"polyethylene pipe testing\", owned by /laboratory",
         "/laboratory/test-scope uses \"PE pipe quality testing\", owned by /laboratory/services",
-        "/technical-center/polyethylene-pipe-complete-guide uses \"HDPE pipe\", owned by /polyethylene-pipe",
-        "/polyethylene-pipe uses \"polyethylene pipe\", owned by /technical-center/polyethylene-pipe-complete-guide",
       ],
     };
 

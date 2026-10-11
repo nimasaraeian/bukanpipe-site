@@ -21,7 +21,6 @@ export const ASSISTANT_STATIC_PATHS = [
   "/downloads",
   "/certifications",
   "/standards",
-  "/polyethylene-pipe",
   "/products/water-supply-pipe",
   "/products/gas-pipe",
   "/products/irrigation-pipe",

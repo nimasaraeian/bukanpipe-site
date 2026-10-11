@@ -4,6 +4,7 @@ import { getPrimaryNavStructure, getFooterColumns } from "@/lib/i18n/nav-items";
 import { locales, type Locale } from "@/lib/i18n/config";
 import { dictionaryFa } from "@/messages/fa";
 import { dictionaryEn } from "@/messages/en";
+import { getStubPermanentRedirects } from "@/lib/seo/stub-redirects";
 
 const dictionaries = { fa: dictionaryFa, en: dictionaryEn } as const;
 
@@ -57,18 +58,83 @@ describe("head term distribution", () => {
     expect(owners.map((d) => d.path)).toEqual([GUIDE]);
   });
 
-  it("does not let the pillar re-title itself onto the head term", () => {
-    const pillar = getContentCatalog("fa").find((d) => d.path === "/polyethylene-pipe")!;
-    // The pillar answers "what is", which is a different query. If its seoTitle
-    // ever stops saying so, the two pages compete for the same result again.
-    expect(pillar.seoTitle).toContain("چیست");
-    expect(pillar.primaryKeyword).toBe("لوله پلی اتیلن چیست");
+  it.each(locales)("no longer publishes the short pillar in %s — it was merged into the guide", (locale) => {
+    // Two pages split the head term for a month: the 1,000-word pillar at
+    // /polyethylene-pipe took the impressions (74, position 71) and the
+    // 5,000-word guide took almost none (4, position 7). Differentiating the
+    // titles did not fix that. The pillar is now a 308 to the guide, and the
+    // guide answers "what is" as well as the head term.
+    expect(getContentCatalog(locale as Locale).find((d) => d.path === "/polyethylene-pipe")).toBeUndefined();
+    expect(getAllPublishedPaths(locale as Locale)).not.toContain("/polyethylene-pipe");
   });
 
-  it("does not let the head-term page lead with the pillar's query", () => {
+  it("redirects the old pillar to the guide in both locales, permanently", () => {
+    const rules = getStubPermanentRedirects();
+    for (const locale of locales) {
+      const rule = rules.find((r) => r.source === `/${locale}/polyethylene-pipe`);
+      expect(rule, locale).toBeDefined();
+      expect(rule!.destination).toBe(`/${locale}${GUIDE}`);
+      expect(rule!.permanent).toBe(true);
+    }
+  });
+
+  it("lets the head-term page answer the what-is query too", () => {
     const guide = getContentCatalog("fa").find((d) => d.path === GUIDE)!;
     expect(guide.seoTitle.startsWith(HEAD_TERM)).toBe(true);
-    expect(guide.seoTitle).not.toContain("چیست");
+    expect(guide.title).toContain("چیست");
+    expect(guide.secondaryKeywords).toContain("لوله پلی اتیلن چیست");
+  });
+
+  it("opens with a featured-snippet definition that starts with the head term", () => {
+    const guide = getContentCatalog("fa").find((d) => d.path === GUIDE)!;
+    const first = guide.sections[0];
+    expect(first.type).toBe("definition");
+    if (first.type !== "definition") return;
+    expect(first.text.startsWith(HEAD_TERM)).toBe(true);
+    const words = first.text.split(/\s+/).length;
+    expect(words).toBeGreaterThanOrEqual(40);
+    expect(words).toBeLessThanOrEqual(80);
+  });
+
+  it.each(locales)("carries at least eight FAQs in %s, including price, PVC and service life", (locale) => {
+    const guide = getContentCatalog(locale as Locale).find((d) => d.path === GUIDE)!;
+    expect(guide.faqs?.length ?? 0).toBeGreaterThanOrEqual(8);
+    const q = (guide.faqs ?? []).map((f) => f.question).join("\n");
+    if (locale === "fa") {
+      expect(q).toContain("قیمت لوله پلی اتیلن");
+      expect(q).toContain("PVC");
+      expect(q).toContain("چند سال عمر");
+    } else {
+      expect(q.toLowerCase()).toContain("price");
+      expect(q).toContain("PVC");
+      expect(q.toLowerCase()).toContain("how long");
+    }
+  });
+
+  it.each(locales)("leaves no internal link pointing at the retired pillar in %s", (locale) => {
+    const offenders: string[] = [];
+    for (const doc of getContentCatalog(locale as Locale)) {
+      for (const block of doc.sections) {
+        if (block.type === "internal-links") {
+          for (const link of block.links) {
+            if (link.path === "/polyethylene-pipe") offenders.push(`${doc.path} → ${link.path}`);
+          }
+        }
+      }
+      for (const crumb of doc.breadcrumbs) {
+        if (crumb.path === "/polyethylene-pipe") offenders.push(`${doc.path} breadcrumb`);
+      }
+    }
+    const t = dictionaries[locale as Locale];
+    const path = (p: string) => `/${locale}${p}`;
+    const navHrefs = getPrimaryNavStructure(locale as Locale, t, path).flatMap((entry) =>
+      entry.kind === "group" ? entry.items.map((i) => i.href) : [entry.href],
+    );
+    const footerHrefs = getFooterColumns(locale as Locale, t, path).flatMap((col) => col.links.map((l) => l.href));
+    for (const href of [...navHrefs, ...footerHrefs]) {
+      if (href === path("/polyethylene-pipe")) offenders.push(`chrome → ${href}`);
+    }
+    expect(offenders).toEqual([]);
   });
 
   it.each(locales)("keeps the guide in the %s navigation and footer", (locale) => {

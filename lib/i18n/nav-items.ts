@@ -98,7 +98,7 @@ export function getFooterColumns(
         { label: t.footer.columns.products.links.gasPipe, href: path("/products/gas-pipe") },
         { label: t.footer.columns.products.links.pe100, href: path("/products/pe100-pipe") },
         { label: t.footer.columns.products.links.industrialPipe, href: path("/products/industrial-pipe") },
-        { label: t.footer.columns.products.links.peGuide, href: path("/polyethylene-pipe") },
+        { label: t.footer.columns.products.links.peGuide, href: path("/technical-center/polyethylene-pipe-complete-guide") },
         { label: t.footer.columns.products.links.pipeSizes, href: path("/pipe-size") },
       ],
     },

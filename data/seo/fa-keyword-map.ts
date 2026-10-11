@@ -182,17 +182,6 @@ export const faKeywordMap: readonly FaKeywordMapEntry[] = [
     cluster: "technical",
   },
   {
-    path: "/polyethylene-pipe",
-    primaryKeyword: "لوله پلی اتیلن چیست",
-    secondaryKeywords: [
-      "معرفی لوله پلی اتیلن",
-      "کاربرد لوله پلی اتیلن",
-      "مزایای لوله پلی اتیلن",
-    ],
-    intent: "informational",
-    cluster: "technical",
-  },
-  {
     path: "/products",
     primaryKeyword: "خرید لوله پلی اتیلن از کارخانه",
     secondaryKeywords: [
@@ -343,12 +332,16 @@ export const faKeywordMap: readonly FaKeywordMapEntry[] = [
     path: "/technical-center/polyethylene-pipe-complete-guide",
     primaryKeyword: "لوله پلی اتیلن",
     secondaryKeywords: [
+      "لوله پلی اتیلن چیست",
       "لوله HDPE",
       "لوله PE100",
       "تولید کننده لوله پلی اتیلن",
       "کارخانه تولید لوله پلی اتیلن",
       "خرید لوله پلی اتیلن",
       "استاندارد لوله پلی اتیلن",
+      "معرفی لوله پلی اتیلن",
+      "کاربرد لوله پلی اتیلن",
+      "مزایای لوله پلی اتیلن",
     ],
     intent: "informational",
     cluster: "technical",

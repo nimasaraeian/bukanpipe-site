@@ -22,7 +22,7 @@ export const enProductsHub: ContentDocument = {
   seoDescription:
     "HDPE pipe for water supply, gas, sewerage, drainage, irrigation and PE100 — Bukan Pipe product catalog.",
   description: "HDPE and PE100 pipe product catalog.",
-  // The pillar guide at /polyethylene-pipe owns the generic "HDPE pipe"
+  // The complete guide at /technical-center/polyethylene-pipe-complete-guide owns the generic "HDPE pipe"
   // intent; this hub owns the catalogue/commercial one, mirroring the FA map
   // where /products owns "خرید لوله پلی اتیلن" rather than the generic term.
   primaryKeyword: "HDPE pipe products",

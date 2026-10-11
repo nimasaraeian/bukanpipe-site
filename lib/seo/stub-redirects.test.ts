@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest";
 import { getStubPermanentRedirects, STUB_REDIRECTS } from "@/lib/seo/stub-redirects";
 
 describe("confirmed stub 308s", () => {
-  it("covers both slash forms in both locales of the four confirmed stubs only", () => {
+  it("covers both slash forms in both locales of the five confirmed stubs only", () => {
     const redirects = getStubPermanentRedirects();
-    expect(redirects).toHaveLength(16);
+    expect(redirects).toHaveLength(20);
     expect(redirects.every((rule) => rule.permanent)).toBe(true);
 
     const sources = redirects.map((rule) => rule.source).sort();
@@ -13,6 +13,8 @@ describe("confirmed stub 308s", () => {
       "/en/engineering/",
       "/en/knowledge",
       "/en/knowledge/",
+      "/en/polyethylene-pipe",
+      "/en/polyethylene-pipe/",
       "/en/standards",
       "/en/standards/",
       "/en/tools",
@@ -21,6 +23,8 @@ describe("confirmed stub 308s", () => {
       "/fa/engineering/",
       "/fa/knowledge",
       "/fa/knowledge/",
+      "/fa/polyethylene-pipe",
+      "/fa/polyethylene-pipe/",
       "/fa/standards",
       "/fa/standards/",
       "/fa/tools",
@@ -46,5 +50,8 @@ describe("confirmed stub 308s", () => {
   it("keeps tools and standards on their existing canonical hubs", () => {
     expect(STUB_REDIRECTS.find((rule) => rule.from === "/tools")?.to).toBe("/calculator");
     expect(STUB_REDIRECTS.find((rule) => rule.from === "/standards")?.to).toBe("/downloads");
+    expect(STUB_REDIRECTS.find((rule) => rule.from === "/polyethylene-pipe")?.to).toBe(
+      "/technical-center/polyethylene-pipe-complete-guide",
+    );
   });
 });

@@ -598,7 +598,6 @@ export const faPolyethylenePipeSpecificationsSeed: SeoArticleSeed = {
     },
   ],
   curatedLinks: [
-    { label: "لوله پلی اتیلن چیست؟", path: "/polyethylene-pipe" },
     { label: "راهنمای انتخاب لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-complete-guide" },
     { label: "لوله پلی اتیلن PE100", path: seoLandingPaths.pe100 },
     { label: "استاندارد لوله پلی اتیلن", path: "/technical-center/polyethylene-pipe-standards" },
