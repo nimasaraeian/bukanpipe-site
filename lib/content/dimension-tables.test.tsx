@@ -219,12 +219,10 @@ describe("the two pages", () => {
 describe("pages that point at the tables", () => {
   const FA_SOURCES = [
     "/technical-center",
-    "/polyethylene-pipe",
     "/technical-center/polyethylene-pipe-complete-guide",
   ];
   const EN_SOURCES = [
     "/technical-center",
-    "/polyethylene-pipe",
     "/technical-center/polyethylene-pipe-complete-guide",
   ];
 

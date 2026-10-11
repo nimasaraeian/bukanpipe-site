@@ -16,12 +16,12 @@
 /econtact.php,301,/en/contact,2007 English contact [VERIFY slug],high,static-2007
 /index.htm,301,/fa,2007 homepage,high,static-2007
 /index.php,301,/fa,legacy homepage,high,static-2007
-/pe100.htm,301,/fa/polyethylene-pipe,2007 PE100 product page,medium,static-2007
+/pe100.htm,301,/fa/technical-center/polyethylene-pipe-complete-guide,2007 PE100 product page,medium,static-2007
 /pe80.htm,301,/fa/technical-center/pe80-vs-pe100,2007 PE80 product page,medium,static-2007
-/pe63.htm,301,/fa/polyethylene-pipe,2007 PE63 product page,medium,static-2007
-/epe100.htm,301,/en/polyethylene-pipe,2007 English PE100,medium,static-2007
-/epe80.htm,301,/en/polyethylene-pipe,2007 English PE80,medium,static-2007
-/epe63.htm,301,/en/polyethylene-pipe,2007 English PE63,medium,static-2007
+/pe63.htm,301,/fa/technical-center/polyethylene-pipe-complete-guide,2007 PE63 product page,medium,static-2007
+/epe100.htm,301,/en/technical-center/polyethylene-pipe-complete-guide,2007 English PE100,medium,static-2007
+/epe80.htm,301,/en/technical-center/polyethylene-pipe-complete-guide,2007 English PE80,medium,static-2007
+/epe63.htm,301,/en/technical-center/polyethylene-pipe-complete-guide,2007 English PE63,medium,static-2007
 /project.php,301,/fa/applications,2007 projects page,medium,static-2007
 /fa/user/temp.php?irantech_cms=11801&*(PE),301,/fa/laboratory/services,old lab page: PE pipe testing,medium,irantech
 /fa/user/temp.php?irantech_cms=11801&*(PP),301,/fa/laboratory/services,old lab page: PP pipe testing,medium,irantech

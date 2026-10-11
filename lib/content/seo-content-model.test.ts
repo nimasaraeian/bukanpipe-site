@@ -89,7 +89,7 @@ describe("SEO Wave A FA destinations", () => {
   });
 
   it("keeps the polyethylene guide distinct from specifications and PE100", () => {
-    const overview = getContentByPath("fa", "'+G+'")!;
+    const overview = getContentByPath("fa", "/technical-center/polyethylene-pipe-complete-guide")!;
     const specs = getContentByPath("fa", "/technical-center/polyethylene-pipe-specifications")!;
     const pe100 = getContentByPath("fa", "/products/pe100-pipe")!;
     expect(overview.primaryKeyword).toBe("لوله پلی اتیلن");
