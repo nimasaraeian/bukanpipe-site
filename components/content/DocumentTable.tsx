@@ -1,3 +1,4 @@
+import { DocumentEvidenceGallery } from "./DocumentEvidenceGallery";
 import { awards, awardCategoryLabels } from "@/data/company/awards";
 import { labScope } from "@/data/company/lab-scope";
 import {
@@ -374,10 +375,10 @@ export function DocumentTableBlock({
     return <CapacityTable caption={caption} summary={summary} locale={locale} />;
   }
   if (table === "awards") {
-    return <AwardsTable caption={caption} summary={summary} locale={locale} />;
+    return <><AwardsTable caption={caption} summary={summary} locale={locale} />{locale === "fa" ? <DocumentEvidenceGallery group="awards" /> : null}</>;
   }
   if (table === "lab-scope") {
     return <LabScopeTable caption={caption} summary={summary} locale={locale} />;
   }
-  return <DocumentTable group={table} caption={caption} summary={summary} locale={locale} />;
+  return <><DocumentTable group={table} caption={caption} summary={summary} locale={locale} />{locale === "fa" ? <DocumentEvidenceGallery group={table} /> : null}</>;
 }

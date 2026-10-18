@@ -49,6 +49,7 @@ describe("company documents", () => {
     expect(withheldDocuments().map((doc) => doc.id).sort()).toEqual([
       "gas-vendor-qualification",
       "naci-17025",
+      "pe-pipe-association",
     ]);
   });
 
