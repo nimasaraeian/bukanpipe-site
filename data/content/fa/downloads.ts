@@ -17,18 +17,24 @@ export type DownloadItem = {
   verificationStatus: "verified" | "verify-before-production" | "missing-source";
 };
 
-/** Only items with a hosted fileUrl are shown on the public site. */
-export const faDownloadsPublic: readonly DownloadItem[] = [];
+/** The company catalogue as the factory issued it — one file for both locales. */
+export const CATALOGUE_PDF_URL = "/downloads/bukan-pipe-catalogue.pdf";
 
-export const faDownloadsInternalQueue: readonly DownloadItem[] = [
+/** Only items with a hosted fileUrl are shown on the public site. */
+export const faDownloadsPublic: readonly DownloadItem[] = [
   {
     id: "catalogue-fa",
-    title: "کاتالوگ شرکت",
-    description: "کاتالوگ معرفی محصولات — نسخه به‌روز پس از تأیید طراحی.",
+    title: "کاتالوگ شرکت بوکان پایپ",
+    description:
+      "کاتالوگ رسمی شرکت تعاونی لوله پلی اتیلن بوکان — معرفی کارخانه، محصولات، جدول‌های ابعاد آبرسانی، گاز و آبیاری، جدول بسته‌بندی و گواهی‌ها. ۲۸ صفحه، حدود ۵ مگابایت.",
     category: "company-catalogue",
+    fileUrl: CATALOGUE_PDF_URL,
     fileType: "PDF",
-    verificationStatus: "verify-before-production",
+    verificationStatus: "verified",
   },
+];
+
+export const faDownloadsInternalQueue: readonly DownloadItem[] = [
   {
     id: "water-ins-14427",
     title: "INSO 14427 — لوله آبرسانی",
@@ -89,7 +95,7 @@ export const faDownloadsHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "جدول‌های ابعاد و منابع فنی را از پیوندهای زیر مشاهده کنید. برای دریافت کاتالوگ یا مدارک مرتبط با سفارش، با واحد فروش و آزمایشگاه هماهنگ کنید.",
+      text: "کاتالوگ رسمی شرکت را از همین صفحه دانلود کنید و جدول‌های ابعاد و منابع فنی را از پیوندهای زیر ببینید. مدارک مرتبط با سفارش را واحد فروش و آزمایشگاه صادر می‌کنند.",
     },
     { type: "heading", level: 2, text: "منابع قابل مشاهده آنلاین" },
     {
@@ -119,7 +125,7 @@ export const faDownloadsHub: ContentDocument = {
     },
     {
       type: "paragraph",
-      text: "جدول ابعاد به‌صورت آنلاین قابل جست‌وجو و کپی است. برای دریافت نسخه کاتالوگ موردنیاز پروژه، با واحد فروش تماس بگیرید.",
+      text: "جدول ابعاد به‌صورت آنلاین قابل جست‌وجو و کپی است و همان جدول در کاتالوگ PDF هم آمده است. اگر برای پروژه نسخه چاپی یا مشخصات اختصاصی لازم دارید، با واحد فروش تماس بگیرید.",
     },
     { type: "heading", level: 2, text: "مدارک قابل درخواست از کارخانه" },
     {
@@ -151,7 +157,7 @@ export const faDownloadsHub: ContentDocument = {
     {
       question: "کاتالوگ لوله پلی اتیلن را از کجا دانلود کنم؟",
       answer:
-        "جدول قطر، ضخامت جداره و SDR برای آبرسانی، گازرسانی و آبیاری قطره‌ای در مرکز فنی قابل مشاهده است. برای دریافت نسخه PDF کاتالوگ با واحد فروش تماس بگیرید.",
+        "کاتالوگ PDF شرکت در بخش «کاتالوگ شرکت» همین صفحه قابل دانلود است. جدول قطر، ضخامت جداره و SDR برای آبرسانی، گازرسانی و آبیاری قطره‌ای هم به‌صورت متن در مرکز فنی منتشر شده است.",
     },
     {
       question: "گزارش آزمون محصول را چطور بگیرم؟",

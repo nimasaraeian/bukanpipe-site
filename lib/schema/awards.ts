@@ -78,11 +78,10 @@ export function schemaAwards(): readonly Award[] {
 /**
  * The year alone.
  *
- * `year` on the data is the date line as the plaque prints it, which is
- * right for the page — "1397؛ تاریخ روی لوح 97/04/10 (خوانش تقریبی)" tells a
- * reader the reading is approximate. Dropped into an English award string it
- * is Persian prose inside an English sentence, so the markup takes the year
- * and leaves the provenance on the page.
+ * `year` on the data is the date line as the plaque prints it — "22 مهر 1393"
+ * is right for the page, but dropped into an English award string it is
+ * Persian prose inside an English sentence, so the markup takes the year
+ * alone.
  */
 export function awardYear(award: Award): string {
   const match = JALALI_YEAR.exec(award.year);

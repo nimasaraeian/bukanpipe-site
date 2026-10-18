@@ -38,8 +38,6 @@ const navItems = [
 
   routes.applications,
 
-  routes.projects,
-
   routes.laboratory,
 
   routes.engineering,

@@ -53,7 +53,7 @@ export const awards: readonly Award[] = [
     year: "1388",
     level: "ملی/استانی",
     issuer: { fa: "سازمان استاندارد و تحقیقات صنعتی ایران – اداره کل استاندارد و تحقیقات صنعتی آذربایجان غربی", en: "Iranian Standards Organization — West Azerbaijan" },
-    title: { fa: "کسب عنوان واحد برگزیده ملی در سال 1388", en: "National quality unit of the year" },
+    title: { fa: "کسب عنوان واحد برگزیده ملی در سال ۱۳۸۸", en: "National quality unit of the year" },
   },
   {
     id: "award-43",
@@ -61,15 +61,15 @@ export const awards: readonly Award[] = [
     year: "1393",
     level: "ملی",
     issuer: { fa: "ریاست جمهوری – سازمان ملی استاندارد ایران – اداره کل استاندارد استان آذربایجان غربی", en: "Iranian National Standards Organization — West Azerbaijan" },
-    title: { fa: "کسب عنوان واحد نمونه کیفی در سطح ملی در سال 1393", en: "National quality unit of the year" },
+    title: { fa: "کسب عنوان واحد نمونه کیفی در سطح ملی در سال ۱۳۹۳", en: "National quality unit of the year" },
   },
   {
     id: "award-46",
     category: "quality",
-    year: "14 October 2018 / سال 1397",
+    year: "22 مهر 1397",
     level: "استانی",
     issuer: { fa: "ریاست جمهوری – سازمان ملی استاندارد ایران – اداره کل استاندارد استان آذربایجان غربی", en: "Iranian National Standards Organization — West Azerbaijan" },
-    title: { fa: "کسب عنوان واحد تولیدی نمونه استان در سال 1397", en: "Provincial model production unit" },
+    title: { fa: "کسب عنوان واحد تولیدی نمونه استان در سال ۱۳۹۷", en: "Provincial model production unit" },
   },
   {
     id: "award-47",
@@ -77,7 +77,7 @@ export const awards: readonly Award[] = [
     year: "22 مهر 1393",
     level: "ملی",
     issuer: { fa: "ریاست جمهوری – سازمان ملی استاندارد ایران", en: "Iranian National Standards Organization" },
-    title: { fa: "کیفیت برتر محصول لوله پلی‌اتیلن در سال 1393", en: "Superior product quality — polyethylene pipe" },
+    title: { fa: "کیفیت برتر محصول لوله پلی‌اتیلن در سال ۱۳۹۳", en: "Superior product quality — polyethylene pipe" },
   },
   {
     id: "award-45",
@@ -85,7 +85,7 @@ export const awards: readonly Award[] = [
     year: "22 مهر 1396",
     level: "استانی",
     issuer: { fa: "ریاست جمهوری – سازمان ملی استاندارد ایران – اداره کل استاندارد استان آذربایجان غربی", en: "Iranian National Standards Organization — West Azerbaijan" },
-    title: { fa: "کسب عنوان واحد نمونه کیفی استان در سال 1396", en: "Provincial quality unit of the year" },
+    title: { fa: "کسب عنوان واحد نمونه کیفی استان در سال ۱۳۹۶", en: "Provincial quality unit of the year" },
   },
   {
     id: "award-42",
@@ -93,7 +93,7 @@ export const awards: readonly Award[] = [
     year: "مهر 1390",
     level: "استانی",
     issuer: { fa: "سازمان استاندارد و تحقیقات صنعتی ایران – اداره کل آذربایجان غربی", en: "Iranian Standards Organization — West Azerbaijan" },
-    title: { fa: "کسب عنوان واحد نمونه استانی سال 1390", en: "Provincial quality unit of the year" },
+    title: { fa: "کسب عنوان واحد نمونه استانی سال ۱۳۹۰", en: "Provincial quality unit of the year" },
   },
   {
     id: "award-44",
@@ -101,7 +101,7 @@ export const awards: readonly Award[] = [
     year: "مهر 1395",
     level: "استانی",
     issuer: { fa: "سازمان ملی استاندارد ایران – اداره کل استاندارد و تحقیقات صنعتی آذربایجان غربی", en: "Iranian National Standards Organization — West Azerbaijan" },
-    title: { fa: "کسب عنوان واحد نمونه کیفی استان در سال 1395", en: "Provincial quality unit of the year" },
+    title: { fa: "کسب عنوان واحد نمونه کیفی استان در سال ۱۳۹۵", en: "Provincial quality unit of the year" },
   },
   {
     id: "award-39",
@@ -109,15 +109,15 @@ export const awards: readonly Award[] = [
     year: "1384",
     level: "استانی",
     issuer: { fa: "سازمان صنایع و معادن آذربایجان غربی و خانه صنعت و معدن آذربایجان غربی", en: "Organization of Industries and Mines, West Azerbaijan" },
-    title: { fa: "کسب عنوان واحد نمونه صنعتی سال 1384", en: "Provincial model industrial unit" },
+    title: { fa: "کسب عنوان واحد نمونه صنعتی سال ۱۳۸۴", en: "Provincial model industrial unit" },
   },
   {
     id: "award-40",
     category: "industrial",
-    year: "1397؛ تاریخ روی لوح 97/04/10 (خوانش تقریبی)",
+    year: "1397",
     level: "استانی",
     issuer: { fa: "وزارت صنعت، معدن و تجارت – سازمان صنعت، معدن و تجارت استان آذربایجان غربی", en: "Ministry of Industry, Mine and Trade — West Azerbaijan" },
-    title: { fa: "واحد صنعتی/تولیدی نمونه استان در سال 1397", en: "Provincial model industrial unit" },
+    title: { fa: "واحد صنعتی/تولیدی نمونه استان در سال ۱۳۹۷", en: "Provincial model industrial unit" },
   },
   {
     id: "award-7",
@@ -189,7 +189,7 @@ export const awards: readonly Award[] = [
     year: "1389",
     level: "استانی",
     issuer: { fa: "استانداری آذربایجان غربی / کارگروه توسعه صادرات غیرنفتی استان", en: "Governorate of West Azerbaijan — non-oil export working group" },
-    title: { fa: "صادرکننده نمونه استان در سال 1389", en: "Provincial model exporter" },
+    title: { fa: "صادرکننده نمونه استان در سال ۱۳۸۹", en: "Provincial model exporter" },
   },
   {
     id: "award-18",
@@ -197,7 +197,7 @@ export const awards: readonly Award[] = [
     year: "1391",
     level: "استانی",
     issuer: { fa: "وزارت کشور – استانداری آذربایجان غربی", en: "Ministry of Interior — Governorate of West Azerbaijan" },
-    title: { fa: "صادرکننده برگزیده استانی در سال 1391", en: "Selected provincial exporter" },
+    title: { fa: "صادرکننده برگزیده استانی در سال ۱۳۹۱", en: "Selected provincial exporter" },
   },
   {
     id: "award-20",
@@ -205,14 +205,14 @@ export const awards: readonly Award[] = [
     year: "1393",
     level: "استانی",
     issuer: { fa: "وزارت صنعت، معدن و تجارت – سازمان صنعت، معدن و تجارت استان آذربایجان غربی", en: "Ministry of Industry, Mine and Trade — West Azerbaijan" },
-    title: { fa: "صادرکننده برگزیده استانی در سال 1393", en: "Selected provincial exporter" },
+    title: { fa: "صادرکننده برگزیده استانی در سال ۱۳۹۳", en: "Selected provincial exporter" },
   },
   {
     id: "award-11",
     category: "exhibition",
     year: "11–14 December 2013 / 20–23 آذر 1392",
     level: "بین‌المللی",
-    issuer: { fa: "برگزارکنندگان 8th Expo Iran–Erbil؛ شرکت نمایشگاه بین‌المللی اربیل و ارومیه و نهادهای همکار", en: "Erbil and Urmia international exhibition companies" },
+    issuer: { fa: "برگزارکنندگان ۸th Expo Iran–Erbil؛ شرکت نمایشگاه بین‌المللی اربیل و ارومیه و نهادهای همکار", en: "Erbil and Urmia international exhibition companies" },
     title: { fa: "تقدیر از مشارکت در نمایشگاه", en: "Participation in the 8th Iran–Erbil Expo" },
   },
   {
@@ -261,7 +261,7 @@ export const awards: readonly Award[] = [
     year: "1404/06/30",
     level: "شهرستانی",
     issuer: { fa: "وزارت بهداشت، درمان و آموزش پزشکی – دانشگاه علوم پزشکی و خدمات بهداشتی درمانی آذربایجان غربی – مرکز بهداشت شهرستان بوکان", en: "Ministry of Health — Bukan District Health Centre" },
-    title: { fa: "کسب رتبه برتر در سطح شهرستان بر اساس عملکرد سال 1403", en: "Top-ranked in the district on 1403 occupational health performance" },
+    title: { fa: "کسب رتبه برتر در سطح شهرستان بر اساس عملکرد سال ۱۴۰۳", en: "Top-ranked in the district on 1403 occupational health performance" },
   },
   {
     id: "catalogue-industrial-1385",
@@ -270,7 +270,7 @@ export const awards: readonly Award[] = [
     year: "1385",
     level: "استانی",
     issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
-    title: { fa: "واحد نمونه صنعتی استان در سال 1385", en: "Provincial model industrial unit" },
+    title: { fa: "واحد نمونه صنعتی استان در سال ۱۳۸۵", en: "Provincial model industrial unit" },
   },
   {
     id: "catalogue-industrial-1386",
@@ -279,7 +279,7 @@ export const awards: readonly Award[] = [
     year: "1386",
     level: "استانی",
     issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
-    title: { fa: "واحد نمونه صنعتی استان در سال 1386", en: "Provincial model industrial unit" },
+    title: { fa: "واحد نمونه صنعتی استان در سال ۱۳۸۶", en: "Provincial model industrial unit" },
   },
   {
     id: "catalogue-industrial-1387",
@@ -288,7 +288,7 @@ export const awards: readonly Award[] = [
     year: "1387",
     level: "استانی",
     issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
-    title: { fa: "واحد نمونه صنعتی استان در سال 1387", en: "Provincial model industrial unit" },
+    title: { fa: "واحد نمونه صنعتی استان در سال ۱۳۸۷", en: "Provincial model industrial unit" },
   },
   {
     id: "catalogue-industrial-1388",
@@ -297,7 +297,7 @@ export const awards: readonly Award[] = [
     year: "1388",
     level: "استانی",
     issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
-    title: { fa: "واحد نمونه صنعتی استان در سال 1388", en: "Provincial model industrial unit" },
+    title: { fa: "واحد نمونه صنعتی استان در سال ۱۳۸۸", en: "Provincial model industrial unit" },
   },
   {
     id: "catalogue-cooperative-1388",
@@ -306,7 +306,7 @@ export const awards: readonly Award[] = [
     year: "1388",
     level: "استانی",
     issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
-    title: { fa: "تعاونی برتر استان در سال 1388", en: "Top provincial cooperative" },
+    title: { fa: "تعاونی برتر استان در سال ۱۳۸۸", en: "Top provincial cooperative" },
   },
   {
     id: "catalogue-cooperative-1392",
@@ -315,7 +315,7 @@ export const awards: readonly Award[] = [
     year: "1392",
     level: "استانی",
     issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
-    title: { fa: "تعاونی برتر استان در سال 1392", en: "Top provincial cooperative" },
+    title: { fa: "تعاونی برتر استان در سال ۱۳۹۲", en: "Top provincial cooperative" },
   },
   {
     id: "catalogue-qc-manager-1391",
@@ -324,7 +324,7 @@ export const awards: readonly Award[] = [
     year: "1391",
     level: "استانی",
     issuer: { fa: "ذکرشده در کاتالوگ رسمی شرکت (لوح در آرشیو نیست)", en: "Listed in the company's official catalogue (plaque not in the archive)" },
-    title: { fa: "مدیر کنترل کیفی نمونه استان در سال 1391", en: "Provincial model quality control manager" },
+    title: { fa: "مدیر کنترل کیفی نمونه استان در سال ۱۳۹۱", en: "Provincial model quality control manager" },
   },
 ];
 

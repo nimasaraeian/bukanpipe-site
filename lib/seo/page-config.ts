@@ -66,10 +66,6 @@ export const OG_IMAGES = {
 
 /** Thin placeholder routes — noindex until content is verified. */
 export const NOINDEX_PATHS = new Set<string>([
-  "/projects",
-  "/pricing",
-  "/dealers",
-  "/verify",
   "/design-system",
 ]);
 

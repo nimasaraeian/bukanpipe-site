@@ -89,17 +89,6 @@ export const routes = {
     includeInSitemap: true,
     primaryCta: "REQUEST_LAB_TEST",
   },
-  projects: {
-    path: "/projects",
-    title: "Projects",
-    purpose:
-      "Case studies with publication permission. No project or client name is created without evidence.",
-    seoDescription:
-      "Bukan Pipe projects development route. Case studies are added only after evidence and publication approval.",
-    lifecycle: "implemented",
-    includeInSitemap: false,
-    primaryCta: "REQUEST_QUOTE",
-  },
   engineering: {
     path: "/engineering",
     title: "Engineering",
@@ -133,17 +122,6 @@ export const routes = {
     includeInSitemap: false,
     primaryCta: "VIEW_PRODUCT",
   },
-  pricing: {
-    path: "/pricing",
-    title: "Pricing",
-    purpose:
-      "Pricing transparency hub (factors affecting price), not a stale price table. Primary conversion is quote request.",
-    seoDescription:
-      "Bukan Pipe pricing information development route. No price figures are published in this phase.",
-    lifecycle: "implemented",
-    includeInSitemap: false,
-    primaryCta: "REQUEST_QUOTE",
-  },
   tools: {
     path: "/tools",
     title: "Engineering Tools",
@@ -165,28 +143,6 @@ export const routes = {
     lifecycle: "implemented",
     includeInSitemap: true,
     primaryCta: "REQUEST_QUOTE",
-  },
-  dealers: {
-    path: "/dealers",
-    title: "Dealers",
-    purpose:
-      "Official sales channel directory. Listing publishes only after factory approval. Verification at /verify.",
-    seoDescription:
-      "Bukan Pipe dealers development route. Official dealer list has not been received from the factory yet.",
-    lifecycle: "implemented",
-    includeInSitemap: false,
-    primaryCta: "VERIFY_DEALER",
-  },
-  verify: {
-    path: "/verify",
-    title: "Verify Dealer",
-    purpose:
-      "Future dealer identity or authorization verification experience. Verification logic and database are not implemented in this phase.",
-    seoDescription:
-      "Bukan Pipe dealer verification development route. The verification system is not active yet.",
-    lifecycle: "implemented",
-    includeInSitemap: false,
-    primaryCta: "VERIFY_DEALER",
   },
   about: {
     path: "/about",
@@ -230,15 +186,11 @@ export const publicRoutes: readonly RouteDefinition[] = [
   routes.industries,
   routes.applications,
   routes.laboratory,
-  routes.projects,
   routes.engineering,
   routes.standards,
   routes.knowledge,
-  routes.pricing,
   routes.tools,
   routes.requestQuote,
-  routes.dealers,
-  routes.verify,
   routes.about,
   routes.gallery,
   routes.contact,

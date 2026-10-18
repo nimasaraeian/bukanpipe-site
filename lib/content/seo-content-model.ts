@@ -244,27 +244,36 @@ export function buildSeoArticleDocument(
   };
 }
 
+/**
+ * Shared opening rows of every product spec table. The range row is labelled
+ * as the factory-wide range because that is what `factoryProductionFacts`
+ * holds; a product whose catalogue table is narrower (gas, sewer, drainage)
+ * passes its own `range` so the table never implies 16–630 mm for it.
+ */
 export function baseProductSpecRows(
   locale: Locale,
   extra: readonly { label: string; value: string }[] = [],
+  range?: string,
 ): readonly { label: string; value: string }[] {
   const f = factoryProductionFacts[locale];
   const L =
     locale === "fa"
       ? {
           pipeType: "نوع لوله",
-          productionRange: "محدوده تولید",
+          factoryRange: "محدوده تولید کارخانه (همه محصولات)",
+          productRange: "محدوده این محصول در کاتالوگ",
           factory: "تولیدکننده",
         }
       : {
           pipeType: "Pipe type",
-          productionRange: "Production range",
+          factoryRange: "Factory production range (all products)",
+          productRange: "Catalogue range for this product",
           factory: "Manufacturer",
         };
 
   return [
     { label: L.pipeType, value: f.type },
-    { label: L.productionRange, value: f.productionRange },
+    range ? { label: L.productRange, value: range } : { label: L.factoryRange, value: f.productionRange },
     ...extra,
     {
       label: L.factory,

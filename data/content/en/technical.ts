@@ -217,7 +217,7 @@ export const enPipeDimensionsChart: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "This page publishes the Bukan Pipe catalogue dimension tables as they stand: outer diameter, wall thickness and SDR for water supply, gas and drip irrigation pipe. No figure is calculated or rounded, and a dash means that diameter is not produced in that SDR.",
+      text: "This page publishes the Bukan Pipe catalogue dimension tables as they stand: outer diameter, wall thickness and SDR for water supply, gas and drip irrigation pipe. No figure is calculated or rounded. A dash means the reference table carries no figure for that diameter-and-SDR combination; ask the sales office whether it can be supplied.",
     },
     { type: "heading", level: 2, text: "How SDR, PN and wall thickness relate" },
     {
@@ -237,7 +237,7 @@ export const enPipeDimensionsChart: ContentDocument = {
     { type: "heading", level: 2, text: "Gas supply pipe" },
     {
       type: "paragraph",
-      text: "Gas pipe is produced in SDR 11 up to DN 90 and in SDR 13.6 from DN 63 upwards; a dash in the table means that size is not made in that SDR. The tabulated wall thickness is a minimum and the bracketed figure is the plus tolerance.",
+      text: "Gas pipe is produced in SDR 11 up to DN 90 and in SDR 13.6 from DN 63 upwards; a dash in the table means the reference table carries no figure for that size in that SDR — ask the sales office whether it can be supplied. The tabulated wall thickness is a minimum and the bracketed figure is the plus tolerance.",
     },
     { type: "dimension-table", table: "gas-supply" },
     { type: "heading", level: 2, text: "Drip irrigation pipe" },
@@ -284,7 +284,7 @@ export const enPipeDimensionsChart: ContentDocument = {
     {
       question: "Which diameters does Bukan Pipe produce?",
       answer:
-        "The water supply chart covers 16 to 630 mm, gas pipe 25 to 225 mm and drip irrigation pipe 12 to 32 mm. Not every diameter and SDR combination is made; a dash in the chart means that combination is not produced.",
+        "The water supply chart covers 16 to 630 mm, gas pipe 25 to 225 mm and drip irrigation pipe 12 to 32 mm. Not every diameter and SDR combination appears in the chart. A dash means the reference table carries no figure for that diameter-and-SDR combination; ask the sales office whether it can be supplied.",
     },
     {
       question: "Why is there no weight column?",
@@ -516,12 +516,12 @@ export const enTechnicalArticles: readonly ContentDocument[] = [
       { type: "heading", level: 2, text: "Why temperature reduces allowable pressure" },
       {
         type: "paragraph",
-        text: "Polyethylene is viscoelastic: its behaviour depends on time and temperature. The PN figure derives from the material's long-term strength (MRS) at the reference temperature, and that strength is resistance to slow crack growth over 50 years, not instantaneous burst resistance. As temperature rises, molecular chains slide past one another more readily and the same stress produces more strain in less time. The result is that a hotter line reaches the end of its design life sooner — not that it necessarily bursts that day. Which is exactly why temperature-related failure usually appears years later and without warning.",
+        text: "Polyethylene is viscoelastic: its behaviour depends on time and temperature. The PN figure derives from the material's long-term strength (MRS) at the reference temperature; MRS is the hydrostatic strength extrapolated to 50 years at 20 °C (the ISO 9080 method), not instantaneous burst resistance, and it is this long-term strength that falls as temperature rises. As temperature rises, molecular chains slide past one another more readily and the same stress produces more strain in less time. The result is that a hotter line reaches the end of its design life sooner — not that it necessarily bursts that day. Which is exactly why temperature-related failure usually appears years later and without warning.",
       },
       { type: "heading", level: 2, text: "A worked example" },
       {
         type: "paragraph",
-        text: "Take a line laid on the surface in direct sun, where the water inside reaches 40 °C in summer. The derating factor at that temperature is around 0.74. So PN10 pipe has an allowable working pressure of roughly 7.4 bar under those conditions. Run it at 10 bar and it is being loaded beyond its design capacity.",
+        text: "Take a line laid on the surface in direct sun, where the water inside reaches 40 °C in summer. In the ISO 13761 derating table for polyethylene pipe the 40 °C factor is 0.74 (take the exact value from the standard or the project specification). With that factor, PN10 pipe has an allowable working pressure of roughly 7.4 bar under those conditions. Run it at 10 bar and it is being loaded beyond its design capacity.",
       },
       {
         type: "paragraph",

@@ -1,5 +1,6 @@
 import { DocumentEvidenceGallery } from "./DocumentEvidenceGallery";
-import { awards, awardCategoryLabels } from "@/data/company/awards";
+import { awards, awardCategoryLabels, type Award } from "@/data/company/awards";
+import { awardYear } from "@/lib/schema/awards";
 import { labScope } from "@/data/company/lab-scope";
 import {
   publishedDocuments,
@@ -55,6 +56,26 @@ const COPY = {
     year: "Year",
   },
 } as const;
+
+const toFaDigits = (s: string) => s.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]!);
+
+/** The plaque's own level wording, rendered in the reader's language. */
+const LEVEL_EN: Record<string, string> = {
+  "ملی": "National",
+  "استانی": "Provincial",
+  "شهرستانی": "District",
+  "بین‌المللی": "International",
+  "ملی/استانی": "National / provincial",
+};
+
+function awardLevel(level: string, locale: "fa" | "en"): string {
+  return locale === "fa" ? level : (LEVEL_EN[level] ?? level);
+}
+
+/** Persian digits for the Persian table; the bare year for the English one. */
+function awardDate(award: Award, locale: "fa" | "en"): string {
+  return locale === "fa" ? toFaDigits(award.year) : awardYear(award);
+}
 
 const CELL = "px-3 py-3 align-top text-start text-[color:var(--ind-text)]";
 const HEAD = "px-3 py-2 text-start font-semibold text-[color:var(--ind-text)]";
@@ -285,10 +306,10 @@ export function AwardsTable({
             </th>
             <td className={CELL}>{awardCategoryLabels[award.category][locale]}</td>
             <td className={`${CELL} max-w-[20rem]`}>{award.issuer[locale]}</td>
-            <td className={CELL}>{award.level}</td>
+            <td className={CELL}>{awardLevel(award.level, locale)}</td>
             <td className={CELL}>
-              <span dir="ltr" className="tabular-nums whitespace-nowrap">
-                {award.year}
+              <span dir={locale === "fa" ? "rtl" : "ltr"} className="tabular-nums whitespace-nowrap">
+                {awardDate(award, locale)}
               </span>
             </td>
           </tr>

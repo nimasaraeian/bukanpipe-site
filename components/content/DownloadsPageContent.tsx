@@ -6,12 +6,11 @@ import { ContentBlockRenderer } from "@/components/content/ContentBlocks";
 import { IndustrialPageHero } from "@/components/industrial/IndustrialPageHero";
 import { IndustrialButton } from "@/components/industrial/IndustrialPrimitives";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { faDownloadsPublic, faDownloadsHub } from "@/data/content/fa/downloads";
+import { CATALOGUE_PDF_URL, faDownloadsPublic, faDownloadsHub } from "@/data/content/fa/downloads";
 import { enDownloadsPublic, enDownloadsHub } from "@/data/content/en/downloads";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
 import { getIndustrialPageHeroImageProps, getPageHeroImage } from "@/data/media/page-hero-images";
 import { getDirection } from "@/lib/i18n/config";
-import { routes } from "@/lib/config/routes";
 
 const categoryLabelsFa: Record<string, string> = {
   "company-catalogue": "کاتالوگ شرکت",
@@ -66,8 +65,8 @@ export function DownloadsPageContent() {
           href: index < arr.length - 1 ? localePath(item.path) : undefined,
         }))}
       >
-        <IndustrialButton href={localePath(routes.contact.path)}>
-          {isFa ? "تماس برای دریافت کاتالوگ" : "Contact for catalogue"}
+        <IndustrialButton href={CATALOGUE_PDF_URL}>
+          {isFa ? "دانلود کاتالوگ (PDF)" : "Download catalogue (PDF)"}
         </IndustrialButton>
       </IndustrialPageHero>
 

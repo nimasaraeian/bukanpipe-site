@@ -100,12 +100,16 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       "Gas HDPE pipes are polyethylene pressure pipes designed for low and medium-pressure natural gas distribution and service connections, joined primarily by electrofusion in Iran.",
     overview:
       "Main transmission lines in gas networks are often steel. Gas HDPE pipes are widely used for urban and rural service connections and distribution branches. Bukan Pipe manufactures gas HDPE pipes aligned with EN 1555, INSO 11223 and National Iranian Gas Company reference IGS-M-PL-014-1 for qualifying projects.",
-    specifications: baseProductSpecRows("en", [
-      { label: "Material grade", value: "PE100 / PE80 per gas utility specification" },
-      { label: "Typical standards", value: "EN 1555, INSO 11223, IGS-M-PL-014-1 (project-specific)" },
-      { label: "Approved jointing (Iran)", value: "Electrofusion for gas distribution networks" },
-      { label: "Service", value: "Low and medium-pressure distribution and service lines" },
-    ]),
+    specifications: baseProductSpecRows(
+      "en",
+      [
+        { label: "Material grade", value: "PE100 / PE80 per gas utility specification" },
+        { label: "Typical standards", value: "EN 1555, INSO 11223, IGS-M-PL-014-1 (project-specific)" },
+        { label: "Approved jointing (Iran)", value: "Electrofusion for gas distribution networks" },
+        { label: "Service", value: "Low and medium-pressure distribution and service lines" },
+      ],
+      "25 to 225 mm; SDR 11 up to DN 90 and SDR 13.6 from DN 63 upwards (catalogue gas table)",
+    ),
     advantages: [
       "Fusion joints can match pipe strength when executed and inspected correctly",
       "Flexibility reduces fittings on curved alignments — useful in seismic areas",
@@ -360,10 +364,14 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       "HDPE sewer pipes are polyethylene pipes used in gravity or low-pressure sanitary sewer collection systems where chemical resistance and durable joints are required.",
     overview:
       "HDPE is a common choice for wastewater collection because of chemical resistance, joint integrity and durability in wet soil. Bukan Pipe supplies polyethylene sewer pipes for municipal and industrial wastewater networks.",
-    specifications: baseProductSpecRows("en", [
-      { label: "Service", value: "Sanitary sewer collection and transfer" },
-      { label: "Jointing", value: "Butt fusion; electrofusion where specified" },
-    ]),
+    specifications: baseProductSpecRows(
+      "en",
+      [
+        { label: "Service", value: "Sanitary sewer collection and transfer" },
+        { label: "Jointing", value: "Butt fusion; electrofusion where specified" },
+      ],
+      "SDR 41 and SDR 33 from 315 to 630 mm, SDR 26 from 50 to 630 mm (catalogue packing table)",
+    ),
     advantages: [
       "Resistance to common wastewater chemistry",
       "Fusion joints reduce leakage points",
@@ -413,7 +421,7 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       {
         question: "What diameters are available for HDPE sewer pipe?",
         answer:
-          "From the catalogue packing table, SDR 41 and 33 run 315 to 630 mm and SDR 26 runs 50 to 630 mm. All three are supplied as 12 m branches.",
+          "From the catalogue packing table, SDR 41 and 33 run 315 to 630 mm and SDR 26 runs 50 to 630 mm. The catalogue packing table lists 12 m straight lengths; other lengths are agreed with the sales office.",
       },
       {
         question: "What is the difference between SDR and SN for sewer pipe?",
@@ -447,10 +455,14 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
       "HDPE drainage pipes convey stormwater, surface runoff and subsurface drainage — distinct from sanitary sewer service.",
     overview:
       "Drainage addresses surface runoff, infiltration and complementary civil flows — not sanitary sewage. HDPE offers hydraulic capacity, flexibility and soil durability for these networks.",
-    specifications: baseProductSpecRows("en", [
-      { label: "Service", value: "Stormwater and surface drainage" },
-      { label: "Installation", value: "Buried or exposed per civil design" },
-    ]),
+    specifications: baseProductSpecRows(
+      "en",
+      [
+        { label: "Service", value: "Stormwater and surface drainage" },
+        { label: "Installation", value: "Buried or exposed per civil design" },
+      ],
+      "From the catalogue's water-supply/sewerage rows: SDR 41 and SDR 33 from 315 to 630 mm, SDR 26 from 50 to 630 mm",
+    ),
     advantages: [
       "Smooth bore for hydraulic capacity",
       "Rapid installation on road and site projects",

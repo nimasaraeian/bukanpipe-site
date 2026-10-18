@@ -293,7 +293,7 @@ export const enGasPillarArticle: SeoArticleSeed = {
       type: "list",
       items: [
         "The first producer of polyethylene gas pipe in north-west Iran",
-        "Vendor qualification with the National Iranian Gas Company since 1390 (2011)",
+        "A record of vendor qualification with the National Iranian Gas Company — current documents are confirmed per project and at order time",
         "Incentive (voluntary) standard mark licence for gas to INSO 11223 since 1391 (2012) — an incentive licence, not a mandatory one",
         "Gas pipe range: 25 to 225 mm in SDR 11 and SDR 13.6; 25 and 32 mm in SDR 11 only, 110 to 225 mm in SDR 13.6 only",
       ],

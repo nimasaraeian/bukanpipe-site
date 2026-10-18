@@ -10,10 +10,12 @@ describe("robots disallow paths", () => {
   it("includes locale-prefixed noindex stubs used in production", () => {
     const disallow = getIndexableRobotsDisallowPaths();
     expect(disallow).toEqual(expect.arrayContaining([...NOINDEX_PATHS]));
-    expect(disallow).toContain("/fa/projects");
-    expect(disallow).toContain("/en/projects");
     expect(disallow).toContain("/fa/design-system");
-    expect(disallow).toContain("/en/verify");
+    expect(disallow).toContain("/en/design-system");
+    // retired placeholders now 308 to live pages; a disallow would hide the redirect from Google
+    for (const p of ["/fa/projects", "/en/projects", "/en/verify", "/fa/pricing", "/fa/dealers"]) {
+      expect(disallow).not.toContain(p);
+    }
   });
 });
 

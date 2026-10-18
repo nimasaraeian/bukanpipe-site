@@ -813,7 +813,7 @@ export const SKIPPED_ROWS: readonly SkippedRow[] = [
   },
   {
     "source": "/بلوک-ریکاردو",
-    "reason": "decided in favour of the inventory (/fa/projects); CSV L234 wanted 410"
+    "reason": "decided in favour of the inventory (/fa/gallery); CSV L234 wanted 410"
   },
   {
     "source": "/الیزا-روما",

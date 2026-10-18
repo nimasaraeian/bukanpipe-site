@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/config/site";
 const footerGroups = [
   {
     title: "کشف",
-    links: [routes.products, routes.applications, routes.laboratory, routes.projects],
+    links: [routes.products, routes.applications, routes.laboratory, routes.gallery],
   },
   {
     title: "مرجع",
@@ -17,7 +17,7 @@ const footerGroups = [
   },
   {
     title: "تجاری",
-    links: [routes.pricing, routes.requestQuote, routes.dealers, routes.verify, routes.contact],
+    links: [routes.requestQuote, routes.contact],
   },
 ] as const;
 

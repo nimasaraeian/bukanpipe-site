@@ -609,14 +609,6 @@
   },
   {
     "locale": "fa",
-    "path": "/projects",
-    "title": "پروژه‌ها",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/fa/projects-cd3f373a0e.jpg"
-  },
-  {
-    "locale": "fa",
     "path": "/engineering",
     "title": "مهندسی",
     "photo": "/media/demo/bukan-slide-03-product.png",
@@ -641,35 +633,11 @@
   },
   {
     "locale": "fa",
-    "path": "/pricing",
-    "title": "قیمت‌گذاری",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/fa/pricing-44e7da8fa8.jpg"
-  },
-  {
-    "locale": "fa",
     "path": "/tools",
     "title": "ابزارها",
     "photo": "/media/demo/bukan-slide-03-product.png",
     "contain": false,
     "image": "/media/social/fa/tools-75d2b650ce.jpg"
-  },
-  {
-    "locale": "fa",
-    "path": "/dealers",
-    "title": "نمایندگان",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/fa/dealers-dc7954cbb2.jpg"
-  },
-  {
-    "locale": "fa",
-    "path": "/verify",
-    "title": "تأیید",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/fa/verify-48e7cb9bd0.jpg"
   },
   {
     "locale": "en",
@@ -1249,14 +1217,6 @@
   },
   {
     "locale": "en",
-    "path": "/projects",
-    "title": "Projects",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/en/projects-777135966a.jpg"
-  },
-  {
-    "locale": "en",
     "path": "/engineering",
     "title": "Engineering",
     "photo": "/media/demo/bukan-slide-03-product.png",
@@ -1281,34 +1241,10 @@
   },
   {
     "locale": "en",
-    "path": "/pricing",
-    "title": "Pricing",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/en/pricing-5ad358be21.jpg"
-  },
-  {
-    "locale": "en",
     "path": "/tools",
     "title": "Tools",
     "photo": "/media/demo/bukan-slide-03-product.png",
     "contain": false,
     "image": "/media/social/en/tools-db04e06b17.jpg"
-  },
-  {
-    "locale": "en",
-    "path": "/dealers",
-    "title": "Dealers",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/en/dealers-47f18bd164.jpg"
-  },
-  {
-    "locale": "en",
-    "path": "/verify",
-    "title": "Verify",
-    "photo": "/media/demo/bukan-slide-03-product.png",
-    "contain": false,
-    "image": "/media/social/en/verify-40a43c2152.jpg"
   }
 ]

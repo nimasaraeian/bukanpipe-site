@@ -366,12 +366,12 @@ export const legacyUrls: readonly LegacyUrlRecord[] = [
     httpStatus: 200,
     title: "پروژه های مختلف آبرسانی",
     pageRole: "Project teaser — water",
-    proposedNewPath: "/projects",
+    proposedNewPath: "/gallery",
     action: "MERGE",
     confidence: "MEDIUM",
     evidence: WP,
     notes:
-      "Theme/project teaser. Do not invent case studies from this page. Merge to the projects hub until permitted evidence exists.",
+      "Theme/project teaser. Do not invent case studies from this page. Merge to the factory gallery (the projects placeholder was retired 2026-10-18) until permitted evidence exists.",
     wordpressId: 239,
   }),
   item({
@@ -381,12 +381,12 @@ export const legacyUrls: readonly LegacyUrlRecord[] = [
     httpStatus: 200,
     title: "پروژه های گازرسانی",
     pageRole: "Project teaser — gas",
-    proposedNewPath: "/projects",
+    proposedNewPath: "/gallery",
     action: "MERGE",
     confidence: "MEDIUM",
     evidence: WP,
     notes:
-      "Theme/project teaser. Merge to /projects. No named project is verified.",
+      "Theme/project teaser. Merge to /gallery (the projects placeholder was retired 2026-10-18). No named project is verified.",
     wordpressId: 247,
   }),
   item({
