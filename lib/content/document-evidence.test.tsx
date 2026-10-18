@@ -34,3 +34,13 @@ it("includes every supplied scan as a real public asset in the Persian certifica
     expect(page?.images).toContain(canonicalUrl(item.src));
   }
 });
+
+import sharp from "sharp";
+
+it("ships decodable WebP images with the dimensions declared in the manifest", async () => {
+  await Promise.all(evidence.map(async (item) => {
+    const metadata = await sharp(join(process.cwd(), "public", item.src)).metadata();
+    expect(metadata.format).toBe("webp");
+    expect([metadata.width, metadata.height]).toEqual([item.width, item.height]);
+  }));
+});
