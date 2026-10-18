@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import evidence from "@/data/company/evidence.json";
 import { locales, type Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/path";
 import {
@@ -25,7 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ...imageSitemapAttachments(
         path === "/gallery"
           ? galleryImages.map((src) => ({ path: "/gallery", src }))
-          : [],
+          : locale === "fa" && path === "/certifications"
+            ? evidence.map(({ src }) => ({ path, src }))
+            : [],
       ),
     })),
   );

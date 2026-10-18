@@ -40,11 +40,11 @@ const enProductsHubUiCopy: ProductsHubUiCopy = {
 };
 
 const faProductsHubUiCopy: ProductsHubUiCopy = {
-  systemsKicker: "سیستم‌های محصول",
-  systemsHeading: "یک بستر ماده. شش شبکه مهندسی‌شده.",
+  systemsKicker: "گروه‌های محصول",
+  systemsHeading: "محصولات و مشخصات متناسب با پروژه",
   systemsIntro:
-    "روی هر سیستم بزنید — تصویر و مشخصات همان‌جا باز می‌شود. با «مشاهده» صفحه کامل محصول را ببینید.",
-  systemsTablistLabel: "سیستم‌های محصول",
+    "گروه موردنظر را انتخاب کنید تا مشخصات آن نمایش داده شود. جزئیات بیشتر در صفحه هر محصول در دسترس است.",
+  systemsTablistLabel: "گروه‌های محصول",
   exploreArrow: "←",
   seoNavLabel: "صفحات محصول",
   modal: {
@@ -55,7 +55,7 @@ const faProductsHubUiCopy: ProductsHubUiCopy = {
     standardsCompliance: "استاندارد و انطباق",
     qualityControl: "کنترل کیفیت",
     requestQuote: "درخواست پیش‌فاکتور پروژه",
-    backToSystems: "بازگشت به سیستم‌ها",
+    backToSystems: "بازگشت به محصولات",
   },
 };
 

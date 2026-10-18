@@ -101,7 +101,7 @@ export function RequestQuotePageContent() {
         title={isFa ? "استعلام قیمت و درخواست پیش‌فاکتور" : t.routes.requestQuote.title}
         description={
           isFa
-            ? "نیاز پروژه، محصول یا کاربرد خود را اعلام کنید. واحد فروش در ساعات اداری پاسخگو است."
+            ? "برای دریافت قیمت و پیش‌فاکتور، محصول موردنیاز و مشخصات پروژه را اعلام کنید."
             : t.routes.requestQuote.purpose
         }
         {...getIndustrialPageHeroImageProps(hero)}
@@ -116,7 +116,7 @@ export function RequestQuotePageContent() {
           <div className="ind-glass ind-glass-strong p-6 md:p-8">
             <p className="ind-lead text-sm text-[color:var(--ind-text-muted)]">
               {isFa
-                ? "فرم زیر به واحد فروش ارسال می‌شود. پاسخ در ساعات اداری داده می‌شود."
+                ? "درخواست شما به واحد فروش ارسال می‌شود و در ساعات اداری بررسی خواهد شد. در توضیحات، کاربرد، قطر، رده فشار و متراژ موردنیاز را بنویسید."
                 : "Submit your project details below. Sales responds during office hours."}
             </p>
 

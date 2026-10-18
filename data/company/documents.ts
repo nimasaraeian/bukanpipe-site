@@ -331,10 +331,12 @@ export const companyDocuments: readonly CompanyDocument[] = [
       fa: "عضو انجمن صنفی تولیدکنندگان لوله و اتصالات پلی اتیلن",
       en: "Member of the national trade association of PE pipe and fittings producers",
     },
-    publish: true,
+    validUntil: "۱۴۰۵/۰۶/۳۱",
+    validUntilIso: "2026-09-22",
+    publish: false,
     note: {
-      fa: "برگرفته از کاتالوگ رسمی شرکت.",
-      en: "From the company's official catalogue.",
+      fa: "نسخهٔ آرشیوی گواهی عضویت؛ اعتبار درج‌شده تا ۱۴۰۵/۰۶/۳۱ (سپتامبر ۲۰۲۶) پایان یافته است.",
+      en: "Archived membership certificate; the printed validity ended in September 2026.",
     },
   },
 
