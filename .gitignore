@@ -44,3 +44,6 @@ next-env.d.ts
 .tmp-media-audit/
 
 .vercel
+
+# Page-specific social cards, generated before each production build
+/public/media/social/
