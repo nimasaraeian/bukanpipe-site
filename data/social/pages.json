@@ -81,6 +81,14 @@
   },
   {
     "locale": "fa",
+    "path": "/awards",
+    "title": "تندیس‌ها و افتخارات بوکان پایپ",
+    "photo": "/media/awards/bukan-pipe-trophy-coop-national-1405-card.webp",
+    "contain": true,
+    "image": "/media/social/fa/awards-9c45de51b0.jpg"
+  },
+  {
+    "locale": "fa",
     "path": "/calculator",
     "title": "ماشین‌حساب‌های مهندسی",
     "photo": "/media/brand/calculator-hero.png",
@@ -742,6 +750,14 @@
     "photo": "/media/brand/applications-hero.png",
     "contain": false,
     "image": "/media/social/en/applications--water-transfer-1479fb3731.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/awards",
+    "title": "Bukan Pipe Awards and Trophies",
+    "photo": "/media/awards/bukan-pipe-trophy-coop-national-1405-card.webp",
+    "contain": true,
+    "image": "/media/social/en/awards-6d4895beb9.jpg"
   },
   {
     "locale": "en",

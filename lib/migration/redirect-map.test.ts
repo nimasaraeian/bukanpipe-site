@@ -121,6 +121,7 @@ function realPaths(): Set<string> {
     "/dealers",
     "/downloads",
     "/gallery",
+    "/awards",
     "/industries",
     "/laboratory",
     "/pricing",

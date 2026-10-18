@@ -6,6 +6,7 @@ const EXTRA_SITEMAP_PATHS = [
   "/",
   "/request-quote",
   "/gallery",
+  "/awards",
   routes.solutions.path,
   routes.industries.path,
 ] as const;
@@ -32,7 +33,7 @@ export function sitemapPriorityForPath(path: string): number {
     return 0.85;
   }
   if (path === "/about" || path === "/contact" || path === "/request-quote") return 0.8;
-  if (path === "/gallery") return 0.82;
+  if (path === "/gallery" || path === "/awards") return 0.82;
   return 0.7;
 }
 

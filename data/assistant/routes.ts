@@ -20,6 +20,7 @@ export const ASSISTANT_STATIC_PATHS = [
   "/calculator/pipeline-design",
   "/downloads",
   "/certifications",
+  "/awards",
   "/standards",
   "/products/water-supply-pipe",
   "/products/gas-pipe",

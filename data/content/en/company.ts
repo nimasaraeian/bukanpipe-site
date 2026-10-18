@@ -108,6 +108,7 @@ export const enAbout: ContentDocument = {
           hint: "Grade, SDR, standards and buying",
         },
         { label: "Factory Gallery", path: "/gallery", hint: "Real manufacturing photographs" },
+        { label: "Awards and trophies", path: "/awards", hint: "20 national and provincial trophies" },
         { label: "Products", path: "/products" },
         {
           label: "Certifications and licences",
@@ -334,6 +335,7 @@ export const enCertifications: ContentDocument = {
       type: "internal-links",
       title: "Related",
       links: [
+        { label: "Awards and trophies", path: "/awards", hint: "Photographs of the top cooperative, quality unit and exporter trophies" },
         {
           label: "Water supply pipe guide",
           path: "/technical-center/water-supply-polyethylene-pipe-guide",

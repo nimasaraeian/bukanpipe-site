@@ -46,6 +46,7 @@ export function getPrimaryNavStructure(
     { label: t.nav.laboratory, href: path(routes.laboratory.path) },
     { label: t.nav.quality, href: path("/quality") },
     { label: t.nav.certifications, href: path("/certifications") },
+    { label: t.nav.awards, href: path("/awards") },
   ];
 
   return [
@@ -123,6 +124,7 @@ export function getFooterColumns(
         { label: t.footer.columns.company.links.laboratory, href: path("/laboratory") },
         { label: t.footer.columns.company.links.quality, href: path("/quality") },
         { label: t.footer.columns.company.links.certifications, href: path("/certifications") },
+        { label: t.footer.columns.company.links.awards, href: path("/awards") },
         { label: t.footer.columns.company.links.requestQuote, href: path("/request-quote") },
         { label: t.footer.columns.company.links.contact, href: path("/contact") },
       ],
