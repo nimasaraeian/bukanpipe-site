@@ -7,8 +7,10 @@ import {
 } from "@/lib/config/routes";
 
 describe("route registry", () => {
-  it("implements /verify as a public foundation route", () => {
-    expect(publicRoutes.some((route) => route.path === "/verify")).toBe(true);
+  it("keeps the retired placeholder routes out of the public registry", () => {
+    for (const p of ["/verify", "/dealers", "/pricing", "/projects"]) {
+      expect(publicRoutes.some((route) => route.path === p), p).toBe(false);
+    }
   });
 
   it("keeps export deferred and out of public routes and sitemap", () => {

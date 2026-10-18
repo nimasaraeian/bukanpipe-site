@@ -11,7 +11,9 @@ import type { ContentDocument } from "@/content/models/content-document";
  * unable to tell who wrote a guide or how old a dimension table or a standard
  * reference is. Both are worth showing on a technical page in their own
  * right: a buyer reading a selection guide wants to know it comes from a
- * licensed manufacturer, not an anonymous content site.
+ * licensed manufacturer, not an anonymous content site. The byline names the
+ * company, which is what the schema's `author` says; it does not name a
+ * department, because no department has signed off on the text.
  */
 export function ArticleDateline({
   doc,
@@ -37,12 +39,12 @@ export function ArticleDateline({
       <p className="ind-article-byline">
         {fa ? (
           <>
-            تهیه‌شده توسط واحد فنی بوکان پایپ — تولیدکننده لوله پلی اتیلن از ۱۳۷۶،{" "}
+            بوکان پایپ — تولیدکننده لوله پلی اتیلن از ۱۳۷۶،{" "}
             <Link href={certifications}>دارنده پروانه استاندارد ۱۴۴۲۷-۲</Link>
           </>
         ) : (
           <>
-            Prepared by the Bukan Pipe technical department — polyethylene pipe manufacturer since 1997,{" "}
+            Bukan Pipe — polyethylene pipe manufacturer since 1997,{" "}
             <Link href={certifications}>INSO 14427-2 standard mark licence holder</Link>
           </>
         )}

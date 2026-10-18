@@ -24,7 +24,7 @@ const aboutHeroByLocale: Record<Locale, AboutHeroContent> = {
     primaryCta: "Request a quote",
     secondaryCta: "Explore company",
     stats: [
-      { value: "1997", label: "Established" },
+      { value: "1997", label: "Manufacturing since" },
       { value: "PE100", label: "Production capability" },
       { value: "ISO", label: "Quality management" },
     ],
@@ -32,13 +32,13 @@ const aboutHeroByLocale: Record<Locale, AboutHeroContent> = {
   },
   fa: {
     eyebrow: "بوکان پایپ | از سال ۱۳۷۶",
-    title: "تأسیس ۱۳۷۶",
+    title: "تولید از ۱۳۷۶",
     lead:
       "تولیدکننده لوله‌های HDPE و PE100 برای شبکه‌های آبرسانی، گازرسانی، آبیاری و کاربردهای صنعتی در بوکان، آذربایجان غربی.",
     primaryCta: "درخواست پیش‌فاکتور",
     secondaryCta: "درباره شرکت",
     stats: [
-      { value: "۱۳۷۶", label: "تأسیس" },
+      { value: "۱۳۷۶", label: "آغاز تولید" },
       { value: "PE100", label: "تولید تخصصی" },
       { value: "ISO", label: "مدیریت کیفیت" },
     ],

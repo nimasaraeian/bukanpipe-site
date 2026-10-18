@@ -118,20 +118,16 @@ function realPaths(): Set<string> {
     "/calculator",
     "/certifications",
     "/contact",
-    "/dealers",
     "/downloads",
     "/gallery",
     "/awards",
     "/industries",
     "/laboratory",
-    "/pricing",
     "/products",
-    "/projects",
     "/quality",
     "/request-quote",
     "/solutions",
     "/technical-center",
-    "/verify",
   ];
   for (const locale of locales) {
     for (const p of staticRoutes) all.add(`/${locale}${p}`);
@@ -261,7 +257,7 @@ describe("overlap with the live inventory", () => {
       ["/خط-مشی-کیفیت-آزمایشگاه", "/fa/laboratory"],
       ["/آبیاری-زیرسطحی", "/fa/applications/agriculture-irrigation"],
       ["/category/blog", "/fa/technical-center"],
-      ["/بلوک-ریکاردو", "/fa/projects"],
+      ["/بلوک-ریکاردو", "/fa/gallery"],
     ];
     for (const [p, expected] of kept) expect(actualOutcome(p), p).toBe(expected);
   });

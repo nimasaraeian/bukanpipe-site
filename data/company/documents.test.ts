@@ -124,7 +124,7 @@ describe("certifications page", () => {
     return doc!.sections;
   }
 
-  it("renders every document group plus the capacity table", () => {
+  it("renders every document group; the per-product capacity table stays in the registry, not on the page", () => {
     const tables = blocksOf("/certifications")
       .filter((b): b is Extract<ContentBlock, { type: "document-table" }> =>
         b.type === "document-table",
@@ -136,7 +136,6 @@ describe("certifications page", () => {
       "management-system",
       "sector-approval",
       "registration",
-      "capacity",
       "awards",
     ]);
   });

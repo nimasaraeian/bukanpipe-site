@@ -46,17 +46,12 @@ export const enAbout: ContentDocument = {
         { label: "Factory address", value: "10th km of Bukan–Miandoab road, Bukan, West Azerbaijan" },
         { label: "Postal code", value: "5955164341" },
       ],
-      note: "These identifiers appear on the industrial operating licence and the company's other official documents, and can be verified independently.",
+      note: "Company identifiers as registered; they can be verified independently.",
     },
     { type: "heading", level: 2, text: "Licensed capacity" },
     {
       type: "paragraph",
-      text: "Production today runs on seven extrusion lines with a nominal capacity of 14,000 tonnes a year — the same total the industrial operating licence sets out per product, on three shifts. This is the capacity ceiling rather than output in any particular year.",
-    },
-    {
-      type: "document-table",
-      table: "capacity",
-      caption: "Annual capacity stated on the industrial operating licence",
+      text: "Production today runs on seven extrusion lines with a nominal capacity of 14,000 tonnes a year — the ceiling the industrial operating licence sets. This is the capacity ceiling rather than output in any particular year.",
     },
     { type: "heading", level: 2, text: "Ministry of Agriculture producer ranking" },
     {
@@ -273,7 +268,7 @@ export const enCertifications: ContentDocument = {
       table: "management-system",
       caption: "Management system certificates",
       summary:
-        "The ISO 9001 scope also fixes the production range: pressure water pipe from 16 to 630 mm.",
+        "The scope printed on the ISO 9001 certificate is \"pressure water pipe from 16 to 630 mm\"; it describes the quality management system and is not the same thing as the product standard-mark licences (INSO 14427-2, 7607, 11223) in the table above.",
     },
     { type: "heading", level: 2, text: "Sector approvals" },
     {
@@ -292,12 +287,7 @@ export const enCertifications: ContentDocument = {
     { type: "heading", level: 2, text: "Licensed annual capacity" },
     {
       type: "paragraph",
-      text: "The industrial operating licence sets a permitted annual capacity per product. This is the licence ceiling, not output in any particular year.",
-    },
-    {
-      type: "document-table",
-      table: "capacity",
-      caption: "Annual capacity stated on the industrial operating licence",
+      text: "The industrial operating licence sets the factory's permitted annual capacity at 14,000 tonnes in total. This is the licence ceiling, not output in any particular year.",
     },
     { type: "heading", level: 2, text: "Awards and commendations" },
     {
@@ -307,11 +297,11 @@ export const enCertifications: ContentDocument = {
     },
     {
       type: "paragraph",
-      text: "Alongside the licences, the factory has been recognised by government bodies over two decades. The national titles, newest first: top national cooperative from the Ministry of Cooperatives, Labour and Social Welfare (1405, 2026); commended cooperative at national level from the same ministry (1397); national model quality unit and superior product quality for polyethylene pipe from the Iranian National Standards Organization (both 1393); and model customer of the National Petrochemical Company (1381). The one that carries most weight for a pipe buyer is the Iranian National Standards Organization's \"model quality unit\" award — national in 1393 and provincial in 1388, 1390, 1395, 1396 and 1397. Provincial model industrial unit (1384–1388 and 1397), top provincial cooperative (1388, 1392, 1398 and 1399) and provincial model quality control manager (1391) complete the list. A title repeated across consecutive years says something a single plaque does not: that quality held up across successive inspections.",
+      text: "Alongside the licences, the factory has been recognised by government bodies over two decades. The national titles, newest first: top national cooperative from the Ministry of Cooperatives, Labour and Social Welfare (1405, 2026); commended cooperative at national level from the same ministry (1397); national model quality unit and superior product quality for polyethylene pipe from the Iranian National Standards Organization (both 1393); and model customer of the National Petrochemical Company (1381). The one that carries most weight for a pipe buyer is the Iranian National Standards Organization's \"model quality unit\" award — national in 1393 and provincial in 1388, 1390, 1395, 1396 and 1397. Provincial model industrial unit (1384–1388 and 1397), top provincial cooperative (1388, 1392, 1398 and 1399) and provincial model quality control manager (1391) complete the list. These titles are part of the record of recognition the company has received over the years.",
     },
     {
       type: "paragraph",
-      text: "The archive holds 48 plaques. The table lists the 27 whose year and issuing body are printed on the document and legible. The rest are deliberately absent — a year inferred from a filename is not a date, and a second scan of the same plaque is not a second award. Seven further titles — model industrial unit 1385 to 1388, top provincial cooperative 1388 and 1392, and model quality control manager 1391 — appear in the company's official catalogue but their plaques are not in the archive; the table marks them as such.",
+      text: "The company's certificates and commendations can be viewed in this section. The details of each document are taken from the document itself, expired documents are labelled as archived, and titles that appear only in the official catalogue are marked as such in the table.",
     },
     {
       type: "document-table",
@@ -377,7 +367,7 @@ export const enCertifications: ContentDocument = {
     {
       question: "What is the factory's production capacity?",
       answer:
-        "The industrial operating licence permits 14,000 tonnes per year in total: 6,375 t water pipe, 4,775 t sewage pipe, 2,550 t gas pipe and 300 t irrigation tape. That is the licensed ceiling rather than output in a given year.",
+        "The factory's nominal capacity is 14,000 tonnes a year on seven extrusion lines, the ceiling set by the industrial operating licence. That is the licensed ceiling rather than output in a given year.",
     },
   ],
   related: {
@@ -438,7 +428,7 @@ export const enContact: ContentDocument = {
         { label: "National ID", value: "10220007922" },
         { label: "Registration number", value: "121" },
       ],
-      note: "Postal code and national ID are as printed on the industrial operating licence and the company's other official documents.",
+      note: "The company's stated address and contact details.",
     },
     { type: "heading", level: 2, text: "To get a faster answer" },
     {

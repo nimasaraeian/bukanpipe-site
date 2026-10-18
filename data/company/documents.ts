@@ -349,8 +349,8 @@ export const companyDocuments: readonly CompanyDocument[] = [
     reference: "۱۱۳/۷/۲۵۶۴۹۳",
     issued: "۱۳۹۷/۰۷/۱۰",
     scope: {
-      fa: "تولید محصولات پلی اتیلنی در سه شیفت — شناسه کسب‌وکار ۱۳۹۹۸۶۱۷۴۵۵۹",
-      en: "Polyethylene production on three shifts — business ID 139986174559",
+      fa: "پروانه بهره‌برداری تولید محصولات پلی‌اتیلنی — شناسه کسب‌وکار ۱۳۹۹۸۶۱۷۴۵۵۹",
+      en: "Operating licence for polyethylene product manufacturing — business ID 139986174559",
     },
     publish: true,
   },

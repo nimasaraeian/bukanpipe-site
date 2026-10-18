@@ -15,6 +15,15 @@ export const STUB_REDIRECTS = [
    * stronger one was the one Google showed least.
    */
   { from: "/polyethylene-pipe", to: "/technical-center/polyethylene-pipe-complete-guide" },
+  /**
+   * Four "development route" placeholders retired on 2026-10-18. Each had no
+   * content of its own (a card grid pointing elsewhere) and sat under
+   * noindex; the destination is the live page that answers the same intent.
+   */
+  { from: "/projects", to: "/gallery" },
+  { from: "/pricing", to: "/request-quote" },
+  { from: "/dealers", to: "/contact" },
+  { from: "/verify", to: "/certifications" },
 ] as const;
 
 /**

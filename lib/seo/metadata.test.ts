@@ -30,9 +30,9 @@ describe("createPageMetadata", () => {
 
   it("marks stub routes as noindex", () => {
     const metadata = createPageMetadata({
-      title: "Projects",
+      title: "Design system",
       description: "Stub.",
-      path: "/projects",
+      path: "/design-system",
     });
     expect(metadata.robots).toEqual({ index: false, follow: false });
   });

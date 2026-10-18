@@ -94,11 +94,6 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     variant: "brand",
     sceneModifier: "laboratory",
   },
-  [routes.projects.path]: {
-    src: industrialSlides.yard,
-    position: "50% 40%",
-    mobilePosition: { ltr: "68% 42%", rtl: "32% 42%" },
-  },
   [routes.engineering.path]: {
     src: industrialSlides.extrusion,
     position: "60% center",
@@ -128,11 +123,6 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     variant: "brand",
     sceneModifier: "downloads",
   },
-  [routes.pricing.path]: {
-    src: industrialSlides.product,
-    position: "68% 38%",
-    mobilePosition: { ltr: "74% 40%", rtl: "26% 40%" },
-  },
   [routes.tools.path]: {
     src: industrialSlides.extrusion,
     position: "56% center",
@@ -142,16 +132,6 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     src: industrialSlides.product,
     position: "64% center",
     mobilePosition: { ltr: "72% center", rtl: "28% center" },
-  },
-  [routes.dealers.path]: {
-    src: industrialSlides.inventory,
-    position: "60% center",
-    mobilePosition: { ltr: "70% center", rtl: "30% center" },
-  },
-  [routes.verify.path]: {
-    src: industrialSlides.yard,
-    position: "54% center",
-    mobilePosition: { ltr: "68% center", rtl: "32% center" },
   },
   [routes.contact.path]: {
     src: industrialSlides.yard,
@@ -390,7 +370,6 @@ export function getPageCardImages(path: string): readonly string[] {
     return pageCardImages.industries;
   }
   if (path === routes.laboratory.path) return pageCardImages.laboratory;
-  if (path === routes.projects.path) return pageCardImages.projects;
   if (path === routes.engineering.path || path === routes.knowledge.path) {
     return pageCardImages.engineering;
   }

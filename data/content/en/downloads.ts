@@ -1,17 +1,20 @@
 import type { ContentDocument } from "@/content/models/content-document";
-import type { DownloadItem } from "@/data/content/fa/downloads";
+import { CATALOGUE_PDF_URL, type DownloadItem } from "@/data/content/fa/downloads";
 
-export const enDownloadsPublic: readonly DownloadItem[] = [];
-
-export const enDownloadsInternalQueue: readonly DownloadItem[] = [
+export const enDownloadsPublic: readonly DownloadItem[] = [
   {
     id: "catalogue-en",
-    title: "Company catalogue",
-    description: "Product catalogue — published after design approval.",
+    title: "Bukan Pipe company catalogue",
+    description:
+      "The official catalogue of Bukan Polyethylene Pipe Cooperative — factory profile, products, water, gas and irrigation dimension tables, packing table and certificates. Bilingual Persian/English, 28 pages, about 5 MB.",
     category: "company-catalogue",
+    fileUrl: CATALOGUE_PDF_URL,
     fileType: "PDF",
-    verificationStatus: "verify-before-production",
+    verificationStatus: "verified",
   },
+];
+
+export const enDownloadsInternalQueue: readonly DownloadItem[] = [
   {
     id: "water-ins-14427-en",
     title: "INSO 14427 — Water supply pipe",
@@ -58,8 +61,8 @@ export const enDownloadsHub: ContentDocument = {
   title: "Downloads",
   seoTitle: "HDPE Pipe Catalogues & Standards Downloads | Bukan Pipe",
   seoDescription:
-    "HDPE pipe catalogue download, standards references and technical PDFs from Bukan Pipe — published as each file is prepared and cleared.",
-  description: "Downloadable resources.",
+    "Download the Bukan Pipe company catalogue (PDF) and find the dimension tables, standards references and technical guides published on the site.",
+  description: "The company catalogue and the technical resources published on the site.",
   primaryKeyword: "HDPE pipe catalogue download",
   secondaryKeywords: ["PE pipe technical documents", "polyethylene pipe standards PDF"],
   status: "published",
@@ -100,7 +103,7 @@ export const enDownloadsHub: ContentDocument = {
     },
     {
       type: "paragraph",
-      text: "The catalogue dimensions chart is deliberately published as an HTML table rather than an image or a PDF: the numbers can be selected and copied, they are found by in-page search, and they stay legible on a phone.",
+      text: "The catalogue dimensions chart is also published as an HTML table, not only inside the PDF: the numbers can be selected and copied, they are found by in-page search, and they stay legible on a phone.",
     },
     { type: "heading", level: 2, text: "What to request instead" },
     {
@@ -132,7 +135,7 @@ export const enDownloadsHub: ContentDocument = {
     {
       question: "Where can I download the HDPE pipe catalogue?",
       answer:
-        "The catalogue dimensions table — diameter, wall thickness and SDR for water supply, gas and drip irrigation — is already published in the technical centre as copyable text. The PDF catalogue will be posted on this page once the design is cleared.",
+        "The company catalogue PDF is available under \"Company catalogue\" on this page. The dimensions table — diameter, wall thickness and SDR for water supply, gas and drip irrigation — is also published in the technical centre as copyable text.",
     },
     {
       question: "How do I obtain a test report?",
