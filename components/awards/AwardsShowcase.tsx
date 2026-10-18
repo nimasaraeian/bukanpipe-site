@@ -70,8 +70,6 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
   const lastShade = useRef(-999);
   const focusTimer = useRef<number | undefined>(undefined);
   const unfocusTimer = useRef<number | undefined>(undefined);
-  const coarse = useRef(false);
-  coarse.current = coarsePointer;
 
   const count = items.length;
   const step = 360 / count;
@@ -175,7 +173,7 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
     const card = (e.target as HTMLElement).closest<HTMLElement>("[data-ring-index]");
     if (card) {
       const i = Number(card.dataset.ringIndex);
-      if (coarse.current) {
+      if (coarsePointer) {
         if (focused === i) setLightbox(i);
         else focusCard(i);
       } else {
@@ -186,7 +184,7 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
 
   // Hover: lift the card out of the ring; the ring keeps turning behind it, blurred.
   const onRingPointerOver = (e: React.PointerEvent) => {
-    if (coarse.current) return;
+    if (coarsePointer) return;
     const card = (e.target as HTMLElement).closest<HTMLElement>("[data-ring-index]");
     if (!card) return;
     clearTimers();
@@ -194,7 +192,7 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
     focusTimer.current = window.setTimeout(() => focusCard(i), 80);
   };
   const onRingPointerOut = (e: React.PointerEvent) => {
-    if (coarse.current) return;
+    if (coarsePointer) return;
     const to = e.relatedTarget as HTMLElement | null;
     if (to && to.closest?.("[data-ring-index],[data-focus-card]")) return;
     window.clearTimeout(focusTimer.current);
@@ -221,7 +219,7 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
-  }, [lightbox, count, locale]);
+  }, [lightbox, count, locale, setLightbox]);
 
   const categories = useMemo(() => {
     const seen = new Map<string, string>();
