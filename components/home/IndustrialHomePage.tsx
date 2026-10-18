@@ -86,7 +86,7 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
             title={isFa ? "خرید لوله پلی اتیلن از کارخانه" : "HDPE pipe product catalog"}
             description={
               isFa
-                ? "انواع لوله پلی‌اتیلن تک‌جداره برای آبرسانی، گاز، آبیاری فشار قوی، صنعت و PE100 — از سایز ۱۶ تا ۶۳۰ میلی‌متر، فشار کاری ۲.۵ تا ۲۵ بار. هر خانواده صفحه محصول جدا دارد."
+                ? "لوله پلی‌اتیلن برای شبکه‌های آبرسانی، گازرسانی، آبیاری و انتقال سیالات صنعتی. مشخصات و شرایط عرضه هر محصول را بررسی کنید و برای پروژه خود پیش‌فاکتور بگیرید."
                 : "Single-wall HDPE pipe families for water supply, gas, irrigation mains, industrial transfer and PE100 — from 16 mm to 630 mm, pressure rating 2.5 to 25 bar. Each family has its own product page."
             }
             action={
@@ -119,7 +119,7 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
         <div className="ind-container">
           <IndustrialSectionHeader
             kicker={isFa ? "کاربردها" : "Applications"}
-            title={isFa ? "کاربرد در پروژه" : "Project applications"}
+            title={isFa ? "انتخاب لوله برای کاربرد پروژه" : "Project applications"}
             description={
               isFa
                 ? "انتخاب لوله بر اساس کاربرد پروژه — آب، گاز، کشاورزی و صنعت."
@@ -174,7 +174,7 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
             </p>
             <ul className="ind-feature-list mt-10">
               {(isFa
-                ? ["اکستروژن تک‌جداره", "کنترل کیفیت در خط", "آزمایشگاه QC"]
+                ? ["اکستروژن تک‌جداره", "کنترل کیفیت در خط", "آزمون‌های آزمایشگاهی"]
                 : ["Single-wall extrusion", "In-line QC", "Polymer laboratory"]
               ).map((item) => (
                 <li key={item} className="ind-feature-item">
@@ -197,7 +197,7 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
             title={isFa ? "کنترل کیفیت تولید" : "Production quality control"}
             description={
               isFa
-                ? "کنترل کیفیت در خط تولید جدا از خدمات آزمایشگاه است. آزمون لوله و دامنه آزمایشگاه در صفحه آزمایشگاه آمده است."
+                ? "کنترل مواد اولیه، پایش ابعاد در خط تولید و آزمون‌های آزمایشگاهی، مراحل اصلی ارزیابی کیفیت لوله‌اند. با فرآیند کنترل و خدمات آزمون آشنا شوید."
                 : "In-process production QC is separate from laboratory testing services. Pipe tests and lab scope are on the laboratory page."
             }
           />
@@ -219,10 +219,10 @@ export function IndustrialHomePage({ locale }: IndustrialHomePageProps) {
         <div className="ind-container">
           <IndustrialSectionHeader
             kicker={isFa ? "منابع فنی" : "Engineering resources"}
-            title={isFa ? "لوله پلی‌اتیلن چیست و منابع فنی" : "What polyethylene pipe is, and engineering resources"}
+            title={isFa ? "راهنمای انتخاب و مشخصات لوله پلی‌اتیلن" : "What polyethylene pipe is, and engineering resources"}
             description={
               isFa
-                ? "معرفی عمومی لوله پلی‌اتیلن در صفحه چیست آمده است. مشخصات SDR و PN و راهنمای انتخاب در مرکز فنی جدا هستند."
+                ? "از شناخت HDPE و مقایسه PE80 و PE100 تا خواندن SDR و PN؛ راهنماهای فنی به انتخاب مشخصات متناسب با پروژه کمک می‌کنند."
                 : "The overview page explains what polyethylene pipe is. SDR, PN and selection guidance live in Technical Center."
             }
           />

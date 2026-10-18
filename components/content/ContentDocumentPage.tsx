@@ -38,7 +38,7 @@ function HeroActions({ doc }: { doc: ContentDocument }) {
     return (
       <>
         <IndustrialButton href="mailto:lab@bukanpipe.com">
-          {isFa ? "درخواست آزمون" : "Request lab test"}
+          {isFa ? "درخواست خدمات آزمایشگاه" : "Request lab test"}
         </IndustrialButton>
         <IndustrialButton href={localePath(routes.contact.path)} variant="secondary">
           {isFa ? "تماس آزمایشگاه" : "Laboratory contact"}
