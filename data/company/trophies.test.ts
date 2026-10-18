@@ -49,8 +49,11 @@ describe("trophy archive", () => {
     expect(awards.find((a) => a.id === t.awardId)?.level).toBe("استانی");
   });
 
-  it("claims exactly three national titles", () => {
-    expect(trophies.filter((t) => t.level === "national")).toHaveLength(3);
+  it("claims exactly two national titles — 1405 cooperative and 1393 quality unit", () => {
+    expect(trophies.filter((t) => t.level === "national").map((t) => t.slug).sort()).toEqual([
+      "coop-national-1405",
+      "quality-unit-national-1393",
+    ]);
   });
 });
 

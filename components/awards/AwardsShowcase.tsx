@@ -3,7 +3,7 @@
    plain <img> elements inside 3D transforms; next/image's wrapper and sizing
    get in the way there, and every rendition is already a pre-sized WebP. */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { AwardsPageCopy } from "@/data/company/awards-page";
 
 /** One trophy, already localised and with its image renditions resolved. */
@@ -32,14 +32,34 @@ type Props = {
 
 const SPIN_DEG_PER_S = 9; // one full turn in about forty seconds
 
+function useMediaQuery(query: string): boolean {
+  return useSyncExternalStore(
+    (onChange) => {
+      const mq = window.matchMedia(query);
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    },
+    () => window.matchMedia(query).matches,
+    () => false,
+  );
+}
+
 export function AwardsShowcase({ locale, copy, items }: Props) {
   const stageRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const showcaseRef = useRef<HTMLDivElement>(null);
 
-  const [auto, setAuto] = useState(true);
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const coarsePointer = useMediaQuery("(pointer: coarse)");
+  const [autoPref, setAutoPref] = useState(true);
+  const auto = autoPref && !reducedMotion;
   const [focused, setFocused] = useState<number>(-1);
-  const [lightbox, setLightbox] = useState<number>(-1);
+  const [lightbox, setLightboxState] = useState<number>(-1);
+  // Opening the lightbox also stops the ring, in the same event, not in an effect.
+  const setLightbox = useCallback((next: number | ((i: number) => number)) => {
+    setLightboxState(next);
+    if (typeof next === "number" ? next >= 0 : true) setAutoPref(false);
+  }, []);
   const [filter, setFilter] = useState<string>("all");
 
   // Motion state lives in refs: the loop runs every frame and must not re-render.
@@ -51,6 +71,7 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
   const focusTimer = useRef<number | undefined>(undefined);
   const unfocusTimer = useRef<number | undefined>(undefined);
   const coarse = useRef(false);
+  coarse.current = coarsePointer;
 
   const count = items.length;
   const step = 360 / count;
@@ -58,13 +79,6 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
   useEffect(() => {
     autoRef.current = auto;
   }, [auto]);
-
-  // Respect reduced motion: start paused.
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) setAuto(false);
-    coarse.current = window.matchMedia("(pointer: coarse)").matches;
-  }, []);
 
   // Card geometry follows the stage width.
   useEffect(() => {
@@ -209,10 +223,6 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
     };
   }, [lightbox, count, locale]);
 
-  useEffect(() => {
-    if (lightbox >= 0) setAuto(false);
-  }, [lightbox]);
-
   const categories = useMemo(() => {
     const seen = new Map<string, string>();
     for (const it of items) if (!seen.has(it.category)) seen.set(it.category, it.categoryLabel);
@@ -312,7 +322,7 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
         >
           {prevGlyph}
         </button>
-        <button type="button" className="aw-btn" aria-pressed={auto} onClick={() => setAuto((v) => !v)}>
+        <button type="button" className="aw-btn" aria-pressed={auto} onClick={() => setAutoPref(!auto)}>
           {copy.autoSpin}
         </button>
         <button
