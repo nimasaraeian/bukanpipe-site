@@ -26,12 +26,25 @@ describe("source document images", () => {
 });
 
 
-it("includes every supplied scan as a real public asset in the Persian certificates sitemap entry", () => {
-  const page = sitemap().find((entry) => entry.url.endsWith("/fa/certifications"));
+it.each(["fa", "en"])("includes every supplied scan as a real public asset in the %s certificates sitemap entry", (locale) => {
+  const page = sitemap().find((entry) => entry.url.endsWith(`/${locale}/certifications`));
   expect(page?.images).toHaveLength(62);
   for (const item of evidence) {
     expect(existsSync(join(process.cwd(), "public", item.src))).toBe(true);
     expect(page?.images).toContain(canonicalUrl(item.src));
+  }
+});
+
+it("renders the same scans on the English page, captioned in English", () => {
+  const html = renderToStaticMarkup(<DocumentTableBlock table="awards" caption="Plaques" locale="en" />);
+  expect((html.match(/<img /g) ?? []).length).toBe(48);
+  expect(html).toContain("Scans of the plaques and commendations");
+  expect(html).toContain("Top National Cooperative");
+  expect(html).not.toContain("آرشیو تصویری");
+  for (const item of evidence) {
+    expect(item.captionEn, item.id).toMatch(/^Bukan Pipe; /);
+    expect(item.captionEn).not.toMatch(/[\u0600-\u06FF]/);
+    expect(item.noteEn).not.toMatch(/[\u0600-\u06FF]/);
   }
 });
 

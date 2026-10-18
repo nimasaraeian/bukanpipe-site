@@ -396,10 +396,10 @@ export function DocumentTableBlock({
     return <CapacityTable caption={caption} summary={summary} locale={locale} />;
   }
   if (table === "awards") {
-    return <><AwardsTable caption={caption} summary={summary} locale={locale} />{locale === "fa" ? <DocumentEvidenceGallery group="awards" /> : null}</>;
+    return <><AwardsTable caption={caption} summary={summary} locale={locale} /><DocumentEvidenceGallery group="awards" locale={locale} /></>;
   }
   if (table === "lab-scope") {
     return <LabScopeTable caption={caption} summary={summary} locale={locale} />;
   }
-  return <><DocumentTable group={table} caption={caption} summary={summary} locale={locale} />{locale === "fa" ? <DocumentEvidenceGallery group={table} /> : null}</>;
+  return <><DocumentTable group={table} caption={caption} summary={summary} locale={locale} /><DocumentEvidenceGallery group={table} locale={locale} /></>;
 }

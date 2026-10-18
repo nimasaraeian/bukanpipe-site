@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ...imageSitemapAttachments(
         path === "/gallery"
           ? galleryImages.map((src) => ({ path: "/gallery", src }))
-          : locale === "fa" && path === "/certifications"
+          : path === "/certifications"
             ? evidence.map(({ src }) => ({ path, src }))
             : [],
       ),
