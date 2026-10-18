@@ -156,6 +156,14 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
     drag.current = { px: e.clientX, last: e.clientX, moved: 0 };
     stageRef.current?.classList.add("is-dragging");
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    // On a touch screen there is no hover, so a finger landing on a card does
+    // what the mouse does: the card lifts out at once and the ring keeps
+    // turning behind it, blurred. A finger that then drags takes it back.
+    if (coarsePointer) {
+      const card = (e.target as HTMLElement).closest<HTMLElement>("[data-ring-index]");
+      if (card) focusCard(Number(card.dataset.ringIndex));
+      else unfocus(0);
+    }
   };
   const onPointerMove = (e: React.PointerEvent) => {
     if (!dragging.current) return;
@@ -164,22 +172,16 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
     drag.current.moved += Math.abs(dx);
     angle.current += dx * 0.3;
     vel.current = dx * 0.3;
+    if (coarsePointer && drag.current.moved >= 10 && focused >= 0) unfocus(0);
   };
   const onPointerUp = (e: React.PointerEvent) => {
     if (!dragging.current) return;
     dragging.current = false;
     stageRef.current?.classList.remove("is-dragging");
     if (drag.current.moved >= 6) return;
+    if (coarsePointer) return; // the lift already happened on pointerdown; a tap on the lifted card opens it
     const card = (e.target as HTMLElement).closest<HTMLElement>("[data-ring-index]");
-    if (card) {
-      const i = Number(card.dataset.ringIndex);
-      if (coarsePointer) {
-        if (focused === i) setLightbox(i);
-        else focusCard(i);
-      } else {
-        setLightbox(i);
-      }
-    }
+    if (card) setLightbox(Number(card.dataset.ringIndex));
   };
 
   // Hover: lift the card out of the ring; the ring keeps turning behind it, blurred.
@@ -249,7 +251,10 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
       <div
         ref={showcaseRef}
         className={`aw-showcase${focused >= 0 ? " is-blurred" : ""}`}
-        onPointerLeave={() => unfocus(0)}
+        onPointerLeave={() => {
+          // Touch pointers "leave" the moment the finger lifts; the lifted card must survive that.
+          if (!coarsePointer) unfocus(0);
+        }}
       >
         <div
           ref={stageRef}
@@ -290,7 +295,9 @@ export function AwardsShowcase({ locale, copy, items }: Props) {
           className={`aw-focus${focusedItem ? " is-on" : ""}`}
           data-focus-card
           aria-live="polite"
-          onPointerLeave={() => unfocus(140)}
+          onPointerLeave={() => {
+            if (!coarsePointer) unfocus(140);
+          }}
           onClick={() => {
             if (focused >= 0) setLightbox(focused);
           }}

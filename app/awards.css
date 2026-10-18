@@ -46,6 +46,7 @@
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
+  -webkit-touch-callout: none;
   transition: filter 0.35s ease;
 }
 .aw-stage.is-dragging {
