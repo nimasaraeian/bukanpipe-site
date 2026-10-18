@@ -133,6 +133,7 @@ export const faAbout: ContentDocument = {
         },
         { label: "محصولات لوله پلی اتیلن", path: "/products", hint: "آبرسانی، گاز، آبیاری، صنعت" },
         { label: "گالری کارخانه", path: "/gallery", hint: "تصاویر واقعی کارخانه" },
+        { label: "تندیس‌ها و افتخارات", path: "/awards", hint: "۲۰ تندیس ملی و استانی" },
         { label: "استعلام قیمت لوله", path: "/request-quote", hint: "پیش‌فاکتور پروژه" },
         { label: "لوله پلی اتیلن PE100", path: "/products/pe100-pipe" },
         { label: "مرکز فنی", path: "/technical-center", hint: "SDR، PN، جوش" },
@@ -398,6 +399,11 @@ export const faCertifications: ContentDocument = {
       type: "internal-links",
       title: "مرتبط",
       links: [
+        {
+          label: "تندیس‌ها و افتخارات",
+          path: "/awards",
+          hint: "عکس تندیس‌های تعاونی برتر، واحد نمونه کیفی و صادرکننده برگزیده",
+        },
         {
           label: "استاندارد لوله پلی اتیلن",
           path: "/technical-center/polyethylene-pipe-standards",

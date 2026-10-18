@@ -70,6 +70,7 @@ describe("internal link crawl (FA)", () => {
     "/solutions",
     "/industries",
     "/gallery",
+    "/awards",
   ]);
 
   it("has zero broken internal links in nav, footer, home, and related content", () => {
@@ -99,6 +100,7 @@ describe("internal link crawl (EN)", () => {
     "/solutions",
     "/industries",
     "/gallery",
+    "/awards",
   ]);
 
   it("has zero broken internal links in nav, footer, home, and related content", () => {

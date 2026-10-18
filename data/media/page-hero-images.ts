@@ -174,6 +174,14 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     sceneModifier: "calculator",
     matchEnLayout: true,
   },
+  "/awards": {
+    src: "/media/brand/certifications-page-hero.webp",
+    position: "70% 50%",
+    mobilePosition: { ltr: "74% 48%", rtl: "26% 48%" },
+    variant: "brand",
+    sceneModifier: "calculator",
+    matchEnLayout: true,
+  },
 };
 
 /** Per-application detail heroes — product renders with baked-in logo (never mirror) */
