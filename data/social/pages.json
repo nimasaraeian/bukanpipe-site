@@ -1,0 +1,1298 @@
+[
+  {
+    "locale": "fa",
+    "path": "/",
+    "title": "بوکان پایپ؛ تولیدکننده لوله پلی‌اتیلن",
+    "photo": "/media/brand/about-factory-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/home-5e98ea4bd2.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/about",
+    "title": "کارخانه لوله پلی اتیلن بوکان",
+    "photo": "/media/brand/bukan-pipe-factory-aerial-view-og.jpg",
+    "contain": false,
+    "image": "/media/social/fa/about-53bbc353d3.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications",
+    "title": "کاربرد لوله پلی اتیلن",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications-51c3f4174d.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications/agriculture-irrigation",
+    "title": "آبیاری کشاورزی",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications--agriculture-irrigation-cb5eea6b17.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications/cable-protection",
+    "title": "حفاظت کابل",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications--cable-protection-f9a35aa934.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications/drainage",
+    "title": "زهکشی",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications--drainage-731936ed8e.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications/gas-distribution",
+    "title": "گازرسانی",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications--gas-distribution-f67918b360.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications/industrial",
+    "title": "کاربرد صنعتی",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications--industrial-6282fe7eda.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications/sewage",
+    "title": "فاضلاب",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications--sewage-f3fe38ff47.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/applications/water-transfer",
+    "title": "انتقال آب با لوله پلی اتیلن",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/applications--water-transfer-994550f058.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/calculator",
+    "title": "ماشین‌حساب‌های مهندسی",
+    "photo": "/media/brand/calculator-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/calculator-c0ab9419f1.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/calculator/pipeline-design",
+    "title": "ماشین‌حساب طراحی خط لوله",
+    "photo": "/media/brand/calculator-hero.png",
+    "contain": false,
+    "image": "/media/social/fa/calculator--pipeline-design-50b9778e8e.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/certifications",
+    "title": "گواهی‌ها و مجوزها",
+    "photo": "/media/company/evidence/bukan-pipe-iso-9001.webp",
+    "contain": true,
+    "image": "/media/social/fa/certifications-f55b4d0ea9.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/contact",
+    "title": "تماس با کارخانه",
+    "photo": "/media/brand/bukan-pipe-factory-aerial-view-og.jpg",
+    "contain": false,
+    "image": "/media/social/fa/contact-a2f383d04d.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/downloads",
+    "title": "مرکز دانلود",
+    "photo": "/media/company/evidence/bukan-pipe-standard-mark-water.webp",
+    "contain": true,
+    "image": "/media/social/fa/downloads-96c41ee8ab.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/gallery",
+    "title": "گالری کارخانه بوکان پایپ",
+    "photo": "/media/gallery/bukan-pipe-gallery-og.webp",
+    "contain": false,
+    "image": "/media/social/fa/gallery-cd0dae1c5f.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/industries",
+    "title": "صنایع و کاربردهای لوله پلی‌اتیلن",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/industries-aa53a06bbd.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/laboratory",
+    "title": "آزمایشگاه و کنترل کیفیت",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/fa/laboratory-b6213de80d.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/laboratory/iso-17025",
+    "title": "ISO/IEC 17025",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/fa/laboratory--iso-17025-87856fe159.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/laboratory/services",
+    "title": "خدمات آزمایشگاه",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/fa/laboratory--services-fc315ca063.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/laboratory/standards",
+    "title": "استانداردهای آزمون",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/fa/laboratory--standards-3a359cb9aa.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/laboratory/test-scope",
+    "title": "دامنه آزمون",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/fa/laboratory--test-scope-c50b617de4.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/laboratory/training",
+    "title": "آموزش فنی پلی‌اتیلن",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/fa/laboratory--training-cfcf88b0d5.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size",
+    "title": "سایزهای لوله پلی اتیلن",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size-b7aa730f38.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/110",
+    "title": "لوله پلی اتیلن 110",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--110-fef404ff41.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/125",
+    "title": "لوله پلی اتیلن 125",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--125-a1ac135b06.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/140",
+    "title": "لوله پلی اتیلن 140",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--140-9a3ab9cbae.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/16",
+    "title": "لوله پلی اتیلن 16",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--16-f827ed011f.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/160",
+    "title": "لوله پلی اتیلن 160",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--160-1702988636.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/180",
+    "title": "لوله پلی اتیلن 180",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--180-c38591a50b.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/20",
+    "title": "لوله پلی اتیلن 20",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--20-5de114d11e.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/200",
+    "title": "لوله پلی اتیلن 200",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--200-825f62d11f.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/225",
+    "title": "لوله پلی اتیلن 225",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--225-ff7c101b4a.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/25",
+    "title": "لوله پلی اتیلن 25",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--25-c96b6e0da1.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/250",
+    "title": "لوله پلی اتیلن 250",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--250-f3aa3f2ff7.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/280",
+    "title": "لوله پلی اتیلن 280",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--280-be8dea605f.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/315",
+    "title": "لوله پلی اتیلن 315",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--315-0a27c9e374.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/32",
+    "title": "لوله پلی اتیلن 32",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--32-4ca82e39e0.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/355",
+    "title": "لوله پلی اتیلن 355",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--355-1fc91be76b.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/40",
+    "title": "لوله پلی اتیلن 40",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--40-becd514c7c.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/400",
+    "title": "لوله پلی اتیلن 400",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--400-ab518a2dd2.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/450",
+    "title": "لوله پلی اتیلن 450",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--450-7663397389.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/50",
+    "title": "لوله پلی اتیلن 50",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--50-ba424f7464.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/500",
+    "title": "لوله پلی اتیلن 500",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--500-539607d8de.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/560",
+    "title": "لوله پلی اتیلن 560",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--560-e3d0940d48.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/63",
+    "title": "لوله پلی اتیلن 63",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--63-41ce296256.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/630",
+    "title": "لوله پلی اتیلن 630",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--630-367af25340.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/75",
+    "title": "لوله پلی اتیلن 75",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--75-b641412bb9.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pipe-size/90",
+    "title": "لوله پلی اتیلن 90",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pipe-size--90-e8d7c3cdfe.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products",
+    "title": "محصولات لوله پلی اتیلن",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/products-889f36421c.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products/drainage-pipe",
+    "title": "لوله زهکشی HDPE",
+    "photo": "/media/products/en/drainage.webp",
+    "contain": false,
+    "image": "/media/social/fa/products--drainage-pipe-2bc805ef67.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products/gas-pipe",
+    "title": "لوله پلی اتیلن گاز",
+    "photo": "/media/products/en/gas.webp",
+    "contain": false,
+    "image": "/media/social/fa/products--gas-pipe-fc71633831.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products/industrial-pipe",
+    "title": "لوله پلی اتیلن صنعتی",
+    "photo": "/media/products/en/pe100.webp",
+    "contain": false,
+    "image": "/media/social/fa/products--industrial-pipe-9e55f6fc8b.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products/irrigation-pipe",
+    "title": "لوله پلی اتیلن آبیاری",
+    "photo": "/media/products/en/irrigation.webp",
+    "contain": false,
+    "image": "/media/social/fa/products--irrigation-pipe-254c267488.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products/pe100-pipe",
+    "title": "لوله پلی اتیلن PE100",
+    "photo": "/media/products/en/pe100.webp",
+    "contain": false,
+    "image": "/media/social/fa/products--pe100-pipe-d1efa4ad80.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products/sewage-pipe",
+    "title": "لوله فاضلاب HDPE",
+    "photo": "/media/products/en/sewer.webp",
+    "contain": false,
+    "image": "/media/social/fa/products--sewage-pipe-2747a1958e.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/products/water-supply-pipe",
+    "title": "لوله پلی اتیلن آبرسانی",
+    "photo": "/media/products/en/water.webp",
+    "contain": false,
+    "image": "/media/social/fa/products--water-supply-pipe-d426c20bdd.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/quality",
+    "title": "کنترل کیفیت و آزمایشگاه",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (4).png",
+    "contain": false,
+    "image": "/media/social/fa/quality-b1e15d86a8.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/request-quote",
+    "title": "استعلام قیمت لوله پلی‌اتیلن",
+    "photo": "/media/brand/bukan-pipe-factory-aerial-view-og.jpg",
+    "contain": false,
+    "image": "/media/social/fa/request-quote-950365201d.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/solutions",
+    "title": "راهکارهای مهندسی خطوط لوله",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/solutions-5373930314.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center",
+    "title": "مرکز فنی لوله پلی اتیلن",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center-68984b6838.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/air-vent-valve",
+    "title": "شیر هوا در خط انتقال آب",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--air-vent-valve-3218efa0c2.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/gas-polyethylene-pipe-guide",
+    "title": "لوله پلی اتیلن گازرسانی؛ استانداردها، فرآیند تولید و کاربرد در شبکه‌های گاز",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--gas-polyethylene-pipe-guide-60b1e00eb5.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/hdpe-installation-guide",
+    "title": "راهنمای نصب لوله پلی اتیلن",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--hdpe-installation-guide-0ee35d676b.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/hdpe-pipe-what-is",
+    "title": "لوله HDPE چیست؟",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--hdpe-pipe-what-is-4dbadf2c90.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/pe100-technical-guide",
+    "title": "راهنمای فنی PE100",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--pe100-technical-guide-cf36cda350.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/pe80-vs-pe100",
+    "title": "تفاوت PE80 و PE100",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--pe80-vs-pe100-0c2db4894b.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/polyethylene-pipe-complete-guide",
+    "title": "لوله پلی اتیلن چیست؟ راهنمای کامل انتخاب، استاندارد و خرید",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--polyethylene-pipe-complete-guide-4d0824905d.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/polyethylene-pipe-dimensions-table",
+    "title": "جدول سایز، ضخامت و SDR لوله پلی اتیلن",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--polyethylene-pipe-dimensions-table-0c07085368.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/polyethylene-pipe-specifications",
+    "title": "مشخصات فنی لوله پلی اتیلن",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--polyethylene-pipe-specifications-0f0218de18.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/polyethylene-pipe-standards",
+    "title": "استاندارد لوله پلی اتیلن",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--polyethylene-pipe-standards-68e479dbc6.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/polyethylene-pipe-temperature-pressure",
+    "title": "تأثیر دما بر فشار کاری",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--polyethylene-pipe-temperature-pressure-563b1824f4.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/polyethylene-pipe-welding",
+    "title": "جوش لوله‌های پلی‌اتیلن",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--polyethylene-pipe-welding-1afdd1de53.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/subsurface-drip-irrigation",
+    "title": "آبیاری زیرسطحی",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--subsurface-drip-irrigation-f823272fa3.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/technical-center/water-supply-polyethylene-pipe-guide",
+    "title": "لوله پلی اتیلن آبرسانی؛ مشخصات فنی، استانداردها، فشار کاری و کاربردها",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/fa/technical-center--water-supply-polyethylene-pipe-guide-79c6d5bda9.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/projects",
+    "title": "پروژه‌ها",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/projects-cd3f373a0e.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/engineering",
+    "title": "مهندسی",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/engineering-1284cf29f0.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/standards",
+    "title": "استانداردها",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/standards-69acaed9c3.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/knowledge",
+    "title": "دانش",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/knowledge-201b8c5c51.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/pricing",
+    "title": "قیمت‌گذاری",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/pricing-44e7da8fa8.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/tools",
+    "title": "ابزارها",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/tools-75d2b650ce.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/dealers",
+    "title": "نمایندگان",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/dealers-dc7954cbb2.jpg"
+  },
+  {
+    "locale": "fa",
+    "path": "/verify",
+    "title": "تأیید",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/fa/verify-48e7cb9bd0.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/",
+    "title": "Bukan Pipe — Polyethylene Pipe Manufacturer",
+    "photo": "/media/brand/about-factory-hero.png",
+    "contain": false,
+    "image": "/media/social/en/home-17061b7821.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/about",
+    "title": "The Bukan Polyethylene Pipe Factory",
+    "photo": "/media/brand/bukan-pipe-factory-aerial-view-og.jpg",
+    "contain": false,
+    "image": "/media/social/en/about-b13a5a3d79.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications",
+    "title": "Applications",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications-db92b45f87.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications/agriculture-irrigation",
+    "title": "Agricultural Irrigation",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications--agriculture-irrigation-b6c1fc751a.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications/cable-protection",
+    "title": "Cable & Telecom Protection",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications--cable-protection-9a310bd417.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications/drainage",
+    "title": "Drainage Systems",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications--drainage-fccc6a31fa.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications/gas-distribution",
+    "title": "Gas Distribution Networks",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications--gas-distribution-6f94ffc78f.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications/industrial",
+    "title": "Industrial Piping",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications--industrial-87b50f14c8.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications/sewage",
+    "title": "Sewerage Systems",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications--sewage-e49d5c5b3f.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/applications/water-transfer",
+    "title": "Water Transfer Systems",
+    "photo": "/media/brand/applications-hero.png",
+    "contain": false,
+    "image": "/media/social/en/applications--water-transfer-1479fb3731.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/calculator",
+    "title": "Engineering Calculators",
+    "photo": "/media/brand/calculator-hero.png",
+    "contain": false,
+    "image": "/media/social/en/calculator-2580081e0a.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/calculator/pipeline-design",
+    "title": "Pipeline Design Calculator",
+    "photo": "/media/brand/calculator-hero.png",
+    "contain": false,
+    "image": "/media/social/en/calculator--pipeline-design-d5e8944c28.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/certifications",
+    "title": "Certifications & Licences",
+    "photo": "/media/company/evidence/bukan-pipe-iso-9001.webp",
+    "contain": true,
+    "image": "/media/social/en/certifications-56c66d7b5b.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/contact",
+    "title": "Contact",
+    "photo": "/media/brand/bukan-pipe-factory-aerial-view-og.jpg",
+    "contain": false,
+    "image": "/media/social/en/contact-1a41ec8512.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/downloads",
+    "title": "Downloads",
+    "photo": "/media/company/evidence/bukan-pipe-standard-mark-water.webp",
+    "contain": true,
+    "image": "/media/social/en/downloads-767010cf31.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/gallery",
+    "title": "Bukan Pipe Factory Gallery",
+    "photo": "/media/gallery/bukan-pipe-gallery-og.webp",
+    "contain": false,
+    "image": "/media/social/en/gallery-7f07606bf4.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/industries",
+    "title": "Polyethylene Pipes for Industry",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/industries-8489d2d201.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/laboratory",
+    "title": "Laboratory & Quality Control",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/en/laboratory-70caff1b48.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/laboratory/iso-17025",
+    "title": "ISO/IEC 17025",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/en/laboratory--iso-17025-653dc0508a.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/laboratory/services",
+    "title": "Laboratory Services",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/en/laboratory--services-60c53ad45e.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/laboratory/standards",
+    "title": "Testing Standards",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/en/laboratory--standards-5b37d9f581.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/laboratory/test-scope",
+    "title": "Test Scope",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/en/laboratory--test-scope-d427f3b2c0.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/laboratory/training",
+    "title": "Technical Training",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (5).png",
+    "contain": false,
+    "image": "/media/social/en/laboratory--training-6b9ebd59ef.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size",
+    "title": "HDPE Pipe Sizes",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size-5abbab082a.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/110",
+    "title": "110 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--110-1a02c71e05.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/125",
+    "title": "125 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--125-2d50e8a764.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/140",
+    "title": "140 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--140-42d462e38a.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/16",
+    "title": "16 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--16-6514d3477d.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/160",
+    "title": "160 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--160-09840e957a.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/180",
+    "title": "180 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--180-b448469499.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/20",
+    "title": "20 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--20-750906ae50.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/200",
+    "title": "200 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--200-c543557e81.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/225",
+    "title": "225 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--225-659a7df214.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/25",
+    "title": "25 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--25-1940449c66.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/250",
+    "title": "250 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--250-dca5341a5f.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/280",
+    "title": "280 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--280-e888eedeec.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/315",
+    "title": "315 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--315-c46d45b83b.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/32",
+    "title": "32 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--32-bd9dc14a80.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/355",
+    "title": "355 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--355-3257590e6f.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/40",
+    "title": "40 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--40-f95c25390e.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/400",
+    "title": "400 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--400-badce0e442.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/450",
+    "title": "450 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--450-c57fe0a364.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/50",
+    "title": "50 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--50-d84e86bb54.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/500",
+    "title": "500 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--500-1b4c44bd04.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/560",
+    "title": "560 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--560-a1062845d6.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/63",
+    "title": "63 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--63-4b491bd9bf.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/630",
+    "title": "630 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--630-f1acee390c.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/75",
+    "title": "75 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--75-46c275fde2.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pipe-size/90",
+    "title": "90 mm HDPE Pipe",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pipe-size--90-4710cef2f6.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products",
+    "title": "Products",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/products-ea807e03a7.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products/drainage-pipe",
+    "title": "HDPE Drainage Pipe",
+    "photo": "/media/products/en/drainage.webp",
+    "contain": false,
+    "image": "/media/social/en/products--drainage-pipe-44a76724d0.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products/gas-pipe",
+    "title": "Gas HDPE Pipes",
+    "photo": "/media/products/en/gas.webp",
+    "contain": false,
+    "image": "/media/social/en/products--gas-pipe-0c88ee2274.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products/industrial-pipe",
+    "title": "Industrial HDPE Pipes",
+    "photo": "/media/products/en/pe100.webp",
+    "contain": false,
+    "image": "/media/social/en/products--industrial-pipe-83bd3ba9b9.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products/irrigation-pipe",
+    "title": "Irrigation HDPE Pipes",
+    "photo": "/media/products/en/irrigation.webp",
+    "contain": false,
+    "image": "/media/social/en/products--irrigation-pipe-6f5bf8a8bf.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products/pe100-pipe",
+    "title": "PE100 HDPE Pipes",
+    "photo": "/media/products/en/pe100.webp",
+    "contain": false,
+    "image": "/media/social/en/products--pe100-pipe-191a025fc9.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products/sewage-pipe",
+    "title": "HDPE Sewer Pipe",
+    "photo": "/media/products/en/sewer.webp",
+    "contain": false,
+    "image": "/media/social/en/products--sewage-pipe-99486eab8f.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/products/water-supply-pipe",
+    "title": "Water HDPE Pipes",
+    "photo": "/media/products/en/water.webp",
+    "contain": false,
+    "image": "/media/social/en/products--water-supply-pipe-c80fc51aeb.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/quality",
+    "title": "Quality Control & Laboratory",
+    "photo": "/media/demo/ChatGPT Image Sep 4, 2026, 01_02_13 AM (4).png",
+    "contain": false,
+    "image": "/media/social/en/quality-82cc934827.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/request-quote",
+    "title": "Request a Polyethylene Pipe Quote",
+    "photo": "/media/brand/bukan-pipe-factory-aerial-view-og.jpg",
+    "contain": false,
+    "image": "/media/social/en/request-quote-b67ffce984.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/solutions",
+    "title": "Engineered Pipeline Solutions",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/solutions-41f15f1fa0.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center",
+    "title": "Technical Center",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center-84809ff083.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/air-vent-valve",
+    "title": "Air Release Valves in PE Water Pipelines",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--air-vent-valve-dee35991f9.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/gas-polyethylene-pipe-guide",
+    "title": "Gas Polyethylene Pipe: Standards, Production Process, and Application in Gas Networks",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--gas-polyethylene-pipe-guide-937aa63bbe.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/hdpe-installation-guide",
+    "title": "HDPE Installation Guide",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--hdpe-installation-guide-772c875fd1.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/hdpe-pipe-dimensions-chart",
+    "title": "HDPE Pipe Dimensions Chart",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--hdpe-pipe-dimensions-chart-26076e88a6.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/pe100-technical-guide",
+    "title": "PE100 Technical Guide",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--pe100-technical-guide-57df03ebc5.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/polyethylene-pipe-complete-guide",
+    "title": "What Is Polyethylene Pipe? Complete HDPE Guide to Selection, Standards and Buying",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--polyethylene-pipe-complete-guide-c0678d9e7f.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/polyethylene-pipe-temperature-pressure",
+    "title": "Temperature Effects on PE Pipe Working Pressure",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--polyethylene-pipe-temperature-pressure-a7510266f3.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/polyethylene-pipe-welding",
+    "title": "HDPE Pipe Welding: Butt Fusion and Electrofusion",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--polyethylene-pipe-welding-8ea44f1ead.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/subsurface-drip-irrigation",
+    "title": "Subsurface Drip Irrigation Systems",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--subsurface-drip-irrigation-1ede737621.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/technical-center/water-supply-polyethylene-pipe-guide",
+    "title": "Water Supply Polyethylene Pipe: Technical Specifications, Standards, Pressure Ratings, and Applications",
+    "photo": "/media/brand/technical-center-hero.jpg",
+    "contain": false,
+    "image": "/media/social/en/technical-center--water-supply-polyethylene-pipe-guide-bc4dd9884e.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/projects",
+    "title": "Projects",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/projects-777135966a.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/engineering",
+    "title": "Engineering",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/engineering-3dd3d0415d.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/standards",
+    "title": "Standards",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/standards-1736a27eec.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/knowledge",
+    "title": "Knowledge",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/knowledge-749af83424.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/pricing",
+    "title": "Pricing",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/pricing-5ad358be21.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/tools",
+    "title": "Tools",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/tools-db04e06b17.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/dealers",
+    "title": "Dealers",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/dealers-47f18bd164.jpg"
+  },
+  {
+    "locale": "en",
+    "path": "/verify",
+    "title": "Verify",
+    "photo": "/media/demo/bukan-slide-03-product.png",
+    "contain": false,
+    "image": "/media/social/en/verify-40a43c2152.jpg"
+  }
+]

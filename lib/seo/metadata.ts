@@ -1,3 +1,4 @@
+import sharePages from "@/data/social/pages.json";
 import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n/config";
 import { openGraphLocale } from "@/lib/i18n/config";
@@ -97,7 +98,10 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
   const description = input.description;
   const ogLocale = input.locale ? openGraphLocale[input.locale] : siteConfig.openGraphLocale;
   const languageAlternates = buildLanguageAlternates(input.path);
-  const ogImage = resolveOgImage(input.path, input.ogImage);
+  const sharePage = input.locale ? sharePages.find(page => page.locale === input.locale && page.path === input.path) : undefined;
+  const ogImage = sharePage
+    ? { url: sharePage.image, width: 1200, height: 630, alt: sharePage.title }
+    : resolveOgImage(input.path, input.ogImage);
 
   return {
     title: input.titleAbsolute ? { absolute: title } : title,
@@ -121,6 +125,7 @@ export function createPageMetadata(input: PageMetadataInput): Metadata {
           width: ogImage.width,
           height: ogImage.height,
           alt: ogImage.alt,
+          ...(sharePage ? { type: "image/jpeg" } : {}),
         },
       ],
     },
