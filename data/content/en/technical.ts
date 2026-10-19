@@ -247,6 +247,11 @@ export const enPipeDimensionsChart: ContentDocument = {
       title: "Next steps",
       links: [
         {
+          label: "Download these tables (Excel) and the catalogue PDF",
+          path: "/downloads",
+          hint: "The factory laboratory's specification workbook: water, gas and drip sheets",
+        },
+        {
           label: "HDPE gas pipe guide",
           path: "/technical-center/gas-polyethylene-pipe-guide",
           hint: "MOP for PE80 and PE100, the gas design coefficient and INSO 11223",

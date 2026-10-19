@@ -188,14 +188,58 @@
 }
 
 .engine-header-wordmark {
-  font-size: 0.8125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  line-height: 1.15;
+  font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--engine-header-scrolled-fg-strong);
 }
 
 .engine-header-wordmark[dir="rtl"] {
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
+}
+
+/* The registered company name under the brand — what the factory asked to see first. */
+.engine-header-wordmark-legal {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--engine-header-scrolled-fg);
+  white-space: nowrap;
+}
+
+.engine-header-wordmark[dir="rtl"] .engine-header-wordmark-legal {
+  font-size: 0.75rem;
+}
+
+/*
+  Phones: the controls cluster on the other side is ~170px wide, so the legal
+  name wraps to two short lines inside the room that is left instead of
+  pushing the header past the viewport.
+*/
+@media (max-width: 1023px) {
+  .engine-header-wordmark {
+    font-size: 0.875rem;
+    gap: 0.05rem;
+  }
+
+  .engine-header-wordmark-legal,
+  .engine-header-wordmark[dir="rtl"] .engine-header-wordmark-legal {
+    white-space: normal;
+    /* an explicit width: the header grid sizes this column to min-content, which would wrap every word */
+    width: min(calc(100vw - 17.25rem), 11rem);
+    font-size: 0.6875rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 359px) {
+  .engine-header-wordmark-legal {
+    display: none;
+  }
 }
 
 .engine-header-nav {
@@ -244,7 +288,7 @@
   display: block;
   border-radius: 5px;
   padding: 0.5rem 0.75rem;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   color: var(--engine-header-scrolled-fg-muted);
   transition:
@@ -266,7 +310,7 @@
 
 .engine-header-nav-link {
   position: relative;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--engine-header-scrolled-fg);

@@ -40,6 +40,18 @@ export const enProductsHub: ContentDocument = {
       type: "paragraph",
       text: "Choose the product family by application, not by diameter. Water, gas, irrigation and industrial pipe are extruded from the same base material but carry different standards, different quality control requirements and different marking — and for gas and drinking water, that difference is a legal requirement rather than a preference.",
     },
+    { type: "heading", level: 2, text: "Two families of single-wall polyethylene pipe" },
+    {
+      type: "paragraph",
+      text: "Bukan Pipe's single-wall pipe comes in two families. High-density polyethylene (HDPE) pipe, from 25 mm upwards and made from PE100 (PE80 to order), serves water supply networks and transmission, gas distribution, sprinkler irrigation and drainage, telecom and power cable ducting, and industrial lines carrying effluent, acids and chemicals. Low-density polyethylene (LDPE) pipe, mainly 16 mm and made from PE40 per the catalogue table (PE32 also listed), is used only for drip irrigation: the lateral, or emitter line, that branches off the mains and carries the drippers. The product pages below all belong to the HDPE family; the drip pipe is specified in the technical centre's drip irrigation table and on the irrigation pipe page.",
+    },
+    {
+      type: "list",
+      items: [
+        "HDPE — PE100: water supply, gas distribution, agriculture (sprinkler irrigation and drainage), industrial, telecom (cable and fibre ducting)",
+        "LDPE — PE40/PE32: drip irrigation (16 mm lateral pipe)",
+      ],
+    },
     { type: "heading", level: 2, text: "What an enquiry has to state" },
     {
       type: "paragraph",

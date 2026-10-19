@@ -283,6 +283,11 @@ export const faPipeDimensionsTable: ContentDocument = {
       title: "ادامه مسیر",
       links: [
         {
+          label: "دانلود همین جدول‌ها (اکسل) و کاتالوگ PDF",
+          path: "/downloads",
+          hint: "برگه مشخصات آزمایشگاه کارخانه با سه جدول آبرسانی، گاز و قطره‌ای",
+        },
+        {
           label: "راهنمای لوله پلی اتیلن گازرسانی",
           path: "/technical-center/gas-polyethylene-pipe-guide",
           hint: "فشار کاری MOP برای PE80 و PE100، ضریب طراحی گاز و استاندارد ۱۱۲۲۳",

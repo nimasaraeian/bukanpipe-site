@@ -16,8 +16,9 @@
   --ind-blue-glow: rgba(0, 102, 255, 0.38);
 
   --ind-text: #ffffff;
-  --ind-text-muted: #a0a8b4;
-  --ind-text-subtle: #8a929e;
+  /* 2026-10-19: lifted from #a0a8b4 / #8a929e — the factory found the secondary text too faint to read */
+  --ind-text-muted: #c3cad4;
+  --ind-text-subtle: #a6afbb;
   --ind-text-on-image: #ffffff;
 
   --ind-border: rgba(255, 255, 255, 0.08);
@@ -53,7 +54,7 @@
   --engine-header-hero-bg: linear-gradient(to bottom, rgba(5, 7, 10, 0.55), transparent);
   --engine-header-scrolled-bg: rgba(5, 7, 10, 0.88);
   --engine-header-scrolled-border: rgba(255, 255, 255, 0.06);
-  --engine-header-scrolled-fg: rgba(255, 255, 255, 0.78);
+  --engine-header-scrolled-fg: rgba(255, 255, 255, 0.92);
   --engine-header-scrolled-fg-strong: #ffffff;
   --engine-header-scrolled-fg-muted: rgba(255, 255, 255, 0.82);
   --engine-header-panel-bg: rgba(5, 7, 10, 0.96);
@@ -106,7 +107,7 @@
 
   --ind-text: var(--text-primary);
   --ind-text-muted: var(--text-secondary);
-  --ind-text-subtle: #5a6573;
+  --ind-text-subtle: #4b5664;
   --ind-text-on-image: #ffffff;
 
   --ind-border: var(--border);
@@ -228,9 +229,9 @@
 
 /* Typography */
 .ind-kicker {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ind-blue-bright);
 }
@@ -292,9 +293,9 @@
   min-height: 2.75rem;
   padding-inline: 1.375rem;
   border-radius: var(--ind-radius-sm);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition:
     transform 0.2s ease,
@@ -336,9 +337,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.6875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ind-blue-bright);
   transition: gap 0.2s ease, color 0.2s ease;
@@ -1339,8 +1340,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--ind-text-subtle);
+  font-size: 0.875rem;
+  color: var(--ind-text-muted);
 }
 
 .ind-page-hero-breadcrumb a {
@@ -1464,7 +1465,7 @@
 }
 
 .ind-footer-col-title {
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1938,6 +1939,13 @@
 
 [dir="rtl"] .ind-page-hero-scene-glow {
   inset: auto 30% 8% 10%;
+}
+
+[dir="rtl"] .ind-kicker,
+[dir="rtl"] .ind-btn,
+[dir="rtl"] .ind-text-link {
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 [dir="rtl"] .ind-kicker-line {

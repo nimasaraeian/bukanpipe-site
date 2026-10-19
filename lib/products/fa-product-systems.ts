@@ -137,31 +137,10 @@ export const faProductSystems: readonly ProductSystem[] = [
     ctaLabel: "مشاهده لوله زهکشی",
     imageAlt: "لوله HDPE زهکشی با نوار فیروزه‌ای در محیط آب باران",
   },
-  {
-    id: "pe100",
-    number: "06",
-    name: "PE100",
-    slug: "pe100-pipe",
-    path: "/products/pe100-pipe",
-    image: productSystemAssets.pe100,
-    imageWidth: 1672,
-    imageHeight: 941,
-    accent: "#33aaff",
-    accentMuted: "rgba(51, 170, 255, 0.12)",
-    icon: "pe100",
-    eyebrow: "گرید ماده PE100",
-    title: "گرید PE100 برای شبکه‌های تحت فشار",
-    description:
-      "لوله پلی‌اتیلن PE100 با استحکام بلندمدت بالاتر نسبت به PE80؛ فشار اسمی و ضخامت موردنیاز بر اساس SDR و مشخصات پروژه تعیین می‌شوند.",
-    tags: ["گرید PE100", "طراحی فشار", "مشخصات مهندسی"],
-    specs: [
-      { label: "ماده", value: "PE100 با MRS برابر ۱۰ مگاپاسکال" },
-      { label: "طراحی", value: "انتخاب رده فشار مطابق پروژه" },
-      { label: "کاربرد", value: "انتقال صنعتی" },
-      { label: "مهندسی", value: "PN / SDR طبق پروژه" },
-      { label: "QC", value: "آزمون‌های مکانیکی و ابعادی" },
-    ],
-    ctaLabel: "مشاهده PE100",
-    imageAlt: "برش مهندسی لوله PE100 HDPE در محیط فنی آبی",
-  },
+
 ] as const;
+/*
+ * PE100 is a material grade of the pipes above, not a product system; the
+ * factory asked (2026-10-18) for it to leave this list. /products/pe100-pipe
+ * stays as a page.
+ */

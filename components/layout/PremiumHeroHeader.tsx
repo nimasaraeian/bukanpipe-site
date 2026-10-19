@@ -268,7 +268,8 @@ export function PremiumHeroHeader({ immersiveHero = false }: { immersiveHero?: b
           <HeaderLogoMark />
 
           <span className="engine-header-wordmark" dir={locale === "fa" ? "rtl" : "ltr"}>
-            {t.common.brandWordmark}
+            <span>{t.common.brandWordmark}</span>
+            <span className="engine-header-wordmark-legal">{t.common.brandLegalName}</span>
           </span>
 
         </Link>

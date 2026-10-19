@@ -173,31 +173,10 @@ export const enProductSystems: readonly ProductSystem[] = [
     ctaLabel: "Explore Drainage Pipes",
     imageAlt: "HDPE drainage pipe with cyan stripe in stormwater environment",
   },
-  {
-    id: "pe100",
-    number: "06",
-    name: "PE100",
-    slug: "pe100-pipe",
-    path: "/products/pe100-pipe",
-    image: productSystemAssets.pe100,
-    imageWidth: 1672,
-    imageHeight: 941,
-    accent: "#33aaff",
-    accentMuted: "rgba(51, 170, 255, 0.12)",
-    icon: "pe100",
-    eyebrow: "PE100 MATERIAL GRADE",
-    title: "Higher MRS. Demanding pressure design.",
-    description:
-      "PE100 polyethylene pipe with higher MRS for higher-pressure design — thinner walls or higher rating at the same SDR.",
-    tags: ["PE100 Grade", "Pressure Design", "Engineering Spec"],
-    specs: [
-      { label: "Material", value: "PE100 MRS grade" },
-      { label: "Design", value: "Higher-pressure segments" },
-      { label: "Application", value: "Industrial transfer" },
-      { label: "Engineering", value: "PN / SDR per project" },
-      { label: "QC", value: "Laboratory mechanical scope" },
-    ],
-    ctaLabel: "Explore PE100",
-    imageAlt: "PE100 HDPE pipe engineering cutaway with blue technical environment",
-  },
+
 ] as const;
+/*
+ * PE100 is a material grade of the pipes above, not a product system; the
+ * factory asked (2026-10-18) for it to leave this list. /products/pe100-pipe
+ * stays as a page.
+ */

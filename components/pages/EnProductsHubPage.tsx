@@ -3,6 +3,7 @@ import { ProductSystemsSection } from "@/components/products/en/ProductSystemsSe
 import { ProductsDesignQAOverlay } from "@/components/products/en/ProductsDesignQAOverlay";
 import { ProductsHeroSection } from "@/components/products/en/ProductsHeroSection";
 import { ProductsSeoLinks } from "@/components/products/en/ProductsSeoLinks";
+import { ProductFamilies } from "@/components/products/en/ProductFamilies";
 import type { ContentDocument } from "@/content/models/content-document";
 import { breadcrumbListSchema } from "@/lib/schema/builders";
 import type { Locale } from "@/lib/i18n/config";
@@ -34,6 +35,7 @@ export function EnProductsHubPage({
       />
       <ProductsHeroSection doc={doc} breadcrumbHrefs={breadcrumbHrefs} />
       <ProductSystemsSection />
+      <ProductFamilies locale={doc.locale as Locale} />
       <ProductsSeoLinks locale={doc.locale as Locale} />
     </>
   );

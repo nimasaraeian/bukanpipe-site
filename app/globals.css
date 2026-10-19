@@ -56,6 +56,10 @@ html[lang="en"] {
 }
 
 @theme {
+  /* text-xs is 13px here, not 12px: secondary copy was too small to read for the factory's buyers */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.25rem;
+
   --font-sans: var(--font-ui), Tahoma, "Segoe UI", "Noto Naskh Arabic",
     "Noto Sans Arabic", Arial, sans-serif;
 
