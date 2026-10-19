@@ -46,6 +46,12 @@ export type PageHeroImage = {
   sceneModifier?: "applications" | "about" | "calculator" | "laboratory" | "downloads" | "technical" | "quality";
   /** FA keeps EN physical sides: copy left, photo right. Persian text only. */
   matchEnLayout?: boolean;
+  /**
+   * Phones: a much heavier scrim under the copy. For photographs whose
+   * subject is bright paper (certificates), the standard left fade leaves
+   * white type sitting on white paper once the image is cropped to portrait.
+   */
+  mobileScrim?: "dense";
 };
 
 /** Inner-page hero backgrounds (homepage hero is separate). */
@@ -149,18 +155,21 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
   "/certifications": {
     src: "/media/brand/certifications-page-hero.webp",
     position: "70% 50%",
-    mobilePosition: { ltr: "74% 48%", rtl: "26% 48%" },
+    // phones: keep the dark bench under the copy; the gold plaque edges in on the right
+    mobilePosition: { ltr: "22% 50%", rtl: "22% 50%" },
     variant: "brand",
     sceneModifier: "calculator",
     matchEnLayout: true,
+    mobileScrim: "dense",
   },
   "/awards": {
     src: "/media/brand/certifications-page-hero.webp",
     position: "70% 50%",
-    mobilePosition: { ltr: "74% 48%", rtl: "26% 48%" },
+    mobilePosition: { ltr: "22% 50%", rtl: "22% 50%" },
     variant: "brand",
     sceneModifier: "calculator",
     matchEnLayout: true,
+    mobileScrim: "dense",
   },
 };
 
@@ -343,6 +352,7 @@ export function getIndustrialPageHeroImageProps(hero: PageHeroImage) {
     imageMobilePositionRtl: matchEnSides ? hero.mobilePosition?.ltr : hero.mobilePosition?.rtl,
     imageVariant: hero.variant,
     imageSceneModifier: hero.sceneModifier,
+    imageMobileScrim: hero.mobileScrim,
     matchEnSides,
   };
 }

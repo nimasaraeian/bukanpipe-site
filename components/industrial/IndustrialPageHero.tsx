@@ -22,6 +22,7 @@ type IndustrialPageHeroProps = {
   imageMobilePositionRtl?: string;
   imageVariant?: PageHeroImage["variant"];
   imageSceneModifier?: PageHeroImage["sceneModifier"];
+  imageMobileScrim?: PageHeroImage["mobileScrim"];
   matchEnSides?: boolean;
   imageAlt?: string;
   breadcrumb?: BreadcrumbItem[];
@@ -39,6 +40,7 @@ export function IndustrialPageHero({
   imageMobilePositionRtl,
   imageVariant = "default",
   imageSceneModifier,
+  imageMobileScrim,
   matchEnSides = false,
   imageAlt = "",
   breadcrumb,
@@ -65,6 +67,7 @@ export function IndustrialPageHero({
         imageSceneModifier === "downloads" && "ind-page-hero--brand-downloads",
         imageSceneModifier === "technical" && "ind-page-hero--brand-technical",
         matchEnSides && "ind-page-hero--match-en",
+        imageMobileScrim === "dense" && "ind-page-hero--mobile-dense",
       )}
       style={
         {

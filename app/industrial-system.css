@@ -1772,6 +1772,37 @@
     );
   }
 
+  /*
+    Dense phone scrim (certificates, awards): the photograph is bright paper,
+    so the fade has to cover the whole copy column and the top band, not just
+    the first half of the width. Same specificity as the per-modifier rules
+    above and later in the file, so it wins for both directions.
+  */
+  [dir="ltr"] .ind-page-hero--mobile-dense .ind-page-hero-shade-left,
+  [dir="rtl"] .ind-page-hero--mobile-dense .ind-page-hero-shade-left {
+    background: linear-gradient(
+      90deg,
+      var(--ind-hero-shade) 0%,
+      rgba(5, 7, 10, 0.98) 30%,
+      rgba(5, 7, 10, 0.94) 52%,
+      rgba(5, 7, 10, 0.82) 66%,
+      rgba(5, 7, 10, 0.5) 80%,
+      rgba(5, 7, 10, 0.16) 92%,
+      transparent 100%
+    );
+  }
+
+  [dir="ltr"] .ind-page-hero--mobile-dense .ind-page-hero-shade-top,
+  [dir="rtl"] .ind-page-hero--mobile-dense .ind-page-hero-shade-top {
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 7, 10, 0.92) 0%,
+      rgba(5, 7, 10, 0.6) 40%,
+      rgba(5, 7, 10, 0.2) 70%,
+      transparent 100%
+    );
+  }
+
   [dir="rtl"] .ind-page-hero--brand-photo .ind-page-hero-content,
   /*
     Column flex: the cross axis is the inline axis, so in RTL `flex-start` is
