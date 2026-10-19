@@ -215,7 +215,27 @@
   font-size: 0.75rem;
 }
 
-@media (max-width: 379px) {
+/*
+  Phones: the controls cluster on the other side is ~170px wide, so the legal
+  name wraps to two short lines inside the room that is left instead of
+  pushing the header past the viewport.
+*/
+@media (max-width: 1023px) {
+  .engine-header-wordmark {
+    font-size: 0.875rem;
+    gap: 0.05rem;
+  }
+
+  .engine-header-wordmark-legal,
+  .engine-header-wordmark[dir="rtl"] .engine-header-wordmark-legal {
+    white-space: normal;
+    max-width: calc(100vw - 16rem);
+    font-size: 0.6875rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 359px) {
   .engine-header-wordmark-legal {
     display: none;
   }
