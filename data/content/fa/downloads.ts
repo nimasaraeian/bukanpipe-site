@@ -19,6 +19,8 @@ export type DownloadItem = {
 
 /** The company catalogue as the factory issued it — one file for both locales. */
 export const CATALOGUE_PDF_URL = "/downloads/bukan-pipe-catalogue.pdf";
+/** The factory laboratory's own specification workbook (HD / gas / LD sheets), external links removed. */
+export const DIMENSION_TABLES_XLSX_URL = "/downloads/bukan-pipe-dimension-tables.xlsx";
 
 /** Only items with a hosted fileUrl are shown on the public site. */
 export const faDownloadsPublic: readonly DownloadItem[] = [
@@ -30,6 +32,16 @@ export const faDownloadsPublic: readonly DownloadItem[] = [
     category: "company-catalogue",
     fileUrl: CATALOGUE_PDF_URL,
     fileType: "PDF",
+    verificationStatus: "verified",
+  },
+  {
+    id: "dimension-tables-xlsx",
+    title: "جدول مشخصات و سایزبندی لوله — فایل اکسل",
+    description:
+      "برگه مشخصات آزمایشگاه کارخانه: لوله آبرسانی ۱۶ تا ۶۳۰ میلی‌متر (ضخامت جداره برای هر SDR و PN طبق INSO 14427-2)، لوله گازرسانی ۲۵ تا ۲۲۵ میلی‌متر (ISO 4437 / IGS-M-PL-014-1) و لوله آبیاری قطره‌ای ۱۲ تا ۳۲ میلی‌متر (INSO 7607 / ISO 8779). سه برگه، قابل ویرایش.",
+    category: "technical-publications",
+    fileUrl: DIMENSION_TABLES_XLSX_URL,
+    fileType: "Excel",
     verificationStatus: "verified",
   },
 ];
@@ -95,7 +107,7 @@ export const faDownloadsHub: ContentDocument = {
   sections: [
     {
       type: "paragraph",
-      text: "کاتالوگ رسمی شرکت را از همین صفحه دانلود کنید و جدول‌های ابعاد و منابع فنی را از پیوندهای زیر ببینید. مدارک مرتبط با سفارش را واحد فروش و آزمایشگاه صادر می‌کنند.",
+      text: "کاتالوگ رسمی شرکت و فایل اکسل جدول سایزبندی را از همین صفحه دانلود کنید و جدول‌های ابعاد و منابع فنی را از پیوندهای زیر ببینید. مدارک مرتبط با سفارش را واحد فروش و آزمایشگاه صادر می‌کنند.",
     },
     { type: "heading", level: 2, text: "منابع قابل مشاهده آنلاین" },
     {

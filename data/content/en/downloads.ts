@@ -1,5 +1,5 @@
 import type { ContentDocument } from "@/content/models/content-document";
-import { CATALOGUE_PDF_URL, type DownloadItem } from "@/data/content/fa/downloads";
+import { CATALOGUE_PDF_URL, DIMENSION_TABLES_XLSX_URL, type DownloadItem } from "@/data/content/fa/downloads";
 
 export const enDownloadsPublic: readonly DownloadItem[] = [
   {
@@ -10,6 +10,16 @@ export const enDownloadsPublic: readonly DownloadItem[] = [
     category: "company-catalogue",
     fileUrl: CATALOGUE_PDF_URL,
     fileType: "PDF",
+    verificationStatus: "verified",
+  },
+  {
+    id: "dimension-tables-xlsx-en",
+    title: "Pipe specification and size tables — Excel",
+    description:
+      "The factory laboratory's specification workbook: water supply pipe 16 to 630 mm (wall thickness per SDR and PN to INSO 14427-2), gas pipe 25 to 225 mm (ISO 4437 / IGS-M-PL-014-1) and drip irrigation pipe 12 to 32 mm (INSO 7607 / ISO 8779). Three sheets, editable; headings in Persian and English.",
+    category: "technical-publications",
+    fileUrl: DIMENSION_TABLES_XLSX_URL,
+    fileType: "Excel",
     verificationStatus: "verified",
   },
 ];

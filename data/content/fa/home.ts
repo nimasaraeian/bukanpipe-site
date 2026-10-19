@@ -21,11 +21,6 @@ export const faHomeProducts = [
     title: "لوله پلی اتیلن صنعتی",
     href: "/products/industrial-pipe",
   },
-  {
-    kicker: "PE100",
-    title: "لوله پلی اتیلن PE100",
-    href: "/products/pe100-pipe",
-  },
 ] as const;
 
 export const faHomeApplications = [
@@ -33,6 +28,7 @@ export const faHomeApplications = [
   { kicker: "گاز", title: "گازرسانی", href: "/applications/gas-distribution" },
   { kicker: "کشاورزی", title: "آبیاری", href: "/applications/agriculture-irrigation" },
   { kicker: "صنعت", title: "کاربرد صنعتی", href: "/applications/industrial" },
+  { kicker: "مخابرات", title: "حفاظ کابل و فیبر نوری", href: "/applications/cable-protection" },
 ] as const;
 
 export const faHomeArticles = [

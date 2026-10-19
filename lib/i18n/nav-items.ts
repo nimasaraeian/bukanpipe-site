@@ -36,17 +36,23 @@ export function getPrimaryNavStructure(
      */
     { label: t.nav.peGuide, href: path("/technical-center/polyethylene-pipe-complete-guide") },
     { label: t.nav.technicalCenter, href: path("/technical-center") },
-    { label: t.nav.calculator, href: path("/calculator") },
+    // the factory's own words: "جداول فنی و تخصصی (با قابلیت دانلود)" — the table page, then the files
+    { label: t.nav.tables, href: path("/technical-center/polyethylene-pipe-dimensions-table") },
     { label: t.nav.downloads, href: path("/downloads") },
+    { label: t.nav.calculator, href: path("/calculator") },
   ];
 
+  /*
+   * Order follows the structure the factory asked for (2026-10-18 note):
+   * about → quality control & laboratory → certificates → awards → gallery.
+   */
   const companyItems: readonly NavItem[] = [
     { label: t.nav.about, href: path(routes.about.path) },
-    { label: t.nav.gallery, href: path(routes.gallery.path) },
     { label: t.nav.laboratory, href: path(routes.laboratory.path) },
     { label: t.nav.quality, href: path("/quality") },
     { label: t.nav.certifications, href: path("/certifications") },
     { label: t.nav.awards, href: path("/awards") },
+    { label: t.nav.gallery, href: path(routes.gallery.path) },
   ];
 
   return [

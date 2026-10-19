@@ -21,17 +21,14 @@ export const enHomeProducts = [
     title: "HDPE Industrial Pipe",
     href: "/products/industrial-pipe",
   },
-  {
-    kicker: "PE100",
-    title: "PE100 Pipe",
-    href: "/products/pe100-pipe",
-  },
 ] as const;
 
 export const enHomeApplications = [
   { kicker: "Water", title: "Water transfer", href: "/applications/water-transfer" },
   { kicker: "Gas", title: "Gas distribution", href: "/applications/gas-distribution" },
   { kicker: "Agriculture", title: "Irrigation", href: "/applications/agriculture-irrigation" },
+  { kicker: "Industrial", title: "Industrial", href: "/applications/industrial" },
+  { kicker: "Telecom", title: "Cable and fibre ducting", href: "/applications/cable-protection" },
 ] as const;
 
 export const enHomeArticles = [

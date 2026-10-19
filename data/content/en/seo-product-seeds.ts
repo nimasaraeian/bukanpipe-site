@@ -200,10 +200,15 @@ export const enSeoProductSeeds: readonly SeoProductSeed[] = [
     relatedApplications: ["agriculture-irrigation"],
     relatedArticles: ["subsurface-drip-irrigation", "hdpe-installation-guide"],
     extraSections: [
+      { type: "heading", level: 2, text: "Mains are HDPE; the drip lateral is LDPE" },
+      {
+        type: "paragraph",
+        text: "A pressurised irrigation network has three layers. The main from the well or reservoir to the control station, and the sub-main or manifold that splits the flow between plots, are high-density polyethylene (HDPE, PE100). The emitter lateral that carries the drippers runs at far lower pressure and is low-density polyethylene (LDPE): Bukan Pipe makes it mainly in 16 mm, from PE40 and PE32 per the catalogue table below. State which layer you are buying for, and the irrigation system type, when you enquire.",
+      },
       {
         type: "heading",
         level: 2,
-        text: "Catalogue dimensions — sample",
+        text: "Catalogue dimensions — drip lateral sample",
       },
       {
         type: "dimension-excerpt",
