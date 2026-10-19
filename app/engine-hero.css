@@ -229,7 +229,8 @@
   .engine-header-wordmark-legal,
   .engine-header-wordmark[dir="rtl"] .engine-header-wordmark-legal {
     white-space: normal;
-    max-width: calc(100vw - 16rem);
+    /* an explicit width: the header grid sizes this column to min-content, which would wrap every word */
+    width: min(calc(100vw - 16.5rem), 11rem);
     font-size: 0.6875rem;
     line-height: 1.2;
   }
