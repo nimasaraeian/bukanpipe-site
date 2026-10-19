@@ -23,7 +23,7 @@ export type PrimaryNavGroup = {
 export type PrimaryNavEntry = PrimaryNavLink | PrimaryNavGroup;
 
 export function getPrimaryNavStructure(
-  _locale: Locale,
+  locale: Locale,
   t: Dictionary,
   path: (routePath: string) => string,
 ): readonly PrimaryNavEntry[] {
@@ -37,7 +37,14 @@ export function getPrimaryNavStructure(
     { label: t.nav.peGuide, href: path("/technical-center/polyethylene-pipe-complete-guide") },
     { label: t.nav.technicalCenter, href: path("/technical-center") },
     // the factory's own words: "جداول فنی و تخصصی (با قابلیت دانلود)" — the table page, then the files
-    { label: t.nav.tables, href: path("/technical-center/polyethylene-pipe-dimensions-table") },
+    {
+      label: t.nav.tables,
+      href: path(
+        locale === "fa"
+          ? "/technical-center/polyethylene-pipe-dimensions-table"
+          : "/technical-center/hdpe-pipe-dimensions-chart",
+      ),
+    },
     { label: t.nav.downloads, href: path("/downloads") },
     { label: t.nav.calculator, href: path("/calculator") },
   ];
